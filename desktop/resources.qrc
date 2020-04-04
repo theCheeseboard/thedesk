@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/thedesk/desktop">
+        <file>icons/thedesk.svg</file>
+    </qresource>
+</RCC>
