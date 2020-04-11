@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EndSession</class>
+ <widget class="QWidget" name="EndSession">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>799</width>
+    <height>515</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="tTitleLabel" name="titleLabel">
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>End Session</string>
+     </property>
+     <property name="margin">
+      <number>9</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QWidget" name="centeredWidget" native="true">
+       <property name="maximumSize">
+        <size>
+         <width>600</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="descriptionLabel">
+            <property name="text">
+             <string notr="true">Ready to leave?</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
+          <item>
+           <widget class="EndSessionButton" name="powerOffButton">
+            <property name="text">
+             <string>Power Off</string>
+            </property>
+            <property name="icon">
+             <iconset theme="system-shutdown">
+              <normaloff>.</normaloff>.</iconset>
+            </property>
+            <property name="description">
+             <string>Turns off your computer.</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="EndSessionButton" name="rebootButton">
+          <property name="text">
+           <string>Reboot</string>
+          </property>
+          <property name="icon">
+           <iconset theme="system-reboot">
+            <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="description">
+           <string>Turns off your computer and turns it on again</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="EndSessionButton" name="logoutButton">
+          <property name="text">
+           <string>Log Out</string>
+          </property>
+          <property name="icon">
+           <iconset theme="system-log-out">
+            <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="description">
+           <string>Ends your session but keeps your computer on for other people to use</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="EndSessionButton" name="suspendButton">
+          <property name="text">
+           <string>Suspend</string>
+          </property>
+          <property name="icon">
+           <iconset theme="system-suspend">
+            <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="description">
+           <string>Puts your computer in a low power state so it reopens quickly</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="EndSessionButton" name="lockButton">
+          <property name="text">
+           <string>Lock</string>
+          </property>
+          <property name="icon">
+           <iconset theme="system-lock-screen">
+            <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="description">
+           <string>Locks your workspace with your password</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="EndSessionButton" name="screenOffButton">
+          <property name="text">
+           <string>Turn Off Screen</string>
+          </property>
+          <property name="icon">
+           <iconset theme="video-display">
+            <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="description">
+           <string>Turns off the screen, but keeps everything else running in the background</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="EndSessionButton" name="switchUsersButton">
+          <property name="text">
+           <string>Switch Users</string>
+          </property>
+          <property name="icon">
+           <iconset theme="system-switch-user">
+            <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="description">
+           <string>Switches to the logon screen, but keeps your session in the background</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="EndSessionButton" name="hibernateButton">
+          <property name="text">
+           <string>Hibernate</string>
+          </property>
+          <property name="icon">
+           <iconset theme="system-suspend-hibernate">
+            <normaloff>.</normaloff>.</iconset>
+          </property>
+          <property name="description">
+           <string>Powers off your computer, but restores the session when powered back on</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>0</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>tTitleLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">ttitlelabel.h</header>
+   <slots>
+    <signal>backButtonClicked()</signal>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>EndSessionButton</class>
+   <extends>QCommandLinkButton</extends>
+   <header>session/endsessionbutton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -23,6 +23,7 @@
 #include <QObject>
 
 class Chunk;
+class ChunkContainer;
 struct BarManagerPrivate;
 class BarManager : public QObject {
         Q_OBJECT
@@ -32,6 +33,10 @@ class BarManager : public QObject {
 
         void addChunk(Chunk* chunk);
         void removeChunk(Chunk* chunk);
+        bool isChunkRegistered(Chunk* chunk);
+
+    protected:
+        friend ChunkContainer;
         QList<Chunk*> chunks();
 
     signals:

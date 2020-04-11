@@ -45,6 +45,8 @@ class MainGatewayWidget : public QWidget {
 
         void on_searchBox_returnPressed();
 
+        void on_endSessionButton_clicked();
+
     signals:
         void closeGateway();
 

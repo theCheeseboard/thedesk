@@ -395,3 +395,8 @@ void Background::on_zoomFitButton_toggled(bool checked) {
         d->bg->setStretchType(BackgroundController::ZoomFit);
     }
 }
+
+void Background::on_actionEndSession_triggered()
+{
+
+}

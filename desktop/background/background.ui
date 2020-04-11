@@ -757,6 +757,14 @@
     <string>Change Background</string>
    </property>
   </action>
+  <action name="actionEndSession">
+   <property name="icon">
+    <iconset theme="system-shutdown"/>
+   </property>
+   <property name="text">
+    <string>End Session</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

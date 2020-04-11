@@ -1,9 +1,14 @@
-QT       += core gui tdesktopenvironment
+QT       += core gui tdesktopenvironment network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = thedesk
 CONFIG += c++11
+
+# Include the-libs build tools
+include(/usr/share/the-libs/pri/gentranslations.pri)
+
+QMAKE_POST_LINK += $$QMAKE_COPY_DIR $$quote($$PWD/translations) $$shell_quote($$OUT_PWD)
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -21,37 +26,73 @@ SOURCES += \
     bar/barwindow.cpp \
     bar/chunkcontainer.cpp \
     bar/mainbarwidget.cpp \
+    bar/taskbarwidget.cpp \
+    cli/commandline.cpp \
+    common/common.cpp \
     gateway/appselectionmodel.cpp \
     gateway/appselectionmodellistdelegate.cpp \
     gateway/gateway.cpp \
     gateway/maingatewaywidget.cpp \
     main.cpp \
-    plugins/pluginmanager.cpp
+    plugins/pluginmanager.cpp \
+    server/sessionserver.cpp \
+    session/endsession.cpp \
+    session/endsessionbutton.cpp \
+    statuscenter/statuscenter.cpp \
+    statuscenter/statuscenterleftpane.cpp \
+    systemsettings/about/about.cpp \
+    systemsettings/systemsettings.cpp \
+    systemsettings/systemsettingsleftpane.cpp \
+    transparentdialog.cpp
 
 HEADERS += \
     background/background.h \
     bar/barwindow.h \
     bar/chunkcontainer.h \
     bar/mainbarwidget.h \
+    bar/taskbarwidget.h \
+    cli/commandline.h \
+    common/common.h \
     gateway/appselectionmodel.h \
     gateway/appselectionmodellistdelegate.h \
     gateway/gateway.h \
     gateway/maingatewaywidget.h \
     plugins/plugininterface.h \
-    plugins/pluginmanager.h
+    plugins/pluginmanager.h \
+    server/sessionserver.h \
+    session/endsession.h \
+    session/endsessionbutton.h \
+    statuscenter/statuscenter.h \
+    statuscenter/statuscenterleftpane.h \
+    systemsettings/about/about.h \
+    systemsettings/systemsettings.h \
+    systemsettings/systemsettingsleftpane.h \
+    transparentdialog.h
 
 FORMS += \
     background/background.ui \
     bar/barwindow.ui \
     bar/chunkcontainer.ui \
     bar/mainbarwidget.ui \
+    bar/taskbarwidget.ui \
     gateway/gateway.ui \
-    gateway/maingatewaywidget.ui
+    gateway/maingatewaywidget.ui \
+    session/endsession.ui \
+    statuscenter/statuscenter.ui \
+    statuscenter/statuscenterleftpane.ui \
+    systemsettings/about/about.ui \
+    systemsettings/systemsettings.ui \
+    systemsettings/systemsettingsleftpane.ui \
+    transparentdialog.ui
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+unix {
+    target.path = /usr/bin/
+
+    translations.files = translations/*.qm
+    translations.path = /usr/share/thedesk/translations
+
+    INSTALLS += target translations
+}
 
 unix:!macx: LIBS += -L$$OUT_PWD/../libthedesk/ -lthedesk
 

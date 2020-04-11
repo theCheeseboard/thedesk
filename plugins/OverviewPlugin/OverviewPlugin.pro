@@ -3,6 +3,9 @@ QT += widgets
 TEMPLATE = lib
 CONFIG += c++11
 
+# Include the-libs build tools
+include(/usr/share/the-libs/pri/gentranslations.pri)
+
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -15,18 +18,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    OverviewPane/overviewpane.cpp \
     clockchunk.cpp \
     plugin.cpp
 
 HEADERS += \
+    OverviewPane/overviewpane.h \
     clockchunk.h \
     plugin.h
 
-# Default rules for deployment.
 unix {
-    target.path = /usr/lib
+    translations.files = translations/*.qm
+    translations.path = /usr/share/thedesk/OverviewPlugin/translations
+
+    INSTALLS += translations
 }
-!isEmpty(target.path): INSTALLS += target
 
 include(../plugins.pri)
 
@@ -34,4 +40,5 @@ DISTFILES += \
     Plugin.json
 
 FORMS += \
+    OverviewPane/overviewpane.ui \
     clockchunk.ui

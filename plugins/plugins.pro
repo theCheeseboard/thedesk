@@ -1,6 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    OverviewPlugin
+    NotificationsPlugin \
+    OverviewPlugin \
+    PowerPlugin
 
 DISTFILES += plugins.pri

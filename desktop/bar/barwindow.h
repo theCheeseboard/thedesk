@@ -44,6 +44,9 @@ class BarWindow : public QWidget {
 
         void updatePrimaryScreen();
         void barHeightChanged();
+
+        void showStatusCenter();
+        void hideStatusCenter();
 };
 
 #endif // BARWINDOW_H

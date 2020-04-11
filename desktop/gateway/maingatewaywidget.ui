@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -31,6 +31,9 @@
    </property>
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="mainPage">
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <property name="spacing">
@@ -221,7 +224,8 @@
              <string>End Session</string>
             </property>
             <property name="icon">
-             <iconset theme="system-shutdown"/>
+             <iconset theme="system-shutdown">
+              <normaloff>.</normaloff>.</iconset>
             </property>
             <property name="flat">
              <bool>true</bool>
@@ -255,6 +259,9 @@
    <class>tTitleLabel</class>
    <extends>QLabel</extends>
    <header location="global">ttitlelabel.h</header>
+   <slots>
+    <signal>backButtonClicked()</signal>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>

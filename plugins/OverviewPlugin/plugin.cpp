@@ -23,8 +23,13 @@
 #include <clockchunk.h>
 #include <statemanager.h>
 #include <barmanager.h>
+#include <statuscentermanager.h>
 #include <icontextchunk.h>
+#include <localemanager.h>
 #include <QIcon>
+#include <QApplication>
+#include <QDir>
+#include "OverviewPane/overviewpane.h"
 
 Plugin::Plugin() {
     qDebug() << "Construct";
@@ -35,22 +40,18 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    qDebug() << "Hello World!";
+    StateManager::localeManager()->addTranslationSet({
+        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/OverviewPlugin/translations"),
+        "/usr/share/thedesk/OverviewPlugin/translations"
+    });
 
     BarManager* barManager = StateManager::barManager();
     barManager->addChunk(new ClockChunk());
 
-    IconTextChunk* ict = new IconTextChunk("network-wireless");
-    ict->setIcon(QIcon::fromTheme("network-wireless-connected-75"));
-    ict->setText("Your Network's SSID");
-    barManager->addChunk(ict);
-
-    IconTextChunk* ict2 = new IconTextChunk("network-cellular");
-    ict2->setIcon(QIcon::fromTheme("network-cellular-connected-75"));
-    ict2->setText("Vodafone");
-    barManager->addChunk(ict2);
+    StatusCenterManager* scManager = StateManager::statusCenterManager();
+    scManager->addPane(new OverviewPane());
 }
 
 void Plugin::deactivate() {
-    qDebug() << "Goodbye World!";
+
 }

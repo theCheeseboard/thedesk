@@ -20,13 +20,15 @@
 #include "maingatewaywidget.h"
 #include "ui_maingatewaywidget.h"
 
+#include <Wm/desktopwm.h>
 #include <QScroller>
-#include <unistd.h>
-#include <pwd.h>
 #include <tvariantanimation.h>
 #include <application.h>
 #include "appselectionmodel.h"
 #include "appselectionmodellistdelegate.h"
+#include "session/endsession.h"
+#include <statemanager.h>
+#include <powermanager.h>
 
 struct MainGatewayWidgetPrivate {
     AppSelectionModel* model;
@@ -48,17 +50,11 @@ MainGatewayWidget::MainGatewayWidget(QWidget* parent) :
     ui->gatewayTypeStack->setCurrentWidget(ui->gatewayLoading);
     ui->gatewayTypeStack->setCurrentAnimation(tStackedWidget::Fade);
 
-    passwd* pwEntry = getpwuid(getuid());
-    QString userName = pwEntry->pw_name;
-    QStringList gecosField = QString::fromLocal8Bit(pwEntry->pw_gecos).split(",");
-    if (!gecosField.at(0).isEmpty()) {
-        userName = gecosField.at(0);
-    }
-
-    ui->usernameLabel->setText(tr("Hey, %1!").arg(userName));
+    ui->usernameLabel->setText(tr("Hey, %1!").arg(DesktopWm::userDisplayName()));
 
     ui->appsList->setModel(d->model);
     ui->appsList->setItemDelegate(new AppSelectionModelListDelegate(this, true));
+    ui->appsList->setFocusProxy(ui->searchBox);
     QScroller::grabGesture(ui->appsList->viewport(), QScroller::LeftMouseButtonGesture);
 
     this->setFocusProxy(ui->searchBox);
@@ -100,4 +96,8 @@ void MainGatewayWidget::on_searchBox_returnPressed() {
 void MainGatewayWidget::launch(QModelIndex applicationIndex) {
     applicationIndex.data(Qt::UserRole + 3).value<ApplicationPointer>()->launch();
     emit closeGateway();
+}
+
+void MainGatewayWidget::on_endSessionButton_clicked() {
+    StateManager::instance()->powerManager()->showPowerOffConfirmation();
 }

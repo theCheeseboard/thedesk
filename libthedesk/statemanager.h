@@ -24,13 +24,20 @@
 #include <QObject>
 
 class BarManager;
-class StateManagerPrivate;
+class PowerManager;
+class StatusCenterManager;
+class LocaleManager;
+
+struct StateManagerPrivate;
 class LIBTHEDESK_EXPORT StateManager : public QObject {
         Q_OBJECT
 
     public:
         static StateManager* instance();
         static BarManager* barManager();
+        static PowerManager* powerManager();
+        static StatusCenterManager* statusCenterManager();
+        static LocaleManager* localeManager();
 
     private:
         explicit StateManager();

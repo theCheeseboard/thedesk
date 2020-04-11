@@ -1,0 +1,220 @@
+/****************************************
+ *
+ *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
+ *   Copyright (C) 2020 Victor Tran
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * *************************************/
+#include "overviewpane.h"
+#include "ui_overviewpane.h"
+
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <QToolButton>
+#include <QIcon>
+#include <Wm/desktopwm.h>
+#include <TimeDate/desktoptimedate.h>
+#include <QTimer>
+#include <QTime>
+#include <QVariantAnimation>
+#include <QPainter>
+#include <math.h>
+#include <the-libs_global.h>
+
+struct OverviewPanePrivate {
+    QToolButton* hamburgerButton;
+};
+
+OverviewPane::OverviewPane() :
+    StatusCenterPane(),
+    ui(new Ui::OverviewPane) {
+    ui->setupUi(this);
+
+    d = new OverviewPanePrivate();
+
+    d->hamburgerButton = new QToolButton(this);
+    d->hamburgerButton->setIcon(QIcon::fromTheme("application-menu"));
+    d->hamburgerButton->move(0, 0);
+    d->hamburgerButton->setFixedSize(d->hamburgerButton->sizeHint());
+    d->hamburgerButton->setVisible(StateManager::statusCenterManager()->isHamburgerMenuRequired());
+    connect(StateManager::statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, d->hamburgerButton, &QToolButton::setVisible);
+    connect(d->hamburgerButton, &QToolButton::clicked, StateManager::statusCenterManager(), &StatusCenterManager::showStatusCenterHamburgerMenu);
+
+    ui->dstIcon->setPixmap(QIcon::fromTheme("chronometer").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
+    ui->weatherIcon->setPixmap(QIcon::fromTheme("weather-clear").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
+    ui->dstPanel->setVisible(false);
+    ui->weatherPanel->setVisible(false);
+
+    QTimer* timer = new QTimer();
+    timer->setInterval(60000);
+    connect(timer, &QTimer::timeout, this, &OverviewPane::updateGreeting);
+    timer->start();
+    updateGreeting();
+
+    DesktopTimeDate::makeTimeLabel(ui->date, DesktopTimeDate::StandardDate);
+    DesktopTimeDate::makeTimeLabel(ui->time, DesktopTimeDate::Time);
+    DesktopTimeDate::makeTimeLabel(ui->timeAmPm, DesktopTimeDate::AmPm);
+
+    const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
+    ui->mainWidget->setFixedWidth(contentWidth);
+    ui->scrollAreaWidgetContents->installEventFilter(this);
+}
+
+OverviewPane::~OverviewPane() {
+    delete d;
+    delete ui;
+}
+
+void OverviewPane::updateGreeting() {
+    QString userDisplayName = DesktopWm::userDisplayName();
+
+    QTime now = QTime::currentTime();
+    if (now.hour() < 6) {
+        ui->greetingLabel->setText(tr("Hi %1!").arg(userDisplayName));
+    } else if (now.hour() < 12) {
+        ui->greetingLabel->setText(tr("Good morning, %1!").arg(userDisplayName));
+    } else if (now.hour() < 17) {
+        ui->greetingLabel->setText(tr("Good afternoon, %1!").arg(userDisplayName));
+    } else {
+        ui->greetingLabel->setText(tr("Good evening, %1!").arg(userDisplayName));
+    }
+}
+
+bool OverviewPane::eventFilter(QObject* watched, QEvent* event) {
+    if (watched == ui->scrollAreaWidgetContents && event->type() == QEvent::Paint) {
+        QPainter p(ui->scrollAreaWidgetContents);
+        p.setRenderHint(QPainter::Antialiasing);
+
+        QColor newTextColor;
+
+        QColor top, bottom;
+        QTime now = QTime::currentTime();
+
+        /*if (currentCondition.isValid && currentCondition.properties.value(WeatherCondition::isCloudy, false).toBool()) {
+            top = QColor(150, 150, 150);
+            bottom = QColor(100, 100, 100);
+            newTextColor = QColor(Qt::black);
+        } else*/ if (now.hour() < 4 || now.hour() > 20) { //Assume night
+            top = QColor(0, 36, 85);
+            bottom = QColor(0, 17, 40);
+            newTextColor = QColor(Qt::white);
+        } else if (now.hour() > 8 && now.hour() < 16) { //Assume day
+            top = QColor(126, 195, 255);
+            bottom = QColor(64, 149, 185);
+            newTextColor = QColor(Qt::black);
+        } else { //Calculate interpolation
+            int interpolation;
+            //From 4-8 interpolate sunrise
+            if (now.hour() > 4 && now.hour() < 8) {
+                interpolation = now.msecsSinceStartOfDay() - 14400000; //4 hours in milliseconds
+            } else {
+                interpolation = 14400000 - (now.msecsSinceStartOfDay() - 57600000); //16 hours in milliseconds
+            }
+
+            QVariantAnimation a;
+            a.setDuration(14400000);
+            a.setCurrentTime(interpolation);
+            a.setStartValue(QColor(0, 36, 85));
+            a.setKeyValueAt(0.5, QColor(255, 140, 0));
+            a.setEndValue(QColor(126, 195, 255));
+            top = a.currentValue().value<QColor>();
+            a.setStartValue(QColor(0, 17, 40));
+            a.setKeyValueAt(0.5, QColor(167, 70, 25));
+            a.setEndValue(QColor(64, 149, 185));
+            bottom = a.currentValue().value<QColor>();
+
+            bool dark = ((top.red() + top.green() + top.blue()) / 3) < 127;
+            if (dark) {
+                newTextColor = QColor(Qt::white);
+            } else {
+                newTextColor = QColor(Qt::black);
+            }
+        }
+
+        QLinearGradient mainBackground;
+        mainBackground.setStart(0, 0);
+        mainBackground.setFinalStop(0, 500);
+        mainBackground.setColorAt(0, top);
+        mainBackground.setColorAt(1, bottom);
+
+        p.setBrush(mainBackground);
+        p.setPen(Qt::transparent);
+        p.drawRect(0, 0, ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height());
+
+        //Draw background objects if neccessary
+        //    if (currentCondition.isValid) {
+        //        if (currentCondition.properties.value(WeatherCondition::isRainy, false).toBool()) drawRaindrops(&p);
+        //        if (currentCondition.properties.value(WeatherCondition::WindBeaufort, 0).toInt() >= 4) drawWind(&p);
+        //    }
+        //    drawObjects(&p);
+
+        //Draw celestial object if neccessary
+        int daySegmentPassed = -1;
+        bool isMoon = true;
+
+        if (now.hour() < 5 || (now.hour() == 5 && now.minute() <= 30)) { //Draw moon
+            daySegmentPassed = now.msecsSinceStartOfDay() + 19800000; //5.5 hours in milliseconds
+        } else if (now.hour() > 18 || (now.hour() == 18 && now.minute() >= 30)) { //Draw moon
+            daySegmentPassed = now.msecsSinceStartOfDay() - 66600000; //18.5 hours in milliseconds
+        } else if ((now.hour() > 6 && now.hour() < 17) || (now.hour() == 6 && now.minute() >= 30) || (now.hour() == 17 && now.minute() <= 30)) { //Draw sun
+            daySegmentPassed = now.msecsSinceStartOfDay() - 23400000; //6.5 hours in milliseconds
+            isMoon = false;
+        }
+
+        if (isMoon) {
+            p.setBrush(QColor(127, 127, 127));
+        } else {
+            p.setBrush(QColor(255, 224, 130));
+        }
+        if (daySegmentPassed >= 0) {
+            double percentageThroughArc = daySegmentPassed / 39600000.0; //11 hours in milliseconds
+
+            double sinArg = percentageThroughArc * M_PI;
+            double heightDisplacement = -sin(sinArg) + 1;
+
+            int top = static_cast<int>((heightDisplacement * 100) + 70);
+            int left = static_cast<int>((ui->scrollAreaWidgetContents->width() + 100) * percentageThroughArc - 50);
+
+            QPoint center(left, top);
+            if (isMoon) {
+                p.drawEllipse(center, 30, 30);
+            } else {
+                p.drawEllipse(center, 50, 50);
+            }
+        }
+
+        QPalette pal = ui->scrollAreaWidgetContents->palette();
+        pal.setColor(QPalette::WindowText, newTextColor);
+        ui->scrollAreaWidgetContents->setPalette(pal);
+    }
+    return false;
+}
+
+
+QString OverviewPane::name() {
+    return "OverviewPane";
+}
+
+QString OverviewPane::displayName() {
+    return tr("Overview");
+}
+
+QIcon OverviewPane::icon() {
+    return QIcon::fromTheme("weather-clear");
+}
+
+QWidget* OverviewPane::leftPane() {
+    return nullptr;
+}

@@ -19,15 +19,38 @@
  * *************************************/
 #include "chunk.h"
 
-Chunk::Chunk() : QWidget(nullptr) {
+#include <statemanager.h>
+#include <barmanager.h>
+#include <QMouseEvent>
 
+struct ChunkPrivate {
+
+};
+
+Chunk::Chunk() : QWidget(nullptr) {
+    d = new ChunkPrivate();
 }
 
 Chunk::~Chunk() {
+    delete d;
+}
 
+bool Chunk::chunkRegistered() {
+    return StateManager::instance()->barManager()->isChunkRegistered(this);
 }
 
 void Chunk::performStatusBarTransition(qreal percentage) {
     Q_UNUSED(percentage);
     //noop
+}
+
+void Chunk::mousePressEvent(QMouseEvent* event) {
+    event->accept();
+}
+
+void Chunk::mouseReleaseEvent(QMouseEvent* event) {
+    if (event->pos().x() < this->width() && event->pos().x() > 0 &&
+        event->pos().y() < this->height() && event->pos().y() > 0) {
+        emit clicked();
+    }
 }

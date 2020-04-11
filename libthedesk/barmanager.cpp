@@ -45,6 +45,10 @@ void BarManager::removeChunk(Chunk* chunk) {
     }
 }
 
+bool BarManager::isChunkRegistered(Chunk* chunk) {
+    return d->chunks.contains(chunk);
+}
+
 QList<Chunk*> BarManager::chunks() {
     return d->chunks;
 }

@@ -18,13 +18,22 @@
  *
  * *************************************/
 
+#include <QDir>
+#include <QTimer>
+
 #include <tapplication.h>
 #include <statemanager.h>
+#include <powermanager.h>
+#include <localemanager.h>
+#include <statuscentermanager.h>
 #include <Wm/desktopwm.h>
 
 #include "plugins/pluginmanager.h"
 #include "bar/barwindow.h"
 #include "background/background.h"
+#include "session/endsession.h"
+#include "cli/commandline.h"
+#include "server/sessionserver.h"
 
 int main(int argc, char* argv[]) {
     tApplication a(argc, argv);
@@ -32,9 +41,25 @@ int main(int argc, char* argv[]) {
     a.setOrganizationDomain("vicr123.com");
     a.setApplicationName("theDesk");
 
-    DesktopWm::instance();
     StateManager::instance();
+    StateManager::localeManager()->addTranslationSet({
+        a.applicationDirPath() + "/translations",
+        "/usr/share/thedesk/translations"
+    });
+
+    //Parse command line arguments
+    int parseResult = CommandLine::parse(a.arguments());
+    if (parseResult != -1) {
+        //Stop running right here
+        return parseResult;
+    }
+
+    DesktopWm::instance();
     PluginManager::instance();
+
+    QObject::connect(StateManager::instance()->powerManager(), &PowerManager::powerOffConfirmationRequested, [ = ](PowerManager::PowerOperation operation) {
+        EndSession::showDialog();
+    });
 
     //Prepare the background
     Background::reconfigureBackgrounds();
@@ -42,6 +67,7 @@ int main(int argc, char* argv[]) {
     BarWindow w;
     w.show();
 
+    QTimer::singleShot(0, SessionServer::instance(), &SessionServer::hideSplashes);
 
     return a.exec();
 }

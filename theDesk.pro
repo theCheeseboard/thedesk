@@ -10,4 +10,5 @@ pluginsproj.depends = libraryproj
 
 SUBDIRS = libraryproj \
     deskproj \
-    pluginsproj
+    pluginsproj \
+    startdesk

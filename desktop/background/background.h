@@ -76,6 +76,8 @@ class Background : public QDialog {
 
         void on_zoomFitButton_toggled(bool checked);
 
+        void on_actionEndSession_triggered();
+
     private:
         Ui::Background* ui;
         BackgroundPrivate* d;

@@ -1,10 +1,13 @@
-QT += widgets thelib
+QT += widgets thelib tdesktopenvironment dbus
 
 TEMPLATE = lib
 DEFINES += LIBTHEDESK_LIBRARY
 TARGET = thedesk
 
 CONFIG += c++11
+
+# Include the-libs build tools
+include(/usr/share/the-libs/pri/gentranslations.pri)
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -22,9 +25,12 @@ SOURCES += \
     barmanager.cpp \
     chunk.cpp \
     icontextchunk.cpp \
-    private/statemanager_p.cpp \
+    localemanager.cpp \
+    powermanager.cpp \
     qsettingsformats.cpp \
-    statemanager.cpp
+    statemanager.cpp \
+    statuscentermanager.cpp \
+    statuscenterpane.cpp
 
 HEADERS += \
     application.h \
@@ -32,15 +38,23 @@ HEADERS += \
     chunk.h \
     icontextchunk.h \
     libthedesk_global.h \
-    private/statemanager_p.h \
+    localemanager.h \
+    powermanager.h \
     qsettingsformats.h \
-    statemanager.h
+    statemanager.h \
+    statuscentermanager.h \
+    statuscenterpane.h
 
 # Default rules for deployment.
 unix {
-    target.path = /usr/lib
+    target.path = /usr/lib/
+
+    translations.files = translations/*.qm
+    translations.path = /usr/share/thedesk/libthedesk/translations
+
+    INSTALLS += target translations
 }
-!isEmpty(target.path): INSTALLS += target
+
 
 FORMS += \
     icontextchunk.ui

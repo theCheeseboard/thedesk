@@ -92,7 +92,7 @@ Gateway* Gateway::instance() {
 void Gateway::show() {
     QScreen* screen = qApp->primaryScreen();
     this->setFixedHeight(screen->geometry().height());
-    this->move(screen->geometry().topLeft());
+    this->move(screen->geometry().topLeft() - QPoint(0, 1));
 
     d->width->setStartValue(this->width());
     d->width->setEndValue(ui->gatewayContainer->sizeHint().width() + 1);

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -35,6 +35,9 @@
    <item>
     <widget class="QWidget" name="mainContentsWidget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
       <property name="leftMargin">
        <number>0</number>
       </property>
@@ -74,17 +77,14 @@
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+       <widget class="TaskbarWidget" name="widget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -109,6 +109,12 @@
    <class>ChunkContainer</class>
    <extends>QWidget</extends>
    <header>bar/chunkcontainer.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TaskbarWidget</class>
+   <extends>QWidget</extends>
+   <header>bar/taskbarwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

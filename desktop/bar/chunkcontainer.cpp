@@ -23,6 +23,7 @@
 #include <statemanager.h>
 #include <barmanager.h>
 #include <chunk.h>
+#include "common/common.h"
 
 struct ChunkContainerPrivate {
     BarManager* barManager;
@@ -75,7 +76,7 @@ int ChunkContainer::expandedHeight() {
     return maxHeight;
 }
 
-void ChunkContainer::barHeightchanged(int height) {
+void ChunkContainer::barHeightChanged(int height) {
     if (height >= statusBarHeight() && height <= expandedHeight()) {
         this->setFixedHeight(height);
     }
@@ -91,35 +92,20 @@ void ChunkContainer::paintEvent(QPaintEvent* event) {
 }
 
 void ChunkContainer::chunkAdded(Chunk* chunk) {
-    //First, check to see if there is a preferred order for this chunk
-    if (!d->preferredChunkOrder.contains(chunk->name())) {
-        //No preferred order so just add it at the end
+    QStringList currentItems;
+    for (QPair<QString, Chunk*> item : d->loadedChunks) {
+        currentItems.append(item.first);
+    }
+    int index = Common::getInsertionIndex(d->preferredChunkOrder, currentItems, chunk->name());
+    if (index == -1) {
+        //Add it at the end
         ui->chunkLayout->addWidget(chunk);
         d->loadedChunks.append({chunk->name(), chunk});
-    }
-
-    //Find where this chunk is supposed to go
-    int beforeIndex = d->preferredChunkOrder.indexOf(chunk->name()) - 1;
-    if (beforeIndex == -1) {
+    } else {
         //Add this chunk at the beginning
-        ui->chunkLayout->insertWidget(0, chunk);
-        d->loadedChunks.insert(0, {chunk->name(), chunk});
-        return;
+        ui->chunkLayout->insertWidget(index, chunk);
+        d->loadedChunks.insert(index, {chunk->name(), chunk});
     }
-
-    //Iterate over the currently loaded chunks and insert the chunk at the correct place
-    QStringList chunksBefore = d->preferredChunkOrder.mid(0, beforeIndex + 1);
-    for (int i = d->loadedChunks.count() - 1; i >= 0; i--) {
-        if (chunksBefore.contains(d->loadedChunks.at(i).first)) {
-            ui->chunkLayout->insertWidget(i + 1, chunk);
-            d->loadedChunks.insert(i + 1, {chunk->name(), chunk});
-            return;
-        }
-    }
-
-    //None of the other chunks were found so just add it at the beginning
-    ui->chunkLayout->insertWidget(0, chunk);
-    d->loadedChunks.insert(0, {chunk->name(), chunk});
 }
 
 void ChunkContainer::chunkRemoved(Chunk* chunk) {

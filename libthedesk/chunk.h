@@ -22,6 +22,7 @@
 
 #include <QWidget>
 
+struct ChunkPrivate;
 class Chunk : public QWidget {
         Q_OBJECT
     public:
@@ -29,6 +30,7 @@ class Chunk : public QWidget {
         ~Chunk();
 
         virtual QString name() = 0;
+        bool chunkRegistered();
 
         virtual int expandedHeight() = 0;
         virtual int statusBarHeight() = 0;
@@ -37,6 +39,14 @@ class Chunk : public QWidget {
     signals:
         void statusBarHeightChanged();
         void expandedHeightChanged();
+
+        void clicked();
+
+    private:
+        ChunkPrivate* d;
+
+        void mousePressEvent(QMouseEvent* event);
+        void mouseReleaseEvent(QMouseEvent* event);
 };
 
 #endif // CHUNK_H

@@ -20,6 +20,7 @@
 #include "mainbarwidget.h"
 #include "ui_mainbarwidget.h"
 
+#include <the-libs_global.h>
 #include "gateway/gateway.h"
 
 MainBarWidget::MainBarWidget(QWidget* parent) :
@@ -27,6 +28,7 @@ MainBarWidget::MainBarWidget(QWidget* parent) :
     ui(new Ui::MainBarWidget) {
     ui->setupUi(this);
 
+    ui->gatewayButton->setIconSize(SC_DPI_T(QSize(32, 32), QSize));
     connect(ui->chunkContainer, &ChunkContainer::expandedHeightChanged, this, &MainBarWidget::expandedHeightChanged);
     connect(ui->chunkContainer, &ChunkContainer::statusBarHeightChanged, this, &MainBarWidget::statusBarHeightChanged);
 }
@@ -44,10 +46,9 @@ int MainBarWidget::expandedHeight() {
 }
 
 void MainBarWidget::barHeightChanged(int height) {
-    ui->chunkContainer->barHeightchanged(height);
+    ui->chunkContainer->barHeightChanged(height);
 }
 
-void MainBarWidget::on_gatewayButton_clicked()
-{
+void MainBarWidget::on_gatewayButton_clicked() {
     Gateway::instance()->show();
 }

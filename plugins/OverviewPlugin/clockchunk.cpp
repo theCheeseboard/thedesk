@@ -22,6 +22,7 @@
 
 #include <statemanager.h>
 #include <barmanager.h>
+#include <statuscentermanager.h>
 #include <TimeDate/desktoptimedate.h>
 
 ClockChunk::ClockChunk() :
@@ -50,6 +51,10 @@ ClockChunk::ClockChunk() :
         } else {
             ui->date->setFixedWidth(ui->date->sizeHint().width() * percentage);
         }
+    });
+
+    connect(this, &ClockChunk::clicked, this, [ = ] {
+        StateManager::instance()->statusCenterManager()->show();
     });
 }
 

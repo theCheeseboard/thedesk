@@ -20,21 +20,44 @@
 #include "statemanager.h"
 
 #include "barmanager.h"
-#include "private/statemanager_p.h"
+#include "powermanager.h"
+#include "statuscentermanager.h"
+#include "localemanager.h"
 
-StateManagerPrivate* StateManager::d = nullptr;
+struct StateManagerPrivate {
+    StateManager* instance = nullptr;
+    BarManager* barManager;
+    StatusCenterManager* statusCenterManager;
+    PowerManager* powerManager;
+    LocaleManager* localeManager;
+};
+
+StateManagerPrivate* StateManager::d = new StateManagerPrivate();
 
 StateManager::StateManager() : QObject(nullptr) {
     d->barManager = new BarManager(this);
+    d->statusCenterManager = new StatusCenterManager(this);
+    d->powerManager = new PowerManager(this);
+    d->localeManager = new LocaleManager(this);
 }
 
 StateManager* StateManager::instance() {
-    if (d == nullptr) d = new StateManagerPrivate();
-
-    if (d->instance == nullptr) d->instance = new StateManager;
+    if (d->instance == nullptr) d->instance = new StateManager();
     return d->instance;
 }
 
 BarManager* StateManager::barManager() {
     return d->barManager;
+}
+
+PowerManager* StateManager::powerManager() {
+    return d->powerManager;
+}
+
+StatusCenterManager* StateManager::statusCenterManager() {
+    return d->statusCenterManager;
+}
+
+LocaleManager* StateManager::localeManager() {
+    return d->localeManager;
 }
