@@ -22,6 +22,9 @@
 #include <tapplication.h>
 
 int main(int argc, char* argv[]) {
+    //Put environment variables
+    qputenv("QT_QPA_PLATFORMTHEME", "ts");
+
     tApplication a(argc, argv);
 
     a.setApplicationName("theDesk");
