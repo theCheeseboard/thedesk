@@ -29,6 +29,9 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPointer>
+#include <QDir>
+#include <application.h>
+#include <the-libs_global.h>
 #include "splashwindow.h"
 
 struct SplashControllerPrivate {
@@ -94,6 +97,38 @@ void SplashController::initSession() {
 
     //Start the window manager
     this->startWM();
+
+    //Run Autostart apps
+    this->runAutostart();
+}
+
+void SplashController::runAutostart() {
+    QStringList searchPaths = {
+        qEnvironmentVariable("XDG_CONFIG_HOME", QDir::homePath() + "/.config") + "/autostart",
+        qEnvironmentVariable("XDG_CONFIG_DIRS", "/etc/xdg") + "/autostart"
+    };
+
+    for (QString desktopEntry : Application::allApplications(searchPaths)) {
+        ApplicationPointer app(new Application(desktopEntry, searchPaths));
+        if (app->getProperty("Hidden", "false").toString() == "true") continue; //Ignore this autostart entry
+        if (!app->getStringList("OnlyShowIn", {"thedesk"}).contains("thedesk")) continue;
+        if (app->getStringList("NotShowIn").contains("thedesk")) continue;
+
+        if (app->hasProperty("TryExec")) {
+            QString tryExecPath = app->getProperty("TryExec").toString();
+            if (tryExecPath.startsWith("/")) {
+                //TryExec is an absolute path
+                QFile testFile(tryExecPath);
+                if (!testFile.exists() | testFile.permissions() & ~QFile::ExeUser) continue;
+            } else {
+                //TryExec should be searched for in the PATH
+                if (theLibsGlobal::searchInPath(tryExecPath).isEmpty()) continue;
+            }
+        }
+
+        //Autostart this app
+        app->launch();
+    }
 }
 
 void SplashController::startWM() {

@@ -31,6 +31,7 @@ class SplashController : public QObject {
         static SplashController* instance();
 
         void initSession();
+        void runAutostart();
         void startWM();
         void startDE();
         void logout();

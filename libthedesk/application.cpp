@@ -34,9 +34,11 @@ struct ApplicationPrivate {
     bool useSettings = false;
     bool isValid = false;
     QString desktopEntry;
+
+    static const QStringList searchPaths;
 };
 
-const QStringList searchPaths = {
+const QStringList ApplicationPrivate::searchPaths = {
     QDir::homePath() + "/.local/share/applications",
     "/usr/share/applications"
 };
@@ -46,8 +48,10 @@ Application::Application() {
     d = new ApplicationPrivate();
 }
 
-Application::Application(QString desktopEntry) {
+Application::Application(QString desktopEntry, QStringList searchPaths) {
     d = new ApplicationPrivate();
+
+    if (searchPaths.isEmpty()) searchPaths = ApplicationPrivate::searchPaths;
 
     for (QString searchPath : searchPaths) {
         QDirIterator iterator(searchPath, QDirIterator::Subdirectories);
@@ -93,9 +97,12 @@ bool Application::hasProperty(QString propertyName) const {
         }) {
         QString test = propertyName + trialKey;
         if ((d->useSettings && d->appSettings->contains(test)) || (!d->useSettings && d->details.contains(test))) {
+            if (d->useSettings) d->appSettings->endGroup();
             return true;
         }
     }
+
+    if (d->useSettings) d->appSettings->endGroup();
     return false;
 }
 
@@ -103,10 +110,7 @@ QVariant Application::getProperty(QString propertyName, QVariant defaultValue) c
     if (!d->isValid) return QVariant();
 
     QLocale locale;
-    if (d->useSettings) {
-        QString name = d->appSettings->value("Desktop Entry/Name").toString();
-        d->appSettings->beginGroup("Desktop Entry");
-    }
+    if (d->useSettings) d->appSettings->beginGroup("Desktop Entry");
 
     //Check to see if there's a localised version of the property name
     QString usedKey = propertyName;
@@ -157,10 +161,12 @@ QStringList Application::getStringList(QString propertyName, QStringList default
     return property.split(";", QString::SkipEmptyParts);
 }
 
-QStringList Application::allApplications() {
+QStringList Application::allApplications(QStringList searchPaths) {
+    if (searchPaths.isEmpty()) searchPaths = ApplicationPrivate::searchPaths;
+
     QSet<QString> stringSet;
     for (QString searchPath : searchPaths) {
-        QDirIterator iterator(searchPath, QDirIterator::Subdirectories);
+        QDirIterator iterator(searchPath, {"*.desktop"}, QDir::Files | QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
         while (iterator.hasNext()) {
             iterator.next();
             stringSet.insert(iterator.fileInfo().completeBaseName());
@@ -218,7 +224,7 @@ void Application::launch() {
 
 ApplicationDaemon::ApplicationDaemon() : QObject(nullptr) {
     QFileSystemWatcher* watcher = new QFileSystemWatcher();
-    watcher->addPaths(searchPaths);
+    watcher->addPaths(ApplicationPrivate::searchPaths);
     connect(watcher, &QFileSystemWatcher::directoryChanged, this, &ApplicationDaemon::appsUpdateRequired);
     connect(watcher, &QFileSystemWatcher::fileChanged, this, &ApplicationDaemon::appsUpdateRequired);
 }

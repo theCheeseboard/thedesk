@@ -8,7 +8,10 @@ deskproj.depends = libraryproj
 pluginsproj.subdir = plugins
 pluginsproj.depends = libraryproj
 
+startdeskproj.subdir = startdesk
+startdeskproj.depends = libraryproj
+
 SUBDIRS = libraryproj \
     deskproj \
     pluginsproj \
-    startdesk
+    startdeskproj

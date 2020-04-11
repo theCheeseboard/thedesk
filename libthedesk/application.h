@@ -27,7 +27,7 @@ struct ApplicationPrivate;
 class Application {
     public:
         Application();
-        Application(QString desktopEntry);
+        Application(QString desktopEntry, QStringList searchPaths = QStringList());
         Application(QVariantMap details);
         ~Application();
 
@@ -41,7 +41,7 @@ class Application {
         QString desktopEntry() const;
         void launch();
 
-        static QStringList allApplications();
+        static QStringList allApplications(QStringList searchPaths = QStringList());
 
     private:
         ApplicationPrivate* d;

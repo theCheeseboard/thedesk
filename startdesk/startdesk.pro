@@ -50,3 +50,8 @@ unix {
 
     INSTALLS += target translations xsession
 }
+
+unix:!macx: LIBS += -L$$OUT_PWD/../libthedesk/ -lthedesk
+
+INCLUDEPATH += $$PWD/../libthedesk
+DEPENDPATH += $$PWD/../libthedesk
