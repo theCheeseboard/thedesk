@@ -25,6 +25,9 @@
 #include <tvariantanimation.h>
 #include <Wm/desktopwm.h>
 
+#include <statemanager.h>
+#include <gatewaymanager.h>
+
 struct GatewayPrivate {
     Gateway* instance = nullptr;
 
@@ -67,6 +70,7 @@ void Gateway::resizeEvent(QResizeEvent* event) {
     ui->gatewayContainer->setFixedSize(ui->gatewayContainer->sizeHint().width(), this->height());
     ui->gatewayContainer->move(this->width() - ui->gatewayContainer->width() - 1, 0);
     ui->line->setGeometry(this->width() - 1, 0, 1, this->height());
+    StateManager::gatewayManager()->setGatewayWidth(this->width());
 }
 
 void Gateway::changeEvent(QEvent* event) {

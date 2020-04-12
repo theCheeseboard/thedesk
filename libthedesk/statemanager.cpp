@@ -23,22 +23,28 @@
 #include "powermanager.h"
 #include "statuscentermanager.h"
 #include "localemanager.h"
+#include "hudmanager.h"
+#include "gatewaymanager.h"
 
 struct StateManagerPrivate {
     StateManager* instance = nullptr;
     BarManager* barManager;
+    GatewayManager* gatewayManager;
     StatusCenterManager* statusCenterManager;
     PowerManager* powerManager;
     LocaleManager* localeManager;
+    HudManager* hudManager;
 };
 
 StateManagerPrivate* StateManager::d = new StateManagerPrivate();
 
 StateManager::StateManager() : QObject(nullptr) {
     d->barManager = new BarManager(this);
+    d->gatewayManager = new GatewayManager(this);
     d->statusCenterManager = new StatusCenterManager(this);
     d->powerManager = new PowerManager(this);
     d->localeManager = new LocaleManager(this);
+    d->hudManager = new HudManager(this);
 }
 
 StateManager* StateManager::instance() {
@@ -48,6 +54,10 @@ StateManager* StateManager::instance() {
 
 BarManager* StateManager::barManager() {
     return d->barManager;
+}
+
+GatewayManager* StateManager::gatewayManager() {
+    return d->gatewayManager;
 }
 
 PowerManager* StateManager::powerManager() {
@@ -60,4 +70,8 @@ StatusCenterManager* StateManager::statusCenterManager() {
 
 LocaleManager* StateManager::localeManager() {
     return d->localeManager;
+}
+
+HudManager* StateManager::hudManager() {
+    return d->hudManager;
 }

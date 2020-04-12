@@ -25,6 +25,7 @@
 #include <Wm/desktopwm.h>
 #include <statemanager.h>
 #include <barmanager.h>
+#include <gatewaymanager.h>
 #include "notificationtracker.h"
 #include "notificationsdrawerwidget.h"
 
@@ -51,6 +52,10 @@ NotificationsDrawer::NotificationsDrawer(NotificationTracker* tracker) :
     this->setWindowFlag(Qt::WindowStaysOnTopHint);
     DesktopWm::setSystemWindow(this);
 
+    connect(StateManager::barManager(), &BarManager::barHeightChanged, this, &NotificationsDrawer::updateGeometry);
+    connect(StateManager::gatewayManager(), &GatewayManager::gatewayWidthChanged, this, &NotificationsDrawer::updateGeometry);
+    connect(ui->hudWidget, &HudWidget::shouldShowChanged, this, &NotificationsDrawer::updateGeometry);
+
     connect(qApp, &QApplication::primaryScreenChanged, this, &NotificationsDrawer::updateGeometry);
     updateGeometry();
 }
@@ -60,17 +65,32 @@ NotificationsDrawer::~NotificationsDrawer() {
 }
 
 void NotificationsDrawer::updateGeometry() {
-    if (d->oldPrimaryScreen) {
+    QScreen* primaryScreen = qApp->primaryScreen();
+    if (d->oldPrimaryScreen != primaryScreen && d->oldPrimaryScreen) {
         disconnect(d->oldPrimaryScreen, &QScreen::geometryChanged, this, &NotificationsDrawer::updateGeometry);
     }
 
-    QScreen* primaryScreen = qApp->primaryScreen();
-    connect(primaryScreen, &QScreen::geometryChanged, this, &NotificationsDrawer::updateGeometry);
+    if (!d->oldPrimaryScreen) {
+        connect(primaryScreen, &QScreen::geometryChanged, this, &NotificationsDrawer::updateGeometry);
+    }
     d->oldPrimaryScreen = primaryScreen;
 
-    this->setFixedWidth(SC_DPI(500));
+    this->setFixedWidth(SC_DPI(400));
     this->setFixedHeight(this->sizeHint().height());
-    this->move(primaryScreen->availableGeometry().topLeft());
+
+    QRect geometry;
+    geometry.setTopLeft(primaryScreen->geometry().topLeft() + QPoint(StateManager::gatewayManager()->gatewayWidth(), StateManager::barManager()->barHeight()));
+    geometry.setSize(this->size());
+
+    if (geometry.bottom() > primaryScreen->geometry().bottom()) geometry.moveBottom(primaryScreen->geometry().bottom());
+
+    this->move(geometry.topLeft());
+
+    if (d->widgets.count() == 0 && !ui->hudWidget->shouldShow()) {
+        this->hide();
+    } else {
+        this->show();
+    }
 }
 
 void NotificationsDrawer::showNotification(NotificationPtr notification) {
@@ -78,18 +98,14 @@ void NotificationsDrawer::showNotification(NotificationPtr notification) {
     d->widgets.append(w);
     ui->notificationsLayout->addWidget(w);
 
-    this->show();
+    this->updateGeometry();
 
     connect(w, &NotificationsDrawerWidget::dismiss, this, [ = ] {
         d->widgets.removeOne(w);
         ui->notificationsLayout->removeWidget(w);
         w->deleteLater();
 
-        if (d->widgets.count() == 0) {
-            this->hide();
-        } else {
-            this->updateGeometry();
-        }
+        this->updateGeometry();
     });
 
     w->show();

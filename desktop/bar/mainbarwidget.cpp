@@ -22,6 +22,14 @@
 
 #include <the-libs_global.h>
 #include "gateway/gateway.h"
+#include <keygrab.h>
+
+#include <QDebug>
+#include <statemanager.h>
+#include <hudmanager.h>
+
+#include <Screens/screendaemon.h>
+#include <Screens/systemscreen.h>
 
 MainBarWidget::MainBarWidget(QWidget* parent) :
     QWidget(parent),
@@ -31,6 +39,58 @@ MainBarWidget::MainBarWidget(QWidget* parent) :
     ui->gatewayButton->setIconSize(SC_DPI_T(QSize(32, 32), QSize));
     connect(ui->chunkContainer, &ChunkContainer::expandedHeightChanged, this, &MainBarWidget::expandedHeightChanged);
     connect(ui->chunkContainer, &ChunkContainer::statusBarHeightChanged, this, &MainBarWidget::statusBarHeightChanged);
+
+    connect(new KeyGrab(QKeySequence(Qt::Key_Super_L), "gatewayOpen"), &KeyGrab::activated, this, [ = ] {
+        Gateway::instance()->show();
+    });
+    connect(new KeyGrab(QKeySequence(Qt::Key_VolumeUp), "volumeUp"), &KeyGrab::activated, this, [ = ] {
+//        Gateway::instance()->show();
+        StateManager::instance()->hudManager()->showHud({
+            {"icon", "audio-volume-high"},
+            {"title", "Volume"},
+            {"value", 0.6}
+        });
+    });
+    connect(new KeyGrab(QKeySequence(Qt::Key_MonBrightnessUp), "brightnessUp"), &KeyGrab::activated, this, [ = ] {
+        SystemScreen* screen = ScreenDaemon::instance()->primayScreen();
+        if (screen->isScreenBrightnessAvailable()) {
+            double newBrightness = screen->screenBrightness() + 0.05;
+            if (newBrightness > 1) newBrightness = 1;
+            screen->setScreenBrightness(newBrightness);
+
+            StateManager::instance()->hudManager()->showHud({
+                {"icon", "video-display"},
+                {"title", "Dimness"},
+                {"value", 1 - newBrightness}
+            });
+        } else {
+            StateManager::instance()->hudManager()->showHud({
+                {"icon", "video-display"},
+                {"title", "Dimness"},
+                {"text", "Unavailable"}
+            });
+        }
+    });
+    connect(new KeyGrab(QKeySequence(Qt::Key_MonBrightnessDown), "brightnessDown"), &KeyGrab::activated, this, [ = ] {
+        SystemScreen* screen = ScreenDaemon::instance()->primayScreen();
+        if (screen->isScreenBrightnessAvailable()) {
+            double newBrightness = screen->screenBrightness() - 0.05;
+            if (newBrightness < 0) newBrightness = 0;
+            screen->setScreenBrightness(newBrightness);
+
+            StateManager::instance()->hudManager()->showHud({
+                {"icon", "video-display"},
+                {"title", "Dimness"},
+                {"value", 1 - newBrightness}
+            });
+        } else {
+            StateManager::instance()->hudManager()->showHud({
+                {"icon", "video-display"},
+                {"title", "Dimness"},
+                {"text", "Unavailable"}
+            });
+        }
+    });
 }
 
 MainBarWidget::~MainBarWidget() {

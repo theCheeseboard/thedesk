@@ -7,13 +7,16 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>16</height>
+    <height>17</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -26,6 +29,9 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
+   <item>
+    <widget class="HudWidget" name="hudWidget" native="true"/>
+   </item>
    <item>
     <layout class="QVBoxLayout" name="notificationsLayout">
      <property name="spacing">
@@ -48,6 +54,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>HudWidget</class>
+   <extends>QWidget</extends>
+   <header>drawer/hudwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

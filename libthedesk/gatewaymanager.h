@@ -17,41 +17,31 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef BARMANAGER_H
-#define BARMANAGER_H
+#ifndef GATEWAYMANAGER_H
+#define GATEWAYMANAGER_H
 
 #include <QObject>
 
-class Chunk;
-class ChunkContainer;
-class BarWindow;
-struct BarManagerPrivate;
-class BarManager : public QObject {
+class Gateway;
+struct GatewayManagerPrivate;
+class GatewayManager : public QObject {
         Q_OBJECT
     public:
-        explicit BarManager(QObject* parent = nullptr);
-        ~BarManager();
+        explicit GatewayManager(QObject* parent = nullptr);
+        ~GatewayManager();
 
-        void addChunk(Chunk* chunk);
-        void removeChunk(Chunk* chunk);
-        bool isChunkRegistered(Chunk* chunk);
-
-        int barHeight();
-
-    protected:
-        friend ChunkContainer;
-        friend BarWindow;
-        QList<Chunk*> chunks();
-        void setBarHeight(int barHeight);
+        int gatewayWidth();
 
     signals:
-        void chunkAdded(Chunk* chunk);
-        void chunkRemoved(Chunk* chunk);
-        void barHeightTransitioning(qreal percentage);
-        void barHeightChanged(int height);
+        void gatewayWidthChanged(int width);
+
+    protected:
+        friend Gateway;
+        void setGatewayWidth(int width);
 
     private:
-        BarManagerPrivate* d;
+        GatewayManagerPrivate* d;
+
 };
 
-#endif // BARMANAGER_H
+#endif // GATEWAYMANAGER_H

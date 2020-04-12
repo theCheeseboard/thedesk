@@ -21,6 +21,7 @@
 
 struct BarManagerPrivate {
     QList<Chunk*> chunks;
+    int barHeight;
 };
 
 BarManager::BarManager(QObject* parent) : QObject(parent) {
@@ -49,6 +50,15 @@ bool BarManager::isChunkRegistered(Chunk* chunk) {
     return d->chunks.contains(chunk);
 }
 
+int BarManager::barHeight() {
+    return d->barHeight;
+}
+
 QList<Chunk*> BarManager::chunks() {
     return d->chunks;
+}
+
+void BarManager::setBarHeight(int barHeight) {
+    d->barHeight = barHeight;
+    emit barHeightChanged(barHeight);
 }

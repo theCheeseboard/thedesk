@@ -24,9 +24,11 @@
 #include <QObject>
 
 class BarManager;
+class GatewayManager;
 class PowerManager;
 class StatusCenterManager;
 class LocaleManager;
+class HudManager;
 
 struct StateManagerPrivate;
 class LIBTHEDESK_EXPORT StateManager : public QObject {
@@ -35,9 +37,11 @@ class LIBTHEDESK_EXPORT StateManager : public QObject {
     public:
         static StateManager* instance();
         static BarManager* barManager();
+        static GatewayManager* gatewayManager();
         static PowerManager* powerManager();
         static StatusCenterManager* statusCenterManager();
         static LocaleManager* localeManager();
+        static HudManager* hudManager();
 
     private:
         explicit StateManager();

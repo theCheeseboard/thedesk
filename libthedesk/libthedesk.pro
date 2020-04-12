@@ -24,7 +24,10 @@ SOURCES += \
     application.cpp \
     barmanager.cpp \
     chunk.cpp \
+    gatewaymanager.cpp \
+    hudmanager.cpp \
     icontextchunk.cpp \
+    keygrab.cpp \
     localemanager.cpp \
     powermanager.cpp \
     qsettingsformats.cpp \
@@ -36,7 +39,10 @@ HEADERS += \
     application.h \
     barmanager.h \
     chunk.h \
+    gatewaymanager.h \
+    hudmanager.h \
     icontextchunk.h \
+    keygrab.h \
     libthedesk_global.h \
     localemanager.h \
     powermanager.h \

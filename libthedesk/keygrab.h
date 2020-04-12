@@ -17,41 +17,29 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef BARMANAGER_H
-#define BARMANAGER_H
+#ifndef KEYGRAB_H
+#define KEYGRAB_H
 
 #include <QObject>
 
-class Chunk;
-class ChunkContainer;
-class BarWindow;
-struct BarManagerPrivate;
-class BarManager : public QObject {
+struct KeyGrabPrivate;
+class KeyGrab : public QObject {
         Q_OBJECT
     public:
-        explicit BarManager(QObject* parent = nullptr);
-        ~BarManager();
+        explicit KeyGrab(QKeySequence seq, QObject* parent = nullptr);
+        explicit KeyGrab(QKeySequence defaultSeq, QString settingName, QObject* parent = nullptr);
+        ~KeyGrab();
 
-        void addChunk(Chunk* chunk);
-        void removeChunk(Chunk* chunk);
-        bool isChunkRegistered(Chunk* chunk);
-
-        int barHeight();
-
-    protected:
-        friend ChunkContainer;
-        friend BarWindow;
-        QList<Chunk*> chunks();
-        void setBarHeight(int barHeight);
+        void pause();
+        void resume();
 
     signals:
-        void chunkAdded(Chunk* chunk);
-        void chunkRemoved(Chunk* chunk);
-        void barHeightTransitioning(qreal percentage);
-        void barHeightChanged(int height);
+        void activated();
 
     private:
-        BarManagerPrivate* d;
+        KeyGrabPrivate* d;
+
+        void init();
 };
 
-#endif // BARMANAGER_H
+#endif // KEYGRAB_H

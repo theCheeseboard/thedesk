@@ -22,6 +22,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     dbus/notifications_adaptor.cpp \
     dbus/notificationsinterface.cpp \
+    drawer/hudwidget.cpp \
     drawer/notificationsdrawer.cpp \
     drawer/notificationsdrawerwidget.cpp \
     notification.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
 HEADERS += \
     dbus/notifications_adaptor.h \
     dbus/notificationsinterface.h \
+    drawer/hudwidget.h \
     drawer/notificationsdrawer.h \
     drawer/notificationsdrawerwidget.h \
     notification.h \
@@ -50,5 +52,6 @@ DISTFILES += \
     Plugin.json
 
 FORMS += \
+    drawer/hudwidget.ui \
     drawer/notificationsdrawer.ui \
     drawer/notificationsdrawerwidget.ui

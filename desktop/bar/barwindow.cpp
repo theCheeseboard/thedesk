@@ -30,6 +30,7 @@
 
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <barmanager.h>
 
 struct BarWindowPrivate {
     MainBarWidget* mainBarWidget;
@@ -135,6 +136,8 @@ void BarWindow::resizeEvent(QResizeEvent* event) {
     d->mainBarWidget->setFixedWidth(this->width());
     d->mainBarWidget->barHeightChanged(this->height() - 1);
     d->statusCenterWidget->setFixedWidth(this->width());
+
+    StateManager::barManager()->setBarHeight(this->height());
 }
 
 void BarWindow::enterEvent(QEvent* event) {

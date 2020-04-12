@@ -17,41 +17,37 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef BARMANAGER_H
-#define BARMANAGER_H
+#ifndef HUDWIDGET_H
+#define HUDWIDGET_H
 
-#include <QObject>
+#include <QWidget>
 
-class Chunk;
-class ChunkContainer;
-class BarWindow;
-struct BarManagerPrivate;
-class BarManager : public QObject {
+namespace Ui {
+    class HudWidget;
+}
+
+struct HudWidgetPrivate;
+class HudWidget : public QWidget {
         Q_OBJECT
+
     public:
-        explicit BarManager(QObject* parent = nullptr);
-        ~BarManager();
+        explicit HudWidget(QWidget* parent = nullptr);
+        ~HudWidget();
 
-        void addChunk(Chunk* chunk);
-        void removeChunk(Chunk* chunk);
-        bool isChunkRegistered(Chunk* chunk);
-
-        int barHeight();
-
-    protected:
-        friend ChunkContainer;
-        friend BarWindow;
-        QList<Chunk*> chunks();
-        void setBarHeight(int barHeight);
+        bool shouldShow();
 
     signals:
-        void chunkAdded(Chunk* chunk);
-        void chunkRemoved(Chunk* chunk);
-        void barHeightTransitioning(qreal percentage);
-        void barHeightChanged(int height);
+        void shouldShowChanged();
 
     private:
-        BarManagerPrivate* d;
+        Ui::HudWidget* ui;
+        HudWidgetPrivate* d;
+
+        void resizeEvent(QResizeEvent* event);
+        bool eventFilter(QObject* watched, QEvent* event);
+
+        void animateShow();
+        void animateHide();
 };
 
-#endif // BARMANAGER_H
+#endif // HUDWIDGET_H
