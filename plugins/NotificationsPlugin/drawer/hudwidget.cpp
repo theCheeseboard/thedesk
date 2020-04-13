@@ -33,6 +33,7 @@ struct HudWidgetPrivate {
     bool shouldShow = false;
 
     int state = 0;
+    double value = 0;
 };
 
 HudWidget::HudWidget(QWidget* parent) :
@@ -65,6 +66,8 @@ HudWidget::HudWidget(QWidget* parent) :
         if (params.contains("icon") && params.contains("title") && params.contains("value")) {
             //Use the icon/value HUD
             ui->stackedWidget->setCurrentWidget(ui->iconValuePage);
+            d->value = value;
+            ui->iconValuePage->update();
         } else if (params.contains("icon") && params.contains("title") && params.contains("text")) {
             //Use the icon/text HUD
             ui->stackedWidget->setCurrentWidget(ui->iconTextPage);
@@ -93,9 +96,17 @@ void HudWidget::resizeEvent(QResizeEvent* event) {
 
 bool HudWidget::eventFilter(QObject* watched, QEvent* event) {
     if (event->type() == QEvent::Paint && watched == ui->iconValuePage) {
-//        QPainter painter(ui->iconValuePage);
-//        painter.setBrush(Qt::red);
-//        painter.drawRect(0, 0, ui->iconValuePage->width(), ui->iconValuePage->height());
+        QPainter painter(ui->iconValuePage);
+        painter.setBrush(QColor(255, 255, 255, 50));
+        painter.setPen(Qt::transparent);
+
+        double val = d->value;
+        while (val > 1) {
+            painter.drawRect(0, 0, ui->iconValuePage->width(), ui->iconValuePage->height());
+            val -= 1;
+        }
+
+        painter.drawRect(0, 0, static_cast<int>(ui->iconValuePage->width() * val), ui->iconValuePage->height());
         return true;
     }
     return false;

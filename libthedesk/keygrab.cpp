@@ -43,6 +43,7 @@ KeyGrab::KeyGrab(QKeySequence defaultSeq, QString settingName, QObject* parent) 
 }
 
 KeyGrab::~KeyGrab() {
+    if (!d->isPaused) this->pause();
     delete d;
 }
 

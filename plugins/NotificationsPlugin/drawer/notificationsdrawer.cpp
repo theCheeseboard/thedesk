@@ -50,7 +50,7 @@ NotificationsDrawer::NotificationsDrawer(NotificationTracker* tracker) :
     this->setAttribute(Qt::WA_ShowWithoutActivating);
     this->setWindowFlag(Qt::FramelessWindowHint);
     this->setWindowFlag(Qt::WindowStaysOnTopHint);
-    DesktopWm::setSystemWindow(this);
+    DesktopWm::setSystemWindow(this, DesktopWm::SystemWindowTypeNotification);
 
     connect(StateManager::barManager(), &BarManager::barHeightChanged, this, &NotificationsDrawer::updateGeometry);
     connect(StateManager::gatewayManager(), &GatewayManager::gatewayWidthChanged, this, &NotificationsDrawer::updateGeometry);

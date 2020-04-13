@@ -48,48 +48,8 @@ MainBarWidget::MainBarWidget(QWidget* parent) :
         StateManager::instance()->hudManager()->showHud({
             {"icon", "audio-volume-high"},
             {"title", "Volume"},
-            {"value", 0.6}
+            {"value", 1.4}
         });
-    });
-    connect(new KeyGrab(QKeySequence(Qt::Key_MonBrightnessUp), "brightnessUp"), &KeyGrab::activated, this, [ = ] {
-        SystemScreen* screen = ScreenDaemon::instance()->primayScreen();
-        if (screen->isScreenBrightnessAvailable()) {
-            double newBrightness = screen->screenBrightness() + 0.05;
-            if (newBrightness > 1) newBrightness = 1;
-            screen->setScreenBrightness(newBrightness);
-
-            StateManager::instance()->hudManager()->showHud({
-                {"icon", "video-display"},
-                {"title", "Dimness"},
-                {"value", 1 - newBrightness}
-            });
-        } else {
-            StateManager::instance()->hudManager()->showHud({
-                {"icon", "video-display"},
-                {"title", "Dimness"},
-                {"text", "Unavailable"}
-            });
-        }
-    });
-    connect(new KeyGrab(QKeySequence(Qt::Key_MonBrightnessDown), "brightnessDown"), &KeyGrab::activated, this, [ = ] {
-        SystemScreen* screen = ScreenDaemon::instance()->primayScreen();
-        if (screen->isScreenBrightnessAvailable()) {
-            double newBrightness = screen->screenBrightness() - 0.05;
-            if (newBrightness < 0) newBrightness = 0;
-            screen->setScreenBrightness(newBrightness);
-
-            StateManager::instance()->hudManager()->showHud({
-                {"icon", "video-display"},
-                {"title", "Dimness"},
-                {"value", 1 - newBrightness}
-            });
-        } else {
-            StateManager::instance()->hudManager()->showHud({
-                {"icon", "video-display"},
-                {"title", "Dimness"},
-                {"text", "Unavailable"}
-            });
-        }
     });
 }
 

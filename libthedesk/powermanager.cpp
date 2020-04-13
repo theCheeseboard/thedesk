@@ -25,6 +25,8 @@
 #include <QDBusMessage>
 #include <QDBusConnection>
 
+#include "keygrab.h"
+#include <QKeySequence>
 #include <Wm/desktopwm.h>
 
 struct PowerManagerPrivate {
@@ -33,6 +35,10 @@ struct PowerManagerPrivate {
 
 PowerManager::PowerManager(QObject* parent) : QObject(parent) {
     d = new PowerManagerPrivate();
+
+    connect(new KeyGrab(QKeySequence(Qt::Key_L | Qt::MetaModifier), "lockScreen"), &KeyGrab::activated, this, [ = ] {
+        this->performPowerOperation(PowerManager::Lock);
+    });
 }
 
 PowerManager::~PowerManager() {

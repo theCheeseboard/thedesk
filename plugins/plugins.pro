@@ -1,6 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+    BrightnessPlugin \
+    DisplayPlugin \
     NotificationsPlugin \
     OverviewPlugin \
     PowerPlugin
