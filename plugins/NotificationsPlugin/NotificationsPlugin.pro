@@ -43,13 +43,19 @@ unix {
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/NotificationsPlugin/translations
 
+    defaults.files = defaults.conf
+    defaults.path = /etc/theSuite/theDesk/NotificationsPlugin/
+
+    INSTALLS += translations defaults
+
     INSTALLS += translations
 }
 
 include(../plugins.pri)
 
 DISTFILES += \
-    Plugin.json
+    Plugin.json \
+    defaults.conf
 
 FORMS += \
     drawer/hudwidget.ui \

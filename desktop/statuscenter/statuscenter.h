@@ -27,6 +27,7 @@ namespace Ui {
 }
 
 class StatusCenterPane;
+class QuickSwitch;
 struct StatusCenterPrivate;
 class StatusCenter : public QWidget {
         Q_OBJECT
@@ -49,9 +50,13 @@ class StatusCenter : public QWidget {
         void showHamburgerMenu();
 
         void selectPane(int index);
+        void enterMenu(int index);
 
         void addPane(StatusCenterPane* pane);
         void removePane(StatusCenterPane* pane);
+
+        void addSwitch(QuickSwitch* sw);
+        void removeSwitch(QuickSwitch* sw);
 };
 
 #endif // STATUSCENTER_H

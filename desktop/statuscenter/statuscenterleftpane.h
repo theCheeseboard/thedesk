@@ -46,6 +46,7 @@ class StatusCenterLeftPane : public QWidget {
 
     signals:
         void indexChanged(int index);
+        void enterMenu(int index);
 
     private slots:
         void on_mainList_currentRowChanged(int currentRow);

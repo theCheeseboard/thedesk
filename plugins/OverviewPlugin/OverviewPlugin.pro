@@ -31,13 +31,19 @@ unix {
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/OverviewPlugin/translations
 
+    defaults.files = defaults.conf
+    defaults.path = /etc/theSuite/theDesk/OverviewPlugin/
+
+    INSTALLS += translations defaults
+
     INSTALLS += translations
 }
 
 include(../plugins.pri)
 
 DISTFILES += \
-    Plugin.json
+    Plugin.json \
+    defaults.conf
 
 FORMS += \
     OverviewPane/overviewpane.ui \

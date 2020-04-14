@@ -40,6 +40,7 @@ class SystemSettings : public StatusCenterPane {
         SystemSettingsPrivate* d;
 
         void selectPane(int index);
+        void enterMenu(int index);
 
         void addPane(StatusCenterPane* pane);
         void removePane(StatusCenterPane* pane);

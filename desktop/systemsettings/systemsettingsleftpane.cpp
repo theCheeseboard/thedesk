@@ -52,3 +52,11 @@ void SystemSettingsLeftPane::removeItem(QListWidgetItem* item) {
 void SystemSettingsLeftPane::on_titleLabel_backButtonClicked() {
     StateManager::statusCenterManager()->returnToRootMenu();
 }
+
+void SystemSettingsLeftPane::on_mainList_currentRowChanged(int currentRow) {
+    emit indexChanged(currentRow);
+}
+
+void SystemSettingsLeftPane::on_mainList_clicked(const QModelIndex& index) {
+    emit enterMenu(index.row());
+}

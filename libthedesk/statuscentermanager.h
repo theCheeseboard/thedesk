@@ -26,6 +26,7 @@ class BarWindow;
 class StatusCenterPane;
 class StatusCenter;
 class SystemSettings;
+class QuickSwitch;
 struct StatusCenterManagerPrivate;
 class StatusCenterManager : public QObject {
         Q_OBJECT
@@ -51,6 +52,10 @@ class StatusCenterManager : public QObject {
         void addPane(StatusCenterPane* pane, PaneType type = Informational);
         void removePane(StatusCenterPane* pane);
 
+        void addSwitch(QuickSwitch* sw);
+        void removeSwitch(QuickSwitch* sw);
+        bool isSwitchRegistered(QuickSwitch* sw);
+
         int preferredContentWidth();
 
     signals:
@@ -62,6 +67,8 @@ class StatusCenterManager : public QObject {
 
         void paneAdded(StatusCenterPane* pane, PaneType type);
         void paneRemoved(StatusCenterPane* pane);
+        void switchAdded(QuickSwitch* sw);
+        void switchRemoved(QuickSwitch* sw);
 
         void isHamburgerMenuRequiredChanged(bool isHamburgerMenuRequired);
 
@@ -72,6 +79,7 @@ class StatusCenterManager : public QObject {
         void setIsShowingStatusCenter(bool isShowing);
         void setIsHamburgerMenuRequired(bool isRequired);
         QList<StatusCenterPane*> panes();
+        QList<QuickSwitch*> switches();
         PaneType paneType(StatusCenterPane* pane);
 
     private:

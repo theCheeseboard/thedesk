@@ -97,9 +97,9 @@ void StatusCenterLeftPane::paintEvent(QPaintEvent* event) {
 }
 
 void StatusCenterLeftPane::on_mainList_currentRowChanged(int currentRow) {
-//    emit indexChanged(currentRow);
+    emit indexChanged(currentRow);
 }
 
 void StatusCenterLeftPane::on_mainList_clicked(const QModelIndex& index) {
-    emit indexChanged(index.row());
+    emit enterMenu(index.row());
 }

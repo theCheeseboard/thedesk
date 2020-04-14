@@ -28,12 +28,18 @@
 #include <QKeySequence>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
+#include <statuscentermanager.h>
 #include <hudmanager.h>
+#include "settings/displaysettings.h"
+#include "tsettings.h"
 
-#include "redshift/colorramp.h"
+#include "redshift/redshiftdaemon.h"
 
 struct PluginPrivate {
     int translationSet;
+
+    DisplaySettings* settingsPage;
+    RedshiftDaemon* daemon;
 };
 
 Plugin::Plugin() {
@@ -44,20 +50,26 @@ Plugin::~Plugin() {
     delete d;
 }
 
-#include <tvariantanimation.h>
 void Plugin::activate() {
     d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BrightnessPlugin/translations"),
-        "/usr/share/thedesk/BrightnessPlugin/translations"
+        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/translations"),
+        "/usr/share/thedesk/DisplayPlugin/translations"
     });
 
-//    for (SystemScreen* screen : ScreenDaemon::instance()->screens()) {
-//        SystemScreen::GammaRamps ramps;
-//        gammaRampsForTemp(&ramps.red, &ramps.green, &ramps.blue, 2000);
-//        screen->adjustGammaRamps("redshift", ramps);
-//    }
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/defaults.conf"));
+    tSettings::registerDefaults("/etc/theSuite/theDesk/DisplayPlugin/defaults.conf");
+
+    d->settingsPage = new DisplaySettings();
+    d->daemon = new RedshiftDaemon();
+
+    StateManager::statusCenterManager()->addPane(d->settingsPage, StatusCenterManager::SystemSettings);
+
 }
 
 void Plugin::deactivate() {
     StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    d->daemon->deleteLater();
+
+    StateManager::statusCenterManager()->removePane(d->settingsPage);
+    d->settingsPage->deleteLater();
 }

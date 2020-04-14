@@ -34,6 +34,7 @@
 #include "session/endsession.h"
 #include "cli/commandline.h"
 #include "server/sessionserver.h"
+#include "tsettings.h"
 
 int main(int argc, char* argv[]) {
     tApplication a(argc, argv);
@@ -46,6 +47,9 @@ int main(int argc, char* argv[]) {
         a.applicationDirPath() + "/translations",
         "/usr/share/thedesk/translations"
     });
+
+    tSettings::registerDefaults(a.applicationDirPath() + "/theDesk.conf");
+    tSettings::registerDefaults("/etc/theSuite/theDesk.conf");
 
     //Parse command line arguments
     int parseResult = CommandLine::parse(a.arguments());

@@ -40,6 +40,7 @@ SOURCES += \
     session/endsessionbutton.cpp \
     statuscenter/statuscenter.cpp \
     statuscenter/statuscenterleftpane.cpp \
+    statuscenter/statuscenterquickswitch.cpp \
     systemsettings/about/about.cpp \
     systemsettings/systemsettings.cpp \
     systemsettings/systemsettingsleftpane.cpp \
@@ -64,6 +65,7 @@ HEADERS += \
     session/endsessionbutton.h \
     statuscenter/statuscenter.h \
     statuscenter/statuscenterleftpane.h \
+    statuscenter/statuscenterquickswitch.h \
     systemsettings/about/about.h \
     systemsettings/systemsettings.h \
     systemsettings/systemsettingsleftpane.h \
@@ -80,6 +82,7 @@ FORMS += \
     session/endsession.ui \
     statuscenter/statuscenter.ui \
     statuscenter/statuscenterleftpane.ui \
+    statuscenter/statuscenterquickswitch.ui \
     systemsettings/about/about.ui \
     systemsettings/systemsettings.ui \
     systemsettings/systemsettingsleftpane.ui \

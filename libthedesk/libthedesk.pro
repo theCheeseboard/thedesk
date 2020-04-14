@@ -31,6 +31,7 @@ SOURCES += \
     localemanager.cpp \
     powermanager.cpp \
     qsettingsformats.cpp \
+    quickswitch.cpp \
     statemanager.cpp \
     statuscentermanager.cpp \
     statuscenterpane.cpp
@@ -47,6 +48,7 @@ HEADERS += \
     localemanager.h \
     powermanager.h \
     qsettingsformats.h \
+    quickswitch.h \
     statemanager.h \
     statuscentermanager.h \
     statuscenterpane.h

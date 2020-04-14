@@ -30,13 +30,21 @@
 #include "common/common.h"
 #include "systemsettings/systemsettings.h"
 
+#include <quickswitch.h>
+#include "statuscenterquickswitch.h"
+
 struct StatusCenterPrivate {
     StatusCenterLeftPane* leftPane;
     bool leftPaneAttached = false;
 
     QList<QPair<QString, StatusCenterPane*>> loadedPanes;
     QMap<StatusCenterPane*, QListWidgetItem*> paneItems;
+
+
+    QList<QPair<QuickSwitch*, StatusCenterQuickSwitch*>> switchItems;
+
     QStringList preferredPaneOrder;
+    QStringList preferredSwitchOrder;
 };
 
 StatusCenter::StatusCenter(QWidget* parent) :
@@ -65,12 +73,18 @@ StatusCenter::StatusCenter(QWidget* parent) :
     connect(StateManager::statusCenterManager(), &StatusCenterManager::paneRemoved, this, &StatusCenter::removePane);
     connect(StateManager::statusCenterManager(), &StatusCenterManager::showHamburgerMenu, this, &StatusCenter::showHamburgerMenu);
     connect(StateManager::statusCenterManager(), &StatusCenterManager::rootMenu, d->leftPane, &StatusCenterLeftPane::popMenu);
+    connect(StateManager::statusCenterManager(), &StatusCenterManager::switchAdded, this, &StatusCenter::addSwitch);
+    connect(StateManager::statusCenterManager(), &StatusCenterManager::switchRemoved, this, &StatusCenter::removeSwitch);
 
     for (StatusCenterPane* pane : StateManager::statusCenterManager()->panes()) {
         if (StateManager::statusCenterManager()->paneType(pane) == StatusCenterManager::Informational) this->addPane(pane);
     }
+    for (QuickSwitch* sw : StateManager::statusCenterManager()->switches()) {
+        this->addSwitch(sw);
+    }
 
     connect(d->leftPane, &StatusCenterLeftPane::indexChanged, this, &StatusCenter::selectPane);
+    connect(d->leftPane, &StatusCenterLeftPane::enterMenu, this, &StatusCenter::enterMenu);
 
     //Add internal items to the Status Center
     StateManager::instance()->statusCenterManager()->addPane(new SystemSettings(d->leftPane), StatusCenterManager::Informational);
@@ -126,7 +140,10 @@ void StatusCenter::showHamburgerMenu() {
 void StatusCenter::selectPane(int index) {
     StatusCenterPane* pane = d->loadedPanes.at(index).second;
     ui->stackedWidget->setCurrentWidget(pane);
+}
 
+void StatusCenter::enterMenu(int index) {
+    StatusCenterPane* pane = d->loadedPanes.at(index).second;
     if (pane->leftPane()) {
         if (d->leftPane->peekMenu() != pane->leftPane()) d->leftPane->pushMenu(pane->leftPane());
     } else {
@@ -162,7 +179,7 @@ void StatusCenter::addPane(StatusCenterPane* pane) {
         d->leftPane->appendItem(item);
         d->loadedPanes.append({pane->name(), pane});
     } else {
-        //Add this chunk at the beginning
+        //Add this chunk at the correct index
         ui->stackedWidget->insertWidget(index, pane);
         d->leftPane->insertItem(index, item);
         d->loadedPanes.insert(index, {pane->name(), pane});
@@ -178,6 +195,36 @@ void StatusCenter::removePane(StatusCenterPane* pane) {
 
             ui->stackedWidget->removeWidget(pane);
             d->loadedPanes.removeAt(i);
+            return;
+        }
+    }
+}
+
+void StatusCenter::addSwitch(QuickSwitch* sw) {
+    QStringList currentItems;
+    for (QPair<QuickSwitch*, StatusCenterQuickSwitch*> item : d->switchItems) {
+        currentItems.append(item.first->name());
+    }
+    StatusCenterQuickSwitch* item = new StatusCenterQuickSwitch(sw);
+    int index = Common::getInsertionIndex(d->preferredSwitchOrder, currentItems, sw->name());
+    if (index == -1) {
+        //Add it at the end
+        ui->quickSwitchLayout->addWidget(item);
+        d->switchItems.append({sw, item});
+    } else {
+        //Add this switch at the correct index
+        ui->quickSwitchLayout->insertWidget(index, item);
+        d->switchItems.insert(index, {sw, item});
+    }
+
+}
+
+void StatusCenter::removeSwitch(QuickSwitch* sw) {
+    for (int i = 0; i < d->switchItems.count(); i++) {
+        if (d->switchItems.at(i).first == sw) {
+            ui->quickSwitchLayout->removeWidget(d->switchItems.at(i).second);
+            d->switchItems.at(i).second->deleteLater();
+            d->switchItems.removeAt(i);
             return;
         }
     }

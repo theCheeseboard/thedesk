@@ -402,14 +402,6 @@
     </message>
 </context>
 <context>
-    <name>StatusCenter</name>
-    <message>
-        <location filename="../statuscenter/statuscenter.ui" line="52"/>
-        <source>Quick Settings (Wi-Fi, Flight Mode, etc.) will go here</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>StatusCenterLeftPane</name>
     <message>
         <location filename="../statuscenter/statuscenterleftpane.ui" line="54"/>
@@ -418,9 +410,22 @@
     </message>
 </context>
 <context>
+    <name>StatusCenterQuickSwitch</name>
+    <message>
+        <location filename="../statuscenter/statuscenterquickswitch.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statuscenter/statuscenterquickswitch.ui" line="27"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="138"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="145"/>
         <source>System Settings</source>
         <translation type="unfinished"></translation>
     </message>

@@ -47,11 +47,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Quick Settings (Wi-Fi, Flight Mode, etc.) will go here</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="quickSwitchLayout"/>
       </item>
       <item>
        <spacer name="horizontalSpacer">

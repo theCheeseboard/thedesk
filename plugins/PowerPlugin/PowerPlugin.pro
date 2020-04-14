@@ -23,6 +23,11 @@ unix {
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/PowerPlugin/translations
 
+    defaults.files = defaults.conf
+    defaults.path = /etc/theSuite/theDesk/PowerPlugin/
+
+    INSTALLS += translations defaults
+
     INSTALLS += translations
 }
 
@@ -35,4 +40,5 @@ SOURCES += \
     plugin.cpp
 
 DISTFILES += \
-    Plugin.json
+    Plugin.json \
+    defaults.conf

@@ -21,20 +21,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     plugin.cpp \
-    redshift/colorramp.cpp
+    redshift/colorramp.cpp \
+    redshift/redshiftdaemon.cpp \
+    settings/displaysettings.cpp
 
 HEADERS += \
     plugin.h \
-    redshift/colorramp.h
+    redshift/colorramp.h \
+    redshift/redshiftdaemon.h \
+    settings/displaysettings.h
 
 DISTFILES += \
-    Plugin.json
+    Plugin.json \
+    defaults.conf
 
 unix {
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/DisplayPlugin/translations
 
-    INSTALLS += translations
+    defaults.files = defaults.conf
+    defaults.path = /etc/theSuite/theDesk/DisplayPlugin/
+
+    INSTALLS += translations defaults
 }
 
 include(../plugins.pri)
+
+FORMS += \
+    settings/displaysettings.ui

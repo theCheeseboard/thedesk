@@ -46,7 +46,7 @@ SystemSettings::SystemSettings(StatusCenterLeftPane* leftPane) :
 
     d = new SystemSettingsPrivate();
     d->mainLeftPane = leftPane;
-    d->leftPane = new SystemSettingsLeftPane(this);
+    d->leftPane = new SystemSettingsLeftPane();
 
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Lift);
 
@@ -61,10 +61,14 @@ SystemSettings::SystemSettings(StatusCenterLeftPane* leftPane) :
         if (StateManager::statusCenterManager()->paneType(pane) == StatusCenterManager::SystemSettings) this->addPane(pane);
     }
 
+    connect(d->leftPane, &SystemSettingsLeftPane::indexChanged, this, &SystemSettings::selectPane);
+    connect(d->leftPane, &SystemSettingsLeftPane::enterMenu, this, &SystemSettings::enterMenu);
+
     StateManager::statusCenterManager()->addPane(new About(), StatusCenterManager::SystemSettings);
 }
 
 SystemSettings::~SystemSettings() {
+    d->leftPane->deleteLater();
     delete d;
     delete ui;
 }
@@ -72,7 +76,10 @@ SystemSettings::~SystemSettings() {
 void SystemSettings::selectPane(int index) {
     StatusCenterPane* pane = d->loadedPanes.at(index).second;
     ui->stackedWidget->setCurrentWidget(pane);
+}
 
+void SystemSettings::enterMenu(int index) {
+    StatusCenterPane* pane = d->loadedPanes.at(index).second;
     if (pane->leftPane()) {
         if (d->mainLeftPane->peekMenu() != pane->leftPane()) d->mainLeftPane->pushMenu(pane->leftPane());
     } else {

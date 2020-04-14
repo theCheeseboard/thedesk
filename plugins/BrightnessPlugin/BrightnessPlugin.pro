@@ -27,11 +27,17 @@ HEADERS += \
     plugin.h \
     screenbrightnesschunk.h
 
-DISTFILES += Plugin.json
+DISTFILES += Plugin.json \
+    defaults.conf
 
 unix {
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/BrightnessPlugin/translations
+
+    defaults.files = defaults.conf
+    defaults.path = /etc/theSuite/theDesk/BrightnessPlugin/
+
+    INSTALLS += translations defaults
 
     INSTALLS += translations
 }

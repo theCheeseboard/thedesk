@@ -28,6 +28,8 @@ struct StatusCenterManagerPrivate {
 
     QList<StatusCenterPane*> panes;
     QMap<StatusCenterPane*, StatusCenterManager::PaneType> paneTypes;
+
+    QList<QuickSwitch*> switches;
 };
 
 StatusCenterManager::StatusCenterManager(QObject* parent) : QObject(parent) {
@@ -82,12 +84,34 @@ void StatusCenterManager::removePane(StatusCenterPane* pane) {
     }
 }
 
+void StatusCenterManager::addSwitch(QuickSwitch* sw) {
+    if (!d->switches.contains(sw)) {
+        d->switches.append(sw);
+        emit switchAdded(sw);
+    }
+}
+
+void StatusCenterManager::removeSwitch(QuickSwitch* sw) {
+    if (d->switches.contains(sw)) {
+        d->switches.removeOne(sw);
+        emit switchRemoved(sw);
+    }
+}
+
+bool StatusCenterManager::isSwitchRegistered(QuickSwitch* sw) {
+    return d->switches.contains(sw);
+}
+
 int StatusCenterManager::preferredContentWidth() {
     return SC_DPI(600);
 }
 
 QList<StatusCenterPane*> StatusCenterManager::panes() {
     return d->panes;
+}
+
+QList<QuickSwitch*> StatusCenterManager::switches() {
+    return d->switches;
 }
 
 StatusCenterManager::PaneType StatusCenterManager::paneType(StatusCenterPane* pane) {
