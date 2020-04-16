@@ -29,6 +29,7 @@
 #include "statuscenter/statuscenterleftpane.h"
 
 #include "about/about.h"
+#include "recovery/recovery.h"
 
 struct SystemSettingsPrivate {
     SystemSettingsLeftPane* leftPane;
@@ -36,7 +37,11 @@ struct SystemSettingsPrivate {
 
     QList<QPair<QString, StatusCenterPane*>> loadedPanes;
     QMap<StatusCenterPane*, QListWidgetItem*> paneItems;
-    QStringList preferredPaneOrder;
+    QStringList preferredPaneOrder = {
+        "DisplaySettings",
+        "SystemRecovery",
+        "SystemAbout",
+    };
 };
 
 SystemSettings::SystemSettings(StatusCenterLeftPane* leftPane) :
@@ -65,6 +70,7 @@ SystemSettings::SystemSettings(StatusCenterLeftPane* leftPane) :
     connect(d->leftPane, &SystemSettingsLeftPane::enterMenu, this, &SystemSettings::enterMenu);
 
     StateManager::statusCenterManager()->addPane(new About(), StatusCenterManager::SystemSettings);
+    StateManager::statusCenterManager()->addPane(new Recovery(), StatusCenterManager::SystemSettings);
 }
 
 SystemSettings::~SystemSettings() {

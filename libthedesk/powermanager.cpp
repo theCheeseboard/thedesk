@@ -45,11 +45,17 @@ PowerManager::~PowerManager() {
     delete d;
 }
 
-void PowerManager::showPowerOffConfirmation(PowerManager::PowerOperation operation) {
-    emit powerOffConfirmationRequested(operation);
+tPromise<void>* PowerManager::showPowerOffConfirmation(PowerManager::PowerOperation operation, QString message) {
+    return tPromise<void>::runOnSameThread([ = ](tPromiseFunctions<void>::SuccessFunction res, tPromiseFunctions<void>::FailureFunction rej) {
+        Q_UNUSED(rej)
+
+        emit powerOffConfirmationRequested(operation, message, res);
+    });
 }
 
 void PowerManager::performPowerOperation(PowerManager::PowerOperation operation) {
+    emit powerOffOperationCommencing(operation);
+
     switch (operation) {
         case PowerManager::PowerOff:
         case PowerManager::Reboot:

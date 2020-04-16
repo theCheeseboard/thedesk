@@ -21,6 +21,7 @@
 #define POWERMANAGER_H
 
 #include <QObject>
+#include <tpromise.h>
 
 class EndSession;
 struct PowerManagerPrivate;
@@ -41,10 +42,11 @@ class PowerManager : public QObject {
         explicit PowerManager(QObject* parent = nullptr);
         ~PowerManager();
 
-        void showPowerOffConfirmation(PowerOperation operation = All);
+        tPromise<void>* showPowerOffConfirmation(PowerOperation operation = All, QString message = "");
 
     signals:
-        void powerOffConfirmationRequested(PowerOperation operation);
+        void powerOffConfirmationRequested(PowerOperation operation, QString message, tPromiseFunctions<void>::SuccessFunction cb);
+        void powerOffOperationCommencing(PowerOperation operation);
 
     protected:
         friend EndSession;

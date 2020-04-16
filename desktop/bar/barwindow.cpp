@@ -89,12 +89,14 @@ BarWindow::BarWindow(QWidget* parent) :
             d->statusCenterOpacity->setEnabled(false);
             d->mainBarOpacity->setEnabled(false);
             this->setFixedHeight(d->mainBarWidget->expandedHeight());
+            ui->line->setVisible(true);
         } else if (qFuzzyCompare(percentage, 1)) { //Fully show Status Center view
             d->statusCenterWidget->setVisible(true);
             d->mainBarWidget->setVisible(false);
             d->statusCenterOpacity->setEnabled(false);
             d->mainBarOpacity->setEnabled(false);
-            this->setFixedHeight(d->statusCenterWidget->height() + 1);
+            this->setFixedHeight(d->statusCenterWidget->height());
+            ui->line->setVisible(false);
         } else {
             if (percentage < 0.5) { //Animate the bar
                 d->mainBarOpacity->setOpacity(1 - (percentage * 2));
@@ -110,10 +112,12 @@ BarWindow::BarWindow(QWidget* parent) :
                 d->mainBarOpacity->setEnabled(false);
             }
             this->setFixedHeight((d->statusCenterWidget->height() - d->mainBarWidget->expandedHeight()) * percentage + d->mainBarWidget->expandedHeight());
+            ui->line->setVisible(true);
         }
     });
 
     //Tell the window manager that this is a "taskbar" type window
+    this->setWindowFlag(Qt::FramelessWindowHint);
     DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
     this->barHeightChanged();
 
@@ -197,11 +201,17 @@ void BarWindow::showStatusCenter() {
     StateManager::statusCenterManager()->setIsShowingStatusCenter(true);
     d->barStatusCenterTransitionAnim->setDirection(tVariantAnimation::Forward);
     d->barStatusCenterTransitionAnim->start();
+
+    //Tell the window manager that this is now a standard system window
+    DesktopWm::instance()->setSystemWindow(this);
 }
 
 void BarWindow::hideStatusCenter() {
     StateManager::statusCenterManager()->setIsShowingStatusCenter(false);
     d->barStatusCenterTransitionAnim->setDirection(tVariantAnimation::Backward);
     d->barStatusCenterTransitionAnim->start();
+
+    //Tell the window manager that this is now a "taskbar" type window
+    DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
 }
 

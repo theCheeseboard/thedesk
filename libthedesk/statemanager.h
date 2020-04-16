@@ -29,6 +29,7 @@ class PowerManager;
 class StatusCenterManager;
 class LocaleManager;
 class HudManager;
+class OnboardingManager;
 
 struct StateManagerPrivate;
 class LIBTHEDESK_EXPORT StateManager : public QObject {
@@ -42,6 +43,7 @@ class LIBTHEDESK_EXPORT StateManager : public QObject {
         static StatusCenterManager* statusCenterManager();
         static LocaleManager* localeManager();
         static HudManager* hudManager();
+        static OnboardingManager* onboardingManager();
 
     private:
         explicit StateManager();

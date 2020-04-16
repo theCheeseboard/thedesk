@@ -31,6 +31,8 @@ class SessionServer : public QObject {
         void setServerPath(QString serverPath);
 
         void hideSplashes();
+        void showSplashes();
+        void performAutostart();
 
     signals:
 

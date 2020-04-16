@@ -58,6 +58,7 @@ ChunkContainer::ChunkContainer(QWidget* parent) :
 ChunkContainer::~ChunkContainer() {
     delete d;
     delete ui;
+    ui = nullptr;
 }
 
 int ChunkContainer::statusBarHeight() {
@@ -109,6 +110,7 @@ void ChunkContainer::chunkAdded(Chunk* chunk) {
 }
 
 void ChunkContainer::chunkRemoved(Chunk* chunk) {
+    if (!ui) return;
     for (int i = 0; i < d->loadedChunks.count(); i++) {
         if (d->loadedChunks.at(i).second == chunk) {
             ui->chunkLayout->removeWidget(chunk);

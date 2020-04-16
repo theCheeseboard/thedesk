@@ -34,6 +34,7 @@
 #include "session/endsession.h"
 #include "cli/commandline.h"
 #include "server/sessionserver.h"
+#include "onboarding/onboardingcontroller.h"
 #include "tsettings.h"
 
 int main(int argc, char* argv[]) {
@@ -42,14 +43,14 @@ int main(int argc, char* argv[]) {
     a.setOrganizationDomain("vicr123.com");
     a.setApplicationName("theDesk");
 
+    tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
+    tSettings::registerDefaults("/etc/theSuite/theDesk.conf");
+
     StateManager::instance();
     StateManager::localeManager()->addTranslationSet({
         a.applicationDirPath() + "/translations",
         "/usr/share/thedesk/translations"
     });
-
-    tSettings::registerDefaults(a.applicationDirPath() + "/theDesk.conf");
-    tSettings::registerDefaults("/etc/theSuite/theDesk.conf");
 
     //Parse command line arguments
     int parseResult = CommandLine::parse(a.arguments());
@@ -61,9 +62,15 @@ int main(int argc, char* argv[]) {
     DesktopWm::instance();
     PluginManager::instance();
 
-    QObject::connect(StateManager::instance()->powerManager(), &PowerManager::powerOffConfirmationRequested, [ = ](PowerManager::PowerOperation operation) {
-        EndSession::showDialog();
+    QObject::connect(StateManager::instance()->powerManager(), &PowerManager::powerOffConfirmationRequested, [ = ](PowerManager::PowerOperation operation, QString message, tPromiseFunctions<void>::SuccessFunction cb) {
+        EndSession::showDialog(operation, message)->then(cb);
     });
+
+    //Perform onboarding if required
+    if (!OnboardingController::performOnboarding()) {
+        //Exit now because onboarding failed (probably the user chose to log out)
+        return 0;
+    }
 
     //Prepare the background
     Background::reconfigureBackgrounds();
@@ -71,7 +78,10 @@ int main(int argc, char* argv[]) {
     BarWindow w;
     w.show();
 
-    QTimer::singleShot(0, SessionServer::instance(), &SessionServer::hideSplashes);
+    QTimer::singleShot(0, [ = ] {
+        SessionServer::instance()->hideSplashes();
+        SessionServer::instance()->performAutostart();
+    });
 
     return a.exec();
 }

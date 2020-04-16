@@ -29,7 +29,10 @@ SOURCES += \
     icontextchunk.cpp \
     keygrab.cpp \
     localemanager.cpp \
+    onboardingmanager.cpp \
+    onboardingpage.cpp \
     powermanager.cpp \
+    private/localeselector.cpp \
     qsettingsformats.cpp \
     quickswitch.cpp \
     statemanager.cpp \
@@ -46,7 +49,11 @@ HEADERS += \
     keygrab.h \
     libthedesk_global.h \
     localemanager.h \
+    onboardingmanager.h \
+    onboardingpage.h \
     powermanager.h \
+    private/localeselector.h \
+    private/onboardingmanager_p.h \
     qsettingsformats.h \
     quickswitch.h \
     statemanager.h \
@@ -65,4 +72,5 @@ unix {
 
 
 FORMS += \
-    icontextchunk.ui
+    icontextchunk.ui \
+    private/localeselector.ui

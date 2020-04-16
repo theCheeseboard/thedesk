@@ -20,7 +20,7 @@
 #ifndef LOCALEMANAGER_H
 #define LOCALEMANAGER_H
 
-#include <QObject>
+#include <QLocale>
 
 struct LocaleManagerPrivate;
 class LocaleManager : public QObject {
@@ -32,6 +32,15 @@ class LocaleManager : public QObject {
         int addTranslationSet(QStringList searchPaths);
         void removeTranslationSet(int translationSet);
 
+        QLocale showLocaleSelector(QWidget* parent, bool* ok = nullptr);
+        void addLocale(QLocale locale);
+        void prependLocale(QLocale locale);
+        void removeLocale(QLocale locale);
+        QList<QLocale> locales();
+
+        QLocale::Country formatCountry();
+        void setFormatCountry(QLocale::Country country);
+
     signals:
 
 
@@ -39,6 +48,8 @@ class LocaleManager : public QObject {
         LocaleManagerPrivate* d;
 
         void updateTranslator(int id);
+        void updateLocales();
+        QString glibName(QLocale locale, QString encoding = "UTF-8");
 };
 
 #endif // LOCALEMANAGER_H

@@ -45,7 +45,23 @@ void SessionServer::setServerPath(QString serverPath) {
 void SessionServer::hideSplashes() {
     if (!d->available) return;
     d->socket->write(QJsonDocument(QJsonObject({
-        {"type", "loadComplete"}
+        {"type", "hideSplash"}
+    })).toBinaryData());
+    d->socket->flush();
+}
+
+void SessionServer::showSplashes() {
+    if (!d->available) return;
+    d->socket->write(QJsonDocument(QJsonObject({
+        {"type", "showSplash"}
+    })).toBinaryData());
+    d->socket->flush();
+}
+
+void SessionServer::performAutostart() {
+    if (!d->available) return;
+    d->socket->write(QJsonDocument(QJsonObject({
+        {"type", "autoStart"}
     })).toBinaryData());
     d->socket->flush();
 }

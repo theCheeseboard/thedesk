@@ -1,4 +1,4 @@
-QT       += core gui tdesktopenvironment network
+QT       += core gui tdesktopenvironment network multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -8,7 +8,8 @@ CONFIG += c++11
 # Include the-libs build tools
 include(/usr/share/the-libs/pri/gentranslations.pri)
 
-QMAKE_POST_LINK += $$QMAKE_COPY_DIR $$quote($$PWD/translations) $$shell_quote($$OUT_PWD)
+QMAKE_POST_LINK += $$QMAKE_COPY_DIR $$quote($$PWD/translations) $$shell_quote($$OUT_PWD) && \
+    $$QMAKE_COPY $$quote($$PWD/defaults.conf) $$shell_quote($$OUT_PWD)
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -34,6 +35,13 @@ SOURCES += \
     gateway/gateway.cpp \
     gateway/maingatewaywidget.cpp \
     main.cpp \
+    onboarding/onboarding.cpp \
+    onboarding/onboardingbar.cpp \
+    onboarding/onboardingcontroller.cpp \
+    onboarding/onboardingfinal.cpp \
+    onboarding/onboardingstepper.cpp \
+    onboarding/onboardingvideo.cpp \
+    onboarding/onboardingwelcome.cpp \
     plugins/pluginmanager.cpp \
     server/sessionserver.cpp \
     session/endsession.cpp \
@@ -42,6 +50,7 @@ SOURCES += \
     statuscenter/statuscenterleftpane.cpp \
     statuscenter/statuscenterquickswitch.cpp \
     systemsettings/about/about.cpp \
+    systemsettings/recovery/recovery.cpp \
     systemsettings/systemsettings.cpp \
     systemsettings/systemsettingsleftpane.cpp \
     transparentdialog.cpp
@@ -58,6 +67,13 @@ HEADERS += \
     gateway/appselectionmodellistdelegate.h \
     gateway/gateway.h \
     gateway/maingatewaywidget.h \
+    onboarding/onboarding.h \
+    onboarding/onboardingbar.h \
+    onboarding/onboardingcontroller.h \
+    onboarding/onboardingfinal.h \
+    onboarding/onboardingstepper.h \
+    onboarding/onboardingvideo.h \
+    onboarding/onboardingwelcome.h \
     plugins/plugininterface.h \
     plugins/pluginmanager.h \
     server/sessionserver.h \
@@ -67,6 +83,7 @@ HEADERS += \
     statuscenter/statuscenterleftpane.h \
     statuscenter/statuscenterquickswitch.h \
     systemsettings/about/about.h \
+    systemsettings/recovery/recovery.h \
     systemsettings/systemsettings.h \
     systemsettings/systemsettingsleftpane.h \
     transparentdialog.h
@@ -79,11 +96,17 @@ FORMS += \
     bar/taskbarwidget.ui \
     gateway/gateway.ui \
     gateway/maingatewaywidget.ui \
+    onboarding/onboarding.ui \
+    onboarding/onboardingbar.ui \
+    onboarding/onboardingfinal.ui \
+    onboarding/onboardingvideo.ui \
+    onboarding/onboardingwelcome.ui \
     session/endsession.ui \
     statuscenter/statuscenter.ui \
     statuscenter/statuscenterleftpane.ui \
     statuscenter/statuscenterquickswitch.ui \
     systemsettings/about/about.ui \
+    systemsettings/recovery/recovery.ui \
     systemsettings/systemsettings.ui \
     systemsettings/systemsettingsleftpane.ui \
     transparentdialog.ui
@@ -104,3 +127,6 @@ DEPENDPATH += $$PWD/../libthedesk
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES += \
+    defaults.conf

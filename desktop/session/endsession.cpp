@@ -28,19 +28,69 @@
 #include <tpopover.h>
 #include <statemanager.h>
 #include <powermanager.h>
+#include <onboardingmanager.h>
 
 struct EndSessionPrivate {
     tVariantAnimation* powerOffAnimation;
     EndSessionButton* timedButton;
 };
 
-EndSession::EndSession(QWidget* parent) :
+EndSession::EndSession(PowerManager::PowerOperation operation, QString message, QWidget* parent) :
     QWidget(parent),
     ui(new Ui::EndSession) {
     ui->setupUi(this);
 
     d = new EndSessionPrivate();
-    d->timedButton = ui->powerOffButton;
+
+    if (message == "") {
+        message = tr("Hey %1, ready to head out? We'll %2 in %n seconds if you don't do anything.");
+    }
+
+    if (operation != PowerManager::All) {
+        ui->powerOffButton->setVisible(false);
+        ui->rebootButton->setVisible(false);
+        ui->logoutButton->setVisible(false);
+        ui->suspendButton->setVisible(false);
+        ui->lockButton->setVisible(false);
+        ui->screenOffButton->setVisible(false);
+        ui->switchUsersButton->setVisible(false);
+        ui->hibernateButton->setVisible(false);
+    }
+
+    switch (operation) {
+        case PowerManager::All:
+            if (StateManager::onboardingManager()->isOnboardingRunning()) {
+                ui->lockButton->setVisible(false);
+                ui->screenOffButton->setVisible(false);
+            }
+
+            Q_FALLTHROUGH();
+        case PowerManager::PowerOff:
+            d->timedButton = ui->powerOffButton;
+            break;
+        case PowerManager::Reboot:
+            d->timedButton = ui->rebootButton;
+            break;
+        case PowerManager::LogOut:
+            d->timedButton = ui->logoutButton;
+            break;
+        case PowerManager::Suspend:
+            d->timedButton = ui->suspendButton;
+            break;
+        case PowerManager::Lock:
+            d->timedButton = ui->lockButton;
+            break;
+        case PowerManager::TurnOffScreen:
+            d->timedButton = ui->screenOffButton;
+            break;
+        case PowerManager::Hibernate:
+            d->timedButton = ui->hibernateButton;
+            break;
+
+    }
+
+    d->timedButton->setVisible(true);
+    d->timedButton->setProperty("type", "destructive");
 
     d->powerOffAnimation = new tVariantAnimation();
     d->powerOffAnimation->setStartValue(60.0);
@@ -58,7 +108,7 @@ EndSession::EndSession(QWidget* parent) :
             {ui->hibernateButton, QT_TR_NOOP("hibernate the system")}
         };
 
-        ui->descriptionLabel->setText(tr("Hey %1, ready to head out? We'll %2 in %n seconds if you don't do anything.", nullptr, value < 1 ? 1 : qRound(value.toDouble()))
+        ui->descriptionLabel->setText(tr(qPrintable(message), nullptr, value < 1 ? 1 : qRound(value.toDouble()))
             .arg(DesktopWm::userDisplayName()).arg(tr(text.value(d->timedButton))));
         d->timedButton->setTimeRemaining(value.toDouble());
     });
@@ -77,23 +127,31 @@ EndSession::~EndSession() {
     delete ui;
 }
 
-void EndSession::showDialog() {
-    TransparentDialog* dialog = new TransparentDialog();
-    dialog->setWindowFlag(Qt::FramelessWindowHint);
-    dialog->setWindowFlag(Qt::WindowStaysOnTopHint);
-    dialog->showFullScreen();
+tPromise<void>* EndSession::showDialog(PowerManager::PowerOperation operation, QString message) {
+    return tPromise<void>::runOnSameThread([ = ](tPromiseFunctions<void>::SuccessFunction res, tPromiseFunctions<void>::FailureFunction rej) {
+        Q_UNUSED(rej)
 
-    QTimer::singleShot(500, [ = ] {
-        EndSession* popoverContents = new EndSession();
+        TransparentDialog* dialog = new TransparentDialog();
+        dialog->setWindowFlag(Qt::FramelessWindowHint);
+        dialog->setWindowFlag(Qt::WindowStaysOnTopHint);
+        dialog->showFullScreen();
 
-        tPopover* popover = new tPopover(popoverContents);
-        popover->setPopoverSide(tPopover::Bottom);
-        popover->setPopoverWidth(popoverContents->heightForWidth(dialog->width()));
-        connect(popoverContents, &EndSession::done, popover, &tPopover::dismiss);
-        connect(popover, &tPopover::dismissed, popoverContents, &EndSession::deleteLater);
-        connect(popover, &tPopover::dismissed, dialog, &TransparentDialog::deleteLater);
-        connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
-        popover->show(dialog);
+        QTimer::singleShot(500, [ = ] {
+            EndSession* popoverContents = new EndSession(operation, message);
+
+            tPopover* popover = new tPopover(popoverContents);
+            popover->setPopoverSide(tPopover::Bottom);
+            popover->setPopoverWidth(popoverContents->heightForWidth(dialog->width()));
+            connect(popoverContents, &EndSession::done, popover, &tPopover::dismiss);
+            connect(popover, &tPopover::dismissed, popoverContents, &EndSession::deleteLater);
+            connect(popover, &tPopover::dismissed, [ = ] {
+                dialog->deleteLater();
+                popover->deleteLater();
+
+                res();
+            });
+            popover->show(dialog);
+        });
     });
 }
 

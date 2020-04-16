@@ -44,6 +44,8 @@ struct SplashControllerPrivate {
     QLocalServer* server;
     QPointer<QLocalSocket> socket;
     QString serverPath;
+
+    bool autostartDone = false;
 };
 
 SplashControllerPrivate* SplashController::d = new SplashControllerPrivate();
@@ -59,8 +61,13 @@ void SplashController::socketDataAvailable() {
         QJsonObject obj = doc.object();
         if (obj.contains("type")) {
             QString type = obj.value("type").toString();
-            if (type == "loadComplete") {
+            if (type == "hideSplash") {
                 emit hideSplashes();
+            } else if (type == "showSplash") {
+                emit starting();
+            } else if (type == "autoStart") {
+                //Run Autostart apps
+                this->runAutostart();
             } else if (type == "question") {
                 //TODO
             }
@@ -97,12 +104,11 @@ void SplashController::initSession() {
 
     //Start the window manager
     this->startWM();
-
-    //Run Autostart apps
-    this->runAutostart();
 }
 
 void SplashController::runAutostart() {
+    if (d->autostartDone) return;
+
     QStringList searchPaths = {
         qEnvironmentVariable("XDG_CONFIG_HOME", QDir::homePath() + "/.config") + "/autostart",
         qEnvironmentVariable("XDG_CONFIG_DIRS", "/etc/xdg") + "/autostart"
@@ -129,6 +135,8 @@ void SplashController::runAutostart() {
         //Autostart this app
         app->launch();
     }
+
+    d->autostartDone = true;
 }
 
 void SplashController::startWM() {

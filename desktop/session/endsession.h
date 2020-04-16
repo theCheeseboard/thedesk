@@ -21,6 +21,8 @@
 #define ENDSESSION_H
 
 #include <QWidget>
+#include <tpromise.h>
+#include <powermanager.h>
 
 namespace Ui {
     class EndSession;
@@ -33,7 +35,7 @@ class EndSession : public QWidget {
     public:
         ~EndSession();
 
-        static void showDialog();
+        static tPromise<void>* showDialog(PowerManager::PowerOperation operation = PowerManager::All, QString message = "");
 
     signals:
         void done();
@@ -58,7 +60,7 @@ class EndSession : public QWidget {
         void on_hibernateButton_clicked();
 
     private:
-        explicit EndSession(QWidget* parent = nullptr);
+        explicit EndSession(PowerManager::PowerOperation operation, QString message, QWidget* parent = nullptr);
 
         Ui::EndSession* ui;
         EndSessionPrivate* d;

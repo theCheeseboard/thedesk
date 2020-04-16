@@ -144,6 +144,7 @@ void RedshiftDaemon::updateRedshiftState() {
             } else if (!scheduled) {
                 //Revert to the idle state if we're not scheduled
                 d->state = RedshiftDaemonPrivate::Idle;
+                setRedshiftTemperature(6500);
             } else {
                 setRedshiftTemperature(6500);
             }

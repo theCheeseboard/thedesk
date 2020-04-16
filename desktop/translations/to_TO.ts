@@ -324,52 +324,49 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="51"/>
+        <location filename="../session/endsession.cpp" line="101"/>
         <source>power off the system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="52"/>
+        <location filename="../session/endsession.cpp" line="102"/>
         <source>reboot the system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="53"/>
+        <location filename="../session/endsession.cpp" line="103"/>
         <source>log you out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="54"/>
+        <location filename="../session/endsession.cpp" line="104"/>
         <source>suspend the system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="55"/>
+        <location filename="../session/endsession.cpp" line="105"/>
         <source>lock the screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="56"/>
+        <location filename="../session/endsession.cpp" line="106"/>
         <source>turn off the screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="57"/>
+        <location filename="../session/endsession.cpp" line="107"/>
         <source>switch users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="58"/>
+        <location filename="../session/endsession.cpp" line="108"/>
         <source>hibernate the system</source>
         <translation type="unfinished"></translation>
     </message>
-    <message numerus="yes">
-        <location filename="../session/endsession.cpp" line="61"/>
+    <message>
+        <location filename="../session/endsession.cpp" line="46"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -401,6 +398,125 @@
     </message>
 </context>
 <context>
+    <name>OnboardingBar</name>
+    <message>
+        <location filename="../onboarding/onboardingbar.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OnboardingFinal</name>
+    <message>
+        <location filename="../onboarding/onboardingfinal.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingfinal.ui" line="50"/>
+        <source>That&apos;s everything!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingfinal.ui" line="73"/>
+        <source>We hope you enjoy using theDesk!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingfinal.ui" line="98"/>
+        <source>Get Started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingfinal.cpp" line="47"/>
+        <source>Done</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OnboardingVideo</name>
+    <message>
+        <location filename="../onboarding/onboardingvideo.ui" line="13"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OnboardingWelcome</name>
+    <message>
+        <location filename="../onboarding/onboardingwelcome.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingwelcome.ui" line="41"/>
+        <source>Welcome!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingwelcome.ui" line="50"/>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingwelcome.ui" line="73"/>
+        <source>Emergency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingwelcome.ui" line="113"/>
+        <source>Let&apos;s go!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingwelcome.cpp" line="49"/>
+        <source>Welcome</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Recovery</name>
+    <message>
+        <location filename="../systemsettings/recovery/recovery.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/recovery/recovery.ui" line="35"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="57"/>
+        <source>Recovery</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/recovery/recovery.ui" line="104"/>
+        <source>RESET THEDESK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/recovery/recovery.ui" line="111"/>
+        <source>If things aren&apos;t working correctly, resetting theDesk might help.
+
+Here&apos;s what will happen:
+- User settings will be cleared and reset to defaults
+- The next time you log into theDesk, you&apos;ll need to run through the setup again
+
+Save your documents and close all apps before starting the reset. This won&apos;t take long, but you&apos;ll need to log out to perform the reset. You won&apos;t be able to use your device while the reset is taking place.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/recovery/recovery.ui" line="129"/>
+        <source>Log Out and Reset theDesk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="78"/>
+        <source>%1, log out and reset theDesk settings? This action is irreversible.
+
+We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StatusCenterLeftPane</name>
     <message>
         <location filename="../statuscenter/statuscenterleftpane.ui" line="54"/>
@@ -424,7 +540,7 @@
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="145"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="151"/>
         <source>System Settings</source>
         <translation type="unfinished"></translation>
     </message>
