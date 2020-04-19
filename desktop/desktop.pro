@@ -117,6 +117,9 @@ unix {
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/translations
 
+    defaults.files = defaults.conf
+    defaults.path = /etc/theSuite/theDesk/
+
     INSTALLS += target translations
 }
 

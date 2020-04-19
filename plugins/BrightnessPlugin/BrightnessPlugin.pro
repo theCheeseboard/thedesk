@@ -38,8 +38,6 @@ unix {
     defaults.path = /etc/theSuite/theDesk/BrightnessPlugin/
 
     INSTALLS += translations defaults
-
-    INSTALLS += translations
 }
 
 include(../plugins.pri)

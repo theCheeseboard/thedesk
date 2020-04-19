@@ -44,7 +44,7 @@ int main(int argc, char* argv[]) {
     a.setApplicationName("theDesk");
 
     tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
-    tSettings::registerDefaults("/etc/theSuite/theDesk.conf");
+    tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
 
     StateManager::instance();
     StateManager::localeManager()->addTranslationSet({
