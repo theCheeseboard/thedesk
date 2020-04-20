@@ -21,6 +21,7 @@
 
 #include <QDebug>
 #include <statemanager.h>
+#include <statuscentermanager.h>
 #include <localemanager.h>
 #include <QApplication>
 #include <QDir>
@@ -28,9 +29,12 @@
 #include "tsettings.h"
 
 #include "onboarding/onboardingregion.h"
+#include "settings/localesettingspane.h"
 
 struct PluginPrivate {
     int translationSet;
+
+    LocaleSettingsPane* localeSettingsPane;
 };
 
 Plugin::Plugin() {
@@ -50,11 +54,16 @@ void Plugin::activate() {
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/LocalePlugin/defaults.conf"));
     tSettings::registerDefaults("/etc/theSuite/theDesk/LocalePlugin/defaults.conf");
 
+    d->localeSettingsPane = new LocaleSettingsPane();
+    StateManager::statusCenterManager()->addPane(d->localeSettingsPane, StatusCenterManager::SystemSettings);
+
     connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, this, [ = ] {
         StateManager::onboardingManager()->addOnboardingStep(new OnboardingRegion);
     });
 }
 
 void Plugin::deactivate() {
+    StateManager::statusCenterManager()->removePane(d->localeSettingsPane);
+    d->localeSettingsPane->deleteLater();
     StateManager::localeManager()->removeTranslationSet(d->translationSet);
 }

@@ -120,7 +120,7 @@ unix {
     defaults.files = defaults.conf
     defaults.path = /etc/theSuite/theDesk/
 
-    INSTALLS += target translations
+    INSTALLS += target translations defaults
 }
 
 unix:!macx: LIBS += -L$$OUT_PWD/../libthedesk/ -lthedesk

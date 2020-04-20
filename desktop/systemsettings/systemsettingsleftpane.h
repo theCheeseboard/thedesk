@@ -27,6 +27,7 @@ namespace Ui {
 }
 
 class QListWidgetItem;
+struct SystemSettingsLeftPanePrivate;
 class SystemSettingsLeftPane : public QWidget {
         Q_OBJECT
 
@@ -49,8 +50,11 @@ class SystemSettingsLeftPane : public QWidget {
 
         void on_mainList_clicked(const QModelIndex& index);
 
+        void on_logoutButton_clicked();
+
     private:
         Ui::SystemSettingsLeftPane* ui;
+        SystemSettingsLeftPanePrivate* d;
 };
 
 #endif // SYSTEMSETTINGSLEFTPANE_H

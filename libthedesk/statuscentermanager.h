@@ -65,6 +65,8 @@ class StatusCenterManager : public QObject {
         void hideHamburgerMenu();
         void rootMenu();
 
+        void requestLogout();
+
         void paneAdded(StatusCenterPane* pane, PaneType type);
         void paneRemoved(StatusCenterPane* pane);
         void switchAdded(QuickSwitch* sw);

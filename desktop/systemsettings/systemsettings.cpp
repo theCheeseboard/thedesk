@@ -27,6 +27,7 @@
 #include "common/common.h"
 #include "systemsettingsleftpane.h"
 #include "statuscenter/statuscenterleftpane.h"
+#include <tsettings.h>
 
 #include "about/about.h"
 #include "recovery/recovery.h"
@@ -37,11 +38,9 @@ struct SystemSettingsPrivate {
 
     QList<QPair<QString, StatusCenterPane*>> loadedPanes;
     QMap<StatusCenterPane*, QListWidgetItem*> paneItems;
-    QStringList preferredPaneOrder = {
-        "DisplaySettings",
-        "SystemRecovery",
-        "SystemAbout",
-    };
+    QStringList preferredPaneOrder;
+
+    tSettings settings;
 };
 
 SystemSettings::SystemSettings(StatusCenterLeftPane* leftPane) :
@@ -54,6 +53,8 @@ SystemSettings::SystemSettings(StatusCenterLeftPane* leftPane) :
     d->leftPane = new SystemSettingsLeftPane();
 
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Lift);
+
+    d->preferredPaneOrder = d->settings.delimitedList("StatusCenter/settingsOrder");
 
     connect(StateManager::statusCenterManager(), &StatusCenterManager::paneAdded, this, [ = ](StatusCenterPane * pane, StatusCenterManager::PaneType type) {
         if (type == StatusCenterManager::SystemSettings) {

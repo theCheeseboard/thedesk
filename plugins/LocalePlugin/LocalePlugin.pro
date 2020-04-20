@@ -20,12 +20,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    common.cpp \
     onboarding/onboardingregion.cpp \
-    plugin.cpp
+    plugin.cpp \
+    settings/localesettingspane.cpp
 
 HEADERS += \
+    common.h \
     onboarding/onboardingregion.h \
-    plugin.h
+    plugin.h \
+    settings/localesettingspane.h
 
 DISTFILES += \
     Plugin.json \
@@ -45,4 +49,5 @@ unix {
 include(../plugins.pri)
 
 FORMS += \
-    onboarding/onboardingregion.ui
+    onboarding/onboardingregion.ui \
+    settings/localesettingspane.ui

@@ -25,6 +25,8 @@
 #include <localemanager.h>
 #include <QLocale>
 
+#include "common.h"
+
 OnboardingRegion::OnboardingRegion(QWidget* parent) :
     OnboardingPage(parent),
     ui(new Ui::OnboardingRegion) {
@@ -32,26 +34,13 @@ OnboardingRegion::OnboardingRegion(QWidget* parent) :
 
     ui->titleLabel->setBackButtonShown(true);
 
-    QList<QListWidgetItem*> countries;
-    for (int i = QLocale::Afghanistan + 1; i < QLocale::LastCountry; i++) {
-        if (i == QLocale::World) continue;
-
+    QList<Common::Country> countries = Common::countries();
+    for (Common::Country country : countries) {
         QListWidgetItem* item = new QListWidgetItem();
-        item->setText(QLocale::countryToString(static_cast<QLocale::Country>(i)));
-        item->setData(Qt::UserRole, i);
-        countries.append(item);
-    }
-
-    std::sort(countries.begin(), countries.end(), [ = ](const QListWidgetItem * first, const QListWidgetItem * second) {
-        return first->text().localeAwareCompare(second->text()) < 0;
-    });
-
-    QLocale::Country current = StateManager::localeManager()->formatCountry();
-    for (QListWidgetItem* item : countries) {
+        item->setText(country.text);
+        item->setData(Qt::UserRole, country.country);
         ui->countriesWidget->addItem(item);
-        if (static_cast<QLocale::Country>(item->data(Qt::UserRole).toInt()) == current) {
-            ui->countriesWidget->setCurrentItem(item);
-        }
+        if (country.isCurrent) ui->countriesWidget->setCurrentItem(item);
     }
 }
 
@@ -76,6 +65,6 @@ void OnboardingRegion::on_titleLabel_backButtonClicked() {
 
 void OnboardingRegion::on_countriesWidget_currentItemChanged(QListWidgetItem* current, QListWidgetItem* previous) {
     if (current) {
-        StateManager::localeManager()->setFormatCountry(static_cast<QLocale::Country>(current->data(Qt::UserRole).toInt()));
+        StateManager::localeManager()->setFormatCountry(current->data(Qt::UserRole).value<QLocale::Country>());
     }
 }

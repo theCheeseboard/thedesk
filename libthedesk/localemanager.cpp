@@ -60,6 +60,7 @@ LocaleManager::LocaleManager(QObject* parent) : QObject(parent) {
         } else if (key == "Locale/formats") {
             d->formats = value.toString();
             this->updateLocales();
+            emit formatCountryChanged();
         }
     });
 }
@@ -166,6 +167,15 @@ void LocaleManager::setFormatCountry(QLocale::Country country) {
     d->settings.setValue("Locale/formats", locales.first().name());
 }
 
+QLocale LocaleManager::formatLocale() {
+    QLocale locale(d->preferredLocales.first());
+    QLocale formatsTryLocale(d->formats);
+    QLocale formatsLocale(locale.language(), formatsTryLocale.country());
+    if (formatsLocale.country() != formatsTryLocale.country()) formatsLocale = formatsTryLocale;
+
+    return formatsLocale;
+}
+
 void LocaleManager::updateTranslator(int id) {
     QTranslator* translator = d->translators.value(id);
     QStringList searchPaths = d->searchPaths.value(id);
@@ -179,9 +189,7 @@ void LocaleManager::updateLocales() {
     QLocale locale(d->preferredLocales.first());
     QLocale::setDefault(locale);
 
-    QLocale formatsTryLocale(d->formats);
-    QLocale formatsLocale(locale.language(), formatsTryLocale.country());
-    if (formatsLocale.country() != formatsTryLocale.country()) formatsLocale = formatsTryLocale;
+    QLocale formatsLocale = this->formatLocale();
 
     QByteArray mainLocale = glibName(locale).toUtf8();
     QByteArray formatsLocaleStr = glibName(formatsLocale).toUtf8();

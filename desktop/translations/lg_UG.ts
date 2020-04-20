@@ -540,7 +540,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="151"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="152"/>
         <source>System Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -550,6 +550,21 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="35"/>
         <source>System Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/systemsettingsleftpane.ui" line="103"/>
+        <source>LOG OUT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/systemsettingsleftpane.ui" line="110"/>
+        <source>You&apos;ve changed some settings that require you to log out for them to apply completely</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
+        <source>Log Out</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

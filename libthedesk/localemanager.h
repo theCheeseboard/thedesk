@@ -41,8 +41,10 @@ class LocaleManager : public QObject {
         QLocale::Country formatCountry();
         void setFormatCountry(QLocale::Country country);
 
-    signals:
+        QLocale formatLocale();
 
+    signals:
+        void formatCountryChanged();
 
     private:
         LocaleManagerPrivate* d;

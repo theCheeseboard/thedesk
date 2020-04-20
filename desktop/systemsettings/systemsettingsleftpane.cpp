@@ -23,17 +23,45 @@
 #include <the-libs_global.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <powermanager.h>
+#include <tvariantanimation.h>
+
+struct SystemSettingsLeftPanePrivate {
+    bool isShowingLogOutRequired = false;
+};
 
 SystemSettingsLeftPane::SystemSettingsLeftPane(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::SystemSettingsLeftPane) {
     ui->setupUi(this);
 
+    d = new SystemSettingsLeftPanePrivate();
+
     ui->titleLabel->setBackButtonShown(true);
     ui->mainList->setIconSize(SC_DPI_T(QSize(32, 32), QSize));
+
+    ui->logoutRequiredWidget->setFixedHeight(0);
+    ui->logoutButton->setProperty("type", "destructive");
+
+    connect(StateManager::statusCenterManager(), &StatusCenterManager::requestLogout, this, [ = ] {
+        if (d->isShowingLogOutRequired) return;
+        d->isShowingLogOutRequired = true;
+
+        tVariantAnimation* anim = new tVariantAnimation(this);
+        anim->setStartValue(0);
+        anim->setEndValue(ui->logoutRequiredWidget->sizeHint().height());
+        anim->setDuration(250);
+        anim->setEasingCurve(QEasingCurve::OutCubic);
+        connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+            ui->logoutRequiredWidget->setFixedHeight(value.toInt());
+        });
+        connect(anim, &tVariantAnimation::finished, anim, &tVariantAnimation::deleteLater);
+        anim->start();
+    });
 }
 
 SystemSettingsLeftPane::~SystemSettingsLeftPane() {
+    delete d;
     delete ui;
 }
 
@@ -59,4 +87,8 @@ void SystemSettingsLeftPane::on_mainList_currentRowChanged(int currentRow) {
 
 void SystemSettingsLeftPane::on_mainList_clicked(const QModelIndex& index) {
     emit enterMenu(index.row());
+}
+
+void SystemSettingsLeftPane::on_logoutButton_clicked() {
+    StateManager::instance()->powerManager()->showPowerOffConfirmation(PowerManager::LogOut);
 }
