@@ -55,6 +55,8 @@ class MainGatewayWidget : public QWidget {
         MainGatewayWidgetPrivate* d;
 
         void launch(QModelIndex applicationIndex);
+
+        void changeEvent(QEvent* event);
 };
 
 #endif // MAINGATEWAYWIDGET_H

@@ -55,6 +55,8 @@ class SystemSettingsLeftPane : public QWidget {
     private:
         Ui::SystemSettingsLeftPane* ui;
         SystemSettingsLeftPanePrivate* d;
+
+        void changeEvent(QEvent* event);
 };
 
 #endif // SYSTEMSETTINGSLEFTPANE_H

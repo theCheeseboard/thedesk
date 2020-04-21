@@ -204,6 +204,7 @@ void BarWindow::showStatusCenter() {
 
     //Tell the window manager that this is now a standard system window
     DesktopWm::instance()->setSystemWindow(this);
+    d->statusCenterWidget->setFocus();
 }
 
 void BarWindow::hideStatusCenter() {
@@ -213,5 +214,6 @@ void BarWindow::hideStatusCenter() {
 
     //Tell the window manager that this is now a "taskbar" type window
     DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
+    d->mainBarWidget->setFocus();
 }
 

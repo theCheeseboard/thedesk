@@ -98,6 +98,12 @@ void MainGatewayWidget::launch(QModelIndex applicationIndex) {
     emit closeGateway();
 }
 
+void MainGatewayWidget::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}
+
 void MainGatewayWidget::on_endSessionButton_clicked() {
     StateManager::instance()->powerManager()->showPowerOffConfirmation();
 }

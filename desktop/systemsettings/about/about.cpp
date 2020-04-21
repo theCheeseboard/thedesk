@@ -142,6 +142,13 @@ void About::on_titleLabel_backButtonClicked() {
     StateManager::instance()->statusCenterManager()->showStatusCenterHamburgerMenu();
 }
 
+void About::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}
+
 QString About::name() {
     return "SystemAbout";
 }

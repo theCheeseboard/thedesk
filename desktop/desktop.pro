@@ -117,10 +117,13 @@ unix {
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/translations
 
+    headers.files = plugins/plugininterface.h
+    headers.path = /usr/include/thedesk/
+
     defaults.files = defaults.conf
     defaults.path = /etc/theSuite/theDesk/
 
-    INSTALLS += target translations defaults
+    INSTALLS += target translations defaults headers
 }
 
 unix:!macx: LIBS += -L$$OUT_PWD/../libthedesk/ -lthedesk

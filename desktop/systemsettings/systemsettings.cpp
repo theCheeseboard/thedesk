@@ -143,6 +143,13 @@ void SystemSettings::removePane(StatusCenterPane* pane) {
     }
 }
 
+void SystemSettings::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}
+
 
 QString SystemSettings::name() {
     return "SystemSettings";

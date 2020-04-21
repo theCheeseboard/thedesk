@@ -102,7 +102,7 @@
         <translation>Bản Quyền © Victor Tran %1. Được cấp phép theo điều khoản của Giấy phép Công cộng GNU, phiên bản 3, hoặc mới hơn.</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="150"/>
+        <location filename="../systemsettings/about/about.cpp" line="157"/>
         <source>About</source>
         <translation>Giới Thiệu</translation>
     </message>
@@ -540,7 +540,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="152"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="159"/>
         <source>System Settings</source>
         <translation>Cài đặt hệ thống</translation>
     </message>
@@ -555,17 +555,17 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="103"/>
         <source>LOG OUT</source>
-        <translation type="unfinished"></translation>
+        <translation>ĐĂNG XUẤT</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="110"/>
         <source>You&apos;ve changed some settings that require you to log out for them to apply completely</source>
-        <translation type="unfinished"></translation>
+        <translation>Bạn đã thay đổi một số cài đặt yêu cầu bạn đăng xuất để áp dụng nó đầy đủ</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
-        <translation type="unfinished">Đăng xuất</translation>
+        <translation>Đăng xuất</translation>
     </message>
 </context>
 </TS>

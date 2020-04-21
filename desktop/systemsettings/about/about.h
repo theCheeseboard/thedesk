@@ -39,6 +39,8 @@ class About : public StatusCenterPane {
     private:
         Ui::About* ui;
 
+        void changeEvent(QEvent* event);
+
         // StatusCenterPane interface
     public:
         QString name();

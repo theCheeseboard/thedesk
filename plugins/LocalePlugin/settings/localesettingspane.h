@@ -36,6 +36,11 @@ class LocaleSettingsPane : public StatusCenterPane {
     private:
         Ui::LocaleSettingsPane* ui;
 
+        void updateLanguages();
+        void updateRegionalFormats();
+
+        void changeEvent(QEvent* event);
+
         // StatusCenterPane interface
     public:
         QString name();
@@ -44,6 +49,8 @@ class LocaleSettingsPane : public StatusCenterPane {
         QWidget* leftPane();
     private slots:
         void on_countryBox_currentIndexChanged(int index);
+        void on_addLanguageButton_clicked();
+        void on_languagesList_customContextMenuRequested(const QPoint& pos);
 };
 
 #endif // LOCALESETTINGSPANE_H

@@ -36,6 +36,8 @@ class LocaleManager : public QObject {
         void addLocale(QLocale locale);
         void prependLocale(QLocale locale);
         void removeLocale(QLocale locale);
+        void moveLocaleUp(QLocale locale);
+        void moveLocaleDown(QLocale locale);
         QList<QLocale> locales();
 
         QLocale::Country formatCountry();
@@ -45,6 +47,7 @@ class LocaleManager : public QObject {
 
     signals:
         void formatCountryChanged();
+        void localesChanged();
 
     private:
         LocaleManagerPrivate* d;

@@ -4,13 +4,8 @@
 <context>
     <name>LocaleSettingsPane</name>
     <message>
-        <location filename="../settings/localesettingspane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settings/localesettingspane.ui" line="35"/>
-        <location filename="../settings/localesettingspane.cpp" line="75"/>
+        <location filename="../settings/localesettingspane.cpp" line="119"/>
         <source>Locale</source>
         <translation type="unfinished"></translation>
     </message>
@@ -25,74 +20,98 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.ui" line="125"/>
-        <source>Lingo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/localesettingspane.ui" line="130"/>
-        <source>Langue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/localesettingspane.ui" line="135"/>
-        <source>Language</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/localesettingspane.ui" line="140"/>
-        <source>Taal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/localesettingspane.ui" line="150"/>
+        <location filename="../settings/localesettingspane.ui" line="133"/>
         <source>Add Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.ui" line="189"/>
-        <location filename="../settings/localesettingspane.ui" line="251"/>
-        <source>TextLabel</source>
+        <location filename="../settings/localesettingspane.ui" line="277"/>
+        <source>Currency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.ui" line="196"/>
+        <location filename="../settings/localesettingspane.ui" line="221"/>
         <source>Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.ui" line="203"/>
+        <location filename="../settings/localesettingspane.ui" line="242"/>
+        <source>Measurement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.ui" line="263"/>
         <source>Country</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.ui" line="210"/>
+        <location filename="../settings/localesettingspane.ui" line="184"/>
         <source>Select your preferred regional formats</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.ui" line="224"/>
+        <location filename="../settings/localesettingspane.ui" line="177"/>
+        <source>Numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.ui" line="228"/>
         <source>First day of week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.ui" line="237"/>
+        <location filename="../settings/localesettingspane.ui" line="207"/>
         <source>REGION</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.ui" line="244"/>
+        <location filename="../settings/localesettingspane.ui" line="256"/>
         <source>Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.cpp" line="78"/>
+        <source>Primary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.cpp" line="95"/>
+        <source>Metric</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.cpp" line="98"/>
+        <source>Imperial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.cpp" line="101"/>
+        <source>Imperial (United Kingdom)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.cpp" line="152"/>
+        <source>For this language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.cpp" line="153"/>
+        <source>Move Up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.cpp" line="156"/>
+        <source>Move Down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/localesettingspane.cpp" line="159"/>
+        <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>OnboardingRegion</name>
-    <message>
-        <location filename="../onboarding/onboardingregion.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="35"/>
         <location filename="../onboarding/onboardingregion.cpp" line="60"/>

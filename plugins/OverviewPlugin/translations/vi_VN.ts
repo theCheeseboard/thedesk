@@ -24,7 +24,7 @@
         <translation>Chào buổi tối, %1!</translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="211"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="218"/>
         <source>Overview</source>
         <translation>Tổng quan</translation>
     </message>

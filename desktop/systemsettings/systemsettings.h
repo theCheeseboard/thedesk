@@ -45,6 +45,8 @@ class SystemSettings : public StatusCenterPane {
         void addPane(StatusCenterPane* pane);
         void removePane(StatusCenterPane* pane);
 
+        void changeEvent(QEvent* event);
+
         // StatusCenterPane interface
     public:
         QString name();

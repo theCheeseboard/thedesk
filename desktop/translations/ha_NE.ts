@@ -102,7 +102,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="150"/>
+        <location filename="../systemsettings/about/about.cpp" line="157"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -540,7 +540,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="152"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="159"/>
         <source>System Settings</source>
         <translation type="unfinished"></translation>
     </message>

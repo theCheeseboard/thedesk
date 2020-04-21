@@ -41,6 +41,7 @@ SystemSettingsLeftPane::SystemSettingsLeftPane(QWidget* parent) :
     ui->mainList->setIconSize(SC_DPI_T(QSize(32, 32), QSize));
 
     ui->logoutRequiredWidget->setFixedHeight(0);
+    ui->logoutRequiredWidget->setVisible(false);
     ui->logoutButton->setProperty("type", "destructive");
 
     connect(StateManager::statusCenterManager(), &StatusCenterManager::requestLogout, this, [ = ] {
@@ -57,6 +58,8 @@ SystemSettingsLeftPane::SystemSettingsLeftPane(QWidget* parent) :
         });
         connect(anim, &tVariantAnimation::finished, anim, &tVariantAnimation::deleteLater);
         anim->start();
+
+        ui->logoutRequiredWidget->setVisible(true);
     });
 }
 
@@ -91,4 +94,10 @@ void SystemSettingsLeftPane::on_mainList_clicked(const QModelIndex& index) {
 
 void SystemSettingsLeftPane::on_logoutButton_clicked() {
     StateManager::instance()->powerManager()->showPowerOffConfirmation(PowerManager::LogOut);
+}
+
+void SystemSettingsLeftPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
 }

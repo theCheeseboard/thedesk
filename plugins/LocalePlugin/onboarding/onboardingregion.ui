@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -115,7 +115,8 @@
         <string>Next</string>
        </property>
        <property name="icon">
-        <iconset theme="go-next"/>
+        <iconset theme="go-next">
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>

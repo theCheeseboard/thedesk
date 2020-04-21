@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>578</width>
-    <height>486</height>
+    <height>661</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
@@ -50,7 +50,7 @@
         <x>0</x>
         <y>0</y>
         <width>578</width>
-        <height>469</height>
+        <height>644</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -116,41 +116,25 @@
              </widget>
             </item>
             <item>
-             <widget class="QListWidget" name="langaugesList">
+             <widget class="QListWidget" name="languagesList">
+              <property name="contextMenuPolicy">
+               <enum>Qt::CustomContextMenu</enum>
+              </property>
               <property name="frameShape">
                <enum>QFrame::NoFrame</enum>
               </property>
-              <item>
-               <property name="text">
-                <string>Lingo</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Langue</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Language</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>Taal</string>
-               </property>
-              </item>
              </widget>
             </item>
            </layout>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="addLanguageButton">
             <property name="text">
              <string>Add Language</string>
             </property>
             <property name="icon">
-             <iconset theme="list-add"/>
+             <iconset theme="list-add">
+              <normaloff>.</normaloff>.</iconset>
             </property>
            </widget>
           </item>
@@ -173,41 +157,10 @@
        <item alignment="Qt::AlignHCenter">
         <widget class="QWidget" name="regionWidget" native="true">
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="2" column="1">
-           <widget class="QComboBox" name="countryBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLabel" name="timeLabel">
+          <item row="7" column="1">
+           <widget class="QLabel" name="currencyLabel">
             <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>Time</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Country</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Select your preferred regional formats</string>
+             <string notr="true">TextLabel</string>
             </property>
            </widget>
           </item>
@@ -218,10 +171,27 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_6">
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_8">
             <property name="text">
-             <string>First day of week</string>
+             <string>Numbers</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Select your preferred regional formats</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="countryBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
            </widget>
           </item>
@@ -238,6 +208,48 @@
             </property>
            </widget>
           </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="timeLabel">
+            <property name="text">
+             <string notr="true">TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Time</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>First day of week</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLabel" name="numbersLabel">
+            <property name="text">
+             <string notr="true">TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="label_11">
+            <property name="text">
+             <string>Measurement</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QLabel" name="measurementLabel">
+            <property name="text">
+             <string notr="true">TextLabel</string>
+            </property>
+           </widget>
+          </item>
           <item row="5" column="0">
            <widget class="QLabel" name="label_9">
             <property name="text">
@@ -245,10 +257,24 @@
             </property>
            </widget>
           </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Country</string>
+            </property>
+           </widget>
+          </item>
           <item row="5" column="1">
            <widget class="QLabel" name="dateLabel">
             <property name="text">
-             <string>TextLabel</string>
+             <string notr="true">TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Currency</string>
             </property>
            </widget>
           </item>

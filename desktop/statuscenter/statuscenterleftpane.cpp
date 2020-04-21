@@ -96,6 +96,12 @@ void StatusCenterLeftPane::paintEvent(QPaintEvent* event) {
     }
 }
 
+void StatusCenterLeftPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}
+
 void StatusCenterLeftPane::on_mainList_currentRowChanged(int currentRow) {
     emit indexChanged(currentRow);
 }

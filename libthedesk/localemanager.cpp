@@ -57,6 +57,7 @@ LocaleManager::LocaleManager(QObject* parent) : QObject(parent) {
             d->preferredLocales = d->settings.delimitedList("Locale/locales");
             if (d->preferredLocales.count() == 1 && d->preferredLocales.first() == "") d->preferredLocales = QStringList({"C"});
             this->updateLocales();
+            emit localesChanged();
         } else if (key == "Locale/formats") {
             d->formats = value.toString();
             this->updateLocales();
@@ -146,6 +147,24 @@ void LocaleManager::prependLocale(QLocale locale) {
 void LocaleManager::removeLocale(QLocale locale) {
     d->preferredLocales.removeAll(locale.bcp47Name());
     d->settings.setDelimitedList("Locale/locales", d->preferredLocales);
+}
+
+void LocaleManager::moveLocaleUp(QLocale locale) {
+    int index = d->preferredLocales.indexOf(locale.bcp47Name());
+    if (index != 0) {
+        d->preferredLocales.removeAt(index);
+        d->preferredLocales.insert(index - 1, locale.bcp47Name());
+        d->settings.setDelimitedList("Locale/locales", d->preferredLocales);
+    }
+}
+
+void LocaleManager::moveLocaleDown(QLocale locale) {
+    int index = d->preferredLocales.indexOf(locale.bcp47Name());
+    if (index != d->preferredLocales.count() - 1) {
+        d->preferredLocales.removeAt(index);
+        d->preferredLocales.insert(index + 1, locale.bcp47Name());
+        d->settings.setDelimitedList("Locale/locales", d->preferredLocales);
+    }
 }
 
 QList<QLocale> LocaleManager::locales() {

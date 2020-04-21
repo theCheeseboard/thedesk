@@ -26,6 +26,7 @@
 #include <QListWidgetItem>
 #include <QPointer>
 #include <tpopover.h>
+#include <QShortcut>
 #include "statuscenterleftpane.h"
 #include "common/common.h"
 #include "systemsettings/systemsettings.h"
@@ -88,6 +89,9 @@ StatusCenter::StatusCenter(QWidget* parent) :
 
     //Add internal items to the Status Center
     StateManager::instance()->statusCenterManager()->addPane(new SystemSettings(d->leftPane), StatusCenterManager::Informational);
+
+    QShortcut* escapeShortcut = new QShortcut(Qt::Key_Escape, this);
+    connect(escapeShortcut, &QShortcut::activated, ui->closeButton, &QPushButton::click);
 }
 
 StatusCenter::~StatusCenter() {

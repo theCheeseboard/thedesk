@@ -92,6 +92,13 @@ void OverviewPane::updateGreeting() {
     }
 }
 
+void OverviewPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}
+
 bool OverviewPane::eventFilter(QObject* watched, QEvent* event) {
     if (watched == ui->scrollAreaWidgetContents && event->type() == QEvent::Paint) {
         QPainter p(ui->scrollAreaWidgetContents);

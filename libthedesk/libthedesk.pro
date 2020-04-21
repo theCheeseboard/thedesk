@@ -64,10 +64,13 @@ HEADERS += \
 unix {
     target.path = /usr/lib/
 
+    headers.files = *.h
+    headers.path = /usr/include/libthedesk/
+
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/libthedesk/translations
 
-    INSTALLS += target translations
+    INSTALLS += target translations headers
 }
 
 
