@@ -48,6 +48,13 @@ Recovery::~Recovery() {
     delete ui;
 }
 
+void Recovery::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}
+
 
 QString Recovery::name() {
     return "SystemRecovery";

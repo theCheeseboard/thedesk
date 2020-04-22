@@ -31,27 +31,40 @@
 #include <QDir>
 #include "OverviewPane/overviewpane.h"
 
+struct PluginPrivate {
+    int translationSet;
+
+    ClockChunk* chunk;
+    OverviewPane* overviewPane;
+};
+
 Plugin::Plugin() {
-    qDebug() << "Construct";
+    d = new PluginPrivate();
 }
 
 Plugin::~Plugin() {
-    qDebug() << "Destruct";
+    delete d;
 }
 
 void Plugin::activate() {
-    StateManager::localeManager()->addTranslationSet({
+    d->translationSet = StateManager::localeManager()->addTranslationSet({
         QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/OverviewPlugin/translations"),
         "/usr/share/thedesk/OverviewPlugin/translations"
     });
 
-    BarManager* barManager = StateManager::barManager();
-    barManager->addChunk(new ClockChunk());
+    d->chunk = new ClockChunk();
+    StateManager::barManager()->addChunk(d->chunk);
 
-    StatusCenterManager* scManager = StateManager::statusCenterManager();
-    scManager->addPane(new OverviewPane());
+    d->overviewPane = new OverviewPane();
+    StateManager::statusCenterManager()->addPane(d->overviewPane);
 }
 
 void Plugin::deactivate() {
+    StateManager::statusCenterManager()->removePane(d->overviewPane);
+    StateManager::barManager()->removeChunk(d->chunk);
 
+    d->overviewPane->deleteLater();
+    d->chunk->deleteLater();
+
+    StateManager::localeManager()->removeTranslationSet(d->translationSet);
 }

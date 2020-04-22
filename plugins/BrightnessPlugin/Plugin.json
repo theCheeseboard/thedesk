@@ -1,5 +1,6 @@
 {
     "name": "Screen Brightness Management",
+    "icon": "preferences-system-display",
     "uuid": "97d10af3-da66-470c-85cb-aa2e4ed2f8d7",
     "vi": {
         "name": "Quản lý độ sáng"

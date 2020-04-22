@@ -31,6 +31,7 @@
 
 #include "about/about.h"
 #include "recovery/recovery.h"
+#include "pluginmanagement/pluginmanagement.h"
 
 struct SystemSettingsPrivate {
     SystemSettingsLeftPane* leftPane;
@@ -72,6 +73,7 @@ SystemSettings::SystemSettings(StatusCenterLeftPane* leftPane) :
 
     StateManager::statusCenterManager()->addPane(new About(), StatusCenterManager::SystemSettings);
     StateManager::statusCenterManager()->addPane(new Recovery(), StatusCenterManager::SystemSettings);
+    StateManager::statusCenterManager()->addPane(new PluginManagement(), StatusCenterManager::SystemSettings);
 }
 
 SystemSettings::~SystemSettings() {

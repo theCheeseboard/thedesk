@@ -32,6 +32,8 @@
 #include <statuscentermanager.h>
 #include <barmanager.h>
 
+#include <keygrab.h>
+
 struct BarWindowPrivate {
     MainBarWidget* mainBarWidget;
     StatusCenter* statusCenterWidget;
@@ -45,6 +47,7 @@ struct BarWindowPrivate {
     QScreen* oldPrimaryScreen = nullptr;
 
     bool expanding = true;
+    bool statusCenterShown = false;
 };
 
 BarWindow::BarWindow(QWidget* parent) :
@@ -127,6 +130,11 @@ BarWindow::BarWindow(QWidget* parent) :
     connect(StateManager::statusCenterManager(), &StatusCenterManager::showStatusCenter, this, &BarWindow::showStatusCenter);
     connect(StateManager::statusCenterManager(), &StatusCenterManager::hideStatusCenter, this, &BarWindow::hideStatusCenter);
 
+    KeyGrab* statusCenterGrab = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::Key_Tab));
+    connect(statusCenterGrab, &KeyGrab::activated, this, [ = ] {
+        StateManager::statusCenterManager()->show();
+    });
+
     ui->line->raise();
 }
 
@@ -205,6 +213,7 @@ void BarWindow::showStatusCenter() {
     //Tell the window manager that this is now a standard system window
     DesktopWm::instance()->setSystemWindow(this);
     d->statusCenterWidget->setFocus();
+    d->statusCenterShown = true;
 }
 
 void BarWindow::hideStatusCenter() {
@@ -215,5 +224,6 @@ void BarWindow::hideStatusCenter() {
     //Tell the window manager that this is now a "taskbar" type window
     DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
     d->mainBarWidget->setFocus();
+    d->statusCenterShown = false;
 }
 

@@ -40,6 +40,8 @@ WirelessAccessPointsModel::WirelessAccessPointsModel(QString deviceUni, bool inc
     d->device = NetworkManager::findNetworkInterface(deviceUni).staticCast<NetworkManager::WirelessDevice>();
     d->device->requestScan();
 
+    connect(d->device.data(), &NetworkManager::WirelessDevice::accessPointAppeared, this, &WirelessAccessPointsModel::addAp);
+    connect(d->device.data(), &NetworkManager::WirelessDevice::accessPointDisappeared, this, &WirelessAccessPointsModel::removeAp);
     for (QString ap : d->device->accessPoints()) {
         this->addAp(ap);
     }

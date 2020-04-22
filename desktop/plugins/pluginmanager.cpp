@@ -26,6 +26,7 @@
 #include <QPluginLoader>
 #include <QDebug>
 #include <QUuid>
+#include <tsettings.h>
 #include "plugininterface.h"
 
 typedef QSharedPointer<QPluginLoader> QPluginLoaderPtr;
@@ -34,7 +35,11 @@ struct PluginManagerPrivate {
     PluginManager* instance = nullptr;
 
     QList<QUuid> loadedPlugins;
+    QList<QUuid> erroredPlugins;
     QMap<QUuid, QPluginLoaderPtr> foundPlugins;
+
+    tSettings* settings;
+    QList<QUuid> blacklistedPlugins;
 };
 
 PluginManagerPrivate* PluginManager::d = new PluginManagerPrivate();
@@ -46,10 +51,15 @@ PluginManager* PluginManager::instance() {
 
 void PluginManager::activatePlugin(QUuid uuid) {
     if (!d->foundPlugins.contains(uuid)) return;
+    if (d->blacklistedPlugins.contains(uuid)) return;
     QPluginLoaderPtr loader = d->foundPlugins.value(uuid);
+
+    d->erroredPlugins.removeAll(uuid);
 
     if (!loader->load()) {
         //Error!
+        d->erroredPlugins.append(uuid);
+        emit pluginsChanged();
         return;
     }
 
@@ -57,11 +67,13 @@ void PluginManager::activatePlugin(QUuid uuid) {
     if (!instance) {
         //Error!
         loader->unload();
+        emit pluginsChanged();
         return;
     }
 
     instance->activate();
     d->loadedPlugins.append(uuid);
+    emit pluginsChanged();
 }
 
 void PluginManager::deactivatePlugin(QUuid uuid) {
@@ -72,9 +84,96 @@ void PluginManager::deactivatePlugin(QUuid uuid) {
     instance->deactivate();
     loader->unload();
     d->loadedPlugins.removeOne(uuid);
+    emit pluginsChanged();
+}
+
+void PluginManager::blacklistPlugin(QUuid uuid) {
+    if (d->blacklistedPlugins.contains(uuid)) return;
+
+    d->blacklistedPlugins.append(uuid);
+    QStringList blacklisted;
+    for (QUuid uuid : d->blacklistedPlugins) {
+        blacklisted.append(uuid.toString());
+    }
+    d->settings->setDelimitedList("Plugins/blacklist", blacklisted);
+    d->settings->sync();
+
+    //Deactivate the plugin after we add it to the blacklist in case the plugin is having problems deactivating
+    //At least if we crash, the plugin will be deactivated
+    if (d->loadedPlugins.contains(uuid)) deactivatePlugin(uuid);
+}
+
+void PluginManager::removeBlacklistPlugin(QUuid uuid) {
+    if (!d->blacklistedPlugins.contains(uuid)) return;
+
+    d->blacklistedPlugins.removeAll(uuid);
+    QStringList blacklisted;
+    for (QUuid uuid : d->blacklistedPlugins) {
+        blacklisted.append(uuid.toString());
+    }
+    d->settings->setDelimitedList("Plugins/blacklist", blacklisted);
+    d->settings->sync();
+}
+
+QList<QUuid> PluginManager::availablePlugins() {
+    return d->foundPlugins.keys();
+}
+
+QList<QUuid> PluginManager::loadedPlugins() {
+    return d->loadedPlugins;
+}
+
+QList<QUuid> PluginManager::erroredPlugins() {
+    return d->erroredPlugins;
+}
+
+QList<QUuid> PluginManager::blacklistedPlugins() {
+    return d->blacklistedPlugins;
+}
+
+QJsonValue PluginManager::pluginMetadata(QUuid plugin, QString key) {
+    QPluginLoaderPtr loader = d->foundPlugins.value(plugin);
+    QJsonObject metadata = loader->metaData().value("MetaData").toObject();
+    QLocale locale;
+
+    QStringList languages = locale.uiLanguages();
+    languages.append("");
+    for (QString language : languages) {
+        QJsonValue root = metadata;
+        if (!language.isEmpty()) {
+            root = metadata.value(language);
+        }
+
+        bool success = true;
+        QStringList parts = key.split(".");
+        for (QString part : parts) {
+            if (root.isObject()) {
+                root = root.toObject().value(part);
+            } else {
+                success = false;
+            }
+        }
+
+        if (success) return root;
+    }
+
+    return QJsonValue();
+}
+
+QString PluginManager::pluginErrorReason(QUuid plugin) {
+    QPluginLoaderPtr loader = d->foundPlugins.value(plugin);
+    return loader->errorString();
 }
 
 PluginManager::PluginManager(QObject* parent) : QObject(parent) {
+    d->settings = new tSettings();
+
+    //Find out which plugins are blacklisted
+    connect(d->settings, &tSettings::settingChanged, this, [ = ](QString key) {
+        if (key == "Plugins/blacklist") updateBlacklistedPlugins();
+    });
+    updateBlacklistedPlugins();
+
     //Load all available plugins
     QStringList searchPaths = {
         QDir::cleanPath(qApp->applicationDirPath() + "/../plugins"),
@@ -99,4 +198,12 @@ PluginManager::PluginManager(QObject* parent) : QObject(parent) {
             this->activatePlugin(uuid);
         }
     }
+}
+
+void PluginManager::updateBlacklistedPlugins() {
+    d->blacklistedPlugins.clear();
+    for (QString plugin : d->settings->delimitedList("Plugins/blacklist")) {
+        d->blacklistedPlugins.append(QUuid::fromString(plugin));
+    }
+    emit pluginsChanged();
 }

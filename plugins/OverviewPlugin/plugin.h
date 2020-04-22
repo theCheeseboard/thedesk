@@ -22,6 +22,7 @@
 
 #include "plugininterface.h"
 
+struct PluginPrivate;
 class Plugin : public QObject, public PluginInterface {
         Q_OBJECT
         Q_PLUGIN_METADATA(IID PluginInterface_iid FILE "Plugin.json")
@@ -30,6 +31,9 @@ class Plugin : public QObject, public PluginInterface {
     public:
         Plugin();
         ~Plugin();
+
+    private:
+        PluginPrivate* d;
 
         // PluginInterface interface
     public:

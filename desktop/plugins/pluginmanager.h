@@ -31,11 +31,24 @@ class PluginManager : public QObject {
         void activatePlugin(QUuid uuid);
         void deactivatePlugin(QUuid uuid);
 
+        void blacklistPlugin(QUuid uuid);
+        void removeBlacklistPlugin(QUuid uuid);
+
+        QList<QUuid> availablePlugins();
+        QList<QUuid> loadedPlugins();
+        QList<QUuid> erroredPlugins();
+        QList<QUuid> blacklistedPlugins();
+        QJsonValue pluginMetadata(QUuid plugin, QString key);
+        QString pluginErrorReason(QUuid plugin);
+
     signals:
+        void pluginsChanged();
 
     private:
         explicit PluginManager(QObject* parent = nullptr);
         static PluginManagerPrivate* d;
+
+        void updateBlacklistedPlugins();
 };
 
 #endif // PLUGINMANAGER_H

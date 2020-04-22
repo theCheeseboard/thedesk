@@ -1,5 +1,6 @@
 {
     "name": "theDesk Overview",
+    "icon": "preferences-desktop-overview",
     "uuid": "2ad5c596-3633-45fd-9f3a-89ae88bdd60c",
     "vi": {
         "name": "Tổng Quan theDesk"

@@ -31,6 +31,8 @@ WirelessConnectionListModel::WirelessConnectionListModel(QObject* parent)
     : QAbstractListModel(parent) {
     d = new WirelessConnectionListModelPrivate();
 
+    connect(NetworkManager::settingsNotifier(), &NetworkManager::SettingsNotifier::connectionAdded, this, &WirelessConnectionListModel::newConnection);
+    connect(NetworkManager::settingsNotifier(), &NetworkManager::SettingsNotifier::connectionRemoved, this, &WirelessConnectionListModel::removeConnection);
     for (NetworkManager::Connection::Ptr connection : NetworkManager::listConnections()) {
         this->newConnection(connection->path());
     }

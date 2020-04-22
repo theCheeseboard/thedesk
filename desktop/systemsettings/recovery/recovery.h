@@ -36,6 +36,8 @@ class Recovery : public StatusCenterPane {
     private:
         Ui::Recovery* ui;
 
+        void changeEvent(QEvent* event);
+
         // StatusCenterPane interface
     public:
         QString name();

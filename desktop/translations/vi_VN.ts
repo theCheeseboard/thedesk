@@ -326,47 +326,47 @@
     <message>
         <location filename="../session/endsession.cpp" line="101"/>
         <source>power off the system</source>
-        <translation type="unfinished"></translation>
+        <translation>tắt hệ thống</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="102"/>
         <source>reboot the system</source>
-        <translation type="unfinished"></translation>
+        <translation>khởi động hệ thống lại</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="103"/>
         <source>log you out</source>
-        <translation type="unfinished"></translation>
+        <translation>đăng xuất bản</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="104"/>
         <source>suspend the system</source>
-        <translation type="unfinished"></translation>
+        <translation>tạm dừng hệ thống</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="105"/>
         <source>lock the screen</source>
-        <translation type="unfinished"></translation>
+        <translation>khóa màn hình</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="106"/>
         <source>turn off the screen</source>
-        <translation type="unfinished"></translation>
+        <translation>tắt màn hình</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="107"/>
         <source>switch users</source>
-        <translation type="unfinished"></translation>
+        <translation>chuyển đổi người dùng</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="108"/>
         <source>hibernate the system</source>
-        <translation type="unfinished"></translation>
+        <translation>đặt hệ thống vào chế độ ngủ đông</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="46"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1, sẵn sàng rời đi chưa? Chúng tôi sẽ %2 sau %n giay nếu bạn không làm gì.</translation>
     </message>
 </context>
 <context>
@@ -398,20 +398,52 @@
     </message>
 </context>
 <context>
-    <name>OnboardingBar</name>
+    <name>ManagePluginPopover</name>
     <message>
-        <location filename="../onboarding/onboardingbar.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="135"/>
+        <source>ERROR DETAILS</source>
+        <translation>CHI TIẾT VỀ LỖI</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="190"/>
+        <source>ACTIONS</source>
+        <translation>HOẠT ĐỘNG</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="199"/>
+        <source>Activate Plugin</source>
+        <translation>Kích hoạt phần mở rộng</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="206"/>
+        <source>Deactivate Plugin</source>
+        <translation>Vô hiệu phần mở rộng</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="213"/>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="276"/>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="296"/>
+        <source>Blacklist Plugin</source>
+        <translation>Đặt phần mở rộng trên danh sách đen</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="220"/>
+        <source>Remove Plugin from Blacklist</source>
+        <translation>Xóa phần mở rộng khỏi danh sách đen</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="283"/>
+        <source>Placing this plugin on the blacklist will prevent it from being loaded next time you log in. If the plugin is not already deactivated, we&apos;ll also deactivate it for you.</source>
+        <translation>Khi bạn đặt phần mở rộng này trên danh sách đen, bạn sẽ không cho nó tải khi bạn đăng nhập lần sau. Nếu phần mở rộng này chưa bị vô hiệu, chúng tôi cũng sẽ vô hiệu nó cho bạn.</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/managepluginpopover.cpp" line="43"/>
+        <source>UUID: %1</source>
+        <translation>UUID: %1</translation>
     </message>
 </context>
 <context>
     <name>OnboardingFinal</name>
-    <message>
-        <location filename="../onboarding/onboardingfinal.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../onboarding/onboardingfinal.ui" line="50"/>
         <source>That&apos;s everything!</source>
@@ -434,20 +466,7 @@
     </message>
 </context>
 <context>
-    <name>OnboardingVideo</name>
-    <message>
-        <location filename="../onboarding/onboardingvideo.ui" line="13"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>OnboardingWelcome</name>
-    <message>
-        <location filename="../onboarding/onboardingwelcome.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="41"/>
         <source>Welcome!</source>
@@ -475,22 +494,54 @@
     </message>
 </context>
 <context>
-    <name>Recovery</name>
+    <name>PluginManagement</name>
     <message>
-        <location filename="../systemsettings/recovery/recovery.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
+        <location filename="../systemsettings/pluginmanagement/pluginmanagement.ui" line="35"/>
+        <location filename="../systemsettings/pluginmanagement/pluginmanagement.cpp" line="72"/>
+        <source>Plugins</source>
+        <translation>Phần mở rộng</translation>
     </message>
     <message>
+        <location filename="../systemsettings/pluginmanagement/pluginmanagement.ui" line="75"/>
+        <source>Plugins add core and extra functionality to theDesk.</source>
+        <translation>Phần mở rộng sẽ thêm vào tính năng cốt lõi và tính năng bổ sung vào theDesk.</translation>
+    </message>
+</context>
+<context>
+    <name>PluginModel</name>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="52"/>
+        <source>Loaded</source>
+        <translation>Đã tải</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="54"/>
+        <source>Blacklisted</source>
+        <translation>Trên danh sách đen</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="56"/>
+        <source>Unavailable</source>
+        <translation>Không có sẵn</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="58"/>
+        <source>Inactive</source>
+        <translation>Bị vô hiệu</translation>
+    </message>
+</context>
+<context>
+    <name>Recovery</name>
+    <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="35"/>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="57"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="64"/>
         <source>Recovery</source>
-        <translation type="unfinished"></translation>
+        <translation>Khôi phục</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="104"/>
         <source>RESET THEDESK</source>
-        <translation type="unfinished"></translation>
+        <translation>ĐẶT LẠI THEDESK</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="111"/>
@@ -506,14 +557,16 @@ Save your documents and close all apps before starting the reset. This won&apos;
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="129"/>
         <source>Log Out and Reset theDesk</source>
-        <translation type="unfinished"></translation>
+        <translation>Đăng xuất và đặt lại theDesk</translation>
     </message>
     <message>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="78"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="85"/>
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1, đăng xuất và đặt lại các cài đặt của theDesk? Hoạt động này sẽ không được bị hoàn tác.
+
+Chúng tôi sẽ đặt cài đặt của bạn lại sau %n giay nếu bạn không làm gì.</translation>
     </message>
 </context>
 <context>
@@ -525,22 +578,9 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     </message>
 </context>
 <context>
-    <name>StatusCenterQuickSwitch</name>
-    <message>
-        <location filename="../statuscenter/statuscenterquickswitch.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../statuscenter/statuscenterquickswitch.ui" line="27"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="159"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="161"/>
         <source>System Settings</source>
         <translation>Cài đặt hệ thống</translation>
     </message>

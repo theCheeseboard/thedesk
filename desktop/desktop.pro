@@ -50,6 +50,10 @@ SOURCES += \
     statuscenter/statuscenterleftpane.cpp \
     statuscenter/statuscenterquickswitch.cpp \
     systemsettings/about/about.cpp \
+    systemsettings/pluginmanagement/managepluginpopover.cpp \
+    systemsettings/pluginmanagement/pluginitemdelegate.cpp \
+    systemsettings/pluginmanagement/pluginmanagement.cpp \
+    systemsettings/pluginmanagement/pluginmodel.cpp \
     systemsettings/recovery/recovery.cpp \
     systemsettings/systemsettings.cpp \
     systemsettings/systemsettingsleftpane.cpp \
@@ -83,6 +87,10 @@ HEADERS += \
     statuscenter/statuscenterleftpane.h \
     statuscenter/statuscenterquickswitch.h \
     systemsettings/about/about.h \
+    systemsettings/pluginmanagement/managepluginpopover.h \
+    systemsettings/pluginmanagement/pluginitemdelegate.h \
+    systemsettings/pluginmanagement/pluginmanagement.h \
+    systemsettings/pluginmanagement/pluginmodel.h \
     systemsettings/recovery/recovery.h \
     systemsettings/systemsettings.h \
     systemsettings/systemsettingsleftpane.h \
@@ -106,6 +114,8 @@ FORMS += \
     statuscenter/statuscenterleftpane.ui \
     statuscenter/statuscenterquickswitch.ui \
     systemsettings/about/about.ui \
+    systemsettings/pluginmanagement/managepluginpopover.ui \
+    systemsettings/pluginmanagement/pluginmanagement.ui \
     systemsettings/recovery/recovery.ui \
     systemsettings/systemsettings.ui \
     systemsettings/systemsettingsleftpane.ui \

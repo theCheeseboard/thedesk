@@ -1,5 +1,6 @@
 {
     "name": "Network Management",
+    "icon": "preferences-system-network",
     "uuid": "238083b1-2952-4000-8c13-cb585487cc1a",
     "vi": {
         "name": "Quản lý mạng"
