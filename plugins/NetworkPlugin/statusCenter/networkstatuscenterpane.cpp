@@ -1,0 +1,147 @@
+/****************************************
+ *
+ *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
+ *   Copyright (C) 2020 Victor Tran
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * *************************************/
+#include "networkstatuscenterpane.h"
+#include "ui_networkstatuscenterpane.h"
+
+#include "networkstatuscenterleftpane.h"
+#include <QIcon>
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
+#include <QDBusServiceWatcher>
+
+#include "devicePanes/devicepane.h"
+#include "devicePanes/wifidevicepane.h"
+
+#include <statemanager.h>
+#include <statuscentermanager.h>
+
+#include <NetworkManagerQt/Manager>
+
+struct NetworkStatusCenterPanePrivate {
+    NetworkStatusCenterLeftPane* leftPane;
+    QDBusServiceWatcher* nmWatcher;
+
+    QStringList unis;
+    QMap<QString, AbstractDevicePane*> devicePanes;
+};
+
+NetworkStatusCenterPane::NetworkStatusCenterPane() :
+    StatusCenterPane(),
+    ui(new Ui::NetworkStatusCenterPane) {
+    ui->setupUi(this);
+
+    d = new NetworkStatusCenterPanePrivate();
+
+    ui->menuButtonErrorPage->setVisible(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
+    connect(StateManager::instance()->statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, ui->menuButtonErrorPage, &QToolButton::setVisible);
+
+    d->leftPane = new NetworkStatusCenterLeftPane();
+    connect(d->leftPane, &NetworkStatusCenterLeftPane::currentChanged, this, [ = ](int index) {
+        ui->devicesStack->setCurrentIndex(index);
+    });
+
+    ui->devicesStack->setCurrentAnimation(tStackedWidget::Lift);
+
+    d->nmWatcher = new QDBusServiceWatcher("org.freedesktop.NetworkManager", QDBusConnection::systemBus());
+    connect(d->nmWatcher, &QDBusServiceWatcher::serviceRegistered, this, &NetworkStatusCenterPane::networkManagerRunning);
+    connect(d->nmWatcher, &QDBusServiceWatcher::serviceUnregistered, this, &NetworkStatusCenterPane::networkManagerGone);
+
+    if (QDBusConnection::systemBus().interface()->registeredServiceNames().value().contains("org.freedesktop.NetworkManager")) {
+        networkManagerRunning();
+    } else {
+        networkManagerGone();
+    }
+
+    connect(NetworkManager::notifier(), &NetworkManager::Notifier::deviceAdded, this, &NetworkStatusCenterPane::deviceAdded);
+    connect(NetworkManager::notifier(), &NetworkManager::Notifier::deviceRemoved, this, &NetworkStatusCenterPane::deviceRemoved);
+}
+
+NetworkStatusCenterPane::~NetworkStatusCenterPane() {
+    d->leftPane->deleteLater();
+    delete d;
+    delete ui;
+}
+
+void NetworkStatusCenterPane::networkManagerRunning() {
+    ui->stackedWidget->setCurrentWidget(ui->activePage);
+
+    for (NetworkManager::Device::Ptr device : NetworkManager::networkInterfaces()) {
+        this->deviceAdded(device->uni());
+    }
+}
+
+void NetworkStatusCenterPane::networkManagerGone() {
+    QStringList unis = d->unis;
+    for (QString str : unis) {
+        this->deviceRemoved(str);
+    }
+
+    ui->stackedWidget->setCurrentWidget(ui->errorPage);
+}
+
+void NetworkStatusCenterPane::deviceAdded(QString uni) {
+    d->unis.append(uni);
+
+    AbstractDevicePane* devicePane;
+    NetworkManager::Device::Ptr device = NetworkManager::findNetworkInterface(uni);
+
+    if (!device->managed()) return; //We can't do anything with this device so let's not bother about it
+
+    switch (device->type()) {
+        case NetworkManager::Device::Wifi:
+            devicePane = new WifiDevicePane(uni);
+            break;
+        default:
+            devicePane = new DevicePane(uni);
+    }
+
+    ui->devicesStack->addWidget(devicePane);
+    d->leftPane->addItem(devicePane->leftPaneItem());
+    d->devicePanes.insert(uni, devicePane);
+}
+
+void NetworkStatusCenterPane::deviceRemoved(QString uni) {
+    AbstractDevicePane* devicePane = d->devicePanes.value(uni);
+    d->unis.removeOne(uni);
+    d->leftPane->removeItem(devicePane->leftPaneItem());
+    ui->devicesStack->removeWidget(devicePane);
+    devicePane->deleteLater();
+    d->devicePanes.remove(uni);
+}
+
+QString NetworkStatusCenterPane::name() {
+    return "NetworkManager";
+}
+
+QString NetworkStatusCenterPane::displayName() {
+    return tr("Network");
+}
+
+QIcon NetworkStatusCenterPane::icon() {
+    return QIcon::fromTheme("preferences-system-network");
+}
+
+QWidget* NetworkStatusCenterPane::leftPane() {
+    return d->leftPane;
+}
+
+void NetworkStatusCenterPane::on_menuButtonErrorPage_clicked() {
+    StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}

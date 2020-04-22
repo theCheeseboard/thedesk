@@ -4,6 +4,7 @@ SUBDIRS += \
     BrightnessPlugin \
     DisplayPlugin \
     LocalePlugin \
+    NetworkPlugin \
     NotificationsPlugin \
     OverviewPlugin \
     PowerPlugin
