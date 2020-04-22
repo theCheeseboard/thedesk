@@ -46,6 +46,7 @@ class Recovery : public StatusCenterPane {
         QWidget* leftPane();
     private slots:
         void on_resetDEButton_clicked();
+        void on_titleLabel_backButtonClicked();
 };
 
 #endif // RECOVERY_H

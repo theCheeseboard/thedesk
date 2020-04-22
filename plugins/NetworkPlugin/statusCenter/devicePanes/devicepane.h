@@ -43,6 +43,7 @@ class DevicePane : public AbstractDevicePane {
         QListWidgetItem* leftPaneItem();
     private slots:
         void on_disconnectButton_clicked();
+        void on_titleLabel_backButtonClicked();
 };
 
 #endif // DEVICEPANE_H

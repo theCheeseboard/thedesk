@@ -89,3 +89,7 @@ void PluginManagement::on_pluginsList_activated(const QModelIndex& index) {
 //    connect(popover, &tPopover::dismissed, manager, &ManagePluginPopover::deleteLater);
     popover->show(this->window());
 }
+
+void PluginManagement::on_titleLabel_backButtonClicked() {
+    StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}

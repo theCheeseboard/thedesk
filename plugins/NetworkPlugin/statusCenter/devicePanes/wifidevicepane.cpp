@@ -240,3 +240,7 @@ void WifiDevicePane::on_selectNetworkButton_clicked() {
     connect(popover, &tPopover::dismissed, selection, &WirelessNetworkSelectionPopover::deleteLater);
     popover->show(this->window());
 }
+
+void WifiDevicePane::on_titleLabel_backButtonClicked() {
+    StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}

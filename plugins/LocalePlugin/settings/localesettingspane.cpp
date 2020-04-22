@@ -163,3 +163,7 @@ void LocaleSettingsPane::on_languagesList_customContextMenuRequested(const QPoin
         menu->popup(ui->languagesList->mapToGlobal(pos));
     }
 }
+
+void LocaleSettingsPane::on_titleLabel_backButtonClicked() {
+    StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}

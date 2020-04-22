@@ -87,3 +87,7 @@ void Recovery::on_resetDEButton_clicked() {
         delete c;
     });
 }
+
+void Recovery::on_titleLabel_backButtonClicked() {
+    StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}

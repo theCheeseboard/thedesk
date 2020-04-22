@@ -47,6 +47,7 @@ class WifiDevicePane : public AbstractDevicePane {
     private slots:
         void on_disconnectButton_clicked();
         void on_selectNetworkButton_clicked();
+        void on_titleLabel_backButtonClicked();
 };
 
 #endif // WIFIDEVICEPANE_H

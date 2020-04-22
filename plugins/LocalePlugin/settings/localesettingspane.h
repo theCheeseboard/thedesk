@@ -51,6 +51,7 @@ class LocaleSettingsPane : public StatusCenterPane {
         void on_countryBox_currentIndexChanged(int index);
         void on_addLanguageButton_clicked();
         void on_languagesList_customContextMenuRequested(const QPoint& pos);
+        void on_titleLabel_backButtonClicked();
 };
 
 #endif // LOCALESETTINGSPANE_H

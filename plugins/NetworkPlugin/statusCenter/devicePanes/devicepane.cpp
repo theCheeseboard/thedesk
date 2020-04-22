@@ -72,3 +72,7 @@ QListWidgetItem* DevicePane::leftPaneItem() {
 void DevicePane::on_disconnectButton_clicked() {
     d->device->disconnectInterface();
 }
+
+void DevicePane::on_titleLabel_backButtonClicked() {
+    StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}

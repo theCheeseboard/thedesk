@@ -48,6 +48,7 @@ class PluginManagement : public StatusCenterPane {
         QWidget* leftPane();
     private slots:
         void on_pluginsList_activated(const QModelIndex& index);
+        void on_titleLabel_backButtonClicked();
 };
 
 #endif // PLUIGINMANAGEMENT_H
