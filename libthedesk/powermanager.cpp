@@ -29,6 +29,9 @@
 #include <QKeySequence>
 #include <Wm/desktopwm.h>
 
+#include "statemanager.h"
+#include "onboardingmanager.h"
+
 struct PowerManagerPrivate {
     QPointer<QProcess> lockScreenProcess;
 };
@@ -80,6 +83,7 @@ void PowerManager::performPowerOperation(PowerManager::PowerOperation operation)
         case PowerManager::Lock:
             //Lock the screen
             if (d->lockScreenProcess) return; //Screen is already locked
+            if (StateManager::onboardingManager()->isOnboardingRunning()) return; //Onboarding is currently running
 
             d->lockScreenProcess = new QProcess();
             connect(d->lockScreenProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [ = ] {

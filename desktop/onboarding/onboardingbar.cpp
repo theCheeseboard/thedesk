@@ -27,6 +27,10 @@ OnboardingBar::OnboardingBar(QWidget* parent) :
     ui(new Ui::OnboardingBar) {
     ui->setupUi(this);
 
+    QPalette pal = this->palette();
+    pal.setColor(QPalette::WindowText, Qt::white);
+    this->setPalette(pal);
+
     DesktopTimeDate::makeTimeLabel(ui->clock, DesktopTimeDate::Time);
     DesktopTimeDate::makeTimeLabel(ui->date, DesktopTimeDate::StandardDate);
 }

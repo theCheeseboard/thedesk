@@ -13,5 +13,6 @@ startdeskproj.depends = libraryproj
 
 SUBDIRS = libraryproj \
     deskproj \
+    platform \
     pluginsproj \
     startdeskproj

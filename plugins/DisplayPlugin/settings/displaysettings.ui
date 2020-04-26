@@ -300,6 +300,14 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>scheduleRedshiftSwitch</tabstop>
+  <tabstop>followSunlightSwitch</tabstop>
+  <tabstop>redshiftStartTime</tabstop>
+  <tabstop>redshiftEndTime</tabstop>
+  <tabstop>redshiftIntensitySlider</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

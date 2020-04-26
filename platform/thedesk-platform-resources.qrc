@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/thedesk-platform">
+        <file>palettes.json</file>
+    </qresource>
+</RCC>

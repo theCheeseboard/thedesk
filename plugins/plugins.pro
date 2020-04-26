@@ -7,6 +7,7 @@ SUBDIRS += \
     NetworkPlugin \
     NotificationsPlugin \
     OverviewPlugin \
-    PowerPlugin
+    PowerPlugin \
+    ThemePlugin
 
 DISTFILES += plugins.pri

@@ -46,6 +46,12 @@ SplashWindow::SplashWindow(QWidget* parent) :
         ui->stackedWidget->setCurrentWidget(ui->crashPage, this->isVisible());
         this->showFullScreen();
     });
+    connect(SplashController::instance(), &SplashController::question, this, [ = ](QString title, QString message) {
+        ui->questionTitle->setText(title);
+        ui->questionText->setText(message);
+        ui->stackedWidget->setCurrentWidget(ui->questionPage, this->isVisible());
+        this->showFullScreen();
+    });
 }
 
 SplashWindow::~SplashWindow() {
@@ -67,4 +73,14 @@ void SplashWindow::hide() {
         this->setWindowOpacity(1);
     });
     anim->start();
+}
+
+void SplashWindow::on_yesButton_clicked() {
+    SplashController::instance()->respond(true);
+    ui->stackedWidget->setCurrentWidget(ui->splashPage);
+}
+
+void SplashWindow::on_noButton_clicked() {
+    SplashController::instance()->respond(false);
+    ui->stackedWidget->setCurrentWidget(ui->splashPage);
 }

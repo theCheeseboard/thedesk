@@ -59,8 +59,13 @@ int main(int argc, char* argv[]) {
         return parseResult;
     }
 
+    if (a.queryKeyboardModifiers() & Qt::ControlModifier && !PluginManager::instance()->isSafeMode()) {
+        tPromiseResults<bool> results = SessionServer::instance()->askQuestion(QApplication::translate("main", "Safe Mode"), QApplication::translate("main", "You're holding the CTRL key. Start theDesk in Safe Mode?"))->await();
+        if (results.result) PluginManager::instance()->setSafeMode(true);
+    }
+
     DesktopWm::instance();
-    PluginManager::instance();
+    PluginManager::instance()->scanPlugins();
 
     QObject::connect(StateManager::instance()->powerManager(), &PowerManager::powerOffConfirmationRequested, [ = ](PowerManager::PowerOperation operation, QString message, tPromiseFunctions<void>::SuccessFunction cb) {
         EndSession::showDialog(operation, message)->then(cb);

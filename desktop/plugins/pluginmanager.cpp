@@ -40,6 +40,8 @@ struct PluginManagerPrivate {
 
     tSettings* settings;
     QList<QUuid> blacklistedPlugins;
+
+    bool safeMode = false;
 };
 
 PluginManagerPrivate* PluginManager::d = new PluginManagerPrivate();
@@ -47,6 +49,43 @@ PluginManagerPrivate* PluginManager::d = new PluginManagerPrivate();
 PluginManager* PluginManager::instance() {
     if (!d->instance) d->instance = new PluginManager();
     return d->instance;
+}
+
+void PluginManager::setSafeMode(bool safeMode) {
+    d->safeMode = safeMode;
+}
+
+bool PluginManager::isSafeMode() {
+    return d->safeMode;
+}
+
+void PluginManager::scanPlugins() {
+    //Load all available plugins
+    QStringList searchPaths = {
+        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins"),
+        "/usr/lib/thedesk/plugins"
+    };
+    QStringList seenUuids;
+
+    for (QString searchPath : searchPaths) {
+        QDirIterator iterator(searchPath, {"*.so"}, QDir::NoFilter, QDirIterator::Subdirectories);
+        while (iterator.hasNext()) {
+            QPluginLoaderPtr loader(new QPluginLoader(iterator.next()));
+            QJsonObject metadata = loader->metaData().value("MetaData").toObject();
+            if (metadata.isEmpty()) continue;
+
+            QUuid uuid = QUuid::fromString(metadata.value("uuid").toString());
+            if (d->foundPlugins.contains(uuid)) continue;
+
+            //Register this plugin
+            d->foundPlugins.insert(uuid, loader);
+
+            if (!d->safeMode) {
+                //Load this plugin
+                this->activatePlugin(uuid);
+            }
+        }
+    }
 }
 
 void PluginManager::activatePlugin(QUuid uuid) {
@@ -173,31 +212,6 @@ PluginManager::PluginManager(QObject* parent) : QObject(parent) {
         if (key == "Plugins/blacklist") updateBlacklistedPlugins();
     });
     updateBlacklistedPlugins();
-
-    //Load all available plugins
-    QStringList searchPaths = {
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins"),
-        "/usr/lib/thedesk/plugins"
-    };
-    QStringList seenUuids;
-
-    for (QString searchPath : searchPaths) {
-        QDirIterator iterator(searchPath, {"*.so"}, QDir::NoFilter, QDirIterator::Subdirectories);
-        while (iterator.hasNext()) {
-            QPluginLoaderPtr loader(new QPluginLoader(iterator.next()));
-            QJsonObject metadata = loader->metaData().value("MetaData").toObject();
-            if (metadata.isEmpty()) continue;
-
-            QUuid uuid = QUuid::fromString(metadata.value("uuid").toString());
-            if (d->foundPlugins.contains(uuid)) continue;
-
-            //Register this plugin
-            d->foundPlugins.insert(uuid, loader);
-
-            //Load this plugin
-            this->activatePlugin(uuid);
-        }
-    }
 }
 
 void PluginManager::updateBlacklistedPlugins() {

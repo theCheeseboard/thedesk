@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/thedesk/themeplugin">
+        <file>icons/moonman.svg</file>
+        <file>icons/sunglassesman.svg</file>
+    </qresource>
+</RCC>

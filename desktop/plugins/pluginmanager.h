@@ -28,6 +28,11 @@ class PluginManager : public QObject {
     public:
         static PluginManager* instance();
 
+        void setSafeMode(bool safeMode);
+        bool isSafeMode();
+
+        void scanPlugins();
+
         void activatePlugin(QUuid uuid);
         void deactivatePlugin(QUuid uuid);
 

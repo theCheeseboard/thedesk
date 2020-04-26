@@ -28,6 +28,9 @@ OnboardingWelcome::OnboardingWelcome(QWidget* parent) :
     OnboardingPage(parent),
     ui(new Ui::OnboardingWelcome) {
     ui->setupUi(this);
+
+    ui->emergencyButton->setVisible(false);
+
 }
 
 OnboardingWelcome::~OnboardingWelcome() {

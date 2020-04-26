@@ -59,7 +59,7 @@ BarWindow::BarWindow(QWidget* parent) :
 
     d->mainBarWidget = new MainBarWidget(this);
     connect(d->mainBarWidget, &MainBarWidget::expandedHeightChanged, this, &BarWindow::barHeightChanged);
-    connect(d->mainBarWidget, &MainBarWidget::statusBarHeight, this, &BarWindow::barHeightChanged);
+    connect(d->mainBarWidget, &MainBarWidget::statusBarHeightChanged, this, &BarWindow::barHeightChanged);
 
     d->statusCenterWidget = new StatusCenter(this);
 
@@ -191,15 +191,17 @@ void BarWindow::updatePrimaryScreen() {
 }
 
 void BarWindow::barHeightChanged() {
-    QSignalBlocker blocker(d->heightAnim);
-    d->heightAnim->setStartValue(this->height() - 1);
-    d->heightAnim->setEndValue(d->expanding ? d->mainBarWidget->expandedHeight() : d->mainBarWidget->statusBarHeight());
-
-    d->heightAnim->stop();
-    d->heightAnim->start();
+    DesktopWm::setScreenMarginForWindow(this, qApp->primaryScreen(), Qt::TopEdge, d->mainBarWidget->statusBarHeight() + 1);
     d->mainBarWidget->setFixedHeight(d->mainBarWidget->expandedHeight());
 
-    DesktopWm::setScreenMarginForWindow(this, qApp->primaryScreen(), Qt::TopEdge, d->mainBarWidget->statusBarHeight() + 1);
+    if (!d->statusCenterShown) {
+        QSignalBlocker blocker(d->heightAnim);
+        d->heightAnim->setStartValue(this->height() - 1);
+        d->heightAnim->setEndValue(d->expanding ? d->mainBarWidget->expandedHeight() : d->mainBarWidget->statusBarHeight());
+
+        d->heightAnim->stop();
+        d->heightAnim->start();
+    }
 }
 
 void BarWindow::showStatusCenter() {

@@ -21,6 +21,7 @@
 #define SESSIONSERVER_H
 
 #include <QObject>
+#include <tpromise.h>
 
 struct SessionServerPrivate;
 class SessionServer : public QObject {
@@ -34,11 +35,15 @@ class SessionServer : public QObject {
         void showSplashes();
         void performAutostart();
 
+        tPromise<bool>* askQuestion(QString title, QString question);
+
     signals:
 
     private:
         explicit SessionServer(QObject* parent = nullptr);
         static SessionServerPrivate* d;
+
+        void readData();
 };
 
 #endif // SESSIONSERVER_H

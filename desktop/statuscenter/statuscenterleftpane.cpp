@@ -91,7 +91,7 @@ QWidget* StatusCenterLeftPane::peekMenu() {
 void StatusCenterLeftPane::paintEvent(QPaintEvent* event) {
     if (d->attached) {
         QPainter painter(this);
-        painter.setPen(this->palette().color(QPalette::WindowText));
+        painter.setPen(theLibsGlobal::lineColor(this->palette().color(QPalette::WindowText)));
         painter.drawLine(this->width() - 1, 0, this->width() - 1, this->height());
     }
 }

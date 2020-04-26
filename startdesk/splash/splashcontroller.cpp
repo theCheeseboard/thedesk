@@ -69,7 +69,7 @@ void SplashController::socketDataAvailable() {
                 //Run Autostart apps
                 this->runAutostart();
             } else if (type == "question") {
-                //TODO
+                emit question(obj.value("title").toString(), obj.value("question").toString());
             }
         }
     }
@@ -188,4 +188,12 @@ void SplashController::startDE() {
 void SplashController::logout() {
     if (d->wm) d->wm->kill();
     QApplication::exit();
+}
+
+void SplashController::respond(bool answer) {
+    d->socket->write(QJsonDocument(QJsonObject({
+        {"type", "questionResponse"},
+        {"response", answer}
+    })).toBinaryData());
+    d->socket->flush();
 }

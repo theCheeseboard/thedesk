@@ -50,5 +50,20 @@
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../splashwindow.ui" line="104"/>
+        <source>Question</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../splashwindow.ui" line="118"/>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../splashwindow.ui" line="128"/>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

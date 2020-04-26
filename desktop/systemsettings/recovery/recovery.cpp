@@ -81,6 +81,10 @@ void Recovery::on_resetDEButton_clicked() {
         tSettings settings;
         settings.clear();
         settings.sync();
+
+        tSettings platformSettings("theDesk.platform");
+        platformSettings.clear();
+        platformSettings.sync();
     });
     StateManager::instance()->powerManager()->showPowerOffConfirmation(PowerManager::LogOut, tr("%1, log out and reset theDesk settings? This action is irreversible.\n\nWe'll go ahead and reset your settings in %n seconds if you don't do anything."))->then([ = ] {
         disconnect(*c);

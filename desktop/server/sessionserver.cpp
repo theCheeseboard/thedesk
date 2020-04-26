@@ -23,12 +23,16 @@
 #include <QJsonObject>
 #include <QLocalSocket>
 #include <QDebug>
+#include <QMessageBox>
 
 struct SessionServerPrivate {
     QLocalSocket* socket;
     SessionServer* instance = nullptr;
 
     bool available = false;
+
+    bool havePendingQuestion = false;
+    tPromiseFunctions<bool>::SuccessFunction questionRes;
 };
 
 SessionServerPrivate* SessionServer::d = new SessionServerPrivate();
@@ -40,6 +44,9 @@ SessionServer* SessionServer::instance() {
 
 void SessionServer::setServerPath(QString serverPath) {
     d->socket->connectToServer(serverPath);
+
+    //Wait until connection so we can send messages
+    d->socket->waitForConnected();
 }
 
 void SessionServer::hideSplashes() {
@@ -66,12 +73,51 @@ void SessionServer::performAutostart() {
     d->socket->flush();
 }
 
+tPromise<bool>* SessionServer::askQuestion(QString title, QString question) {
+    return tPromise<bool>::runOnSameThread([ = ](tPromiseFunctions<bool>::SuccessFunction res, tPromiseFunctions<bool>::FailureFunction rej) {
+        if (!d->available) {
+            bool answer = QMessageBox::question(nullptr, title, question, QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes;
+            res(answer);
+        } else {
+            d->questionRes = [ = ](bool result) {
+                d->havePendingQuestion = false;
+                res(result);
+            };
+            d->havePendingQuestion = true;
+
+            d->socket->write(QJsonDocument(QJsonObject({
+                {"type", "question"},
+                {"title", title},
+                {"question", question}
+            })).toBinaryData());
+            d->socket->flush();
+        }
+    });
+}
+
 SessionServer::SessionServer(QObject* parent) : QObject(parent) {
     d->socket = new QLocalSocket();
     connect(d->socket, &QLocalSocket::connected, this, [ = ] {
         d->available = true;
+
     });
     connect(d->socket, &QLocalSocket::disconnected, this, [ = ] {
         d->available = false;
     });
+
+    connect(d->socket, &QLocalSocket::readyRead, this, &SessionServer::readData);
+}
+
+void SessionServer::readData() {
+    QByteArray data = d->socket->readAll();
+    QJsonDocument doc = QJsonDocument::fromBinaryData(data);
+    if (doc.isObject()) {
+        QJsonObject obj = doc.object();
+        if (obj.contains("type")) {
+            QString type = obj.value("type").toString();
+            if (type == "questionResponse" && d->havePendingQuestion) {
+                d->questionRes(obj.value("response").toBool());
+            }
+        }
+    }
 }

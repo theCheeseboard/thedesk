@@ -226,12 +226,17 @@
 <context>
     <name>CommandLine</name>
     <message>
-        <location filename="../cli/commandline.cpp" line="36"/>
+        <location filename="../cli/commandline.cpp" line="37"/>
+        <source>Start theDesk in Safe Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../cli/commandline.cpp" line="40"/>
         <source>Internal use; the path to a local socket to communicate with the session manager</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../cli/commandline.cpp" line="36"/>
+        <location filename="../cli/commandline.cpp" line="40"/>
         <source>path</source>
         <translation type="unfinished"></translation>
     </message>
@@ -473,22 +478,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingwelcome.ui" line="50"/>
+        <location filename="../onboarding/onboardingwelcome.ui" line="48"/>
+        <source>Let&apos;s get you up and running!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingwelcome.ui" line="57"/>
         <source>Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingwelcome.ui" line="73"/>
+        <location filename="../onboarding/onboardingwelcome.ui" line="80"/>
         <source>Emergency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingwelcome.ui" line="113"/>
+        <location filename="../onboarding/onboardingwelcome.ui" line="120"/>
         <source>Let&apos;s go!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingwelcome.cpp" line="49"/>
+        <location filename="../onboarding/onboardingwelcome.cpp" line="52"/>
         <source>Welcome</source>
         <translation type="unfinished"></translation>
     </message>
@@ -560,7 +570,7 @@ Save your documents and close all apps before starting the reset. This won&apos;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="85"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="89"/>
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
@@ -603,6 +613,19 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="../main.cpp" line="63"/>
+        <source>Safe Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="63"/>
+        <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

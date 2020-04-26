@@ -66,6 +66,7 @@ OnboardingVideo::OnboardingVideo(QWidget* parent) :
     d->videoPlayer = new QMediaPlayer(this);
     d->videoPlayer->setVideoOutput(d->videoWidget);
     d->videoPlayer->setPlaylist(d->videoPlaylist);
+    d->videoPlayer->setVolume(0);
     d->videoPlayer->play();
 }
 
@@ -75,5 +76,8 @@ OnboardingVideo::~OnboardingVideo() {
 }
 
 void OnboardingVideo::resizeEvent(QResizeEvent* event) {
-    d->videoWidget->setGeometry(0, 0, this->width(), this->height());
+    QRect newGeometry;
+    newGeometry.setSize(QSize(16, 9).scaled(this->width() + 1, this->height() + 1, Qt::KeepAspectRatioByExpanding));
+    newGeometry.moveCenter(QPoint(this->width() / 2, this->height() / 2));
+    d->videoWidget->setGeometry(newGeometry);
 }

@@ -35,6 +35,11 @@ class SplashWindow : public QDialog {
 
         void hide();
 
+    private slots:
+        void on_yesButton_clicked();
+
+        void on_noButton_clicked();
+
     private:
         Ui::SplashWindow* ui;
 };

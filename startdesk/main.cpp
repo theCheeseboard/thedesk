@@ -23,7 +23,7 @@
 
 int main(int argc, char* argv[]) {
     //Put environment variables
-    qputenv("QT_QPA_PLATFORMTHEME", "ts");
+    qputenv("QT_QPA_PLATFORMTHEME", "thedesk-platform");
 
     tApplication a(argc, argv);
 

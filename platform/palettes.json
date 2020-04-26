@@ -1,0 +1,146 @@
+{
+    "dark": {
+        "bases": {
+            "window": 40,
+            "windowText": {
+                "normal": "white",
+                "inactive": "white",
+                "disabled": 150
+            },
+            "base": 40,
+            "text": "white",
+            "tooltipText": "white",
+            "alternateBase": 40
+        },
+        "accents": {
+            "blue": {
+                "button": {
+                    "normal": [0,50,150],
+                    "inactive": [0,50,150],
+                    "disabled": [0,30,100]
+                },
+                "buttonText": {
+                    "normal": "white",
+                    "inactive": "white",
+                    "disabled": 150
+                },
+                "highlight": [0,80,170],
+                "highlightText": "white"
+            },
+            "green": {
+                "button": {
+                    "normal": [0,85,0],
+                    "inactive": [0,85,0],
+                    "disabled": [0,50,0]
+                },
+                "buttonText": {
+                    "normal": "white",
+                    "inactive": "white",
+                    "disabled": 150
+                },
+                "highlight": [0,100,0],
+                "highlightText": "white"
+            },
+            "orange": {
+                "button": {
+                    "normal": [200,50,0],
+                    "inactive": [200,50,0],
+                    "disabled": [100,25,0]
+                },
+                "buttonText": {
+                    "normal": "white",
+                    "inactive": "white",
+                    "disabled": 150
+                },
+                "highlight": [200,100,0],
+                "highlightText": "white"
+            },
+            "pink": {
+                "button": {
+                    "normal": [150,0,150],
+                    "inactive": [150,0,150],
+                    "disabled": [100,0,100]
+                },
+                "buttonText": {
+                    "normal": "white",
+                    "inactive": "white",
+                    "disabled": 150
+                },
+                "highlight": [200,0,200],
+                "highlightText": "white"
+            }
+        }
+    },
+    "light": {
+        "bases": {
+            "window": 210,
+            "windowText": {
+                "normal": "black",
+                "inactive": "black",
+                "disabled": 100
+            },
+            "base": 210,
+            "text": "black",
+            "tooltipText": "black",
+            "alternateBase": 210
+        },
+        "accents": {
+            "blue": {
+                "button": {
+                    "normal": [0,200,255],
+                    "inactive": [0,200,2500],
+                    "disabled": [0,150,200]
+                },
+                "buttonText": {
+                    "normal": "black",
+                    "inactive": "black",
+                    "disabled": 100
+                },
+                "highlight": [0,175,200],
+                "highlightText": "black"
+            },
+            "green": {
+                "button": {
+                    "normal": [36,175,62],
+                    "inactive": [36,175,62],
+                    "disabled": [0,150,200]
+                },
+                "buttonText": {
+                    "normal": "black",
+                    "inactive": "black",
+                    "disabled": 100
+                },
+                "highlight": [45,220,77],
+                "highlightText": "black"
+            },
+            "orange": {
+                "button": {
+                    "normal": [255,100,0],
+                    "inactive": [255,100,0],
+                    "disabled": [150,50,0]
+                },
+                "buttonText": {
+                    "normal": "black",
+                    "inactive": "black",
+                    "disabled": 100
+                },
+                "highlight": [255,150,50],
+                "highlightText": "black"
+            },
+            "pink": {
+                "button": {
+                    "normal": [255,0,255],
+                    "inactive": [255,0,255],
+                    "disabled": [100,0,100]
+                },
+                "buttonText": {
+                    "normal": "black",
+                    "inactive": "black",
+                    "disabled": 150
+                },
+                "highlight": [255,0,255],
+                "highlightText": "black"
+            }
+        }
+    }
+}

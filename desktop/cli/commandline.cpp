@@ -21,6 +21,7 @@
 
 #include <QCommandLineParser>
 #include <QTextStream>
+#include "plugins/pluginmanager.h"
 #include "server/sessionserver.h"
 
 CommandLine::CommandLine(QObject* parent) : QObject(parent) {
@@ -33,6 +34,9 @@ int CommandLine::parse(QStringList args) {
     QTextStream stream(stdout);
 
     QCommandLineParser parser;
+    QCommandLineOption safeOption("safe", tr("Start theDesk in Safe Mode"));
+    parser.addOption(safeOption);
+
     QCommandLineOption serverOption("sessionserver", tr("Internal use; the path to a local socket to communicate with the session manager"), tr("path"));
     parser.addOption(serverOption);
 
@@ -51,6 +55,10 @@ int CommandLine::parse(QStringList args) {
 
     if (parser.isSet(versionOption)) {
         parser.showVersion();
+    }
+
+    if (parser.isSet(safeOption)) {
+        PluginManager::instance()->setSafeMode(true);
     }
 
     if (!parser.value(serverOption).isEmpty()) {

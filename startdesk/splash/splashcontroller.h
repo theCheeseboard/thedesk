@@ -36,11 +36,15 @@ class SplashController : public QObject {
         void startDE();
         void logout();
 
+        void respond(bool answer);
+
     signals:
         void starting();
         void hideSplashes();
         void crash();
         void startFail();
+
+        void question(QString title, QString message);
 
     private:
         explicit SplashController(QObject* parent = nullptr);

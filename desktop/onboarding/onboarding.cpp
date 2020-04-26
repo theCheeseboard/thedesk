@@ -105,6 +105,9 @@ Onboarding::Onboarding(QWidget* parent) :
 
             ui->stepperLayout->insertWidget(index, stepper);
             d->steppers.insert(index, {stepper, step});
+        } else {
+            //Hide the stepper so it doesn't show up in the background
+            stepper->setVisible(false);
         }
     }
 

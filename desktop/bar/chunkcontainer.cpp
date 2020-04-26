@@ -107,6 +107,9 @@ void ChunkContainer::chunkAdded(Chunk* chunk) {
         ui->chunkLayout->insertWidget(index, chunk);
         d->loadedChunks.insert(index, {chunk->name(), chunk});
     }
+
+    emit statusBarHeightChanged();
+    emit expandedHeightChanged();
 }
 
 void ChunkContainer::chunkRemoved(Chunk* chunk) {
@@ -115,6 +118,9 @@ void ChunkContainer::chunkRemoved(Chunk* chunk) {
         if (d->loadedChunks.at(i).second == chunk) {
             ui->chunkLayout->removeWidget(chunk);
             d->loadedChunks.removeAt(i);
+
+            emit statusBarHeightChanged();
+            emit expandedHeightChanged();
             return;
         }
     }

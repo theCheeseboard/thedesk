@@ -133,7 +133,10 @@ unix {
     defaults.files = defaults.conf
     defaults.path = /etc/theSuite/theDesk/
 
-    INSTALLS += target translations defaults headers
+    media.files = media/
+    media.path = /usr/share/thedesk/
+
+    INSTALLS += target translations defaults headers media
 }
 
 unix:!macx: LIBS += -L$$OUT_PWD/../libthedesk/ -lthedesk
