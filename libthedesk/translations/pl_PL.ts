@@ -5,11 +5,11 @@
     <name>LocaleSelector</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <source>Select a locale</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz widownie</translation>
     </message>
 </context>
 </TS>
