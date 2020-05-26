@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QPointer>
+#include <QIcon>
 #include <application.h>
 
 class NotificationTracker;
@@ -29,6 +30,19 @@ struct NotificationPrivate;
 class Notification : public QObject {
         Q_OBJECT
     public:
+        enum NotificationCloseReason : quint32 {
+            NotificationExpired = 1,
+            NotificationUserDismissed = 2,
+            NotificationClosedByDBus = 3,
+            NotificationCloseReasonUndefined = 4
+        };
+
+        struct Action {
+            QString text;
+            QString identifier;
+            QIcon icon;
+        };
+
         ~Notification();
 
         quint32 id();
@@ -45,11 +59,19 @@ class Notification : public QObject {
         void setApplication(ApplicationPointer application);
         ApplicationPointer application();
 
+        void setActions(QList<Action> actions);
+        QList<Action> actions();
+
+        void dismiss(NotificationCloseReason reason);
+
     signals:
         void summaryChanged(QString summary);
         void bodyChanged(QString body);
         void timeoutChanged(qint32 timeout);
         void applicationChanged(ApplicationPointer application);
+        void actionsChanged(QList<Action> actions);
+        void dismissed(NotificationCloseReason reason);
+        void actionInvoked(Action action);
 
     protected:
         friend NotificationTracker;

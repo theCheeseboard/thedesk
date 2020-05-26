@@ -28,7 +28,10 @@ struct NotificationPrivate {
     QString summary;
     QString body;
 
+    QList<Notification::Action> actions;
+
     ApplicationPointer application;
+    bool isActive = true;
 };
 
 Notification::Notification(quint32 id) {
@@ -80,4 +83,19 @@ void Notification::setApplication(ApplicationPointer application) {
 
 ApplicationPointer Notification::application() {
     return d->application;
+}
+
+void Notification::setActions(QList<Notification::Action> actions) {
+    d->actions = actions;
+    emit actionsChanged(actions);
+}
+
+QList<Notification::Action> Notification::actions() {
+    return d->actions;
+}
+
+void Notification::dismiss(Notification::NotificationCloseReason reason) {
+    if (!d->isActive) return;
+    d->isActive = false;
+    emit dismissed(reason);
 }

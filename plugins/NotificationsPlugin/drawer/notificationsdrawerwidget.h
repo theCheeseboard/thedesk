@@ -30,11 +30,12 @@ class Notification;
 typedef QPointer<Notification> NotificationPtr;
 
 struct NotificationsDrawerWidgetPrivate;
+class NotificationTracker;
 class NotificationsDrawerWidget : public QWidget {
         Q_OBJECT
 
     public:
-        explicit NotificationsDrawerWidget(NotificationPtr notification, QWidget* parent = nullptr);
+        explicit NotificationsDrawerWidget(NotificationPtr notification, NotificationTracker* tracker, QWidget* parent = nullptr);
         ~NotificationsDrawerWidget();
 
         void show();
@@ -45,11 +46,22 @@ class NotificationsDrawerWidget : public QWidget {
     signals:
         void dismiss();
 
+    private slots:
+        void on_closeButton_clicked();
+
+        void on_dismissButton_clicked();
+
     private:
         Ui::NotificationsDrawerWidget* ui;
         NotificationsDrawerWidgetPrivate* d;
 
         void resizeEvent(QResizeEvent* event);
+        bool eventFilter(QObject* watched, QEvent* event);
+
+        void setupActions();
+
+        void showButtons();
+        void hideButtons();
 };
 
 #endif // NOTIFICATIONSDRAWERWIDGET_H

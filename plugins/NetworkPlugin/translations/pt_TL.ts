@@ -369,5 +369,21 @@
         <source>Forget Network</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Network Security</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown Security</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not sure how to connect to this network. Use manual setup to connect to it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the security key</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

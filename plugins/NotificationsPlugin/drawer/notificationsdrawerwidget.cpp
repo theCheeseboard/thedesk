@@ -23,27 +23,37 @@
 #include <tvariantanimation.h>
 #include <QIcon>
 #include <QGraphicsOpacityEffect>
+#include <QPushButton>
+#include "notificationtracker.h"
 #include "notification.h"
 
 struct NotificationsDrawerWidgetPrivate {
+    NotificationTracker* tracker;
     tVariantAnimation* timeout;
+    tVariantAnimation* actionsWidgetHeight;
     NotificationPtr n;
 
+    QList<QPushButton*> actions;
+
     QGraphicsOpacityEffect* effect;
+    bool shouldTimeoutRun = false;
 };
 
-NotificationsDrawerWidget::NotificationsDrawerWidget(NotificationPtr notification, QWidget* parent) :
+NotificationsDrawerWidget::NotificationsDrawerWidget(NotificationPtr notification, NotificationTracker* tracker, QWidget* parent) :
     QWidget(parent),
     ui(new Ui::NotificationsDrawerWidget) {
     ui->setupUi(this);
 
     d = new NotificationsDrawerWidgetPrivate();
     d->n = notification;
+    d->tracker = tracker;
 
     ui->summaryLabel->setText(notification->summary());
     ui->bodyLabel->setText(notification->body());
     connect(notification, &Notification::summaryChanged, ui->summaryLabel, &QLabel::setText);
     connect(notification, &Notification::bodyChanged, ui->bodyLabel, &QLabel::setText);
+
+    connect(notification, &Notification::dismissed, this, &NotificationsDrawerWidget::animateDismiss);
 
     d->timeout = new tVariantAnimation(this);
     d->timeout->setStartValue(1.0);
@@ -51,6 +61,13 @@ NotificationsDrawerWidget::NotificationsDrawerWidget(NotificationPtr notificatio
     d->timeout->setEasingCurve(QEasingCurve::Linear);
     d->timeout->setDuration(notification->timeout());
     connect(d->timeout, &tVariantAnimation::finished, this, &NotificationsDrawerWidget::animateDismiss);
+    connect(d->tracker, &NotificationTracker::pauseTimeouts, this, [ = ] {
+        d->timeout->pause();
+    });
+    connect(d->tracker, &NotificationTracker::resumeTimeouts, this, [ = ] {
+        if (d->shouldTimeoutRun) d->timeout->start();
+    });
+
     connect(notification, &Notification::timeoutChanged, this, [ = ](qint32 timeout) {
         if (timeout == 0) {
             d->timeout->setDuration(-1);
@@ -65,6 +82,29 @@ NotificationsDrawerWidget::NotificationsDrawerWidget(NotificationPtr notificatio
         ui->appIconLabel->setPixmap(QIcon::fromTheme(notification->application()->getProperty("Icon").toString()).pixmap(SC_DPI_T(QSize(16, 16), QSize)));
         ui->appNameLabel->setText(notification->application()->getProperty("Name").toString());
     });
+
+    ui->actionsWidget->setFixedHeight(0);
+    connect(notification, &Notification::actionsChanged, this, &NotificationsDrawerWidget::setupActions);
+    setupActions();
+
+    d->actionsWidgetHeight = new tVariantAnimation(this);
+    d->actionsWidgetHeight->setDuration(250);
+    d->actionsWidgetHeight->setEasingCurve(QEasingCurve::OutCubic);
+    connect(d->actionsWidgetHeight, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        ui->actionsWidget->setFixedHeight(value.toInt());
+        ui->mainFrame->setFixedHeight(ui->mainFrame->sizeHint().height());
+        this->updateGeometry();
+    });
+    connect(d->actionsWidgetHeight, &tVariantAnimation::finished, this, [ = ] {
+        ui->mainFrame->setFixedHeight(ui->mainFrame->sizeHint().height());
+        this->updateGeometry();
+    });
+
+    ui->buttonBox->setParent(ui->mainFrame);
+    ui->buttonBox->move(ui->mainFrame->width() - ui->buttonBox->width(), 0);
+    ui->buttonBox->setVisible(false);
+
+    ui->mainFrame->installEventFilter(this);
 
     d->effect = new QGraphicsOpacityEffect(this);
     d->effect->setEnabled(false);
@@ -88,12 +128,15 @@ void NotificationsDrawerWidget::show() {
         ui->mainFrame->move(value.toInt(), SC_DPI(9));
     });
     connect(anim, &tVariantAnimation::finished, this, [ = ] {
+        d->shouldTimeoutRun = true;
         d->timeout->start();
     });
     anim->start();
 }
 
 void NotificationsDrawerWidget::animateDismiss() {
+    d->shouldTimeoutRun = false;
+
     tVariantAnimation* opacityAnim = new tVariantAnimation(this);
     opacityAnim->setStartValue(1.0);
     opacityAnim->setEndValue(0.0);
@@ -132,4 +175,69 @@ QSize NotificationsDrawerWidget::sizeHint() const {
 void NotificationsDrawerWidget::resizeEvent(QResizeEvent* event) {
     ui->mainFrame->setFixedWidth(this->width() - SC_DPI(18));
     ui->mainFrame->setFixedHeight(ui->mainFrame->sizeHint().height());
+    ui->buttonBox->move(ui->mainFrame->width() - ui->buttonBox->width(), 0);
+}
+
+bool NotificationsDrawerWidget::eventFilter(QObject* watched, QEvent* event) {
+    if (watched == ui->mainFrame) {
+        switch (event->type()) {
+            case QEvent::Enter:
+                showButtons();
+                break;
+            case QEvent::Leave:
+                hideButtons();
+                break;
+            default:
+                break;
+        }
+    }
+    return false;
+}
+
+void NotificationsDrawerWidget::setupActions() {
+    for (QPushButton* button : d->actions) {
+        ui->actionsLayout->removeWidget(button);
+        button->deleteLater();
+    }
+    d->actions.clear();
+
+    for (Notification::Action action : d->n->actions()) {
+        QPushButton* button = new QPushButton();
+        button->setText(action.text);
+        button->setIcon(action.icon);
+        connect(button, &QPushButton::clicked, this, [ = ] {
+            emit d->n->actionInvoked(action);
+            this->animateDismiss();
+        });
+        ui->actionsLayout->addWidget(button);
+        d->actions.append(button);
+    }
+}
+
+void NotificationsDrawerWidget::showButtons() {
+    d->tracker->pauseTimeouts();
+    ui->buttonBox->setVisible(true);
+
+    d->actionsWidgetHeight->stop();
+    d->actionsWidgetHeight->setStartValue(ui->actionsWidget->height());
+    d->actionsWidgetHeight->setEndValue(ui->actionsWidget->sizeHint().height());
+    d->actionsWidgetHeight->start();
+}
+
+void NotificationsDrawerWidget::hideButtons() {
+    d->tracker->resumeTimeouts();
+    ui->buttonBox->setVisible(false);
+
+    d->actionsWidgetHeight->stop();
+    d->actionsWidgetHeight->setStartValue(ui->actionsWidget->height());
+    d->actionsWidgetHeight->setEndValue(0);
+    d->actionsWidgetHeight->start();
+}
+
+void NotificationsDrawerWidget::on_closeButton_clicked() {
+    d->n->dismiss(Notification::NotificationUserDismissed);
+}
+
+void NotificationsDrawerWidget::on_dismissButton_clicked() {
+    this->animateDismiss();
 }

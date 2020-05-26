@@ -64,6 +64,13 @@ NotificationsDrawer::~NotificationsDrawer() {
     delete ui;
 }
 
+bool NotificationsDrawer::eventFilter(QObject* watched, QEvent* event) {
+    if (event->type() == QEvent::LayoutRequest) {
+        this->updateGeometry();
+    }
+    return false;
+}
+
 void NotificationsDrawer::updateGeometry() {
     QScreen* primaryScreen = qApp->primaryScreen();
     if (d->oldPrimaryScreen != primaryScreen && d->oldPrimaryScreen) {
@@ -94,7 +101,8 @@ void NotificationsDrawer::updateGeometry() {
 }
 
 void NotificationsDrawer::showNotification(NotificationPtr notification) {
-    NotificationsDrawerWidget* w = new NotificationsDrawerWidget(notification, this);
+    NotificationsDrawerWidget* w = new NotificationsDrawerWidget(notification, d->tracker, this);
+    w->installEventFilter(this);
     d->widgets.append(w);
     ui->notificationsLayout->addWidget(w);
 

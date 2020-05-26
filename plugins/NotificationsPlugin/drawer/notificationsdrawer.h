@@ -40,6 +40,8 @@ class NotificationsDrawer : public QDialog {
         Ui::NotificationsDrawer* ui;
         NotificationsDrawerPrivate* d;
 
+        bool eventFilter(QObject* watched, QEvent* event);
+
         void updateGeometry();
         void showNotification(NotificationPtr notification);
 };

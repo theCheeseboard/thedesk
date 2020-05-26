@@ -62,6 +62,9 @@ void TaskbarWidget::addWindow(DesktopWmWindowPtr window) {
     connect(button, &QPushButton::clicked, window, [ = ] {
         window->activate();
     });
+    connect(button, &QPushButton::destroyed, this, [ = ] {
+        d->buttons.remove(window);
+    });
 
     connect(window, &DesktopWmWindow::titleChanged, button, [ = ] {
         button->setText(window->title());
@@ -78,7 +81,6 @@ void TaskbarWidget::removeWindow(DesktopWmWindowPtr window) {
     if (d->buttons.contains(window)) {
         ui->buttonsLayout->removeWidget(d->buttons.value(window));
         d->buttons.value(window)->deleteLater();
-        d->buttons.remove(window);
     }
 }
 
@@ -87,7 +89,6 @@ void TaskbarWidget::activeWindowChanged() {
         button->setChecked(false);
     }
 
-    if (d->buttons.contains(DesktopWm::activeWindow())) {
-        d->buttons.value(DesktopWm::activeWindow())->setChecked(true);
-    }
+    QPushButton* selectedButton = d->buttons.value(DesktopWm::activeWindow(), nullptr);
+    if (selectedButton) selectedButton->setChecked(true);
 }

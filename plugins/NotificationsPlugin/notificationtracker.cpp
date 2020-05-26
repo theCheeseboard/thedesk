@@ -38,8 +38,12 @@ NotificationTracker::~NotificationTracker() {
 }
 
 NotificationPtr NotificationTracker::createNotification() {
-    NotificationPtr n(new Notification(d->lastNotification));
-    d->notifications.insert(d->lastNotification, n);
+    quint32 notificationId = d->lastNotification;
+    NotificationPtr n(new Notification(notificationId));
+    connect(n.data(), &Notification::dismissed, this, [ = ] {
+        d->notifications.remove(notificationId);
+    });
+    d->notifications.insert(notificationId, n);
     d->lastNotification++;
 
     QTimer::singleShot(0, this, std::bind(&NotificationTracker::newNotification, this, n));

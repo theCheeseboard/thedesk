@@ -45,18 +45,36 @@ NotificationsInterface::~NotificationsInterface() {
 }
 
 QStringList NotificationsInterface::GetCapabilities() {
-    return {"body"};
+    return {"body", "actions", "action-icons", "body-markup"};
 }
 
 quint32 NotificationsInterface::Notify(QString appName, quint32 replacesId, QString appIcon, QString summary, QString body, QStringList actions, QVariantMap hints, qint32 expireTimeout) {
     NotificationPtr notification = d->tracker->get(replacesId);
     if (!notification) {
         notification = d->tracker->createNotification();
+        connect(notification.data(), &Notification::dismissed, this, [ = ](Notification::NotificationCloseReason closeReason) {
+            emit NotificationClosed(notification->id(), closeReason);
+        });
+        connect(notification.data(), &Notification::actionInvoked, this, [ = ](Notification::Action action) {
+            emit ActionInvoked(notification->id(), action.identifier);
+        });
     }
 
     notification->setBody(body);
     notification->setSummary(summary);
     notification->setTimeout(expireTimeout);
+
+    if (actions.count() % 2 == 0) {
+        QList<Notification::Action> actionList;
+        for (int i = 0; i < actions.count(); i += 2) {
+            Notification::Action action;
+            action.identifier = actions.at(i);
+            action.text = actions.at(i + 1);
+            if (hints.value("action-icons", false).toBool()) action.icon = QIcon::fromTheme(action.identifier);
+            actionList.append(action);
+        }
+        notification->setActions(actionList);
+    }
 
     if (hints.contains("desktop-entry") && Application::allApplications().contains(hints.value("desktop-entry").toString())) {
         notification->setApplication(ApplicationPointer(new Application(hints.value("desktop-entry").toString())));
@@ -71,7 +89,10 @@ quint32 NotificationsInterface::Notify(QString appName, quint32 replacesId, QStr
 }
 
 void NotificationsInterface::CloseNotification(quint32 id) {
-
+    NotificationPtr notification = d->tracker->get(id);
+    if (notification) {
+        notification->dismiss(Notification::NotificationClosedByDBus);
+    }
 }
 
 QString NotificationsInterface::GetServerInformation(QString& vendor, QString& version, QString& specVersion) {

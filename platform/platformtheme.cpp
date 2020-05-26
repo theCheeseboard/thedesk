@@ -32,6 +32,7 @@
 #include <QMimeDatabase>
 #include <QMimeType>
 #include <QDebug>
+#include <QTextCharFormat>
 #include "cursorhandler.h"
 
 #include "paletteformat.h"
@@ -163,7 +164,12 @@ QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
         case QPlatformTheme::IconThemeSearchPaths:
         case QPlatformTheme::IconFallbackSearchPaths:
             return QStringList({QDir::homePath() + "/.local/share/icons/", "/usr/share/icons"});
+        case QPlatformTheme::KeyboardScheme:
+            return KdeKeyboardScheme;
+        case QPlatformTheme::SpellCheckUnderlineStyle:
+            return QTextCharFormat::SingleUnderline;
         case QPlatformTheme::ItemViewActivateItemOnSingleClick:
+        case QPlatformTheme::DialogButtonBoxButtonsHaveIcons:
             return true;
         case QPlatformTheme::CursorFlashTime:
         case QPlatformTheme::KeyboardInputInterval:
@@ -180,11 +186,8 @@ QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
         case QPlatformTheme::ToolBarIconSize:
         case QPlatformTheme::WindowAutoPlacement:
         case QPlatformTheme::DialogButtonBoxLayout:
-        case QPlatformTheme::DialogButtonBoxButtonsHaveIcons:
         case QPlatformTheme::UseFullScreenForPopupMenu:
-        case QPlatformTheme::KeyboardScheme:
         case QPlatformTheme::UiEffects:
-        case QPlatformTheme::SpellCheckUnderlineStyle:
         case QPlatformTheme::TabFocusBehavior:
         case QPlatformTheme::IconPixmapSizes:
         case QPlatformTheme::PasswordMaskCharacter:

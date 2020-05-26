@@ -39,6 +39,9 @@ class NotificationTracker : public QObject {
     signals:
         void newNotification(NotificationPtr notification);
 
+        void pauseTimeouts();
+        void resumeTimeouts();
+
     private:
         NotificationTrackerPrivate* d;
 };

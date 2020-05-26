@@ -44,11 +44,18 @@ class WirelessNetworkSelectionPopover : public QWidget {
 
         void on_knownNetworksListView_customContextMenuRequested(const QPoint& pos);
 
+        void on_keyTitleLabel_backButtonClicked();
+
+        void on_newNetworksListView_activated(const QModelIndex& index);
+
+        void on_securityConnectButton_clicked();
+
     private:
         Ui::WirelessNetworkSelectionPopover* ui;
         WirelessNetworkSelectionPopoverPrivate* d;
 
         void activateConnection(const QModelIndex& index);
+        void createConnection();
 };
 
 #endif // WIRELESSNETWORKSELECTIONPOPOVER_H
