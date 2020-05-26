@@ -6,33 +6,33 @@
     <message>
         <location filename="../crash/crashwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../crash/crashwidget.ui" line="38"/>
         <source>Oh, Bonkers!</source>
-        <translation type="unfinished"></translation>
+        <translation>O nie!</translation>
     </message>
     <message>
         <location filename="../crash/crashwidget.ui" line="48"/>
         <location filename="../crash/crashwidget.cpp" line="31"/>
         <source>theDesk had a problem and has stopped working.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikacja theDesk miała problem i przestała działać.</translation>
     </message>
     <message>
         <location filename="../crash/crashwidget.ui" line="73"/>
         <source>Relaunch theDesk</source>
-        <translation type="unfinished"></translation>
+        <translation>Uruchom ponownie theDesk</translation>
     </message>
     <message>
         <location filename="../crash/crashwidget.ui" line="83"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyloguj Sie</translation>
     </message>
     <message>
         <location filename="../crash/crashwidget.cpp" line="34"/>
         <source>theDesk couldn&apos;t start because of a problem.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikacja theDesk nie mogła zastartować bo jest problem.</translation>
     </message>
 </context>
 <context>
@@ -40,7 +40,7 @@
     <message>
         <location filename="../splash/splashwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
 </context>
 <context>
@@ -48,22 +48,22 @@
     <message>
         <location filename="../splashwindow.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../splashwindow.ui" line="104"/>
         <source>Question</source>
-        <translation type="unfinished"></translation>
+        <translation>Pytanie</translation>
     </message>
     <message>
         <location filename="../splashwindow.ui" line="118"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tak</translation>
     </message>
     <message>
         <location filename="../splashwindow.ui" line="128"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie</translation>
     </message>
 </context>
 </TS>
