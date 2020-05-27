@@ -44,6 +44,9 @@ SOURCES += \
     statusCenter/devicePanes/abstractdevicepane.cpp \
     statusCenter/devicePanes/devicepane.cpp \
     statusCenter/devicePanes/wifidevicepane.cpp \
+    statusCenter/eap/securityeap.cpp \
+    statusCenter/eap/securityeappeap.cpp \
+    statusCenter/eap/securityeapunsupported.cpp \
     statusCenter/networkstatuscenterleftpane.cpp \
     statusCenter/networkstatuscenterpane.cpp \
     statusCenter/popovers/wirelessnetworkselectionpopover.cpp
@@ -58,6 +61,9 @@ HEADERS += \
     statusCenter/devicePanes/abstractdevicepane.h \
     statusCenter/devicePanes/devicepane.h \
     statusCenter/devicePanes/wifidevicepane.h \
+    statusCenter/eap/securityeap.h \
+    statusCenter/eap/securityeappeap.h \
+    statusCenter/eap/securityeapunsupported.h \
     statusCenter/networkstatuscenterleftpane.h \
     statusCenter/networkstatuscenterpane.h \
     statusCenter/popovers/wirelessnetworkselectionpopover.h
@@ -84,6 +90,8 @@ include(../plugins.pri)
 FORMS += \
     statusCenter/devicePanes/devicepane.ui \
     statusCenter/devicePanes/wifidevicepane.ui \
+    statusCenter/eap/securityeappeap.ui \
+    statusCenter/eap/securityeapunsupported.ui \
     statusCenter/networkstatuscenterleftpane.ui \
     statusCenter/networkstatuscenterpane.ui \
     statusCenter/popovers/wirelessnetworkselectionpopover.ui

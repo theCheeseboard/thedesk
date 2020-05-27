@@ -129,7 +129,7 @@ void WirelessNetworkListDelegate::paint(QPainter* painter, const QStyleOptionVie
                 desc = tr("Secured with WPA2 Enterprise");
                 break;
             case NetworkManager::SAE:
-                desc = tr("Secured with SAE");
+                desc = tr("Secured with WPA3");
                 break;
         }
     }

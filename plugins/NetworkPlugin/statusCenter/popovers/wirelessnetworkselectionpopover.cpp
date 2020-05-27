@@ -29,7 +29,11 @@
 #include <NetworkManagerQt/Security8021xSetting>
 #include <QMenu>
 
+#include "../eap/securityeappeap.h"
+#include "../eap/securityeapunsupported.h"
+
 #include <ttoast.h>
+#include <terrorflash.h>
 
 #include "models/wirelessconnectionlistmodel.h"
 #include "models/wirelessaccesspointsmodel.h"
@@ -42,6 +46,8 @@ struct WirelessNetworkSelectionPopoverPrivate {
 
     NetworkManager::AccessPoint::Ptr apConnect;
     NetworkManager::WirelessSecurityType connectWithSecurity;
+
+    SecurityEap* eapPane = nullptr;
 };
 
 WirelessNetworkSelectionPopover::WirelessNetworkSelectionPopover(QString deviceUni, QWidget* parent) :
@@ -51,6 +57,7 @@ WirelessNetworkSelectionPopover::WirelessNetworkSelectionPopover(QString deviceU
 
     ui->titleLabel->setBackButtonShown(true);
     ui->keyTitleLabel->setBackButtonShown(true);
+    ui->eapMethodTitleLabel->setBackButtonShown(true);
 
     d = new WirelessNetworkSelectionPopoverPrivate();
     d->device = NetworkManager::findNetworkInterface(deviceUni).staticCast<NetworkManager::WirelessDevice>();
@@ -112,13 +119,17 @@ void WirelessNetworkSelectionPopover::activateConnection(const QModelIndex& inde
             case NetworkManager::DynamicWep:
             case NetworkManager::WpaPsk:
             case NetworkManager::Wpa2Psk:
+            case NetworkManager::SAE:
                 ui->securityNetworkName->setText(d->apConnect->ssid());
+                ui->networkKey->clear();
                 ui->stackedWidget->setCurrentWidget(ui->keyPage);
                 break;
             case NetworkManager::WpaEap:
             case NetworkManager::Wpa2Eap:
-//                break;
-            case NetworkManager::SAE:
+                ui->eapMethodTitleLabel->setText(d->apConnect->ssid());
+                ui->networkKey->clear();
+                ui->stackedWidget->setCurrentWidget(ui->eapMethodPage);
+                break;
             case NetworkManager::Leap:
             case NetworkManager::UnknownSecurity:
             default: {
@@ -160,12 +171,19 @@ void WirelessNetworkSelectionPopover::createConnection() {
             securitySettings->setPsk(ui->networkKey->text());
             securitySettings->setInitialized(true);
             break;
+        case NetworkManager::SAE:
+            securitySettings->setKeyMgmt(NetworkManager::WirelessSecuritySetting::SAE);
+            securitySettings->setPsk(ui->networkKey->text());
+            securitySettings->setInitialized(true);
+            break;
         case NetworkManager::WpaEap:
         case NetworkManager::Wpa2Eap:
             securitySettings->setKeyMgmt(NetworkManager::WirelessSecuritySetting::WpaEap);
             securitySettings->setInitialized(true);
-//                break;
-        case NetworkManager::SAE:
+
+            d->eapPane->populateSetting(eapSettings);
+            eapSettings->setInitialized(true);
+            break;
         case NetworkManager::Leap:
         case NetworkManager::UnknownSecurity:
         default:
@@ -209,5 +227,59 @@ void WirelessNetworkSelectionPopover::on_newNetworksListView_activated(const QMo
 }
 
 void WirelessNetworkSelectionPopover::on_securityConnectButton_clicked() {
+    switch (d->connectWithSecurity) {
+        case NetworkManager::StaticWep:
+        case NetworkManager::DynamicWep:
+        case NetworkManager::SAE:
+            if (ui->networkKey->text().isEmpty()) {
+                tErrorFlash::flashError(ui->networkKeyContainer);
+                return;
+            }
+            break;
+        case NetworkManager::WpaPsk:
+        case NetworkManager::Wpa2Psk:
+            if (ui->networkKey->text().length() < 8) {
+                tErrorFlash::flashError(ui->networkKeyContainer);
+                return;
+            }
+            break;
+        default:
+            return;
+    }
+
     this->createConnection();
+}
+
+void WirelessNetworkSelectionPopover::on_eapMethodTitleLabel_backButtonClicked() {
+    ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+}
+
+void WirelessNetworkSelectionPopover::on_eapMethodList_activated(const QModelIndex& index) {
+    if (d->eapPane) {
+        ui->stackedWidget->removeWidget(d->eapPane);
+        d->eapPane->deleteLater();
+        d->eapPane = nullptr;
+    }
+
+    switch (index.row()) {
+        case 0: //TLS
+        case 1: //LEAP
+        case 2: //PWD
+        case 3: //FAST
+        case 4: //TTLS
+            d->eapPane = new SecurityEapUnsupported(this);
+            break;
+        case 5: //PEAP
+            d->eapPane = new SecurityEapPeap(this);
+    }
+
+    if (d->eapPane) {
+        ui->stackedWidget->addWidget(d->eapPane);
+        ui->stackedWidget->setCurrentWidget(d->eapPane);
+
+        connect(d->eapPane, &SecurityEap::back, this, [ = ] {
+            ui->stackedWidget->setCurrentWidget(ui->eapMethodPage);
+        });
+        connect(d->eapPane, &SecurityEap::done, this, &WirelessNetworkSelectionPopover::createConnection);
+    }
 }

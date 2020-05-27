@@ -60,6 +60,9 @@ PlatformTheme::PlatformTheme() : QPlatformTheme() {
     d->cursorHandler = new CursorHandler(d->parent);
 
     QObject::connect(d->settings, &tSettings::settingChanged, d->parent, [ = ](QString key, QVariant value) {
+        //Qt Creator might crash heh...
+        if (QApplication::applicationName() == "QtCreator") return;
+
         if (key.startsWith("Fonts/")) {
             updateFont();
 
@@ -171,6 +174,8 @@ QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
         case QPlatformTheme::ItemViewActivateItemOnSingleClick:
         case QPlatformTheme::DialogButtonBoxButtonsHaveIcons:
             return true;
+        case QPlatformTheme::PasswordMaskCharacter:
+            return QChar(0x2022);
         case QPlatformTheme::CursorFlashTime:
         case QPlatformTheme::KeyboardInputInterval:
         case QPlatformTheme::MouseDoubleClickInterval:
@@ -190,7 +195,6 @@ QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
         case QPlatformTheme::UiEffects:
         case QPlatformTheme::TabFocusBehavior:
         case QPlatformTheme::IconPixmapSizes:
-        case QPlatformTheme::PasswordMaskCharacter:
         case QPlatformTheme::DialogSnapToDefaultButton:
         case QPlatformTheme::ContextMenuOnMouseRelease:
         case QPlatformTheme::MousePressAndHoldInterval:

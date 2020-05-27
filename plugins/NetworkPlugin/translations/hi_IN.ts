@@ -222,6 +222,96 @@
     </message>
 </context>
 <context>
+    <name>SecurityEapPeap</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PEAP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the settings for this network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CA Certificate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anonymous Identity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Phase-2 Authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MSCHAPv2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MD5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GTC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PEAP version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version 0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Version 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Certificates (*.pem, *.cer)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SecurityEapUnsupported</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unsupported Security Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sorry, theDesk doesn&apos;t support those security settings at the moment. You can try using the terminal to configure this network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WifiDevicePane</name>
     <message>
         <source>Form</source>
@@ -331,11 +421,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Secured with SAE</source>
+        <source>Connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Connected</source>
+        <source>Secured with WPA3</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -383,6 +473,38 @@
     </message>
     <message>
         <source>Enter the security key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TLS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LEAP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PWD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FAST</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TTLS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PEAP</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
