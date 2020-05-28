@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>Select a locale</source>
-        <translation type="unfinished"></translation>
+        <translation>izberite lokacijo</translation>
     </message>
 </context>
 </TS>
