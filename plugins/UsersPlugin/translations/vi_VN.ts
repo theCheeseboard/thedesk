@@ -511,7 +511,7 @@
     <message>
         <location filename="../settings/userspane.cpp" line="90"/>
         <source>Lock User</source>
-        <translation>Vợ hiếu người dùng</translation>
+        <translation>Vô hiệu người dùng</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="91"/>
