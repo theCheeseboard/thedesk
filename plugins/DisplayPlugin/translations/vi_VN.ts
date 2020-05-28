@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="vi_VN">
 <context>
     <name>DisplaySettings</name>
     <message>
@@ -9,43 +9,43 @@
     </message>
     <message>
         <source>Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Màn hình</translation>
     </message>
     <message>
         <source>ARRANGE</source>
-        <translation type="unfinished"></translation>
+        <translation>SẮP XẾP</translation>
     </message>
     <message>
         <source>Coming soon!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sắp ra mắt!</translation>
     </message>
     <message>
         <source>REDSHIFT</source>
-        <translation type="unfinished"></translation>
+        <translation>REDSHIFT</translation>
     </message>
     <message>
         <source>Redshift blocks blue light so that you can sleep better at night</source>
-        <translation type="unfinished"></translation>
+        <translation>Redshift chặn ánh sáng màu lam để cho bạn ngủ ngon hơn vào ban đêm</translation>
     </message>
     <message>
         <source>Schedule Redshift</source>
-        <translation type="unfinished"></translation>
+        <translation>Lên lịch Redshift</translation>
     </message>
     <message>
         <source>Intensity</source>
-        <translation type="unfinished"></translation>
+        <translation>Cường độ</translation>
     </message>
     <message>
         <source>Follow Sunlight Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>Theo mặt trời</translation>
     </message>
     <message>
         <source>Start at</source>
-        <translation type="unfinished"></translation>
+        <translation>Bật</translation>
     </message>
     <message>
         <source>End at</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt</translation>
     </message>
 </context>
 </TS>
