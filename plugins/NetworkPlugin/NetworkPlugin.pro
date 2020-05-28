@@ -1,4 +1,4 @@
-QT += gui widgets network
+QT += gui widgets network concurrent
 
 TEMPLATE = lib
 CONFIG += plugin
@@ -44,11 +44,13 @@ SOURCES += \
     statusCenter/devicePanes/abstractdevicepane.cpp \
     statusCenter/devicePanes/devicepane.cpp \
     statusCenter/devicePanes/wifidevicepane.cpp \
+    statusCenter/devicePanes/wireddevicepane.cpp \
     statusCenter/eap/securityeap.cpp \
     statusCenter/eap/securityeappeap.cpp \
     statusCenter/eap/securityeapunsupported.cpp \
     statusCenter/networkstatuscenterleftpane.cpp \
     statusCenter/networkstatuscenterpane.cpp \
+    statusCenter/popovers/connectionselectionpopover.cpp \
     statusCenter/popovers/wirelessnetworkselectionpopover.cpp
 
 HEADERS += \
@@ -61,11 +63,13 @@ HEADERS += \
     statusCenter/devicePanes/abstractdevicepane.h \
     statusCenter/devicePanes/devicepane.h \
     statusCenter/devicePanes/wifidevicepane.h \
+    statusCenter/devicePanes/wireddevicepane.h \
     statusCenter/eap/securityeap.h \
     statusCenter/eap/securityeappeap.h \
     statusCenter/eap/securityeapunsupported.h \
     statusCenter/networkstatuscenterleftpane.h \
     statusCenter/networkstatuscenterpane.h \
+    statusCenter/popovers/connectionselectionpopover.h \
     statusCenter/popovers/wirelessnetworkselectionpopover.h
 
 DISTFILES += \
@@ -90,8 +94,10 @@ include(../plugins.pri)
 FORMS += \
     statusCenter/devicePanes/devicepane.ui \
     statusCenter/devicePanes/wifidevicepane.ui \
+    statusCenter/devicePanes/wireddevicepane.ui \
     statusCenter/eap/securityeappeap.ui \
     statusCenter/eap/securityeapunsupported.ui \
     statusCenter/networkstatuscenterleftpane.ui \
     statusCenter/networkstatuscenterpane.ui \
+    statusCenter/popovers/connectionselectionpopover.ui \
     statusCenter/popovers/wirelessnetworkselectionpopover.ui

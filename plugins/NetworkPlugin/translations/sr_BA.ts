@@ -165,6 +165,21 @@
     </message>
 </context>
 <context>
+    <name>ConnectionSelectionPopover</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select Connection Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select a connection profile to use</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DevicePane</name>
     <message>
         <source>Form</source>
@@ -318,10 +333,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>STATUS</source>
         <translation type="unfinished"></translation>
     </message>
@@ -375,6 +386,77 @@
     </message>
     <message>
         <source>the network</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WiredDevicePane</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>STATUS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ACTIONS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wired</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wi-Fi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connection Failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting to the network failed because %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Router</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect an Ethernet cable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This network is unavailable because %2.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -28,6 +28,7 @@
 
 #include "devicePanes/devicepane.h"
 #include "devicePanes/wifidevicepane.h"
+#include "devicePanes/wireddevicepane.h"
 
 #include <statemanager.h>
 #include <statuscentermanager.h>
@@ -39,6 +40,7 @@ struct NetworkStatusCenterPanePrivate {
     QDBusServiceWatcher* nmWatcher;
 
     QStringList unis;
+    QStringList visibleUnis;
     QMap<QString, AbstractDevicePane*> devicePanes;
 };
 
@@ -102,26 +104,42 @@ void NetworkStatusCenterPane::deviceAdded(QString uni) {
     AbstractDevicePane* devicePane;
     NetworkManager::Device::Ptr device = NetworkManager::findNetworkInterface(uni);
 
-    if (!device->managed()) return; //We can't do anything with this device so let's not bother about it
-
     switch (device->type()) {
         case NetworkManager::Device::Wifi:
             devicePane = new WifiDevicePane(uni);
+            break;
+        case NetworkManager::Device::Ethernet:
+            devicePane = new WiredDevicePane(uni);
             break;
         default:
             devicePane = new DevicePane(uni);
     }
 
-    ui->devicesStack->addWidget(devicePane);
-    d->leftPane->addItem(devicePane->leftPaneItem());
-    d->devicePanes.insert(uni, devicePane);
+    auto managedChanged = [ = ] {
+        if (device->managed() && !d->visibleUnis.contains(uni)) {
+            d->visibleUnis.append(uni);
+            d->leftPane->addItem(devicePane->leftPaneItem());
+            ui->devicesStack->addWidget(devicePane);
+            d->devicePanes.insert(uni, devicePane);
+        } else if (!device->managed() && d->visibleUnis.contains(uni)) {
+            d->visibleUnis.removeOne(uni);
+            d->leftPane->removeItem(devicePane->leftPaneItem());
+            ui->devicesStack->removeWidget(devicePane);
+            d->devicePanes.remove(uni);
+        }
+    };
+    connect(device.data(), &NetworkManager::Device::managedChanged, this, managedChanged);
+    managedChanged();
 }
 
 void NetworkStatusCenterPane::deviceRemoved(QString uni) {
     AbstractDevicePane* devicePane = d->devicePanes.value(uni);
     d->unis.removeOne(uni);
-    d->leftPane->removeItem(devicePane->leftPaneItem());
-    ui->devicesStack->removeWidget(devicePane);
+    if (d->visibleUnis.contains(uni)) {
+        d->leftPane->removeItem(devicePane->leftPaneItem());
+        ui->devicesStack->removeWidget(devicePane);
+        d->visibleUnis.removeOne(uni);
+    }
     devicePane->deleteLater();
     d->devicePanes.remove(uni);
 }
