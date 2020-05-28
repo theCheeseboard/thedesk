@@ -515,6 +515,25 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="manualPage">
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+      </layout>
+     </widget>
     </widget>
    </item>
   </layout>
@@ -533,6 +552,9 @@
    <extends>QStackedWidget</extends>
    <header location="global">tstackedwidget.h</header>
    <container>1</container>
+   <slots>
+    <signal>switchingFrame(int)</signal>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
@@ -544,12 +566,12 @@
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>537</x>
-     <y>318</y>
+     <x>455</x>
+     <y>30</y>
     </hint>
     <hint type="destinationlabel">
-     <x>606</x>
-     <y>319</y>
+     <x>489</x>
+     <y>30</y>
     </hint>
    </hints>
   </connection>

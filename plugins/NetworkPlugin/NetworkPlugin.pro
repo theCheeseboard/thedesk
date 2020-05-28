@@ -41,6 +41,9 @@ SOURCES += \
     models/wirelessconnectionlistmodel.cpp \
     models/wirelessnetworklistdelegate.cpp \
     plugin.cpp \
+    statusCenter/connectionEditor/connectioneditorpane.cpp \
+    statusCenter/connectionEditor/networkconnectioneditor.cpp \
+    statusCenter/connectionEditor/wificonnectioneditorpane.cpp \
     statusCenter/devicePanes/abstractdevicepane.cpp \
     statusCenter/devicePanes/devicepane.cpp \
     statusCenter/devicePanes/wifidevicepane.cpp \
@@ -60,6 +63,9 @@ HEADERS += \
     models/wirelessconnectionlistmodel.h \
     models/wirelessnetworklistdelegate.h \
     plugin.h \
+    statusCenter/connectionEditor/connectioneditorpane.h \
+    statusCenter/connectionEditor/networkconnectioneditor.h \
+    statusCenter/connectionEditor/wificonnectioneditorpane.h \
     statusCenter/devicePanes/abstractdevicepane.h \
     statusCenter/devicePanes/devicepane.h \
     statusCenter/devicePanes/wifidevicepane.h \
@@ -92,6 +98,8 @@ unix {
 include(../plugins.pri)
 
 FORMS += \
+    statusCenter/connectionEditor/networkconnectioneditor.ui \
+    statusCenter/connectionEditor/wificonnectioneditorpane.ui \
     statusCenter/devicePanes/devicepane.ui \
     statusCenter/devicePanes/wifidevicepane.ui \
     statusCenter/devicePanes/wireddevicepane.ui \

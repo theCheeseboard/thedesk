@@ -207,6 +207,33 @@
     </message>
 </context>
 <context>
+    <name>NetworkConnectionEditor</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connection Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DONE?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t save settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NetworkStatusCenterLeftPane</name>
     <message>
         <source>Form</source>
@@ -323,6 +350,37 @@
     </message>
     <message>
         <source>Sorry, theDesk doesn&apos;t support those security settings at the moment. You can try using the terminal to configure this network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WifiConnectionEditorPane</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wi-Fi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Infrastructure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ad-Hoc</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access Point</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -587,6 +645,18 @@
     </message>
     <message>
         <source>PEAP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wireless</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -54,6 +54,10 @@ class WirelessNetworkSelectionPopover : public QWidget {
 
         void on_eapMethodList_activated(const QModelIndex& index);
 
+        void on_manualButton_clicked();
+
+        void on_stackedWidget_switchingFrame(int frame);
+
     private:
         Ui::WirelessNetworkSelectionPopover* ui;
         WirelessNetworkSelectionPopoverPrivate* d;

@@ -34,10 +34,13 @@
 
 #include <ttoast.h>
 #include <terrorflash.h>
+#include <tpopover.h>
 
 #include "models/wirelessconnectionlistmodel.h"
 #include "models/wirelessaccesspointsmodel.h"
 #include "models/wirelessnetworklistdelegate.h"
+
+#include "../connectionEditor/networkconnectioneditor.h"
 
 struct WirelessNetworkSelectionPopoverPrivate {
     NetworkManager::WirelessDevice::Ptr device;
@@ -48,6 +51,7 @@ struct WirelessNetworkSelectionPopoverPrivate {
     NetworkManager::WirelessSecurityType connectWithSecurity;
 
     SecurityEap* eapPane = nullptr;
+    NetworkConnectionEditor* editor = nullptr;
 };
 
 WirelessNetworkSelectionPopover::WirelessNetworkSelectionPopover(QString deviceUni, QWidget* parent) :
@@ -211,6 +215,23 @@ void WirelessNetworkSelectionPopover::on_knownNetworksListView_customContextMenu
 
     QMenu* menu = new QMenu(this);
     menu->addSection(tr("For network %1").arg(cn->name()));
+    menu->addAction(QIcon::fromTheme("edit-rename"), tr("Edit"), [ = ] {
+        if (d->editor) {
+            ui->manualPage->layout()->removeWidget(d->editor);
+            d->editor->deleteLater();
+        }
+
+        d->editor = new NetworkConnectionEditor(cn, this);
+        ui->manualPage->layout()->addWidget(d->editor);
+        connect(d->editor, &NetworkConnectionEditor::accepted, this, [ = ] {
+            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+        });
+        connect(d->editor, &NetworkConnectionEditor::rejected, this, [ = ] {
+            ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+        });
+
+        ui->stackedWidget->setCurrentWidget(ui->manualPage);
+    });
     menu->addAction(QIcon::fromTheme("list-remove"), tr("Forget Network"), [ = ] {
         cn->remove();
     });
@@ -281,5 +302,41 @@ void WirelessNetworkSelectionPopover::on_eapMethodList_activated(const QModelInd
             ui->stackedWidget->setCurrentWidget(ui->eapMethodPage);
         });
         connect(d->eapPane, &SecurityEap::done, this, &WirelessNetworkSelectionPopover::createConnection);
+    }
+}
+
+void WirelessNetworkSelectionPopover::on_manualButton_clicked() {
+    if (d->editor) {
+        ui->manualPage->layout()->removeWidget(d->editor);
+        d->editor->deleteLater();
+    }
+
+    NetworkManager::ConnectionSettings::Ptr settings(new NetworkManager::ConnectionSettings(NetworkManager::ConnectionSettings::Wireless));
+    settings->setUuid(NetworkManager::ConnectionSettings::createNewUuid());
+    settings->setId(tr("Wireless"));
+
+    d->editor = new NetworkConnectionEditor(settings);
+    d->editor->setSaveButtonText(tr("Connect"));
+    ui->manualPage->layout()->addWidget(d->editor);
+    connect(d->editor, &NetworkConnectionEditor::accepted, this, [ = ](NetworkManager::Connection::Ptr connection) {
+        //Activate this connection
+        NetworkManager::activateConnection(connection->path(), d->device->uni(), "");
+        emit done();
+    });
+    connect(d->editor, &NetworkConnectionEditor::rejected, this, [ = ] {
+        ui->stackedWidget->setCurrentWidget(ui->selectionPage);
+    });
+
+    ui->stackedWidget->setCurrentWidget(ui->manualPage);
+}
+
+void WirelessNetworkSelectionPopover::on_stackedWidget_switchingFrame(int frame) {
+    tPopover* popover = tPopover::popoverForPopoverWidget(this);
+    if (ui->stackedWidget->widget(frame) == ui->manualPage) {
+        popover->setPopoverWidth(d->editor->preferredPopoverWidth());
+        popover->setDismissable(false);
+    } else {
+        popover->setPopoverWidth(SC_DPI(600));
+        popover->setDismissable(true);
     }
 }
