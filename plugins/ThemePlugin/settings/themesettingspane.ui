@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -360,7 +360,8 @@
                   <string>Button</string>
                  </property>
                  <property name="icon">
-                  <iconset theme="dialog-ok"/>
+                  <iconset theme="dialog-ok">
+                   <normaloff>.</normaloff>.</iconset>
                  </property>
                 </widget>
                </item>

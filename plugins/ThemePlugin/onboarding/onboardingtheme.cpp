@@ -61,6 +61,12 @@ OnboardingTheme::~OnboardingTheme() {
     delete ui;
 }
 
+void OnboardingTheme::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}
+
 void OnboardingTheme::updateSettings() {
     QString baseColor = d->platformSettings->value("Palette/base").toString();
     if (baseColor == "dark") {

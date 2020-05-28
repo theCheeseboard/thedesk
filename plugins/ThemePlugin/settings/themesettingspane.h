@@ -38,6 +38,8 @@ class ThemeSettingsPane : public StatusCenterPane {
         Ui::ThemeSettingsPane* ui;
         ThemeSettingsPanePrivate* d;
 
+        void changeEvent(QEvent* event);
+
         void updateBaseColour();
         void updateFonts();
         void updateWidgets();

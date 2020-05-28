@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="vi_VN">
+<TS version="2.1" language="vi_VN" sourcelanguage="en_US">
 <context>
     <name>OnboardingTheme</name>
     <message>
-        <location filename="../onboarding/onboardingtheme.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../onboarding/onboardingtheme.ui" line="35"/>
-        <location filename="../onboarding/onboardingtheme.cpp" line="85"/>
+        <location filename="../onboarding/onboardingtheme.cpp" line="91"/>
         <source>Theme</source>
         <translation>Giao diện</translation>
     </message>
@@ -35,12 +30,12 @@
         <translation>Tiếp</translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingtheme.cpp" line="70"/>
+        <location filename="../onboarding/onboardingtheme.cpp" line="76"/>
         <source>Intellect has spoken; blinding shall be no more!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingtheme.cpp" line="75"/>
+        <location filename="../onboarding/onboardingtheme.cpp" line="81"/>
         <source>One whose wisdom has brought them the light of day!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -48,13 +43,8 @@
 <context>
     <name>ThemeSettingsPane</name>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settings/themesettingspane.ui" line="35"/>
-        <location filename="../settings/themesettingspane.cpp" line="132"/>
+        <location filename="../settings/themesettingspane.cpp" line="139"/>
         <source>Theme</source>
         <translation>Giao diện</translation>
     </message>
@@ -104,37 +94,37 @@
         <translation>Nút</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="372"/>
+        <location filename="../settings/themesettingspane.ui" line="373"/>
         <source>Radio Button 2</source>
         <translation>Nút chọn 2</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="382"/>
+        <location filename="../settings/themesettingspane.ui" line="383"/>
         <source>Using the theme set above, interface elements will look like this:</source>
         <translation>Sử dụng giao diện được đặt ở trên, các thành phần sẽ hiện như thế này:</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="389"/>
+        <location filename="../settings/themesettingspane.ui" line="390"/>
         <source>Radio Button 1</source>
         <translation>Nút chọn 1</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="396"/>
+        <location filename="../settings/themesettingspane.ui" line="397"/>
         <source>Check Box 2</source>
         <translation>Hộp kiểm 2</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="412"/>
+        <location filename="../settings/themesettingspane.ui" line="413"/>
         <source>DEMO</source>
         <translation>BẢN XEM TRƯỚC</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="419"/>
+        <location filename="../settings/themesettingspane.ui" line="420"/>
         <source>Check Box 1</source>
         <translation>Hộp kiểm 1</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="433"/>
+        <location filename="../settings/themesettingspane.ui" line="434"/>
         <source>Type here!</source>
         <translation>Nhập ở đây!</translation>
     </message>

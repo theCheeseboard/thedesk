@@ -77,6 +77,13 @@ ThemeSettingsPane::~ThemeSettingsPane() {
     delete ui;
 }
 
+void ThemeSettingsPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}
+
 void ThemeSettingsPane::updateBaseColour() {
     QSignalBlocker blocker(ui->baseColourComboBox);
     QString baseColor = d->themeSettings->value("Palette/base").toString();

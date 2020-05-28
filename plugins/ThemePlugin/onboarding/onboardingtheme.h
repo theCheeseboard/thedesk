@@ -38,6 +38,8 @@ class OnboardingTheme : public OnboardingPage {
         Ui::OnboardingTheme* ui;
         OnboardingThemePrivate* d;
 
+        void changeEvent(QEvent* event);
+
         void updateSettings();
 
         // OnboardingPage interface

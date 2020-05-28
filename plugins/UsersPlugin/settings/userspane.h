@@ -57,6 +57,8 @@ class UsersPane : public StatusCenterPane {
         Ui::UsersPane* ui;
         UsersPanePrivate* d;
 
+        void changeEvent(QEvent* event);
+
         tPromise<void>* checkPolkit(bool isOwnUser);
         void currentUserChanged();
 

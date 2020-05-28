@@ -224,3 +224,11 @@ void UsersPane::on_usernameTitleLabel_backButtonClicked() {
     StateManager::instance()->statusCenterManager()->showStatusCenterHamburgerMenu();
 }
 
+void UsersPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}
+
+

@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="vi_VN">
+<TS version="2.1" language="vi_VN" sourcelanguage="en_US">
 <context>
     <name>AddUserDialog</name>
-    <message>
-        <location filename="../settings/adduserdialog.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="93"/>
         <location filename="../settings/adduserdialog.ui" line="629"/>
@@ -139,14 +134,6 @@
         <translation>Thêm người dùng này vào hệ thống của bạn?</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.ui" line="681"/>
-        <location filename="../settings/adduserdialog.ui" line="709"/>
-        <location filename="../settings/adduserdialog.ui" line="722"/>
-        <location filename="../settings/adduserdialog.ui" line="736"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settings/adduserdialog.ui" line="695"/>
         <source>Real Name</source>
         <translation>Họ và tên</translation>
@@ -184,11 +171,6 @@
 </context>
 <context>
     <name>ChangePasswordDialog</name>
-    <message>
-        <location filename="../settings/changepassworddialog.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="68"/>
         <source>Change Password</source>
@@ -274,11 +256,6 @@
 <context>
     <name>ChangeRealNameDialog</name>
     <message>
-        <location filename="../settings/changerealnamedialog.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settings/changerealnamedialog.ui" line="68"/>
         <source>Change Real Name</source>
         <translation>Đổi họ và tên</translation>
@@ -306,11 +283,6 @@
 </context>
 <context>
     <name>DeleteUserDialog</name>
-    <message>
-        <location filename="../settings/deleteuserdialog.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="68"/>
         <location filename="../settings/deleteuserdialog.ui" line="153"/>
@@ -373,11 +345,6 @@
 <context>
     <name>LockUserDialog</name>
     <message>
-        <location filename="../settings/lockuserdialog.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settings/lockuserdialog.ui" line="68"/>
         <location filename="../settings/lockuserdialog.ui" line="90"/>
         <source>Lock Account</source>
@@ -412,11 +379,6 @@
 </context>
 <context>
     <name>UserTypeDialog</name>
-    <message>
-        <location filename="../settings/usertypedialog.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="93"/>
         <source>Change User Type</source>
@@ -460,11 +422,6 @@
 </context>
 <context>
     <name>UsersPane</name>
-    <message>
-        <location filename="../settings/userspane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../settings/userspane.ui" line="89"/>
         <location filename="../settings/userspane.cpp" line="212"/>
