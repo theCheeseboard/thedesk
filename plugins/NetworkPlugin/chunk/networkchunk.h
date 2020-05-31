@@ -38,6 +38,7 @@ class NetworkChunk : public IconTextChunk {
         void networkManagerGone();
 
         void updatePrimaryConnection();
+        void updateText();
 };
 
 #endif // NETWORKCHUNK_H

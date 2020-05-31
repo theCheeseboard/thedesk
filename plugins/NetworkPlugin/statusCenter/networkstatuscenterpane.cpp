@@ -145,7 +145,7 @@ void NetworkStatusCenterPane::deviceRemoved(QString uni) {
 }
 
 QString NetworkStatusCenterPane::name() {
-    return "NetworkManager";
+    return "NetworkManagerPane";
 }
 
 QString NetworkStatusCenterPane::displayName() {

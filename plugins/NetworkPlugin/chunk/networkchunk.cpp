@@ -55,6 +55,7 @@ NetworkChunk::NetworkChunk() : IconTextChunk("Network") {
     if (QDBusConnection::systemBus().interface()->registeredServiceNames().value().contains("org.freedesktop.NetworkManager")) networkManagerRunning();
 
     connect(NetworkManager::notifier(), &NetworkManager::Notifier::primaryConnectionChanged, this, &NetworkChunk::updatePrimaryConnection);
+    connect(NetworkManager::notifier(), &NetworkManager::Notifier::connectivityChanged, this, &NetworkChunk::updateText);
 }
 
 NetworkChunk::~NetworkChunk() {
@@ -110,7 +111,30 @@ void NetworkChunk::updatePrimaryConnection() {
     }
 
     connect(d->updater, &ChunkUpdater::iconChanged, this, &NetworkChunk::setIcon);
-    connect(d->updater, &ChunkUpdater::textChanged, this, &NetworkChunk::setText);
+    connect(d->updater, &ChunkUpdater::textChanged, this, &NetworkChunk::updateText);
     this->setIcon(d->updater->icon());
     this->setText(d->updater->text());
+}
+
+void NetworkChunk::updateText() {
+    //Keep the text as is if there is no updater; we're disconnected!
+    if (!d->updater) return;
+
+    QStringList text;
+    text.append(d->updater->text());
+
+    switch (NetworkManager::connectivity()) {
+        case NetworkManager::Portal:
+            text.append(tr("Login Required"));
+            break;
+        case NetworkManager::Limited:
+            text.append(tr("Can't get to the Internet"));
+            break;
+        case NetworkManager::NoConnectivity:
+        case NetworkManager::UnknownConnectivity:
+        case NetworkManager::Full:
+            break;
+    }
+
+    this->setText(text.join(" · "));
 }

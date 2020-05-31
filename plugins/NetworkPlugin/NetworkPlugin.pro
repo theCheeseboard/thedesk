@@ -59,7 +59,8 @@ SOURCES += \
     statusCenter/networkstatuscenterleftpane.cpp \
     statusCenter/networkstatuscenterpane.cpp \
     statusCenter/popovers/connectionselectionpopover.cpp \
-    statusCenter/popovers/wirelessnetworkselectionpopover.cpp
+    statusCenter/popovers/wirelessnetworkselectionpopover.cpp \
+    switchmanager.cpp
 
 HEADERS += \
     chunk/chunkupdater.h \
@@ -86,7 +87,8 @@ HEADERS += \
     statusCenter/networkstatuscenterleftpane.h \
     statusCenter/networkstatuscenterpane.h \
     statusCenter/popovers/connectionselectionpopover.h \
-    statusCenter/popovers/wirelessnetworkselectionpopover.h
+    statusCenter/popovers/wirelessnetworkselectionpopover.h \
+    switchmanager.h
 
 DISTFILES += \
     Plugin.json \

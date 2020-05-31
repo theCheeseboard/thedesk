@@ -19,9 +19,19 @@
  * *************************************/
 #include "wiredchunkupdater.h"
 
-
+#include <NetworkManagerQt/Manager>
 
 WiredChunkUpdater::WiredChunkUpdater(QObject* parent) : ChunkUpdater(parent) {
-    this->setIcon(QIcon::fromTheme("network-wired-connected"));
     this->setText(tr("Wired"));
+
+    connect(NetworkManager::notifier(), &NetworkManager::Notifier::connectivityChanged, this, &WiredChunkUpdater::updateChunk);
+    updateChunk();
+}
+
+void WiredChunkUpdater::updateChunk() {
+    if (NetworkManager::connectivity() != NetworkManager::Connectivity::Full) {
+        this->setIcon(QIcon::fromTheme("network-wired-error"));
+    } else {
+        this->setIcon(QIcon::fromTheme("network-wired-activated"));
+    }
 }

@@ -50,7 +50,7 @@ struct RedshiftDaemonPrivate {
 RedshiftDaemon::RedshiftDaemon(QObject* parent) : QObject(parent) {
     d = new RedshiftDaemonPrivate();
 
-    d->sw = new QuickSwitch("redshift");
+    d->sw = new QuickSwitch("Redshift");
     d->sw->setTitle("Redshift");
     connect(d->sw, &QuickSwitch::toggled, this, [ = ](bool on) {
         if (d->updatingState) return;

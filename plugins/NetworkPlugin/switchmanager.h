@@ -17,20 +17,28 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef WIREDCHUNKUPDATER_H
-#define WIREDCHUNKUPDATER_H
+#ifndef SWITCHMANAGER_H
+#define SWITCHMANAGER_H
 
-#include "chunkupdater.h"
+#include <QObject>
 
-class WiredChunkUpdater : public ChunkUpdater {
+struct SwitchManagerPrivate;
+class SwitchManager : public QObject {
         Q_OBJECT
     public:
-        explicit WiredChunkUpdater(QObject* parent = nullptr);
+        explicit SwitchManager(QObject* parent = nullptr);
+        ~SwitchManager();
 
     signals:
 
     private:
-        void updateChunk();
+        SwitchManagerPrivate* d;
+
+        void networkManagerRunning();
+        void networkManagerGone();
+        void updateDevices();
+
+        void setFlightMode(bool flightOn);
 };
 
-#endif // WIREDCHUNKUPDATER_H
+#endif // SWITCHMANAGER_H

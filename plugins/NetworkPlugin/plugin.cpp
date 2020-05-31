@@ -27,6 +27,7 @@
 #include <QDir>
 #include <onboardingmanager.h>
 #include "chunk/networkchunk.h"
+#include "switchmanager.h"
 #include "tsettings.h"
 
 #include "statusCenter/networkstatuscenterpane.h"
@@ -36,6 +37,7 @@ struct PluginPrivate {
 
     NetworkStatusCenterPane* statusCenterPane;
     NetworkChunk* chunk;
+    SwitchManager* switches;
 };
 
 Plugin::Plugin() {
@@ -59,9 +61,11 @@ void Plugin::activate() {
     StateManager::statusCenterManager()->addPane(d->statusCenterPane);
 
     d->chunk = new NetworkChunk();
+    d->switches = new SwitchManager();
 }
 
 void Plugin::deactivate() {
+    d->switches->deleteLater();
     d->chunk->deleteLater();
     StateManager::statusCenterManager()->removePane(d->statusCenterPane);
     d->statusCenterPane->deleteLater();

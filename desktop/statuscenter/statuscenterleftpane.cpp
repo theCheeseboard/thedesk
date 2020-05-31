@@ -57,7 +57,11 @@ void StatusCenterLeftPane::removeItem(QListWidgetItem* item) {
 void StatusCenterLeftPane::setAttached(bool attached) {
     d->attached = attached;
     if (attached) {
-        this->layout()->setContentsMargins(0, 0, 1, 0);
+        if (this->layoutDirection() == Qt::RightToLeft) {
+            this->layout()->setContentsMargins(1, 0, 1, 0);
+        } else {
+            this->layout()->setContentsMargins(0, 0, 1, 0);
+        }
         this->setFixedWidth(SC_DPI(300) + 1);
     } else {
         this->layout()->setContentsMargins(0, 0, 0, 0);
@@ -92,13 +96,19 @@ void StatusCenterLeftPane::paintEvent(QPaintEvent* event) {
     if (d->attached) {
         QPainter painter(this);
         painter.setPen(theLibsGlobal::lineColor(this->palette().color(QPalette::WindowText)));
-        painter.drawLine(this->width() - 1, 0, this->width() - 1, this->height());
+        if (this->layoutDirection() == Qt::RightToLeft) {
+            painter.drawLine(0, 0, 0, this->height());
+        } else {
+            painter.drawLine(this->width() - 1, 0, this->width() - 1, this->height());
+        }
     }
 }
 
 void StatusCenterLeftPane::changeEvent(QEvent* event) {
     if (event->type() == QEvent::LanguageChange) {
         ui->retranslateUi(this);
+    } else if (event->type() == QEvent::LayoutDirectionChange) {
+        this->setAttached(d->attached);
     }
 }
 

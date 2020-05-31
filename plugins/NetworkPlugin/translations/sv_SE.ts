@@ -219,6 +219,14 @@
         <source>Disconnected</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Login Required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Can&apos;t get to the Internet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NetworkConnectionEditor</name>
@@ -364,6 +372,21 @@
     </message>
     <message>
         <source>Sorry, theDesk doesn&apos;t support those security settings at the moment. You can try using the terminal to configure this network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SwitchManager</name>
+    <message>
+        <source>Flight Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wi-Fi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cellular</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -27,6 +27,7 @@
 #include <QPointer>
 #include <tpopover.h>
 #include <QShortcut>
+#include <tsettings.h>
 #include "statuscenterleftpane.h"
 #include "common/common.h"
 #include "systemsettings/systemsettings.h"
@@ -46,6 +47,8 @@ struct StatusCenterPrivate {
 
     QStringList preferredPaneOrder;
     QStringList preferredSwitchOrder;
+
+    tSettings settings;
 };
 
 StatusCenter::StatusCenter(QWidget* parent) :
@@ -56,6 +59,13 @@ StatusCenter::StatusCenter(QWidget* parent) :
     d = new StatusCenterPrivate();
 
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Lift);
+
+    d->preferredPaneOrder = d->settings.delimitedList("StatusCenter/panesOrder");
+    d->preferredSwitchOrder = d->settings.delimitedList("StatusCenter/quickSwitchOrder");
+
+    d->preferredPaneOrder.removeAll("SystemSettings");
+    d->preferredPaneOrder.append("SystemSettings");
+
     d->leftPane = new StatusCenterLeftPane(this);
 
     if (this->width() <= SC_DPI(1024)) {
