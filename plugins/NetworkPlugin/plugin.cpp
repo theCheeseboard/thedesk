@@ -26,6 +26,7 @@
 #include <QApplication>
 #include <QDir>
 #include <onboardingmanager.h>
+#include "chunk/networkchunk.h"
 #include "tsettings.h"
 
 #include "statusCenter/networkstatuscenterpane.h"
@@ -34,6 +35,7 @@ struct PluginPrivate {
     int translationSet;
 
     NetworkStatusCenterPane* statusCenterPane;
+    NetworkChunk* chunk;
 };
 
 Plugin::Plugin() {
@@ -55,9 +57,12 @@ void Plugin::activate() {
 
     d->statusCenterPane = new NetworkStatusCenterPane();
     StateManager::statusCenterManager()->addPane(d->statusCenterPane);
+
+    d->chunk = new NetworkChunk();
 }
 
 void Plugin::deactivate() {
+    d->chunk->deleteLater();
     StateManager::statusCenterManager()->removePane(d->statusCenterPane);
     d->statusCenterPane->deleteLater();
     StateManager::localeManager()->removeTranslationSet(d->translationSet);

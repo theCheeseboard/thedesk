@@ -28,7 +28,9 @@ class Common {
     public:
         enum WirelessType {
             WiFi,
-            Cellular
+            Cellular,
+            WiFiError,
+            CellularError
         };
 
         static QString stateChangeReasonToString(NetworkManager::Device::StateChangeReason reason);

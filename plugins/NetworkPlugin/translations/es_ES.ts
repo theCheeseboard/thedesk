@@ -207,6 +207,20 @@
     </message>
 </context>
 <context>
+    <name>GenericChunkUpdater</name>
+    <message>
+        <source>Connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NetworkChunk</name>
+    <message>
+        <source>Disconnected</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NetworkConnectionEditor</name>
     <message>
         <source>Form</source>
@@ -444,6 +458,13 @@
     </message>
     <message>
         <source>the network</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WiredChunkUpdater</name>
+    <message>
+        <source>Wired</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

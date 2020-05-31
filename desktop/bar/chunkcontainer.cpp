@@ -31,8 +31,8 @@ struct ChunkContainerPrivate {
     QList<QPair<QString, Chunk*>> loadedChunks;
     QStringList preferredChunkOrder = {
         "OverviewClock",
+        "Network",
         "network-cellular",
-        "network-wireless",
     };
 };
 

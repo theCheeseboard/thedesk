@@ -35,6 +35,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chunk/chunkupdater.cpp \
+    chunk/genericchunkupdater.cpp \
+    chunk/networkchunk.cpp \
+    chunk/wiredchunkupdater.cpp \
+    chunk/wirelesschunkupdater.cpp \
     common.cpp \
     models/deviceconnectionlistmodel.cpp \
     models/wirelessaccesspointsmodel.cpp \
@@ -57,6 +62,11 @@ SOURCES += \
     statusCenter/popovers/wirelessnetworkselectionpopover.cpp
 
 HEADERS += \
+    chunk/chunkupdater.h \
+    chunk/genericchunkupdater.h \
+    chunk/networkchunk.h \
+    chunk/wiredchunkupdater.h \
+    chunk/wirelesschunkupdater.h \
     common.h \
     models/deviceconnectionlistmodel.h \
     models/wirelessaccesspointsmodel.h \

@@ -159,8 +159,14 @@ QString Common::iconForSignalStrength(int strength, Common::WirelessType type) {
         case Common::WiFi:
             iconString += "wireless-connected-";
             break;
+        case Common::WiFiError:
+            iconString += "wireless-error-";
+            break;
         case Common::Cellular:
             iconString += "cellular-connected-";
+            break;
+        case Common::CellularError:
+            iconString += "cellular-error-";
             break;
     }
 
