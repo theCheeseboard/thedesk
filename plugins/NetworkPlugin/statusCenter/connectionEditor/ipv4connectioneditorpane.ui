@@ -266,6 +266,9 @@
        </item>
        <item>
         <widget class="tConditionalWidget" name="dnsWidget" native="true">
+         <property name="autoFillBackground">
+          <bool>true</bool>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <property name="spacing">
            <number>0</number>
@@ -404,6 +407,17 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>configurationMethod</tabstop>
+  <tabstop>requireIPv4Switch</tabstop>
+  <tabstop>ipAddress</tabstop>
+  <tabstop>ipSubnet</tabstop>
+  <tabstop>ipGateway</tabstop>
+  <tabstop>dnsServer</tabstop>
+  <tabstop>addDnsServerButton</tabstop>
+  <tabstop>dnsList</tabstop>
+  <tabstop>scrollArea</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

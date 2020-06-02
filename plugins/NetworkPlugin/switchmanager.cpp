@@ -42,6 +42,7 @@ struct SwitchManagerPrivate {
     QuickSwitch* cellularSwitch;
 
     tSettings settings;
+    bool block = false;
 };
 
 SwitchManager::SwitchManager(QObject* parent) : QObject(parent) {

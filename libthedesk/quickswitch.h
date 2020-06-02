@@ -23,6 +23,7 @@
 #include <QObject>
 
 struct QuickSwitchPrivate;
+class tSwitch;
 class QuickSwitch : public QObject {
         Q_OBJECT
     public:
@@ -36,6 +37,8 @@ class QuickSwitch : public QObject {
 
         void setChecked(bool isChecked);
         bool isChecked();
+
+        void setSwitch(tSwitch* s);
 
     signals:
         void titleChanged(QString title);

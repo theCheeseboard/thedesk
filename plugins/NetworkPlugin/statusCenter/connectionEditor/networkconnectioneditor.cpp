@@ -181,7 +181,6 @@ void NetworkConnectionEditor::updateUnsaved() {
     tVariantAnimation* anim = new tVariantAnimation(this);
     anim->setStartValue(ui->unsavedPane->height());
     if (d->haveUnsaved) {
-        ui->leftLine->setVisible(true);
         anim->setEndValue(ui->unsavedPane->sizeHint().height());
     } else {
         anim->setEndValue(0);
@@ -191,10 +190,7 @@ void NetworkConnectionEditor::updateUnsaved() {
     connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
         ui->unsavedPane->setFixedHeight(value.toInt());
     });
-    connect(anim, &tVariantAnimation::finished, this, [ = ] {
-        if (anim->endValue() == 0) ui->leftLine->setVisible(false);
-        anim->deleteLater();
-    });
+    connect(anim, &tVariantAnimation::finished, anim, &tVariantAnimation::deleteLater);
     anim->start();
 }
 

@@ -570,6 +570,52 @@
         <source>the network</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SSID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Tethering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TETHERING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set Tethering Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t configure tethering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tethering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Tethering to share your internet connection with other devices over Wi-Fi.
+
+**While Tethering is active, you won&apos;t be able to connect to the Internet with Wi-Fi, so you&apos;ll need to make sure you have an alternate way to connect to the Internet.**</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t switch off tethering</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WiredChunkUpdater</name>

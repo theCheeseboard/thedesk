@@ -53,10 +53,15 @@ void IPv4ConnectionEditorPane::updateDns() {
 }
 
 void IPv4ConnectionEditorPane::setAddresses() {
-    d->setting->setAddressData({{
-            {"address", ui->ipAddress->text()},
-            {"prefix", static_cast<uint>(ui->ipSubnet->value())}
-        }});
+    QHostAddress addr(ui->ipAddress->text());
+    if (addr.isNull()) {
+        d->setting->setAddressData({});
+    } else {
+        d->setting->setAddressData({{
+                {"address", ui->ipAddress->text()},
+                {"prefix", static_cast<uint>(ui->ipSubnet->value())}
+            }});
+    }
     emit changed();
 }
 
@@ -151,13 +156,33 @@ bool IPv4ConnectionEditorPane::prepareSave() {
             d->setting->setAddresses({});
             d->setting->setAddressData({});
             d->setting->setGateway("");
-            if (!d->setting->ignoreAutoDns()) {
+            if (d->setting->ignoreAutoDns()) {
+                if (d->setting->dns().count() == 0) {
+                    tErrorFlash::flashError(ui->dnsWidget);
+                    return false;
+                }
+            } else {
                 //DHCP
                 d->setting->setDns({});
             }
             break;
-        case NetworkManager::Ipv4Setting::LinkLocal:
         case NetworkManager::Ipv4Setting::Manual:
+            if (ui->ipAddress->text().isEmpty()) {
+                tErrorFlash::flashError(ui->ipAddress);
+                return false;
+            }
+
+            if (ui->ipGateway->text().isEmpty()) {
+                tErrorFlash::flashError(ui->ipGateway);
+                return false;
+            }
+
+            if (d->setting->dns().count() == 0) {
+                tErrorFlash::flashError(ui->dnsWidget);
+                return false;
+            }
+            break;
+        case NetworkManager::Ipv4Setting::LinkLocal:
         case NetworkManager::Ipv4Setting::Disabled:
             break;
     }
@@ -169,6 +194,7 @@ void IPv4ConnectionEditorPane::on_addDnsServerButton_clicked() {
     QHostAddress address(ui->dnsServer->text());
     if (address.isNull()) {
         tErrorFlash::flashError(ui->dnsServer);
+        ui->dnsServer->setFocus();
         return;
     }
 
@@ -178,6 +204,7 @@ void IPv4ConnectionEditorPane::on_addDnsServerButton_clicked() {
 
     ui->dnsServer->clear();
     updateDns();
+    ui->dnsServer->setFocus();
 
     emit changed();
 }
@@ -208,6 +235,7 @@ void IPv4ConnectionEditorPane::on_ipAddress_editingFinished() {
         return;
     }
 
+    ui->ipAddress->setText(addr.toString());
     setAddresses();
 }
 
@@ -219,9 +247,10 @@ void IPv4ConnectionEditorPane::on_ipGateway_editingFinished() {
     QHostAddress addr(ui->ipGateway->text());
     if (addr.isNull()) {
         tErrorFlash::flashError(ui->ipGateway);
-        ui->ipAddress->clear();
+        ui->ipGateway->clear();
         return;
     }
 
+    ui->ipGateway->setText(addr.toString());
     d->setting->setGateway(ui->ipGateway->text());
 }

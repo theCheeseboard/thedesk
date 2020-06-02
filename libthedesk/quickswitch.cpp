@@ -19,10 +19,15 @@
  * *************************************/
 #include "quickswitch.h"
 
+#include <QPointer>
+#include <tswitch.h>
+
 struct QuickSwitchPrivate {
     QString name;
     QString title;
     bool checked = false;
+
+    QPointer<tSwitch> s;
 };
 
 QuickSwitch::QuickSwitch(QString name, QObject* parent) : QObject(parent) {
@@ -52,8 +57,14 @@ void QuickSwitch::setChecked(bool isChecked) {
     if (d->checked == isChecked) return;
     d->checked = isChecked;
     emit toggled(isChecked);
+
+    if (d->s) d->s->setChecked(isChecked);
 }
 
 bool QuickSwitch::isChecked() {
     return d->checked;
+}
+
+void QuickSwitch::setSwitch(tSwitch* s) {
+    d->s = s;
 }

@@ -36,7 +36,7 @@ StatusCenterQuickSwitch::StatusCenterQuickSwitch(QuickSwitch* sw, QWidget* paren
     ui->sw->setChecked(sw->isChecked());
     ui->titleLabel->setText(sw->title());
 
-    connect(sw, &QuickSwitch::toggled, ui->sw, &tSwitch::setChecked);
+    sw->setSwitch(ui->sw);
     connect(sw, &QuickSwitch::titleChanged, ui->titleLabel, &QLabel::setText);
 }
 
