@@ -62,7 +62,7 @@ unix {
     defaults.files = platformdefaults.conf
     defaults.path = /etc/theSuite/theDesk/
 
-    INSTALLS += target translations
+    INSTALLS += target translations defaults
 }
 
 RESOURCES += \

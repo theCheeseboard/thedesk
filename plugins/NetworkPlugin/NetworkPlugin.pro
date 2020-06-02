@@ -101,10 +101,10 @@ unix {
     PKGCONFIG += libnm
 
     translations.files = translations/*.qm
-    translations.path = /usr/share/thedesk/LocalePlugin/translations
+    translations.path = /usr/share/thedesk/NetworkPlugin/translations
 
     defaults.files = defaults.conf
-    defaults.path = /etc/theSuite/theDesk/LocalePlugin/
+    defaults.path = /etc/theSuite/theDesk/NetworkPlugin/
 
     INSTALLS += translations defaults
 }
