@@ -29,6 +29,7 @@
 #include "common.h"
 #include <QHostInfo>
 #include <QRandomGenerator>
+#include <QFontDatabase>
 #include <ttoast.h>
 
 #include <NetworkManagerQt/Manager>
@@ -62,6 +63,7 @@ WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
 
     ui->disconnectButton->setProperty("type", "destructive");
     ui->errorFrame->setVisible(false);
+    ui->tetheringKey->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
 
     d = new WifiDevicePanePrivate();
     d->item = new QListWidgetItem();
@@ -317,6 +319,8 @@ void WifiDevicePane::on_tetheringSwitch_toggled(bool checked) {
     if (checked) {
         NetworkManager::ConnectionSettings::Ptr settings(new NetworkManager::ConnectionSettings(NetworkManager::ConnectionSettings::Wireless));
         settings->setId("Tethering");
+        settings->setAutoconnect(false);
+        settings->setInterfaceName(d->device->interfaceName());
 
         NetworkManager::WirelessSetting::Ptr wirelessSettings = settings->setting(NetworkManager::Setting::Wireless).staticCast<NetworkManager::WirelessSetting>();
         NetworkManager::WirelessSecuritySetting::Ptr wirelessSecuritySettings = settings->setting(NetworkManager::Setting::WirelessSecurity).staticCast<NetworkManager::WirelessSecuritySetting>();
@@ -326,6 +330,7 @@ void WifiDevicePane::on_tetheringSwitch_toggled(bool checked) {
         QString ssid = d->settings.value("NetworkPlugin/tethering.ssid").toString();
         ssid = ssid.replace("$hostname", QHostInfo::localHostName());
         wirelessSettings->setSsid(ssid.toUtf8());
+        wirelessSettings->setSecurity("802-11-wireless-security");
 
         if (d->device->wirelessCapabilities() & NetworkManager::WirelessDevice::ApCap) {
             wirelessSettings->setMode(NetworkManager::WirelessSetting::Ap);
@@ -335,6 +340,9 @@ void WifiDevicePane::on_tetheringSwitch_toggled(bool checked) {
         wirelessSettings->setInitialized(true);
 
         wirelessSecuritySettings->setKeyMgmt(NetworkManager::WirelessSecuritySetting::WpaPsk);
+        wirelessSecuritySettings->setGroup({NetworkManager::WirelessSecuritySetting::Ccmp});
+        wirelessSecuritySettings->setPairwise({NetworkManager::WirelessSecuritySetting::Ccmp});
+        wirelessSecuritySettings->setProto({NetworkManager::WirelessSecuritySetting::Rsn});
         wirelessSecuritySettings->setPsk(d->settings.value("NetworkPlugin/tethering.key").toString());
         wirelessSecuritySettings->setInitialized(true);
 
