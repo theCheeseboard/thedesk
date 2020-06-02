@@ -97,6 +97,14 @@ SwitchManager::~SwitchManager() {
     delete d;
 }
 
+void SwitchManager::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        d->flightModeSwitch->setTitle(tr("Flight Mode"));
+        d->wifiSwitch->setTitle(tr("Wi-Fi"));
+        d->cellularSwitch->setTitle(tr("Cellular"));
+    }
+}
+
 void SwitchManager::networkManagerRunning() {
     StateManager::statusCenterManager()->addSwitch(d->flightModeSwitch);
     updateDevices();

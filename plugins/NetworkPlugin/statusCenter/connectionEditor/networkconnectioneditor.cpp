@@ -22,14 +22,19 @@
 
 #include <QDBusPendingCallWatcher>
 #include <ttoast.h>
+#include <terrorflash.h>
 
 #include <NetworkManagerQt/Settings>
 #include "wificonnectioneditorpane.h"
+#include "ipv4connectioneditorpane.h"
 
 struct NetworkConnectionEditorPrivate {
     NetworkManager::ConnectionSettings::Ptr connectionSettings;
+    NetworkManager::Connection::Ptr connection;
+    NMVariantMapMap oldSettings;
+    bool haveUnsaved = false;
 
-    QString connectionPath;
+    QList<ConnectionEditorPane*> panes;
 };
 
 NetworkConnectionEditor::NetworkConnectionEditor(NetworkManager::ConnectionSettings::Ptr connectionSettings, QWidget* parent) :
@@ -41,6 +46,7 @@ NetworkConnectionEditor::NetworkConnectionEditor(NetworkManager::ConnectionSetti
     d->connectionSettings = connectionSettings;
 
     ui->saveWidget->setVisible(true);
+    ui->unsavedPane->setVisible(false);
 
     this->populate();
 }
@@ -52,11 +58,16 @@ NetworkConnectionEditor::NetworkConnectionEditor(NetworkManager::Connection::Ptr
 
     this->init();
     d->connectionSettings = connection->settings();
-    d->connectionPath = connection->path();
+    d->connection = connection;
+    d->oldSettings = connection->settings()->toMap();
 
     ui->saveWidget->setVisible(false);
+    ui->unsavedPane->setVisible(true);
+    ui->unsavedPane->setFixedHeight(0);
 
     this->populate();
+    d->haveUnsaved = false;
+    updateUnsaved();
 }
 
 NetworkConnectionEditor::~NetworkConnectionEditor() {
@@ -73,6 +84,10 @@ void NetworkConnectionEditor::setSaveButtonText(QString text) {
 }
 
 void NetworkConnectionEditor::on_titleLabel_backButtonClicked() {
+    if (d->connection && d->haveUnsaved) {
+        tErrorFlash::flashError(ui->unsavedPane);
+        return;
+    }
     emit rejected();
 }
 
@@ -99,11 +114,13 @@ void NetworkConnectionEditor::populate() {
             case NetworkManager::Setting::Wireless:
                 pane = new WifiConnectionEditorPane(setting, this);
                 break;
+            case NetworkManager::Setting::Ipv4:
+                pane = new IPv4ConnectionEditorPane(setting, this);
+                break;
             case NetworkManager::Setting::Adsl:
             case NetworkManager::Setting::Cdma:
             case NetworkManager::Setting::Gsm:
             case NetworkManager::Setting::Infiniband:
-            case NetworkManager::Setting::Ipv4:
             case NetworkManager::Setting::Ipv6:
             case NetworkManager::Setting::Ppp:
             case NetworkManager::Setting::Pppoe:
@@ -141,6 +158,7 @@ void NetworkConnectionEditor::populate() {
 
         if (pane) {
             ui->stackedWidget->addWidget(pane);
+            d->panes.append(pane);
 
             QListWidgetItem* item = new QListWidgetItem();
             item->setText(pane->displayName());
@@ -151,8 +169,33 @@ void NetworkConnectionEditor::populate() {
                 ui->connectionName->setText(connectionName);
                 ui->titleLabel->setText(connectionName);
             });
+            connect(pane, &ConnectionEditorPane::changed, this, [ = ] {
+                d->haveUnsaved = true;
+                updateUnsaved();
+            });
         }
     }
+}
+
+void NetworkConnectionEditor::updateUnsaved() {
+    tVariantAnimation* anim = new tVariantAnimation(this);
+    anim->setStartValue(ui->unsavedPane->height());
+    if (d->haveUnsaved) {
+        ui->leftLine->setVisible(true);
+        anim->setEndValue(ui->unsavedPane->sizeHint().height());
+    } else {
+        anim->setEndValue(0);
+    }
+    anim->setDuration(250);
+    anim->setEasingCurve(QEasingCurve::OutCubic);
+    connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        ui->unsavedPane->setFixedHeight(value.toInt());
+    });
+    connect(anim, &tVariantAnimation::finished, this, [ = ] {
+        if (anim->endValue() == 0) ui->leftLine->setVisible(false);
+        anim->deleteLater();
+    });
+    anim->start();
 }
 
 void NetworkConnectionEditor::on_saveButton_clicked() {
@@ -169,7 +212,48 @@ void NetworkConnectionEditor::on_saveButton_clicked() {
             QDBusObjectPath path = watcher->reply().arguments().first().value<QDBusObjectPath>();
             NetworkManager::Connection::Ptr connection(new NetworkManager::Connection(path.path()));
             emit accepted(connection);
-            watcher->deleteLater();
         }
+        watcher->deleteLater();
     });
+}
+
+void NetworkConnectionEditor::on_saveModifiedButton_clicked() {
+    //Notify all panes about intent to save
+    for (ConnectionEditorPane* pane : d->panes) {
+        if (!pane->prepareSave()) {
+            //Can't save this one; go there to let the user know
+            ui->listWidget->setCurrentRow(ui->stackedWidget->indexOf(pane));
+            return;
+        }
+    }
+
+    //Save the changes
+    QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(d->connection->update(d->connectionSettings->toMap()));
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+        if (watcher->isError()) {
+            tToast* toast = new tToast();
+            toast->setTitle(tr("Couldn't save settings"));
+            toast->setText(watcher->error().message());
+            connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
+            toast->show(this);
+        } else {
+            d->connectionSettings = d->connection->settings();
+            for (ConnectionEditorPane* pane : d->panes) {
+                pane->reload(d->connectionSettings->setting(pane->type()));
+            }
+            d->haveUnsaved = false;
+            updateUnsaved();
+        }
+        watcher->deleteLater();
+    });
+}
+
+void NetworkConnectionEditor::on_revertButton_clicked() {
+    //Undo the changes
+    d->connectionSettings->fromMap(d->oldSettings);
+    for (ConnectionEditorPane* pane : d->panes) {
+        pane->reload(d->connectionSettings->setting(pane->type()));
+    }
+    d->haveUnsaved = false;
+    updateUnsaved();
 }

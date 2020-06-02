@@ -214,6 +214,85 @@
     </message>
 </context>
 <context>
+    <name>IPv4ConnectionEditorPane</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IPv4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DHCP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DHCP with manual DNS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manual</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shared</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configuration Method</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Require IPv4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IP Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default Gateway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subnet Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ADDRESSES</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1.1.1.1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DNS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set the IP address that this device will be assigned.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configure the DNS servers that will be used to resolve domain names.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>For DNS server %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NetworkChunk</name>
     <message>
         <source>Disconnected</source>
@@ -252,6 +331,14 @@
     </message>
     <message>
         <source>Couldn&apos;t save settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SETTINGS MODIFIED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Revert</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

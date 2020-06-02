@@ -48,6 +48,10 @@ class NetworkConnectionEditor : public QWidget {
 
         void on_saveButton_clicked();
 
+        void on_saveModifiedButton_clicked();
+
+        void on_revertButton_clicked();
+
     signals:
         void rejected();
         void accepted(NetworkManager::Connection::Ptr connection);
@@ -58,6 +62,7 @@ class NetworkConnectionEditor : public QWidget {
 
         void init();
         void populate();
+        void updateUnsaved();
 };
 
 #endif // NETWORKCONNECTIONEDITOR_H

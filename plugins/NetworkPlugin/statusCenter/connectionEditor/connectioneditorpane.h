@@ -29,9 +29,13 @@ class ConnectionEditorPane : public QWidget {
         explicit ConnectionEditorPane(NetworkManager::Setting::Ptr setting, QWidget* parent = nullptr);
 
         virtual QString displayName() = 0;
+        virtual void reload(NetworkManager::Setting::Ptr setting) = 0;
+        virtual NetworkManager::Setting::SettingType type() = 0;
+        virtual bool prepareSave();
 
     signals:
         void setConnectionName(QString connectionName);
+        void changed();
 };
 
 #endif // CONNECTIONEDITORPANE_H

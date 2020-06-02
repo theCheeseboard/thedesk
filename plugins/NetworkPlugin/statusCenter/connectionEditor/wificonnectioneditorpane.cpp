@@ -34,9 +34,8 @@ WifiConnectionEditorPane::WifiConnectionEditorPane(NetworkManager::Setting::Ptr 
     ui->setupUi(this);
 
     d = new WifiConnectionEditorPanePrivate();
-    d->setting = setting.staticCast<NetworkManager::WirelessSetting>();
-    ui->ssidLineEdit->setText(d->setting->ssid());
-    ui->modeBox->setCurrentIndex(d->setting->mode());
+
+    this->reload(setting);
 }
 
 WifiConnectionEditorPane::~WifiConnectionEditorPane() {
@@ -46,6 +45,17 @@ WifiConnectionEditorPane::~WifiConnectionEditorPane() {
 
 QString WifiConnectionEditorPane::displayName() {
     return tr("Wi-Fi");
+}
+
+void WifiConnectionEditorPane::reload(NetworkManager::Setting::Ptr setting) {
+    d->setting = setting.staticCast<NetworkManager::WirelessSetting>();
+    d->setting->setInitialized(true);
+    ui->ssidLineEdit->setText(d->setting->ssid());
+    ui->modeBox->setCurrentIndex(d->setting->mode());
+}
+
+NetworkManager::Setting::SettingType WifiConnectionEditorPane::type() {
+    return NetworkManager::Setting::Wireless;
 }
 
 void WifiConnectionEditorPane::on_ssidLineEdit_textChanged(const QString& arg1) {
@@ -71,8 +81,10 @@ void WifiConnectionEditorPane::on_ssidLineEdit_textChanged(const QString& arg1) 
         }
     }
     emit setConnectionName(name());
+    emit changed();
 }
 
 void WifiConnectionEditorPane::on_modeBox_currentIndexChanged(int index) {
     d->setting->setMode(static_cast<NetworkManager::WirelessSetting::NetworkMode>(index));
+    emit changed();
 }

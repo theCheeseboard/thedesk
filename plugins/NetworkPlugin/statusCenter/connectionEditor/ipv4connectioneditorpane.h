@@ -17,36 +17,45 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef WIFICONNECTIONEDITORPANE_H
-#define WIFICONNECTIONEDITORPANE_H
+#ifndef IPV4CONNECTIONEDITORPANE_H
+#define IPV4CONNECTIONEDITORPANE_H
 
 #include "connectioneditorpane.h"
 
 namespace Ui {
-    class WifiConnectionEditorPane;
+    class IPv4ConnectionEditorPane;
 }
 
-struct WifiConnectionEditorPanePrivate;
-class WifiConnectionEditorPane : public ConnectionEditorPane {
+struct IPv4ConnectionEditorPanePrivate;
+class IPv4ConnectionEditorPane : public ConnectionEditorPane {
         Q_OBJECT
 
     public:
-        explicit WifiConnectionEditorPane(NetworkManager::Setting::Ptr setting, QWidget* parent = nullptr);
-        ~WifiConnectionEditorPane();
+        explicit IPv4ConnectionEditorPane(NetworkManager::Setting::Ptr setting, QWidget* parent = nullptr);
+        ~IPv4ConnectionEditorPane();
 
     private:
-        Ui::WifiConnectionEditorPane* ui;
-        WifiConnectionEditorPanePrivate* d;
+        Ui::IPv4ConnectionEditorPane* ui;
+        IPv4ConnectionEditorPanePrivate* d;
+
+        void updateDns();
+        void setAddresses();
 
         // ConnectionEditorPane interface
     public:
         QString displayName();
         void reload(NetworkManager::Setting::Ptr setting);
         NetworkManager::Setting::SettingType type();
+        bool prepareSave();
 
     private slots:
-        void on_ssidLineEdit_textChanged(const QString& arg1);
-        void on_modeBox_currentIndexChanged(int index);
+        void on_configurationMethod_currentIndexChanged(int index);
+        void on_requireIPv4Switch_toggled(bool checked);
+        void on_addDnsServerButton_clicked();
+        void on_dnsList_customContextMenuRequested(const QPoint& pos);
+        void on_ipAddress_editingFinished();
+        void on_ipSubnet_valueChanged(int arg1);
+        void on_ipGateway_editingFinished();
 };
 
-#endif // WIFICONNECTIONEDITORPANE_H
+#endif // IPV4CONNECTIONEDITORPANE_H

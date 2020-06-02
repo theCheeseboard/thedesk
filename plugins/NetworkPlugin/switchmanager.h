@@ -34,6 +34,8 @@ class SwitchManager : public QObject {
     private:
         SwitchManagerPrivate* d;
 
+        void changeEvent(QEvent* event);
+
         void networkManagerRunning();
         void networkManagerGone();
         void updateDevices();

@@ -22,3 +22,8 @@
 ConnectionEditorPane::ConnectionEditorPane(NetworkManager::Setting::Ptr setting, QWidget* parent) : QWidget(parent) {
     setting->setInitialized(true);
 }
+
+bool ConnectionEditorPane::prepareSave() {
+    //noop
+    return true;
+}
