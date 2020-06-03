@@ -27,16 +27,16 @@ unix {
     defaults.path = /etc/theSuite/theDesk/PowerPlugin/
 
     INSTALLS += translations defaults
-
-    INSTALLS += translations
 }
 
 include(../plugins.pri)
 
 HEADERS += \
+    keyboardhandler.h \
     plugin.h
 
 SOURCES += \
+    keyboardhandler.cpp \
     plugin.cpp
 
 DISTFILES += \

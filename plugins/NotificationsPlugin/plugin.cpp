@@ -29,6 +29,7 @@
 #include <QIcon>
 #include <QApplication>
 #include <QDir>
+#include <tsettings.h>
 #include "notificationtracker.h"
 #include "dbus/notificationsinterface.h"
 #include "drawer/notificationsdrawer.h"
@@ -54,6 +55,9 @@ void Plugin::activate() {
         QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/translations"),
         "/usr/share/thedesk/NotificationsPlugin/translations"
     });
+
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/defaults.conf"));
+    tSettings::registerDefaults("/etc/theSuite/theDesk/NotificationsPlugin/defaults.conf");
 
     d->tracker = new NotificationTracker();
     d->interface = new NotificationsInterface(d->tracker);

@@ -29,11 +29,14 @@
 #include <QIcon>
 #include <QApplication>
 #include <QDir>
+#include <tsettings.h>
+#include "keyboardhandler.h"
 #include <UPower/desktopupower.h>
 
 struct PluginPrivate {
     DesktopUPower* upower;
     IconTextChunk* powerChunk;
+    KeyboardHandler* keyboard;
 };
 
 Plugin::Plugin() {
@@ -50,6 +53,9 @@ void Plugin::activate() {
         "/usr/share/thedesk/PowerPlugin/translations"
     });
 
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/PowerPlugin/defaults.conf"));
+    tSettings::registerDefaults("/etc/theSuite/theDesk/PowerPlugin/defaults.conf");
+
     d->upower = new DesktopUPower(this);
     d->powerChunk = new IconTextChunk("Power");
     connect(d->upower, &DesktopUPower::overallStateChanged, this, [ = ] {
@@ -64,6 +70,7 @@ void Plugin::activate() {
             StateManager::barManager()->removeChunk(d->powerChunk);
         }
     });
+    d->keyboard = new KeyboardHandler();
 }
 
 void Plugin::deactivate() {
@@ -74,4 +81,5 @@ void Plugin::deactivate() {
 
     d->powerChunk->deleteLater();
     d->upower->deleteLater();
+    d->keyboard->deleteLater();
 }
