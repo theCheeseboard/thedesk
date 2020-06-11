@@ -30,13 +30,13 @@
 #include <QApplication>
 #include <QDir>
 #include <tsettings.h>
-#include "keyboardhandler.h"
+#include "logindhandler.h"
 #include <UPower/desktopupower.h>
 
 struct PluginPrivate {
     DesktopUPower* upower;
     IconTextChunk* powerChunk;
-    KeyboardHandler* keyboard;
+    LogindHandler* logind;
 };
 
 Plugin::Plugin() {
@@ -70,7 +70,7 @@ void Plugin::activate() {
             StateManager::barManager()->removeChunk(d->powerChunk);
         }
     });
-    d->keyboard = new KeyboardHandler();
+    d->logind = new LogindHandler();
 }
 
 void Plugin::deactivate() {
@@ -81,5 +81,5 @@ void Plugin::deactivate() {
 
     d->powerChunk->deleteLater();
     d->upower->deleteLater();
-    d->keyboard->deleteLater();
+    d->logind->deleteLater();
 }

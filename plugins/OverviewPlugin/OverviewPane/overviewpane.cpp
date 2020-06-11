@@ -32,9 +32,17 @@
 #include <QPainter>
 #include <math.h>
 #include <the-libs_global.h>
+#include <tsettings.h>
+#include <QProcess>
+#include "worldclock.h"
 
 struct OverviewPanePrivate {
+    OverviewPanePrivate() : worldClockSettings("theSuite", "the24") {};
+
     QToolButton* hamburgerButton;
+    QList<WorldClock*> worldClocks;
+
+    tSettings worldClockSettings;
 };
 
 OverviewPane::OverviewPane() :
@@ -67,9 +75,22 @@ OverviewPane::OverviewPane() :
     DesktopTimeDate::makeTimeLabel(ui->time, DesktopTimeDate::Time);
     DesktopTimeDate::makeTimeLabel(ui->timeAmPm, DesktopTimeDate::AmPm);
 
+    connect(DesktopTimeDate::timeUpdateTimer(), &QTimer::timeout, this, [ = ] {
+        for (WorldClock* wc : d->worldClocks) {
+            wc->updateClock();
+        }
+    });
+
     const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
     ui->mainWidget->setFixedWidth(contentWidth);
     ui->scrollAreaWidgetContents->installEventFilter(this);
+
+    connect(&d->worldClockSettings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
+        if (key == "WorldClock/timezones") {
+            updateWorldClocks();
+        }
+    });
+    updateWorldClocks();
 }
 
 OverviewPane::~OverviewPane() {
@@ -89,6 +110,21 @@ void OverviewPane::updateGreeting() {
         ui->greetingLabel->setText(tr("Good afternoon, %1!").arg(userDisplayName));
     } else {
         ui->greetingLabel->setText(tr("Good evening, %1!").arg(userDisplayName));
+    }
+}
+
+void OverviewPane::updateWorldClocks() {
+    for (WorldClock* wc : d->worldClocks) {
+        ui->worldClocksLayout->removeWidget(wc);
+        wc->deleteLater();
+    }
+
+    d->worldClocks.clear();
+
+    for (QString tz : d->worldClockSettings.delimitedList("WorldClock/timezones").mid(0, 4)) {
+        WorldClock* wc = new WorldClock(QTimeZone(tz.toUtf8()));
+        ui->worldClocksLayout->addWidget(wc);
+        d->worldClocks.append(wc);
     }
 }
 
@@ -225,3 +261,4 @@ QIcon OverviewPane::icon() {
 QWidget* OverviewPane::leftPane() {
     return nullptr;
 }
+

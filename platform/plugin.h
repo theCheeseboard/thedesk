@@ -22,16 +22,15 @@
 
 #include <qpa/qplatformthemeplugin.h>
 
-class Plugin : public QPlatformThemePlugin
-{
+class Plugin : public QPlatformThemePlugin {
         Q_OBJECT
         Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QPA.QPlatformThemeFactoryInterface.5.1" FILE "plugin.json")
 
     public:
-        explicit Plugin(QObject *parent = nullptr);
+        explicit Plugin(QObject* parent = nullptr);
 
     private:
-        QPlatformTheme* create(const QString&key, const QStringList&paramList);
+        QPlatformTheme* create(const QString& key, const QStringList& paramList);
 };
 
 #endif // PLUGIN_H

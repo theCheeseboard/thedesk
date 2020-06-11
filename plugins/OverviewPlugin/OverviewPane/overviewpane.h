@@ -39,6 +39,7 @@ class OverviewPane : public StatusCenterPane {
         OverviewPanePrivate* d;
 
         void updateGreeting();
+        void updateWorldClocks();
 
         void changeEvent(QEvent* event);
         bool eventFilter(QObject* watched, QEvent* event);

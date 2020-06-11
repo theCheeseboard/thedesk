@@ -36,8 +36,6 @@ class DeleteUserDialog : public QWidget {
         ~DeleteUserDialog();
 
     private slots:
-        void on_backButton_clicked();
-
         void on_deleteFilesButton_clicked();
 
         void on_keepFilesButton_clicked();

@@ -52,6 +52,6 @@ NotificationPtr NotificationTracker::createNotification() {
 }
 
 NotificationPtr NotificationTracker::get(quint32 id) {
-    if (id == 0) return this->createNotification();
+    if (id == 0) return nullptr;
     return d->notifications.value(id);
 }

@@ -4,27 +4,27 @@
 <context>
     <name>OverviewPane</name>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="85"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="106"/>
         <source>Hi %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="87"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="108"/>
         <source>Good morning, %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="89"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="110"/>
         <source>Good afternoon, %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="91"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="112"/>
         <source>Good evening, %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="218"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="254"/>
         <source>Overview</source>
         <translation type="unfinished"></translation>
     </message>

@@ -17,22 +17,38 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef KEYBOARDHANDLER_H
-#define KEYBOARDHANDLER_H
+#ifndef WORLDCLOCK_H
+#define WORLDCLOCK_H
 
-#include <QObject>
+#include <QWidget>
+#include <QTimeZone>
 
-struct KeyboardHandlerPrivate;
-class KeyboardHandler : public QObject {
+namespace Ui {
+    class WorldClock;
+}
+
+struct WorldClockPrivate;
+class WorldClock : public QWidget {
         Q_OBJECT
-    public:
-        explicit KeyboardHandler(QObject* parent = nullptr);
-        ~KeyboardHandler();
 
-    signals:
+    public:
+        explicit WorldClock(QTimeZone tz, QWidget* parent = nullptr);
+        ~WorldClock();
+
+        void updateClock();
 
     private:
-        KeyboardHandlerPrivate* d;
+        Ui::WorldClock* ui;
+        WorldClockPrivate* d;
+
+
+        // QWidget interface
+    protected:
+        void mousePressEvent(QMouseEvent* event);
+        void mouseReleaseEvent(QMouseEvent* event);
+        void enterEvent(QEvent* event);
+        void leaveEvent(QEvent* event);
+        void paintEvent(QPaintEvent* event);
 };
 
-#endif // KEYBOARDHANDLER_H
+#endif // WORLDCLOCK_H

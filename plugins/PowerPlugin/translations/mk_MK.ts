@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="mk_MK" sourcelanguage="en_US">
 <context>
-    <name>KeyboardHandler</name>
+    <name>LogindHandler</name>
     <message>
         <source>Unable to inhibit logind power management</source>
         <translation type="unfinished"></translation>

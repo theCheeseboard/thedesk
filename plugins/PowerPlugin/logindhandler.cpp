@@ -17,7 +17,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#include "keyboardhandler.h"
+#include "logindhandler.h"
 
 #include <QDBusMessage>
 #include <QDBusConnection>
@@ -30,13 +30,13 @@
 #include <powermanager.h>
 #include <keygrab.h>
 
-struct KeyboardHandlerPrivate {
+struct LogindHandlerPrivate {
     KeyGrab* powerKey;
-    QDBusUnixFileDescriptor inhibitorFileDescriptor;
+    QDBusUnixFileDescriptor buttonInhibitor;
 };
 
-KeyboardHandler::KeyboardHandler(QObject* parent) : QObject(parent) {
-    d = new KeyboardHandlerPrivate();
+LogindHandler::LogindHandler(QObject* parent) : QObject(parent) {
+    d = new LogindHandlerPrivate();
 
     QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "Inhibit");
     message.setArguments(QList<QVariant>() << "handle-power-key" << "theDesk" << "theDesk Handles Hardware Power Keys" << "block");
@@ -45,7 +45,7 @@ KeyboardHandler::KeyboardHandler(QObject* parent) : QObject(parent) {
         if (watcher->isError()) {
             qWarning() << tr("Unable to inhibit logind power management");
         } else {
-            d->inhibitorFileDescriptor = watcher->reply().arguments().first().value<QDBusUnixFileDescriptor>();
+            d->buttonInhibitor = watcher->reply().arguments().first().value<QDBusUnixFileDescriptor>();
         }
     });
 
@@ -55,7 +55,7 @@ KeyboardHandler::KeyboardHandler(QObject* parent) : QObject(parent) {
     });
 }
 
-KeyboardHandler::~KeyboardHandler() {
+LogindHandler::~LogindHandler() {
     d->powerKey->deleteLater();
     delete d;
 }

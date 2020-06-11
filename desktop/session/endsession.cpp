@@ -108,7 +108,7 @@ EndSession::EndSession(PowerManager::PowerOperation operation, QString message, 
             {ui->hibernateButton, QT_TR_NOOP("hibernate the system")}
         };
 
-        ui->descriptionLabel->setText(tr(qPrintable(message), nullptr, value < 1 ? 1 : qRound(value.toDouble()))
+        ui->descriptionLabel->setText(tr(qPrintable(message), nullptr, value.toFloat() < 1 ? 1 : qRound(value.toDouble()))
             .arg(DesktopWm::userDisplayName()).arg(tr(text.value(d->timedButton))));
         d->timedButton->setTimeRemaining(value.toDouble());
     });

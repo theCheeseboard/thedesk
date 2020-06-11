@@ -19,11 +19,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     OverviewPane/overviewpane.cpp \
+    OverviewPane/worldclock.cpp \
     clockchunk.cpp \
     plugin.cpp
 
 HEADERS += \
     OverviewPane/overviewpane.h \
+    OverviewPane/worldclock.h \
     clockchunk.h \
     plugin.h
 
@@ -47,4 +49,5 @@ DISTFILES += \
 
 FORMS += \
     OverviewPane/overviewpane.ui \
+    OverviewPane/worldclock.ui \
     clockchunk.ui

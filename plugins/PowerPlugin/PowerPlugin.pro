@@ -32,11 +32,11 @@ unix {
 include(../plugins.pri)
 
 HEADERS += \
-    keyboardhandler.h \
+    logindhandler.h \
     plugin.h
 
 SOURCES += \
-    keyboardhandler.cpp \
+    logindhandler.cpp \
     plugin.cpp
 
 DISTFILES += \

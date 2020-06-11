@@ -29,6 +29,7 @@
 #include <QIcon>
 #include <QApplication>
 #include <QDir>
+#include <tsettings.h>
 #include "OverviewPane/overviewpane.h"
 
 struct PluginPrivate {
@@ -51,6 +52,8 @@ void Plugin::activate() {
         QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/OverviewPlugin/translations"),
         "/usr/share/thedesk/OverviewPlugin/translations"
     });
+
+    tSettings::registerDefaults("theSuite", "the24", "/etc/theSuite/the24/defaults.conf");
 
     d->chunk = new ClockChunk();
     StateManager::barManager()->addChunk(d->chunk);

@@ -59,13 +59,19 @@ NotificationsDrawerWidget::NotificationsDrawerWidget(NotificationPtr notificatio
     d->timeout->setStartValue(1.0);
     d->timeout->setEndValue(0.0);
     d->timeout->setEasingCurve(QEasingCurve::Linear);
-    d->timeout->setDuration(notification->timeout());
+    if (notification->timeout() == 0) {
+        d->timeout->setDuration(-1);
+    } else {
+        d->timeout->setDuration(notification->timeout());
+    }
     connect(d->timeout, &tVariantAnimation::finished, this, &NotificationsDrawerWidget::animateDismiss);
     connect(d->tracker, &NotificationTracker::pauseTimeouts, this, [ = ] {
         d->timeout->pause();
     });
     connect(d->tracker, &NotificationTracker::resumeTimeouts, this, [ = ] {
-        if (d->shouldTimeoutRun) d->timeout->start();
+        if (d->shouldTimeoutRun && d->n->timeout() != 0) {
+            d->timeout->start();
+        }
     });
 
     connect(notification, &Notification::timeoutChanged, this, [ = ](qint32 timeout) {
@@ -129,7 +135,9 @@ void NotificationsDrawerWidget::show() {
     });
     connect(anim, &tVariantAnimation::finished, this, [ = ] {
         d->shouldTimeoutRun = true;
-        d->timeout->start();
+        if (d->n->timeout() != 0) {
+            d->timeout->start();
+        }
     });
     anim->start();
 }
