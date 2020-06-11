@@ -392,7 +392,7 @@
         <translation>Gõ để tìm kiếm...</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="224"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="227"/>
         <source>End Session</source>
         <translation>Kết phiên</translation>
     </message>

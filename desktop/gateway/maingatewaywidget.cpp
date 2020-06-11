@@ -58,6 +58,7 @@ MainGatewayWidget::MainGatewayWidget(QWidget* parent) :
     QScroller::grabGesture(ui->appsList->viewport(), QScroller::LeftMouseButtonGesture);
 
     this->setFocusProxy(ui->searchBox);
+    ui->endSessionButton->setFocusProxy(ui->searchBox);
 }
 
 MainGatewayWidget::~MainGatewayWidget() {

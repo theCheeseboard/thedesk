@@ -392,7 +392,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="224"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="227"/>
         <source>End Session</source>
         <translation type="unfinished"></translation>
     </message>

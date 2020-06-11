@@ -102,9 +102,9 @@ void WorldClock::paintEvent(QPaintEvent* event) {
     painter.setPen(Qt::transparent);
     painter.setBrush(Qt::transparent);
     if (d->mouseDown) {
-        painter.setBrush(QColor(0, 0, 0, 127));
+        painter.setBrush(QColor(0, 0, 0, 100));
     } else if (this->underMouse()) {
-        painter.setBrush(QColor(255, 255, 255, 127));
+        painter.setBrush(QColor(255, 255, 255, 100));
     }
     painter.drawRect(0, 0, this->width(), this->height());
 }

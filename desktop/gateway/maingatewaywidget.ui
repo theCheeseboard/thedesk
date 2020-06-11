@@ -220,6 +220,9 @@
           </item>
           <item>
            <widget class="QPushButton" name="endSessionButton">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="text">
              <string>End Session</string>
             </property>
@@ -244,16 +247,13 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>tCircularSpinner</class>
-   <extends>QWidget</extends>
-   <header location="global">tcircularspinner.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>tStackedWidget</class>
    <extends>QStackedWidget</extends>
    <header location="global">tstackedwidget.h</header>
    <container>1</container>
+   <slots>
+    <signal>switchingFrame(int)</signal>
+   </slots>
   </customwidget>
   <customwidget>
    <class>tTitleLabel</class>
@@ -262,6 +262,12 @@
    <slots>
     <signal>backButtonClicked()</signal>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>tCircularSpinner</class>
+   <extends>QWidget</extends>
+   <header location="global">tcircularspinner.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

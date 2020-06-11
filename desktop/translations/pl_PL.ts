@@ -392,7 +392,7 @@
         <translation>Wpisz aby wyszukać...</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="224"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="227"/>
         <source>End Session</source>
         <translation>Zakończ Sesje</translation>
     </message>
