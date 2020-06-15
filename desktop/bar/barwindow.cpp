@@ -130,6 +130,7 @@ BarWindow::BarWindow(QWidget* parent) :
     connect(StateManager::statusCenterManager(), &StatusCenterManager::showStatusCenter, this, &BarWindow::showStatusCenter);
     connect(StateManager::statusCenterManager(), &StatusCenterManager::hideStatusCenter, this, &BarWindow::hideStatusCenter);
 
+
     KeyGrab* statusCenterGrab = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::Key_Tab));
     connect(statusCenterGrab, &KeyGrab::activated, this, [ = ] {
         StateManager::statusCenterManager()->show();

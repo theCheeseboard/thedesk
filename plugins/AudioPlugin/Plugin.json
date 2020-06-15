@@ -1,0 +1,8 @@
+{
+    "name": "Audio Management",
+    "icon": "preferences-desktop-audio",
+    "uuid": "6a978f09-c3f4-4843-b32f-4e377ed6cd0f",
+    "vi": {
+        "name": "Quản lý âm thanh"
+    }
+}

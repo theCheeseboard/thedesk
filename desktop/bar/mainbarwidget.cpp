@@ -43,14 +43,6 @@ MainBarWidget::MainBarWidget(QWidget* parent) :
     connect(new KeyGrab(QKeySequence(Qt::Key_Super_L), "gatewayOpen"), &KeyGrab::activated, this, [ = ] {
         Gateway::instance()->show();
     });
-    connect(new KeyGrab(QKeySequence(Qt::Key_VolumeUp), "volumeUp"), &KeyGrab::activated, this, [ = ] {
-//        Gateway::instance()->show();
-        StateManager::instance()->hudManager()->showHud({
-            {"icon", "audio-volume-high"},
-            {"title", "Volume"},
-            {"value", 1.4}
-        });
-    });
 }
 
 MainBarWidget::~MainBarWidget() {
