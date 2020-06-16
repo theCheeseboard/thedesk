@@ -10,6 +10,7 @@ SUBDIRS += \
     NotificationsPlugin \
     OverviewPlugin \
     PowerPlugin \
+    ScreenshotPlugin \
     ThemePlugin \
     UsersPlugin
 

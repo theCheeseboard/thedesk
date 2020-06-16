@@ -191,7 +191,8 @@ void EndSession::on_screenOffButton_clicked() {
 }
 
 void EndSession::on_switchUsersButton_clicked() {
-
+    StateManager::instance()->powerManager()->performPowerOperation(PowerManager::SwitchUsers);
+    emit done();
 }
 
 void EndSession::on_hibernateButton_clicked() {

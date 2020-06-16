@@ -125,7 +125,8 @@
                  <string>Revert</string>
                 </property>
                 <property name="icon">
-                 <iconset theme="view-refresh"/>
+                 <iconset theme="view-refresh">
+                  <normaloff>.</normaloff>.</iconset>
                 </property>
                </widget>
               </item>
@@ -174,6 +175,9 @@
           <number>0</number>
          </property>
          <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>

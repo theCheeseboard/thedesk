@@ -40,7 +40,7 @@ class EventHandler : public QObject {
 
         void adjustVolume(int percentageChange);
         void defaultSinkChanged(PulseAudioQt::Sink* defaultSink);
-        void showHud(PulseAudioQt::Sink* sink);
+        void showHud(PulseAudioQt::Sink* sink, qint64 volume = -1);
 };
 
 #endif // KEYHANDLER_H

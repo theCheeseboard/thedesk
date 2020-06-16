@@ -35,6 +35,7 @@ class PowerManager : public QObject {
             Suspend,
             Lock,
             TurnOffScreen,
+            SwitchUsers,
             Hibernate,
             All
         };

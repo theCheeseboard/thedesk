@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/screenshot">
+        <file>icons/pen.svg</file>
+    </qresource>
+</RCC>

@@ -35,12 +35,16 @@ struct EventHandlerPrivate {
     KeyGrab* volumeMute;
 
     PulseAudioQt::Sink* defaultSink = nullptr;
+    bool firstSink = true;
+
+    quint32 oldActivePortIndex;
 };
 
 EventHandler::EventHandler(QObject* parent) : QObject(parent) {
     d = new EventHandlerPrivate();
 
     connect(PulseAudioQt::Context::instance()->server(), &PulseAudioQt::Server::defaultSinkChanged, this, &EventHandler::defaultSinkChanged);
+    defaultSinkChanged(PulseAudioQt::Context::instance()->server()->defaultSink());
 
     d->volumeUp = new KeyGrab(QKeySequence(Qt::Key_VolumeUp), "volumeUp");
     d->volumeDown = new KeyGrab(QKeySequence(Qt::Key_VolumeDown), "volumeDown");
@@ -78,25 +82,43 @@ void EventHandler::adjustVolume(int percentageChange) {
     qint64 newVolume = sink->volume() + (factor / 100) * percentageChange;
 
     sink->setVolume(newVolume);
-    showHud(sink);
+    showHud(sink, newVolume);
 }
 
 void EventHandler::defaultSinkChanged(PulseAudioQt::Sink* defaultSink) {
+    if (d->defaultSink == defaultSink) return;
+
     if (d->defaultSink) {
         d->defaultSink->disconnect(this);
     }
     d->defaultSink = defaultSink;
     if (defaultSink) {
         connect(defaultSink, &PulseAudioQt::Sink::activePortIndexChanged, this, [ = ] {
-            showHud(defaultSink);
+            if (d->oldActivePortIndex != defaultSink->activePortIndex()) {
+                d->oldActivePortIndex = defaultSink->activePortIndex();
+                showHud(defaultSink);
+            }
         });
-        showHud(defaultSink);
+        d->oldActivePortIndex = defaultSink->activePortIndex();
+
+        if (d->firstSink) {
+            d->firstSink = false;
+        } else {
+            showHud(defaultSink);
+        }
     }
 }
 
-void EventHandler::showHud(PulseAudioQt::Sink* sink) {
+void EventHandler::showHud(PulseAudioQt::Sink* sink, qint64 volume) {
+
+    double displayVolume;
+    if (volume == -1) {
+        displayVolume = sink->volume() / static_cast<double>(PulseAudioQt::normalVolume());
+    } else {
+        displayVolume = volume / static_cast<double>(PulseAudioQt::normalVolume());
+    }
     QVariantMap hudData;
-    hudData.insert("value", sink->volume() / static_cast<double>(PulseAudioQt::normalVolume()));
+    hudData.insert("value", displayVolume);
     switch (Common::portForSink(sink)) {
         case Common::Speakers:
             hudData.insert("icon", "audio-volume-high");

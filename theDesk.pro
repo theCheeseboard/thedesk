@@ -15,4 +15,5 @@ SUBDIRS = libraryproj \
     deskproj \
     platform \
     pluginsproj \
+    polkitagent \
     startdeskproj

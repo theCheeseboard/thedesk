@@ -51,6 +51,8 @@ unix {
     INSTALLS += target translations xsession
 }
 
+DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"
+
 unix:!macx: LIBS += -L$$OUT_PWD/../libthedesk/ -lthedesk
 
 INCLUDEPATH += $$PWD/../libthedesk

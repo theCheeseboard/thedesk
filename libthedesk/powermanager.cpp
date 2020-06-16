@@ -73,7 +73,7 @@ void PowerManager::performPowerOperation(PowerManager::PowerOperation operation)
 
             QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", methods.value(operation));
             message.setArguments({true});
-            QDBusConnection::systemBus().send(message);
+            QDBusConnection::systemBus().call(message);
             break;
         }
         case PowerManager::LogOut:
@@ -89,8 +89,13 @@ void PowerManager::performPowerOperation(PowerManager::PowerOperation operation)
             connect(d->lockScreenProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [ = ] {
                 d->lockScreenProcess->deleteLater();
             });
-            d->lockScreenProcess->start("/usr/lib/tsscreenlock"); //Lock Screen
+            d->lockScreenProcess->start("/usr/lib/tsscreenlock", {}); //Lock Screen
             break;
+        case PowerManager::SwitchUsers: {
+            QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DisplayManager", qEnvironmentVariable("XDG_SEAT_PATH"), "org.freedesktop.DisplayManager.Seat", "SwitchToGreeter");
+            QDBusConnection::systemBus().call(message);
+            break;
+        }
         case PowerManager::TurnOffScreen:
             DesktopWm::setScreenOff(true);
             break;

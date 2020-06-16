@@ -109,6 +109,12 @@ void SplashController::initSession() {
 void SplashController::runAutostart() {
     if (d->autostartDone) return;
 
+    //Autostart the Polkit agent
+    QString pkPath = QStringLiteral(SYSTEM_LIBRARY_DIRECTORY).append("/td-polkitagent");
+    if (QFile::exists(pkPath)) {
+        QProcess::startDetached(pkPath, {});
+    }
+
     QStringList searchPaths = {
         qEnvironmentVariable("XDG_CONFIG_HOME", QDir::homePath() + "/.config") + "/autostart",
         qEnvironmentVariable("XDG_CONFIG_DIRS", "/etc/xdg") + "/autostart"
@@ -142,7 +148,7 @@ void SplashController::runAutostart() {
 void SplashController::startWM() {
     if (!d->wm) {
         d->wm = new QProcess(this);
-        d->wm->start("kwin_x11 --replace"); //TODO: make this a configurable setting
+        d->wm->start("kwin_x11", {"--replace"}); //TODO: make this a configurable setting
     }
 }
 
