@@ -76,6 +76,9 @@
      </item>
      <item>
       <widget class="QToolButton" name="emergencyButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>Emergency</string>
        </property>

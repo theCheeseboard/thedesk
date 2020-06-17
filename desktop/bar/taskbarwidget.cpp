@@ -47,6 +47,7 @@ TaskbarWidget::TaskbarWidget(QWidget* parent) :
 TaskbarWidget::~TaskbarWidget() {
     delete d;
     delete ui;
+    d = nullptr;
 }
 
 void TaskbarWidget::addWindow(DesktopWmWindowPtr window) {
@@ -63,7 +64,7 @@ void TaskbarWidget::addWindow(DesktopWmWindowPtr window) {
         window->activate();
     });
     connect(button, &QPushButton::destroyed, this, [ = ] {
-        d->buttons.remove(window);
+        if (d) d->buttons.remove(window);
     });
 
     connect(window, &DesktopWmWindow::titleChanged, button, [ = ] {

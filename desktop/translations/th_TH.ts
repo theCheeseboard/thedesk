@@ -448,6 +448,41 @@
     </message>
 </context>
 <context>
+    <name>OnboardingBetaThankYou</name>
+    <message>
+        <location filename="../onboarding/onboardingbetathankyou.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingbetathankyou.ui" line="35"/>
+        <source>Thank you!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingbetathankyou.ui" line="42"/>
+        <source>Thanks for giving theDesk Beta 1 a go!
+
+Before we continue, please bear in mind that this is a beta. Not everything will be working correctly, and you may experience some strange behaviour in some parts.
+
+That being said, however, if you happen to run into any ideas or issues, please do let me know. Feedback is important, especially during the early stages of development.
+
+Once again, thanks for giving theDesk a go!
+- Victor :)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingbetathankyou.ui" line="118"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingbetathankyou.cpp" line="47"/>
+        <source>A Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OnboardingFinal</name>
     <message>
         <location filename="../onboarding/onboardingfinal.ui" line="50"/>
@@ -488,12 +523,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingwelcome.ui" line="80"/>
+        <location filename="../onboarding/onboardingwelcome.ui" line="83"/>
         <source>Emergency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingwelcome.ui" line="120"/>
+        <location filename="../onboarding/onboardingwelcome.ui" line="123"/>
         <source>Let&apos;s go!</source>
         <translation type="unfinished"></translation>
     </message>

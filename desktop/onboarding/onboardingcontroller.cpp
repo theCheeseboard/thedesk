@@ -29,6 +29,7 @@
 #include "onboardingwelcome.h"
 #include "onboardingfinal.h"
 #include "onboardingvideo.h"
+#include "onboardingbetathankyou.h"
 
 OnboardingController::OnboardingController(QObject* parent) : QObject(parent) {
 
@@ -39,6 +40,7 @@ bool OnboardingController::performOnboarding() {
     if (settings.value("Onboarding/lastOnboarding").toInt() < 1) {
         OnboardingManager* manager = StateManager::onboardingManager();
         manager->addOnboardingStep(new OnboardingWelcome);
+        manager->addOnboardingStep(new OnboardingBetaThankYou);
         manager->addOnboardingStep(new OnboardingFinal);
         emit manager->onboardingRequired();
 
