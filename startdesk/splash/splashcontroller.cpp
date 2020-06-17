@@ -45,6 +45,8 @@ struct SplashControllerPrivate {
     QPointer<QLocalSocket> socket;
     QString serverPath;
 
+    QByteArray buffer;
+
     bool autostartDone = false;
 };
 
@@ -55,21 +57,39 @@ SplashController::SplashController(QObject* parent) : QObject(parent) {
 }
 
 void SplashController::socketDataAvailable() {
-    QByteArray data = d->socket->readAll();
-    QJsonDocument doc = QJsonDocument::fromBinaryData(data);
-    if (doc.isObject()) {
-        QJsonObject obj = doc.object();
-        if (obj.contains("type")) {
-            QString type = obj.value("type").toString();
-            if (type == "hideSplash") {
-                emit hideSplashes();
-            } else if (type == "showSplash") {
-                emit starting();
-            } else if (type == "autoStart") {
-                //Run Autostart apps
-                this->runAutostart();
-            } else if (type == "question") {
-                emit question(obj.value("title").toString(), obj.value("question").toString());
+    d->buffer.append(d->socket->readAll());
+
+    int bracket = 0;
+    for (int i = 0; i < d->buffer.count(); i++) {
+        if (d->buffer.at(i) == '{') {
+            bracket++;
+        } else if (d->buffer.at(i) == '}') {
+            bracket--;
+        } else if (bracket == 0) {
+            //Error
+            d->buffer = d->buffer.mid(i + 1);
+            i = -1;
+        }
+
+        if (bracket == 0) {
+            QByteArray data = d->buffer.left(i + 1);
+            d->buffer = d->buffer.mid(i + 1);
+            i = -1;
+
+            QJsonDocument doc = QJsonDocument::fromJson(data);
+            QJsonObject obj = doc.object();
+            if (obj.contains("type")) {
+                QString type = obj.value("type").toString();
+                if (type == "hideSplash") {
+                    emit hideSplashes();
+                } else if (type == "showSplash") {
+                    emit starting();
+                } else if (type == "autoStart") {
+                    //Run Autostart apps
+                    this->runAutostart();
+                } else if (type == "question") {
+                    emit question(obj.value("title").toString(), obj.value("question").toString());
+                }
             }
         }
     }
@@ -200,6 +220,6 @@ void SplashController::respond(bool answer) {
     d->socket->write(QJsonDocument(QJsonObject({
         {"type", "questionResponse"},
         {"response", answer}
-    })).toBinaryData());
+    })).toJson());
     d->socket->flush();
 }

@@ -53,7 +53,7 @@ void SessionServer::hideSplashes() {
     if (!d->available) return;
     d->socket->write(QJsonDocument(QJsonObject({
         {"type", "hideSplash"}
-    })).toBinaryData());
+    })).toJson());
     d->socket->flush();
 }
 
@@ -61,7 +61,7 @@ void SessionServer::showSplashes() {
     if (!d->available) return;
     d->socket->write(QJsonDocument(QJsonObject({
         {"type", "showSplash"}
-    })).toBinaryData());
+    })).toJson());
     d->socket->flush();
 }
 
@@ -69,7 +69,7 @@ void SessionServer::performAutostart() {
     if (!d->available) return;
     d->socket->write(QJsonDocument(QJsonObject({
         {"type", "autoStart"}
-    })).toBinaryData());
+    })).toJson());
     d->socket->flush();
 }
 
@@ -89,7 +89,7 @@ tPromise<bool>* SessionServer::askQuestion(QString title, QString question) {
                 {"type", "question"},
                 {"title", title},
                 {"question", question}
-            })).toBinaryData());
+            })).toJson());
             d->socket->flush();
         }
     });
@@ -110,7 +110,7 @@ SessionServer::SessionServer(QObject* parent) : QObject(parent) {
 
 void SessionServer::readData() {
     QByteArray data = d->socket->readAll();
-    QJsonDocument doc = QJsonDocument::fromBinaryData(data);
+    QJsonDocument doc = QJsonDocument::fromJson(data);
     if (doc.isObject()) {
         QJsonObject obj = doc.object();
         if (obj.contains("type")) {
