@@ -158,7 +158,7 @@ QStringList Application::getStringList(QString propertyName, QStringList default
     if (!d->isValid) return QStringList();
 
     QString property = getProperty(propertyName, defaultValue).toString();
-    return property.split(";", QString::SkipEmptyParts);
+    return property.split(";", Qt::SkipEmptyParts);
 }
 
 QStringList Application::allApplications(QStringList searchPaths) {
@@ -210,7 +210,7 @@ void Application::launch() {
     commandSpace.replaceInStrings("%%", "%");
 
     QString finalCommand = commandSpace.join(" ");
-    process->start(finalCommand);
+    process->start(finalCommand, QStringList());
     QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [ = ](int exitCode, QProcess::ExitStatus exitStatus) {
         process->deleteLater();
     });
