@@ -20,6 +20,8 @@
 #include "splashwindow.h"
 #include "ui_splashwindow.h"
 
+#include <tapplication.h>
+#include <QScreen>
 #include <tvariantanimation.h>
 #include "splash/splashcontroller.h"
 
@@ -52,6 +54,8 @@ SplashWindow::SplashWindow(QWidget* parent) :
         ui->stackedWidget->setCurrentWidget(ui->questionPage, this->isVisible());
         this->showFullScreen();
     });
+
+    this->setGeometry(tApplication::primaryScreen()->geometry());
 }
 
 SplashWindow::~SplashWindow() {
