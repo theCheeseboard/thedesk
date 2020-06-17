@@ -111,9 +111,9 @@ void SplashController::runAutostart() {
 
     //Autostart the Polkit agent
     QString pkPath = QStringLiteral(SYSTEM_LIBRARY_DIRECTORY).append("/td-polkitagent");
-    if (QFile::exists(pkPath)) {
-        QProcess::startDetached(pkPath, QStringList());
-    }
+//    if (QFile::exists(pkPath)) {
+    QProcess::startDetached(pkPath, QStringList());
+//    }
 
     QStringList searchPaths = {
         qEnvironmentVariable("XDG_CONFIG_HOME", QDir::homePath() + "/.config") + "/autostart",
