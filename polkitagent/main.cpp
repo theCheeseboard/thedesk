@@ -20,6 +20,7 @@
 #include "overlaywindow.h"
 
 #include <tapplication.h>
+#include <QDebug>
 #include "polkitinterface.h"
 #include <PolkitQt1/Subject>
 
@@ -35,7 +36,11 @@ int main(int argc, char* argv[]) {
 
     PolkitInterface* interface = new PolkitInterface();
     PolkitQt1::UnixSessionSubject subject(QApplication::applicationPid());
-    interface->registerListener(subject, "/com/vicr123/PolkitAuthAgent");
+
+    if (!interface->registerListener(subject, "/com/vicr123/PolkitAuthAgent")) {
+        qDebug() << "Can't register authentication agent";
+        return 1;
+    }
 
     return a.exec();
 }

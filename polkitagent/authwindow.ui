@@ -434,7 +434,7 @@
              </font>
             </property>
             <property name="text">
-             <string>Pass the authentication challenge to complete this action</string>
+             <string>Pass the authentication challenge to confirm this action</string>
             </property>
            </widget>
           </item>
@@ -533,7 +533,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>24</width>
+           <width>29</width>
            <height>20</height>
           </size>
          </property>

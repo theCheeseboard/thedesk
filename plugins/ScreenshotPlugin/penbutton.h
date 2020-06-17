@@ -26,10 +26,14 @@ struct PenButtonPrivate;
 class PenButton : public QPushButton {
         Q_OBJECT
     public:
-        explicit PenButton(QColor color, QWidget* parent = nullptr);
+        enum PenType {
+            Pen,
+            Eraser
+        };
+
+        explicit PenButton(PenType penType, QColor color, QWidget* parent = nullptr);
         ~PenButton();
 
-        QSize sizeHint() const;
         QColor color() const;
 
     signals:

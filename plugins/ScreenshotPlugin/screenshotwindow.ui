@@ -129,6 +129,9 @@
              <property name="text">
               <string>Crop</string>
              </property>
+             <property name="icon">
+              <iconset theme="image-crop"/>
+             </property>
              <property name="checkable">
               <bool>true</bool>
              </property>
@@ -144,6 +147,9 @@
             <widget class="QPushButton" name="redactButton">
              <property name="text">
               <string>Redact</string>
+             </property>
+             <property name="icon">
+              <iconset theme="visibility"/>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -176,6 +182,9 @@
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <property name="leftMargin">
          <number>9</number>
         </property>
@@ -189,9 +198,22 @@
          <number>9</number>
         </property>
         <item alignment="Qt::AlignBottom">
+         <widget class="QPushButton" name="resetButton">
+          <property name="text">
+           <string>Reset Markup</string>
+          </property>
+          <property name="icon">
+           <iconset theme="view-refresh"/>
+          </property>
+         </widget>
+        </item>
+        <item alignment="Qt::AlignBottom">
          <widget class="QPushButton" name="discardButton">
           <property name="text">
            <string>Discard</string>
+          </property>
+          <property name="icon">
+           <iconset theme="edit-delete"/>
           </property>
          </widget>
         </item>
@@ -199,6 +221,9 @@
          <widget class="QPushButton" name="copyButton">
           <property name="text">
            <string>Copy</string>
+          </property>
+          <property name="icon">
+           <iconset theme="edit-copy"/>
           </property>
          </widget>
         </item>

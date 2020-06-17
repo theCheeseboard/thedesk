@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../authwindow.ui" line="437"/>
-        <source>Pass the authentication challenge to complete this action</source>
+        <source>Pass the authentication challenge to confirm this action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

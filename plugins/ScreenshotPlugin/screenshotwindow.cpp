@@ -37,6 +37,8 @@ struct ScreenshotWindowPrivate {
     };
     Operation currentOperation = Crop;
     QColor currentColor;
+    QPainter::CompositionMode compMode = QPainter::CompositionMode_SourceOver;
+    qreal penWidth;
 
     QPixmap originalShot;
 
@@ -49,8 +51,6 @@ struct ScreenshotWindowPrivate {
     QRect editingRect;
 
     QPixmap overlay;
-
-    QList<QRect> redactionZones;
 };
 
 ScreenshotWindow::ScreenshotWindow(QScreen* screen, QWidget* parent) :
@@ -103,15 +103,32 @@ ScreenshotWindow::ScreenshotWindow(QScreen* screen, QWidget* parent) :
             QColor(0, 255, 255),
             QColor(255, 0, 255)
         }) {
-        PenButton* b = new PenButton(col, this);
+        PenButton* b = new PenButton(PenButton::Pen, col, this);
         connect(b, &PenButton::toggled, this, [ = ](bool checked) {
             if (checked) {
                 d->currentOperation = ScreenshotWindowPrivate::Pen;
                 d->currentColor = b->color();
+                d->compMode = QPainter::CompositionMode_SourceOver;
+                d->penWidth = SC_DPI(3);
+
+                this->update();
             }
         });
         ui->pensLayout->addWidget(b, 0, Qt::AlignBottom);
     }
+
+    PenButton* eraser = new PenButton(PenButton::Eraser, QColor(0, 0, 0, 0), this);
+    connect(eraser, &PenButton::toggled, this, [ = ](bool checked) {
+        if (checked) {
+            d->currentOperation = ScreenshotWindowPrivate::Pen;
+            d->currentColor = eraser->color();
+            d->compMode = QPainter::CompositionMode_Source;
+            d->penWidth = SC_DPI(10);
+
+            this->update();
+        }
+    });
+    ui->pensLayout->addWidget(eraser, 0, Qt::AlignBottom);
 
     QShortcut* discardShortcut = new QShortcut(QKeySequence(Qt::Key_Escape), this);
     connect(discardShortcut, &QShortcut::activated, this, [ = ] {
@@ -147,13 +164,10 @@ void ScreenshotWindow::paintEvent(QPaintEvent* event) {
 
     painter.drawPixmap(0, 0, this->width(), this->height(), d->overlay);
 
-    painter.setPen(Qt::transparent);
-    painter.setBrush(Qt::black);
-
-    QList<QRect> redactionZones = d->redactionZones;
-    if (ui->redactButton->isChecked() && editing) redactionZones.append(d->editingRect);
-    for (QRect redactionZone : redactionZones) {
-        painter.drawRect(redactionZone);
+    if (d->currentOperation == ScreenshotWindowPrivate::Redact && editing) {
+        painter.setPen(Qt::transparent);
+        painter.setBrush(Qt::black);
+        painter.drawRect(d->editingRect);
     }
 
     if (cropRect.isValid()) {
@@ -175,6 +189,7 @@ void ScreenshotWindow::take(QScreen* screen, int delay) {
 
 void ScreenshotWindow::on_discardButton_clicked() {
     d->viewportAnim->setEndValue(QRect(0, this->height(), this->width(), this->height()));
+    d->viewportAnim->setEasingCurve(QEasingCurve::InCubic);
     d->viewportAnim->start();
 
     tVariantAnimation* paneAnim = new tVariantAnimation(this);
@@ -200,7 +215,10 @@ void ScreenshotWindow::mouseReleaseEvent(QMouseEvent* event) {
         d->cropRect = d->editingRect;
         this->update();
     } else if (d->currentOperation == ScreenshotWindowPrivate::Redact) {
-        d->redactionZones.append(d->editingRect);
+        QPainter painter(&d->overlay);
+        painter.setPen(Qt::transparent);
+        painter.setBrush(Qt::black);
+        painter.drawRect(d->editingRect);
     }
 
     d->editingRect = QRect();
@@ -210,7 +228,8 @@ void ScreenshotWindow::mouseReleaseEvent(QMouseEvent* event) {
 void ScreenshotWindow::mouseMoveEvent(QMouseEvent* event) {
     if (d->currentOperation == ScreenshotWindowPrivate::Pen) {
         QPainter painter(&d->overlay);
-        painter.setPen(QPen(d->currentColor, SC_DPI(3)));
+        painter.setCompositionMode(d->compMode);
+        painter.setPen(QPen(d->currentColor, d->penWidth));
         painter.drawLine(d->topLeftDrag, event->pos());
 
         d->topLeftDrag = event->pos();
@@ -225,14 +244,8 @@ QPixmap ScreenshotWindow::finalResult() {
     QPixmap result = d->originalShot;
     QPainter painter(&result);
 
-    //Draw in the redaction zones
-    painter.setPen(Qt::transparent);
-    painter.setBrush(Qt::black);
-    for (QRect redactionZone : d->redactionZones) {
-        painter.drawRect(redactionZone);
-    }
-    painter.end();
-
+    //Draw in any edits
+    painter.drawPixmap(0, 0, this->width(), this->height(), d->overlay);
 
     //Crop the image
     if (d->cropRect.isValid()) {
@@ -246,6 +259,7 @@ void ScreenshotWindow::on_copyButton_clicked() {
     QApplication::clipboard()->setPixmap(finalResult());
 
     d->viewportAnim->setEndValue(QRect(0, -this->height(), this->width(), this->height()));
+    d->viewportAnim->setEasingCurve(QEasingCurve::InCubic);
     d->viewportAnim->start();
 
     tVariantAnimation* paneAnim = new tVariantAnimation(this);
@@ -264,11 +278,20 @@ void ScreenshotWindow::on_copyButton_clicked() {
 void ScreenshotWindow::on_cropButton_toggled(bool checked) {
     if (checked) {
         d->currentOperation = ScreenshotWindowPrivate::Crop;
+
+        this->update();
     }
 }
 
 void ScreenshotWindow::on_redactButton_toggled(bool checked) {
     if (checked) {
         d->currentOperation = ScreenshotWindowPrivate::Redact;
+
+        this->update();
     }
+}
+
+void ScreenshotWindow::on_resetButton_clicked() {
+    d->overlay.fill(Qt::transparent);
+    this->update();
 }

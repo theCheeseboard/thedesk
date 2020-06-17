@@ -25,17 +25,34 @@
 #include <tvariantanimation.h>
 
 struct PenButtonPrivate {
+    PenButton::PenType penType;
     QColor color;
 
     tVariantAnimation* heightAnim;
     QSvgRenderer* renderer;
 };
 
-PenButton::PenButton(QColor color, QWidget* parent) : QPushButton(parent) {
+PenButton::PenButton(PenType penType, QColor color, QWidget* parent) : QPushButton(parent) {
     d = new PenButtonPrivate();
     d->color = color;
+    d->penType = penType;
 
-    this->setFixedSize(SC_DPI_T(QSize(40, 60), QSize));
+    QString data;
+    if (penType == Pen) {
+        this->setFixedSize(SC_DPI_T(QSize(40, 60), QSize));
+
+        QFile penFile(":/screenshot/icons/pen.svg");
+        penFile.open(QFile::ReadOnly);
+        data = penFile.readAll();
+        data = data.arg(color.name(QColor::HexRgb));
+    } else {
+        this->setFixedSize(SC_DPI_T(QSize(60, 60), QSize));
+
+        QFile penFile(":/screenshot/icons/eraser.svg");
+        penFile.open(QFile::ReadOnly);
+        data = penFile.readAll();
+        data = data.arg(tr("Eraser")).arg(this->font().family());
+    }
 
     d->heightAnim = new tVariantAnimation(this);
     d->heightAnim->setStartValue(0);
@@ -45,11 +62,6 @@ PenButton::PenButton(QColor color, QWidget* parent) : QPushButton(parent) {
     connect(d->heightAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
         this->setFixedHeight(value.toInt());
     });
-
-    QFile penFile(":/screenshot/icons/pen.svg");
-    penFile.open(QFile::ReadOnly);
-    QString data = penFile.readAll();
-    data = data.arg(color.name(QColor::HexRgb));
 
     d->renderer = new QSvgRenderer();
     d->renderer->load(data.toUtf8());
@@ -63,17 +75,13 @@ PenButton::~PenButton() {
     delete d;
 }
 
-QSize PenButton::sizeHint() const {
-    return SC_DPI_T(QSize(20, 30), QSize);
-}
-
 QColor PenButton::color() const {
     return d->color;
 }
 
 void PenButton::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
-    d->renderer->render(&painter, QRectF(0, 0, SC_DPI(40), SC_DPI(100)));
+    d->renderer->render(&painter, QRectF(0, 0, this->width(), SC_DPI(100)));
 }
 
 void PenButton::updateChecked() {

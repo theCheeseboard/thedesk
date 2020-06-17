@@ -44,6 +44,8 @@ class ScreenshotWindow : public QWidget {
 
         void on_redactButton_toggled(bool checked);
 
+        void on_resetButton_clicked();
+
     private:
         explicit ScreenshotWindow(QScreen* screen, QWidget* parent = nullptr);
 

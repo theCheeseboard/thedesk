@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="pa_IN" sourcelanguage="en_US">
 <context>
+    <name>PenButton</name>
+    <message>
+        <source>Eraser</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ScreenshotWindow</name>
     <message>
         <source>Form</source>
@@ -25,6 +32,10 @@
     </message>
     <message>
         <source>Redact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Markup</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
