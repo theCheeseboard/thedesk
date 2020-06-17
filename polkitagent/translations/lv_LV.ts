@@ -4,22 +4,17 @@
 <context>
     <name>AuthWindow</name>
     <message>
-        <location filename="../authwindow.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../authwindow.ui" line="35"/>
         <source>PolicyKit Authentication</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../authwindow.ui" line="198"/>
+        <location filename="../authwindow.ui" line="199"/>
         <source>Enter your password to confirm this action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../authwindow.ui" line="437"/>
+        <location filename="../authwindow.ui" line="441"/>
         <source>Pass the authentication challenge to confirm this action</source>
         <translation type="unfinished"></translation>
     </message>
@@ -37,11 +32,6 @@
 <context>
     <name>IdentityPopover</name>
     <message>
-        <location filename="../identitypopover.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../identitypopover.ui" line="35"/>
         <source>Identity</source>
         <translation type="unfinished"></translation>
@@ -49,14 +39,6 @@
     <message>
         <location filename="../identitypopover.ui" line="42"/>
         <source>Who do you want to authenticate as?</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>OverlayWindow</name>
-    <message>
-        <location filename="../overlaywindow.ui" line="14"/>
-        <source>OverlayWindow</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

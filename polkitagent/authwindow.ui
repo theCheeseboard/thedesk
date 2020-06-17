@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -178,7 +178,8 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset theme="system-switch-user"/>
+               <iconset theme="system-switch-user">
+                <normaloff>.</normaloff>.</iconset>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -402,6 +403,9 @@
             </item>
             <item>
              <widget class="QPushButton" name="customChangeIdentity">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
               <property name="text">
                <string/>
               </property>
@@ -505,6 +509,9 @@
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
               </property>
               <property name="text">
                <string/>
