@@ -89,7 +89,7 @@ void PowerManager::performPowerOperation(PowerManager::PowerOperation operation)
             connect(d->lockScreenProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [ = ] {
                 d->lockScreenProcess->deleteLater();
             });
-            d->lockScreenProcess->start("/usr/lib/tsscreenlock", {}); //Lock Screen
+            d->lockScreenProcess->start("/usr/lib/tsscreenlock", QStringList()); //Lock Screen
             break;
         case PowerManager::SwitchUsers: {
             QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DisplayManager", qEnvironmentVariable("XDG_SEAT_PATH"), "org.freedesktop.DisplayManager.Seat", "SwitchToGreeter");

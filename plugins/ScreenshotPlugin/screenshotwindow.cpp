@@ -242,10 +242,11 @@ void ScreenshotWindow::mouseMoveEvent(QMouseEvent* event) {
 
 QPixmap ScreenshotWindow::finalResult() {
     QPixmap result = d->originalShot;
-    QPainter painter(&result);
 
     //Draw in any edits
+    QPainter painter(&result);
     painter.drawPixmap(0, 0, this->width(), this->height(), d->overlay);
+    painter.end();
 
     //Crop the image
     if (d->cropRect.isValid()) {
