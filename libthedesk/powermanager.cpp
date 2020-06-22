@@ -60,6 +60,14 @@ void PowerManager::performPowerOperation(PowerManager::PowerOperation operation)
     emit powerOffOperationCommencing(operation);
 
     switch (operation) {
+        case PowerManager::RebootInstallUpdates: {
+            //Ask PackageKit to prepare for updates
+            QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.PackageKit", "/org/freedesktop/PackageKit", "org.freedesktop.PackageKit.Offline", "Trigger");
+            message.setArguments({"reboot"});
+            QDBusMessage msg = QDBusConnection::systemBus().call(message);
+
+            Q_FALLTHROUGH();
+        }
         case PowerManager::PowerOff:
         case PowerManager::Reboot:
         case PowerManager::Suspend:
@@ -67,6 +75,7 @@ void PowerManager::performPowerOperation(PowerManager::PowerOperation operation)
             QMap<PowerManager::PowerOperation, QString> methods = {
                 {PowerManager::PowerOff, "PowerOff"},
                 {PowerManager::Reboot, "Reboot"},
+                {PowerManager::RebootInstallUpdates, "Reboot"},
                 {PowerManager::Suspend, "Suspend"},
                 {PowerManager::Hibernate, "Hibernate"}
             };

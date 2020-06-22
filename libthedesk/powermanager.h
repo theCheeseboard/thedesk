@@ -31,6 +31,7 @@ class PowerManager : public QObject {
         enum PowerOperation {
             PowerOff,
             Reboot,
+            RebootInstallUpdates,
             LogOut,
             Suspend,
             Lock,

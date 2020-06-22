@@ -140,6 +140,19 @@
              </widget>
             </item>
             <item>
+             <widget class="EndSessionButton" name="rebootInstallUpdatesButton">
+              <property name="text">
+               <string>Reboot and install updates</string>
+              </property>
+              <property name="icon">
+               <iconset theme="system-reboot"/>
+              </property>
+              <property name="description">
+               <string>Turns off your computer, installs pending updates and turns it on again</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="EndSessionButton" name="logoutButton">
               <property name="text">
                <string>Log Out</string>
@@ -332,7 +345,8 @@
                 <string>Reboot and update</string>
                </property>
                <property name="icon">
-                <iconset theme="package-upgrade"/>
+                <iconset theme="package-upgrade">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
                <property name="description">
                 <string>We'll perform system updates once this device has rebooted.</string>
@@ -351,7 +365,8 @@
                 <string>Just Reboot</string>
                </property>
                <property name="icon">
-                <iconset theme="system-reboot"/>
+                <iconset theme="system-reboot">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
                <property name="description">
                 <string>We'll reboot your device normally.</string>

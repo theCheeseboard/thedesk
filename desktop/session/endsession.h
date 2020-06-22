@@ -67,6 +67,8 @@ class EndSession : public QWidget {
 
         void on_stackedWidget_switchingFrame(int frame);
 
+        void on_rebootInstallUpdatesButton_clicked();
+
     private:
         explicit EndSession(PowerManager::PowerOperation operation, QString message, QWidget* parent = nullptr);
 
