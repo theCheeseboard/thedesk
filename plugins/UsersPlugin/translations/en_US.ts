@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="en_US">
 <context>
     <name>AddUserDialog</name>
     <message>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../settings/adduserdialog.ui" line="188"/>
         <source>The username is generated based on the given full name. We recommend not changing it.</source>
-        <translation type="unfinished"></translation>
+        <translation>The username is based on your full name. It&apos;s recommended not to change it.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="245"/>
@@ -50,12 +50,12 @@
     <message>
         <location filename="../settings/adduserdialog.ui" line="252"/>
         <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
-        <translation type="unfinished"></translation>
+        <translation>An administrator has full control over this device. They can configure systemwide settings and install software.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="300"/>
         <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
-        <translation type="unfinished"></translation>
+        <translation>A standard user can&apos;t perform systemwide actions. They can only make changes to their own account.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="310"/>
@@ -96,7 +96,7 @@
     <message>
         <location filename="../settings/adduserdialog.ui" line="512"/>
         <source>If you forget your password, this will appear to help you remember.</source>
-        <translation type="unfinished"></translation>
+        <translation>If you forget your password, this will help you remember it.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="524"/>
@@ -209,7 +209,7 @@
     <message>
         <location filename="../settings/changepassworddialog.ui" line="327"/>
         <source>If you forget your password, this will appear to help you remember.</source>
-        <translation type="unfinished"></translation>
+        <translation>If you forget your password, this will help you remember it.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="339"/>
@@ -263,7 +263,7 @@
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="77"/>
         <source>Your Real Name appears on the login screen, on the Gateway and in any other location where we need to differentiate between users.</source>
-        <translation type="unfinished"></translation>
+        <translation>Your real name appears on the login screen, on the Gateway, and anywhere else we need to differentiate users.</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="123"/>
@@ -303,7 +303,7 @@
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="93"/>
         <source>Files for this user will be removed from this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Files for this user will be permanently deleted.</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="100"/>
@@ -350,7 +350,7 @@
     <message>
         <location filename="../settings/lockuserdialog.ui" line="77"/>
         <source>After locking this account, you won&apos;t be able to log in as this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>After locking this account, you won&apos;t be able to log into it again.</translation>
     </message>
     <message>
         <location filename="../settings/lockuserdialog.ui" line="140"/>
@@ -361,7 +361,7 @@
     <message>
         <location filename="../settings/lockuserdialog.ui" line="149"/>
         <source>After unlocking this account, you&apos;ll be able to log in as this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>After unlocking this account, you&apos;ll be able to log into it again.</translation>
     </message>
     <message>
         <location filename="../settings/lockuserdialog.cpp" line="63"/>
