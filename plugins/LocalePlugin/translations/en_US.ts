@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="en_US">
 <context>
     <name>LocaleSettingsPane</name>
     <message>
@@ -17,7 +17,7 @@
     <message>
         <location filename="../settings/localesettingspane.ui" line="114"/>
         <source>Prioritise the languages you&apos;d like to use on your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prioritize what languages you&apos;d like on your device.</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="133"/>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../settings/localesettingspane.ui" line="184"/>
         <source>Select your preferred regional formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Select your regional formats</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="177"/>
@@ -121,7 +121,7 @@
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="42"/>
         <source>Whereabouts are you located? We&apos;ll use this information to format your dates, numbers and other items correctly.</source>
-        <translation type="unfinished"></translation>
+        <translation>Where are you located? This&apos;ll format your dates, numbers, and other items correctly.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="115"/>
