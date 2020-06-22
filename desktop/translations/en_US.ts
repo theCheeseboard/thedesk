@@ -117,7 +117,7 @@
     <message>
         <location filename="../gateway/appselectionmodel.cpp" line="108"/>
         <source>Run Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Run command</translation>
     </message>
 </context>
 <context>
@@ -145,7 +145,7 @@
     <message>
         <location filename="../background/background.ui" line="434"/>
         <source>Select an image to display on your background and lock screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose an image for your background and lock screen</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="522"/>
@@ -155,7 +155,7 @@
     <message>
         <location filename="../background/background.ui" line="529"/>
         <source>Images from the theDesk community will be cycled through every so often.</source>
-        <translation type="unfinished"></translation>
+        <translation>Images from the theDesk community are cycled through occasionally.</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="536"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>Internal use; the path to a local socket to communicate with the session manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Internally; the path to a local socket that communicates with the session manager</translation>
     </message>
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
@@ -276,7 +276,7 @@
     <message>
         <location filename="../session/endsession.ui" line="152"/>
         <source>Ends your session but keeps your computer on for other people to use</source>
-        <translation type="unfinished"></translation>
+        <translation>Ends your session but keeps your computer on for others</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="159"/>
@@ -296,17 +296,17 @@
     <message>
         <location filename="../session/endsession.ui" line="180"/>
         <source>Locks your workspace with your password</source>
-        <translation type="unfinished"></translation>
+        <translation>Locks your computer with your password</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="187"/>
         <source>Turn Off Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Turn Off Display</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="194"/>
         <source>Turns off the screen, but keeps everything else running in the background</source>
-        <translation type="unfinished"></translation>
+        <translation>Turns off the display, but keeps everything running</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="201"/>
@@ -316,7 +316,7 @@
     <message>
         <location filename="../session/endsession.ui" line="208"/>
         <source>Switches to the logon screen, but keeps your session in the background</source>
-        <translation type="unfinished"></translation>
+        <translation>Switches to the login screen, but keeps your session running</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="215"/>
@@ -341,7 +341,7 @@
     <message>
         <location filename="../session/endsession.ui" line="338"/>
         <source>We&apos;ll perform system updates once this device has rebooted.</source>
-        <translation type="unfinished"></translation>
+        <translation>We&apos;ll update your system after a reboot.</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="351"/>
@@ -419,7 +419,7 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="185"/>
         <source>Type to search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Search here...</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="227"/>
@@ -469,7 +469,7 @@
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="283"/>
         <source>Placing this plugin on the blacklist will prevent it from being loaded next time you log in. If the plugin is not already deactivated, we&apos;ll also deactivate it for you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Putting this plugin on the blacklist won&apos;t let it load the next time you log in. If it isn&apos;t already deactivated, it&apos;ll also be deactivated.</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.cpp" line="43"/>
@@ -545,7 +545,7 @@ Once again, thanks for giving theDesk a go!
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="48"/>
         <source>Let&apos;s get you up and running!</source>
-        <translation type="unfinished"></translation>
+        <translation>Let&apos;s get you setup!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="57"/>
@@ -555,7 +555,7 @@ Once again, thanks for giving theDesk a go!
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="83"/>
         <source>Emergency</source>
-        <translation type="unfinished"></translation>
+        <translation>Emergency Contact</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="123"/>
@@ -627,7 +627,13 @@ Here&apos;s what will happen:
 - The next time you log into theDesk, you&apos;ll need to run through the setup again
 
 Save your documents and close all apps before starting the reset. This won&apos;t take long, but you&apos;ll need to log out to perform the reset. You won&apos;t be able to use your device while the reset is taking place.</source>
-        <translation type="unfinished"></translation>
+        <translation>If things aren&apos;t working correctly, resetting theDesk might help.
+
+Here&apos;s what will happen:
+- User settings will be reset
+- The next time you log into theDesk, you&apos;ll need to run through the setup again
+
+Save your documents and close all apps before starting the reset. This won&apos;t take long, but you&apos;ll need to log out to perform the reset. You won&apos;t be able to use your device while it&apos;s being reset.</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="129"/>
@@ -639,7 +645,9 @@ Save your documents and close all apps before starting the reset. This won&apos;
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1, log out and reset theDesk settings? This action is irreversible.
+
+We&apos;ll reset your settings in %n seconds if you don&apos;t do anything.</translation>
     </message>
 </context>
 <context>
@@ -673,7 +681,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="110"/>
         <source>You&apos;ve changed some settings that require you to log out for them to apply completely</source>
-        <translation type="unfinished"></translation>
+        <translation>Some settings changed that require a log out to apply</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
@@ -691,7 +699,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../main.cpp" line="63"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
-        <translation type="unfinished"></translation>
+        <translation>The CTRL key was held. Start theDesk in Safe Mode?</translation>
     </message>
 </context>
 </TS>
