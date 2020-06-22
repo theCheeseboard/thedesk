@@ -51,7 +51,9 @@ PenButton::PenButton(PenType penType, QColor color, QWidget* parent) : QPushButt
         QFile penFile(":/screenshot/icons/eraser.svg");
         penFile.open(QFile::ReadOnly);
         data = penFile.readAll();
-        data = data.arg(tr("Eraser")).arg(this->font().family());
+        data = data.arg(tr("Erase-o", "This and the next translation span two lines. Be spiffy with these!"))
+            .arg(tr("matic 2000", "This and the previous translation span two lines. Be spiffy with these!"))
+            .arg(this->font().family());
     }
 
     d->heightAnim = new tVariantAnimation(this);

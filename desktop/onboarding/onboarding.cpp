@@ -30,6 +30,7 @@
 #include "onboardingstepper.h"
 #include "onboardingbar.h"
 #include <QPainter>
+#include <QKeyEvent>
 
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
@@ -71,6 +72,7 @@ Onboarding::Onboarding(QWidget* parent) :
     ui->stackedWidget->setFixedSize(SC_DPI_T(QSize(800, 600), QSize));
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
     ui->contentWrapper->setFixedHeight(0);
+    ui->contentWrapper->setVisible(false);
 
     OnboardingManager* manager = StateManager::onboardingManager();
     manager->d->onboardingRunning = true;
@@ -124,6 +126,7 @@ Onboarding::Onboarding(QWidget* parent) :
     connect(d->bar, &OnboardingBar::closeClicked, this, [ = ] {
         StateManager::instance()->powerManager()->showPowerOffConfirmation();
     });
+    d->bar->setVisible(false);
 
     d->contentAnim = new tVariantAnimation(this);
     d->contentAnim->setEasingCurve(QEasingCurve::OutCubic);
@@ -218,6 +221,8 @@ void Onboarding::paintEvent(QPaintEvent* event) {
 }
 
 void Onboarding::startOnboarding() {
+    if (ui->contentWrapper->isVisible()) return;
+
     this->setCursor(QCursor(Qt::ArrowCursor));
 
     d->contentAnim->setStartValue(0);
@@ -240,6 +245,7 @@ void Onboarding::startOnboarding() {
             d->onboardingStarted = true;
         });
         d->barAnim->start();
+        d->bar->setVisible(true);
     });
     d->contentAnim->start();
     ui->contentWrapper->setVisible(true);
@@ -252,6 +258,19 @@ void Onboarding::changeEvent(QEvent* event) {
         for (QPair<OnboardingStepper*, OnboardingPage*> stepper : d->steppers) {
             stepper.first->setText(stepper.second->displayName());
         }
+    }
+}
+
+void Onboarding::keyPressEvent(QKeyEvent* event) {
+    if (event->key() == Qt::Key_Space) {
+        if (!ui->contentWrapper->isVisible()) {
+            //Skip the intro sequence
+            startOnboarding();
+            event->accept();
+        }
+    } else if (event->key() == Qt::Key_Escape) {
+        StateManager::instance()->powerManager()->showPowerOffConfirmation();
+        event->accept();
     }
 }
 

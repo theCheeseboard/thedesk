@@ -62,7 +62,7 @@ HEADERS += \
 
 # Default rules for deployment.
 unix {
-    target.path = /usr/lib/
+    target.path = $$[QT_INSTALL_LIBS]
 
     headers.files = *.h
     headers.path = /usr/include/libthedesk/

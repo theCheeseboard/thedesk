@@ -4,7 +4,13 @@
 <context>
     <name>PenButton</name>
     <message>
-        <source>Eraser</source>
+        <source>Erase-o</source>
+        <comment>This and the next translation span two lines. Be spiffy with these!</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>matic 2000</source>
+        <comment>This and the previous translation span two lines. Be spiffy with these!</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>

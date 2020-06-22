@@ -244,132 +244,162 @@
 <context>
     <name>EndSession</name>
     <message>
-        <location filename="../session/endsession.ui" line="40"/>
+        <location filename="../session/endsession.ui" line="57"/>
         <source>End Session</source>
         <translation>Zakończ tą Sesje</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="101"/>
+        <location filename="../session/endsession.ui" line="115"/>
         <source>Power Off</source>
         <translation>Wyłącz</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="108"/>
+        <location filename="../session/endsession.ui" line="122"/>
         <source>Turns off your computer.</source>
         <translation>Wyłącza twój komputer.</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="117"/>
+        <location filename="../session/endsession.ui" line="131"/>
         <source>Reboot</source>
         <translation>Restartuj</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="124"/>
+        <location filename="../session/endsession.ui" line="138"/>
         <source>Turns off your computer and turns it on again</source>
         <translation>Wyłacza twój komputer i ponownie włącza go</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="131"/>
+        <location filename="../session/endsession.ui" line="145"/>
         <source>Log Out</source>
         <translation>Wyloguj</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="138"/>
+        <location filename="../session/endsession.ui" line="152"/>
         <source>Ends your session but keeps your computer on for other people to use</source>
         <translation>Kończy sesję, ale utrzymuje komputer włączony, aby inni mogli z niego korzystać</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="145"/>
+        <location filename="../session/endsession.ui" line="159"/>
         <source>Suspend</source>
         <translation>Zawieś</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="152"/>
+        <location filename="../session/endsession.ui" line="166"/>
         <source>Puts your computer in a low power state so it reopens quickly</source>
         <translation>Przełącza komputer w stan niskiego zużycia energii, dzięki czemu szybko się ponownie otwiera</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="159"/>
+        <location filename="../session/endsession.ui" line="173"/>
         <source>Lock</source>
         <translation>Zablokuj</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="166"/>
+        <location filename="../session/endsession.ui" line="180"/>
         <source>Locks your workspace with your password</source>
         <translation>Blokuje obszar roboczy za pomocą hasła</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="173"/>
+        <location filename="../session/endsession.ui" line="187"/>
         <source>Turn Off Screen</source>
         <translation>Wyłącz ekran</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="180"/>
+        <location filename="../session/endsession.ui" line="194"/>
         <source>Turns off the screen, but keeps everything else running in the background</source>
         <translation>Wyłącza ekran, ale wszystko pozostaje działać w tle</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="187"/>
+        <location filename="../session/endsession.ui" line="201"/>
         <source>Switch Users</source>
         <translation>Zamień Użytkownika</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="194"/>
+        <location filename="../session/endsession.ui" line="208"/>
         <source>Switches to the logon screen, but keeps your session in the background</source>
         <translation>Przełącza na ekran logowania, ale utrzymuje twoją sesję w tle</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="201"/>
+        <location filename="../session/endsession.ui" line="215"/>
         <source>Hibernate</source>
         <translation>Hibernacja</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="208"/>
+        <location filename="../session/endsession.ui" line="222"/>
         <source>Powers off your computer, but restores the session when powered back on</source>
         <translation>Wyłącza komputer, ale przywraca sesję po ponownym włączeniu</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="101"/>
+        <location filename="../session/endsession.ui" line="317"/>
+        <source>Updates are available. What do you want to do?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../session/endsession.ui" line="332"/>
+        <source>Reboot and update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../session/endsession.ui" line="338"/>
+        <source>We&apos;ll perform system updates once this device has rebooted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../session/endsession.ui" line="351"/>
+        <source>Just Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../session/endsession.ui" line="357"/>
+        <source>We&apos;ll reboot your device normally.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../session/endsession.cpp" line="103"/>
         <source>power off the system</source>
         <translation>wyłącz system</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="102"/>
+        <location filename="../session/endsession.cpp" line="104"/>
         <source>reboot the system</source>
         <translation>zrestartuj system</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="103"/>
+        <location filename="../session/endsession.cpp" line="105"/>
         <source>log you out</source>
         <translation>wylogować się</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="104"/>
+        <location filename="../session/endsession.cpp" line="106"/>
         <source>suspend the system</source>
         <translation>zawiesić system</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="105"/>
+        <location filename="../session/endsession.cpp" line="107"/>
         <source>lock the screen</source>
         <translation>zablokuj ekran</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="106"/>
+        <location filename="../session/endsession.cpp" line="108"/>
         <source>turn off the screen</source>
         <translation>wyłącz ekran</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="107"/>
+        <location filename="../session/endsession.cpp" line="109"/>
         <source>switch users</source>
         <translation>przełącz użytkowników</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="108"/>
+        <location filename="../session/endsession.cpp" line="110"/>
         <source>hibernate the system</source>
         <translation>hibernuj system</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="46"/>
+        <location filename="../session/endsession.cpp" line="230"/>
+        <source>Failed to prepare updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../session/endsession.cpp" line="48"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
         <translation>Hej %1, gotowy do wyjścia? Otrzymamy %2 za %n sekund, jeśli nic nie zrobisz.</translation>
     </message>

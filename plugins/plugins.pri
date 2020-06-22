@@ -6,7 +6,7 @@ unix:!macx: {
     INCLUDEPATH += $$PWD/../libthedesk ../../desktop/plugins
     DEPENDPATH += $$PWD/../libthedesk
 
-    target.path = /usr/lib/thedesk/plugins
+    target.path = $$[QT_INSTALL_LIBS]/thedesk/plugins
     INSTALLS += target
 }
 

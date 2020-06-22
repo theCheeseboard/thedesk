@@ -209,8 +209,8 @@ void Application::launch() {
     commandSpace.replaceInStrings("%c", this->getProperty("Name").toString());
     commandSpace.replaceInStrings("%%", "%");
 
-    QString finalCommand = commandSpace.join(" ");
-    process->start(finalCommand, QStringList());
+    QString finalCommand = commandSpace.takeFirst();
+    process->start(finalCommand, commandSpace);
     QObject::connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [ = ](int exitCode, QProcess::ExitStatus exitStatus) {
         process->deleteLater();
     });

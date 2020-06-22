@@ -65,5 +65,7 @@ unix {
     INSTALLS += target translations defaults
 }
 
+DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"
+
 RESOURCES += \
     thedesk-platform-resources.qrc

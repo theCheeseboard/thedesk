@@ -63,7 +63,7 @@ void PluginManager::scanPlugins() {
     //Load all available plugins
     QStringList searchPaths = {
         QDir::cleanPath(qApp->applicationDirPath() + "/../plugins"),
-        "/usr/lib/thedesk/plugins"
+        QString(SYSTEM_LIBRARY_DIRECTORY).append("/thedesk/plugins")
     };
     QStringList seenUuids;
 

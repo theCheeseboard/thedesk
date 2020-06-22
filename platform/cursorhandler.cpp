@@ -51,7 +51,7 @@ void CursorHandler::updateApplicationCursor() {
 #ifdef HAVE_X11
     if (QX11Info::isPlatformX11()) {
         //Load cursor library
-        QLibrary xc("/usr/lib/libXcursor");
+        QLibrary xc(QString(SYSTEM_LIBRARY_DIRECTORY).append("/libXcursor"));
 
         if (xc.load()) {
             typedef int (*setThemeFunc) (Display*, const char*);

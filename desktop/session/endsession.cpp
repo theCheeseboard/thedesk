@@ -29,6 +29,8 @@
 #include <statemanager.h>
 #include <powermanager.h>
 #include <onboardingmanager.h>
+#include <QDBusMessage>
+#include <ttoast.h>
 
 struct EndSessionPrivate {
     tVariantAnimation* powerOffAnimation;
@@ -115,10 +117,13 @@ EndSession::EndSession(PowerManager::PowerOperation operation, QString message, 
     connect(d->powerOffAnimation, &tVariantAnimation::finished, d->timedButton, &QCommandLinkButton::click);
     d->powerOffAnimation->start();
 
-    ui->centeredWidget->setMaximumWidth(SC_DPI(600));
+    ui->centeredWidget->setFixedWidth(SC_DPI(600));
+    ui->centeredWidgetUpdates->setFixedWidth(SC_DPI(600));
     ui->powerOffButton->setProperty("type", "destructive");
     ui->rebootButton->setProperty("type", "destructive");
     ui->titleLabel->setBackButtonShown(true);
+    ui->updatesAvailableTitle->setBackButtonShown(true);
+    ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
 }
 
 EndSession::~EndSession() {
@@ -166,8 +171,13 @@ void EndSession::on_powerOffButton_clicked() {
 }
 
 void EndSession::on_rebootButton_clicked() {
-    StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot);
-    emit done();
+    if (QFile("/var/lib/PackageKit/prepared-update").exists() && !QFile::exists("/system-update")) {
+        //Ask the user to install updates
+        ui->stackedWidget->setCurrentWidget(ui->updatesAvailablePage);
+    } else {
+        StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot);
+        emit done();
+    }
 }
 
 void EndSession::on_logoutButton_clicked() {
@@ -198,4 +208,40 @@ void EndSession::on_switchUsersButton_clicked() {
 void EndSession::on_hibernateButton_clicked() {
     StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Hibernate);
     emit done();
+}
+
+void EndSession::on_updatesAvailableTitle_backButtonClicked() {
+    ui->stackedWidget->setCurrentWidget(ui->mainPage);
+}
+
+void EndSession::on_rebootNoUpdateButton_clicked() {
+    StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot);
+    emit done();
+}
+
+void EndSession::on_rebootUpdateButton_clicked() {
+    //Ask PackageKit to prepare for updates
+    QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.PackageKit", "/org/freedesktop/PackageKit", "org.freedesktop.PackageKit.Offline", "Trigger");
+    message.setArguments({"reboot"});
+    QDBusMessage msg = QDBusConnection::systemBus().call(message);
+
+    if (msg.type() == QDBusMessage::ErrorMessage) {
+        tToast* toast = new tToast(this);
+        toast->setTitle(tr("Failed to prepare updates"));
+        toast->setText(msg.errorMessage());
+        connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
+        toast->show(this);
+    } else {
+        //Reboot
+        StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot);
+        emit done();
+    }
+}
+
+void EndSession::on_stackedWidget_switchingFrame(int frame) {
+    if (frame == 0) {
+        d->powerOffAnimation->start();
+    } else {
+        d->powerOffAnimation->stop();
+    }
 }

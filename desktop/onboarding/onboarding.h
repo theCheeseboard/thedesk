@@ -48,6 +48,7 @@ class Onboarding : public QDialog {
         void resizeEvent(QResizeEvent* event);
         void paintEvent(QPaintEvent* event);
         void changeEvent(QEvent* event);
+        void keyPressEvent(QKeyEvent* event);
 
         void completeOnboarding();
 };

@@ -59,6 +59,14 @@ class EndSession : public QWidget {
 
         void on_hibernateButton_clicked();
 
+        void on_updatesAvailableTitle_backButtonClicked();
+
+        void on_rebootNoUpdateButton_clicked();
+
+        void on_rebootUpdateButton_clicked();
+
+        void on_stackedWidget_switchingFrame(int frame);
+
     private:
         explicit EndSession(PowerManager::PowerOperation operation, QString message, QWidget* parent = nullptr);
 
