@@ -326,7 +326,10 @@
 - Home Directory
 - Mail Spool
 - Temporary Files</source>
-        <translation type="unfinished"></translation>
+        <translation>This user&apos;s data will be gone forever. This includes
+- Home Directory
+- Mail Spool
+- Temporary Files</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="210"/>
