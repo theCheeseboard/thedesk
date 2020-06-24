@@ -27,7 +27,10 @@ SOURCES += \
     drawer/notificationsdrawerwidget.cpp \
     notification.cpp \
     notificationtracker.cpp \
-    plugin.cpp
+    plugin.cpp \
+    statuscenter/notificationappgroup.cpp \
+    statuscenter/notificationsstatuscenterpane.cpp \
+    statuscenter/notificationwidget.cpp
 
 HEADERS += \
     dbus/notifications_adaptor.h \
@@ -37,7 +40,10 @@ HEADERS += \
     drawer/notificationsdrawerwidget.h \
     notification.h \
     notificationtracker.h \
-    plugin.h
+    plugin.h \
+    statuscenter/notificationappgroup.h \
+    statuscenter/notificationsstatuscenterpane.h \
+    statuscenter/notificationwidget.h
 
 unix {
     translations.files = translations/*.qm
@@ -60,4 +66,7 @@ DISTFILES += \
 FORMS += \
     drawer/hudwidget.ui \
     drawer/notificationsdrawer.ui \
-    drawer/notificationsdrawerwidget.ui
+    drawer/notificationsdrawerwidget.ui \
+    statuscenter/notificationappgroup.ui \
+    statuscenter/notificationsstatuscenterpane.ui \
+    statuscenter/notificationwidget.ui

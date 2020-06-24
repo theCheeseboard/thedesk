@@ -1,0 +1,104 @@
+/****************************************
+ *
+ *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
+ *   Copyright (C) 2020 Victor Tran
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * *************************************/
+#include "notificationsstatuscenterpane.h"
+#include "ui_notificationsstatuscenterpane.h"
+
+#include "notification.h"
+#include "notificationtracker.h"
+#include "notificationappgroup.h"
+
+#include <statemanager.h>
+#include <statuscentermanager.h>
+
+struct NotificationsStatusCenterPanePrivate {
+    NotificationTracker* tracker;
+    QMap<QString, NotificationAppGroup*> groups;
+};
+
+NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker* tracker) :
+    StatusCenterPane(),
+    ui(new Ui::NotificationsStatusCenterPane) {
+    ui->setupUi(this);
+
+    d = new NotificationsStatusCenterPanePrivate();
+    d->tracker = tracker;
+
+    ui->titleLabel->setBackButtonIsMenu(true);
+    ui->titleLabel->setBackButtonShown(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
+    connect(StateManager::instance()->statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, ui->titleLabel, &tTitleLabel::setBackButtonShown);
+
+    const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
+    ui->notificationsWidget->setFixedWidth(contentWidth);
+
+    connect(d->tracker, &NotificationTracker::newNotification, this, [ = ](NotificationPtr notification) {
+        ApplicationPointer application = notification->application();
+        QString desktopEntry;
+        if (application) {
+            desktopEntry = application->desktopEntry();
+        }
+
+        NotificationAppGroup* group;
+        if (d->groups.contains(desktopEntry)) {
+            group = d->groups.value(desktopEntry);
+        } else {
+            group = new NotificationAppGroup(application, this);
+            connect(group, &NotificationAppGroup::destroyed, this, [ = ] {
+                ui->notificationsLayout->removeWidget(group);
+                d->groups.remove(desktopEntry);
+
+                if (d->groups.isEmpty()) ui->stackedWidget->setCurrentWidget(ui->noNotificationsPage);
+            });
+            ui->notificationsLayout->insertWidget(0, group);
+            d->groups.insert(desktopEntry, group);
+        }
+
+        group->pushNotification(notification);
+
+        ui->stackedWidget->setCurrentWidget(ui->notificationsPage);
+    });
+
+    ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
+    ui->notificationSplash->setPixmap(QIcon::fromTheme("notifications").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
+}
+
+NotificationsStatusCenterPane::~NotificationsStatusCenterPane() {
+    delete d;
+    delete ui;
+}
+
+void NotificationsStatusCenterPane::on_titleLabel_backButtonClicked() {
+    StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}
+
+QString NotificationsStatusCenterPane::name() {
+    return "NotificationsPane";
+}
+
+QString NotificationsStatusCenterPane::displayName() {
+    return tr("Notifications");
+}
+
+QIcon NotificationsStatusCenterPane::icon() {
+    return QIcon::fromTheme("notifications");
+}
+
+QWidget* NotificationsStatusCenterPane::leftPane() {
+    return nullptr;
+}
