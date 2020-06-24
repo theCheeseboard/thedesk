@@ -44,6 +44,7 @@ class ThemeSettingsPane : public StatusCenterPane {
         void updateFonts();
         void updateWidgets();
         void setFonts();
+        void writeWindowBorders();
 
         // StatusCenterPane interface
     public:
@@ -59,6 +60,7 @@ class ThemeSettingsPane : public StatusCenterPane {
         void on_interfaceFont_currentFontChanged(const QFont& f);
         void on_interfaceFontSize_valueChanged(double arg1);
         void on_widgetThemeBox_currentIndexChanged(int index);
+        void on_setWindowBordersButton_clicked();
 };
 
 #endif // THEMESETTINGSPANE_H

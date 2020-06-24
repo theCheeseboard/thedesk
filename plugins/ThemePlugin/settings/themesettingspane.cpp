@@ -24,10 +24,13 @@
 #include <statuscentermanager.h>
 #include <tsettings.h>
 #include <QIcon>
-
+#include <QDBusConnectionInterface>
+#include <QStandardPaths>
 #include <QStyleFactory>
+#include <QDir>
 
 struct ThemeSettingsPanePrivate {
+    QSettings* kwinSettings;
     tSettings* themeSettings;
 };
 
@@ -38,6 +41,7 @@ ThemeSettingsPane::ThemeSettingsPane() :
 
     d = new ThemeSettingsPanePrivate();
     d->themeSettings = new tSettings("theDesk.platform", this);
+    d->kwinSettings = new QSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/kwinrc", QSettings::IniFormat);
 
     ui->titleLabel->setBackButtonIsMenu(true);
     ui->titleLabel->setBackButtonShown(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
@@ -47,6 +51,7 @@ ThemeSettingsPane::ThemeSettingsPane() :
     ui->coloursWidget->setFixedWidth(contentWidth);
     ui->fontsWidget->setFixedWidth(contentWidth);
     ui->widgetsWidget->setFixedWidth(contentWidth);
+    ui->windowBordersWidget->setFixedWidth(contentWidth);
 
     ui->accentBlue->setColorName("blue");
     ui->accentGreen->setColorName("green");
@@ -85,12 +90,29 @@ void ThemeSettingsPane::changeEvent(QEvent* event) {
 }
 
 void ThemeSettingsPane::updateBaseColour() {
+    d->kwinSettings->beginGroup("org.kde.kdecoration2");
+    QString theme = d->kwinSettings->value("theme").toString();
+    QString library = d->kwinSettings->value("library").toString();
+    d->kwinSettings->endGroup();
+
+    bool isHandlingWindowBorders = (library == "org.kde.kwin.aurorae" && theme.startsWith("__aurorae__svg__Contemporary"));
+
     QSignalBlocker blocker(ui->baseColourComboBox);
     QString baseColor = d->themeSettings->value("Palette/base").toString();
     if (baseColor == "dark") {
         ui->baseColourComboBox->setCurrentIndex(0);
     } else if (baseColor == "light") {
         ui->baseColourComboBox->setCurrentIndex(1);
+    }
+
+    if (isHandlingWindowBorders) {
+        writeWindowBorders();
+    } else {
+        //Ensure that KWin is running and that the themes are (probably) installed
+        if (QDir("/usr/share/aurorae/themes/Contemporary").exists() &&
+            QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.KWin").value()) {
+            ui->windowBordersConditonalWidget->expand();
+        }
     }
 }
 
@@ -129,6 +151,34 @@ void ThemeSettingsPane::setFonts() {
         ui->fixedFont->currentFont().family(),
         QString::number(ui->fixedFontSize->value())
     }));
+}
+
+void ThemeSettingsPane::writeWindowBorders() {
+    QString theme;
+    QString baseColor = d->themeSettings->value("Palette/base").toString();
+    if (baseColor == "dark") {
+        theme = "__aurorae__svg__Contemporary";
+    } else {
+        theme = "__aurorae__svg__Contemporary-light";
+    }
+
+    d->kwinSettings->beginGroup("org.kde.kdecoration2");
+    if (d->kwinSettings->value("theme").toString() == theme && d->kwinSettings->value("library").toString() == "org.kde.kwin.aurorae") {
+        //Nothing to do
+        d->kwinSettings->endGroup();
+        return;
+    }
+    d->kwinSettings->setValue("library", "org.kde.kwin.aurorae");
+    d->kwinSettings->setValue("theme", theme);
+    d->kwinSettings->endGroup();
+
+    d->kwinSettings->sync();
+
+    //Reload KWin
+    QDBusMessage message = QDBusMessage::createMethodCall("org.kde.KWin", "/KWin", "org.kde.KWin", "reconfigure");
+    QDBusConnection::sessionBus().asyncCall(message);
+
+    ui->windowBordersConditonalWidget->collapse();
 }
 
 QString ThemeSettingsPane::name() {
@@ -180,4 +230,8 @@ void ThemeSettingsPane::on_interfaceFontSize_valueChanged(double arg1) {
 void ThemeSettingsPane::on_widgetThemeBox_currentIndexChanged(int index) {
     QString name = QStyleFactory::keys().at(index);
     d->themeSettings->setValue("Platform/style", name);
+}
+
+void ThemeSettingsPane::on_setWindowBordersButton_clicked() {
+    writeWindowBorders();
 }

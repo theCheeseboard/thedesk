@@ -49,8 +49,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>627</width>
-        <height>603</height>
+        <width>613</width>
+        <height>668</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -189,6 +189,80 @@
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="tConditionalWidget" name="windowBordersConditonalWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QWidget" name="windowBordersWidget" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QLabel" name="label_13">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>WINDOW BORDERS</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>If the window borders don't look correct, we can fix that up for you. This will also change your window borders in KDE, and any other desktop that uses KWin for the window manager.</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QPushButton" name="setWindowBordersButton">
+                 <property name="text">
+                  <string>Set Window Borders</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="line_3">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item alignment="Qt::AlignHCenter">
@@ -473,6 +547,12 @@
    <class>AccentColourPicker</class>
    <extends>QWidget</extends>
    <header>settings/accentcolourpicker.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>tConditionalWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">tconditionalwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

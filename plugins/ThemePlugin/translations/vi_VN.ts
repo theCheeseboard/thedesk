@@ -44,7 +44,7 @@
     <name>ThemeSettingsPane</name>
     <message>
         <location filename="../settings/themesettingspane.ui" line="35"/>
-        <location filename="../settings/themesettingspane.cpp" line="139"/>
+        <location filename="../settings/themesettingspane.cpp" line="189"/>
         <source>Theme</source>
         <translation>Giao diện</translation>
     </message>
@@ -69,72 +69,87 @@
         <translation>MÀU</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="200"/>
+        <location filename="../settings/themesettingspane.ui" line="224"/>
+        <source>WINDOW BORDERS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/themesettingspane.ui" line="231"/>
+        <source>If the window borders don&apos;t look correct, we can fix that up for you. This will also change your window borders in KDE, and any other desktop that uses KWin for the window manager.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/themesettingspane.ui" line="243"/>
+        <source>Set Window Borders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/themesettingspane.ui" line="274"/>
         <source>Fixed Width Font</source>
         <translation>Phông chữ đơn cách</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="207"/>
+        <location filename="../settings/themesettingspane.ui" line="281"/>
         <source>Interface Font</source>
         <translation>Phông chữ giao diện</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="230"/>
+        <location filename="../settings/themesettingspane.ui" line="304"/>
         <source>FONTS</source>
         <translation>PHÔNG</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="296"/>
+        <location filename="../settings/themesettingspane.ui" line="370"/>
         <source>Widget Theme</source>
         <translation>Giao diện thành phần</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="360"/>
+        <location filename="../settings/themesettingspane.ui" line="434"/>
         <source>Button</source>
         <translation>Nút</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="373"/>
+        <location filename="../settings/themesettingspane.ui" line="447"/>
         <source>Radio Button 2</source>
         <translation>Nút chọn 2</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="383"/>
+        <location filename="../settings/themesettingspane.ui" line="457"/>
         <source>Using the theme set above, interface elements will look like this:</source>
         <translation>Sử dụng giao diện được đặt ở trên, các thành phần sẽ hiện như thế này:</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="390"/>
+        <location filename="../settings/themesettingspane.ui" line="464"/>
         <source>Radio Button 1</source>
         <translation>Nút chọn 1</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="397"/>
+        <location filename="../settings/themesettingspane.ui" line="471"/>
         <source>Check Box 2</source>
         <translation>Hộp kiểm 2</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="413"/>
+        <location filename="../settings/themesettingspane.ui" line="487"/>
         <source>DEMO</source>
         <translation>BẢN XEM TRƯỚC</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="420"/>
+        <location filename="../settings/themesettingspane.ui" line="494"/>
         <source>Check Box 1</source>
         <translation>Hộp kiểm 1</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="434"/>
+        <location filename="../settings/themesettingspane.ui" line="508"/>
         <source>Type here!</source>
         <translation>Nhập ở đây!</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="289"/>
+        <location filename="../settings/themesettingspane.ui" line="363"/>
         <source>Set the appearance of buttons, text boxes and other interface elements</source>
         <translation>Đặt sự xuất hiện cho nút, hộp văn bản và các thành phần giao diện</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="309"/>
+        <location filename="../settings/themesettingspane.ui" line="383"/>
         <source>WIDGETS</source>
         <translation>THÀNH PHẦN GIAO DIỆN</translation>
     </message>
