@@ -23,6 +23,7 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QVideoWidget>
+#include <QQmlContext>
 #include <tsettings.h>
 
 struct OnboardingVideoPrivate {
@@ -40,7 +41,6 @@ OnboardingVideo::OnboardingVideo(QWidget* parent) :
     this->setCursor(QCursor(Qt::BlankCursor));
 
     this->setWindowFlag(Qt::FramelessWindowHint);
-//    this->setWindowFlag(Qt::WindowStaysOnBottomHint);
 
     tSettings settings;
     d->videoPlaylist = new QMediaPlaylist(this);
@@ -58,16 +58,14 @@ OnboardingVideo::OnboardingVideo(QWidget* parent) :
         }
     });
 
-    d->videoWidget = new QVideoWidget(this);
-    d->videoWidget->setParent(this);
-    d->videoWidget->lower();
-    d->videoWidget->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
-
     d->videoPlayer = new QMediaPlayer(this);
     d->videoPlayer->setVideoOutput(d->videoWidget);
     d->videoPlayer->setPlaylist(d->videoPlaylist);
     d->videoPlayer->setVolume(0);
     d->videoPlayer->play();
+
+    QQmlContext* qml = ui->quickWidget->rootContext();
+    qml->setContextProperty("sourceVideo", this);
 }
 
 OnboardingVideo::~OnboardingVideo() {
@@ -75,9 +73,6 @@ OnboardingVideo::~OnboardingVideo() {
     delete ui;
 }
 
-void OnboardingVideo::resizeEvent(QResizeEvent* event) {
-    QRect newGeometry;
-    newGeometry.setSize(QSize(16, 9).scaled(this->width() + 1, this->height() + 1, Qt::KeepAspectRatioByExpanding));
-    newGeometry.moveCenter(QPoint(this->width() / 2, this->height() / 2));
-    d->videoWidget->setGeometry(newGeometry);
+QMediaObject* OnboardingVideo::mediaObject() const {
+    return d->videoPlayer;
 }

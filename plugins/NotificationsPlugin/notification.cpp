@@ -19,7 +19,7 @@
  * *************************************/
 #include "notification.h"
 
-#include "application.h"
+#include <Applications/application.h>
 
 struct NotificationPrivate {
     quint32 id;
@@ -27,6 +27,7 @@ struct NotificationPrivate {
 
     QString summary;
     QString body;
+    Notification::Urgency urgency = Notification::Normal;
 
     QList<Notification::Action> actions;
 
@@ -92,6 +93,14 @@ void Notification::setActions(QList<Notification::Action> actions) {
 
 QList<Notification::Action> Notification::actions() {
     return d->actions;
+}
+
+void Notification::setUrgency(Notification::Urgency urgency) {
+    d->urgency = urgency;
+}
+
+Notification::Urgency Notification::urgency() {
+    return d->urgency;
 }
 
 void Notification::dismiss(Notification::NotificationCloseReason reason) {

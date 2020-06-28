@@ -23,6 +23,7 @@
 #include <QKeySequence>
 #include <statemanager.h>
 #include <hudmanager.h>
+#include <quietmodemanager.h>
 #include <keygrab.h>
 
 #include <Context>
@@ -56,7 +57,15 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
         this->adjustVolume(-5);
     });
     connect(d->volumeMute, &KeyGrab::activated, this, [ = ] {
+        QuietModeManager::QuietMode newMode = StateManager::quietModeManager()->nextQuietMode();
+        StateManager::quietModeManager()->setQuietMode(newMode);
 
+
+        StateManager::instance()->hudManager()->showHud({
+            {"icon", StateManager::quietModeManager()->icon(newMode)},
+            {"title", StateManager::quietModeManager()->name(newMode)},
+            {"text", StateManager::quietModeManager()->description(newMode)}
+        });
     });
 }
 
@@ -68,6 +77,11 @@ EventHandler::~EventHandler() {
 }
 
 void EventHandler::adjustVolume(int percentageChange) {
+    if (StateManager::quietModeManager()->currentMode() == QuietModeManager::Mute) {
+        showHud(nullptr);
+        return;
+    }
+
     //Get the default sink and find the widget for this sink
     PulseAudioQt::Sink* sink = PulseAudioQt::Context::instance()->server()->defaultSink();
     if (!sink) {
@@ -110,6 +124,14 @@ void EventHandler::defaultSinkChanged(PulseAudioQt::Sink* defaultSink) {
 }
 
 void EventHandler::showHud(PulseAudioQt::Sink* sink, qint64 volume) {
+    if (StateManager::quietModeManager()->currentMode() == QuietModeManager::Mute) {
+        StateManager::instance()->hudManager()->showHud({
+            {"icon", StateManager::quietModeManager()->icon(QuietModeManager::Mute)},
+            {"title", tr("Mute")},
+            {"text", tr("Unmute Quiet Mode before changing the volume")}
+        });
+        return;
+    }
 
     double displayVolume;
     if (volume == -1) {

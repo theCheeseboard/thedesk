@@ -26,6 +26,9 @@
 
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <quietmodemanager.h>
+
+#include <QPushButton>
 
 struct NotificationsStatusCenterPanePrivate {
     NotificationTracker* tracker;
@@ -46,6 +49,7 @@ NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker
 
     const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
     ui->notificationsWidget->setFixedWidth(contentWidth);
+    ui->quietModeWidget->setFixedWidth(contentWidth);
 
     connect(d->tracker, &NotificationTracker::newNotification, this, [ = ](NotificationPtr notification) {
         ApplicationPointer application = notification->application();
@@ -76,6 +80,26 @@ NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker
 
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
     ui->notificationSplash->setPixmap(QIcon::fromTheme("notifications").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
+
+    for (QuietModeManager::QuietMode mode : StateManager::quietModeManager()->availableQuietModes()) {
+        QuietModeManager::QuietMode m = mode;
+        QPushButton* button = new QPushButton(this);
+        button->setText(StateManager::quietModeManager()->name(m));
+        button->setIcon(QIcon::fromTheme(StateManager::quietModeManager()->icon(m)));
+        button->setCheckable(true);
+        button->setAutoExclusive(true);
+        button->setChecked(StateManager::quietModeManager()->currentMode() == m);
+        connect(button, &QPushButton::toggled, this, [ = ](bool checked) {
+            if (checked) {
+                StateManager::quietModeManager()->setQuietMode(m);
+            }
+        });
+        connect(StateManager::quietModeManager(), &QuietModeManager::quietModeChanged, this, [ = ](QuietModeManager::QuietMode newMode, QuietModeManager::QuietMode oldMode) {
+            Q_UNUSED(oldMode);
+            button->setChecked(newMode == m);
+        });
+        ui->quietModesLayout->addWidget(button);
+    }
 }
 
 NotificationsStatusCenterPane::~NotificationsStatusCenterPane() {

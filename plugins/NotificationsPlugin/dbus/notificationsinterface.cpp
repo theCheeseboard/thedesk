@@ -85,6 +85,10 @@ quint32 NotificationsInterface::Notify(QString appName, quint32 replacesId, QStr
         })));
     }
 
+    if (hints.contains("urgency")) {
+        notification->setUrgency(static_cast<Notification::Urgency>(hints.value("urgency").toInt()));
+    }
+
     return notification->id();
 }
 

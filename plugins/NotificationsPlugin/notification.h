@@ -23,7 +23,7 @@
 #include <QObject>
 #include <QPointer>
 #include <QIcon>
-#include <application.h>
+#include <Applications/application.h>
 
 class NotificationTracker;
 struct NotificationPrivate;
@@ -35,6 +35,12 @@ class Notification : public QObject {
             NotificationUserDismissed = 2,
             NotificationClosedByDBus = 3,
             NotificationCloseReasonUndefined = 4
+        };
+
+        enum Urgency {
+            Low = 0,
+            Normal = 1,
+            Critical = 2
         };
 
         struct Action {
@@ -61,6 +67,9 @@ class Notification : public QObject {
 
         void setActions(QList<Action> actions);
         QList<Action> actions();
+
+        void setUrgency(Urgency urgency);
+        Urgency urgency();
 
         void dismiss(NotificationCloseReason reason);
 

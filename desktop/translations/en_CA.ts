@@ -546,6 +546,14 @@ Once again, thanks for giving theDesk a go!
     </message>
 </context>
 <context>
+    <name>OnboardingVideo</name>
+    <message>
+        <location filename="../onboarding/onboardingvideo.ui" line="39"/>
+        <source>qrc:/thedesk/desktop/onboarding/OnboardingVideoForm.qml</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OnboardingWelcome</name>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="41"/>

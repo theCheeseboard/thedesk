@@ -51,5 +51,9 @@
         <source>You&apos;ve caught up with your notifications!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>QUIET MODE</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

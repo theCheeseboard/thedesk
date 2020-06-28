@@ -21,7 +21,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    application.cpp \
     barmanager.cpp \
     chunk.cpp \
     gatewaymanager.cpp \
@@ -33,14 +32,13 @@ SOURCES += \
     onboardingpage.cpp \
     powermanager.cpp \
     private/localeselector.cpp \
-    qsettingsformats.cpp \
     quickswitch.cpp \
+    quietmodemanager.cpp \
     statemanager.cpp \
     statuscentermanager.cpp \
     statuscenterpane.cpp
 
 HEADERS += \
-    application.h \
     barmanager.h \
     chunk.h \
     gatewaymanager.h \
@@ -54,8 +52,8 @@ HEADERS += \
     powermanager.h \
     private/localeselector.h \
     private/onboardingmanager_p.h \
-    qsettingsformats.h \
     quickswitch.h \
+    quietmodemanager.h \
     statemanager.h \
     statuscentermanager.h \
     statuscenterpane.h

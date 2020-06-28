@@ -20,7 +20,7 @@
 #include "appselectionmodel.h"
 
 #include <tpromise.h>
-#include <application.h>
+#include <Applications/application.h>
 #include <the-libs_global.h>
 
 struct AppSelectionModelPrivate {

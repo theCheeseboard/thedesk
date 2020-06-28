@@ -23,7 +23,7 @@
 #include <Wm/desktopwm.h>
 #include <QScroller>
 #include <tvariantanimation.h>
-#include <application.h>
+#include <Applications/application.h>
 #include "appselectionmodel.h"
 #include "appselectionmodellistdelegate.h"
 #include "session/endsession.h"

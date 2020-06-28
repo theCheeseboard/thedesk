@@ -36,6 +36,52 @@
      </property>
     </widget>
    </item>
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QWidget" name="quietModeWidget" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>QUIET MODE</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="quietModesLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+         </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item>
     <widget class="tStackedWidget" name="stackedWidget">
      <property name="currentIndex">
@@ -51,7 +97,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>149</height>
+           <height>117</height>
           </size>
          </property>
         </spacer>
@@ -102,7 +148,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>148</height>
+           <height>117</height>
           </size>
          </property>
         </spacer>
@@ -140,7 +186,7 @@
             <x>0</x>
             <y>0</y>
             <width>572</width>
-            <height>412</height>
+            <height>344</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -159,6 +205,19 @@
            <property name="bottomMargin">
             <number>0</number>
            </property>
+           <item>
+            <widget class="Line" name="line">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>1</height>
+              </size>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
            <item alignment="Qt::AlignHCenter">
             <widget class="QWidget" name="notificationsWidget" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -178,7 +237,11 @@
                <number>0</number>
               </property>
               <item>
-               <layout class="QVBoxLayout" name="notificationsLayout"/>
+               <layout class="QVBoxLayout" name="notificationsLayout">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
+               </layout>
               </item>
              </layout>
             </widget>

@@ -1,4 +1,4 @@
-QT       += core gui thelib network
+QT       += core gui thelib network tdesktopenvironment
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

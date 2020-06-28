@@ -22,6 +22,11 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Contemporary</family>
+    </font>
+   </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
@@ -47,6 +52,7 @@
        </property>
        <property name="font">
         <font>
+         <family>Contemporary</family>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -78,6 +84,7 @@
       <widget class="QLabel" name="iconTextTitle">
        <property name="font">
         <font>
+         <family>Contemporary</family>
          <weight>75</weight>
          <bold>true</bold>
         </font>
@@ -97,6 +104,9 @@
        </property>
        <property name="text">
         <string notr="true">Text</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

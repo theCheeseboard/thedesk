@@ -1,4 +1,4 @@
-QT       += core gui tdesktopenvironment network multimedia multimediawidgets
+QT       += core gui tdesktopenvironment network multimedia multimediawidgets quickwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -153,4 +153,5 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
-    defaults.conf
+    defaults.conf \
+    onboarding/OnboardingVideoForm.qml

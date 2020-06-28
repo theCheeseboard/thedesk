@@ -19,7 +19,7 @@
  * *************************************/
 #include "appselectionmodellistdelegate.h"
 
-#include <application.h>
+#include <Applications/application.h>
 #include <QPainter>
 #include <the-libs_global.h>
 

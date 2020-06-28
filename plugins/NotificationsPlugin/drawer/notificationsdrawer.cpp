@@ -26,6 +26,7 @@
 #include <statemanager.h>
 #include <barmanager.h>
 #include <gatewaymanager.h>
+#include <quietmodemanager.h>
 #include "notificationtracker.h"
 #include "notificationsdrawerwidget.h"
 
@@ -101,6 +102,17 @@ void NotificationsDrawer::updateGeometry() {
 }
 
 void NotificationsDrawer::showNotification(NotificationPtr notification) {
+    switch (StateManager::quietModeManager()->currentMode()) {
+        case QuietModeManager::CriticalOnly:
+            if (notification->urgency() != Notification::Critical) return;
+            break;
+        case QuietModeManager::NoNotifications:
+        case QuietModeManager::Mute:
+            return;
+        default:
+            break;
+    }
+
     NotificationsDrawerWidget* w = new NotificationsDrawerWidget(notification, d->tracker, this);
     w->installEventFilter(this);
     d->widgets.append(w);

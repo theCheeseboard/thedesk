@@ -67,12 +67,21 @@ void TaskbarWidget::addWindow(DesktopWmWindowPtr window) {
         if (d) d->buttons.remove(window);
     });
 
-    connect(window, &DesktopWmWindow::titleChanged, button, [ = ] {
-        button->setText(window->title());
-    });
-    connect(window, &DesktopWmWindow::iconChanged, button, [ = ] {
-        button->setIcon(window->icon());
-    });
+    auto updateWindow = [ = ] {
+        ApplicationPointer app = window->application();
+        if (app) {
+            button->setText(app->getProperty("Name").toString());
+            button->setIcon(QIcon::fromTheme(app->getProperty("Icon").toString()));
+        } else {
+            button->setText(window->title());
+            button->setIcon(window->icon());
+        }
+    };
+    updateWindow();
+
+    connect(window, &DesktopWmWindow::titleChanged, button, updateWindow);
+    connect(window, &DesktopWmWindow::iconChanged, button, updateWindow);
+    connect(window, &DesktopWmWindow::applicationChanged, button, updateWindow);
 
     ui->buttonsLayout->addWidget(button);
     d->buttons.insert(window, button);

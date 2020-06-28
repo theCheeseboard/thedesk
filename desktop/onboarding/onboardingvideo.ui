@@ -13,7 +13,43 @@
   <property name="windowTitle">
    <string notr="true">Dialog</string>
   </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QQuickWidget" name="quickWidget">
+     <property name="resizeMode">
+      <enum>QQuickWidget::SizeRootObjectToView</enum>
+     </property>
+     <property name="source">
+      <url>
+       <string>qrc:/thedesk/desktop/onboarding/OnboardingVideoForm.qml</string>
+      </url>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QQuickWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

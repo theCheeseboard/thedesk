@@ -21,7 +21,7 @@
 #define NOTIFICATIONAPPGROUP_H
 
 #include <QWidget>
-#include <application.h>
+#include <Applications/application.h>
 #include "notification.h"
 
 namespace Ui {

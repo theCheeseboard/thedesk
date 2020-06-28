@@ -12,4 +12,39 @@
         <translation>Wybierz widownie</translation>
     </message>
 </context>
+<context>
+    <name>QuietModeManager</name>
+    <message>
+        <source>Allows all sounds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hides non-critical notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hides all notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mutes all sound altogether</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Critical Only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

@@ -19,5 +19,13 @@
         <source>Volume</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unmute Quiet Mode before changing the volume</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

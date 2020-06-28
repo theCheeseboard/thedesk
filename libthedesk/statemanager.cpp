@@ -26,6 +26,7 @@
 #include "hudmanager.h"
 #include "gatewaymanager.h"
 #include "onboardingmanager.h"
+#include "quietmodemanager.h"
 
 struct StateManagerPrivate {
     StateManager* instance = nullptr;
@@ -36,6 +37,7 @@ struct StateManagerPrivate {
     LocaleManager* localeManager;
     HudManager* hudManager;
     OnboardingManager* onboardingManager;
+    QuietModeManager* quietModeManager;
 };
 
 StateManagerPrivate* StateManager::d = new StateManagerPrivate();
@@ -48,6 +50,7 @@ StateManager::StateManager() : QObject(nullptr) {
     d->localeManager = new LocaleManager(this);
     d->hudManager = new HudManager(this);
     d->onboardingManager = new OnboardingManager(this);
+    d->quietModeManager = new QuietModeManager(this);
 }
 
 StateManager* StateManager::instance() {
@@ -81,4 +84,8 @@ HudManager* StateManager::hudManager() {
 
 OnboardingManager* StateManager::onboardingManager() {
     return d->onboardingManager;
+}
+
+QuietModeManager* StateManager::quietModeManager() {
+    return d->quietModeManager;
 }

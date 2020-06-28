@@ -30,7 +30,7 @@
 #include <QJsonObject>
 #include <QPointer>
 #include <QDir>
-#include <application.h>
+#include <Applications/application.h>
 #include <the-libs_global.h>
 #include "splashwindow.h"
 
