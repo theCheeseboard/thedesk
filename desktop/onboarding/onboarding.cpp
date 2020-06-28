@@ -31,6 +31,8 @@
 #include "onboardingbar.h"
 #include <QPainter>
 #include <QKeyEvent>
+#include <QAudioDecoder>
+#include <QAudioOutput>
 
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
@@ -43,8 +45,14 @@ struct OnboardingPrivate {
     QList<QPair<QString, OnboardingPage*>> steps;
     QList<QPair<OnboardingStepper*, OnboardingPage*>> steppers;
 
-    QMediaPlayer* audioPlayer = nullptr;
-    QMediaPlaylist* audioPlaylist;
+//    QMediaPlayer* audioPlayer = nullptr;
+//    QMediaPlaylist* audioPlaylist;
+    QByteArray singleAudioData;
+    QByteArray loopAudioData;
+    QAudioOutput* audioOutput = nullptr;
+    QIODevice* audioOutputDevice;
+    int audioPointer = 0;
+
     OnboardingBar* bar;
 
     tVariantAnimation* contentAnim;
@@ -121,7 +129,7 @@ Onboarding::Onboarding(QWidget* parent) :
     d->bar = new OnboardingBar(this);
     d->bar->setParent(this);
     connect(d->bar, &OnboardingBar::muteToggled, this, [ = ](bool mute) {
-        d->audioPlayer->setVolume(mute ? 0 : 100);
+        if (d->audioOutput) d->audioOutput->setVolume(mute ? 0 : 100);
     });
     connect(d->bar, &OnboardingBar::closeClicked, this, [ = ] {
         StateManager::instance()->powerManager()->showPowerOffConfirmation();
@@ -152,20 +160,45 @@ Onboarding::Onboarding(QWidget* parent) :
     });
 
     if (d->settings.value("Onboarding/onboardingAudio").toBool()) {
-        d->audioPlaylist = new QMediaPlaylist(this);
-        d->audioPlaylist->addMedia(QUrl::fromLocalFile(d->settings.value("Onboarding/audio.start").toString()));
-        d->audioPlaylist->addMedia(QUrl::fromLocalFile(d->settings.value("Onboarding/audio.loop").toString()));
-        d->audioPlaylist->setCurrentIndex(0);
-        connect(d->audioPlaylist, &QMediaPlaylist::currentIndexChanged, this, [ = ](int index) {
-            if (index == 1) {
-                //Start looping
-                d->audioPlaylist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
-            }
-        });
+        QAudioFormat format;
+        format.setSampleRate(44100);
+        format.setChannelCount(2);
+        format.setSampleSize(8);
+        format.setCodec("audio/pcm");
+        format.setByteOrder(QAudioFormat::LittleEndian);
+        format.setSampleType(QAudioFormat::UnSignedInt);
 
-        d->audioPlayer = new QMediaPlayer(this);
-        d->audioPlayer->setPlaylist(d->audioPlaylist);
-        d->audioPlayer->play();
+        QEventLoop* loop = new QEventLoop();
+        for (int i = 0; i < 2; i++) {
+            QByteArray* array = (i == 0 ? &d->singleAudioData : &d->loopAudioData);
+            QString setting = (i == 0 ? "Onboarding/audio.start" : "Onboarding/audio.loop");
+
+            QEventLoopLocker* locker = new QEventLoopLocker(loop);
+            QAudioDecoder* audioDecoder = new QAudioDecoder();
+            audioDecoder->setSourceFilename(d->settings.value(setting).toString());
+            audioDecoder->setAudioFormat(format);
+            connect(audioDecoder, &QAudioDecoder::bufferReady, this, [ = ] {
+                QAudioBuffer buf = audioDecoder->read();
+                array->append(buf.constData<char>(), buf.byteCount());
+            });
+            connect(audioDecoder, &QAudioDecoder::finished, this, [ = ] {
+                delete locker;
+                audioDecoder->deleteLater();
+            });
+            audioDecoder->start();
+        }
+        loop->exec();
+        loop->deleteLater();
+
+        d->audioOutput = new QAudioOutput(format);
+        d->audioOutput->setBufferSize(176400);
+        d->audioOutputDevice = d->audioOutput->start();
+        d->audioOutput->setNotifyInterval(1000);
+
+        connect(d->audioOutput, &QAudioOutput::stateChanged, this, [ = ](QAudio::State state) {
+            qDebug() << state;
+        });
+        connect(d->audioOutput, &QAudioOutput::notify, this, &Onboarding::writeAudio);
     }
 
     if (d->settings.value("Onboarding/onboardingVideo").toBool()) {
@@ -176,6 +209,10 @@ Onboarding::Onboarding(QWidget* parent) :
 }
 
 Onboarding::~Onboarding() {
+    if (d->audioOutput) {
+        d->audioOutput->stop();
+        d->audioOutput->deleteLater();
+    }
     delete d;
     delete ui;
 }
@@ -251,6 +288,23 @@ void Onboarding::startOnboarding() {
     ui->contentWrapper->setVisible(true);
 }
 
+void Onboarding::writeAudio() {
+    int bytesFree = d->audioOutput->bytesFree();
+    if (d->audioPointer < d->singleAudioData.count()) {
+        QByteArray chunk = d->singleAudioData.mid(d->audioPointer, bytesFree);
+        d->audioPointer += chunk.count();
+        bytesFree -= chunk.count();
+        d->audioOutputDevice->write(chunk);
+    }
+    while (bytesFree != 0 && d->audioPointer >= d->singleAudioData.count()) {
+        if (d->audioPointer >= d->singleAudioData.count() + d->loopAudioData.count()) d->audioPointer -= d->loopAudioData.count();
+        QByteArray chunk = d->loopAudioData.mid(d->audioPointer - d->singleAudioData.count(), bytesFree);
+        d->audioPointer += chunk.count();
+        bytesFree -= chunk.count();
+        d->audioOutputDevice->write(chunk);
+    }
+}
+
 void Onboarding::changeEvent(QEvent* event) {
     if (event->type() == QEvent::LanguageChange) {
         ui->retranslateUi(this);
@@ -293,18 +347,20 @@ void Onboarding::completeOnboarding() {
     d->barAnim->start();
 
     //Fade out the music
-    tVariantAnimation* volAnim = new tVariantAnimation(this);
-    volAnim->setStartValue(d->audioPlayer->volume());
-    volAnim->setEndValue(0);
-    volAnim->setEasingCurve(QEasingCurve::OutCubic);
-    volAnim->setDuration(500);
-    connect(volAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
-        d->audioPlayer->setVolume(value.toInt());
-    });
-    connect(volAnim, &tVariantAnimation::finished, this, [ = ] {
-        volAnim->deleteLater();
-    });
-    volAnim->start();
+    if (d->audioOutput) {
+        tVariantAnimation* volAnim = new tVariantAnimation(this);
+        volAnim->setStartValue(d->audioOutput->volume());
+        volAnim->setEndValue(0);
+        volAnim->setEasingCurve(QEasingCurve::OutCubic);
+        volAnim->setDuration(500);
+        connect(volAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+            d->audioOutput->setVolume(value.toInt());
+        });
+        connect(volAnim, &tVariantAnimation::finished, this, [ = ] {
+            volAnim->deleteLater();
+        });
+        volAnim->start();
+    }
 
     //Fade out the background
     d->fadeAnim->start();

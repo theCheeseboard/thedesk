@@ -41,6 +41,7 @@ class OnboardingVideo : public QDialog {
     signals:
         void startOnboarding();
         void mediaObjectChanged();
+        void playAudio();
 
     private:
         Ui::OnboardingVideo* ui;

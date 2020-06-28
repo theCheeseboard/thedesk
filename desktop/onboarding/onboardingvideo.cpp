@@ -62,6 +62,11 @@ OnboardingVideo::OnboardingVideo(QWidget* parent) :
     d->videoPlayer->setVideoOutput(d->videoWidget);
     d->videoPlayer->setPlaylist(d->videoPlaylist);
     d->videoPlayer->setVolume(0);
+    connect(d->videoPlayer, &QMediaPlayer::mediaStatusChanged, this, [ = ](QMediaPlayer::MediaStatus state) {
+        if (state == QMediaPlayer::BufferedMedia || state == QMediaPlayer::BufferingMedia) {
+            emit playAudio();
+        }
+    });
     d->videoPlayer->play();
 
     QQmlContext* qml = ui->quickWidget->rootContext();

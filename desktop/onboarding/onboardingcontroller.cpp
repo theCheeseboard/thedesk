@@ -44,6 +44,9 @@ bool OnboardingController::performOnboarding() {
         manager->addOnboardingStep(new OnboardingFinal);
         emit manager->onboardingRequired();
 
+
+        Onboarding o;
+
         QList<OnboardingVideo*> videoScreens;
         if (settings.value("Onboarding/onboardingVideo").toBool()) {
             for (QScreen* screen : qApp->screens()) {
@@ -54,10 +57,12 @@ bool OnboardingController::performOnboarding() {
             }
         }
 
-        Onboarding o;
         o.showFullScreen();
 
-        if (videoScreens.count() > 0) connect(videoScreens.first(), &OnboardingVideo::startOnboarding, &o, &Onboarding::startOnboarding);
+        if (videoScreens.count() > 0) {
+            connect(videoScreens.first(), &OnboardingVideo::startOnboarding, &o, &Onboarding::startOnboarding);
+            connect(videoScreens.first(), &OnboardingVideo::playAudio, &o, &Onboarding::writeAudio);
+        }
 
         //Hide the splashes if needed
         SessionServer::instance()->hideSplashes();
