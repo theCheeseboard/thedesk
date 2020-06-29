@@ -44,7 +44,7 @@
     <name>ThemeSettingsPane</name>
     <message>
         <location filename="../settings/themesettingspane.ui" line="35"/>
-        <location filename="../settings/themesettingspane.cpp" line="198"/>
+        <location filename="../settings/themesettingspane.cpp" line="216"/>
         <source>Theme</source>
         <translation>Giao diện</translation>
     </message>
@@ -144,13 +144,23 @@
         <translation>Nhập ở đây!</translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="543"/>
+        <location filename="../settings/themesettingspane.ui" line="537"/>
+        <source>Bar Opacity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/themesettingspane.ui" line="572"/>
         <source>Transparency Effects</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/themesettingspane.ui" line="563"/>
+        <location filename="../settings/themesettingspane.ui" line="585"/>
         <source>EFFECTS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/themesettingspane.ui" line="604"/>
+        <source>100%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

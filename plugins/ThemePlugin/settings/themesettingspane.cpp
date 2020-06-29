@@ -28,6 +28,7 @@
 #include <QStandardPaths>
 #include <QStyleFactory>
 #include <QDir>
+#include <QTimer>
 
 struct ThemeSettingsPanePrivate {
     QSettings* kwinSettings;
@@ -84,6 +85,24 @@ ThemeSettingsPane::ThemeSettingsPane() :
         }
     });
     ui->transparencySwitch->setChecked(d->settings.value("Appearance/translucent").toBool());
+
+    connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
+        if (key == "Appearance/opacity") {
+            ui->opacitySlider->setValue(value.toInt());
+            ui->opacitySliderLabel->setText(value.toString());
+            ui->opacitySliderLabel->setText(QString::number(
+                                                (value.toFloat())/255*100,
+                                                'g',3)+"%");
+        }
+    });
+    ui->opacitySlider->setValue(d->settings.value("Appearance/opacity").toInt());
+
+    // for some reason the slider label doesn't update early
+    QTimer::singleShot(100, this, [this](){
+        ui->opacitySliderLabel->setText(QString::number(
+                                            (d->settings.value("Appearance/opacity").toFloat())/255*100,
+                                            'g',3)+"%");
+    });
 }
 
 ThemeSettingsPane::~ThemeSettingsPane() {
@@ -247,4 +266,10 @@ void ThemeSettingsPane::on_setWindowBordersButton_clicked() {
 
 void ThemeSettingsPane::on_transparencySwitch_toggled(bool checked) {
     d->settings.setValue("Appearance/translucent", checked);
+}
+
+
+void ThemeSettingsPane::on_opacitySlider_valueChanged(int value)
+{
+     d->settings.setValue("Appearance/opacity", value);
 }

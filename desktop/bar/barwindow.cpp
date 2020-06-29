@@ -53,6 +53,9 @@ struct BarWindowPrivate {
     bool statusCenterShown = false;
 
     tSettings settings;
+
+    bool translucencyEnabled = true;
+    int translucencyOpacity = 150;
 };
 
 BarWindow::BarWindow(QWidget* parent) :
@@ -140,9 +143,18 @@ BarWindow::BarWindow(QWidget* parent) :
 
     connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
         if (key == "Appearance/translucent") {
+            d->translucencyEnabled = value.toBool();
             this->update();
         }
     });
+    connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
+        if (key == "Appearance/opacity") {
+            d->translucencyOpacity = value.toInt();
+            this->update();
+        }
+    });
+    d->translucencyEnabled = d->settings.value("Appearance/translucent").toBool();
+    d->translucencyOpacity = d->settings.value("Appearance/opacity").toInt();
 
     KeyGrab* statusCenterGrab = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::Key_Tab));
     connect(statusCenterGrab, &KeyGrab::activated, this, [ = ] {
@@ -192,7 +204,7 @@ void BarWindow::leaveEvent(QEvent* event) {
 
 void BarWindow::paintEvent(QPaintEvent* event) {
     QColor bgCol = this->palette().color(QPalette::Window);
-    if (d->settings.value("Appearance/translucent").toBool()) bgCol.setAlpha(150);
+    if (d->translucencyEnabled) bgCol.setAlpha(d->translucencyOpacity);
 
     QPainter painter(this);
     painter.setPen(Qt::transparent);
