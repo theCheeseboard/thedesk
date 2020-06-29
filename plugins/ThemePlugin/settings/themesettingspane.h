@@ -62,6 +62,7 @@ class ThemeSettingsPane : public StatusCenterPane {
         void on_widgetThemeBox_currentIndexChanged(int index);
         void on_setWindowBordersButton_clicked();
         void on_transparencySwitch_toggled(bool checked);
+        void on_opacitySlider_valueChanged(int value);
 };
 
 #endif // THEMESETTINGSPANE_H
