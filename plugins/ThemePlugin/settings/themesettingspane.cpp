@@ -32,6 +32,7 @@
 struct ThemeSettingsPanePrivate {
     QSettings* kwinSettings;
     tSettings* themeSettings;
+    tSettings settings;
 };
 
 ThemeSettingsPane::ThemeSettingsPane() :
@@ -52,6 +53,7 @@ ThemeSettingsPane::ThemeSettingsPane() :
     ui->fontsWidget->setFixedWidth(contentWidth);
     ui->widgetsWidget->setFixedWidth(contentWidth);
     ui->windowBordersWidget->setFixedWidth(contentWidth);
+    ui->effectsWidget->setFixedWidth(contentWidth);
 
     ui->accentBlue->setColorName("blue");
     ui->accentGreen->setColorName("green");
@@ -75,6 +77,13 @@ ThemeSettingsPane::ThemeSettingsPane() :
     updateBaseColour();
     updateFonts();
     updateWidgets();
+
+    connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
+        if (key == "Appearance/translucent") {
+            ui->transparencySwitch->setChecked(value.toBool());
+        }
+    });
+    ui->transparencySwitch->setChecked(d->settings.value("Appearance/translucent").toBool());
 }
 
 ThemeSettingsPane::~ThemeSettingsPane() {
@@ -234,4 +243,8 @@ void ThemeSettingsPane::on_widgetThemeBox_currentIndexChanged(int index) {
 
 void ThemeSettingsPane::on_setWindowBordersButton_clicked() {
     writeWindowBorders();
+}
+
+void ThemeSettingsPane::on_transparencySwitch_toggled(bool checked) {
+    d->settings.setValue("Appearance/translucent", checked);
 }

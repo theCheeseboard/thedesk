@@ -51,7 +51,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QPushButton" name="gatewayButton">
+       <widget class="QToolButton" name="gatewayButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -71,7 +71,7 @@
           <height>32</height>
          </size>
         </property>
-        <property name="flat">
+        <property name="autoRaise">
          <bool>true</bool>
         </property>
        </widget>

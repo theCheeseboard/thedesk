@@ -22,8 +22,11 @@
 
 #include <QApplication>
 #include <QScreen>
+#include <QPainter>
 #include <tvariantanimation.h>
 #include <Wm/desktopwm.h>
+
+#include <tsettings.h>
 
 #include <statemanager.h>
 #include <gatewaymanager.h>
@@ -32,6 +35,7 @@ struct GatewayPrivate {
     Gateway* instance = nullptr;
 
     tVariantAnimation* width;
+    tSettings settings;
 };
 
 GatewayPrivate* Gateway::d = new GatewayPrivate();

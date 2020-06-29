@@ -101,7 +101,7 @@ StatusCenter::StatusCenter(QWidget* parent) :
     StateManager::instance()->statusCenterManager()->addPane(new SystemSettings(d->leftPane), StatusCenterManager::Informational);
 
     QShortcut* escapeShortcut = new QShortcut(Qt::Key_Escape, this);
-    connect(escapeShortcut, &QShortcut::activated, ui->closeButton, &QPushButton::click);
+    connect(escapeShortcut, &QShortcut::activated, ui->closeButton, &QToolButton::click);
 }
 
 StatusCenter::~StatusCenter() {

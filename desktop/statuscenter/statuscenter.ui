@@ -33,7 +33,7 @@
     <widget class="QWidget" name="widget" native="true">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="closeButton">
+       <widget class="QToolButton" name="closeButton">
         <property name="text">
          <string/>
         </property>
@@ -41,7 +41,7 @@
          <iconset theme="window-close">
           <normaloff>.</normaloff>.</iconset>
         </property>
-        <property name="flat">
+        <property name="autoRaise">
          <bool>true</bool>
         </property>
        </widget>
@@ -113,6 +113,9 @@
    <extends>QStackedWidget</extends>
    <header location="global">tstackedwidget.h</header>
    <container>1</container>
+   <slots>
+    <signal>switchingFrame(int)</signal>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>

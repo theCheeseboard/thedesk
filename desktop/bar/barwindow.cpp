@@ -21,12 +21,15 @@
 #include "ui_barwindow.h"
 
 #include <QScreen>
+#include <QPainter>
 #include <QGraphicsOpacityEffect>
 #include <Wm/desktopwm.h>
 
 #include "mainbarwidget.h"
 #include "statuscenter/statuscenter.h"
 #include <tvariantanimation.h>
+
+#include <tsettings.h>
 
 #include <statemanager.h>
 #include <statuscentermanager.h>
@@ -48,6 +51,8 @@ struct BarWindowPrivate {
 
     bool expanding = true;
     bool statusCenterShown = false;
+
+    tSettings settings;
 };
 
 BarWindow::BarWindow(QWidget* parent) :
@@ -56,6 +61,8 @@ BarWindow::BarWindow(QWidget* parent) :
 
     ui->setupUi(this);
     d = new BarWindowPrivate();
+
+    this->setAttribute(Qt::WA_TranslucentBackground);
 
     d->mainBarWidget = new MainBarWidget(this);
     connect(d->mainBarWidget, &MainBarWidget::expandedHeightChanged, this, &BarWindow::barHeightChanged);
@@ -122,6 +129,7 @@ BarWindow::BarWindow(QWidget* parent) :
     //Tell the window manager that this is a "taskbar" type window
     this->setWindowFlag(Qt::FramelessWindowHint);
     DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
+    DesktopWm::instance()->blurWindow(this);
     this->barHeightChanged();
 
     connect(qApp, &QApplication::primaryScreenChanged, this, &BarWindow::updatePrimaryScreen);
@@ -130,6 +138,11 @@ BarWindow::BarWindow(QWidget* parent) :
     connect(StateManager::statusCenterManager(), &StatusCenterManager::showStatusCenter, this, &BarWindow::showStatusCenter);
     connect(StateManager::statusCenterManager(), &StatusCenterManager::hideStatusCenter, this, &BarWindow::hideStatusCenter);
 
+    connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
+        if (key == "Appearance/translucent") {
+            this->update();
+        }
+    });
 
     KeyGrab* statusCenterGrab = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::Key_Tab));
     connect(statusCenterGrab, &KeyGrab::activated, this, [ = ] {
@@ -175,6 +188,16 @@ void BarWindow::leaveEvent(QEvent* event) {
         d->heightAnim->stop();
         d->heightAnim->start();
     }
+}
+
+void BarWindow::paintEvent(QPaintEvent* event) {
+    QColor bgCol = this->palette().color(QPalette::Window);
+    if (d->settings.value("Appearance/translucent").toBool()) bgCol.setAlpha(150);
+
+    QPainter painter(this);
+    painter.setPen(Qt::transparent);
+    painter.setBrush(bgCol);
+    painter.drawRect(0, 0, this->width(), this->height());
 }
 
 void BarWindow::updatePrimaryScreen() {
