@@ -21,6 +21,7 @@
 #define BARWINDOW_H
 
 #include <QWidget>
+#include <Wm/desktopwmwindow.h>
 
 namespace Ui {
     class BarWindow;
@@ -42,6 +43,8 @@ class BarWindow : public QWidget {
         void enterEvent(QEvent* event);
         void leaveEvent(QEvent* event);
         void paintEvent(QPaintEvent* event);
+
+        void trackWindow(DesktopWmWindowPtr window);
 
         void updatePrimaryScreen();
         void barHeightChanged();

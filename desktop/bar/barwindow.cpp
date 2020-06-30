@@ -49,6 +49,8 @@ struct BarWindowPrivate {
 
     QScreen* oldPrimaryScreen = nullptr;
 
+    QList<DesktopWmWindowPtr> maximisedWindows;
+
     bool expanding = true;
     bool statusCenterShown = false;
 
@@ -143,6 +145,16 @@ BarWindow::BarWindow(QWidget* parent) :
             this->update();
         }
     });
+    connect(DesktopWm::instance(), &DesktopWm::windowAdded, this, &BarWindow::trackWindow);
+    connect(DesktopWm::instance(), &DesktopWm::windowRemoved, this, [ = ](DesktopWmWindowPtr window) {
+        if (d->maximisedWindows.contains(window)) {
+            d->maximisedWindows.removeAll(window);
+            this->update();
+        }
+    });
+    for (DesktopWmWindowPtr window : DesktopWm::openWindows()) {
+        trackWindow(window);
+    }
 
     KeyGrab* statusCenterGrab = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::Key_Tab));
     connect(statusCenterGrab, &KeyGrab::activated, this, [ = ] {
@@ -192,12 +204,30 @@ void BarWindow::leaveEvent(QEvent* event) {
 
 void BarWindow::paintEvent(QPaintEvent* event) {
     QColor bgCol = this->palette().color(QPalette::Window);
-    if (d->settings.value("Appearance/translucent").toBool()) bgCol.setAlpha(150);
+    if (d->settings.value("Appearance/translucent").toBool() && d->maximisedWindows.count() == 0) bgCol.setAlpha(150);
 
     QPainter painter(this);
     painter.setPen(Qt::transparent);
     painter.setBrush(bgCol);
     painter.drawRect(0, 0, this->width(), this->height());
+}
+
+void BarWindow::trackWindow(DesktopWmWindowPtr window) {
+    window->disconnect(this);
+    connect(window, &DesktopWmWindow::geometryChanged, this, [ = ] {
+        trackWindow(window);
+    });
+
+    QRect screenGeometry = QApplication::primaryScreen()->geometry();
+    if (window->isMaximised() && screenGeometry.contains(window->geometry())) {
+        if (d->maximisedWindows.contains(window)) return;
+        d->maximisedWindows.append(window);
+        this->update();
+    } else if (!window->isMaximised()) {
+        if (!d->maximisedWindows.contains(window)) return;
+        d->maximisedWindows.removeAll(window);
+        this->update();
+    }
 }
 
 void BarWindow::updatePrimaryScreen() {
