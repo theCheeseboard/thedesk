@@ -44,6 +44,7 @@ SOURCES += \
     onboarding/onboardingvideo.cpp \
     onboarding/onboardingwelcome.cpp \
     plugins/pluginmanager.cpp \
+    run/rundialog.cpp \
     server/sessionserver.cpp \
     session/endsession.cpp \
     session/endsessionbutton.cpp \
@@ -82,6 +83,7 @@ HEADERS += \
     onboarding/onboardingwelcome.h \
     plugins/plugininterface.h \
     plugins/pluginmanager.h \
+    run/rundialog.h \
     server/sessionserver.h \
     session/endsession.h \
     session/endsessionbutton.h \
@@ -112,6 +114,7 @@ FORMS += \
     onboarding/onboardingfinal.ui \
     onboarding/onboardingvideo.ui \
     onboarding/onboardingwelcome.ui \
+    run/rundialog.ui \
     session/endsession.ui \
     statuscenter/statuscenter.ui \
     statuscenter/statuscenterleftpane.ui \

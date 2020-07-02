@@ -35,6 +35,7 @@
 #include "cli/commandline.h"
 #include "server/sessionserver.h"
 #include "onboarding/onboardingcontroller.h"
+#include "run/rundialog.h"
 #include "tsettings.h"
 
 int main(int argc, char* argv[]) {
@@ -76,6 +77,9 @@ int main(int argc, char* argv[]) {
         //Exit now because onboarding failed (probably the user chose to log out)
         return 0;
     }
+
+    //Prepare the run dialog
+    RunDialog::initialise();
 
     //Prepare the background
     Background::reconfigureBackgrounds();

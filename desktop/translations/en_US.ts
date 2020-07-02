@@ -669,6 +669,29 @@ We&apos;ll reset your settings in %n seconds if you don&apos;t do anything.</tra
     </message>
 </context>
 <context>
+    <name>RunDialog</name>
+    <message>
+        <location filename="../run/rundialog.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../run/rundialog.ui" line="35"/>
+        <source>Run</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../run/rundialog.ui" line="60"/>
+        <source>Enter a command to run.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../run/rundialog.ui" line="73"/>
+        <source>Run this command</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>StatusCenterLeftPane</name>
     <message>
         <location filename="../statuscenter/statuscenterleftpane.ui" line="54"/>
@@ -710,12 +733,12 @@ We&apos;ll reset your settings in %n seconds if you don&apos;t do anything.</tra
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="63"/>
+        <location filename="../main.cpp" line="64"/>
         <source>Safe Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="63"/>
+        <location filename="../main.cpp" line="64"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>The CTRL key was held. Start theDesk in Safe Mode?</translation>
     </message>
