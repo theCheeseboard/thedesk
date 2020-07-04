@@ -111,6 +111,9 @@ void SystemSettings::addPane(StatusCenterPane* pane) {
             d->paneItems.value(pane)->setIcon(pane->icon());
         }
     });
+    if (pane->leftPane()) {
+        item->setData(Qt::UserRole, true);
+    }
     d->paneItems.insert(pane, item);
 
     QStringList currentItems;

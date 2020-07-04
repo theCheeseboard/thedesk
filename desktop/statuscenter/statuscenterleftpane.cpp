@@ -21,6 +21,7 @@
 #include "ui_statuscenterleftpane.h"
 
 #include <QPainter>
+#include "leftpanedelegate.h"
 #include <the-libs_global.h>
 
 struct StatusCenterLeftPanePrivate {
@@ -35,6 +36,7 @@ StatusCenterLeftPane::StatusCenterLeftPane(QWidget* parent) :
     d = new StatusCenterLeftPanePrivate();
     ui->mainList->setIconSize(SC_DPI_T(QSize(32, 32), QSize));
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
+    ui->mainList->setItemDelegate(new LeftPaneDelegate(this));
 }
 
 StatusCenterLeftPane::~StatusCenterLeftPane() {

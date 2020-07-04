@@ -713,7 +713,7 @@ Pójdziemy i zresetujemy twoje ustawienia za %n sekund, jeśli nic nie zrobisz.<
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="161"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="164"/>
         <source>System Settings</source>
         <translation>Ustawienia Systemu</translation>
     </message>

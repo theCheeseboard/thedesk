@@ -25,6 +25,7 @@
 #include <statuscentermanager.h>
 #include <powermanager.h>
 #include <tvariantanimation.h>
+#include "../statuscenter/leftpanedelegate.h"
 
 struct SystemSettingsLeftPanePrivate {
     bool isShowingLogOutRequired = false;
@@ -39,6 +40,7 @@ SystemSettingsLeftPane::SystemSettingsLeftPane(QWidget* parent) :
 
     ui->titleLabel->setBackButtonShown(true);
     ui->mainList->setIconSize(SC_DPI_T(QSize(32, 32), QSize));
+    ui->mainList->setItemDelegate(new LeftPaneDelegate(this));
 
     ui->logoutRequiredWidget->setFixedHeight(0);
     ui->logoutRequiredWidget->setVisible(false);

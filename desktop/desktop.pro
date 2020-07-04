@@ -48,6 +48,7 @@ SOURCES += \
     server/sessionserver.cpp \
     session/endsession.cpp \
     session/endsessionbutton.cpp \
+    statuscenter/leftpanedelegate.cpp \
     statuscenter/statuscenter.cpp \
     statuscenter/statuscenterleftpane.cpp \
     statuscenter/statuscenterquickswitch.cpp \
@@ -87,6 +88,7 @@ HEADERS += \
     server/sessionserver.h \
     session/endsession.h \
     session/endsessionbutton.h \
+    statuscenter/leftpanedelegate.h \
     statuscenter/statuscenter.h \
     statuscenter/statuscenterleftpane.h \
     statuscenter/statuscenterquickswitch.h \
