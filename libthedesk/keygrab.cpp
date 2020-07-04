@@ -22,6 +22,9 @@
 #include <QKeySequence>
 #include <Wm/desktopwm.h>
 
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
+
 struct KeyGrabPrivate {
     QKeySequence seq;
     quint64 grabId;
@@ -53,6 +56,12 @@ void KeyGrab::pause() {
 }
 
 void KeyGrab::resume() {
+    //Before we grab the key, if KGlobalAccel is running, ask it to quit
+    if (QDBusConnection::sessionBus().interface()->isServiceRegistered("org.kde.kglobalaccel").value()) {
+        QDBusMessage message = QDBusMessage::createMethodCall("org.kde.kglobalaccel", "/MainApplication", "org.qtproject.Qt.QCoreApplication", "quit");
+        QDBusConnection::sessionBus().call(message);
+    }
+
     Qt::Key key = static_cast<Qt::Key>(static_cast<uint>(d->seq[0]) & ~(Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier));
     Qt::KeyboardModifiers mod = static_cast<Qt::KeyboardModifiers>(static_cast<uint>(d->seq[0]) & (Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier));
     d->grabId = DesktopWm::grabKey(key, mod);
