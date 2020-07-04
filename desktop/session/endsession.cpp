@@ -30,13 +30,14 @@
 #include <powermanager.h>
 #include <onboardingmanager.h>
 #include <QDBusMessage>
+#include <QMenu>
 
 struct EndSessionPrivate {
     tVariantAnimation* powerOffAnimation;
     EndSessionButton* timedButton;
 };
 
-EndSession::EndSession(PowerManager::PowerOperation operation, QString message, QWidget* parent) :
+EndSession::EndSession(PowerManager::PowerOperation operation, QString message, QStringList flags, QWidget* parent) :
     QWidget(parent),
     ui(new Ui::EndSession) {
     ui->setupUi(this);
@@ -71,10 +72,11 @@ EndSession::EndSession(PowerManager::PowerOperation operation, QString message, 
             d->timedButton = ui->powerOffButton;
             break;
         case PowerManager::Reboot:
-            d->timedButton = ui->rebootButton;
-            break;
-        case PowerManager::RebootInstallUpdates:
-            d->timedButton = ui->rebootInstallUpdatesButton;
+            if (flags.contains("update")) {
+                d->timedButton = ui->rebootInstallUpdatesButton;
+            } else {
+                d->timedButton = ui->rebootButton;
+            }
             break;
         case PowerManager::LogOut:
             d->timedButton = ui->logoutButton;
@@ -136,7 +138,7 @@ EndSession::~EndSession() {
     delete ui;
 }
 
-tPromise<void>* EndSession::showDialog(PowerManager::PowerOperation operation, QString message) {
+tPromise<void>* EndSession::showDialog(PowerManager::PowerOperation operation, QString message, QStringList flags) {
     return tPromise<void>::runOnSameThread([ = ](tPromiseFunctions<void>::SuccessFunction res, tPromiseFunctions<void>::FailureFunction rej) {
         Q_UNUSED(rej)
 
@@ -146,7 +148,7 @@ tPromise<void>* EndSession::showDialog(PowerManager::PowerOperation operation, Q
         dialog->showFullScreen();
 
         QTimer::singleShot(500, [ = ] {
-            EndSession* popoverContents = new EndSession(operation, message);
+            EndSession* popoverContents = new EndSession(operation, message, flags);
 
             tPopover* popover = new tPopover(popoverContents);
             popover->setPopoverSide(tPopover::Bottom);
@@ -225,7 +227,7 @@ void EndSession::on_rebootNoUpdateButton_clicked() {
 
 void EndSession::on_rebootUpdateButton_clicked() {
     //Reboot
-    StateManager::instance()->powerManager()->performPowerOperation(PowerManager::RebootInstallUpdates);
+    StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot, {"update"});
     emit done();
 }
 
@@ -238,6 +240,28 @@ void EndSession::on_stackedWidget_switchingFrame(int frame) {
 }
 
 void EndSession::on_rebootInstallUpdatesButton_clicked() {
-    StateManager::instance()->powerManager()->performPowerOperation(PowerManager::RebootInstallUpdates);
+    StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot, {"update"});
     emit done();
 }
+
+void EndSession::on_rebootButton_customContextMenuRequested(const QPoint &pos)
+{
+    QMenu* menu = new QMenu();
+    menu->addSection(tr("Advanced Reboot"));
+    menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot"), [=] {
+        //Just reboot
+        ui->rebootButton->click();
+    });
+
+    QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "CanRebootToFirmwareSetup");
+    QDBusMessage msg = QDBusConnection::systemBus().call(message);
+
+    if (msg.arguments().first().toString() == "yes") {
+        menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot and enter UEFI Setup"), [=] {
+            StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot, {"setup"});
+            emit done();
+        });
+    }
+    menu->popup(ui->rebootButton->mapToGlobal(pos));
+}
+

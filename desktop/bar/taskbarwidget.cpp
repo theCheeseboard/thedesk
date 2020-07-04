@@ -23,6 +23,7 @@
 #include <QPushButton>
 #include <Wm/desktopwm.h>
 #include <the-libs_global.h>
+#include <Applications/application.h>
 
 struct TaskbarWidgetPrivate {
     QMap<DesktopWmWindowPtr, QPushButton*> buttons;

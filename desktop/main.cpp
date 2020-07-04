@@ -68,8 +68,8 @@ int main(int argc, char* argv[]) {
     DesktopWm::instance();
     PluginManager::instance()->scanPlugins();
 
-    QObject::connect(StateManager::instance()->powerManager(), &PowerManager::powerOffConfirmationRequested, [ = ](PowerManager::PowerOperation operation, QString message, tPromiseFunctions<void>::SuccessFunction cb) {
-        EndSession::showDialog(operation, message)->then(cb);
+    QObject::connect(StateManager::instance()->powerManager(), &PowerManager::powerOffConfirmationRequested, [ = ](PowerManager::PowerOperation operation, QString message, QStringList flags, tPromiseFunctions<void>::SuccessFunction cb) {
+        EndSession::showDialog(operation, message, flags)->then(cb);
     });
 
     //Perform onboarding if required

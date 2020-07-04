@@ -35,7 +35,7 @@ class EndSession : public QWidget {
     public:
         ~EndSession();
 
-        static tPromise<void>* showDialog(PowerManager::PowerOperation operation = PowerManager::All, QString message = "");
+        static tPromise<void>* showDialog(PowerManager::PowerOperation operation = PowerManager::All, QString message = "", QStringList flags = {});
 
     signals:
         void done();
@@ -69,8 +69,10 @@ class EndSession : public QWidget {
 
         void on_rebootInstallUpdatesButton_clicked();
 
-    private:
-        explicit EndSession(PowerManager::PowerOperation operation, QString message, QWidget* parent = nullptr);
+        void on_rebootButton_customContextMenuRequested(const QPoint &pos);
+
+private:
+        explicit EndSession(PowerManager::PowerOperation operation, QString message, QStringList flags, QWidget* parent = nullptr);
 
         Ui::EndSession* ui;
         EndSessionPrivate* d;

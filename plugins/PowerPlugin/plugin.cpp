@@ -30,13 +30,15 @@
 #include <QApplication>
 #include <QDir>
 #include <tsettings.h>
-#include "logindhandler.h"
+#include "eventhandler.h"
 #include <UPower/desktopupower.h>
+#include "settings/powersettings.h"
 
 struct PluginPrivate {
     DesktopUPower* upower;
     IconTextChunk* powerChunk;
-    LogindHandler* logind;
+    EventHandler* logind;
+    PowerSettings* powerSettings;
 };
 
 Plugin::Plugin() {
@@ -70,7 +72,10 @@ void Plugin::activate() {
             StateManager::barManager()->removeChunk(d->powerChunk);
         }
     });
-    d->logind = new LogindHandler();
+    d->logind = new EventHandler();
+
+    d->powerSettings = new PowerSettings();
+    StateManager::statusCenterManager()->addPane(d->powerSettings, StatusCenterManager::SystemSettings);
 }
 
 void Plugin::deactivate() {
@@ -79,7 +84,10 @@ void Plugin::deactivate() {
         StateManager::barManager()->removeChunk(d->powerChunk);
     }
 
+    StateManager::statusCenterManager()->removePane(d->powerSettings);
+
     d->powerChunk->deleteLater();
     d->upower->deleteLater();
     d->logind->deleteLater();
+    d->powerSettings->deleteLater();
 }

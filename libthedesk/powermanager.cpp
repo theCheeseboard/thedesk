@@ -48,26 +48,18 @@ PowerManager::~PowerManager() {
     delete d;
 }
 
-tPromise<void>* PowerManager::showPowerOffConfirmation(PowerManager::PowerOperation operation, QString message) {
+tPromise<void>* PowerManager::showPowerOffConfirmation(PowerManager::PowerOperation operation, QString message, QStringList flags) {
     return tPromise<void>::runOnSameThread([ = ](tPromiseFunctions<void>::SuccessFunction res, tPromiseFunctions<void>::FailureFunction rej) {
         Q_UNUSED(rej)
 
-        emit powerOffConfirmationRequested(operation, message, res);
+        emit powerOffConfirmationRequested(operation, message, flags, res);
     });
 }
 
-void PowerManager::performPowerOperation(PowerManager::PowerOperation operation) {
+void PowerManager::performPowerOperation(PowerManager::PowerOperation operation, QStringList flags) {
     emit powerOffOperationCommencing(operation);
 
     switch (operation) {
-        case PowerManager::RebootInstallUpdates: {
-            //Ask PackageKit to prepare for updates
-            QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.PackageKit", "/org/freedesktop/PackageKit", "org.freedesktop.PackageKit.Offline", "Trigger");
-            message.setArguments({"reboot"});
-            QDBusMessage msg = QDBusConnection::systemBus().call(message);
-
-            Q_FALLTHROUGH();
-        }
         case PowerManager::PowerOff:
         case PowerManager::Reboot:
         case PowerManager::Suspend:
@@ -75,10 +67,27 @@ void PowerManager::performPowerOperation(PowerManager::PowerOperation operation)
             QMap<PowerManager::PowerOperation, QString> methods = {
                 {PowerManager::PowerOff, "PowerOff"},
                 {PowerManager::Reboot, "Reboot"},
-                {PowerManager::RebootInstallUpdates, "Reboot"},
                 {PowerManager::Suspend, "Suspend"},
                 {PowerManager::Hibernate, "Hibernate"}
             };
+
+            if (flags.contains("update")) {
+                //Ask PackageKit to prepare for updates
+
+                QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.PackageKit", "/org/freedesktop/PackageKit", "org.freedesktop.PackageKit.Offline", "Trigger");
+                message.setArguments({operation == PowerManager::Reboot ? "reboot" : "shutdown"});
+                QDBusMessage msg = QDBusConnection::systemBus().call(message);
+
+                //Fall through
+            }
+
+            if (flags.contains("setup")) {
+                QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "SetRebootToFirmwareSetup");
+                message.setArguments({true});
+                QDBusMessage msg = QDBusConnection::systemBus().call(message);
+
+                //Fall through
+            }
 
             QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", methods.value(operation));
             message.setArguments({true});

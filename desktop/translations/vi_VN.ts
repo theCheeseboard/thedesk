@@ -259,157 +259,168 @@
         <translation>Tắt máy tính của bạn.</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="131"/>
+        <location filename="../session/endsession.ui" line="134"/>
+        <location filename="../session/endsession.cpp" line="251"/>
         <source>Reboot</source>
         <translation>Khởi động lại</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="138"/>
+        <location filename="../session/endsession.ui" line="141"/>
         <source>Turns off your computer and turns it on again</source>
         <translation>Tắt máy tính của bạn, rồi bật nó lại</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="145"/>
+        <location filename="../session/endsession.ui" line="148"/>
         <source>Reboot and install updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="151"/>
+        <location filename="../session/endsession.ui" line="155"/>
         <source>Turns off your computer, installs pending updates and turns it on again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="158"/>
+        <location filename="../session/endsession.ui" line="162"/>
         <source>Log Out</source>
         <translation>Đăng xuất</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="165"/>
+        <location filename="../session/endsession.ui" line="169"/>
         <source>Ends your session but keeps your computer on for other people to use</source>
         <translation>Kết thúc phiên của bạn, nhưng vẫn giữ máy tính của bạn cho người khác sử dụng</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="172"/>
+        <location filename="../session/endsession.ui" line="176"/>
         <source>Suspend</source>
         <translation>Tạm dừng</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="179"/>
+        <location filename="../session/endsession.ui" line="183"/>
         <source>Puts your computer in a low power state so it reopens quickly</source>
         <translation>Đặt máy tính của bạn vào chế độ tiêu ít năng lượng để cho nó mở lại nhanh</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="186"/>
+        <location filename="../session/endsession.ui" line="190"/>
         <source>Lock</source>
         <translation>Khóa phiên</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="193"/>
+        <location filename="../session/endsession.ui" line="197"/>
         <source>Locks your workspace with your password</source>
         <translation>Khóa phiên của bạn với mật khẩu của bạn</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="200"/>
+        <location filename="../session/endsession.ui" line="204"/>
         <source>Turn Off Screen</source>
         <translation>Tắt màn hình</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="207"/>
+        <location filename="../session/endsession.ui" line="211"/>
         <source>Turns off the screen, but keeps everything else running in the background</source>
         <translation>Tắt màn hình, nhưng giữ mọi thứ khác chạy trong nền</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="214"/>
+        <location filename="../session/endsession.ui" line="218"/>
         <source>Switch Users</source>
         <translation>Chuyển đổi người dùng</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="221"/>
+        <location filename="../session/endsession.ui" line="225"/>
         <source>Switches to the logon screen, but keeps your session in the background</source>
         <translation>Chuyển đổi sang màn hình đăng nhập, nhưng giữ phiên của bạn trong nền</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="228"/>
+        <location filename="../session/endsession.ui" line="232"/>
         <source>Hibernate</source>
         <translation>Ngủ đông</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="235"/>
+        <location filename="../session/endsession.ui" line="239"/>
         <source>Powers off your computer, but restores the session when powered back on</source>
         <translation>Tắt máy tính của bạn, nhưng khôi phục phiên khi bật lại</translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="330"/>
+        <location filename="../session/endsession.ui" line="334"/>
         <source>Updates are available. What do you want to do?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="345"/>
+        <location filename="../session/endsession.ui" line="349"/>
         <source>Reboot and update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="352"/>
+        <location filename="../session/endsession.ui" line="356"/>
         <source>We&apos;ll perform system updates once this device has rebooted.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="365"/>
+        <location filename="../session/endsession.ui" line="369"/>
         <source>Just Reboot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="372"/>
+        <location filename="../session/endsession.ui" line="376"/>
         <source>We&apos;ll reboot your device normally.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="106"/>
+        <location filename="../session/endsession.cpp" line="108"/>
         <source>power off the system</source>
         <translation>tắt hệ thống</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="107"/>
+        <location filename="../session/endsession.cpp" line="109"/>
         <source>reboot the system</source>
         <translation>khởi động hệ thống lại</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="108"/>
+        <location filename="../session/endsession.cpp" line="110"/>
         <source>reboot the system and install any pending updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="109"/>
+        <location filename="../session/endsession.cpp" line="111"/>
         <source>log you out</source>
         <translation>đăng xuất bản</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="110"/>
+        <location filename="../session/endsession.cpp" line="112"/>
         <source>suspend the system</source>
         <translation>tạm dừng hệ thống</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="111"/>
+        <location filename="../session/endsession.cpp" line="113"/>
         <source>lock the screen</source>
         <translation>khóa màn hình</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="112"/>
+        <location filename="../session/endsession.cpp" line="114"/>
         <source>turn off the screen</source>
         <translation>tắt màn hình</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="113"/>
+        <location filename="../session/endsession.cpp" line="115"/>
         <source>switch users</source>
         <translation>chuyển đổi người dùng</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="114"/>
+        <location filename="../session/endsession.cpp" line="116"/>
         <source>hibernate the system</source>
         <translation>đặt hệ thống vào chế độ ngủ đông</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="47"/>
+        <location filename="../session/endsession.cpp" line="250"/>
+        <source>Advanced Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../session/endsession.cpp" line="260"/>
+        <source>Reboot and enter UEFI Setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../session/endsession.cpp" line="48"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
         <translation>%1, sẵn sàng rời đi chưa? Chúng tôi sẽ %2 sau %n giay nếu bạn không làm gì.</translation>
     </message>

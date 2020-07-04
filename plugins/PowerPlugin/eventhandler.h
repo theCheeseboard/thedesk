@@ -17,22 +17,24 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef KEYBOARDHANDLER_H
-#define KEYBOARDHANDLER_H
+#ifndef EVENTHANDLER_H
+#define EVENTHANDLER_H
 
 #include <QObject>
 
-struct LogindHandlerPrivate;
-class LogindHandler : public QObject {
+struct EventHandlerPrivate;
+class EventHandler : public QObject {
         Q_OBJECT
     public:
-        explicit LogindHandler(QObject* parent = nullptr);
-        ~LogindHandler();
+        explicit EventHandler(QObject* parent = nullptr);
+        ~EventHandler();
 
     signals:
 
     private:
-        LogindHandlerPrivate* d;
+        EventHandlerPrivate* d;
+
+        void checkIdleTimer();
 };
 
 #endif // KEYBOARDHANDLER_H

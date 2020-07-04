@@ -54,6 +54,7 @@ HudWidget::HudWidget(QWidget* parent) :
         QString title = params.value("title", "").toString().toUpper();
         QString text = params.value("text", "").toString();
         double value = params.value("value", 0).toDouble();
+        int timeout = params.value("timeout", 3000).toInt();
 
         ui->iconValueIcon->setPixmap(icon);
         ui->iconTextIcon->setPixmap(icon);
@@ -61,6 +62,8 @@ HudWidget::HudWidget(QWidget* parent) :
         ui->iconTextTitle->setText(title);
         ui->iconTextText->setText(text);
         ui->iconValueValue->setText(QLocale().toString(value * 100, 'f', 0) + "%");
+
+        d->hideTimer->setInterval(timeout);
 
         //Decide on the layout to use
         if (params.contains("icon") && params.contains("title") && params.contains("value")) {
@@ -74,6 +77,10 @@ HudWidget::HudWidget(QWidget* parent) :
         }
 
         this->animateShow();
+    });
+    connect(StateManager::hudManager(), &HudManager::requestHideHud, this, [ = ] {
+        //Immediately hide the HUD
+        this->animateHide();
     });
 
     ui->iconValuePage->installEventFilter(this);

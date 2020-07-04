@@ -32,13 +32,18 @@ unix {
 include(../plugins.pri)
 
 HEADERS += \
-    logindhandler.h \
-    plugin.h
+    eventhandler.h \
+    plugin.h \
+    settings/powersettings.h
 
 SOURCES += \
-    logindhandler.cpp \
-    plugin.cpp
+    eventhandler.cpp \
+    plugin.cpp \
+    settings/powersettings.cpp
 
 DISTFILES += \
     Plugin.json \
     defaults.conf
+
+FORMS += \
+    settings/powersettings.ui

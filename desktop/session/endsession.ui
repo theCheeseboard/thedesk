@@ -127,6 +127,9 @@
             </item>
             <item>
              <widget class="EndSessionButton" name="rebootButton">
+              <property name="contextMenuPolicy">
+               <enum>Qt::CustomContextMenu</enum>
+              </property>
               <property name="text">
                <string>Reboot</string>
               </property>
@@ -145,7 +148,8 @@
                <string>Reboot and install updates</string>
               </property>
               <property name="icon">
-               <iconset theme="system-reboot"/>
+               <iconset theme="system-reboot">
+                <normaloff>.</normaloff>.</iconset>
               </property>
               <property name="description">
                <string>Turns off your computer, installs pending updates and turns it on again</string>

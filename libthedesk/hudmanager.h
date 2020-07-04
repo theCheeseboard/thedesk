@@ -29,9 +29,11 @@ class HudManager : public QObject {
         explicit HudManager(QObject* parent = nullptr);
 
         void showHud(QVariantMap parameters);
+        void hideHud();
 
     signals:
         void requestHud(QVariantMap parameters);
+        void requestHideHud();
 };
 
 #endif // HUDMANAGER_H

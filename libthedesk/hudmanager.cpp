@@ -26,3 +26,7 @@ HudManager::HudManager(QObject* parent) : QObject(parent) {
 void HudManager::showHud(QVariantMap parameters) {
     emit requestHud(parameters);
 }
+
+void HudManager::hideHud() {
+    emit requestHideHud();
+}

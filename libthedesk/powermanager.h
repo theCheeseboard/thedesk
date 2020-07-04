@@ -24,6 +24,7 @@
 #include <tpromise.h>
 
 class EndSession;
+class EventHandler;
 struct PowerManagerPrivate;
 class PowerManager : public QObject {
         Q_OBJECT
@@ -31,7 +32,6 @@ class PowerManager : public QObject {
         enum PowerOperation {
             PowerOff,
             Reboot,
-            RebootInstallUpdates,
             LogOut,
             Suspend,
             Lock,
@@ -44,15 +44,16 @@ class PowerManager : public QObject {
         explicit PowerManager(QObject* parent = nullptr);
         ~PowerManager();
 
-        tPromise<void>* showPowerOffConfirmation(PowerOperation operation = All, QString message = "");
+        tPromise<void>* showPowerOffConfirmation(PowerOperation operation = All, QString message = "", QStringList flags = {});
 
     signals:
-        void powerOffConfirmationRequested(PowerOperation operation, QString message, tPromiseFunctions<void>::SuccessFunction cb);
+        void powerOffConfirmationRequested(PowerOperation operation, QString message, QStringList flags, tPromiseFunctions<void>::SuccessFunction cb);
         void powerOffOperationCommencing(PowerOperation operation);
 
     protected:
         friend EndSession;
-        void performPowerOperation(PowerOperation operation);
+        friend EventHandler;
+        void performPowerOperation(PowerOperation operation, QStringList flags = {});
 
     private:
         PowerManagerPrivate* d;
