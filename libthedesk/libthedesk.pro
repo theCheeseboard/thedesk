@@ -63,7 +63,7 @@ unix {
     target.path = $$[QT_INSTALL_LIBS]
 
     headers.files = *.h
-    headers.path = /usr/include/libthedesk/
+    headers.path = $$[QT_INSTALL_HEADERS]/libthedesk/
 
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/libthedesk/translations

@@ -136,7 +136,7 @@ unix {
     translations.path = /usr/share/thedesk/translations
 
     headers.files = plugins/plugininterface.h
-    headers.path = /usr/include/thedesk/
+    headers.path = $$[QT_INSTALL_HEADERS]/thedesk/
 
     defaults.files = defaults.conf
     defaults.path = /etc/theSuite/theDesk/

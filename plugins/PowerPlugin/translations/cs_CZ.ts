@@ -11,9 +11,11 @@
         <source>Suspend</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>The system has been idle for some time</source>
-        <translation type="unfinished"></translation>
+    <message numerus="yes">
+        <source>%n seconds</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -56,6 +58,38 @@
     </message>
     <message>
         <source>Suspend after</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When pressing the Power button</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ask</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Power Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reboot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Suspend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hibernate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do Nothing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BUTTONS</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

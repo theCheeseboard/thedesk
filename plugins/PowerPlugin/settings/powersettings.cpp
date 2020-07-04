@@ -10,6 +10,7 @@ struct PowerSettingsPrivate {
     tSettings settings;
 
     const static QStringList timeoutUnits;
+    const static QStringList powerActions;
 };
 
 const QStringList PowerSettingsPrivate::timeoutUnits = {
@@ -17,6 +18,15 @@ const QStringList PowerSettingsPrivate::timeoutUnits = {
     "min",
     "hr",
     "never"
+};
+
+const QStringList PowerSettingsPrivate::powerActions = {
+    "ask",
+    "poweroff",
+    "reboot",
+    "suspend",
+    "hibernate",
+    "ignore"
 };
 
 PowerSettings::PowerSettings() :
@@ -32,13 +42,15 @@ PowerSettings::PowerSettings() :
 
     const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
     ui->timeoutsWidget->setFixedWidth(contentWidth);
+    ui->buttonsWidget->setFixedWidth(contentWidth);
 
     connect(&d->settings, &tSettings::settingChanged, this, &PowerSettings::settingChanged);
     for (QString setting : {
             "Power/timeouts.screenoff.value",
             "Power/timeouts.screenoff.unit",
             "Power/timeouts.suspend.value",
-            "Power/timeouts.suspend.unit"
+            "Power/timeouts.suspend.unit",
+            "Power/actions.powerbutton"
         }) {
         settingChanged(setting, d->settings.value(setting));
     }
@@ -90,6 +102,8 @@ void PowerSettings::settingChanged(QString key, QVariant value) {
         QString unit = value.toString();
         ui->suspendUnit->setCurrentIndex(d->timeoutUnits.indexOf(unit));
         ui->suspendSpin->setEnabled(unit != "never");
+    } else if (key == "Power/actions.powerbutton") {
+        ui->powerButtonActionBox->setCurrentIndex(d->powerActions.indexOf(value.toString()));
     }
 }
 
@@ -99,4 +113,8 @@ void PowerSettings::on_suspendSpin_valueChanged(int arg1) {
 
 void PowerSettings::on_suspendUnit_currentIndexChanged(int index) {
     d->settings.setValue("Power/timeouts.suspend.unit", d->timeoutUnits.value(index));
+}
+
+void PowerSettings::on_powerButtonActionBox_currentIndexChanged(int index) {
+    d->settings.setValue("Power/actions.powerbutton", d->powerActions.value(index));
 }

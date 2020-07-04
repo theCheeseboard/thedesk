@@ -66,14 +66,16 @@ HudWidget::HudWidget(QWidget* parent) :
         d->hideTimer->setInterval(timeout);
 
         //Decide on the layout to use
-        if (params.contains("icon") && params.contains("title") && params.contains("value")) {
+        if (params.contains("icon") && params.contains("title") && params.contains("text")) {
+            //Use the icon/text HUD
+            ui->stackedWidget->setCurrentWidget(ui->iconTextPage);
+            d->value = value;
+            ui->iconTextPage->update();
+        } else if (params.contains("icon") && params.contains("title") && params.contains("value")) {
             //Use the icon/value HUD
             ui->stackedWidget->setCurrentWidget(ui->iconValuePage);
             d->value = value;
             ui->iconValuePage->update();
-        } else if (params.contains("icon") && params.contains("title") && params.contains("text")) {
-            //Use the icon/text HUD
-            ui->stackedWidget->setCurrentWidget(ui->iconTextPage);
         }
 
         this->animateShow();
@@ -84,6 +86,7 @@ HudWidget::HudWidget(QWidget* parent) :
     });
 
     ui->iconValuePage->installEventFilter(this);
+    ui->iconTextPage->installEventFilter(this);
 }
 
 HudWidget::~HudWidget() {
@@ -102,18 +105,19 @@ void HudWidget::resizeEvent(QResizeEvent* event) {
 }
 
 bool HudWidget::eventFilter(QObject* watched, QEvent* event) {
-    if (event->type() == QEvent::Paint && watched == ui->iconValuePage) {
-        QPainter painter(ui->iconValuePage);
+    if (event->type() == QEvent::Paint && (watched == ui->iconValuePage || watched == ui->iconTextPage)) {
+        QWidget* w = static_cast<QWidget*>(watched);
+        QPainter painter(w);
         painter.setBrush(QColor(255, 255, 255, 50));
         painter.setPen(Qt::transparent);
 
         double val = d->value;
         while (val > 1) {
-            painter.drawRect(0, 0, ui->iconValuePage->width(), ui->iconValuePage->height());
+            painter.drawRect(0, 0, w->width(), w->height());
             val -= 1;
         }
 
-        painter.drawRect(0, 0, static_cast<int>(ui->iconValuePage->width() * val), ui->iconValuePage->height());
+        painter.drawRect(0, 0, static_cast<int>(w->width() * val), w->height());
         return true;
     }
     return false;

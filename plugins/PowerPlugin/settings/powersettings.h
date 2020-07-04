@@ -26,6 +26,8 @@ class PowerSettings : public StatusCenterPane {
 
         void on_suspendUnit_currentIndexChanged(int index);
 
+        void on_powerButtonActionBox_currentIndexChanged(int index);
+
     private:
         Ui::PowerSettings* ui;
         PowerSettingsPrivate* d;

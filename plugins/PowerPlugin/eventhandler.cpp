@@ -36,19 +36,22 @@
 #include <Wm/desktopwm.h>
 
 #include <tsettings.h>
+#include <tvariantanimation.h>
 
 struct EventHandlerPrivate {
     KeyGrab* powerKey;
+    KeyGrab* ctrlAltDelKey;
     QDBusUnixFileDescriptor buttonInhibitor;
 
     tSettings settings;
     quint64 oldIdleTimer = 0;
 
     bool screenOffActionPerformed = false;
-    bool suspendNotificationShown = false;
     bool suspendActionPerformed = false;
+    tVariantAnimation* suspendNotificationAnimation = new tVariantAnimation();
 
     const static QMap<QString, int> timeoutFactors;
+    const static QMap<QString, int> powerOffActions;
 };
 
 const QMap<QString, int> EventHandlerPrivate::timeoutFactors = {
@@ -56,6 +59,15 @@ const QMap<QString, int> EventHandlerPrivate::timeoutFactors = {
     {"min", 60000},
     {"hr", 360000},
     {"never", 0}
+};
+
+const QMap<QString, int> EventHandlerPrivate::powerOffActions = {
+    {"ask", PowerManager::All},
+    {"poweroff", PowerManager::PowerOff},
+    {"reboot", PowerManager::Reboot},
+    {"suspend", PowerManager::Suspend},
+    {"hibernate", PowerManager::Hibernate},
+    {"ignore", -1}
 };
 
 EventHandler::EventHandler(QObject* parent) : QObject(parent) {
@@ -74,6 +86,16 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
 
     d->powerKey = new KeyGrab(QKeySequence(Qt::Key_PowerOff));
     connect(d->powerKey, &KeyGrab::activated, this, [ = ] {
+        int action = d->powerOffActions.value(d->settings.value("Power/actions.powerbutton").toString(), -1);
+        if (action == -1) return; //Ignore
+        if (action == PowerManager::All) { //Ask
+            StateManager::powerManager()->showPowerOffConfirmation();
+        } else {
+            StateManager::powerManager()->performPowerOperation(static_cast<PowerManager::PowerOperation>(action));
+        }
+    });
+    d->ctrlAltDelKey = new KeyGrab(QKeySequence(Qt::ControlModifier | Qt::AltModifier | Qt::Key_Delete));
+    connect(d->ctrlAltDelKey, &KeyGrab::activated, this, [ = ] {
         StateManager::powerManager()->showPowerOffConfirmation();
     });
 
@@ -81,27 +103,58 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
     timer->setInterval(1000);
     connect(timer, &QTimer::timeout, this, &EventHandler::checkIdleTimer);
     timer->start();
+
+    d->suspendNotificationAnimation = new tVariantAnimation(this);
+    d->suspendNotificationAnimation->setStartValue(1.0);
+    d->suspendNotificationAnimation->setEndValue(0.0);
+    d->suspendNotificationAnimation->setForceAnimation(true);
+    d->suspendNotificationAnimation->setDuration(15000);
+    connect(d->suspendNotificationAnimation, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        StateManager::instance()->hudManager()->showHud({
+            {"icon", "system-suspend"},
+            {"title", tr("Suspend")},
+            {"text", tr("%n seconds", nullptr, (15000 - d->suspendNotificationAnimation->currentTime()) / 1000 + 1)},
+            {"value", value.toDouble()},
+            {"timeout", 15000}
+        });
+
+        //Immediately do an idle timer check if the idle timer has changed
+        if (DesktopWm::msecsIdle() < d->oldIdleTimer) checkIdleTimer();
+    });
+    connect(d->suspendNotificationAnimation, &tVariantAnimation::stateChanged, this, [ = ](tVariantAnimation::State newState, tVariantAnimation::State oldState) {
+        if (newState == tVariantAnimation::Stopped) {
+            StateManager::instance()->hudManager()->hideHud();
+        }
+    });
+    connect(d->suspendNotificationAnimation, &tVariantAnimation::finished, this, [ = ] {
+        //Suspend now
+        StateManager::powerManager()->performPowerOperation(PowerManager::Suspend);
+    });
 }
 
 EventHandler::~EventHandler() {
     d->powerKey->deleteLater();
+    d->ctrlAltDelKey->deleteLater();
     delete d;
 }
 
 void EventHandler::checkIdleTimer() {
     quint64 idleTimer = DesktopWm::msecsIdle();
     if (idleTimer < d->oldIdleTimer) {
-        if (d->suspendNotificationShown) {
-            //Hide the HUD
-            StateManager::instance()->hudManager()->hideHud();
+        if (d->suspendNotificationAnimation->state() == tVariantAnimation::Running) {
+            d->suspendNotificationAnimation->stop();
         }
 
         //Reset all variables
         d->screenOffActionPerformed = false;
-        d->suspendNotificationShown = false;
         d->suspendActionPerformed = false;
     }
     d->oldIdleTimer = idleTimer;
+
+    //Ensure that there are no full screen windows so we don't switch off the screen if someone is watching a video for instance
+    for (DesktopWmWindowPtr window : DesktopWm::openWindows()) {
+        if (window->isFullScreen()) return;
+    }
 
     if (!d->screenOffActionPerformed) {
         //See if we need to turn the screen off
@@ -115,22 +168,11 @@ void EventHandler::checkIdleTimer() {
 
     if (!d->suspendActionPerformed) {
         //See if we need to suspend
-        quint64 notificationTimeout = d->settings.value("Power/timeouts.suspend.value").toInt() * d->timeoutFactors.value(d->settings.value("Power/timeouts.suspend.unit").toString(), 0);
-        quint64 timeout = notificationTimeout + 15000; //Give the user 15 seconds notification
-        if (idleTimer > notificationTimeout && !d->suspendNotificationShown && notificationTimeout != 0) {
-            //Notify the user about the impending suspension
-            d->suspendNotificationShown = true;
-
-            StateManager::instance()->hudManager()->showHud({
-                {"icon", "system-suspend"},
-                {"title", tr("Suspend")},
-                {"text", tr("The system has been idle for some time")},
-                {"timeout", 15000}
-            });
-        } else if (idleTimer > timeout && notificationTimeout != 0) {
-            //Suspend now
-            StateManager::powerManager()->performPowerOperation(PowerManager::Suspend);
+        quint64 timeout = d->settings.value("Power/timeouts.suspend.value").toInt() * d->timeoutFactors.value(d->settings.value("Power/timeouts.suspend.unit").toString(), 0);
+        if (idleTimer > timeout && timeout != 0) {
+            //Notify the user about the impending suspension and then suspend
             d->suspendActionPerformed = true;
+            d->suspendNotificationAnimation->start();
         }
     }
 }
