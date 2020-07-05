@@ -33,6 +33,7 @@ struct ChunkContainerPrivate {
         "OverviewClock",
         "Network",
         "network-cellular",
+        "Accessibility-StickyKeys"
     };
 };
 

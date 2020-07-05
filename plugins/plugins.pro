@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+    AccessibilityPlugin \
     AudioPlugin \
     BrightnessPlugin \
     DisplayPlugin \
