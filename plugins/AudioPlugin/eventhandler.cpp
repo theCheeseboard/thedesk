@@ -94,6 +94,7 @@ void EventHandler::adjustVolume(int percentageChange) {
 
     qint64 factor = PulseAudioQt::normalVolume();
     qint64 newVolume = sink->volume() + (factor / 100) * percentageChange;
+    if (newVolume < PulseAudioQt::minimumVolume()) newVolume = PulseAudioQt::minimumVolume();
 
     sink->setVolume(newVolume);
     showHud(sink, newVolume);
