@@ -67,6 +67,9 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
             {"text", StateManager::quietModeManager()->description(newMode)}
         });
     });
+
+    connect(StateManager::quietModeManager(), &QuietModeManager::quietModeChanged, this, &EventHandler::quietModeChanged);
+    quietModeChanged();
 }
 
 EventHandler::~EventHandler() {
@@ -158,4 +161,12 @@ void EventHandler::showHud(PulseAudioQt::Sink* sink, qint64 volume) {
     }
 
     StateManager::instance()->hudManager()->showHud(hudData);
+}
+
+void EventHandler::quietModeChanged() {
+    QuietModeManager::QuietMode mode = StateManager::quietModeManager()->currentMode();
+    QVector<PulseAudioQt::Sink*> sinks = PulseAudioQt::Context::instance()->sinks();
+    for (PulseAudioQt::Sink* sink : sinks) {
+        sink->setMuted(mode == QuietModeManager::Mute);
+    }
 }
