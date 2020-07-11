@@ -97,8 +97,8 @@ void ArrangeWidget::updateAvailableModes() {
         if (!resolutions.contains(res)) {
             resolutions.append(res);
             ui->resolutionBox->addItem(QStringLiteral("%1 × %2").arg(res.width()).arg(res.height()), res);
-            if (d->init && d->screen->currentMode() == mode.id) ui->resolutionBox->setCurrentIndex(ui->resolutionBox->count() - 1);
         }
+        if (d->init && d->screen->currentMode() == mode.id) ui->resolutionBox->setCurrentIndex(resolutions.indexOf(res));
     }
 
     updateRefreshRateBox();

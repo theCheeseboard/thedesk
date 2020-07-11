@@ -424,7 +424,7 @@
     <name>UsersPane</name>
     <message>
         <location filename="../settings/userspane.ui" line="89"/>
-        <location filename="../settings/userspane.cpp" line="212"/>
+        <location filename="../settings/userspane.cpp" line="215"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
@@ -444,87 +444,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.ui" line="237"/>
+        <location filename="../settings/userspane.ui" line="288"/>
         <source>ACTIONS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.ui" line="247"/>
+        <location filename="../settings/userspane.ui" line="298"/>
         <source>Change Real Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.ui" line="250"/>
-        <source>Change the name of this user</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/userspane.ui" line="257"/>
+        <location filename="../settings/userspane.ui" line="305"/>
         <source>Change Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.ui" line="260"/>
-        <source>Change or remove this user&apos;s password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/userspane.ui" line="267"/>
+        <location filename="../settings/userspane.ui" line="312"/>
         <source>Change User Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.ui" line="270"/>
-        <source>Change if this user can perform administrative tasks</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/userspane.ui" line="283"/>
+        <location filename="../settings/userspane.ui" line="359"/>
         <source>DANGER</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.ui" line="303"/>
+        <location filename="../settings/userspane.ui" line="376"/>
         <source>Delete User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.ui" line="306"/>
-        <source>Remove this user (and possibly all associated files) from the system</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/userspane.cpp" line="84"/>
+        <location filename="../settings/userspane.cpp" line="89"/>
         <source>Username: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="87"/>
+        <location filename="../settings/userspane.cpp" line="92"/>
         <source>Unlock User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="88"/>
-        <source>Allow this user to log in</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/userspane.cpp" line="90"/>
+        <location filename="../settings/userspane.cpp" line="94"/>
         <source>Lock User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="91"/>
-        <source>Stop this user from logging in</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/userspane.cpp" line="133"/>
+        <location filename="../settings/userspane.cpp" line="136"/>
         <source>Unauthorized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="134"/>
+        <location filename="../settings/userspane.cpp" line="137"/>
         <source>Polkit does not allow you to manage users on the system.</source>
         <translation type="unfinished"></translation>
     </message>

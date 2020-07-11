@@ -24,6 +24,7 @@
 #include <QProcess>
 #include <QDBusMessage>
 #include <QDBusConnection>
+#include <QDBusInterface>
 
 #include "keygrab.h"
 #include <QKeySequence>
@@ -34,6 +35,7 @@
 
 struct PowerManagerPrivate {
     QPointer<QProcess> lockScreenProcess;
+    QDBusInterface* logindInterface;
 };
 
 PowerManager::PowerManager(QObject* parent) : QObject(parent) {
@@ -42,6 +44,22 @@ PowerManager::PowerManager(QObject* parent) : QObject(parent) {
     connect(new KeyGrab(QKeySequence(Qt::Key_L | Qt::MetaModifier), "lockScreen"), &KeyGrab::activated, this, [ = ] {
         this->performPowerOperation(PowerManager::Lock);
     });
+
+    //Find this session ID
+    d->logindInterface = new QDBusInterface("org.freedesktop.login1", "/org/freedesktop/login1/session/self", "org.freedesktop.login1.Session", QDBusConnection::systemBus(), this);
+    QString id = d->logindInterface->property("Id").toString();
+    if (!id.isEmpty()) {
+        QDBusMessage sessionRequest = QDBusMessage::createMethodCall("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "GetSession");
+        sessionRequest.setArguments({id});
+        QDBusMessage sessionReply = QDBusConnection::systemBus().call(sessionRequest);
+        if (sessionReply.type() == QDBusMessage::ReplyMessage) {
+            //Register event handlers for logind
+            QDBusObjectPath path = sessionReply.arguments().first().value<QDBusObjectPath>();
+            QDBusConnection::systemBus().connect("org.freedesktop.login1", path.path(), "org.freedesktop.login1.Session", "Lock", this, SLOT(logindRequestLock()));
+            QDBusConnection::systemBus().connect("org.freedesktop.login1", path.path(), "org.freedesktop.login1.Session", "Unlock", this, SLOT(logindRequestUnlock()));
+        }
+    }
+
 }
 
 PowerManager::~PowerManager() {
@@ -54,6 +72,15 @@ tPromise<void>* PowerManager::showPowerOffConfirmation(PowerManager::PowerOperat
 
         emit powerOffConfirmationRequested(operation, message, flags, res);
     });
+}
+
+void PowerManager::logindRequestLock() {
+    this->performPowerOperation(Lock);
+}
+
+void PowerManager::logindRequestUnlock() {
+    if (d->lockScreenProcess) d->lockScreenProcess->terminate();
+    //Process will be automatically deleted
 }
 
 void PowerManager::performPowerOperation(PowerManager::PowerOperation operation, QStringList flags) {
@@ -105,9 +132,15 @@ void PowerManager::performPowerOperation(PowerManager::PowerOperation operation,
 
             d->lockScreenProcess = new QProcess();
             connect(d->lockScreenProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [ = ] {
+                //Tell logind that we're not locked
+                d->logindInterface->asyncCall("SetLockedHint", false);
+
                 d->lockScreenProcess->deleteLater();
             });
             d->lockScreenProcess->start("/usr/lib/tsscreenlock", QStringList()); //Lock Screen
+
+            //Tell logind that we're locked
+            d->logindInterface->asyncCall("SetLockedHint", true);
             break;
         case PowerManager::SwitchUsers: {
             QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DisplayManager", qEnvironmentVariable("XDG_SEAT_PATH"), "org.freedesktop.DisplayManager.Seat", "SwitchToGreeter");

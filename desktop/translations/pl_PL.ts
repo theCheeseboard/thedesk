@@ -260,7 +260,8 @@
     </message>
     <message>
         <location filename="../session/endsession.ui" line="134"/>
-        <location filename="../session/endsession.cpp" line="251"/>
+        <location filename="../session/endsession.ui" line="369"/>
+        <location filename="../session/endsession.cpp" line="250"/>
         <source>Reboot</source>
         <translation>Restartuj</translation>
     </message>
@@ -355,11 +356,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.ui" line="369"/>
-        <source>Just Reboot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../session/endsession.ui" line="376"/>
         <source>We&apos;ll reboot your device normally.</source>
         <translation type="unfinished"></translation>
@@ -410,13 +406,13 @@
         <translation>hibernuj system</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="250"/>
+        <location filename="../session/endsession.cpp" line="249"/>
         <source>Advanced Reboot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="260"/>
-        <source>Reboot and enter UEFI Setup</source>
+        <location filename="../session/endsession.cpp" line="259"/>
+        <source>Enter System UEFI Setup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

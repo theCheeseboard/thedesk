@@ -366,7 +366,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>Just Reboot</string>
+                <string>Reboot</string>
                </property>
                <property name="icon">
                 <iconset theme="system-reboot">

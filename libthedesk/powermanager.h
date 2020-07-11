@@ -46,6 +46,10 @@ class PowerManager : public QObject {
 
         tPromise<void>* showPowerOffConfirmation(PowerOperation operation = All, QString message = "", QStringList flags = {});
 
+    private slots:
+        void logindRequestLock();
+        void logindRequestUnlock();
+
     signals:
         void powerOffConfirmationRequested(PowerOperation operation, QString message, QStringList flags, tPromiseFunctions<void>::SuccessFunction cb);
         void powerOffOperationCommencing(PowerOperation operation);

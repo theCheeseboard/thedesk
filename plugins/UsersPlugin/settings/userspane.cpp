@@ -67,6 +67,11 @@ UsersPane::UsersPane() :
         }
     });
 
+    const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
+    ui->userActionsWidget->setFixedWidth(contentWidth);
+    ui->userDangerActionsWidget->setFixedWidth(contentWidth);
+    ui->usernameLabel->setFixedWidth(contentWidth);
+
     ui->deleteUserButton->setProperty("type", "destructive");
 }
 
@@ -85,10 +90,8 @@ void UsersPane::currentUserChanged() {
 
     if (d->currentUser->isLocked()) {
         ui->lockUserButton->setText(tr("Unlock User"));
-        ui->lockUserButton->setDescription(tr("Allow this user to log in"));
     } else {
         ui->lockUserButton->setText(tr("Lock User"));
-        ui->lockUserButton->setDescription(tr("Stop this user from logging in"));
     }
 }
 

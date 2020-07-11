@@ -244,11 +244,10 @@ void EndSession::on_rebootInstallUpdatesButton_clicked() {
     emit done();
 }
 
-void EndSession::on_rebootButton_customContextMenuRequested(const QPoint &pos)
-{
+void EndSession::on_rebootButton_customContextMenuRequested(const QPoint& pos) {
     QMenu* menu = new QMenu();
     menu->addSection(tr("Advanced Reboot"));
-    menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot"), [=] {
+    menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot"), [ = ] {
         //Just reboot
         ui->rebootButton->click();
     });
@@ -257,7 +256,7 @@ void EndSession::on_rebootButton_customContextMenuRequested(const QPoint &pos)
     QDBusMessage msg = QDBusConnection::systemBus().call(message);
 
     if (msg.arguments().first().toString() == "yes") {
-        menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot and enter UEFI Setup"), [=] {
+        menu->addAction(QIcon::fromTheme("system-reboot"), tr("Enter System UEFI Setup"), [ = ] {
             StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot, {"setup"});
             emit done();
         });

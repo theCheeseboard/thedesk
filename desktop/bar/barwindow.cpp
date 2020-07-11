@@ -233,10 +233,12 @@ void BarWindow::trackWindow(DesktopWmWindowPtr window) {
 void BarWindow::updatePrimaryScreen() {
     if (d->oldPrimaryScreen) {
         disconnect(d->oldPrimaryScreen, &QScreen::geometryChanged, this, &BarWindow::updatePrimaryScreen);
+        disconnect(d->oldPrimaryScreen, &QScreen::orientationChanged, this, &BarWindow::updatePrimaryScreen);
     }
 
     QScreen* primaryScreen = qApp->primaryScreen();
     connect(primaryScreen, &QScreen::geometryChanged, this, &BarWindow::updatePrimaryScreen);
+    connect(primaryScreen, &QScreen::orientationChanged, this, &BarWindow::updatePrimaryScreen);
     d->oldPrimaryScreen = primaryScreen;
 
     this->setFixedWidth(primaryScreen->geometry().width());
