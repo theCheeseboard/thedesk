@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>405</width>
+    <height>570</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,6 +60,9 @@
        </item>
        <item>
         <widget class="tStackedWidget" name="gatewayTypeStack">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
          <widget class="QWidget" name="gatewayList">
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <property name="leftMargin">

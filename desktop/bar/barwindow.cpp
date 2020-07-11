@@ -242,6 +242,8 @@ void BarWindow::updatePrimaryScreen() {
     this->setFixedWidth(primaryScreen->geometry().width());
     this->move(primaryScreen->geometry().topLeft());
     d->statusCenterWidget->setFixedHeight(primaryScreen->geometry().height());
+
+    barHeightChanged();
 }
 
 void BarWindow::barHeightChanged() {

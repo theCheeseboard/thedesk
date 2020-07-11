@@ -45,7 +45,9 @@ MainGatewayWidget::MainGatewayWidget(QWidget* parent) :
         ui->gatewayTypeStack->setCurrentWidget(ui->gatewayLoading);
     });
     connect(d->model, &AppSelectionModel::ready, this, [ = ] {
-        ui->gatewayTypeStack->setCurrentWidget(ui->gatewayList);
+        QTimer::singleShot(500, [=] {
+            ui->gatewayTypeStack->setCurrentWidget(ui->gatewayList);
+        });
     });
     ui->gatewayTypeStack->setCurrentWidget(ui->gatewayLoading);
     ui->gatewayTypeStack->setCurrentAnimation(tStackedWidget::Fade);

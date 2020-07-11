@@ -26,6 +26,8 @@
 #include <QIcon>
 #include <tsettings.h>
 
+#include "arrange/arrangecontroller.h"
+
 struct DisplaySettingsPrivate {
     tSettings settings;
 };
@@ -42,9 +44,8 @@ DisplaySettings::DisplaySettings() :
     connect(StateManager::instance()->statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, ui->titleLabel, &tTitleLabel::setBackButtonShown);
 
     const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
-    ui->scrollAreaWidgetContents->layout()->setAlignment(ui->arrangeWidget, Qt::AlignHCenter);
-    ui->scrollAreaWidgetContents->layout()->setAlignment(ui->redshiftWidget, Qt::AlignHCenter);
     ui->arrangeWidget->setFixedWidth(contentWidth);
+    ui->arrangeButton->setFixedWidth(contentWidth);
     ui->redshiftWidget->setFixedWidth(contentWidth);
 
     ui->scheduleRedshiftSwitch->setChecked(d->settings.value("Redshift/scheduleRedshift").toBool());
@@ -103,4 +104,10 @@ void DisplaySettings::on_redshiftEndTime_userTimeChanged(const QTime& time) {
 
 void DisplaySettings::on_redshiftIntensitySlider_valueChanged(int value) {
     d->settings.setValue("Redshift/intensity", value);
+}
+
+void DisplaySettings::on_arrangeButton_clicked() {
+    ArrangeController* controller = new ArrangeController();
+    connect(controller, &ArrangeController::done, controller, &ArrangeController::deleteLater);
+    controller->begin();
 }

@@ -53,6 +53,7 @@ class DisplaySettings : public StatusCenterPane {
         void on_redshiftStartTime_userTimeChanged(const QTime& time);
         void on_redshiftEndTime_userTimeChanged(const QTime& time);
         void on_redshiftIntensitySlider_valueChanged(int value);
+        void on_arrangeButton_clicked();
 };
 
 #endif // DISPLAYSETTINGS_H

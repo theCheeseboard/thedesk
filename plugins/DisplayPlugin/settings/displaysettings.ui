@@ -69,7 +69,7 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QWidget" name="arrangeWidget" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
@@ -81,19 +81,42 @@
              </font>
             </property>
             <property name="text">
-             <string>ARRANGE</string>
+             <string>SCREENS</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Coming soon!</string>
+             <string>Change the resolution of your display and arrange your displays</string>
             </property>
            </widget>
           </item>
          </layout>
         </widget>
+       </item>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QPushButton" name="arrangeButton">
+         <property name="text">
+          <string>Arrange and Resize Displays</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>9</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item>
         <widget class="Line" name="line">
@@ -108,7 +131,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignHCenter">
         <widget class="QWidget" name="redshiftWidget" native="true">
          <layout class="QGridLayout" name="gridLayout">
           <item row="2" column="0">

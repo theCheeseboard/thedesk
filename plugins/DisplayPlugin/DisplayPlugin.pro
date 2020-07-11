@@ -20,12 +20,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arrange/arrangecontroller.cpp \
+    arrange/arrangewidget.cpp \
+    arrange/overlaywindow.cpp \
     plugin.cpp \
     redshift/colorramp.cpp \
     redshift/redshiftdaemon.cpp \
     settings/displaysettings.cpp
 
 HEADERS += \
+    arrange/arrangecontroller.h \
+    arrange/arrangewidget.h \
+    arrange/overlaywindow.h \
     plugin.h \
     redshift/colorramp.h \
     redshift/redshiftdaemon.h \
@@ -48,4 +54,6 @@ unix {
 include(../plugins.pri)
 
 FORMS += \
+    arrange/arrangewidget.ui \
+    arrange/overlaywindow.ui \
     settings/displaysettings.ui

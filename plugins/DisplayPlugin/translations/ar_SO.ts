@@ -2,6 +2,33 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="so_SO" sourcelanguage="en_US">
 <context>
+    <name>ArrangeWidget</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DISPLAY PROPERTIES</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resolution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apply Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DisplaySettings</name>
     <message>
         <source>Form</source>
@@ -9,14 +36,6 @@
     </message>
     <message>
         <source>Displays</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>ARRANGE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Coming soon!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -45,6 +64,25 @@
     </message>
     <message>
         <source>End at</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SCREENS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change the resolution of your display and arrange your displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Arrange and Resize Displays</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OverlayWindow</name>
+    <message>
+        <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

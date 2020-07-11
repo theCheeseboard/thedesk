@@ -433,22 +433,22 @@
         <translation>Cửa</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="109"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="112"/>
         <source>Preparing the Gateway...</source>
         <translation>Đang chuẩn bị Cửa...</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="185"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="188"/>
         <source>Type to search...</source>
         <translation>Gõ để tìm kiếm...</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="227"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="230"/>
         <source>End Session</source>
         <translation>Kết phiên</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="53"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="55"/>
         <source>Hey, %1!</source>
         <translation>Chào, %1!</translation>
     </message>

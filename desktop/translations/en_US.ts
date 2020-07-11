@@ -433,22 +433,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="109"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="112"/>
         <source>Preparing the Gateway...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="185"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="188"/>
         <source>Type to search...</source>
         <translation>Search here...</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="227"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="230"/>
         <source>End Session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="53"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="55"/>
         <source>Hey, %1!</source>
         <translation type="unfinished"></translation>
     </message>
