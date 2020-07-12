@@ -211,7 +211,7 @@ void RedshiftDaemon::updateRedshiftState() {
 
 void RedshiftDaemon::updateSunlightCycleState() {
     if (d->settings.value("Redshift/followSunlightCycle").toBool()) {
-        d->meteorologyDaemon->setLocation(-33.85, 151.21);
+//        d->meteorologyDaemon->setLocation(-33.85, 151.21);
     }
 }
 
