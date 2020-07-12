@@ -48,6 +48,21 @@ DisplaySettings::DisplaySettings() :
     ui->arrangeButton->setFixedWidth(contentWidth);
     ui->redshiftWidget->setFixedWidth(contentWidth);
 
+    connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key) {
+        if (key.startsWith("Redshift/")) {
+            updateSettings();
+        }
+    });
+
+    updateSettings();
+}
+
+DisplaySettings::~DisplaySettings() {
+    delete d;
+    delete ui;
+}
+
+void DisplaySettings::updateSettings() {
     ui->scheduleRedshiftSwitch->setChecked(d->settings.value("Redshift/scheduleRedshift").toBool());
     ui->followSunlightSwitch->setChecked(d->settings.value("Redshift/followSunlightCycle").toBool());
     ui->redshiftStartTime->setTime(QTime::fromMSecsSinceStartOfDay(d->settings.value("Redshift/startTime").toInt()));
@@ -56,11 +71,6 @@ DisplaySettings::DisplaySettings() :
 
     ui->scheduleRedshiftConditionalWidget->setExpanded(d->settings.value("Redshift/scheduleRedshift").toBool());
     ui->followSunlightConditionalWidget->setExpanded(!d->settings.value("Redshift/followSunlightCycle").toBool());
-}
-
-DisplaySettings::~DisplaySettings() {
-    delete d;
-    delete ui;
 }
 
 

@@ -29,6 +29,8 @@
 #include <Screens/systemscreen.h>
 #include "redshift/colorramp.h"
 
+#include <twmeteorology.h>
+
 struct RedshiftDaemonPrivate {
     enum RedshiftState {
         Initialising,
@@ -45,10 +47,21 @@ struct RedshiftDaemonPrivate {
     bool updatingState = false;
 
     tSettings settings;
+    twMeteorology* meteorologyDaemon;
 };
 
 RedshiftDaemon::RedshiftDaemon(QObject* parent) : QObject(parent) {
     d = new RedshiftDaemonPrivate();
+
+    d->meteorologyDaemon = new twMeteorology(this);
+    connect(d->meteorologyDaemon, &twMeteorology::sunriseSunsetChanged, this, [ = ] {
+        if (d->settings.value("Redshift/followSunlightCycle").toBool()) {
+            if (!d->meteorologyDaemon->sunset().isNull()) {
+                d->settings.setValue("Redshift/startTime", d->meteorologyDaemon->sunset().msecsSinceStartOfDay());
+                d->settings.setValue("Redshift/endTime", d->meteorologyDaemon->sunrise().msecsSinceStartOfDay());
+            }
+        }
+    });
 
     d->sw = new QuickSwitch("Redshift");
     d->sw->setTitle("Redshift");
@@ -75,14 +88,17 @@ RedshiftDaemon::RedshiftDaemon(QObject* parent) : QObject(parent) {
                 } else {
                     d->redshiftStateTimer->stop();
                 }
-            }
 
-            //Recalculate the Redshift state
-            this->updateRedshiftState();
+                //Recalculate the Redshift state
+                this->updateRedshiftState();
+            } else if (key == "Redshift/followSunlightCycle") {
+                updateSunlightCycleState();
+            }
         }
     });
 
     this->updateRedshiftState();
+    this->updateSunlightCycleState();
 }
 
 RedshiftDaemon::~RedshiftDaemon() {
@@ -191,6 +207,12 @@ void RedshiftDaemon::updateRedshiftState() {
     }
 
     d->updatingState = false;
+}
+
+void RedshiftDaemon::updateSunlightCycleState() {
+    if (d->settings.value("Redshift/followSunlightCycle").toBool()) {
+        d->meteorologyDaemon->setLocation(-33.85, 151.21);
+    }
 }
 
 void RedshiftDaemon::setRedshiftTemperature(int temp) {

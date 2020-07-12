@@ -39,6 +39,8 @@ class DisplaySettings : public StatusCenterPane {
         Ui::DisplaySettings* ui;
         DisplaySettingsPrivate* d;
 
+        void updateSettings();
+
         // StatusCenterPane interface
     public:
         QString name();

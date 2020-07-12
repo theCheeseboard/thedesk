@@ -78,6 +78,10 @@
         <source>Arrange and Resize Displays</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Your physical location will be sent to MET Norway to determine sunrise and sunset times.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OverlayWindow</name>

@@ -49,8 +49,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>500</width>
-        <height>358</height>
+        <width>486</width>
+        <height>380</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -213,6 +213,13 @@
              <property name="bottomMargin">
               <number>0</number>
              </property>
+             <item row="0" column="1">
+              <widget class="tSwitch" name="followSunlightSwitch">
+               <property name="text">
+                <string notr="true">followSunlightSwitch</string>
+               </property>
+              </widget>
+             </item>
              <item row="0" column="0">
               <widget class="QLabel" name="label_9">
                <property name="sizePolicy">
@@ -226,14 +233,7 @@
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="tSwitch" name="followSunlightSwitch">
-               <property name="text">
-                <string notr="true">followSunlightSwitch</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0" colspan="2">
+             <item row="2" column="0" colspan="2">
               <widget class="tConditionalWidget" name="followSunlightConditionalWidget" native="true">
                <layout class="QGridLayout" name="gridLayout_2">
                 <property name="leftMargin">
@@ -275,6 +275,19 @@
                  <widget class="QTimeEdit" name="redshiftEndTime"/>
                 </item>
                </layout>
+              </widget>
+             </item>
+             <item row="1" column="0" colspan="2">
+              <widget class="QLabel" name="label_10">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Your physical location will be sent to MET Norway to determine sunrise and sunset times.</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
             </layout>

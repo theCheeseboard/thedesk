@@ -35,6 +35,7 @@ class RedshiftDaemon : public QObject {
         RedshiftDaemonPrivate* d;
 
         void updateRedshiftState();
+        void updateSunlightCycleState();
         void setRedshiftTemperature(int temp);
 };
 
