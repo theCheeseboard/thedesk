@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="zh_CN">
 <context>
     <name>EventHandler</name>
     <message>
         <source>Unable to inhibit logind power management</source>
-        <translation type="unfinished"></translation>
+        <translation>无法禁止登录电源管理</translation>
     </message>
     <message>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>暂停</translation>
     </message>
     <message numerus="yes">
         <source>%n seconds</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n 秒</numerusform>
         </translation>
     </message>
 </context>
@@ -22,75 +22,75 @@
     <name>PowerSettings</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>表格</translation>
     </message>
     <message>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>电源</translation>
     </message>
     <message>
         <source>TIMEOUTS</source>
-        <translation type="unfinished"></translation>
+        <translation>超时</translation>
     </message>
     <message>
         <source>Switch off the screen after</source>
-        <translation type="unfinished"></translation>
+        <translation>在时间过后关闭屏幕</translation>
     </message>
     <message>
         <source>seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>秒</translation>
     </message>
     <message>
         <source>minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>分</translation>
     </message>
     <message>
         <source>hours</source>
-        <translation type="unfinished"></translation>
+        <translation>时</translation>
     </message>
     <message>
         <source>never</source>
-        <translation type="unfinished"></translation>
+        <translation>永不</translation>
     </message>
     <message>
         <source>If you leave your device idle for a period of time, we can automatically turn off the screen or suspend it for you.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果你的机器静置超过一定时间， 我可以将屏幕为您自动关闭或者暂停。</translation>
     </message>
     <message>
         <source>Suspend after</source>
-        <translation type="unfinished"></translation>
+        <translation>暂停在</translation>
     </message>
     <message>
         <source>When pressing the Power button</source>
-        <translation type="unfinished"></translation>
+        <translation>当按下电源键时</translation>
     </message>
     <message>
         <source>Ask</source>
-        <translation type="unfinished"></translation>
+        <translation>询问</translation>
     </message>
     <message>
         <source>Power Off</source>
-        <translation type="unfinished"></translation>
+        <translation>关机</translation>
     </message>
     <message>
         <source>Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>重启</translation>
     </message>
     <message>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>暂停</translation>
     </message>
     <message>
         <source>Hibernate</source>
-        <translation type="unfinished"></translation>
+        <translation>休眠</translation>
     </message>
     <message>
         <source>Do Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>什么都不做</translation>
     </message>
     <message>
         <source>BUTTONS</source>
-        <translation type="unfinished"></translation>
+        <translation>按键</translation>
     </message>
 </context>
 </TS>
