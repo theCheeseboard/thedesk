@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="zh_CN">
 <context>
     <name>ArrangeWidget</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>表格</translation>
     </message>
     <message>
         <source>DISPLAY PROPERTIES</source>
-        <translation type="unfinished"></translation>
+        <translation>显示器属性</translation>
     </message>
     <message>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>分辨率</translation>
     </message>
     <message>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>刷新率</translation>
     </message>
     <message>
         <source>%1 hz</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 hz</translation>
     </message>
     <message>
         <source>Apply Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>应用设置</translation>
     </message>
     <message>
         <source>Primary Display</source>
-        <translation type="unfinished"></translation>
+        <translation>主屏幕</translation>
     </message>
 </context>
 <context>
     <name>DisplaySettings</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>表格</translation>
     </message>
     <message>
         <source>Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>显示器</translation>
     </message>
     <message>
         <source>REDSHIFT</source>
-        <translation type="unfinished"></translation>
+        <translation>夜间模式</translation>
     </message>
     <message>
         <source>Redshift blocks blue light so that you can sleep better at night</source>
-        <translation type="unfinished"></translation>
+        <translation>夜间模式能帮助您阻挡蓝光</translation>
     </message>
     <message>
         <source>Schedule Redshift</source>
-        <translation type="unfinished"></translation>
+        <translation>安排夜间模式时间</translation>
     </message>
     <message>
         <source>Intensity</source>
-        <translation type="unfinished"></translation>
+        <translation>强度</translation>
     </message>
     <message>
         <source>Follow Sunlight Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>跟随日光周期</translation>
     </message>
     <message>
         <source>Start at</source>
-        <translation type="unfinished"></translation>
+        <translation>开始于</translation>
     </message>
     <message>
         <source>End at</source>
-        <translation type="unfinished"></translation>
+        <translation>结束于</translation>
     </message>
     <message>
         <source>SCREENS</source>
-        <translation type="unfinished"></translation>
+        <translation>屏幕</translation>
     </message>
     <message>
         <source>Change the resolution of your display and arrange your displays</source>
-        <translation type="unfinished"></translation>
+        <translation>更改和整理你的屏幕分辨率</translation>
     </message>
     <message>
         <source>Arrange and Resize Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>整理和更改显示器大小</translation>
     </message>
     <message>
         <source>Your physical location will be sent to MET Norway to determine sunrise and sunset times.</source>
-        <translation type="unfinished"></translation>
+        <translation>你的设备地点将会被发送到MET Norway。</translation>
     </message>
     <message>
         <source>SCALING</source>
-        <translation type="unfinished"></translation>
+        <translation>缩放</translation>
     </message>
     <message>
         <source>If items on the screen are too small, you can scale them up to make them easier to see.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果屏幕上的物品太小， 你可以将其放大。</translation>
     </message>
     <message>
         <source>100% (96 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>100% (96 DPI)</translation>
     </message>
     <message>
         <source>125% (120 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>125% (120 DPI)</translation>
     </message>
     <message>
         <source>150% (144 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>150% (144 DPI)</translation>
     </message>
     <message>
         <source>200% (192 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>200% (192 DPI)</translation>
     </message>
 </context>
 <context>
     <name>OverlayWindow</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>对话框</translation>
     </message>
 </context>
 </TS>
