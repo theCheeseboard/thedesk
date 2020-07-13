@@ -27,6 +27,7 @@
 #include <quickswitch.h>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
+#include <QGeoPositionInfoSource>
 #include "redshift/colorramp.h"
 
 #include <twmeteorology.h>
@@ -48,6 +49,7 @@ struct RedshiftDaemonPrivate {
 
     tSettings settings;
     twMeteorology* meteorologyDaemon;
+    QGeoPositionInfoSource* positonSource = nullptr;
 };
 
 RedshiftDaemon::RedshiftDaemon(QObject* parent) : QObject(parent) {
@@ -211,7 +213,22 @@ void RedshiftDaemon::updateRedshiftState() {
 
 void RedshiftDaemon::updateSunlightCycleState() {
     if (d->settings.value("Redshift/followSunlightCycle").toBool()) {
-        d->meteorologyDaemon->setLocation(-33.85, 151.21);
+        if (!d->positonSource) {
+            d->positonSource = QGeoPositionInfoSource::createDefaultSource(this);
+            d->positonSource->setPreferredPositioningMethods(QGeoPositionInfoSource::NonSatellitePositioningMethods);
+            d->positonSource->setUpdateInterval(3600000); //Once an hour
+            connect(d->positonSource, &QGeoPositionInfoSource::positionUpdated, this, [ = ](QGeoPositionInfo position) {
+                d->meteorologyDaemon->setLocation(position.coordinate().latitude(), position.coordinate().longitude());
+            });
+        }
+
+        d->positonSource->startUpdates();
+    } else {
+        if (d->positonSource) {
+            d->positonSource->stopUpdates();
+            d->positonSource->deleteLater();
+            d->positonSource = nullptr;
+        }
     }
 }
 

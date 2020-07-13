@@ -46,15 +46,19 @@ DisplaySettings::DisplaySettings() :
     const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
     ui->arrangeWidget->setFixedWidth(contentWidth);
     ui->arrangeButton->setFixedWidth(contentWidth);
+    ui->scalingWidget->setFixedWidth(contentWidth);
     ui->redshiftWidget->setFixedWidth(contentWidth);
 
     connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key) {
         if (key.startsWith("Redshift/")) {
-            updateSettings();
+            updateRedshiftSettings();
+        } else if (key == "Display/dpi") {
+            updateDpiSettings();
         }
     });
 
-    updateSettings();
+    updateRedshiftSettings();
+    updateDpiSettings();
 }
 
 DisplaySettings::~DisplaySettings() {
@@ -62,7 +66,7 @@ DisplaySettings::~DisplaySettings() {
     delete ui;
 }
 
-void DisplaySettings::updateSettings() {
+void DisplaySettings::updateRedshiftSettings() {
     ui->scheduleRedshiftSwitch->setChecked(d->settings.value("Redshift/scheduleRedshift").toBool());
     ui->followSunlightSwitch->setChecked(d->settings.value("Redshift/followSunlightCycle").toBool());
     ui->redshiftStartTime->setTime(QTime::fromMSecsSinceStartOfDay(d->settings.value("Redshift/startTime").toInt()));
@@ -73,6 +77,22 @@ void DisplaySettings::updateSettings() {
     ui->followSunlightConditionalWidget->setExpanded(!d->settings.value("Redshift/followSunlightCycle").toBool());
 }
 
+void DisplaySettings::updateDpiSettings() {
+    switch (d->settings.value("Display/dpi").toInt()) {
+        case 96:
+            ui->dpi100Button->setChecked(true);
+            break;
+        case 120:
+            ui->dpi125Button->setChecked(true);
+            break;
+        case 144:
+            ui->dpi150Button->setChecked(true);
+            break;
+        case 192:
+            ui->dpi200Button->setChecked(true);
+            break;
+    }
+}
 
 QString DisplaySettings::name() {
     return "DisplaySettings";
@@ -122,4 +142,32 @@ void DisplaySettings::on_arrangeButton_clicked() {
     ArrangeController* controller = new ArrangeController();
     connect(controller, &ArrangeController::done, controller, &ArrangeController::deleteLater);
     controller->begin();
+}
+
+void DisplaySettings::on_dpi100Button_toggled(bool checked) {
+    if (checked) {
+        d->settings.setValue("Display/dpi", 96);
+        StateManager::statusCenterManager()->requestLogout();
+    }
+}
+
+void DisplaySettings::on_dpi125Button_toggled(bool checked) {
+    if (checked) {
+        d->settings.setValue("Display/dpi", 120);
+        StateManager::statusCenterManager()->requestLogout();
+    }
+}
+
+void DisplaySettings::on_dpi150Button_toggled(bool checked) {
+    if (checked) {
+        d->settings.setValue("Display/dpi", 144);
+        StateManager::statusCenterManager()->requestLogout();
+    }
+}
+
+void DisplaySettings::on_dpi200Button_toggled(bool checked) {
+    if (checked) {
+        d->settings.setValue("Display/dpi", 192);
+        StateManager::statusCenterManager()->requestLogout();
+    }
 }

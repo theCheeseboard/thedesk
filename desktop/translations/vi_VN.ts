@@ -734,12 +734,12 @@ Chúng tôi sẽ đặt cài đặt của bạn lại sau %n giay nếu bạn kh
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="64"/>
+        <location filename="../main.cpp" line="65"/>
         <source>Safe Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="64"/>
+        <location filename="../main.cpp" line="65"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation type="unfinished"></translation>
     </message>

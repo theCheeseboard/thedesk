@@ -86,6 +86,30 @@
         <source>Your physical location will be sent to MET Norway to determine sunrise and sunset times.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SCALING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If items on the screen are too small, you can scale them up to make them easier to see.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>100% (96 DPI)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>125% (120 DPI)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>150% (144 DPI)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>200% (192 DPI)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OverlayWindow</name>

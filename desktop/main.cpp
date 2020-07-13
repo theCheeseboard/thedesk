@@ -27,6 +27,7 @@
 #include <localemanager.h>
 #include <statuscentermanager.h>
 #include <Wm/desktopwm.h>
+#include <Screens/screendaemon.h>
 
 #include "plugins/pluginmanager.h"
 #include "bar/barwindow.h"
@@ -44,14 +45,14 @@ int main(int argc, char* argv[]) {
     a.setOrganizationDomain("vicr123.com");
     a.setApplicationName("theDesk");
 
-    tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
-    tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
-
     StateManager::instance();
     StateManager::localeManager()->addTranslationSet({
         a.applicationDirPath() + "/translations",
         "/usr/share/thedesk/translations"
     });
+
+    tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
+    tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
 
     //Parse command line arguments
     int parseResult = CommandLine::parse(a.arguments());

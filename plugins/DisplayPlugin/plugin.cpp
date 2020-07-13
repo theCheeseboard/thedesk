@@ -33,6 +33,8 @@
 #include "settings/displaysettings.h"
 #include "tsettings.h"
 
+#include <Screens/screendaemon.h>
+
 #include "redshift/redshiftdaemon.h"
 
 struct PluginPrivate {

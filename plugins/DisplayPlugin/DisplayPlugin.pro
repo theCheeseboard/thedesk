@@ -1,4 +1,4 @@
-QT += gui widgets twebservices
+QT += gui widgets twebservices positioning
 
 TEMPLATE = lib
 CONFIG += plugin

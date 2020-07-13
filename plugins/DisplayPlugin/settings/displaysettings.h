@@ -39,7 +39,8 @@ class DisplaySettings : public StatusCenterPane {
         Ui::DisplaySettings* ui;
         DisplaySettingsPrivate* d;
 
-        void updateSettings();
+        void updateRedshiftSettings();
+        void updateDpiSettings();
 
         // StatusCenterPane interface
     public:
@@ -56,6 +57,10 @@ class DisplaySettings : public StatusCenterPane {
         void on_redshiftEndTime_userTimeChanged(const QTime& time);
         void on_redshiftIntensitySlider_valueChanged(int value);
         void on_arrangeButton_clicked();
+        void on_dpi100Button_toggled(bool checked);
+        void on_dpi125Button_toggled(bool checked);
+        void on_dpi150Button_toggled(bool checked);
+        void on_dpi200Button_toggled(bool checked);
 };
 
 #endif // DISPLAYSETTINGS_H

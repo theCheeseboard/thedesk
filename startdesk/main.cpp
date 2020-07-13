@@ -21,15 +21,24 @@
 #include "splash/splashcontroller.h"
 #include <tapplication.h>
 
+#include <Screens/screendaemon.h>
+#include <tsettings.h>
+
 int main(int argc, char* argv[]) {
     //Put environment variables
     qputenv("QT_QPA_PLATFORMTHEME", "thedesk-platform");
 
     tApplication a(argc, argv);
-
     a.setApplicationName("theDesk");
     a.setOrganizationName("theSuite");
     a.setApplicationDisplayName("theDesk");
+
+    //Set screen DPI settings
+    tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
+    tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
+
+    tSettings settings;
+    ScreenDaemon::instance()->setDpi(settings.value("Display/dpi").toInt());
 
     SplashController::instance()->startDE();
 
