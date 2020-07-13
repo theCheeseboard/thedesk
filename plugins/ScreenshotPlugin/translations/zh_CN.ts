@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="zh_CN">
 <context>
     <name>PenButton</name>
     <message>
         <source>Erase-o</source>
         <comment>This and the next translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+        <translation>清除-O</translation>
     </message>
     <message>
         <source>matic 2000</source>
         <comment>This and the previous translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+        <translation>统计2000</translation>
     </message>
 </context>
 <context>
     <name>ScreenshotWindow</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>表格</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>取消</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>复制</translation>
     </message>
     <message>
         <source>SCREENSHOT</source>
-        <translation type="unfinished"></translation>
+        <translation>截图</translation>
     </message>
     <message>
         <source>Crop</source>
-        <translation type="unfinished"></translation>
+        <translation>裁剪</translation>
     </message>
     <message>
         <source>Redact</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑</translation>
     </message>
     <message>
         <source>Reset Markup</source>
-        <translation type="unfinished"></translation>
+        <translation>重置绘图</translation>
     </message>
 </context>
 </TS>
