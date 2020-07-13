@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="zh_CN">
 <context>
     <name>Plugin</name>
     <message>
@@ -9,7 +9,7 @@
         <location filename="../plugin.cpp" line="88"/>
         <location filename="../plugin.cpp" line="94"/>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>亮度</translation>
     </message>
 </context>
 <context>
@@ -17,7 +17,7 @@
     <message>
         <location filename="../screenbrightnesschunk.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>表格</translation>
     </message>
 </context>
 </TS>
