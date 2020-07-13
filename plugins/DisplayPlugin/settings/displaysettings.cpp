@@ -117,6 +117,8 @@ void DisplaySettings::on_redshiftIntensitySlider_valueChanged(int value) {
 }
 
 void DisplaySettings::on_arrangeButton_clicked() {
+    StateManager::statusCenterManager()->hide();
+
     ArrangeController* controller = new ArrangeController();
     connect(controller, &ArrangeController::done, controller, &ArrangeController::deleteLater);
     controller->begin();

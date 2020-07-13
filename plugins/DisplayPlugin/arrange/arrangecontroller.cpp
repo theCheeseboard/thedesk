@@ -39,6 +39,8 @@ ArrangeController::~ArrangeController() {
 
 void ArrangeController::begin() {
     for (SystemScreen* screen : ScreenDaemon::instance()->screens()) {
+        screen->reset();
+
         ArrangeWidget* w = new ArrangeWidget(screen);
         connect(w, &ArrangeWidget::reject, this, [ = ] {
             for (ArrangeWidget* w : d->arrangers) {

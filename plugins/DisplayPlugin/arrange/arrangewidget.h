@@ -46,6 +46,8 @@ class ArrangeWidget : public QWidget {
 
         void on_applyButton_clicked();
 
+        void on_primaryDisplaySwitch_toggled(bool checked);
+
     signals:
         void reject();
         void accept();
@@ -57,6 +59,7 @@ class ArrangeWidget : public QWidget {
         void updateScreenGeometry();
         void updateAvailableModes();
         void updateRefreshRateBox();
+        void updateIsPrimary();
 };
 
 #endif // MAINARRANGEWIDGET_H

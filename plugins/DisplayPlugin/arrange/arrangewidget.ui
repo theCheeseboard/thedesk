@@ -39,6 +39,9 @@
    <item alignment="Qt::AlignHCenter">
     <widget class="QWidget" name="displayPropertiesWidget" native="true">
      <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="1">
+       <widget class="QComboBox" name="resolutionBox"/>
+      </item>
       <item row="0" column="0" colspan="2">
        <widget class="QLabel" name="label">
         <property name="font">
@@ -49,6 +52,16 @@
         </property>
         <property name="text">
          <string>DISPLAY PROPERTIES</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="refreshRateBox"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Refresh Rate</string>
         </property>
        </widget>
       </item>
@@ -65,18 +78,19 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <widget class="QComboBox" name="resolutionBox"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Refresh Rate</string>
+         <string>Primary Display</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QComboBox" name="refreshRateBox"/>
+      <item row="3" column="1">
+       <widget class="tSwitch" name="primaryDisplaySwitch">
+        <property name="text">
+         <string notr="true">PrimaryDisplaySwitch</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -111,6 +125,11 @@
    <slots>
     <signal>backButtonClicked()</signal>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>tSwitch</class>
+   <extends>QPushButton</extends>
+   <header location="global">tswitch.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

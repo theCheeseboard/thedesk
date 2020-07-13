@@ -61,8 +61,10 @@ ArrangeWidget::ArrangeWidget(SystemScreen* screen, QWidget* parent) :
     connect(screen, &SystemScreen::geometryChanged, this, &ArrangeWidget::updateScreenGeometry);
     connect(screen, &SystemScreen::availableModesChanged, this, &ArrangeWidget::updateAvailableModes);
     connect(screen, &SystemScreen::currentModeChanged, this, &ArrangeWidget::updateAvailableModes);
+    connect(screen, &SystemScreen::isPrimaryChanged, this, &ArrangeWidget::updateIsPrimary);
     updateScreenGeometry();
     updateAvailableModes();
+    updateIsPrimary();
 
     ui->titleLabel->setText(d->screen->displayName());
 
@@ -117,6 +119,11 @@ void ArrangeWidget::updateRefreshRateBox() {
     }
 }
 
+void ArrangeWidget::updateIsPrimary() {
+    ui->primaryDisplaySwitch->setChecked(d->screen->isPrimary());
+    ui->primaryDisplaySwitch->setEnabled(!d->screen->isPrimary());
+}
+
 void ArrangeWidget::on_refreshRateBox_currentIndexChanged(int index) {
     d->screen->setCurrentMode(ui->refreshRateBox->currentData().toInt());
 }
@@ -127,4 +134,10 @@ void ArrangeWidget::on_resolutionBox_currentIndexChanged(int index) {
 
 void ArrangeWidget::on_applyButton_clicked() {
     d->screen->set();
+}
+
+void ArrangeWidget::on_primaryDisplaySwitch_toggled(bool checked) {
+    if (checked) {
+        d->screen->setAsPrimary();
+    }
 }

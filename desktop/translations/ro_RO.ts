@@ -412,7 +412,7 @@
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="259"/>
-        <source>Enter System UEFI Setup</source>
+        <source>Reboot into System UEFI Setup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

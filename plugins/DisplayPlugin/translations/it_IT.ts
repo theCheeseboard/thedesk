@@ -27,6 +27,10 @@
         <source>Apply Settings</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Primary Display</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DisplaySettings</name>

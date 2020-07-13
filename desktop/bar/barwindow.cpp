@@ -241,9 +241,17 @@ void BarWindow::updatePrimaryScreen() {
     connect(primaryScreen, &QScreen::orientationChanged, this, &BarWindow::updatePrimaryScreen);
     d->oldPrimaryScreen = primaryScreen;
 
+    //Tell the window manager that this is now a "taskbar" type window, otherwise KWin won't like to move us into the reserved spaces
+//    DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
+
     this->setFixedWidth(primaryScreen->geometry().width());
     this->move(primaryScreen->geometry().topLeft());
     d->statusCenterWidget->setFixedHeight(primaryScreen->geometry().height());
+
+//    if (d->statusCenterShown) {
+//        //Tell the window manager that this is now a standard system window
+//        DesktopWm::instance()->setSystemWindow(this);
+//    }
 
     barHeightChanged();
 }

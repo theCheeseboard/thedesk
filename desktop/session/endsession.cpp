@@ -256,7 +256,7 @@ void EndSession::on_rebootButton_customContextMenuRequested(const QPoint& pos) {
     QDBusMessage msg = QDBusConnection::systemBus().call(message);
 
     if (msg.arguments().first().toString() == "yes") {
-        menu->addAction(QIcon::fromTheme("system-reboot"), tr("Enter System UEFI Setup"), [ = ] {
+        menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot into System UEFI Setup"), [ = ] {
             StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot, {"setup"});
             emit done();
         });
