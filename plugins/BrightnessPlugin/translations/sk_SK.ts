@@ -9,7 +9,7 @@
         <location filename="../plugin.cpp" line="88"/>
         <location filename="../plugin.cpp" line="94"/>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>jas</translation>
     </message>
 </context>
 <context>
@@ -17,7 +17,7 @@
     <message>
         <location filename="../screenbrightnesschunk.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>formulár</translation>
     </message>
 </context>
 </TS>
