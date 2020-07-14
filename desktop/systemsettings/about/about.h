@@ -36,6 +36,8 @@ class About : public StatusCenterPane {
     private slots:
         void on_titleLabel_backButtonClicked();
 
+        void on_acknowledgementsButton_clicked();
+
     private:
         Ui::About* ui;
 

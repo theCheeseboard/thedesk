@@ -53,6 +53,7 @@ SOURCES += \
     statuscenter/statuscenterleftpane.cpp \
     statuscenter/statuscenterquickswitch.cpp \
     systemsettings/about/about.cpp \
+    systemsettings/about/acknowledgements.cpp \
     systemsettings/pluginmanagement/managepluginpopover.cpp \
     systemsettings/pluginmanagement/pluginitemdelegate.cpp \
     systemsettings/pluginmanagement/pluginmanagement.cpp \
@@ -93,6 +94,7 @@ HEADERS += \
     statuscenter/statuscenterleftpane.h \
     statuscenter/statuscenterquickswitch.h \
     systemsettings/about/about.h \
+    systemsettings/about/acknowledgements.h \
     systemsettings/pluginmanagement/managepluginpopover.h \
     systemsettings/pluginmanagement/pluginitemdelegate.h \
     systemsettings/pluginmanagement/pluginmanagement.h \
@@ -122,6 +124,7 @@ FORMS += \
     statuscenter/statuscenterleftpane.ui \
     statuscenter/statuscenterquickswitch.ui \
     systemsettings/about/about.ui \
+    systemsettings/about/acknowledgements.ui \
     systemsettings/pluginmanagement/managepluginpopover.ui \
     systemsettings/pluginmanagement/pluginmanagement.ui \
     systemsettings/recovery/recovery.ui \
@@ -144,7 +147,10 @@ unix {
     media.files = media/
     media.path = /usr/share/thedesk/
 
-    INSTALLS += target translations defaults headers media
+    acknowledgements.files = acknowledgements.html
+    acknowledgements.path = /usr/share/thedesk/acknowledgements.html
+
+    INSTALLS += target translations defaults headers media acknowledgements
 }
 
 DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"
@@ -158,5 +164,6 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
+    acknowledgements.html \
     defaults.conf \
     onboarding/OnboardingVideoForm.qml

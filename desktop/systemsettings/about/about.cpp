@@ -26,7 +26,8 @@
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <sys/sysinfo.h>
-#include <the-libs_global.h>
+#include <tpopover.h>
+#include "acknowledgements.h"
 
 About::About() :
     StatusCenterPane(),
@@ -163,4 +164,14 @@ QIcon About::icon() {
 
 QWidget* About::leftPane() {
     return nullptr;
+}
+
+void About::on_acknowledgementsButton_clicked() {
+    Acknowledgements* ack = new Acknowledgements();
+    tPopover* popover = new tPopover(ack);
+    popover->setPopoverWidth(SC_DPI(600));
+    connect(ack, &Acknowledgements::done, popover, &tPopover::dismiss);
+    connect(popover, &tPopover::dismissed, ack, &Acknowledgements::deleteLater);
+    connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
+    popover->show(this->window());
 }

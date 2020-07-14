@@ -35,6 +35,9 @@
 
 #include <Wm/desktopwm.h>
 
+#include <UPower/desktopupower.h>
+#include <UPower/desktopupowerdevice.h>
+
 #include <tsettings.h>
 #include <tvariantanimation.h>
 
@@ -42,6 +45,8 @@ struct EventHandlerPrivate {
     KeyGrab* powerKey;
     KeyGrab* ctrlAltDelKey;
     QDBusUnixFileDescriptor buttonInhibitor;
+
+    DesktopUPower* upower;
 
     tSettings settings;
     quint64 oldIdleTimer = 0;
@@ -72,6 +77,7 @@ const QMap<QString, int> EventHandlerPrivate::powerOffActions = {
 
 EventHandler::EventHandler(QObject* parent) : QObject(parent) {
     d = new EventHandlerPrivate();
+    d->upower = new DesktopUPower();
 
     QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "Inhibit");
     message.setArguments(QList<QVariant>() << "handle-power-key:idle" << "theDesk" << "theDesk handles hardware power keys and idling" << "block");
@@ -130,9 +136,16 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
         //Suspend now
         StateManager::powerManager()->performPowerOperation(PowerManager::Suspend);
     });
+
+    connect(d->upower, QOverload<DesktopUPowerDevice*>::of(&DesktopUPower::deviceAdded), this, &EventHandler::trackDevice);
+    connect(d->upower, QOverload<DesktopUPowerDevice*>::of(&DesktopUPower::deviceRemoved), this, &EventHandler::removeDevice);
+    for (DesktopUPowerDevice* device : d->upower->devices()) {
+        trackDevice(device);
+    }
 }
 
 EventHandler::~EventHandler() {
+    d->upower->deleteLater();
     d->powerKey->deleteLater();
     d->ctrlAltDelKey->deleteLater();
     delete d;
@@ -175,4 +188,50 @@ void EventHandler::checkIdleTimer() {
             d->suspendNotificationAnimation->start();
         }
     }
+}
+
+void EventHandler::trackDevice(DesktopUPowerDevice* device) {
+    connect(device, &DesktopUPowerDevice::lowBatteryNotification, this, [ = ](QString description) {
+        StateManager::instance()->hudManager()->showHud({
+            {"icon", device->iconName()},
+            {"title", tr("Battery")},
+            {"text", description},
+            {"value", device->percentage() / 100.0},
+            {"timeout", 10000},
+            {"color", QColor(Qt::red)}
+        });
+    });
+    connect(device, &DesktopUPowerDevice::chargingNotification, this, [ = ] {
+        StateManager::instance()->hudManager()->showHud({
+            {"icon", device->iconName()},
+            {"title", tr("Battery")},
+            {"text", tr("Charging")},
+            {"value", device->percentage() / 100.0},
+            {"timeout", 10000},
+            {"color", QColor(Qt::green)}
+        });
+    });
+    connect(device, &DesktopUPowerDevice::fullNotification, this, [ = ] {
+        StateManager::instance()->hudManager()->showHud({
+            {"icon", device->iconName()},
+            {"title", tr("Battery")},
+            {"text", tr("Full")},
+            {"value", device->percentage() / 100.0},
+            {"timeout", 10000},
+            {"color", QColor(Qt::green)}
+        });
+    });
+    connect(device, &DesktopUPowerDevice::dischargingNotification, this, [ = ] {
+        StateManager::instance()->hudManager()->showHud({
+            {"icon", device->iconName()},
+            {"title", tr("Battery")},
+            {"text", tr("Discharging")},
+            {"value", device->percentage() / 100.0},
+            {"timeout", 10000}
+        });
+    });
+}
+
+void EventHandler::removeDevice(DesktopUPowerDevice* device) {
+
 }

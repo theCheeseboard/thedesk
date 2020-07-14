@@ -74,37 +74,55 @@
         <translation>Mã nguồn</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="65"/>
+        <location filename="../systemsettings/about/about.ui" line="450"/>
+        <source>Acknowledgements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../systemsettings/about/about.cpp" line="66"/>
         <location filename="../systemsettings/about/about.cpp" line="67"/>
-        <location filename="../systemsettings/about/about.cpp" line="111"/>
+        <location filename="../systemsettings/about/about.cpp" line="68"/>
+        <location filename="../systemsettings/about/about.cpp" line="112"/>
         <source>Unknown</source>
         <translation>Không xác định</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="117"/>
+        <location filename="../systemsettings/about/about.cpp" line="118"/>
         <source>theDesk %1 - Blueprint</source>
         <translation>theDesk %1 - Blueprint</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="118"/>
+        <location filename="../systemsettings/about/about.cpp" line="119"/>
         <source>You compiled theDesk on %1</source>
         <translation>Bạn biên dịch theDesk trong ngày %1</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="120"/>
+        <location filename="../systemsettings/about/about.cpp" line="121"/>
         <source>theDesk %1</source>
         <translation>theDesk %1</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="124"/>
+        <location filename="../systemsettings/about/about.cpp" line="125"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
         <translation>Bản Quyền © Victor Tran %1. Được cấp phép theo điều khoản của Giấy phép Công cộng GNU, phiên bản 3, hoặc mới hơn.</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="157"/>
+        <location filename="../systemsettings/about/about.cpp" line="158"/>
         <source>About</source>
         <translation>Giới Thiệu</translation>
+    </message>
+</context>
+<context>
+    <name>Acknowledgements</name>
+    <message>
+        <location filename="../systemsettings/about/acknowledgements.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/acknowledgements.ui" line="35"/>
+        <source>Acknowledgements</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

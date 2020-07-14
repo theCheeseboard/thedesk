@@ -34,6 +34,7 @@ struct HudWidgetPrivate {
 
     int state = 0;
     double value = 0;
+    QColor color;
 };
 
 HudWidget::HudWidget(QWidget* parent) :
@@ -55,6 +56,7 @@ HudWidget::HudWidget(QWidget* parent) :
         QString text = params.value("text", "").toString();
         double value = params.value("value", 0).toDouble();
         int timeout = params.value("timeout", 3000).toInt();
+        QColor color = params.value("color", QColor(Qt::white)).value<QColor>();
 
         ui->iconValueIcon->setPixmap(icon);
         ui->iconTextIcon->setPixmap(icon);
@@ -64,6 +66,9 @@ HudWidget::HudWidget(QWidget* parent) :
         ui->iconValueValue->setText(QLocale().toString(value * 100, 'f', 0) + "%");
 
         d->hideTimer->setInterval(timeout);
+
+        color.setAlpha(50);
+        d->color = color;
 
         //Decide on the layout to use
         if (params.contains("icon") && params.contains("title") && params.contains("text")) {
@@ -108,7 +113,7 @@ bool HudWidget::eventFilter(QObject* watched, QEvent* event) {
     if (event->type() == QEvent::Paint && (watched == ui->iconValuePage || watched == ui->iconTextPage)) {
         QWidget* w = static_cast<QWidget*>(watched);
         QPainter painter(w);
-        painter.setBrush(QColor(255, 255, 255, 50));
+        painter.setBrush(d->color);
         painter.setPen(Qt::transparent);
 
         double val = d->value;

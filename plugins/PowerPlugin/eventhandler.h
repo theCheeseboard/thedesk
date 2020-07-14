@@ -22,6 +22,7 @@
 
 #include <QObject>
 
+class DesktopUPowerDevice;
 struct EventHandlerPrivate;
 class EventHandler : public QObject {
         Q_OBJECT
@@ -35,6 +36,8 @@ class EventHandler : public QObject {
         EventHandlerPrivate* d;
 
         void checkIdleTimer();
+        void trackDevice(DesktopUPowerDevice* device);
+        void removeDevice(DesktopUPowerDevice* device);
 };
 
 #endif // KEYBOARDHANDLER_H

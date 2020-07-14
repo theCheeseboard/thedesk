@@ -36,7 +36,7 @@ CursorHandler::CursorHandler(QObject* parent) : QObject(parent) {
     d->settings = new tSettings("theSuite", "theDesk.platform", this);
 
     connect(d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
-        if (key == "Platform/cursor") {
+        if (key == "Platform/cursor" || key == "Platform/cursorSize") {
             this->updateApplicationCursor();
         }
     });
@@ -62,7 +62,7 @@ void CursorHandler::updateApplicationCursor() {
 
             //Set cursors
             XcursorSetTheme(QX11Info::display(), qPrintable(d->settings->value("Platform/cursor").toString()));
-            XcursorSetDefaultSize(QX11Info::display(), 24);
+            XcursorSetDefaultSize(QX11Info::display(), d->settings->value("Platform/cursorSize").toInt());
         }
     }
 #endif

@@ -445,6 +445,16 @@
                 </widget>
                </item>
                <item>
+                <widget class="QPushButton" name="acknowledgementsButton">
+                 <property name="text">
+                  <string>Acknowledgements</string>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="help-about"/>
+                 </property>
+                </widget>
+               </item>
+               <item>
                 <spacer name="horizontalSpacer_42">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
