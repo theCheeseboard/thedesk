@@ -424,7 +424,7 @@
     <name>UsersPane</name>
     <message>
         <location filename="../settings/userspane.ui" line="89"/>
-        <location filename="../settings/userspane.cpp" line="215"/>
+        <location filename="../settings/userspane.cpp" line="217"/>
         <source>Users</source>
         <translation type="unfinished"></translation>
     </message>
@@ -474,27 +474,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="89"/>
+        <location filename="../settings/userspane.cpp" line="91"/>
         <source>Username: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="92"/>
+        <location filename="../settings/userspane.cpp" line="94"/>
         <source>Unlock User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="94"/>
+        <location filename="../settings/userspane.cpp" line="96"/>
         <source>Lock User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="136"/>
+        <location filename="../settings/userspane.cpp" line="138"/>
         <source>Unauthorized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="137"/>
+        <location filename="../settings/userspane.cpp" line="139"/>
         <source>Polkit does not allow you to manage users on the system.</source>
         <translation type="unfinished"></translation>
     </message>

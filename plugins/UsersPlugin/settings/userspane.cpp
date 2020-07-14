@@ -45,6 +45,8 @@ UsersPane::UsersPane() :
     ui->setupUi(this);
     d = new UsersPanePrivate();
 
+    ui->leftPane->setParent(nullptr);
+
     ui->usernameTitleLabel->setBackButtonShown(true);
     ui->usernameTitleLabel->setBackButtonShown(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
     connect(StateManager::instance()->statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, ui->usernameTitleLabel, &tTitleLabel::setBackButtonShown);
