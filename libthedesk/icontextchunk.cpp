@@ -38,7 +38,7 @@ IconTextChunk::IconTextChunk(QString name) :
 
     connect(StateManager::barManager(), &BarManager::barHeightTransitioning, this, [ = ](qreal percentage) {
         int padding = 3 + 6 * percentage;
-        this->layout()->setContentsMargins(0, padding, 0, padding);
+        this->layout()->setContentsMargins(6, padding, 6, padding);
 
         if (qFuzzyCompare(percentage, 1)) {
             ui->textLabel->setFixedWidth(QWIDGETSIZE_MAX);

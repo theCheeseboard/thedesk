@@ -17,40 +17,42 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef CHUNKCONTAINER_H
-#define CHUNKCONTAINER_H
+#ifndef MPRISCHUNK_H
+#define MPRISCHUNK_H
 
-#include <QWidget>
+#include <chunk.h>
 
 namespace Ui {
-    class ChunkContainer;
+    class MprisChunk;
 }
 
-class Chunk;
-struct ChunkContainerPrivate;
-class ChunkContainer : public QWidget {
+struct MprisChunkPrivate;
+class MprisChunk : public Chunk {
         Q_OBJECT
 
     public:
-        explicit ChunkContainer(QWidget* parent = nullptr);
-        ~ChunkContainer();
-
-        int statusBarHeight();
-        int expandedHeight();
-        void barHeightChanged(int height);
-
-    signals:
-        void statusBarHeightChanged();
-        void expandedHeightChanged();
-        void chunksChanged();
+        explicit MprisChunk();
+        ~MprisChunk();
 
     private:
-        Ui::ChunkContainer* ui;
-        ChunkContainerPrivate* d;
+        Ui::MprisChunk* ui;
+        MprisChunkPrivate* d;
 
-        void paintEvent(QPaintEvent* event);
-        void chunkAdded(Chunk* chunk);
-        void chunkRemoved(Chunk* chunk);
+        void setupPlayer(QString service);
+        void setCurrentPlayer(QString player);
+        void updateMetadata();
+        void updateApplication();
+        void updateState();
+
+        // Chunk interface
+    public:
+        QString name();
+        int expandedHeight();
+        int statusBarHeight();
+    private slots:
+        void on_playPauseButton_clicked();
+        void on_backButton_clicked();
+        void on_forwardButton_clicked();
 };
 
-#endif // CHUNKCONTAINER_H
+#endif // MPRISCHUNK_H

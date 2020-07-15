@@ -20,6 +20,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chunks/mprischunk.cpp \
     dbus/notifications_adaptor.cpp \
     dbus/notificationsinterface.cpp \
     drawer/hudwidget.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
     statuscenter/notificationwidget.cpp
 
 HEADERS += \
+    chunks/mprischunk.h \
     dbus/notifications_adaptor.h \
     dbus/notificationsinterface.h \
     drawer/hudwidget.h \
@@ -64,6 +66,7 @@ DISTFILES += \
     defaults.conf
 
 FORMS += \
+    chunks/mprischunk.ui \
     drawer/hudwidget.ui \
     drawer/notificationsdrawer.ui \
     drawer/notificationsdrawerwidget.ui \

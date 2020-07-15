@@ -23,6 +23,8 @@
 #include <statemanager.h>
 #include <barmanager.h>
 #include <chunk.h>
+#include <QFrame>
+#include <QGraphicsOpacityEffect>
 #include "common/common.h"
 
 struct ChunkContainerPrivate {
@@ -33,8 +35,11 @@ struct ChunkContainerPrivate {
         "OverviewClock",
         "Network",
         "network-cellular",
-        "Accessibility-StickyKeys"
+        "Accessibility-StickyKeys",
+        "mpris"
     };
+
+    QMap<Chunk*, QWidget*> chunkWidgets;
 };
 
 ChunkContainer::ChunkContainer(QWidget* parent) :
@@ -94,6 +99,23 @@ void ChunkContainer::paintEvent(QPaintEvent* event) {
 }
 
 void ChunkContainer::chunkAdded(Chunk* chunk) {
+    //Create a chunk widget
+    QWidget* chunkWidget = new QWidget();
+    QBoxLayout* chunkWidgetLayout = new QBoxLayout(QBoxLayout::LeftToRight, chunkWidget);
+    QFrame* line = new QFrame(chunkWidget);
+    line->setFrameShape(QFrame::VLine);
+    line->setFixedWidth(1);
+    chunkWidgetLayout->addWidget(line);
+    chunkWidgetLayout->addWidget(chunk);
+    chunkWidgetLayout->setSpacing(0);
+    chunkWidgetLayout->setContentsMargins(0, 0, 0, 0);
+    chunkWidget->setLayout(chunkWidgetLayout);
+    d->chunkWidgets.insert(chunk, chunkWidget);
+
+    QGraphicsOpacityEffect* lineOpacity = new QGraphicsOpacityEffect(line);
+    lineOpacity->setOpacity(1);
+    line->setGraphicsEffect(lineOpacity);
+
     QStringList currentItems;
     for (QPair<QString, Chunk*> item : d->loadedChunks) {
         currentItems.append(item.first);
@@ -101,24 +123,39 @@ void ChunkContainer::chunkAdded(Chunk* chunk) {
     int index = Common::getInsertionIndex(d->preferredChunkOrder, currentItems, chunk->name());
     if (index == -1) {
         //Add it at the end
-        ui->chunkLayout->addWidget(chunk);
+        ui->chunkLayout->addWidget(chunkWidget);
         d->loadedChunks.append({chunk->name(), chunk});
     } else {
         //Add this chunk at the beginning
-        ui->chunkLayout->insertWidget(index, chunk);
+        ui->chunkLayout->insertWidget(index, chunkWidget);
         d->loadedChunks.insert(index, {chunk->name(), chunk});
     }
 
+    connect(this, &ChunkContainer::chunksChanged, chunkWidget, [ = ] {
+        //Make sure the line is not visible and set the margins appropriately
+        for (int i = 0; i < d->loadedChunks.count(); i++) {
+            QPair<QString, Chunk*> chunkDescriptor = d->loadedChunks.at(i);
+            if (chunkDescriptor.second == chunk) {
+                line->setVisible(i != 0);
+                return;
+            }
+        }
+    });
+    connect(StateManager::barManager(), &BarManager::barHeightTransitioning, lineOpacity, &QGraphicsOpacityEffect::setOpacity);
+
     emit statusBarHeightChanged();
     emit expandedHeightChanged();
+    emit chunksChanged();
 }
 
 void ChunkContainer::chunkRemoved(Chunk* chunk) {
     if (!ui) return;
     for (int i = 0; i < d->loadedChunks.count(); i++) {
         if (d->loadedChunks.at(i).second == chunk) {
-            ui->chunkLayout->removeWidget(chunk);
+            QWidget* chunkWidget = d->chunkWidgets.take(chunk);
+            ui->chunkLayout->removeWidget(chunkWidget);
             d->loadedChunks.removeAt(i);
+            chunkWidget->deleteLater();
 
             emit statusBarHeightChanged();
             emit expandedHeightChanged();

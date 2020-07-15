@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN" sourcelanguage="en_US">
 <context>
+    <name>MprisChunk</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished">表格</translation>
+    </message>
+    <message>
+        <source>Media Players</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NotificationAppGroup</name>
     <message>
         <source>Form</source>

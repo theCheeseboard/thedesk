@@ -34,6 +34,7 @@
 #include "dbus/notificationsinterface.h"
 #include "drawer/notificationsdrawer.h"
 #include "statuscenter/notificationsstatuscenterpane.h"
+#include "chunks/mprischunk.h"
 
 struct PluginPrivate {
     int translationSet;
@@ -42,6 +43,7 @@ struct PluginPrivate {
     NotificationsInterface* interface;
     NotificationsDrawer* drawer;
     NotificationsStatusCenterPane* statusCenter;
+    MprisChunk* mprisChunk;
 };
 
 Plugin::Plugin() {
@@ -66,6 +68,8 @@ void Plugin::activate() {
     d->drawer = new NotificationsDrawer(d->tracker);
     d->statusCenter = new NotificationsStatusCenterPane(d->tracker);
     StateManager::statusCenterManager()->addPane(d->statusCenter, StatusCenterManager::Informational);
+
+    d->mprisChunk = new MprisChunk();
 }
 
 void Plugin::deactivate() {
@@ -73,6 +77,7 @@ void Plugin::deactivate() {
 
     d->tracker->deleteLater();
     d->statusCenter->deleteLater();
+    d->mprisChunk->deleteLater();
 
     //Everything else will delete itself once the tracker is gone
 
