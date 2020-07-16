@@ -21,6 +21,7 @@
 #include "splash/splashcontroller.h"
 #include <tapplication.h>
 
+#include <QProcess>
 #include <Screens/screendaemon.h>
 #include <tsettings.h>
 
@@ -39,6 +40,13 @@ int main(int argc, char* argv[]) {
 
     tSettings settings;
     ScreenDaemon::instance()->setDpi(settings.value("Display/dpi").toInt());
+
+    //Check for initialisation script
+    if (settings.value("Session/UseInitializationScript").toBool()) {
+        QProcess process;
+        process.start(settings.value("Session/InitializationScript").toString(), QStringList());
+        process.waitForFinished();
+    }
 
     SplashController::instance()->startDE();
 

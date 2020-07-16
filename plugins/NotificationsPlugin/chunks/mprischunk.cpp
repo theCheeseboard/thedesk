@@ -103,6 +103,7 @@ MprisChunk::MprisChunk() :
 }
 
 MprisChunk::~MprisChunk() {
+    if (StateManager::barManager()->isChunkRegistered(this)) StateManager::barManager()->removeChunk(this);
     delete d;
     delete ui;
 }
