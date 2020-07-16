@@ -5,7 +5,7 @@
     <name>EventHandler</name>
     <message>
         <source>Unable to inhibit logind power management</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak dapat menghalangi manajemen daya dari logind</translation>
     </message>
     <message>
         <source>Suspend</source>
@@ -13,32 +13,32 @@
     </message>
     <message numerus="yes">
         <source>%n seconds</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n detik</numerusform>
         </translation>
     </message>
     <message>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Baterai</translation>
     </message>
     <message>
         <source>Charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Mengisi</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Penuh</translation>
     </message>
     <message>
         <source>Discharging</source>
-        <translation type="unfinished"></translation>
+        <translation>Discharge</translation>
     </message>
 </context>
 <context>
     <name>PowerSettings</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Daya</translation>
     </message>
     <message>
         <source>TIMEOUTS</source>
