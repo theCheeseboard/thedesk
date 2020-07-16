@@ -6,17 +6,17 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="35"/>
         <source>System Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informasi Sistem</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="157"/>
         <source>DISTRIBUTION</source>
-        <translation type="unfinished"></translation>
+        <translation>DISTRIBUSI</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="164"/>
         <source>You&apos;re using</source>
-        <translation type="unfinished"></translation>
+        <translation>Anda menggunakan</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="201"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="255"/>
         <source>Processor</source>
-        <translation type="unfinished"></translation>
+        <translation>Prosesor</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="262"/>
@@ -56,7 +56,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="398"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"></translation>
+        <translation>Lingkungan Desktop</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="417"/>
@@ -84,7 +84,7 @@
         <location filename="../systemsettings/about/about.cpp" line="68"/>
         <location filename="../systemsettings/about/about.cpp" line="112"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak diketahui</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="118"/>
@@ -104,12 +104,12 @@
     <message>
         <location filename="../systemsettings/about/about.cpp" line="125"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hak cipta © Victor Tran %1. Dilisensi di bawah ketentuan Lisensi Publik GNU (GNU GPL), versi 3 ke atas.</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="158"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Tentang</translation>
     </message>
 </context>
 <context>
@@ -130,12 +130,12 @@
     <message>
         <location filename="../gateway/appselectionmodel.cpp" line="63"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikasi</translation>
     </message>
     <message>
         <location filename="../gateway/appselectionmodel.cpp" line="108"/>
         <source>Run Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalankan Perintah</translation>
     </message>
 </context>
 <context>
@@ -143,12 +143,12 @@
     <message>
         <location filename="../background/background.ui" line="176"/>
         <source>Sorry, there was a problem displaying the background.</source>
-        <translation type="unfinished"></translation>
+        <translation>Maaf, terdapat masalah menampilkan background.</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="198"/>
         <source>Try Again</source>
-        <translation type="unfinished"></translation>
+        <translation>Coba Lagi</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="379"/>
@@ -163,82 +163,82 @@
     <message>
         <location filename="../background/background.ui" line="434"/>
         <source>Select an image to display on your background and lock screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilihlah gambar untuk dipakai sebagai background desktop serta lockscreen</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="522"/>
         <source>COMMUNITY BACKGROUNDS</source>
-        <translation type="unfinished"></translation>
+        <translation>BACKGROUND KOMUNITAS</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="529"/>
         <source>Images from the theDesk community will be cycled through every so often.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gambar dari komunitas theDesk akan diganti secara berkala.</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="536"/>
         <source>Show image information</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan informasi mengenai gambar</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="584"/>
         <source>STRETCH</source>
-        <translation type="unfinished"></translation>
+        <translation>BENTANGAN</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="591"/>
         <source>Select how you&apos;d like the background image to be sized</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih cara menampilkan background</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="603"/>
         <source>Stretch To Fit</source>
-        <translation type="unfinished"></translation>
+        <translation>Regang Agar Sesuai</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="629"/>
         <source>Zoom and Crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Besarkan dengan Pemotongan</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="655"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Taruh di Tengah</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="681"/>
         <source>Tile</source>
-        <translation type="unfinished"></translation>
+        <translation>Mengubin</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="707"/>
         <source>Zoom To Fit</source>
-        <translation type="unfinished"></translation>
+        <translation>Besarkan Agar Sesuai</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="757"/>
         <source>Change Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Ganti Background</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="765"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Akhiri Sesi</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="198"/>
         <source>by %1</source>
-        <translation type="unfinished"></translation>
+        <translation>oleh %1</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="295"/>
         <source>For desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Untuk desktop</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="355"/>
         <source>Select Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih Background</translation>
     </message>
 </context>
 <context>
@@ -246,17 +246,17 @@
     <message>
         <location filename="../cli/commandline.cpp" line="37"/>
         <source>Start theDesk in Safe Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mulai theDesk dalam Mode Aman</translation>
     </message>
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>Internal use; the path to a local socket to communicate with the session manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Pemakaian internal saja; lokasi soket lokal untuk berkomunikasi dengan manajer sesi</translation>
     </message>
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>path</source>
-        <translation type="unfinished"></translation>
+        <translation>lokasi</translation>
     </message>
 </context>
 <context>
@@ -264,49 +264,49 @@
     <message>
         <location filename="../session/endsession.ui" line="57"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Akhiri Sesi</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="115"/>
         <source>Power Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Matikan</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="122"/>
         <source>Turns off your computer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mematikan komputer Anda.</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
         <location filename="../session/endsession.cpp" line="250"/>
         <source>Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyalakan ulang</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="141"/>
         <source>Turns off your computer and turns it on again</source>
-        <translation type="unfinished"></translation>
+        <translation>Mematikan komputer Anda kemudian menyalakannya lagi</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="148"/>
         <source>Reboot and install updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyalakan ulang dan install update</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="155"/>
         <source>Turns off your computer, installs pending updates and turns it on again</source>
-        <translation type="unfinished"></translation>
+        <translation>Mematikan komputer Anda, menginstall update kemudian menyalakannya lagi</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="162"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Keluar</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="169"/>
         <source>Ends your session but keeps your computer on for other people to use</source>
-        <translation type="unfinished"></translation>
+        <translation>Mengakhiri sesi Anda namun membiarkan komputer menyala agar dapat dipakai orang lain</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="176"/>
@@ -316,127 +316,127 @@
     <message>
         <location filename="../session/endsession.ui" line="183"/>
         <source>Puts your computer in a low power state so it reopens quickly</source>
-        <translation type="unfinished"></translation>
+        <translation>Membuat komputer berjalan dengan daya rendah agar dapat dibuka kembali dengan cepat</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="190"/>
         <source>Lock</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunci</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="197"/>
         <source>Locks your workspace with your password</source>
-        <translation type="unfinished"></translation>
+        <translation>Mengunci komputer dengan password Anda</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="204"/>
         <source>Turn Off Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Matikan Layar</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="211"/>
         <source>Turns off the screen, but keeps everything else running in the background</source>
-        <translation type="unfinished"></translation>
+        <translation>Mematikan layar, namun aplikasi-aplikasi akan tetap berjalan</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="218"/>
         <source>Switch Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Ganti User</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="225"/>
         <source>Switches to the logon screen, but keeps your session in the background</source>
-        <translation type="unfinished"></translation>
+        <translation>Menampilkan logon screen, namun sesi Anda akan tetap berjalan</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="232"/>
         <source>Hibernate</source>
-        <translation type="unfinished"></translation>
+        <translation>Hibernasi</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="239"/>
         <source>Powers off your computer, but restores the session when powered back on</source>
-        <translation type="unfinished"></translation>
+        <translation>Mematikan komputer, namun mengembalikan sesi Anda ketika dinyalakan kembali</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="334"/>
         <source>Updates are available. What do you want to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>Update tersedia. Apa yang ingin Anda lakukan?</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="349"/>
         <source>Reboot and update</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyalakan ulang dan update</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="356"/>
         <source>We&apos;ll perform system updates once this device has rebooted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistem akan di-update setelah dinyalakan kembali.</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="376"/>
         <source>We&apos;ll reboot your device normally.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistem akan reboot seperti biasa.</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="108"/>
         <source>power off the system</source>
-        <translation type="unfinished"></translation>
+        <translation>matikan sistem</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="109"/>
         <source>reboot the system</source>
-        <translation type="unfinished"></translation>
+        <translation>menyalakan ulang sistem</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="110"/>
         <source>reboot the system and install any pending updates</source>
-        <translation type="unfinished"></translation>
+        <translation>nyalakan ulang sistem dan install update-update yang menunggu</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="111"/>
         <source>log you out</source>
-        <translation type="unfinished"></translation>
+        <translation>me-logout</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="112"/>
         <source>suspend the system</source>
-        <translation type="unfinished"></translation>
+        <translation>menonaktifkan sistem</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="113"/>
         <source>lock the screen</source>
-        <translation type="unfinished"></translation>
+        <translation>mengunci desktop</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="114"/>
         <source>turn off the screen</source>
-        <translation type="unfinished"></translation>
+        <translation>mematikan layar</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="115"/>
         <source>switch users</source>
-        <translation type="unfinished"></translation>
+        <translation>mengganti user</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="116"/>
         <source>hibernate the system</source>
-        <translation type="unfinished"></translation>
+        <translation>menonaktifkan sistem</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="249"/>
         <source>Advanced Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Reboot Lanjutan</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="259"/>
         <source>Reboot into System UEFI Setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Reboot ke Pengaturan UEFI</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="48"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hey %1, ingin keluar? Kami akan %2 dalam %n detik jika Anda tak melakukan apa-apa.</translation>
     </message>
 </context>
 <context>
@@ -444,27 +444,27 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="57"/>
         <source>Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerbang</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="112"/>
         <source>Preparing the Gateway...</source>
-        <translation type="unfinished"></translation>
+        <translation>Menyiapkan Gerbang Aplikasi...</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="188"/>
         <source>Type to search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ketik untuk mencari...</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="230"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Akhiri Sesi</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="55"/>
         <source>Hey, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Halo %1!</translation>
     </message>
 </context>
 <context>
@@ -472,39 +472,39 @@
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="135"/>
         <source>ERROR DETAILS</source>
-        <translation type="unfinished"></translation>
+        <translation>RINCIAN ERROR</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="190"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>AKSI</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="199"/>
         <source>Activate Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktifkan Plugin</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="206"/>
         <source>Deactivate Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Nonaktifkan Plugin</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="213"/>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="276"/>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="296"/>
         <source>Blacklist Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Larang Plugin</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="220"/>
         <source>Remove Plugin from Blacklist</source>
-        <translation type="unfinished"></translation>
+        <translation>Bolehkan Plugin</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="283"/>
         <source>Placing this plugin on the blacklist will prevent it from being loaded next time you log in. If the plugin is not already deactivated, we&apos;ll also deactivate it for you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Melarang plugin untuk diaktifkan dalam login selanjutnya. Jika belum dinonaktifkan, melarang plugin juga akan menonaktifkan plugin tersebut.</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.cpp" line="43"/>
@@ -522,7 +522,7 @@
     <message>
         <location filename="../onboarding/onboardingbetathankyou.ui" line="35"/>
         <source>Thank you!</source>
-        <translation type="unfinished"></translation>
+        <translation>Terima kasih!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingbetathankyou.ui" line="42"/>
@@ -534,17 +534,24 @@ That being said, however, if you happen to run into any ideas or issues, please 
 
 Once again, thanks for giving theDesk a go!
 - Victor :)</source>
-        <translation type="unfinished"></translation>
+        <translation>Terima kasih Anda telah mencoba theDesk Beta 1!
+
+Sebelum kita lanjut, ingat bahwa ini masih dalam tahap beta. Artinya tidak semua bagian dapat berjalan dengan lancar dan mungkin juga terdapat kelakuan yang aneh.
+
+Meski demikian, jika Anda mengalami masalah atau punya suatu ide untuk fitur atau perbaikan, silahkan beritahu saya. Masukan dan saran sangat saya harapkan, terlebih saat tahap awal pengembangan.
+
+Sekali lagi, terima kasih telah mencoba theDesk!
+- Victor :)</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingbetathankyou.ui" line="118"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Lanjut</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingbetathankyou.cpp" line="47"/>
         <source>A Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Sebuah Pesan</translation>
     </message>
 </context>
 <context>
@@ -552,22 +559,22 @@ Once again, thanks for giving theDesk a go!
     <message>
         <location filename="../onboarding/onboardingfinal.ui" line="50"/>
         <source>That&apos;s everything!</source>
-        <translation type="unfinished"></translation>
+        <translation>Selesai!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingfinal.ui" line="73"/>
         <source>We hope you enjoy using theDesk!</source>
-        <translation type="unfinished"></translation>
+        <translation>Silahkan Anda nikmati theDesk!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingfinal.ui" line="98"/>
         <source>Get Started</source>
-        <translation type="unfinished"></translation>
+        <translation>Mulai</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingfinal.cpp" line="47"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Selesai</translation>
     </message>
 </context>
 <context>
@@ -583,32 +590,32 @@ Once again, thanks for giving theDesk a go!
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="41"/>
         <source>Welcome!</source>
-        <translation type="unfinished"></translation>
+        <translation>Selamat Datang!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="48"/>
         <source>Let&apos;s get you up and running!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mari kita mulai!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="57"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Bahasa</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="83"/>
         <source>Emergency</source>
-        <translation type="unfinished"></translation>
+        <translation>Darurat</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="123"/>
         <source>Let&apos;s go!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mari kita mulai!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.cpp" line="52"/>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Selamat Datang</translation>
     </message>
 </context>
 <context>
@@ -617,12 +624,12 @@ Once again, thanks for giving theDesk a go!
         <location filename="../systemsettings/pluginmanagement/pluginmanagement.ui" line="35"/>
         <location filename="../systemsettings/pluginmanagement/pluginmanagement.cpp" line="72"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>Plugin</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmanagement.ui" line="75"/>
         <source>Plugins add core and extra functionality to theDesk.</source>
-        <translation type="unfinished"></translation>
+        <translation>Plugin menambahkan fitur pada theDesk.</translation>
     </message>
 </context>
 <context>
@@ -635,17 +642,17 @@ Once again, thanks for giving theDesk a go!
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="54"/>
         <source>Blacklisted</source>
-        <translation type="unfinished"></translation>
+        <translation>Dilarang</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="56"/>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak Ada</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="58"/>
         <source>Inactive</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidak Aktif</translation>
     </message>
 </context>
 <context>
@@ -670,19 +677,27 @@ Here&apos;s what will happen:
 - The next time you log into theDesk, you&apos;ll need to run through the setup again
 
 Save your documents and close all apps before starting the reset. This won&apos;t take long, but you&apos;ll need to log out to perform the reset. You won&apos;t be able to use your device while the reset is taking place.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jika theDesk tidak berjalan semestinya, mungkin me-reset akan membantu.
+
+Hal berikut akan terjadi:
+- Pengaturan user akan terhapus dan kembali ke default
+- Ketika masuk kembali ke theDesk, Anda harus menjalani setup lagi
+
+Simpan pekerjaan Anda dan tutup semua aplikasi sebelum me-reset. Ini tidak akan memakan waktu lama, namun saat me-reset Anda akan logout. Anda belum dapat memakai sistem saat reset sedang berlangsung.</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="129"/>
         <source>Log Out and Reset theDesk</source>
-        <translation type="unfinished"></translation>
+        <translation>Keluar dan Reset theDesk</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.cpp" line="89"/>
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1, keluar dan reset pengaturan theDesk? Pengaturan Anda tidak dapat dikembalikan.
+
+Pengaturan theDesk akan reset dalam %n detik jika Anda tak melakukan apa-apa.</translation>
     </message>
 </context>
 <context>
@@ -695,17 +710,17 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../run/rundialog.ui" line="35"/>
         <source>Run</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalankan</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="60"/>
         <source>Enter a command to run.</source>
-        <translation type="unfinished"></translation>
+        <translation>Masukkan perintah untuk dijalankan.</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="73"/>
         <source>Run this command</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalankan perintah ini</translation>
     </message>
 </context>
 <context>
@@ -713,7 +728,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../statuscenter/statuscenterleftpane.ui" line="54"/>
         <source>Status Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Status Umum</translation>
     </message>
 </context>
 <context>
@@ -721,7 +736,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettings.cpp" line="164"/>
         <source>System Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengaturan Sistem</translation>
     </message>
 </context>
 <context>
@@ -729,22 +744,22 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="35"/>
         <source>System Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengaturan Sistem</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="103"/>
         <source>LOG OUT</source>
-        <translation type="unfinished"></translation>
+        <translation>KELUAR</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="110"/>
         <source>You&apos;ve changed some settings that require you to log out for them to apply completely</source>
-        <translation type="unfinished"></translation>
+        <translation>Anda telah mengganti beberapa pengaturan yang mengharuskan Anda log out terlebih dahulu agar dapat diterapkan</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Keluar</translation>
     </message>
 </context>
 <context>
@@ -752,12 +767,12 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../main.cpp" line="65"/>
         <source>Safe Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode Aman</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="65"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
-        <translation type="unfinished"></translation>
+        <translation>Anda sedang menekan tombol CTRL. Mulai theDesk dalam Mode Aman?</translation>
     </message>
 </context>
 </TS>
