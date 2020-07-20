@@ -17,12 +17,12 @@
     <message>
         <location filename="../onboarding/onboardingtheme.ui" line="92"/>
         <source>Dark</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gelap</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingtheme.ui" line="108"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Terang</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingtheme.ui" line="238"/>

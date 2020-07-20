@@ -36,6 +36,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cursorhandler.cpp \
     fontformat.cpp \
+    iconloaderengine.cpp \
     paletteformat.cpp \
     platformtheme.cpp \
     plugin.cpp
@@ -43,6 +44,7 @@ SOURCES += \
 HEADERS += \
     cursorhandler.h \
     fontformat.h \
+    iconloaderengine.h \
     paletteformat.h \
     platformtheme.h \
     plugin.h

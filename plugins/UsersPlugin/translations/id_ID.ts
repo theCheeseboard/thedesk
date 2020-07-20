@@ -397,12 +397,12 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="167"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Administrator</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="198"/>
         <source>STANDARD USER</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">USER BIASA</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="205"/>
@@ -412,7 +412,7 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="215"/>
         <source>Standard User</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">User Biasa</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.cpp" line="87"/>
@@ -451,17 +451,17 @@
     <message>
         <location filename="../settings/userspane.ui" line="298"/>
         <source>Change Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ganti Nama Lengkap</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="305"/>
         <source>Change Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ganti Password</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="312"/>
         <source>Change User Type</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ganti Tipe User</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="359"/>
@@ -471,7 +471,7 @@
     <message>
         <location filename="../settings/userspane.ui" line="376"/>
         <source>Delete User</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hapus User</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="91"/>

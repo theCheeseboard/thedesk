@@ -33,6 +33,7 @@
 #include <QMimeType>
 #include <QDebug>
 #include <QTextCharFormat>
+#include "iconloaderengine.h"
 #include "cursorhandler.h"
 
 #include "paletteformat.h"
@@ -173,6 +174,8 @@ QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
             return QTextCharFormat::SingleUnderline;
         case QPlatformTheme::ItemViewActivateItemOnSingleClick:
         case QPlatformTheme::DialogButtonBoxButtonsHaveIcons:
+        case QPlatformTheme::ShowShortcutsInContextMenus:
+        case QPlatformTheme::UiEffects:
             return true;
         case QPlatformTheme::PasswordMaskCharacter:
             return QChar(0x2022);
@@ -192,7 +195,6 @@ QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
         case QPlatformTheme::WindowAutoPlacement:
         case QPlatformTheme::DialogButtonBoxLayout:
         case QPlatformTheme::UseFullScreenForPopupMenu:
-        case QPlatformTheme::UiEffects:
         case QPlatformTheme::TabFocusBehavior:
         case QPlatformTheme::IconPixmapSizes:
         case QPlatformTheme::DialogSnapToDefaultButton:
@@ -201,7 +203,6 @@ QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
         case QPlatformTheme::MouseDoubleClickDistance:
         case QPlatformTheme::WheelScrollLines:
         case QPlatformTheme::TouchDoubleTapDistance:
-        case QPlatformTheme::ShowShortcutsInContextMenus:
         case QPlatformTheme::MouseQuickSelectionThreshold:
             return QPlatformTheme::themeHint(hint);
 
@@ -223,7 +224,7 @@ QIconEngine* PlatformTheme::createIconEngine(const QString& iconName) const {
     if (!iconNameModified.endsWith("-rtl") && QApplication::layoutDirection() == Qt::RightToLeft) {
         iconNameModified += "-rtl";
     }
-    return QPlatformTheme::createIconEngine(iconNameModified);
+    return new IconLoaderEngine(QPlatformTheme::createIconEngine(iconNameModified));
 }
 
 QList<QKeySequence> PlatformTheme::keyBindings(QKeySequence::StandardKey key) const {
