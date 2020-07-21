@@ -37,6 +37,8 @@ SOURCES += \
     cursorhandler.cpp \
     fontformat.cpp \
     iconloaderengine.cpp \
+    messagedialog/messagedialog.cpp \
+    messagedialog/messagedialoghelper.cpp \
     paletteformat.cpp \
     platformtheme.cpp \
     plugin.cpp
@@ -45,6 +47,8 @@ HEADERS += \
     cursorhandler.h \
     fontformat.h \
     iconloaderengine.h \
+    messagedialog/messagedialog.h \
+    messagedialog/messagedialoghelper.h \
     paletteformat.h \
     platformtheme.h \
     plugin.h
@@ -71,3 +75,6 @@ DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"
 
 RESOURCES += \
     thedesk-platform-resources.qrc
+
+FORMS += \
+    messagedialog/messagedialog.ui

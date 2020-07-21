@@ -36,6 +36,8 @@
 #include "iconloaderengine.h"
 #include "cursorhandler.h"
 
+#include "messagedialog/messagedialoghelper.h"
+
 #include "paletteformat.h"
 #include "fontformat.h"
 
@@ -127,14 +129,22 @@ bool PlatformTheme::usePlatformNativeDialog(QPlatformTheme::DialogType type) con
         case QPlatformTheme::FileDialog:
         case QPlatformTheme::ColorDialog:
         case QPlatformTheme::FontDialog:
-        case QPlatformTheme::MessageDialog:
             return false;
-
+        case QPlatformTheme::MessageDialog:
+            return true;
     }
 }
 
 QPlatformDialogHelper* PlatformTheme::createPlatformDialogHelper(QPlatformTheme::DialogType type) const {
-    return QPlatformTheme::createPlatformDialogHelper(type);
+    switch (type) {
+        case QPlatformTheme::MessageDialog:
+            return new MessageDialogHelper();
+        case QPlatformTheme::FileDialog:
+        case QPlatformTheme::ColorDialog:
+        case QPlatformTheme::FontDialog:
+            return QPlatformTheme::createPlatformDialogHelper(type);
+
+    }
 }
 
 QPlatformSystemTrayIcon* PlatformTheme::createPlatformSystemTrayIcon() const {

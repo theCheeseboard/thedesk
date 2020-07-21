@@ -59,7 +59,6 @@ OnboardingVideo::OnboardingVideo(QWidget* parent) :
     });
 
     d->videoPlayer = new QMediaPlayer(this);
-    d->videoPlayer->setVideoOutput(d->videoWidget);
     d->videoPlayer->setPlaylist(d->videoPlaylist);
     d->videoPlayer->setVolume(0);
     connect(d->videoPlayer, &QMediaPlayer::mediaStatusChanged, this, [ = ](QMediaPlayer::MediaStatus state) {
