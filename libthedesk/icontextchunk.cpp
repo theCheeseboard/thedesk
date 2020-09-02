@@ -61,6 +61,10 @@ void IconTextChunk::setText(QString text) {
     ui->textLabel->setText(text);
 }
 
+void IconTextChunk::deleteLater() {
+    Chunk::deleteLater();
+}
+
 
 QString IconTextChunk::name() {
     return d->name;

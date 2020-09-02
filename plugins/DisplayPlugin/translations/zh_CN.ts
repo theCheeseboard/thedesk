@@ -118,4 +118,11 @@
         <translation>对话框</translation>
     </message>
 </context>
+<context>
+    <name>RedshiftDaemon</name>
+    <message>
+        <source>Redshift Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

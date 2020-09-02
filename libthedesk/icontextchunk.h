@@ -38,6 +38,8 @@ class IconTextChunk : public Chunk {
         void setIcon(QIcon icon);
         void setText(QString text);
 
+        void deleteLater();
+
     private:
         Ui::IconTextChunk* ui;
         IconTextChunkPrivate* d;

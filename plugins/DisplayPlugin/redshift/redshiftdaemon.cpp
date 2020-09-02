@@ -25,6 +25,8 @@
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <quickswitch.h>
+#include <icontextchunk.h>
+#include <barmanager.h>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
 #include <QGeoPositionInfoSource>
@@ -43,6 +45,7 @@ struct RedshiftDaemonPrivate {
 
     QTimer* redshiftStateTimer;
     QuickSwitch* sw;
+    IconTextChunk* chunk;
 
     RedshiftState state = Initialising;
     bool updatingState = false;
@@ -76,6 +79,10 @@ RedshiftDaemon::RedshiftDaemon(QObject* parent) : QObject(parent) {
     });
     StateManager::statusCenterManager()->addSwitch(d->sw);
 
+    d->chunk = new IconTextChunk("redshift");
+    d->chunk->setIcon(QIcon::fromTheme("redshift-on"));
+    d->chunk->setText(tr("Redshift Active"));
+
     d->redshiftStateTimer = new QTimer();
     d->redshiftStateTimer->setInterval(60000);
     connect(d->redshiftStateTimer, &QTimer::timeout, this, &RedshiftDaemon::updateRedshiftState);
@@ -106,6 +113,7 @@ RedshiftDaemon::RedshiftDaemon(QObject* parent) : QObject(parent) {
 RedshiftDaemon::~RedshiftDaemon() {
     StateManager::statusCenterManager()->removeSwitch(d->sw);
     d->sw->deleteLater();
+    d->chunk->deleteLater();
     delete d;
 }
 
@@ -233,6 +241,13 @@ void RedshiftDaemon::updateSunlightCycleState() {
 }
 
 void RedshiftDaemon::setRedshiftTemperature(int temp) {
+    //Show/hide the chunk
+    if (!d->chunk->chunkRegistered() && temp != 6500) {
+        StateManager::barManager()->addChunk(d->chunk);
+    } else if (d->chunk->chunkRegistered() && temp == 6500) {
+        StateManager::barManager()->removeChunk(d->chunk);
+    }
+
     for (SystemScreen* screen : ScreenDaemon::instance()->screens()) {
         SystemScreen::GammaRamps ramps;
         gammaRampsForTemp(&ramps.red, &ramps.green, &ramps.blue, temp);

@@ -36,6 +36,7 @@ struct ChunkContainerPrivate {
         "Network",
         "network-cellular",
         "network-tethering",
+        "redshift",
         "Accessibility-StickyKeys",
         "mpris"
     };
@@ -156,6 +157,7 @@ void ChunkContainer::chunkRemoved(Chunk* chunk) {
             QWidget* chunkWidget = d->chunkWidgets.take(chunk);
             ui->chunkLayout->removeWidget(chunkWidget);
             d->loadedChunks.removeAt(i);
+            chunk->setParent(nullptr);
             chunkWidget->deleteLater();
 
             emit statusBarHeightChanged();
