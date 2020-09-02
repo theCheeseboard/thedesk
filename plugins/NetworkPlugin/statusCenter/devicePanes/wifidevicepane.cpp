@@ -24,6 +24,7 @@
 #include <statemanager.h>
 #include <hudmanager.h>
 #include <statuscentermanager.h>
+#include <barmanager.h>
 #include <tpopover.h>
 #include "../popovers/wirelessnetworkselectionpopover.h"
 #include "common.h"
@@ -31,6 +32,7 @@
 #include <QRandomGenerator>
 #include <QFontDatabase>
 #include <ttoast.h>
+#include <icontextchunk.h>
 
 #include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/WirelessDevice>
@@ -43,6 +45,8 @@
 struct WifiDevicePanePrivate {
     QListWidgetItem* item;
     NetworkManager::WirelessDevice::Ptr device;
+
+    IconTextChunk* tetheringChunk;
 
     tSettings settings;
 };
@@ -68,6 +72,10 @@ WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
     d = new WifiDevicePanePrivate();
     d->item = new QListWidgetItem();
     d->device = NetworkManager::findNetworkInterface(uni).staticCast<NetworkManager::WirelessDevice>();
+
+    d->tetheringChunk = new IconTextChunk("network-tethering");
+    d->tetheringChunk->setIcon(QIcon::fromTheme("network-wireless-tethered"));
+    d->tetheringChunk->setText(tr("Tethering"));
 
     connect(d->device.data(), &NetworkManager::WirelessDevice::activeConnectionChanged, this, &WifiDevicePane::updateNetworkName);
     connect(d->device.data(), &NetworkManager::WirelessDevice::activeAccessPointChanged, this, &WifiDevicePane::updateNetworkName);
@@ -157,6 +165,7 @@ WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
 
 WifiDevicePane::~WifiDevicePane() {
     delete d->item;
+    d->tetheringChunk->deleteLater();
     delete d;
     delete ui;
 }
@@ -285,11 +294,18 @@ void WifiDevicePane::updateState() {
         ui->tetheringSettings->setVisible(!tetheringOn);
         ui->actionsWidget->setVisible(!tetheringOn);
         ui->actionsLine->setVisible(!tetheringOn);
+
+        if (tetheringOn && !StateManager::barManager()->isChunkRegistered(d->tetheringChunk)) {
+            StateManager::barManager()->addChunk(d->tetheringChunk);
+        } else if (!tetheringOn && StateManager::barManager()->isChunkRegistered(d->tetheringChunk)) {
+            StateManager::barManager()->removeChunk(d->tetheringChunk);
+        }
     } else {
         ui->tetheringWidget->setVisible(false);
         ui->tetheringLine->setVisible(false);
         ui->actionsWidget->setVisible(true);
         ui->actionsLine->setVisible(true);
+        if (StateManager::barManager()->isChunkRegistered(d->tetheringChunk)) d->tetheringChunk->setVisible(false);
     }
 }
 

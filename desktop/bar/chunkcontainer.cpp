@@ -35,6 +35,7 @@ struct ChunkContainerPrivate {
         "OverviewClock",
         "Network",
         "network-cellular",
+        "network-tethering",
         "Accessibility-StickyKeys",
         "mpris"
     };

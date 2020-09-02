@@ -23,6 +23,7 @@
 #include <statemanager.h>
 #include <barmanager.h>
 #include <mpris/mprisengine.h>
+#include <mpris/mprisplayer.h>
 #include <Applications/application.h>
 #include <QMenu>
 #include <QActionGroup>
@@ -132,9 +133,9 @@ void MprisChunk::setCurrentPlayer(QString player) {
     } else {
         d->currentPlayer = MprisEngine::playerForInterface(player);
 
-        connect(d->currentPlayer.data(), &MprisPlayer::desktopEntryChanged, this, &MprisChunk::updateApplication);
-        connect(d->currentPlayer.data(), &MprisPlayer::metadataChanged, this, &MprisChunk::updateMetadata);
-        connect(d->currentPlayer.data(), &MprisPlayer::playbackStatusChanged, this, &MprisChunk::updateState);
+        connect(d->currentPlayer.data(), &MprisPlayerInterface::desktopEntryChanged, this, &MprisChunk::updateApplication);
+        connect(d->currentPlayer.data(), &MprisPlayerInterface::metadataChanged, this, &MprisChunk::updateMetadata);
+        connect(d->currentPlayer.data(), &MprisPlayerInterface::playbackStatusChanged, this, &MprisChunk::updateState);
 
         updateApplication();
         updateMetadata();
@@ -172,15 +173,15 @@ void MprisChunk::updateApplication() {
 
 void MprisChunk::updateState() {
     switch (d->currentPlayer->playbackStatus()) {
-        case MprisPlayer::Playing:
+        case MprisPlayerInterface::Playing:
             ui->stateIcon->setPixmap(QIcon::fromTheme("media-playback-start").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
             ui->playPauseButton->setIcon(QIcon::fromTheme("media-playback-pause"));
             break;
-        case MprisPlayer::Paused:
+        case MprisPlayerInterface::Paused:
             ui->stateIcon->setPixmap(QIcon::fromTheme("media-playback-pause").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
             ui->playPauseButton->setIcon(QIcon::fromTheme("media-playback-start"));
             break;
-        case MprisPlayer::Stopped:
+        case MprisPlayerInterface::Stopped:
             ui->stateIcon->setPixmap(QIcon::fromTheme("media-playback-stop").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
             ui->playPauseButton->setIcon(QIcon::fromTheme("media-playback-start"));
             break;

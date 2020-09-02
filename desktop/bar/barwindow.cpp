@@ -222,11 +222,11 @@ void BarWindow::trackWindow(DesktopWmWindowPtr window) {
     });
 
     QRect screenGeometry = QApplication::primaryScreen()->geometry();
-    if (window->isMaximised() && screenGeometry.contains(window->geometry())) {
+    if (window->isMaximised() && !window->isMinimized() && screenGeometry.contains(window->geometry())) {
         if (d->maximisedWindows.contains(window)) return;
         d->maximisedWindows.append(window);
         this->update();
-    } else if (!window->isMaximised()) {
+    } else if (!window->isMaximised() || window->isMinimized()) {
         if (!d->maximisedWindows.contains(window)) return;
         d->maximisedWindows.removeAll(window);
         this->update();
