@@ -21,12 +21,14 @@
 
 #include <QTimer>
 #include <QTime>
+#include <QAction>
 #include <tsettings.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <quickswitch.h>
 #include <icontextchunk.h>
 #include <barmanager.h>
+#include <actionquickwidget.h>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
 #include <QGeoPositionInfoSource>
@@ -82,6 +84,13 @@ RedshiftDaemon::RedshiftDaemon(QObject* parent) : QObject(parent) {
     d->chunk = new IconTextChunk("redshift");
     d->chunk->setIcon(QIcon::fromTheme("redshift-on"));
     d->chunk->setText(tr("Redshift Active"));
+
+    ActionQuickWidget* quickWidget = new ActionQuickWidget(d->chunk);
+    quickWidget->addAction(tr("Disable Redshift"), [ = ] {
+        d->state = RedshiftDaemonPrivate::ManualOff;
+        updateRedshiftState();
+    });
+    d->chunk->setQuickWidget(quickWidget);
 
     d->redshiftStateTimer = new QTimer();
     d->redshiftStateTimer->setInterval(60000);

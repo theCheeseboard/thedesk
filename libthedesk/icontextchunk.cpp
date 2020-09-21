@@ -27,6 +27,7 @@
 
 struct IconTextChunkPrivate {
     QString name;
+    QWidget* quickWidget = nullptr;
 };
 
 IconTextChunk::IconTextChunk(QString name) :
@@ -46,6 +47,10 @@ IconTextChunk::IconTextChunk(QString name) :
             ui->textLabel->setFixedWidth(ui->textLabel->sizeHint().width() * percentage);
         }
     });
+
+    connect(this, &IconTextChunk::clicked, this, [ = ] {
+        showQuickWidget();
+    });
 }
 
 IconTextChunk::~IconTextChunk() {
@@ -59,6 +64,10 @@ void IconTextChunk::setIcon(QIcon icon) {
 
 void IconTextChunk::setText(QString text) {
     ui->textLabel->setText(text);
+}
+
+void IconTextChunk::setQuickWidget(QWidget* widget) {
+    d->quickWidget = widget;
 }
 
 void IconTextChunk::deleteLater() {
@@ -76,4 +85,8 @@ int IconTextChunk::expandedHeight() {
 
 int IconTextChunk::statusBarHeight() {
     return qMax(SC_DPI(16), this->fontMetrics().height()) + 6;
+}
+
+QWidget* IconTextChunk::quickWidget() {
+    return d->quickWidget;
 }

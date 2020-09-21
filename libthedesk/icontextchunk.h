@@ -37,6 +37,7 @@ class IconTextChunk : public Chunk {
 
         void setIcon(QIcon icon);
         void setText(QString text);
+        void setQuickWidget(QWidget* widget);
 
         void deleteLater();
 
@@ -49,6 +50,9 @@ class IconTextChunk : public Chunk {
         QString name();
         int expandedHeight();
         int statusBarHeight();
+
+    protected:
+        virtual QWidget* quickWidget();
 };
 
 #endif // ICONTEXTCHUNK_H

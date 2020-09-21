@@ -22,13 +22,15 @@
 #include <statemanager.h>
 #include <barmanager.h>
 #include <QMouseEvent>
+#include "private/quickwidgetcontainer.h"
 
 struct ChunkPrivate {
-
+    QuickWidgetContainer* quickWidgetContainer;
 };
 
 Chunk::Chunk() : QWidget(nullptr) {
     d = new ChunkPrivate();
+    d->quickWidgetContainer = new QuickWidgetContainer(this);
 }
 
 Chunk::~Chunk() {
@@ -44,6 +46,17 @@ void Chunk::performStatusBarTransition(qreal percentage) {
     //noop
 }
 
+void Chunk::showQuickWidget() {
+    if (quickWidget()) {
+        //Show the quick widget
+        d->quickWidgetContainer->showContainer();
+    }
+}
+
+void Chunk::hideQuickWidget() {
+    d->quickWidgetContainer->hideContainer();
+}
+
 void Chunk::mousePressEvent(QMouseEvent* event) {
     event->accept();
 }
@@ -53,4 +66,8 @@ void Chunk::mouseReleaseEvent(QMouseEvent* event) {
         event->pos().y() < this->height() && event->pos().y() > 0) {
         emit clicked();
     }
+}
+
+QWidget* Chunk::quickWidget() {
+    return nullptr;
 }

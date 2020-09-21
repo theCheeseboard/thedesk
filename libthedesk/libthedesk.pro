@@ -21,6 +21,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    actionquickwidget.cpp \
     barmanager.cpp \
     chunk.cpp \
     gatewaymanager.cpp \
@@ -32,6 +33,7 @@ SOURCES += \
     onboardingpage.cpp \
     powermanager.cpp \
     private/localeselector.cpp \
+    private/quickwidgetcontainer.cpp \
     quickswitch.cpp \
     quietmodemanager.cpp \
     statemanager.cpp \
@@ -39,6 +41,7 @@ SOURCES += \
     statuscenterpane.cpp
 
 HEADERS += \
+    actionquickwidget.h \
     barmanager.h \
     chunk.h \
     gatewaymanager.h \
@@ -52,6 +55,7 @@ HEADERS += \
     powermanager.h \
     private/localeselector.h \
     private/onboardingmanager_p.h \
+    private/quickwidgetcontainer.h \
     quickswitch.h \
     quietmodemanager.h \
     statemanager.h \
@@ -73,5 +77,7 @@ unix {
 
 
 FORMS += \
+    actionquickwidget.ui \
     icontextchunk.ui \
-    private/localeselector.ui
+    private/localeselector.ui \
+    private/quickwidgetcontainer.ui

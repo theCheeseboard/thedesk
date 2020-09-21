@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US" sourcelanguage="en_US">
 <context>
+    <name>ActionQuickWidget</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LocaleSelector</name>
     <message>
         <source>Form</source>
@@ -10,6 +17,13 @@
     <message>
         <source>Select a locale</source>
         <translation>Choose a locale</translation>
+    </message>
+</context>
+<context>
+    <name>QuickWidgetContainer</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

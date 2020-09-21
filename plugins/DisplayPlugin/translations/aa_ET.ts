@@ -124,5 +124,9 @@
         <source>Redshift Active</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Disable Redshift</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

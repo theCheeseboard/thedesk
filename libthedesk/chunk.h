@@ -22,6 +22,7 @@
 
 #include <QWidget>
 
+class QuickWidgetContainer;
 struct ChunkPrivate;
 class Chunk : public QWidget {
         Q_OBJECT
@@ -36,11 +37,18 @@ class Chunk : public QWidget {
         virtual int statusBarHeight() = 0;
         void performStatusBarTransition(qreal percentage);
 
+        void showQuickWidget();
+        void hideQuickWidget();
+
     signals:
         void statusBarHeightChanged();
         void expandedHeightChanged();
 
         void clicked();
+
+    protected:
+        friend QuickWidgetContainer;
+        virtual QWidget* quickWidget();
 
     private:
         ChunkPrivate* d;
