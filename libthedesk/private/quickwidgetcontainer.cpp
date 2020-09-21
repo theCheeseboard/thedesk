@@ -22,11 +22,15 @@
 
 #include <the-libs_global.h>
 #include <QPainter>
+#include <statemanager.h>
+#include <barmanager.h>
 #include "chunk.h"
 
 struct QuickWidgetContainerPrivate {
     Chunk* parentChunk;
     int pointX = 0;
+
+    BarManager::BarLockPtr barLock;
 };
 
 QuickWidgetContainer::QuickWidgetContainer(Chunk* parent) :
@@ -54,10 +58,13 @@ void QuickWidgetContainer::showContainer() {
 
     this->show();
     this->activateWindow();
+
+    d->barLock = StateManager::barManager()->acquireLock();
 }
 
 void QuickWidgetContainer::hideContainer() {
     this->hide();
+    d->barLock->unlock();
 }
 
 void QuickWidgetContainer::paintEvent(QPaintEvent* event) {

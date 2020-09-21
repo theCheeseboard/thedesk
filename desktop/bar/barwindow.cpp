@@ -139,6 +139,13 @@ BarWindow::BarWindow(QWidget* parent) :
 
     connect(StateManager::statusCenterManager(), &StatusCenterManager::showStatusCenter, this, &BarWindow::showStatusCenter);
     connect(StateManager::statusCenterManager(), &StatusCenterManager::hideStatusCenter, this, &BarWindow::hideStatusCenter);
+    connect(StateManager::barManager(), &BarManager::barLockedChanged, this, [ = ](bool isBarLocked) {
+        if (isBarLocked) {
+            showBar();
+        } else {
+            if (!this->geometry().contains(QCursor::pos())) hideBar();
+        }
+    });
 
     connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
         if (key == "Appearance/translucent") {
@@ -179,27 +186,11 @@ void BarWindow::resizeEvent(QResizeEvent* event) {
 }
 
 void BarWindow::enterEvent(QEvent* event) {
-    //If we're showing the status bar, don't touch the height
-    if (!StateManager::statusCenterManager()->isShowingStatusCenter()) {
-        QSignalBlocker blocker(d->heightAnim);
-        d->heightAnim->setStartValue(this->height() - 1);
-        d->heightAnim->setEndValue(d->mainBarWidget->expandedHeight());
-
-        d->heightAnim->stop();
-        d->heightAnim->start();
-    }
+    showBar();
 }
 
 void BarWindow::leaveEvent(QEvent* event) {
-    //If we're showing the status bar, don't touch the height
-    if (!StateManager::statusCenterManager()->isShowingStatusCenter()) {
-        QSignalBlocker blocker(d->heightAnim);
-        d->heightAnim->setStartValue(this->height() - 1);
-        d->heightAnim->setEndValue(d->mainBarWidget->statusBarHeight());
-
-        d->heightAnim->stop();
-        d->heightAnim->start();
-    }
+    hideBar();
 }
 
 void BarWindow::paintEvent(QPaintEvent* event) {
@@ -293,5 +284,29 @@ void BarWindow::hideStatusCenter() {
     DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
     d->mainBarWidget->setFocus();
     d->statusCenterShown = false;
+}
+
+void BarWindow::showBar() {
+    //If we're showing the status bar, don't touch the height
+    if (!StateManager::statusCenterManager()->isShowingStatusCenter()) {
+        QSignalBlocker blocker(d->heightAnim);
+        d->heightAnim->setStartValue(this->height() - 1);
+        d->heightAnim->setEndValue(d->mainBarWidget->expandedHeight());
+
+        d->heightAnim->stop();
+        d->heightAnim->start();
+    }
+}
+
+void BarWindow::hideBar() {
+    //If we're showing the status bar, don't touch the height
+    if (!StateManager::statusCenterManager()->isShowingStatusCenter() && !StateManager::barManager()->isBarLocked()) {
+        QSignalBlocker blocker(d->heightAnim);
+        d->heightAnim->setStartValue(this->height() - 1);
+        d->heightAnim->setEndValue(d->mainBarWidget->statusBarHeight());
+
+        d->heightAnim->stop();
+        d->heightAnim->start();
+    }
 }
 

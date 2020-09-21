@@ -19,9 +19,12 @@
  * *************************************/
 #include "barmanager.h"
 
+#include <statemanager.h>
+
 struct BarManagerPrivate {
     QList<Chunk*> chunks;
     int barHeight;
+    int locks = 0;
 };
 
 BarManager::BarManager(QObject* parent) : QObject(parent) {
@@ -50,6 +53,14 @@ bool BarManager::isChunkRegistered(Chunk* chunk) {
     return d->chunks.contains(chunk);
 }
 
+bool BarManager::isBarLocked() {
+    return d->locks != 0;
+}
+
+BarManager::BarLockPtr BarManager::acquireLock() {
+    return BarLockPtr(new BarLock());
+}
+
 int BarManager::barHeight() {
     return d->barHeight;
 }
@@ -61,4 +72,27 @@ QList<Chunk*> BarManager::chunks() {
 void BarManager::setBarHeight(int barHeight) {
     d->barHeight = barHeight;
     emit barHeightChanged(barHeight);
+}
+
+BarManager::BarLock::BarLock() {
+    isLocked = true;
+    StateManager::barManager()->d->locks++;
+
+    //Lock the bar
+    emit StateManager::barManager()->barLockedChanged(true);
+}
+
+BarManager::BarLock::~BarLock() {
+    unlock();
+}
+
+void BarManager::BarLock::unlock() {
+    if (isLocked) {
+        isLocked = false;
+        int locks = --StateManager::barManager()->d->locks;
+        if (locks == 0) {
+            //Unlock the bar
+            emit StateManager::barManager()->barLockedChanged(false);
+        }
+    }
 }

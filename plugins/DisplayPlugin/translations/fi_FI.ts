@@ -125,7 +125,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Disable Redshift</source>
+        <source>Disable Redshift until tomorrow</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

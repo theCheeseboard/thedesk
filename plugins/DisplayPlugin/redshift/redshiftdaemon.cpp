@@ -86,9 +86,8 @@ RedshiftDaemon::RedshiftDaemon(QObject* parent) : QObject(parent) {
     d->chunk->setText(tr("Redshift Active"));
 
     ActionQuickWidget* quickWidget = new ActionQuickWidget(d->chunk);
-    quickWidget->addAction(tr("Disable Redshift"), [ = ] {
-        d->state = RedshiftDaemonPrivate::ManualOff;
-        updateRedshiftState();
+    quickWidget->addAction(QIcon::fromTheme("redshift-on"), tr("Disable Redshift until tomorrow"), [ = ] {
+        d->sw->setChecked(false);
     });
     d->chunk->setQuickWidget(quickWidget);
 

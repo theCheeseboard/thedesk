@@ -37,6 +37,8 @@ struct MprisChunkPrivate {
     QMenu* playersMenu;
     QActionGroup* playersGroup;
     QMap<QString, QAction*> playerActions;
+
+    BarManager::BarLockPtr barLocker;
 };
 
 MprisChunk::MprisChunk() :
@@ -49,6 +51,12 @@ MprisChunk::MprisChunk() :
 
     d->playersMenu = new QMenu(this);
     d->playersMenu->addSection(tr("Media Players"));
+    connect(d->playersMenu, &QMenu::aboutToShow, this, [ = ] {
+        d->barLocker = StateManager::barManager()->acquireLock();
+    });
+    connect(d->playersMenu, &QMenu::aboutToHide, this, [ = ] {
+        d->barLocker->unlock();
+    });
     ui->playersButton->setMenu(d->playersMenu);
     ui->playersButton->setVisible(MprisEngine::players().count() > 1);
 

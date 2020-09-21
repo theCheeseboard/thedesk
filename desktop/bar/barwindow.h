@@ -51,6 +51,9 @@ class BarWindow : public QWidget {
 
         void showStatusCenter();
         void hideStatusCenter();
+
+        void showBar();
+        void hideBar();
 };
 
 #endif // BARWINDOW_H

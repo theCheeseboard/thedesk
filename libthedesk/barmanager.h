@@ -21,6 +21,7 @@
 #define BARMANAGER_H
 
 #include <QObject>
+#include <QSharedPointer>
 
 class Chunk;
 class ChunkContainer;
@@ -28,13 +29,31 @@ class BarWindow;
 struct BarManagerPrivate;
 class BarManager : public QObject {
         Q_OBJECT
+
     public:
+        class BarLock {
+            public:
+                ~BarLock();
+                void unlock();
+
+            protected:
+                friend BarManager;
+
+                BarLock();
+                bool isLocked = false;
+        };
+        typedef QSharedPointer<BarLock> BarLockPtr;
+
         explicit BarManager(QObject* parent = nullptr);
         ~BarManager();
 
         void addChunk(Chunk* chunk);
         void removeChunk(Chunk* chunk);
         bool isChunkRegistered(Chunk* chunk);
+
+        bool isBarLocked();
+
+        BarLockPtr acquireLock();
 
         int barHeight();
 
@@ -49,8 +68,9 @@ class BarManager : public QObject {
         void chunkRemoved(Chunk* chunk);
         void barHeightTransitioning(qreal percentage);
         void barHeightChanged(int height);
+        void barLockedChanged(bool isBarLocked);
 
-    private:
+    protected:
         BarManagerPrivate* d;
 };
 

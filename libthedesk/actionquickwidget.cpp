@@ -44,16 +44,18 @@ ActionQuickWidget::~ActionQuickWidget() {
     delete d;
 }
 
-void ActionQuickWidget::addAction(QString text, std::function<void ()> triggered) {
+QAction* ActionQuickWidget::addAction(QString text, std::function<void ()> triggered) {
     QAction* action = new QAction(text, this);
     connect(action, &QAction::triggered, this, triggered);
     QWidget::addAction(action);
+    return action;
 }
 
-void ActionQuickWidget::addAction(QIcon icon, QString text, std::function<void ()> triggered) {
+QAction* ActionQuickWidget::addAction(QIcon icon, QString text, std::function<void ()> triggered) {
     QAction* action = new QAction(icon, text, this);
     connect(action, &QAction::triggered, this, triggered);
     QWidget::addAction(action);
+    return action;
 }
 
 bool ActionQuickWidget::event(QEvent* event) {
@@ -63,6 +65,9 @@ bool ActionQuickWidget::event(QEvent* event) {
             QAction* action = e->action();
             QPushButton* button = new QPushButton();
             button->setText(action->text());
+            button->setIcon(action->icon());
+            button->setEnabled(action->isEnabled());
+            button->setVisible(action->isVisible());
 
             connect(button, &QPushButton::clicked, this, [ = ] {
                 d->parentChunk->hideQuickWidget();
@@ -70,6 +75,9 @@ bool ActionQuickWidget::event(QEvent* event) {
             });
             connect(action, &QAction::changed, this, [ = ] {
                 button->setText(action->text());
+                button->setIcon(action->icon());
+                button->setEnabled(action->isEnabled());
+                button->setVisible(action->isVisible());
             });
 
             d->buttons.insert(action, button);
