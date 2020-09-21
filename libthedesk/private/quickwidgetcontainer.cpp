@@ -22,6 +22,7 @@
 
 #include <the-libs_global.h>
 #include <QPainter>
+#include <tvariantanimation.h>
 #include <statemanager.h>
 #include <barmanager.h>
 #include "chunk.h"
@@ -29,6 +30,9 @@
 struct QuickWidgetContainerPrivate {
     Chunk* parentChunk;
     int pointX = 0;
+
+    tVariantAnimation* yAnim;
+    tVariantAnimation* opacityAnim;
 
     BarManager::BarLockPtr barLock;
 };
@@ -40,10 +44,31 @@ QuickWidgetContainer::QuickWidgetContainer(Chunk* parent) :
 
     this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
+    this->setAttribute(Qt::WA_X11NetWmWindowTypeNotification);
 
     d = new QuickWidgetContainerPrivate();
     d->parentChunk = parent;
 
+    d->yAnim = new tVariantAnimation(this);
+    d->yAnim->setEasingCurve(QEasingCurve::OutCubic);
+    d->yAnim->setDuration(100);
+    connect(d->yAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        this->move(this->x(), value.toInt());
+    });
+
+    d->opacityAnim = new tVariantAnimation(this);
+    d->opacityAnim->setStartValue(0.0);
+    d->opacityAnim->setEndValue(1.0);
+    d->opacityAnim->setEasingCurve(QEasingCurve::OutCubic);
+    d->opacityAnim->setDuration(100);
+    connect(d->opacityAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        this->setWindowOpacity(value.toDouble());
+    });
+    connect(d->opacityAnim, &tVariantAnimation::finished, this, [ = ] {
+        if (d->opacityAnim->direction() == tVariantAnimation::Backward) this->hide();
+    });
+
+    this->setWindowOpacity(0);
     this->setContentsMargins(1, SC_DPI(5) + 1, 1, 1);
 }
 
@@ -59,11 +84,20 @@ void QuickWidgetContainer::showContainer() {
     this->show();
     this->activateWindow();
 
+    d->yAnim->setDirection(tVariantAnimation::Forward);
+    d->opacityAnim->setDirection(tVariantAnimation::Forward);
+    d->yAnim->start();
+    d->opacityAnim->start();
+
     d->barLock = StateManager::barManager()->acquireLock();
 }
 
 void QuickWidgetContainer::hideContainer() {
-    this->hide();
+    d->yAnim->setDirection(tVariantAnimation::Backward);
+    d->opacityAnim->setDirection(tVariantAnimation::Backward);
+    d->yAnim->start();
+    d->opacityAnim->start();
+
     d->barLock->unlock();
 }
 
@@ -103,14 +137,17 @@ void QuickWidgetContainer::calculatePosition() {
     this->setFixedSize(this->sizeHint());
 
     QPoint midpoint = d->parentChunk->mapToGlobal(QPoint(d->parentChunk->width() / 2, d->parentChunk->height()));
-    QPoint newPoint(midpoint.x() - this->width() / 2, midpoint.y());
+    int xpoint = midpoint.x() - this->width() / 2;
 
     d->pointX = this->width() / 2;
-    if (newPoint.x() < SC_DPI(9)) {
-        int oldX = newPoint.x();
-        newPoint.setX(SC_DPI(9));
-        d->pointX -= oldX - newPoint.x();
+    if (xpoint < SC_DPI(9)) {
+        int oldX = xpoint;
+        xpoint = SC_DPI(9);
+        d->pointX -= oldX - xpoint;
     }
 
-    this->move(newPoint);
+    d->yAnim->setStartValue(midpoint.y() - SC_DPI(50));
+    d->yAnim->setEndValue(midpoint.y());
+
+    this->move(xpoint, this->y());
 }

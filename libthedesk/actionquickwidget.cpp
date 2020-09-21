@@ -27,7 +27,7 @@
 
 struct ActionQuickWidgetPrivate {
     Chunk* parentChunk;
-    QMap<QAction*, QPushButton*> buttons;
+    QMap<QAction*, QWidget*> buttons;
 };
 
 ActionQuickWidget::ActionQuickWidget(Chunk* parent) :
@@ -87,7 +87,7 @@ bool ActionQuickWidget::event(QEvent* event) {
         case QEvent::ActionChanged:
             break;
         case QEvent::ActionRemoved: {
-            QPushButton* button = d->buttons.value(e->action());
+            QWidget* button = d->buttons.value(e->action());
             ui->actionsLayout->removeWidget(button);
             button->deleteLater();
             d->buttons.remove(e->action());
