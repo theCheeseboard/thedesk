@@ -2,6 +2,69 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN" sourcelanguage="en_US">
 <context>
+    <name>CellularPane</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished">表格</translation>
+    </message>
+    <message>
+        <source>STATUS</source>
+        <translation type="unfinished">状态</translation>
+    </message>
+    <message>
+        <source>This Device</source>
+        <translation type="unfinished">此设备</translation>
+    </message>
+    <message>
+        <source>ACTIONS</source>
+        <translation type="unfinished">行动</translation>
+    </message>
+    <message>
+        <source>Connect</source>
+        <translation type="unfinished">连接</translation>
+    </message>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished">断开</translation>
+    </message>
+    <message>
+        <source>Cellular</source>
+        <translation type="unfinished">蜂窝</translation>
+    </message>
+    <message>
+        <source>Disconnected</source>
+        <translation type="unfinished">断开</translation>
+    </message>
+    <message>
+        <source>Connected</source>
+        <translation type="unfinished">连接的</translation>
+    </message>
+    <message>
+        <source>Failed</source>
+        <translation type="unfinished">失败</translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation type="unfinished">不可用</translation>
+    </message>
+    <message>
+        <source>This network is unavailable because %2.</source>
+        <translation type="unfinished">由于％2，该网络不可用。</translation>
+    </message>
+    <message>
+        <source>Connection Failure</source>
+        <translation type="unfinished">连接失败</translation>
+    </message>
+    <message>
+        <source>Connecting to the network failed because %2.</source>
+        <translation type="unfinished">由于％2，连接到网络失败。</translation>
+    </message>
+    <message>
+        <source>SIM Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Common</name>
     <message>
         <source>an unknown error occurred</source>
@@ -463,6 +526,43 @@
     </message>
 </context>
 <context>
+    <name>SimSettingsPopover</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished">表格</translation>
+    </message>
+    <message>
+        <source>SIM Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the current SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>You have %n remaining tries</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Enter the new SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SwitchManager</name>
     <message>
         <source>Flight Mode</source>
@@ -663,10 +763,6 @@
     <message>
         <source>Connected</source>
         <translation>连接的</translation>
-    </message>
-    <message>
-        <source>Wi-Fi</source>
-        <translation>Wi-Fi</translation>
     </message>
     <message>
         <source>Failed</source>

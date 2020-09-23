@@ -184,9 +184,10 @@ void RedshiftDaemon::updateRedshiftState() {
             }
             break;
         case RedshiftDaemonPrivate::ManualOn:
-            if (scheduled && !scheduledShouldBeOnFully) {
+            if (scheduled && scheduledShouldBeOnFully) {
                 //Revert to the schedule if we've ticked into the correct time
                 d->state = RedshiftDaemonPrivate::Scheduled;
+                updateRedshiftState();
             } else {
                 setRedshiftTemperature(intensity);
             }

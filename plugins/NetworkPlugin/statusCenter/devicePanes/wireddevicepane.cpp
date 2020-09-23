@@ -99,7 +99,7 @@ WiredDevicePane::WiredDevicePane(QString uni, QWidget* parent) :
                     d->device->setAutoconnect(false);
                     StateManager::hudManager()->showHud({
                         {"icon", "network-wired-error"},
-                        {"title", tr("Wi-Fi")},
+                        {"title", tr("Wired")},
                         {"text", tr("Failed")}
                     });
                     break;

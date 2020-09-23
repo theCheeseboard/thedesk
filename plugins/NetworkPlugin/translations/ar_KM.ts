@@ -2,6 +2,69 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="km_KH" sourcelanguage="en_US">
 <context>
+    <name>CellularPane</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>STATUS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This Device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ACTIONS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cellular</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This network is unavailable because %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connection Failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting to the network failed because %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SIM Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Common</name>
     <message>
         <source>an unknown error occurred</source>
@@ -463,6 +526,44 @@
     </message>
 </context>
 <context>
+    <name>SimSettingsPopover</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SIM Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the current SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>You have %n remaining tries</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Enter the new SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SwitchManager</name>
     <message>
         <source>Flight Mode</source>
@@ -660,10 +761,6 @@
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Wi-Fi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

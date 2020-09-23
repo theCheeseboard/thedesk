@@ -29,6 +29,7 @@
 #include "devicePanes/devicepane.h"
 #include "devicePanes/wifidevicepane.h"
 #include "devicePanes/wireddevicepane.h"
+#include "devicePanes/cellularpane.h"
 
 #include <statemanager.h>
 #include <statuscentermanager.h>
@@ -110,6 +111,9 @@ void NetworkStatusCenterPane::deviceAdded(QString uni) {
             break;
         case NetworkManager::Device::Ethernet:
             devicePane = new WiredDevicePane(uni);
+            break;
+        case NetworkManager::Device::Modem:
+            devicePane = new CellularPane(uni);
             break;
         default:
             devicePane = new DevicePane(uni);

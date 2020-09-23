@@ -25,10 +25,15 @@
 #include <barmanager.h>
 #include <the-libs_global.h>
 #include <QPainter>
+#include <tsettings.h>
+#include <actionquickwidget.h>
 
 struct StickyKeysChunkPrivate {
     Qt::KeyboardModifiers latched;
     Qt::KeyboardModifiers locked;
+
+    ActionQuickWidget* quickWidget;
+    tSettings settings;
 
     bool registered = false;
 };
@@ -46,6 +51,11 @@ StickyKeysChunk::StickyKeysChunk() : Chunk() {
         d->locked = locked;
 
         this->update();
+    });
+
+    d->quickWidget = new ActionQuickWidget(this);
+    d->quickWidget->addAction(tr("Disable Sticky Keys"), [ = ] {
+        d->settings.setValue("Accessibility/stickykeys.active", false);
     });
 
     updateRegistration(DesktopWm::accessibility()->isAccessibilityOptionEnabled(DesktopAccessibility::StickyKeys));
@@ -130,4 +140,9 @@ void StickyKeysChunk::paintEvent(QPaintEvent* event) {
     if (d->locked & Qt::AltModifier || d->latched & Qt::AltModifier) {
         painter.drawRect(altRect);
     }
+}
+
+
+QWidget* StickyKeysChunk::quickWidget() {
+    return d->quickWidget;
 }

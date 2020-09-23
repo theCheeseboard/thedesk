@@ -44,9 +44,13 @@ class StickyKeysChunk : public Chunk {
         int expandedHeight();
         int statusBarHeight();
 
+    protected:
+        QWidget* quickWidget();
+
         // QWidget interface
     protected:
         void paintEvent(QPaintEvent* event);
+
 };
 
 #endif // STICKYKEYSCHUNK_H

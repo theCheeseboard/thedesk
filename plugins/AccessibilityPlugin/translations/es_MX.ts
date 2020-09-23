@@ -36,4 +36,11 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>StickyKeysChunk</name>
+    <message>
+        <source>Disable Sticky Keys</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

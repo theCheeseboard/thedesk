@@ -9,12 +9,12 @@ CONFIG += c++11
 include(/usr/share/the-libs/pri/gentranslations.pri)
 
 #For some reason they got rid of QMake support, so we'll have to hack this in for now
-#qtHaveModule(ModemManagerQt) {
-#    QT += ModemManagerQt
-#} else {
-#    INCLUDEPATH += /usr/include/KF5/ModemManagerQt/
-#    LIBS += -lKF5ModemManagerQt
-#}
+qtHaveModule(ModemManagerQt) {
+    QT += ModemManagerQt
+} else {
+    INCLUDEPATH += /usr/include/KF5/ModemManagerQt/ /usr/include/ModemManager/
+    LIBS += -lKF5ModemManagerQt
+}
 
 qtHaveModule(NetworkManagerQt) {
     QT += NetworkManagerQt
@@ -51,6 +51,7 @@ SOURCES += \
     statusCenter/connectionEditor/networkconnectioneditor.cpp \
     statusCenter/connectionEditor/wificonnectioneditorpane.cpp \
     statusCenter/devicePanes/abstractdevicepane.cpp \
+    statusCenter/devicePanes/cellularpane.cpp \
     statusCenter/devicePanes/devicepane.cpp \
     statusCenter/devicePanes/wifidevicepane.cpp \
     statusCenter/devicePanes/wireddevicepane.cpp \
@@ -60,6 +61,7 @@ SOURCES += \
     statusCenter/networkstatuscenterleftpane.cpp \
     statusCenter/networkstatuscenterpane.cpp \
     statusCenter/popovers/connectionselectionpopover.cpp \
+    statusCenter/popovers/simsettingspopover.cpp \
     statusCenter/popovers/wirelessnetworkselectionpopover.cpp \
     switchmanager.cpp
 
@@ -80,6 +82,7 @@ HEADERS += \
     statusCenter/connectionEditor/networkconnectioneditor.h \
     statusCenter/connectionEditor/wificonnectioneditorpane.h \
     statusCenter/devicePanes/abstractdevicepane.h \
+    statusCenter/devicePanes/cellularpane.h \
     statusCenter/devicePanes/devicepane.h \
     statusCenter/devicePanes/wifidevicepane.h \
     statusCenter/devicePanes/wireddevicepane.h \
@@ -89,6 +92,7 @@ HEADERS += \
     statusCenter/networkstatuscenterleftpane.h \
     statusCenter/networkstatuscenterpane.h \
     statusCenter/popovers/connectionselectionpopover.h \
+    statusCenter/popovers/simsettingspopover.h \
     statusCenter/popovers/wirelessnetworkselectionpopover.h \
     switchmanager.h
 
@@ -115,6 +119,7 @@ FORMS += \
     statusCenter/connectionEditor/ipv4connectioneditorpane.ui \
     statusCenter/connectionEditor/networkconnectioneditor.ui \
     statusCenter/connectionEditor/wificonnectioneditorpane.ui \
+    statusCenter/devicePanes/cellularpane.ui \
     statusCenter/devicePanes/devicepane.ui \
     statusCenter/devicePanes/wifidevicepane.ui \
     statusCenter/devicePanes/wireddevicepane.ui \
@@ -123,4 +128,5 @@ FORMS += \
     statusCenter/networkstatuscenterleftpane.ui \
     statusCenter/networkstatuscenterpane.ui \
     statusCenter/popovers/connectionselectionpopover.ui \
+    statusCenter/popovers/simsettingspopover.ui \
     statusCenter/popovers/wirelessnetworkselectionpopover.ui
