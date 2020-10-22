@@ -5,60 +5,60 @@
     <name>ActionQuickWidget</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
 </context>
 <context>
     <name>LocaleSelector</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Select a locale</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir yerel ayar seçin</translation>
     </message>
 </context>
 <context>
     <name>QuickWidgetContainer</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
 </context>
 <context>
     <name>QuietModeManager</name>
     <message>
         <source>Allows all sounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm seslere izin verir</translation>
     </message>
     <message>
         <source>Hides non-critical notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Kritik olmayan bildirimleri gizler</translation>
     </message>
     <message>
         <source>Hides all notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm bildirimleri gizler</translation>
     </message>
     <message>
         <source>Mutes all sound altogether</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm sesleri tamamen kapatır</translation>
     </message>
     <message>
         <source>Sound</source>
-        <translation type="unfinished"></translation>
+        <translation>Ses</translation>
     </message>
     <message>
         <source>Critical Only</source>
-        <translation type="unfinished"></translation>
+        <translation>Yalnızca Kritik</translation>
     </message>
     <message>
         <source>No Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildirim Yok</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Sessiz</translation>
     </message>
 </context>
 </TS>
