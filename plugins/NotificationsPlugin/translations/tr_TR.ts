@@ -5,66 +5,66 @@
     <name>MprisChunk</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Media Players</source>
-        <translation type="unfinished"></translation>
+        <translation>Medya Oynatıcılar</translation>
     </message>
 </context>
 <context>
     <name>NotificationAppGroup</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Uncategorised</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorize edilmemiş</translation>
     </message>
 </context>
 <context>
     <name>NotificationWidget</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
 </context>
 <context>
     <name>NotificationsDrawer</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>İletişim</translation>
     </message>
 </context>
 <context>
     <name>NotificationsDrawerWidget</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
 </context>
 <context>
     <name>NotificationsStatusCenterPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildirimler</translation>
     </message>
     <message>
         <source>Is it Friday yet?</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuma oldu mu?</translation>
     </message>
     <message>
         <source>You&apos;ve caught up with your notifications!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildirimlerinizi yakaladınız!</translation>
     </message>
     <message>
         <source>QUIET MODE</source>
-        <translation type="unfinished"></translation>
+        <translation>SESSİZ MOD</translation>
     </message>
 </context>
 </TS>
