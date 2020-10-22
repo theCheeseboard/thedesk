@@ -5,27 +5,27 @@
     <name>EventHandler</name>
     <message>
         <source>No Audio Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Ses Cihazı Yok</translation>
     </message>
     <message>
         <source>Speakers</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoparlörler</translation>
     </message>
     <message>
         <source>Headphones</source>
-        <translation type="unfinished"></translation>
+        <translation>Kulaklıklar</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Ses</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Sessiz</translation>
     </message>
     <message>
         <source>Unmute Quiet Mode before changing the volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesi değiştirmeden önce Sessiz Modu Açın</translation>
     </message>
 </context>
 </TS>
