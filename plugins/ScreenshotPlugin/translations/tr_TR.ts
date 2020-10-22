@@ -6,43 +6,43 @@
     <message>
         <source>Erase-o</source>
         <comment>This and the next translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sil-o</translation>
     </message>
     <message>
         <source>matic 2000</source>
         <comment>This and the previous translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+        <translation>matic 2000</translation>
     </message>
 </context>
 <context>
     <name>ScreenshotWindow</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>At</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopyala</translation>
     </message>
     <message>
         <source>SCREENSHOT</source>
-        <translation type="unfinished"></translation>
+        <translation>EKRAN GÖRÜNTÜSÜ</translation>
     </message>
     <message>
         <source>Crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Kırp</translation>
     </message>
     <message>
         <source>Redact</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazıya dökmek</translation>
     </message>
     <message>
         <source>Reset Markup</source>
-        <translation type="unfinished"></translation>
+        <translation>İşaretlemeyi Sıfırla</translation>
     </message>
 </context>
 </TS>
