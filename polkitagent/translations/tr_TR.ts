@@ -6,27 +6,27 @@
     <message>
         <location filename="../authwindow.ui" line="35"/>
         <source>PolicyKit Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>PolicyKit Kimlik Doğrulaması</translation>
     </message>
     <message>
         <location filename="../authwindow.ui" line="199"/>
         <source>Enter your password to confirm this action</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu eylemi onaylamak için şifrenizi girin</translation>
     </message>
     <message>
         <location filename="../authwindow.ui" line="441"/>
         <source>Pass the authentication challenge to confirm this action</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu eylemi onaylamak için kimlik doğrulama sorgulamasını geçin</translation>
     </message>
     <message>
         <location filename="../authwindow.cpp" line="159"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata</translation>
     </message>
     <message>
         <location filename="../authwindow.cpp" line="166"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>İleti</translation>
     </message>
 </context>
 <context>
@@ -34,12 +34,12 @@
     <message>
         <location filename="../identitypopover.ui" line="35"/>
         <source>Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>Kimlik</translation>
     </message>
     <message>
         <location filename="../identitypopover.ui" line="42"/>
         <source>Who do you want to authenticate as?</source>
-        <translation type="unfinished"></translation>
+        <translation>Kimin kimliğini doğrulamak istiyorsunuz?</translation>
     </message>
 </context>
 </TS>
