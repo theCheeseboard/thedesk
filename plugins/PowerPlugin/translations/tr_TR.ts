@@ -5,104 +5,105 @@
     <name>EventHandler</name>
     <message>
         <source>Unable to inhibit logind power management</source>
-        <translation type="unfinished"></translation>
+        <translation>Logind güç yönetimi engellenemiyor</translation>
     </message>
     <message>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>Askıya al</translation>
     </message>
     <message numerus="yes">
         <source>%n seconds</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n saniye</numerusform>
+            <numerusform>%n saniye</numerusform>
         </translation>
     </message>
     <message>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Pil</translation>
     </message>
     <message>
         <source>Charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Doluyor</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Tam</translation>
     </message>
     <message>
         <source>Discharging</source>
-        <translation type="unfinished"></translation>
+        <translation>Taburcu</translation>
     </message>
 </context>
 <context>
     <name>PowerSettings</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Güç</translation>
     </message>
     <message>
         <source>TIMEOUTS</source>
-        <translation type="unfinished"></translation>
+        <translation>ZAMAN AŞIMI</translation>
     </message>
     <message>
         <source>Switch off the screen after</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonra ekranı kapatın</translation>
     </message>
     <message>
         <source>seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>saniye</translation>
     </message>
     <message>
         <source>minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>dakika</translation>
     </message>
     <message>
         <source>hours</source>
-        <translation type="unfinished"></translation>
+        <translation>saatler</translation>
     </message>
     <message>
         <source>never</source>
-        <translation type="unfinished"></translation>
+        <translation>asla</translation>
     </message>
     <message>
         <source>If you leave your device idle for a period of time, we can automatically turn off the screen or suspend it for you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cihazınızı bir süre boşta bırakırsanız, sizin için ekranı otomatik olarak kapatabilir veya askıya alabiliriz.</translation>
     </message>
     <message>
         <source>Suspend after</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonra askıya al</translation>
     </message>
     <message>
         <source>When pressing the Power button</source>
-        <translation type="unfinished"></translation>
+        <translation>Güç düğmesine basıldığında</translation>
     </message>
     <message>
         <source>Ask</source>
-        <translation type="unfinished"></translation>
+        <translation>Sor</translation>
     </message>
     <message>
         <source>Power Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapat</translation>
     </message>
     <message>
         <source>Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeniden başlat</translation>
     </message>
     <message>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>Askıya al</translation>
     </message>
     <message>
         <source>Hibernate</source>
-        <translation type="unfinished"></translation>
+        <translation>Hazırda beklet</translation>
     </message>
     <message>
         <source>Do Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiçbir şey yapma</translation>
     </message>
     <message>
         <source>BUTTONS</source>
-        <translation type="unfinished"></translation>
+        <translation>BUTONLAR</translation>
     </message>
 </context>
 </TS>
