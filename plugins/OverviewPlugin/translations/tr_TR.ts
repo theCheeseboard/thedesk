@@ -6,32 +6,32 @@
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="106"/>
         <source>Hi %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Merhaba %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="108"/>
         <source>Good morning, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Günaydın %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="110"/>
         <source>Good afternoon, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>İyi günler %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="112"/>
         <source>Good evening, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>İyi akşamlar %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="254"/>
         <source>Overview</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel Bakış</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.ui" line="102"/>
         <source>Hope you&apos;re having a great day. Here&apos;s what we&apos;ve got for you:</source>
-        <translation type="unfinished"></translation>
+        <translation>Umarım harika bir gün geçiriyorsundur. İşte sizin için hazırladıklarımız:</translation>
     </message>
 </context>
 </TS>
