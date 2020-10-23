@@ -412,12 +412,12 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="215"/>
         <source>Standard User</source>
-        <translation type="unfinished"></translation>
+        <translation>Standart Kullanıcı</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.cpp" line="87"/>
         <source>Couldn&apos;t set user type</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı türü ayarlanamadı</translation>
     </message>
 </context>
 <context>
@@ -426,77 +426,77 @@
         <location filename="../settings/userspane.ui" line="89"/>
         <location filename="../settings/userspane.cpp" line="217"/>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcılar</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="105"/>
         <source>New User</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni kullanıcı</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="172"/>
         <source>No User Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı Seçilmedi</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="182"/>
         <source>Select a user to get started</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlamak için bir kullanıcı seçin</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="288"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>HAREKETLER</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="298"/>
         <source>Change Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerçek Adı Değiştir</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="305"/>
         <source>Change Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Şifre değiştir</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="312"/>
         <source>Change User Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı Türünü Değiştirin</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="359"/>
         <source>DANGER</source>
-        <translation type="unfinished"></translation>
+        <translation>TEHLİKE</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="376"/>
         <source>Delete User</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcıyı sil</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="91"/>
         <source>Username: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı adı: %1</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="94"/>
         <source>Unlock User</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcının Kilidini Aç</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="96"/>
         <source>Lock User</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcıyı Kilitle</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="138"/>
         <source>Unauthorized</source>
-        <translation type="unfinished"></translation>
+        <translation>Yetkisiz</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="139"/>
         <source>Polkit does not allow you to manage users on the system.</source>
-        <translation type="unfinished"></translation>
+        <translation>Polkit, sistemdeki kullanıcıları yönetmenize izin vermez.</translation>
     </message>
 </context>
 </TS>
