@@ -407,7 +407,7 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="205"/>
         <source>Say something cool about what a stanard user can do</source>
-        <translation type="unfinished"></translation>
+        <translation>Standart bir kullanıcının neler yapabileceği hakkında harika bir şey söyleyin</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="215"/>
