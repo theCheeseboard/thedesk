@@ -6,72 +6,72 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="35"/>
         <source>System Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistem bilgisi</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="157"/>
         <source>DISTRIBUTION</source>
-        <translation type="unfinished"></translation>
+        <translation>DAĞITIM</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="164"/>
         <source>You&apos;re using</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıyorsun</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="201"/>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Destek</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="255"/>
         <source>Processor</source>
-        <translation type="unfinished"></translation>
+        <translation>İşlemci</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="262"/>
         <source>Available Memory</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanılabilir Hafıza</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="269"/>
         <source>Available Swap</source>
-        <translation type="unfinished"></translation>
+        <translation>Mevcut Takas</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="276"/>
         <source>Qt Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt Sürümü</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="283"/>
         <source>Kernel Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Çekirdek sürümü</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="296"/>
         <source>HARDWARE AND SOFTWARE</source>
-        <translation type="unfinished"></translation>
+        <translation>DONANIM VE YAZILIM</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="398"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"></translation>
+        <translation>Masaüstü Ortamı</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="428"/>
         <source>Website</source>
-        <translation type="unfinished"></translation>
+        <translation>İnternet sitesi</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="439"/>
         <source>File Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya Hatası</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="450"/>
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaynaklar</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="461"/>
@@ -81,7 +81,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="417"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished"></translation>
+        <translation>Alındılar</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="67"/>
@@ -89,32 +89,32 @@
         <location filename="../systemsettings/about/about.cpp" line="69"/>
         <location filename="../systemsettings/about/about.cpp" line="113"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilinmeyen</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="119"/>
         <source>theDesk %1 - Blueprint</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk %1 - Blueprint</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="120"/>
         <source>You compiled theDesk on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk %1 üzerinde derlediniz</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="122"/>
         <source>theDesk %1</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk %1</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="126"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
-        <translation type="unfinished"></translation>
+        <translation>Telif hakkı © Victor Tran %1. GNU Genel Kamu Lisansı, sürüm 3 veya üzeri koşulları kapsamında lisanslanmıştır.</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="159"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Hakkında</translation>
     </message>
 </context>
 <context>
@@ -122,12 +122,12 @@
     <message>
         <location filename="../systemsettings/about/acknowledgements.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/acknowledgements.ui" line="35"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished"></translation>
+        <translation>Alındılar</translation>
     </message>
 </context>
 <context>
@@ -135,12 +135,12 @@
     <message>
         <location filename="../gateway/appselectionmodel.cpp" line="63"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Uygulama</translation>
     </message>
     <message>
         <location filename="../gateway/appselectionmodel.cpp" line="108"/>
         <source>Run Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Komutu Çalıştır</translation>
     </message>
 </context>
 <context>
@@ -148,102 +148,102 @@
     <message>
         <location filename="../background/background.ui" line="176"/>
         <source>Sorry, there was a problem displaying the background.</source>
-        <translation type="unfinished"></translation>
+        <translation>Üzgünüz, arka planı görüntülerken bir sorun oluştu.</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="198"/>
         <source>Try Again</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekrar deneyin</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="379"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Arka fon</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="427"/>
         <source>IMAGE</source>
-        <translation type="unfinished"></translation>
+        <translation>Resim</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="434"/>
         <source>Select an image to display on your background and lock screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Arka planınızda ve kilit ekranınızda görüntülenecek bir resim seçin</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="522"/>
         <source>COMMUNITY BACKGROUNDS</source>
-        <translation type="unfinished"></translation>
+        <translation>TOPLULUK ARKA PLANLARI</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="529"/>
         <source>Images from the theDesk community will be cycled through every so often.</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk topluluğundaki görseller ara sıra gözden geçirilir.</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="536"/>
         <source>Show image information</source>
-        <translation type="unfinished"></translation>
+        <translation>Görüntü bilgilerini göster</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="584"/>
         <source>STRETCH</source>
-        <translation type="unfinished"></translation>
+        <translation>UZATMAK</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="591"/>
         <source>Select how you&apos;d like the background image to be sized</source>
-        <translation type="unfinished"></translation>
+        <translation>Arka plan resminin nasıl boyutlandırılmasını istediğinizi seçin</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="603"/>
         <source>Stretch To Fit</source>
-        <translation type="unfinished"></translation>
+        <translation>Sığacak şekilde uzatmak</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="629"/>
         <source>Zoom and Crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Yakınlaştır ve Kırp</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="655"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Merkez</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="681"/>
         <source>Tile</source>
-        <translation type="unfinished"></translation>
+        <translation>Fayans</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="707"/>
         <source>Zoom To Fit</source>
-        <translation type="unfinished"></translation>
+        <translation>Sığdırmak İçin Yakınlaştır</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="757"/>
         <source>Change Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Arka Planı Değiştir</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="765"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Oturumu Sonlandır</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="198"/>
         <source>by %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 tarafından</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="295"/>
         <source>For desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Masaüstü için</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="355"/>
         <source>Select Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Arkaplan seç</translation>
     </message>
 </context>
 <context>
@@ -251,17 +251,17 @@
     <message>
         <location filename="../cli/commandline.cpp" line="37"/>
         <source>Start theDesk in Safe Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk Güvenli Modda başlatın</translation>
     </message>
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>Internal use; the path to a local socket to communicate with the session manager</source>
-        <translation type="unfinished"></translation>
+        <translation>İç kullanım; oturum yöneticisi ile iletişim kurmak için yerel bir sokete giden yol</translation>
     </message>
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>path</source>
-        <translation type="unfinished"></translation>
+        <translation>yol</translation>
     </message>
 </context>
 <context>
@@ -269,34 +269,34 @@
     <message>
         <location filename="../session/endsession.ui" line="57"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Oturum sonu</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="115"/>
         <source>Power Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapat</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="122"/>
         <source>Turns off your computer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgisayarınızı kapatır.</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
         <location filename="../session/endsession.cpp" line="252"/>
         <source>Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeniden başlat</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="141"/>
         <source>Turns off your computer and turns it on again</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgisayarınızı kapatır ve tekrar açar</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="148"/>
         <source>Reboot and install updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Güncellemeleri yeniden başlatın ve yükleyin</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="155"/>
