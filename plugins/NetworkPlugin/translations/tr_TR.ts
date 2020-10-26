@@ -5,256 +5,256 @@
     <name>CellularPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>DURUM</translation>
     </message>
     <message>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Cihaz</translation>
     </message>
     <message>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>HAREKETLER</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlan</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantıyı kes</translation>
     </message>
     <message>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Hücresel</translation>
     </message>
     <message>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı kesildi</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlandı</translation>
     </message>
     <message>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Yanlış oldu</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanım dışı</translation>
     </message>
     <message>
         <source>This network is unavailable because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu ağ kullanılamıyor çünkü %2.</translation>
     </message>
     <message>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı hatası</translation>
     </message>
     <message>
         <source>Connecting to the network failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağa bağlanma başarısız oldu çünkü %2.</translation>
     </message>
     <message>
         <source>SIM Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM Ayarları</translation>
     </message>
 </context>
 <context>
     <name>Common</name>
     <message>
         <source>an unknown error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>bilinmeyen bir hata oluştu</translation>
     </message>
     <message>
         <source>the device is no longer managed by NetworkManager</source>
-        <translation type="unfinished"></translation>
+        <translation>cihaz artık NetworkManager tarafından yönetilmiyor</translation>
     </message>
     <message>
         <source>configuration of the device failed</source>
-        <translation type="unfinished"></translation>
+        <translation>cihazın konfigürasyonu başarısız oldu</translation>
     </message>
     <message>
         <source>configuration of the device is unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>cihazın konfigürasyonu mevcut değil</translation>
     </message>
     <message>
         <source>configuration of the device expired</source>
-        <translation type="unfinished"></translation>
+        <translation>cihazın konfigürasyonunun süresi doldu</translation>
     </message>
     <message>
         <source>required secrets were not provided</source>
-        <translation type="unfinished"></translation>
+        <translation>gerekli sırlar sağlanmadı</translation>
     </message>
     <message>
         <source>the authentication supplicant disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>kimlik doğrulama istemcisinin bağlantısı kesildi</translation>
     </message>
     <message>
         <source>configuration of the authentication supplicant failed</source>
-        <translation type="unfinished"></translation>
+        <translation>kimlik doğrulama istemcisinin yapılandırması başarısız oldu</translation>
     </message>
     <message>
         <source>the authentication supplicant failed</source>
-        <translation type="unfinished"></translation>
+        <translation>kimlik doğrulama isteği başarısız oldu</translation>
     </message>
     <message>
         <source>the authentication supplicant timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>kimlik doğrulama isteği zaman aşımına uğradı</translation>
     </message>
     <message>
         <source>the PPP network failed to start</source>
-        <translation type="unfinished"></translation>
+        <translation>PPP ağı başlatılamadı</translation>
     </message>
     <message>
         <source>the PPP network was disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>PPP ağının bağlantısı kesildi</translation>
     </message>
     <message>
         <source>the PPP network failed</source>
-        <translation type="unfinished"></translation>
+        <translation>PPP ağı başarısız oldu</translation>
     </message>
     <message>
         <source>DHCP configuration failed to start</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP yapılandırması başlatılamadı</translation>
     </message>
     <message>
         <source>DHCP configuration had an error</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP yapılandırmasında bir hata vardı</translation>
     </message>
     <message>
         <source>DHCP configuration failed</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP yapılandırması başarısız oldu</translation>
     </message>
     <message>
         <source>the modem is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>modem meşgul</translation>
     </message>
     <message>
         <source>there is no dial tone on the modem</source>
-        <translation type="unfinished"></translation>
+        <translation>modemde çevir sesi yok</translation>
     </message>
     <message>
         <source>no carrier is available on the modem</source>
-        <translation type="unfinished"></translation>
+        <translation>modemde taşıyıcı yok</translation>
     </message>
     <message>
         <source>dialling the number on the modem timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>modemdeki numaranın çevrilmesi zaman aşımına uğradı</translation>
     </message>
     <message>
         <source>dialling the number on the modem failed</source>
-        <translation type="unfinished"></translation>
+        <translation>modemdeki numarayı çevirme başarısız oldu</translation>
     </message>
     <message>
         <source>initialising the modem failed</source>
-        <translation type="unfinished"></translation>
+        <translation>modemi başlatmak başarısız oldu</translation>
     </message>
     <message>
         <source>APN selection failed</source>
-        <translation type="unfinished"></translation>
+        <translation>APN seçimi başarısız oldu</translation>
     </message>
     <message>
         <source>the modem is not searching</source>
-        <translation type="unfinished"></translation>
+        <translation>modem aramıyor</translation>
     </message>
     <message>
         <source>the cell tower denied registration of the modem</source>
-        <translation type="unfinished"></translation>
+        <translation>baz istasyonu modemin kaydını reddetti</translation>
     </message>
     <message>
         <source>registration of the modem on the cell tower timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>modemin baz istasyonuna kaydı zaman aşımına uğradı</translation>
     </message>
     <message>
         <source>registration of the modem on the cell tower failed</source>
-        <translation type="unfinished"></translation>
+        <translation>modemin baz istasyonuna kaydı başarısız oldu</translation>
     </message>
     <message>
         <source>the device firmware is missing</source>
-        <translation type="unfinished"></translation>
+        <translation>cihaz donanım yazılımı eksik</translation>
     </message>
     <message>
         <source>the device was removed</source>
-        <translation type="unfinished"></translation>
+        <translation>cihaz kaldırıldı</translation>
     </message>
     <message>
         <source>the device is sleeping</source>
-        <translation type="unfinished"></translation>
+        <translation>cihaz uyuyor</translation>
     </message>
     <message>
         <source>the connection was removed</source>
-        <translation type="unfinished"></translation>
+        <translation>bağlantı kaldırıldı</translation>
     </message>
     <message>
         <source>you requested the action</source>
-        <translation type="unfinished"></translation>
+        <translation>eylemi sen istedin</translation>
     </message>
     <message>
         <source>the modem was not found</source>
-        <translation type="unfinished"></translation>
+        <translation>modem bulunamadı</translation>
     </message>
     <message>
         <source>Bluetooth is not available</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth kullanılamıyor</translation>
     </message>
     <message>
         <source>the SIM card is not inserted</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM kart takılı değil</translation>
     </message>
     <message>
         <source>the SIM PIN is required</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN kodu gerekli</translation>
     </message>
     <message>
         <source>the SIM PUK is required</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PUK gereklidir</translation>
     </message>
     <message>
         <source>the SIM PUK is exhausted</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PUK tükendi</translation>
     </message>
     <message>
         <source>ModemManager is not operational on this device</source>
-        <translation type="unfinished"></translation>
+        <translation>ModemManager bu cihazda çalışmıyor</translation>
     </message>
     <message>
         <source>the wireless network wasn&apos;t found</source>
-        <translation type="unfinished"></translation>
+        <translation>kablosuz ağ bulunamadı</translation>
     </message>
 </context>
 <context>
     <name>ConnectionSelectionPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Select Connection Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Profilini Seçin</translation>
     </message>
     <message>
         <source>Select a connection profile to use</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanmak için bir bağlantı profili seçin</translation>
     </message>
 </context>
 <context>
     <name>DevicePane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>MetinEtiketi</translation>
     </message>
     <message>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>HAREKETLER</translation>
     </message>
     <message>
         <source>Disconnect</source>
