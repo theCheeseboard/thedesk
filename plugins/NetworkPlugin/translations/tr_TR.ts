@@ -258,248 +258,248 @@
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantıyı kes</translation>
     </message>
     <message>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>DURUM</translation>
     </message>
     <message>
         <source>theDesk doesn&apos;t support this network interface, so you won&apos;t be able to configure it fully here.</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk bu ağ arayüzünü desteklemez, bu nedenle burada tam olarak yapılandıramazsınız.</translation>
     </message>
 </context>
 <context>
     <name>GenericChunkUpdater</name>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlandı</translation>
     </message>
 </context>
 <context>
     <name>IPv4ConnectionEditorPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv4</translation>
     </message>
     <message>
         <source>DHCP</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP</translation>
     </message>
     <message>
         <source>DHCP with manual DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuel DNS ile DHCP</translation>
     </message>
     <message>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuel</translation>
     </message>
     <message>
         <source>Shared</source>
-        <translation type="unfinished"></translation>
+        <translation>Paylaşılan</translation>
     </message>
     <message>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Sakat</translation>
     </message>
     <message>
         <source>Configuration Method</source>
-        <translation type="unfinished"></translation>
+        <translation>Yapılandırma Yöntemi</translation>
     </message>
     <message>
         <source>Require IPv4</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv4 gerektir</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IP adresi</translation>
     </message>
     <message>
         <source>Default Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılan giriş</translation>
     </message>
     <message>
         <source>Subnet Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt Ağ Uzunluğu</translation>
     </message>
     <message>
         <source>ADDRESSES</source>
-        <translation type="unfinished"></translation>
+        <translation>ADRESLER</translation>
     </message>
     <message>
         <source>1.1.1.1</source>
-        <translation type="unfinished"></translation>
+        <translation>1.1.1.1</translation>
     </message>
     <message>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <source>Set the IP address that this device will be assigned.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu cihazın atanacağı IP adresini ayarlayın.</translation>
     </message>
     <message>
         <source>Configure the DNS servers that will be used to resolve domain names.</source>
-        <translation type="unfinished"></translation>
+        <translation>Etki alanı adlarını çözümlemek için kullanılacak DNS sunucularını yapılandırın.</translation>
     </message>
     <message>
         <source>For DNS server %1</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS sunucusu %1 için</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil</translation>
     </message>
 </context>
 <context>
     <name>NetworkChunk</name>
     <message>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı kesildi</translation>
     </message>
     <message>
         <source>Login Required</source>
-        <translation type="unfinished"></translation>
+        <translation>Oturum açmak gereklidir</translation>
     </message>
     <message>
         <source>Can&apos;t get to the Internet</source>
-        <translation type="unfinished"></translation>
+        <translation>İnternete ulaşamıyor</translation>
     </message>
 </context>
 <context>
     <name>NetworkConnectionEditor</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel</translation>
     </message>
     <message>
         <source>Connection Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı adı</translation>
     </message>
     <message>
         <source>DONE?</source>
-        <translation type="unfinished"></translation>
+        <translation>BİTİRDİN Mİ?</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaydet</translation>
     </message>
     <message>
         <source>Couldn&apos;t save settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayarlar kaydedilemedi</translation>
     </message>
     <message>
         <source>SETTINGS MODIFIED</source>
-        <translation type="unfinished"></translation>
+        <translation>DEĞİŞTİRİLEN AYARLAR</translation>
     </message>
     <message>
         <source>Revert</source>
-        <translation type="unfinished"></translation>
+        <translation>Geri döndür</translation>
     </message>
 </context>
 <context>
     <name>NetworkStatusCenterLeftPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ</translation>
     </message>
 </context>
 <context>
     <name>NetworkStatusCenterPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ</translation>
     </message>
     <message>
         <source>NetworkManager is not operational</source>
-        <translation type="unfinished"></translation>
+        <translation>NetworkManager çalışmıyor</translation>
     </message>
     <message>
         <source>Contact your system administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistem yöneticinizle iletişime geçin</translation>
     </message>
 </context>
 <context>
     <name>SecurityEapPeap</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>PEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>PEAP</translation>
     </message>
     <message>
         <source>Enter the settings for this network</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu ağ için ayarları girin</translation>
     </message>
     <message>
         <source>CA Certificate</source>
-        <translation type="unfinished"></translation>
+        <translation>CA Sertifikası</translation>
     </message>
     <message>
         <source>Anonymous Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonim Kimlik</translation>
     </message>
     <message>
         <source>Phase-2 Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>2. Aşama Kimlik Doğrulaması</translation>
     </message>
     <message>
         <source>MSCHAPv2</source>
-        <translation type="unfinished"></translation>
+        <translation>MSCHAPv2</translation>
     </message>
     <message>
         <source>MD5</source>
-        <translation type="unfinished"></translation>
+        <translation>MD5</translation>
     </message>
     <message>
         <source>GTC</source>
-        <translation type="unfinished"></translation>
+        <translation>GTC</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı adı</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Şifre</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlan</translation>
     </message>
     <message>
         <source>PEAP version</source>
-        <translation type="unfinished"></translation>
+        <translation>PEAP versiyonu</translation>
     </message>
     <message>
         <source>Automatic</source>
-        <translation type="unfinished"></translation>
+        <translation>Otomatik</translation>
     </message>
     <message>
         <source>Version 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Sürüm 0</translation>
     </message>
     <message>
         <source>Version 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Versiyon 1</translation>
     </message>
     <message>
         <source>Browse...</source>
