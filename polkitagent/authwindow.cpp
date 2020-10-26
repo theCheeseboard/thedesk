@@ -88,6 +88,7 @@ void AuthWindow::showAuthWindow() {
         tPopover* popover = new tPopover(this);
         popover->setPopoverWidth(SC_DPI(600));
         popover->setPopoverSide(tPopover::Bottom);
+        popover->setPerformBlur(false);
         connect(ui->titleLabel, &tTitleLabel::backButtonClicked, popover, &tPopover::dismiss);
         connect(this, &AuthWindow::dismiss, popover, &tPopover::dismiss);
         connect(popover, &tPopover::dismissed, this, [ = ] {

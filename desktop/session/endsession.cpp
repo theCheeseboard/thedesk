@@ -153,11 +153,13 @@ tPromise<void>* EndSession::showDialog(PowerManager::PowerOperation operation, Q
             tPopover* popover = new tPopover(popoverContents);
             popover->setPopoverSide(tPopover::Bottom);
             popover->setPopoverWidth(popoverContents->heightForWidth(dialog->width()));
+            popover->setPerformBlur(false);
             connect(popoverContents, &EndSession::done, popover, &tPopover::dismiss);
             connect(popover, &tPopover::dismissed, popoverContents, &EndSession::deleteLater);
             connect(popover, &tPopover::dismissed, [ = ] {
-                dialog->deleteLater();
                 popover->deleteLater();
+                dialog->deleteLater();
+                popoverContents->deleteLater();
 
                 res();
             });

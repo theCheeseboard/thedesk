@@ -412,6 +412,17 @@
                 <number>0</number>
                </property>
                <item>
+                <widget class="QPushButton" name="acknowledgementsButton">
+                 <property name="text">
+                  <string>Acknowledgements</string>
+                 </property>
+                 <property name="icon">
+                  <iconset theme="help-about">
+                   <normaloff>.</normaloff>.</iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
                 <widget class="QPushButton" name="websiteButton">
                  <property name="text">
                   <string>Website</string>
@@ -445,12 +456,9 @@
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="acknowledgementsButton">
+                <widget class="QPushButton" name="debugLogButton">
                  <property name="text">
-                  <string>Acknowledgements</string>
-                 </property>
-                 <property name="icon">
-                  <iconset theme="help-about"/>
+                  <string>View Debug Log</string>
                  </property>
                 </widget>
                </item>

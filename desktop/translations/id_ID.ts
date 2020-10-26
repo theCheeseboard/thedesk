@@ -59,55 +59,60 @@
         <translation>Lingkungan Desktop</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="417"/>
+        <location filename="../systemsettings/about/about.ui" line="428"/>
         <source>Website</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="428"/>
+        <location filename="../systemsettings/about/about.ui" line="439"/>
         <source>File Bug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="439"/>
+        <location filename="../systemsettings/about/about.ui" line="450"/>
         <source>Sources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="450"/>
+        <location filename="../systemsettings/about/about.ui" line="461"/>
+        <source>View Debug Log</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/about.ui" line="417"/>
         <source>Acknowledgements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="66"/>
         <location filename="../systemsettings/about/about.cpp" line="67"/>
         <location filename="../systemsettings/about/about.cpp" line="68"/>
-        <location filename="../systemsettings/about/about.cpp" line="112"/>
+        <location filename="../systemsettings/about/about.cpp" line="69"/>
+        <location filename="../systemsettings/about/about.cpp" line="113"/>
         <source>Unknown</source>
         <translation>Tidak diketahui</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="118"/>
+        <location filename="../systemsettings/about/about.cpp" line="119"/>
         <source>theDesk %1 - Blueprint</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="119"/>
+        <location filename="../systemsettings/about/about.cpp" line="120"/>
         <source>You compiled theDesk on %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="121"/>
+        <location filename="../systemsettings/about/about.cpp" line="122"/>
         <source>theDesk %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="125"/>
+        <location filename="../systemsettings/about/about.cpp" line="126"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
         <translation>Hak cipta © Victor Tran %1. Dilisensi di bawah ketentuan Lisensi Publik GNU (GNU GPL), versi 3 ke atas.</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="158"/>
+        <location filename="../systemsettings/about/about.cpp" line="159"/>
         <source>About</source>
         <translation>Tentang</translation>
     </message>
@@ -279,7 +284,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="250"/>
+        <location filename="../session/endsession.cpp" line="252"/>
         <source>Reboot</source>
         <translation>Nyalakan ulang</translation>
     </message>
@@ -424,12 +429,12 @@
         <translation>menonaktifkan sistem</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="249"/>
+        <location filename="../session/endsession.cpp" line="251"/>
         <source>Advanced Reboot</source>
         <translation>Reboot Lanjutan</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="259"/>
+        <location filename="../session/endsession.cpp" line="261"/>
         <source>Reboot into System UEFI Setup</source>
         <translation>Reboot ke Pengaturan UEFI</translation>
     </message>

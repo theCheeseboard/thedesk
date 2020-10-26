@@ -19,12 +19,12 @@
         <translation>通过此挑战来确定此行为</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="159"/>
+        <location filename="../authwindow.cpp" line="160"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="166"/>
+        <location filename="../authwindow.cpp" line="167"/>
         <source>Message</source>
         <translation>信息</translation>
     </message>

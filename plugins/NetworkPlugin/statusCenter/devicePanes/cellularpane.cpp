@@ -116,6 +116,7 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
     });
 
     connect(d->modem->modemInterface().data(), &ModemManager::Modem::signalQualityChanged, this, &CellularPane::updateState);
+    connect(d->modem->modemInterface().data(), &ModemManager::Modem::currentModesChanged, this, &CellularPane::updateState);
 
     StateManager::barManager()->addChunk(d->chunk);
 }
@@ -133,7 +134,9 @@ void CellularPane::updateState() {
     ui->deviceIcon->setPixmap(QIcon::fromTheme("computer").pixmap(SC_DPI_T(QSize(96, 96), QSize)));
     ui->routerIcon->setPixmap(signalIcon.pixmap(SC_DPI_T(QSize(96, 96), QSize)));
     ui->routerName->setText(this->operatorName());
-    d->chunk->setText(this->operatorName());
+
+    QStringList chunkParts;
+    chunkParts.append(this->operatorName());
 
     NetworkManager::DeviceStateReason stateReason = d->device->stateReason();
     if (d->oldState != NetworkManager::Device::Failed) {
@@ -218,10 +221,23 @@ void CellularPane::updateState() {
             ui->disconnectButton->setVisible(true);
             ui->connectButton->setVisible(false);
             d->chunk->setIcon(signalIcon);
+
+            uint modes = d->modem->modemInterface()->currentModes().allowed;
+            if (modes & MM_MODEM_MODE_5G) {
+                chunkParts.append("5G");
+            } else if (modes & MM_MODEM_MODE_4G) {
+                chunkParts.append("4G");
+            } else if (modes & MM_MODEM_MODE_3G) {
+                chunkParts.append("3G");
+            } else if (modes & MM_MODEM_MODE_2G) {
+                chunkParts.append("2G");
+            }
+
             break;
     }
 
     d->oldState = stateReason.state();
+    d->chunk->setText(chunkParts.join(" · "));
 }
 
 QString CellularPane::operatorName() {

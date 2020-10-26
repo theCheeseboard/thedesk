@@ -27,6 +27,7 @@
 #include <statuscentermanager.h>
 #include <sys/sysinfo.h>
 #include <tpopover.h>
+#include <tlogger.h>
 #include "acknowledgements.h"
 
 About::About() :
@@ -174,4 +175,9 @@ void About::on_acknowledgementsButton_clicked() {
     connect(popover, &tPopover::dismissed, ack, &Acknowledgements::deleteLater);
     connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
     popover->show(this->window());
+}
+
+void About::on_debugLogButton_clicked() {
+    StateManager::statusCenterManager()->hide();
+    tLogger::openDebugLogWindow();
 }

@@ -38,6 +38,8 @@ class About : public StatusCenterPane {
 
         void on_acknowledgementsButton_clicked();
 
+        void on_debugLogButton_clicked();
+
     private:
         Ui::About* ui;
 
