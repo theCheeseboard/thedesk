@@ -76,7 +76,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="461"/>
         <source>View Debug Log</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata Ayıklama Günlüğünü Görüntüle</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="417"/>
@@ -301,147 +301,147 @@
     <message>
         <location filename="../session/endsession.ui" line="155"/>
         <source>Turns off your computer, installs pending updates and turns it on again</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgisayarınızı kapatır, bekleyen güncellemeleri yükler ve yeniden açar</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="162"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Yap</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="169"/>
         <source>Ends your session but keeps your computer on for other people to use</source>
-        <translation type="unfinished"></translation>
+        <translation>Oturumunuzu sonlandırır ancak bilgisayarınızı başkalarının kullanması için açık tutar</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="176"/>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>Askıya al</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="183"/>
         <source>Puts your computer in a low power state so it reopens quickly</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgisayarınızı düşük güç durumuna geçirir, böylece hızlı bir şekilde yeniden açılır</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="190"/>
         <source>Lock</source>
-        <translation type="unfinished"></translation>
+        <translation>Kilit</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="197"/>
         <source>Locks your workspace with your password</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalışma alanınızı şifrenizle kilitler</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="204"/>
         <source>Turn Off Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekranı Kapat</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="211"/>
         <source>Turns off the screen, but keeps everything else running in the background</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekranı kapatır, ancak diğer her şeyin arka planda çalışmasını sağlar</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="218"/>
         <source>Switch Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı Değiştir</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="225"/>
         <source>Switches to the logon screen, but keeps your session in the background</source>
-        <translation type="unfinished"></translation>
+        <translation>Oturum açma ekranına geçer ancak oturumunuzu arka planda tutar</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="232"/>
         <source>Hibernate</source>
-        <translation type="unfinished"></translation>
+        <translation>Hazırda beklet</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="239"/>
         <source>Powers off your computer, but restores the session when powered back on</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgisayarınızı kapatır, ancak tekrar açıldığında oturumu geri yükler</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="334"/>
         <source>Updates are available. What do you want to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>Güncellemeler mevcuttur. Ne yapmak istiyorsun?</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="349"/>
         <source>Reboot and update</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeniden başlat ve güncelle</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="356"/>
         <source>We&apos;ll perform system updates once this device has rebooted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu cihaz yeniden başlatıldığında sistem güncellemelerini gerçekleştireceğiz.</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="376"/>
         <source>We&apos;ll reboot your device normally.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cihazınızı normal şekilde yeniden başlatacağız.</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="108"/>
         <source>power off the system</source>
-        <translation type="unfinished"></translation>
+        <translation>sistemi kapat</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="109"/>
         <source>reboot the system</source>
-        <translation type="unfinished"></translation>
+        <translation>sistemi yeniden başlat</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="110"/>
         <source>reboot the system and install any pending updates</source>
-        <translation type="unfinished"></translation>
+        <translation>sistemi yeniden başlatın ve bekleyen güncellemeleri yükleyin</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="111"/>
         <source>log you out</source>
-        <translation type="unfinished"></translation>
+        <translation>oturumu kapat</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="112"/>
         <source>suspend the system</source>
-        <translation type="unfinished"></translation>
+        <translation>sistemi askıya almak</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="113"/>
         <source>lock the screen</source>
-        <translation type="unfinished"></translation>
+        <translation>ekranı kilitle</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="114"/>
         <source>turn off the screen</source>
-        <translation type="unfinished"></translation>
+        <translation>ekranı kapat</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="115"/>
         <source>switch users</source>
-        <translation type="unfinished"></translation>
+        <translation>kullanıcıları değiştir</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="116"/>
         <source>hibernate the system</source>
-        <translation type="unfinished"></translation>
+        <translation>sistemi hazırda bekletmek</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="251"/>
         <source>Advanced Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelişmiş Yeniden Başlatma</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="261"/>
         <source>Reboot into System UEFI Setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistem UEFI Kurulumunu Yeniden Başlatın</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="48"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hey %1, gitmeye hazır mısın? Eğer bir şey yapmazsan, %n saniye içinde %2 yapacağız.</translation>
     </message>
 </context>
 <context>
@@ -449,27 +449,27 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="57"/>
         <source>Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ geçidi</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="112"/>
         <source>Preparing the Gateway...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Geçidini Hazırlama...</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="188"/>
         <source>Type to search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Aramak için yazın...</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="230"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Oturum sonu</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="55"/>
         <source>Hey, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hey, %1!</translation>
     </message>
 </context>
 <context>
@@ -477,44 +477,44 @@
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="135"/>
         <source>ERROR DETAILS</source>
-        <translation type="unfinished"></translation>
+        <translation>HATA DETAYLARI</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="190"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>HAREKETLER</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="199"/>
         <source>Activate Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Eklentiyi Etkinleştir</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="206"/>
         <source>Deactivate Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Eklentiyi Devre Dışı Bırak</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="213"/>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="276"/>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="296"/>
         <source>Blacklist Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Kara Liste Eklentisi</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="220"/>
         <source>Remove Plugin from Blacklist</source>
-        <translation type="unfinished"></translation>
+        <translation>Eklentiyi Kara Listeden Kaldır</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="283"/>
         <source>Placing this plugin on the blacklist will prevent it from being loaded next time you log in. If the plugin is not already deactivated, we&apos;ll also deactivate it for you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu eklentiyi kara listeye yerleştirmek, bir sonraki oturum açışınızda yüklenmesini engelleyecektir. Eklenti henüz devre dışı bırakılmamışsa, sizin için devre dışı bırakacağız.</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.cpp" line="43"/>
         <source>UUID: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>UUID: %1</translation>
     </message>
 </context>
 <context>
@@ -522,12 +522,12 @@
     <message>
         <location filename="../onboarding/onboardingbetathankyou.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingbetathankyou.ui" line="35"/>
         <source>Thank you!</source>
-        <translation type="unfinished"></translation>
+        <translation>Teşekkür ederim!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingbetathankyou.ui" line="42"/>
@@ -539,17 +539,24 @@ That being said, however, if you happen to run into any ideas or issues, please 
 
 Once again, thanks for giving theDesk a go!
 - Victor :)</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk Beta 1&apos;i denediğiniz için teşekkürler!
+
+Devam etmeden önce, lütfen bunun bir beta olduğunu unutmayın. Her şey doğru çalışmayacaktır ve bazı kısımlarda bazı garip davranışlar yaşayabilirsiniz.
+
+Bununla birlikte, herhangi bir fikir veya sorunla karşılaşırsanız, lütfen bana bildirin. Geri bildirim, özellikle gelişimin erken aşamalarında önemlidir.
+
+theDesk bir kez daha izin verdiğiniz için tekrar teşekkürler!
+ - Victor :)</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingbetathankyou.ui" line="118"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonraki</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingbetathankyou.cpp" line="47"/>
         <source>A Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir mesaj</translation>
     </message>
 </context>
 <context>
@@ -557,22 +564,22 @@ Once again, thanks for giving theDesk a go!
     <message>
         <location filename="../onboarding/onboardingfinal.ui" line="50"/>
         <source>That&apos;s everything!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hepsini bitti!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingfinal.ui" line="73"/>
         <source>We hope you enjoy using theDesk!</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk kullanmaktan keyif alacağınızı umuyoruz!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingfinal.ui" line="98"/>
         <source>Get Started</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlamak</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingfinal.cpp" line="47"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitti</translation>
     </message>
 </context>
 <context>
@@ -580,7 +587,7 @@ Once again, thanks for giving theDesk a go!
     <message>
         <location filename="../onboarding/onboardingvideo.ui" line="39"/>
         <source>qrc:/thedesk/desktop/onboarding/OnboardingVideoForm.qml</source>
-        <translation type="unfinished"></translation>
+        <translation>qrc:/thedesk/desktop/onboarding/OnboardingVideoForm.qml</translation>
     </message>
 </context>
 <context>
@@ -588,32 +595,32 @@ Once again, thanks for giving theDesk a go!
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="41"/>
         <source>Welcome!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoş geldin!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="48"/>
         <source>Let&apos;s get you up and running!</source>
-        <translation type="unfinished"></translation>
+        <translation>Haydi gidelim!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="57"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Dil</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="83"/>
         <source>Emergency</source>
-        <translation type="unfinished"></translation>
+        <translation>Acil Durum</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.ui" line="123"/>
         <source>Let&apos;s go!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hadi gidelim!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingwelcome.cpp" line="52"/>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoş Geldin</translation>
     </message>
 </context>
 <context>
@@ -622,12 +629,12 @@ Once again, thanks for giving theDesk a go!
         <location filename="../systemsettings/pluginmanagement/pluginmanagement.ui" line="35"/>
         <location filename="../systemsettings/pluginmanagement/pluginmanagement.cpp" line="72"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>Eklentiler</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmanagement.ui" line="75"/>
         <source>Plugins add core and extra functionality to theDesk.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eklentiler, theDesk&apos;e çekirdek ve ekstra işlevsellik ekler.</translation>
     </message>
 </context>
 <context>
@@ -635,22 +642,22 @@ Once again, thanks for giving theDesk a go!
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="52"/>
         <source>Loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Yüklü</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="54"/>
         <source>Blacklisted</source>
-        <translation type="unfinished"></translation>
+        <translation>Kara listeye alındı</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="56"/>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanım dışı</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="58"/>
         <source>Inactive</source>
-        <translation type="unfinished"></translation>
+        <translation>Etkin değil</translation>
     </message>
 </context>
 <context>
@@ -659,12 +666,12 @@ Once again, thanks for giving theDesk a go!
         <location filename="../systemsettings/recovery/recovery.ui" line="35"/>
         <location filename="../systemsettings/recovery/recovery.cpp" line="64"/>
         <source>Recovery</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurtarma</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="104"/>
         <source>RESET THEDESK</source>
-        <translation type="unfinished"></translation>
+        <translation>THEDESK&apos;İ SIFIRLA</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="111"/>
@@ -675,19 +682,27 @@ Here&apos;s what will happen:
 - The next time you log into theDesk, you&apos;ll need to run through the setup again
 
 Save your documents and close all apps before starting the reset. This won&apos;t take long, but you&apos;ll need to log out to perform the reset. You won&apos;t be able to use your device while the reset is taking place.</source>
-        <translation type="unfinished"></translation>
+        <translation>İşler düzgün çalışmıyorsa, theDesk sıfırlamak yardımcı olabilir.
+
+İşte ne olacak:
+- Kullanıcı ayarları temizlenir ve varsayılan olarak sıfırlanır
+- Bir dahaki sefere theDesk&apos;e giriş yaptığınızda, kurulumu tekrar çalıştırmanız gerekir
+
+Sıfırlamaya başlamadan önce belgelerinizi kaydedin ve tüm uygulamaları kapatın. Bu uzun sürmez, ancak sıfırlamayı gerçekleştirmek için oturumu kapatmanız gerekir. Bunu sıfırlamak yer alıyor, cihazı kullanmak mümkün olmayacaktır.</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="129"/>
         <source>Log Out and Reset theDesk</source>
-        <translation type="unfinished"></translation>
+        <translation>Oturumu Kapatın ve theDesk Sıfırlayın</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.cpp" line="89"/>
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1, oturumu kapat ve çalışma masası Ayarlarını Sıfırla? Bu eylem geri döndürülemez.
+
+Hiçbir şey yapmazsanız, ayarlarınızı %n saniye içinde sıfırlayacağız.</translation>
     </message>
 </context>
 <context>
@@ -695,22 +710,22 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../run/rundialog.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="35"/>
         <source>Run</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalıştırmak</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="60"/>
         <source>Enter a command to run.</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalıştırmak için bir komut girin.</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="73"/>
         <source>Run this command</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu komutu çalıştırın</translation>
     </message>
 </context>
 <context>
@@ -718,7 +733,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../statuscenter/statuscenterleftpane.ui" line="54"/>
         <source>Status Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Durum Merkezi</translation>
     </message>
 </context>
 <context>
@@ -726,7 +741,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettings.cpp" line="164"/>
         <source>System Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistem Ayarları</translation>
     </message>
 </context>
 <context>
@@ -734,22 +749,22 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="35"/>
         <source>System Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistem Ayarları</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="103"/>
         <source>LOG OUT</source>
-        <translation type="unfinished"></translation>
+        <translation>ÇIKIŞ YAP</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="110"/>
         <source>You&apos;ve changed some settings that require you to log out for them to apply completely</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamamen uygulanmaları için oturumu kapatmanızı gerektiren bazı ayarları değiştirdiniz</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış yap</translation>
     </message>
 </context>
 <context>
@@ -757,12 +772,12 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../main.cpp" line="65"/>
         <source>Safe Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Güvenli mod</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="65"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL tuşunu basılı tutuyorsunuz. Güvenli modda theDesk başlatmak?</translation>
     </message>
 </context>
 </TS>
