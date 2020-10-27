@@ -503,188 +503,189 @@
     </message>
     <message>
         <source>Browse...</source>
-        <translation type="unfinished"></translation>
+        <translation>Araştır...</translation>
     </message>
     <message>
         <source>Certificates (*.pem, *.cer)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sertifikalar (*.pem, *.cer)</translation>
     </message>
 </context>
 <context>
     <name>SecurityEapUnsupported</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Unsupported Security Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Desteklenmeyen Güvenlik Ayarları</translation>
     </message>
     <message>
         <source>Sorry, theDesk doesn&apos;t support those security settings at the moment. You can try using the terminal to configure this network.</source>
-        <translation type="unfinished"></translation>
+        <translation>Üzgünüz, theDesk şu anda bu güvenlik ayarlarını desteklemiyor. Bu ağı yapılandırmak için theTerminal kullanmayı deneyebilirsiniz.</translation>
     </message>
 </context>
 <context>
     <name>SimSettingsPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>SIM Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM Ayarları</translation>
     </message>
     <message>
         <source>Enable SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN&apos;ini etkinleştir</translation>
     </message>
     <message>
         <source>Enter the current SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Mevcut SIM PIN kodunu girin</translation>
     </message>
     <message>
         <source>Disable SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN&apos;ini devre dışı bırak</translation>
     </message>
     <message>
         <source>Change SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN kodunu değiştir</translation>
     </message>
     <message numerus="yes">
         <source>You have %n remaining tries</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n deneme hakkınız kaldı</numerusform>
+            <numerusform>%n denemeleri hakkınız kaldı</numerusform>
         </translation>
     </message>
     <message>
         <source>Enter the new SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni SIM PIN kodunu girin</translation>
     </message>
 </context>
 <context>
     <name>SwitchManager</name>
     <message>
         <source>Flight Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Uçuş modu</translation>
     </message>
     <message>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Hücresel</translation>
     </message>
 </context>
 <context>
     <name>WifiConnectionEditorPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod</translation>
     </message>
     <message>
         <source>Infrastructure</source>
-        <translation type="unfinished"></translation>
+        <translation>Altyapı</translation>
     </message>
     <message>
         <source>Ad-Hoc</source>
-        <translation type="unfinished"></translation>
+        <translation>Özel</translation>
     </message>
     <message>
         <source>Access Point</source>
-        <translation type="unfinished"></translation>
+        <translation>Yönlendirici</translation>
     </message>
 </context>
 <context>
     <name>WifiDevicePane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>DURUM</translation>
     </message>
     <message>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>HAREKETLER</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantıyı kes</translation>
     </message>
     <message>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Cihaz</translation>
     </message>
     <message>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı kesildi</translation>
     </message>
     <message>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Yanlış oldu</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilinmeyen</translation>
     </message>
     <message>
         <source>0 Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>0 Cihazler</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlandı</translation>
     </message>
     <message>
         <source>Select Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Seçin</translation>
     </message>
     <message>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Hatası</translation>
     </message>
     <message>
         <source>Connecting to %1 failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 bağlantısı başarısız oldu çünkü %2.</translation>
     </message>
     <message>
         <source>the network</source>
-        <translation type="unfinished"></translation>
+        <translation>ağ</translation>
     </message>
     <message>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <source>Network Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Çözüm</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>MetinEtiketi</translation>
     </message>
     <message>
         <source>Enable Tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Tethering&apos;i Etkinleştir</translation>
     </message>
     <message>
         <source>TETHERING</source>
