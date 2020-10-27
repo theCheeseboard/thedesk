@@ -711,18 +711,20 @@
         <source>Use Tethering to share your internet connection with other devices over Wi-Fi.
 
 **While Tethering is active, you won&apos;t be able to connect to the Internet with Wi-Fi, so you&apos;ll need to make sure you have an alternate way to connect to the Internet.**</source>
-        <translation type="unfinished"></translation>
+        <translation>İnternet bağlantınızı Wi-Fi üzerinden diğer cihazlarla paylaşmak için Tethering&apos;i kullanın.
+
+ ** Tethering etkinken, Wi-Fi ile İnternet&apos;e bağlanamayacaksınız, bu nedenle İnternet&apos;e bağlanmak için alternatif bir yolunuz olduğundan emin olmanız gerekir. **</translation>
     </message>
     <message>
         <source>Couldn&apos;t switch off tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>İnternet paylaşımı kapatılamadı</translation>
     </message>
 </context>
 <context>
     <name>WiredChunkUpdater</name>
     <message>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation>Kablolu</translation>
     </message>
 </context>
 <context>
