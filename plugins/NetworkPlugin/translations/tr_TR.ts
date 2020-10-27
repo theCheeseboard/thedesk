@@ -731,209 +731,209 @@
     <name>WiredDevicePane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>DURUM</translation>
     </message>
     <message>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Cihaz</translation>
     </message>
     <message>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>HAREKETLER</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlan</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantıyı kes</translation>
     </message>
     <message>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation>Kablolu</translation>
     </message>
     <message>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı kesildi</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlandı</translation>
     </message>
     <message>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Yanlış oldu</translation>
     </message>
     <message>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Hatası</translation>
     </message>
     <message>
         <source>Connecting to the network failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağa bağlanma başarısız oldu çünkü %2.</translation>
     </message>
     <message>
         <source>Router</source>
-        <translation type="unfinished"></translation>
+        <translation>Yönlendirici</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanım dışı</translation>
     </message>
     <message>
         <source>Connect an Ethernet cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir Ethernet kablosu bağlayın.</translation>
     </message>
     <message>
         <source>This network is unavailable because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu ağ kullanılamıyor çünkü %2.</translation>
     </message>
 </context>
 <context>
     <name>WirelessNetworkListDelegate</name>
     <message>
         <source>In Range</source>
-        <translation type="unfinished"></translation>
+        <translation>Aralıkta</translation>
     </message>
     <message>
         <source>Out of range</source>
-        <translation type="unfinished"></translation>
+        <translation>Menzil dışında</translation>
     </message>
     <message>
         <source>Not Secured</source>
-        <translation type="unfinished"></translation>
+        <translation>Güvenli Değil</translation>
     </message>
     <message>
         <source>Secured with Static WEP</source>
-        <translation type="unfinished"></translation>
+        <translation>Statik WEP ile güvenlik altına alındı</translation>
     </message>
     <message>
         <source>Secured with Dynamic WEP</source>
-        <translation type="unfinished"></translation>
+        <translation>Dinamik WEP ile güvenlik altına alındı</translation>
     </message>
     <message>
         <source>Secured with LEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>LEAP ile güvenlik altına alındı</translation>
     </message>
     <message>
         <source>Secured with WPA-PSK</source>
-        <translation type="unfinished"></translation>
+        <translation>WPA-PSK ile güvenlik altına alındı</translation>
     </message>
     <message>
         <source>Secured with WPA Enterprise</source>
-        <translation type="unfinished"></translation>
+        <translation>WPA Enterprise ile güvenlik altına alındı</translation>
     </message>
     <message>
         <source>Secured with WPA2-PSK</source>
-        <translation type="unfinished"></translation>
+        <translation>WPA2-PSK ile güvenlik altına alındı</translation>
     </message>
     <message>
         <source>Secured with WPA2 Enterprise</source>
-        <translation type="unfinished"></translation>
+        <translation>WPA2 Enterprise ile güvenlik altına alındı</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlandı</translation>
     </message>
     <message>
         <source>Secured with WPA3</source>
-        <translation type="unfinished"></translation>
+        <translation>WPA3 ile güvenlik altına alındı</translation>
     </message>
 </context>
 <context>
     <name>WirelessNetworkSelectionPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Connect to a Wireless Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir Kablosuz Ağa Bağlanın</translation>
     </message>
     <message>
         <source>KNOWN NETWORKS</source>
-        <translation type="unfinished"></translation>
+        <translation>BİLİNEN AĞLAR</translation>
     </message>
     <message>
         <source>NEW NETWORKS</source>
-        <translation type="unfinished"></translation>
+        <translation>YENİ AĞLAR</translation>
     </message>
     <message>
         <source>New Manual Connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Manuel Bağlantı</translation>
     </message>
     <message>
         <source>For network %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ 1% için</translation>
     </message>
     <message>
         <source>Forget Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağı Unut</translation>
     </message>
     <message>
         <source>Network Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ güvenliği</translation>
     </message>
     <message>
         <source>Unknown Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilinmeyen Güvenlik</translation>
     </message>
     <message>
         <source>Not sure how to connect to this network. Use manual setup to connect to it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu ağa nasıl bağlanacağınızdan emin değilim. Bağlanmak için manuel kurulumu kullanın.</translation>
     </message>
     <message>
         <source>Enter the security key</source>
-        <translation type="unfinished"></translation>
+        <translation>Güvenlik anahtarını girin</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>MetinEtiketi</translation>
     </message>
     <message>
         <source>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</source>
-        <translation type="unfinished"></translation>
+        <translation>EAP yöntemini seçin. Neyi seçeceğinizi bilmiyorsanız, ayrıntılar için sistem yöneticinize başvurun.</translation>
     </message>
     <message>
         <source>TLS</source>
-        <translation type="unfinished"></translation>
+        <translation>TLS</translation>
     </message>
     <message>
         <source>LEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>LEAP</translation>
     </message>
     <message>
         <source>PWD</source>
-        <translation type="unfinished"></translation>
+        <translation>PWD</translation>
     </message>
     <message>
         <source>FAST</source>
-        <translation type="unfinished"></translation>
+        <translation>HIZLI</translation>
     </message>
     <message>
         <source>TTLS</source>
-        <translation type="unfinished"></translation>
+        <translation>TTLS</translation>
     </message>
     <message>
         <source>PEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>PEAP</translation>
     </message>
     <message>
         <source>Wireless</source>
-        <translation type="unfinished"></translation>
+        <translation>Kablosuz</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Düzenle</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlan</translation>
     </message>
 </context>
 </TS>
