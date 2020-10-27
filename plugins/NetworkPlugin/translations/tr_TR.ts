@@ -689,23 +689,23 @@
     </message>
     <message>
         <source>TETHERING</source>
-        <translation type="unfinished"></translation>
+        <translation>TETHERING</translation>
     </message>
     <message>
         <source>Set Tethering Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>İnternet Bağlantısı Ayarlarını Yapın</translation>
     </message>
     <message>
         <source>Couldn&apos;t configure tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Tethering yapılandırılamadı</translation>
     </message>
     <message>
         <source>Tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>İnternet paylaşımı</translation>
     </message>
     <message>
         <source>Active</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktif</translation>
     </message>
     <message>
         <source>Use Tethering to share your internet connection with other devices over Wi-Fi.
