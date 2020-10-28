@@ -9,13 +9,13 @@ Source0:        https://github.com/vicr123/thedesk/archive/%{version}.tar.gz
 
 
 %if 0%{?fedora} == 32
-BuildRequires:  make qt5-devel the-libs-devel libtdesktopenvironment-devel libX11-devel libXi-devel xorg-x11-drv-libinput-devel kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel pulseaudio-qt-devel polkit-qt5-devel libtwebservices-devel qt5-qtmultimedia-devel qt5-qtquickcontrols2-devel
-Requires:       qt5 kwin the-libs libtdesktopenvironment libX11 libXi kf5-networkmanager-qt kf5-modemmanager-qt pulseaudio-qt accountsservice contemporary-widgets contemporary-icons ttf-contemporary polkit-qt5 libtwebservices qt5-qtmultimedia qt5-qtquickcontrols2
+BuildRequires:  make qt5-devel the-libs-devel libtdesktopenvironment-devel libX11-devel libXi-devel xorg-x11-drv-libinput-devel kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel pulseaudio-qt-devel polkit-qt5-devel libtwebservices-devel qt5-qtmultimedia-devel qt5-qtquickcontrols2-devel qt5-qtx11extras-devel
+Requires:       qt5 kwin the-libs libtdesktopenvironment libX11 libXi kf5-networkmanager-qt kf5-modemmanager-qt pulseaudio-qt accountsservice contemporary-widgets contemporary-icons ttf-contemporary polkit-qt5 libtwebservices qt5-qtmultimedia qt5-qtquickcontrols2 qt5-qtx11extras
 %endif
 
 %if 0%{?fedora} >= 33
-BuildRequires:  make qt5-qtbase-devel the-libs-devel libtdesktopenvironment-devel libX11-devel libXi-devel xorg-x11-drv-libinput-devel kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel pulseaudio-qt-devel polkit-qt5-devel libtwebservices-devel qt5-qtmultimedia-devel qt5-qtquickcontrols2-devel qt5-linguist
-Requires:       qt5-qtbase kwin the-libs libtdesktopenvironment libX11 libXi kf5-networkmanager-qt kf5-modemmanager-qt pulseaudio-qt accountsservice contemporary-widgets contemporary-icons ttf-contemporary polkit-qt5 libtwebservices qt5-qtmultimedia qt5-qtquickcontrols2
+BuildRequires:  make qt5-qtbase-devel the-libs-devel libtdesktopenvironment-devel libX11-devel libXi-devel xorg-x11-drv-libinput-devel kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel pulseaudio-qt-devel polkit-qt5-devel libtwebservices-devel qt5-qtmultimedia-devel qt5-qtquickcontrols2-devel qt5-qtx11extras-devel qt5-linguist
+Requires:       qt5-qtbase kwin the-libs libtdesktopenvironment libX11 libXi kf5-networkmanager-qt kf5-modemmanager-qt pulseaudio-qt accountsservice contemporary-widgets contemporary-icons ttf-contemporary polkit-qt5 libtwebservices qt5-qtmultimedia qt5-qtquickcontrols2 qt5-qtx11extras
 %endif
 
 %define debug_package %{nil}
