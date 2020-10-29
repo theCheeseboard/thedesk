@@ -223,15 +223,20 @@ void CellularPane::updateState() {
             d->chunk->setIcon(signalIcon);
 
             uint modes = d->modem->modemInterface()->currentModes().allowed;
+
+
+#if MM_CHECK_VERSION(1, 14, 0)
             if (modes & MM_MODEM_MODE_5G) {
                 chunkParts.append("5G");
-            } else if (modes & MM_MODEM_MODE_4G) {
-                chunkParts.append("4G");
-            } else if (modes & MM_MODEM_MODE_3G) {
-                chunkParts.append("3G");
-            } else if (modes & MM_MODEM_MODE_2G) {
-                chunkParts.append("2G");
-            }
+            } else
+#endif
+                if (modes & MM_MODEM_MODE_4G) {
+                    chunkParts.append("4G");
+                } else if (modes & MM_MODEM_MODE_3G) {
+                    chunkParts.append("3G");
+                } else if (modes & MM_MODEM_MODE_2G) {
+                    chunkParts.append("2G");
+                }
 
             break;
     }
