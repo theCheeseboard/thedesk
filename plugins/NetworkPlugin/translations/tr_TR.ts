@@ -555,6 +555,7 @@
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
+            <numerusform>%n deneme hakkınızlar kaldı</numerusform>
         </translation>
     </message>
     <message>
