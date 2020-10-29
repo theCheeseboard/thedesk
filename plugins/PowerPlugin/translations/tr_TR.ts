@@ -15,6 +15,7 @@
         <source>%n seconds</source>
         <translation>
             <numerusform>%n saniye</numerusform>
+            <numerusform>%n saniyeleri</numerusform>
         </translation>
     </message>
     <message>
