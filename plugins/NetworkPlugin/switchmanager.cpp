@@ -71,12 +71,12 @@ SwitchManager::SwitchManager(QObject* parent) : QObject(parent) {
     });
 
     d->cellularSwitch->setTitle(tr("Cellular"));
-    d->wifiSwitch->setChecked(NetworkManager::isWwanEnabled());
+    d->cellularSwitch->setChecked(NetworkManager::isWwanEnabled());
     connect(NetworkManager::notifier(), &NetworkManager::Notifier::wwanEnabledChanged, this, [ = ](bool enabled) {
         QSignalBlocker blocker(d->cellularSwitch);
         d->cellularSwitch->setChecked(enabled);
     });
-    connect(d->wifiSwitch, &QuickSwitch::toggled, this, [ = ](bool enabled) {
+    connect(d->cellularSwitch, &QuickSwitch::toggled, this, [ = ](bool enabled) {
         d->interface->asyncCall("Set", "org.freedesktop.NetworkManager", "WwanEnabled", QVariant::fromValue(QDBusVariant(enabled)));
     });
 

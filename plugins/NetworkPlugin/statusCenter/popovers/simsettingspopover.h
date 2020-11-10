@@ -52,6 +52,12 @@ class SimSettingsPopover : public QWidget {
 
         void on_changeSimPinButton_clicked();
 
+        void on_enableCallWaitingSwitch_toggled(bool checked);
+
+        void on_callWaitingTitleLabel_backButtonClicked();
+
+        void on_callWaitingButton_clicked();
+
     signals:
         void dismissed();
 

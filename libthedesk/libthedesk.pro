@@ -38,7 +38,8 @@ SOURCES += \
     quietmodemanager.cpp \
     statemanager.cpp \
     statuscentermanager.cpp \
-    statuscenterpane.cpp
+    statuscenterpane.cpp \
+    transparentdialog.cpp
 
 HEADERS += \
     actionquickwidget.h \
@@ -60,7 +61,8 @@ HEADERS += \
     quietmodemanager.h \
     statemanager.h \
     statuscentermanager.h \
-    statuscenterpane.h
+    statuscenterpane.h \
+    transparentdialog.h
 
 # Default rules for deployment.
 unix {
@@ -80,4 +82,5 @@ FORMS += \
     actionquickwidget.ui \
     icontextchunk.ui \
     private/localeselector.ui \
-    private/quickwidgetcontainer.ui
+    private/quickwidgetcontainer.ui \
+    transparentdialog.ui

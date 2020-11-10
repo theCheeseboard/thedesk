@@ -60,7 +60,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>SIM Settings</source>
+        <source>Enter SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SIM PIN Required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter SIM PUK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SIM PUK Required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A SIM PIN is required to connect to the cellular network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A SIM PUK is required to connect to the cellular network.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modem Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable Cellular</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Cellular</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -532,10 +564,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>SIM Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enable SIM PIN</source>
         <translation type="unfinished"></translation>
     </message>
@@ -564,6 +592,58 @@
         <source>Enter the new SIM PIN</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Modem Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IMSI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>IMEI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MODEM INFORMATION</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Carrier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No SIM card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CALLS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Call Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Call Waiting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Call Waiting allows you to receive calls while another call is currently active.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t get current Call Waiting status from carrier</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SwitchManager</name>
@@ -577,6 +657,64 @@
     </message>
     <message>
         <source>Cellular</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UnlockModemPopover</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>You have %n remaining tries</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>SIM PUK REQUIRED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Confirm SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SIM PUK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New SIM PIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You&apos;ll also need to provide a new SIM PIN to set once the SIM is unlocked.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unlock SIM Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Provide the &lt;b&gt;SIM PUK&lt;/b&gt; to unlock %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Don&apos;t guess the PUK!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Once you exhaust your attempts, the SIM card will be blocked forever.
+
+You&apos;ll need to contact your carrier for a new SIM card.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

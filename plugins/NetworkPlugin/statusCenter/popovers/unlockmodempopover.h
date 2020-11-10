@@ -17,42 +17,39 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef CELLULARPANE_H
-#define CELLULARPANE_H
+#ifndef UNLOCKMODEMPOPOVER_H
+#define UNLOCKMODEMPOPOVER_H
 
 #include <QWidget>
-#include "abstractdevicepane.h"
+#include <ModemDevice>
 
 namespace Ui {
-    class CellularPane;
+    class UnlockModemPopover;
 }
 
-struct CellularPanePrivate;
-class CellularPane : public AbstractDevicePane {
+struct UnlockModemPopoverPrivate;
+class UnlockModemPopover : public QWidget {
         Q_OBJECT
 
     public:
-        explicit CellularPane(QString uni, QWidget* parent = nullptr);
-        ~CellularPane();
+        explicit UnlockModemPopover(ModemManager::ModemDevice::Ptr modem, QWidget* parent = nullptr);
+        ~UnlockModemPopover();
 
-        void updateState();
-
-        QString operatorName();
-
-    private:
-        Ui::CellularPane* ui;
-        CellularPanePrivate* d;
-
-        void unlockDevice();
-
-        // AbstractDevicePane interface
-    public:
-        QListWidgetItem* leftPaneItem();
+    signals:
+        void done();
 
     private slots:
-        void on_disconnectButton_clicked();
-        void on_simSettingsButton_clicked();
-        void on_unlockModemButton_clicked();
+        void on_simPinAcceptButton_clicked();
+
+        void on_simPinTitleLabel_backButtonClicked();
+
+        void on_simPukAcceptButton_clicked();
+
+    private:
+        Ui::UnlockModemPopover* ui;
+        UnlockModemPopoverPrivate* d;
+
+        void updatePage();
 };
 
-#endif // CELLULARPANE_H
+#endif // UNLOCKMODEMPOPOVER_H

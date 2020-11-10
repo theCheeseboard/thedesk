@@ -60,8 +60,7 @@ SOURCES += \
     systemsettings/pluginmanagement/pluginmodel.cpp \
     systemsettings/recovery/recovery.cpp \
     systemsettings/systemsettings.cpp \
-    systemsettings/systemsettingsleftpane.cpp \
-    transparentdialog.cpp
+    systemsettings/systemsettingsleftpane.cpp
 
 HEADERS += \
     background/background.h \
@@ -101,8 +100,7 @@ HEADERS += \
     systemsettings/pluginmanagement/pluginmodel.h \
     systemsettings/recovery/recovery.h \
     systemsettings/systemsettings.h \
-    systemsettings/systemsettingsleftpane.h \
-    transparentdialog.h
+    systemsettings/systemsettingsleftpane.h
 
 FORMS += \
     background/background.ui \
@@ -129,8 +127,7 @@ FORMS += \
     systemsettings/pluginmanagement/pluginmanagement.ui \
     systemsettings/recovery/recovery.ui \
     systemsettings/systemsettings.ui \
-    systemsettings/systemsettingsleftpane.ui \
-    transparentdialog.ui
+    systemsettings/systemsettingsleftpane.ui
 
 unix {
     target.path = /usr/bin/

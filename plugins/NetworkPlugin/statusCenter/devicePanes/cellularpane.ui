@@ -250,6 +250,13 @@
            </layout>
           </item>
           <item>
+           <widget class="QPushButton" name="unlockModemButton">
+            <property name="text">
+             <string notr="true">Enter SIM PIN</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="connectButton">
             <property name="text">
              <string>Connect</string>
@@ -266,7 +273,7 @@
           <item>
            <widget class="QPushButton" name="simSettingsButton">
             <property name="text">
-             <string>SIM Settings</string>
+             <string>Modem Settings</string>
             </property>
            </widget>
           </item>

@@ -20,16 +20,21 @@
 #include "cellularpane.h"
 #include "ui_cellularpane.h"
 
+#include <QAction>
 #include <tsettings.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <hudmanager.h>
 #include <barmanager.h>
 #include <tpopover.h>
+#include <tnotification.h>
+#include <transparentdialog.h>
+#include "../popovers/unlockmodempopover.h"
 #include "../popovers/simsettingspopover.h"
 #include "common.h"
 
 #include <icontextchunk.h>
+#include <actionquickwidget.h>
 
 #include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/ModemDevice>
@@ -47,6 +52,8 @@ struct CellularPanePrivate {
 
     tSettings settings;
     NetworkManager::Device::State oldState;
+
+    bool pinNotificationSent = false;
 };
 
 CellularPane::CellularPane(QString uni, QWidget* parent) :
@@ -70,6 +77,22 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
     d->item = new QListWidgetItem();
     d->device = NetworkManager::findNetworkInterface(uni).staticCast<NetworkManager::ModemDevice>();
     d->modem = ModemManager::findModemDevice(d->device->udi());
+
+    ActionQuickWidget* quickWidget = new ActionQuickWidget(d->chunk);
+    QAction* enableDisableCellularAction = quickWidget->addAction(QIcon::fromTheme("network-cellular"), "", [ = ] {
+        NetworkManager::setWwanEnabled(!NetworkManager::isWwanEnabled());
+    });
+    d->chunk->setQuickWidget(quickWidget);
+
+    auto updateWwanEnabled = [ = ](bool enabled) {
+        if (enabled) {
+            enableDisableCellularAction->setText(tr("Disable Cellular"));
+        } else {
+            enableDisableCellularAction->setText(tr("Enable Cellular"));
+        }
+    };
+    connect(NetworkManager::notifier(), &NetworkManager::Notifier::wwanEnabledChanged, this, updateWwanEnabled);
+    updateWwanEnabled(NetworkManager::isWwanEnabled());
 
     d->item->setText(this->operatorName());
     ui->titleLabel->setText(this->operatorName());
@@ -117,6 +140,7 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
 
     connect(d->modem->modemInterface().data(), &ModemManager::Modem::signalQualityChanged, this, &CellularPane::updateState);
     connect(d->modem->modemInterface().data(), &ModemManager::Modem::currentModesChanged, this, &CellularPane::updateState);
+    connect(d->modem->modemInterface().data(), &ModemManager::Modem::unlockRequiredChanged, this, &CellularPane::updateState);
 
     StateManager::barManager()->addChunk(d->chunk);
 }
@@ -134,6 +158,8 @@ void CellularPane::updateState() {
     ui->deviceIcon->setPixmap(QIcon::fromTheme("computer").pixmap(SC_DPI_T(QSize(96, 96), QSize)));
     ui->routerIcon->setPixmap(signalIcon.pixmap(SC_DPI_T(QSize(96, 96), QSize)));
     ui->routerName->setText(this->operatorName());
+
+    ui->unlockModemButton->setVisible(false);
 
     QStringList chunkParts;
     chunkParts.append(this->operatorName());
@@ -241,6 +267,68 @@ void CellularPane::updateState() {
             break;
     }
 
+    MMModemLock unlockRequired = d->modem->modemInterface()->unlockRequired();
+    ModemManager::UnlockRetriesMap retries = d->modem->modemInterface()->unlockRetries();
+    switch (unlockRequired) {
+        case MM_MODEM_LOCK_SIM_PIN: {
+            ui->unlockModemButton->setText(tr("Enter SIM PIN"));
+            ui->unlockModemButton->setVisible(true);
+            chunkParts.append(tr("SIM PIN Required"));
+            d->chunk->setIcon(QIcon::fromTheme("sim-card"));
+            ui->connectButton->setVisible(false);
+
+            ui->errorFrame->setTitle(tr("SIM PIN Required"));
+
+            QString reasonText = tr("A SIM PIN is required to connect to the cellular network.");
+            ui->errorFrame->setText(reasonText);
+            ui->errorFrame->setState(tStatusFrame::Error);
+            ui->errorFrame->setVisible(true);
+
+            if (!d->pinNotificationSent) {
+                tNotification* notification = new tNotification();
+                notification->setSummary(tr("SIM PIN Required"));
+                notification->setText(reasonText);
+                notification->insertAction(QStringLiteral("unlock"), tr("Enter SIM PIN"));
+                connect(notification, &tNotification::actionClicked, this, [ = ](QString key) {
+                    if (key == QStringLiteral("unlock")) unlockDevice();
+                });
+                notification->post();
+                d->pinNotificationSent = true;
+            }
+            break;
+        }
+        case MM_MODEM_LOCK_SIM_PUK: {
+            ui->unlockModemButton->setText(tr("Enter SIM PUK"));
+            ui->unlockModemButton->setVisible(true);
+            chunkParts.append(tr("SIM PUK Required"));
+            d->chunk->setIcon(QIcon::fromTheme("sim-card"));
+            ui->connectButton->setVisible(false);
+
+            ui->errorFrame->setTitle(tr("SIM PUK Required"));
+
+            QString reasonText = tr("A SIM PUK is required to connect to the cellular network.");
+            ui->errorFrame->setText(reasonText);
+            ui->errorFrame->setState(tStatusFrame::Error);
+            ui->errorFrame->setVisible(true);
+
+            if (!d->pinNotificationSent) {
+                tNotification* notification = new tNotification();
+                notification->setSummary(tr("SIM PUK Required"));
+                notification->setText(reasonText);
+                notification->insertAction(QStringLiteral("unlock"), tr("Enter SIM PUK"));
+                connect(notification, &tNotification::actionClicked, this, [ = ](QString key) {
+                    if (key == QStringLiteral("unlock")) unlockDevice();
+                });
+                notification->post();
+                d->pinNotificationSent = true;
+            }
+            break;
+        }
+        default:
+            ui->unlockModemButton->setVisible(false);
+            d->pinNotificationSent = false;
+    }
+
     d->oldState = stateReason.state();
     d->chunk->setText(chunkParts.join(" · "));
 }
@@ -252,6 +340,29 @@ QString CellularPane::operatorName() {
     return tr("Cellular");
 }
 
+void CellularPane::unlockDevice() {
+    TransparentDialog* dialog = new TransparentDialog();
+    dialog->setWindowFlag(Qt::FramelessWindowHint);
+    dialog->setWindowFlag(Qt::WindowStaysOnTopHint);
+    dialog->showFullScreen();
+
+    QTimer::singleShot(500, [ = ] {
+        UnlockModemPopover* popoverContents = new UnlockModemPopover(d->modem);
+
+        tPopover* popover = new tPopover(popoverContents);
+        popover->setPopoverSide(tPopover::Bottom);
+        popover->setPopoverWidth(SC_DPI(600));
+        popover->setPerformBlur(false);
+        connect(popoverContents, &UnlockModemPopover::done, popover, &tPopover::dismiss);
+        connect(popover, &tPopover::dismissed, popoverContents, &UnlockModemPopover::deleteLater);
+        connect(popover, &tPopover::dismissed, [ = ] {
+            popover->deleteLater();
+            dialog->deleteLater();
+            popoverContents->deleteLater();
+        });
+        popover->show(dialog);
+    });
+}
 
 QListWidgetItem* CellularPane::leftPaneItem() {
     return d->item;
@@ -269,4 +380,8 @@ void CellularPane::on_simSettingsButton_clicked() {
     connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
     connect(popover, &tPopover::dismissed, simSettings, &SimSettingsPopover::deleteLater);
     popover->show(this->window());
+}
+
+void CellularPane::on_unlockModemButton_clicked() {
+    unlockDevice();
 }

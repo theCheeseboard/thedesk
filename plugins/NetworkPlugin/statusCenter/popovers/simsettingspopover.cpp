@@ -20,6 +20,8 @@
 #include "simsettingspopover.h"
 #include "ui_simsettingspopover.h"
 
+#include <ttoast.h>
+
 struct SimSettingsPopoverPrivate {
     ModemManager::ModemDevice::Ptr modem;
 
@@ -41,8 +43,21 @@ SimSettingsPopover::SimSettingsPopover(ModemManager::ModemDevice::Ptr modem, QWi
     ui->titleLabel->setBackButtonShown(true);
     ui->currentPinTitleLabel->setBackButtonShown(true);
     ui->changeSimPinTitleLabel->setBackButtonShown(true);
+    ui->callWaitingTitleLabel->setBackButtonShown(true);
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
     ui->spinner->setFixedSize(SC_DPI_T(QSize(32, 32), QSize));
+
+    ui->modemImeiLabel->setText(modem->modemInterface()->equipmentIdentifier());
+    ui->callWaitingSpinner->setVisible(false);
+    ui->callWaitingSpinner->setFixedSize(SC_DPI_T(QSize(16, 16), QSize));
+
+    if (modem->sim()) {
+        ui->modemImsiLabel->setText(modem->sim()->imsi());
+        ui->modemCarrierLabel->setText(modem->sim()->operatorName());
+    } else {
+        ui->modemImeiLabel->setText(tr("No SIM card"));
+        ui->modemCarrierLabel->setText(tr("No SIM card"));
+    }
 }
 
 SimSettingsPopover::~SimSettingsPopover() {
@@ -127,4 +142,50 @@ void SimSettingsPopover::on_changeSimPinButton_clicked() {
     ui->currentPinTitleLabel->setText(tr("Change SIM PIN"));
     ui->changeSimPinOperatorName->setText(d->modem->sim()->operatorName());
     ui->stackedWidget->setCurrentWidget(ui->changeSimPinPage);
+}
+
+void SimSettingsPopover::on_enableCallWaitingSwitch_toggled(bool checked) {
+    this->setEnabled(false);
+    ui->callWaitingSpinner->setVisible(true);
+
+    QString uni = d->modem->uni();
+    QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.ModemManager1", uni, "org.freedesktop.ModemManager1.Modem.Voice", "CallWaitingSetup");
+    message.setArguments({checked});
+
+    QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(message));
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+        this->setEnabled(true);
+        ui->callWaitingSpinner->setVisible(false);
+        watcher->deleteLater();
+    });
+}
+
+void SimSettingsPopover::on_callWaitingTitleLabel_backButtonClicked() {
+    ui->stackedWidget->setCurrentWidget(ui->startPage);
+}
+
+void SimSettingsPopover::on_callWaitingButton_clicked() {
+    ui->stackedWidget->setCurrentWidget(ui->spinnerPage);
+
+
+    QString uni = d->modem->uni();
+    QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.ModemManager1", uni, "org.freedesktop.ModemManager1.Modem.Voice", "CallWaitingQuery");
+
+    QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(message));
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+        QSignalBlocker blocker(ui->enableCallWaitingSwitch);
+
+        if (watcher->isError()) {
+            ui->stackedWidget->setCurrentWidget(ui->startPage);
+
+            tToast* toast = new tToast(this);
+            toast->setTitle(tr("Error"));
+            toast->setText(tr("Couldn't get current Call Waiting status from carrier"));
+            toast->show(this);
+        } else {
+            ui->stackedWidget->setCurrentWidget(ui->callWaitingPage);
+            ui->enableCallWaitingSwitch->setChecked(watcher->reply().arguments().first().toBool());
+        }
+        watcher->deleteLater();
+    });
 }

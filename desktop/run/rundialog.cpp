@@ -56,11 +56,12 @@ void RunDialog::initialise() {
             tPopover* popover = new tPopover(popoverContents);
             popover->setPopoverSide(tPopover::Bottom);
             popover->setPopoverWidth(popoverContents->sizeHint().height());
+            popover->setPerformBlur(false);
             connect(popoverContents, &RunDialog::done, popover, &tPopover::dismiss);
             connect(popover, &tPopover::dismissed, popoverContents, &RunDialog::deleteLater);
             connect(popover, &tPopover::dismissed, [ = ] {
-                dialog->deleteLater();
                 popover->deleteLater();
+                dialog->deleteLater();
             });
             popover->show(dialog);
             popoverContents->setFocus();
