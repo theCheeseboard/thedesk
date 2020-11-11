@@ -197,17 +197,26 @@ void CellularPane::updateState() {
             ui->rightStateLine->setEnabled(false);
             ui->disconnectButton->setVisible(false);
             ui->connectButton->setVisible(false);
-
             d->device->setAutoconnect(false);
-            ui->errorFrame->setTitle(tr("Unavailable"));
 
-            QString reasonText;
-            reasonText = tr("This network is unavailable because %2.");
-            reasonText = reasonText.arg(Common::stateChangeReasonToString(stateReason.reason()));
-            ui->errorFrame->setText(reasonText);
+            if (d->modem->sim()->uni() == "/") {
+                ui->errorFrame->setTitle(tr("No SIM Card"));
+                ui->errorFrame->setText(tr("Insert a SIM card to connect to cellular services."));
+                chunkParts.clear();
+                chunkParts.append(tr("No SIM"));
+                d->chunk->setIcon(QIcon::fromTheme("sim-card-none"));
+            } else {
+                ui->errorFrame->setTitle(tr("Unavailable"));
+
+                QString reasonText;
+                reasonText = tr("This network is unavailable because %2.");
+                reasonText = reasonText.arg(Common::stateChangeReasonToString(stateReason.reason()));
+                ui->errorFrame->setText(reasonText);
+                d->chunk->setIcon(signalErrorIcon);
+            }
+
             ui->errorFrame->setState(tStatusFrame::Warning);
             ui->errorFrame->setVisible(true);
-            d->chunk->setIcon(signalErrorIcon);
             break;
         }
         case NetworkManager::Device::Disconnected:

@@ -54,12 +54,26 @@ UnlockModemPopover::~UnlockModemPopover() {
 
 void UnlockModemPopover::updatePage() {
     MMModemLock unlockRequired = d->modem->modemInterface()->unlockRequired();
-    ModemManager::UnlockRetriesMap retries = d->modem->modemInterface()->unlockRetries();
+    ModemManager::UnlockRetriesMap retries;
 
+    QDBusMessage unlockRetriesMessage = QDBusMessage::createMethodCall("org.freedesktop.ModemManager1", d->modem->uni(), "org.freedesktop.DBus.Properties", "Get");
+    unlockRetriesMessage.setArguments({"org.freedesktop.ModemManager1.Modem", "UnlockRetries"});
+    QDBusMessage unlockRetriesReply = QDBusConnection::systemBus().call(unlockRetriesMessage);
+    QDBusArgument unlockRetriesArg = unlockRetriesReply.arguments().first().value<QDBusVariant>().variant().value<QDBusArgument>();
+    unlockRetriesArg >> retries;
+
+    if (retries.value(MM_MODEM_LOCK_SIM_PIN) == 1) {
+        ui->pinRetryCount->setText(tr("If you enter the incorrect PIN again, your SIM card will be PUK locked, and you'll need to contact your carrier."));
+    } else {
+        ui->pinRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PIN)));
+    }
+    if (retries.value(MM_MODEM_LOCK_SIM_PUK) == 1) {
+        ui->pukRetryCount->setText(tr("This is your final chance to get the PUK right before you'll need to obtain a new SIM card from your carrier."));
+    } else {
+        ui->pukRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PUK)));
+    }
     ui->simPinOperatorName->setText(d->modem->sim()->operatorName());
     ui->pukDescription->setText(tr("Contact your carrier to obtain the <b>SIM PUK</b>, and enter it below to unlock %1.").arg(QLocale().quoteString(d->modem->sim()->operatorName())));
-    ui->pinRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PIN)));
-    ui->pukRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PUK)));
     ui->simPinBox->clear();
     ui->simPukBox->clear();
 

@@ -51,12 +51,14 @@ SimSettingsPopover::SimSettingsPopover(ModemManager::ModemDevice::Ptr modem, QWi
     ui->callWaitingSpinner->setVisible(false);
     ui->callWaitingSpinner->setFixedSize(SC_DPI_T(QSize(16, 16), QSize));
 
-    if (modem->sim()) {
+    if (modem->sim()->uni() == "/") {
+        ui->modemImsiLabel->setText(tr("No SIM card"));
+        ui->modemCarrierLabel->setText(tr("No SIM card"));
+        ui->simSettingsWidget->setVisible(false);
+    } else {
         ui->modemImsiLabel->setText(modem->sim()->imsi());
         ui->modemCarrierLabel->setText(modem->sim()->operatorName());
-    } else {
-        ui->modemImeiLabel->setText(tr("No SIM card"));
-        ui->modemCarrierLabel->setText(tr("No SIM card"));
+        ui->simSettingsWidget->setVisible(true);
     }
 }
 
@@ -124,8 +126,16 @@ void SimSettingsPopover::on_currentPinTitleLabel_backButtonClicked() {
 }
 
 void SimSettingsPopover::prepareCurrentPinPage() {
+    ModemManager::UnlockRetriesMap retries;
+
+    QDBusMessage unlockRetriesMessage = QDBusMessage::createMethodCall("org.freedesktop.ModemManager1", d->modem->uni(), "org.freedesktop.DBus.Properties", "Get");
+    unlockRetriesMessage.setArguments({"org.freedesktop.ModemManager1.Modem", "UnlockRetries"});
+    QDBusMessage unlockRetriesReply = QDBusConnection::systemBus().call(unlockRetriesMessage);
+    QDBusArgument unlockRetriesArg = unlockRetriesReply.arguments().first().value<QDBusVariant>().variant().value<QDBusArgument>();
+    unlockRetriesArg >> retries;
+
     ui->currentPinPageOperatorName->setText(d->modem->sim()->operatorName());
-    ui->pinRetryCount->setText(tr("You have %n remaining tries", nullptr, d->modem->modemInterface()->unlockRetries().value(MM_MODEM_LOCK_SIM_PIN)));
+    ui->pinRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PIN)));
     ui->stackedWidget->setCurrentWidget(ui->currentPinPage);
 }
 

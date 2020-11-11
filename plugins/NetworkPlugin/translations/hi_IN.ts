@@ -95,6 +95,18 @@
         <source>Enable Cellular</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>No SIM Card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert a SIM card to connect to cellular services.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No SIM</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Common</name>
@@ -709,6 +721,14 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     </message>
     <message>
         <source>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
