@@ -57,7 +57,7 @@ void UnlockModemPopover::updatePage() {
     ModemManager::UnlockRetriesMap retries = d->modem->modemInterface()->unlockRetries();
 
     ui->simPinOperatorName->setText(d->modem->sim()->operatorName());
-    ui->pukDescription->setText(tr("Provide the <b>SIM PUK</b> to unlock %1").arg(QLocale().quoteString(d->modem->sim()->operatorName())));
+    ui->pukDescription->setText(tr("Contact your carrier to obtain the <b>SIM PUK</b>, and enter it below to unlock %1.").arg(QLocale().quoteString(d->modem->sim()->operatorName())));
     ui->pinRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PIN)));
     ui->pukRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PUK)));
     ui->simPinBox->clear();
@@ -139,4 +139,8 @@ void UnlockModemPopover::on_simPukAcceptButton_clicked() {
         QTimer::singleShot(200, this, &UnlockModemPopover::updatePage);
         watcher->deleteLater();
     });
+}
+
+void UnlockModemPopover::on_simPukTitleLabel_backButtonClicked() {
+    emit done();
 }

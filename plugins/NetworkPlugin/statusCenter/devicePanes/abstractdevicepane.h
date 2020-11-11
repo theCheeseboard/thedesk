@@ -27,6 +27,7 @@ class AbstractDevicePane : public QWidget {
         Q_OBJECT
     public:
         explicit AbstractDevicePane(QWidget* parent = nullptr);
+        virtual ~AbstractDevicePane();
 
         virtual QListWidgetItem* leftPaneItem() = 0;
     signals:

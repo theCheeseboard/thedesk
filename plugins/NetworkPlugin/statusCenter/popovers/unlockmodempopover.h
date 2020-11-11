@@ -45,6 +45,8 @@ class UnlockModemPopover : public QWidget {
 
         void on_simPukAcceptButton_clicked();
 
+        void on_simPukTitleLabel_backButtonClicked();
+
     private:
         Ui::UnlockModemPopover* ui;
         UnlockModemPopoverPrivate* d;

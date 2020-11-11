@@ -44,6 +44,7 @@ class WifiDevicePane : public AbstractDevicePane {
         // AbstractDevicePane interface
     public:
         QListWidgetItem* leftPaneItem();
+
     private slots:
         void on_disconnectButton_clicked();
         void on_selectNetworkButton_clicked();

@@ -43,6 +43,7 @@ class WiredDevicePane : public AbstractDevicePane {
         // AbstractDevicePane interface
     public:
         QListWidgetItem* leftPaneItem();
+
     private slots:
         void on_disconnectButton_clicked();
         void on_connectButton_clicked();

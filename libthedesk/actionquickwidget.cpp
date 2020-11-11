@@ -44,6 +44,10 @@ ActionQuickWidget::~ActionQuickWidget() {
     delete d;
 }
 
+void ActionQuickWidget::addAction(QAction* action) {
+    QWidget::addAction(action);
+}
+
 QAction* ActionQuickWidget::addAction(QString text, std::function<void ()> triggered) {
     QAction* action = new QAction(text, this);
     connect(action, &QAction::triggered, this, triggered);

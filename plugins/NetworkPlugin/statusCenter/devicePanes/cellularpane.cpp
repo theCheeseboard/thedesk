@@ -42,16 +42,20 @@
 #include <Manager>
 #include <Modem>
 #include <Sim>
+#include <Modem3Gpp>
 
 struct CellularPanePrivate {
     QListWidgetItem* item;
     NetworkManager::ModemDevice::Ptr device;
     ModemManager::ModemDevice::Ptr modem;
+    ModemManager::Modem3gpp::Ptr modem3gpp;
 
     IconTextChunk* chunk;
 
     tSettings settings;
     NetworkManager::Device::State oldState;
+
+    QAction* unlockSimAction;
 
     bool pinNotificationSent = false;
 };
@@ -77,11 +81,22 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
     d->item = new QListWidgetItem();
     d->device = NetworkManager::findNetworkInterface(uni).staticCast<NetworkManager::ModemDevice>();
     d->modem = ModemManager::findModemDevice(d->device->udi());
+    d->modem3gpp = ModemManager::Modem3gpp::Ptr(new ModemManager::Modem3gpp(d->device->udi()));
 
-    ActionQuickWidget* quickWidget = new ActionQuickWidget(d->chunk);
-    QAction* enableDisableCellularAction = quickWidget->addAction(QIcon::fromTheme("network-cellular"), "", [ = ] {
+    d->unlockSimAction = new QAction(this);
+    d->unlockSimAction->setVisible(false);
+    d->unlockSimAction->setIcon(QIcon::fromTheme("sim-card"));
+    connect(d->unlockSimAction, &QAction::triggered, this, &CellularPane::unlockDevice);
+
+    QAction* enableDisableCellularAction = new QAction(this);
+    enableDisableCellularAction->setIcon(QIcon::fromTheme("network-cellular"));
+    connect(enableDisableCellularAction, &QAction::triggered, this, [ = ] {
         NetworkManager::setWwanEnabled(!NetworkManager::isWwanEnabled());
     });
+
+    ActionQuickWidget* quickWidget = new ActionQuickWidget(d->chunk);
+    quickWidget->addAction(d->unlockSimAction);
+    quickWidget->addAction(enableDisableCellularAction);
     d->chunk->setQuickWidget(quickWidget);
 
     auto updateWwanEnabled = [ = ](bool enabled) {
@@ -141,6 +156,7 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
     connect(d->modem->modemInterface().data(), &ModemManager::Modem::signalQualityChanged, this, &CellularPane::updateState);
     connect(d->modem->modemInterface().data(), &ModemManager::Modem::currentModesChanged, this, &CellularPane::updateState);
     connect(d->modem->modemInterface().data(), &ModemManager::Modem::unlockRequiredChanged, this, &CellularPane::updateState);
+    connect(d->modem3gpp.data(), &ModemManager::Modem3gpp::registrationStateChanged, this, &CellularPane::updateState);
 
     StateManager::barManager()->addChunk(d->chunk);
 }
@@ -248,21 +264,40 @@ void CellularPane::updateState() {
             ui->connectButton->setVisible(false);
             d->chunk->setIcon(signalIcon);
 
-            uint modes = d->modem->modemInterface()->currentModes().allowed;
-
+            ModemManager::Modem::AccessTechnologies accessTechnology = d->modem->modemInterface()->accessTechnologies();
 
 #if MM_CHECK_VERSION(1, 14, 0)
-            if (modes & MM_MODEM_MODE_5G) {
+            if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_5GNR) {
                 chunkParts.append("5G");
             } else
 #endif
-                if (modes & MM_MODEM_MODE_4G) {
-                    chunkParts.append("4G");
-                } else if (modes & MM_MODEM_MODE_3G) {
+                if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_LTE) {
+                    chunkParts.append("LTE");
+                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSPA_PLUS) {
+                    chunkParts.append("H+");
+                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSDPA ||
+                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSUPA ||
+                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSPA) {
+                    chunkParts.append("H");
+                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_UMTS ||
+                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EVDO0 ||
+                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EVDOA ||
+                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EVDOB) {
                     chunkParts.append("3G");
-                } else if (modes & MM_MODEM_MODE_2G) {
-                    chunkParts.append("2G");
+                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EDGE) {
+                    chunkParts.append("E");
+                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_GPRS) {
+                    chunkParts.append("G");
+                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_1XRTT) {
+                    chunkParts.append("1X");
                 }
+
+            MMModem3gppRegistrationState modem3gppRegistration = d->modem3gpp->registrationState();
+            if (modem3gppRegistration == MM_MODEM_3GPP_REGISTRATION_STATE_ROAMING ||
+                modem3gppRegistration == MM_MODEM_3GPP_REGISTRATION_STATE_ROAMING_SMS_ONLY ||
+                modem3gppRegistration == MM_MODEM_3GPP_REGISTRATION_STATE_ROAMING_CSFB_NOT_PREFERRED) {
+                chunkParts.append("R");
+            }
 
             break;
     }
@@ -283,6 +318,9 @@ void CellularPane::updateState() {
             ui->errorFrame->setText(reasonText);
             ui->errorFrame->setState(tStatusFrame::Error);
             ui->errorFrame->setVisible(true);
+
+            d->unlockSimAction->setText(tr("Enter SIM PIN"));
+            d->unlockSimAction->setVisible(true);
 
             if (!d->pinNotificationSent) {
                 tNotification* notification = new tNotification();
@@ -311,6 +349,9 @@ void CellularPane::updateState() {
             ui->errorFrame->setState(tStatusFrame::Error);
             ui->errorFrame->setVisible(true);
 
+            d->unlockSimAction->setText(tr("Enter SIM PUK"));
+            d->unlockSimAction->setVisible(true);
+
             if (!d->pinNotificationSent) {
                 tNotification* notification = new tNotification();
                 notification->setSummary(tr("SIM PUK Required"));
@@ -326,6 +367,7 @@ void CellularPane::updateState() {
         }
         default:
             ui->unlockModemButton->setVisible(false);
+            d->unlockSimAction->setVisible(false);
             d->pinNotificationSent = false;
     }
 
@@ -354,7 +396,6 @@ void CellularPane::unlockDevice() {
         popover->setPopoverWidth(SC_DPI(600));
         popover->setPerformBlur(false);
         connect(popoverContents, &UnlockModemPopover::done, popover, &tPopover::dismiss);
-        connect(popover, &tPopover::dismissed, popoverContents, &UnlockModemPopover::deleteLater);
         connect(popover, &tPopover::dismissed, [ = ] {
             popover->deleteLater();
             dialog->deleteLater();

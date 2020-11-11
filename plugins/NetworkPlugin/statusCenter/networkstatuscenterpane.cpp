@@ -124,16 +124,15 @@ void NetworkStatusCenterPane::deviceAdded(QString uni) {
             d->visibleUnis.append(uni);
             d->leftPane->addItem(devicePane->leftPaneItem());
             ui->devicesStack->addWidget(devicePane);
-            d->devicePanes.insert(uni, devicePane);
         } else if (!device->managed() && d->visibleUnis.contains(uni)) {
             d->visibleUnis.removeOne(uni);
             d->leftPane->removeItem(devicePane->leftPaneItem());
             ui->devicesStack->removeWidget(devicePane);
-            d->devicePanes.remove(uni);
         }
     };
     connect(device.data(), &NetworkManager::Device::managedChanged, this, managedChanged);
     managedChanged();
+    d->devicePanes.insert(uni, devicePane);
 }
 
 void NetworkStatusCenterPane::deviceRemoved(QString uni) {
@@ -144,6 +143,7 @@ void NetworkStatusCenterPane::deviceRemoved(QString uni) {
         ui->devicesStack->removeWidget(devicePane);
         d->visibleUnis.removeOne(uni);
     }
+
     devicePane->deleteLater();
     d->devicePanes.remove(uni);
 }

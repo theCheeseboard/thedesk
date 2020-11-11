@@ -708,10 +708,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Provide the &lt;b&gt;SIM PUK&lt;/b&gt; to unlock %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Don&apos;t guess the PUK!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -719,6 +715,10 @@
         <source>Once you exhaust your attempts, the SIM card will be blocked forever.
 
 You&apos;ll need to contact your carrier for a new SIM card.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

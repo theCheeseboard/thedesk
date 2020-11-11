@@ -36,6 +36,7 @@ class ActionQuickWidget : public QWidget {
         explicit ActionQuickWidget(Chunk* parent = nullptr);
         ~ActionQuickWidget();
 
+        void addAction(QAction* action);
         QAction* addAction(QString text, std::function<void()> triggered);
         QAction* addAction(QIcon icon, QString text, std::function<void()> triggered);
 

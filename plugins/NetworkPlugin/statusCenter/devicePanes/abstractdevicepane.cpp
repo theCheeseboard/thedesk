@@ -19,7 +19,10 @@
  * *************************************/
 #include "abstractdevicepane.h"
 
-AbstractDevicePane::AbstractDevicePane(QWidget *parent) : QWidget(parent)
-{
+AbstractDevicePane::AbstractDevicePane(QWidget* parent) : QWidget(parent) {
+
+}
+
+AbstractDevicePane::~AbstractDevicePane() {
 
 }

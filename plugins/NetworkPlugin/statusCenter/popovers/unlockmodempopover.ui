@@ -32,7 +32,7 @@
    <item>
     <widget class="tStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="loadingPage">
       <layout class="QGridLayout" name="gridLayout">
@@ -422,7 +422,8 @@
              <string>Unlock SIM Card</string>
             </property>
             <property name="icon">
-             <iconset theme="sim-card"/>
+             <iconset theme="sim-card">
+              <normaloff>.</normaloff>.</iconset>
             </property>
            </widget>
           </item>
