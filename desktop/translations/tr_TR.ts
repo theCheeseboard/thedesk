@@ -24,95 +24,105 @@
         <translation>Destek</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="255"/>
+        <location filename="../systemsettings/about/about.ui" line="248"/>
+        <source>Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/about.ui" line="317"/>
         <source>Processor</source>
         <translation>İşlemci</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="262"/>
+        <location filename="../systemsettings/about/about.ui" line="330"/>
+        <source>THIS DEVICE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/about.ui" line="344"/>
         <source>Available Memory</source>
         <translation>Kullanılabilir Hafıza</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="269"/>
+        <location filename="../systemsettings/about/about.ui" line="255"/>
         <source>Available Swap</source>
         <translation>Mevcut Takas</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="276"/>
+        <location filename="../systemsettings/about/about.ui" line="296"/>
         <source>Qt Version</source>
         <translation>Qt Sürümü</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="283"/>
+        <location filename="../systemsettings/about/about.ui" line="303"/>
         <source>Kernel Version</source>
         <translation>Çekirdek sürümü</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="296"/>
-        <source>HARDWARE AND SOFTWARE</source>
-        <translation>DONANIM VE YAZILIM</translation>
+        <location filename="../systemsettings/about/about.ui" line="351"/>
+        <source>Change Device Name</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="398"/>
+        <location filename="../systemsettings/about/about.ui" line="422"/>
         <source>Desktop Environment</source>
         <translation>Masaüstü Ortamı</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="428"/>
+        <location filename="../systemsettings/about/about.ui" line="452"/>
         <source>Website</source>
         <translation>İnternet sitesi</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="439"/>
+        <location filename="../systemsettings/about/about.ui" line="463"/>
         <source>File Bug</source>
         <translation>Dosya Hatası</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="450"/>
+        <location filename="../systemsettings/about/about.ui" line="474"/>
         <source>Sources</source>
         <translation>Kaynaklar</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="461"/>
+        <location filename="../systemsettings/about/about.ui" line="485"/>
         <source>View Debug Log</source>
         <translation>Hata Ayıklama Günlüğünü Görüntüle</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="417"/>
+        <location filename="../systemsettings/about/about.ui" line="441"/>
         <source>Acknowledgements</source>
         <translation>Alındılar</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="67"/>
-        <location filename="../systemsettings/about/about.cpp" line="68"/>
-        <location filename="../systemsettings/about/about.cpp" line="69"/>
-        <location filename="../systemsettings/about/about.cpp" line="113"/>
+        <location filename="../systemsettings/about/about.cpp" line="77"/>
+        <location filename="../systemsettings/about/about.cpp" line="78"/>
+        <location filename="../systemsettings/about/about.cpp" line="79"/>
+        <location filename="../systemsettings/about/about.cpp" line="123"/>
         <source>Unknown</source>
         <translation>Bilinmeyen</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="119"/>
+        <location filename="../systemsettings/about/about.cpp" line="132"/>
         <source>theDesk %1 - Blueprint</source>
         <translation>theDesk %1 - Blueprint</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="120"/>
+        <location filename="../systemsettings/about/about.cpp" line="133"/>
         <source>You compiled theDesk on %1</source>
         <translation>theDesk %1 üzerinde derlediniz</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="122"/>
+        <location filename="../systemsettings/about/about.cpp" line="135"/>
         <source>theDesk %1</source>
         <translation>theDesk %1</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="126"/>
+        <location filename="../systemsettings/about/about.cpp" line="139"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
         <translation>Telif hakkı © Victor Tran %1. GNU Genel Kamu Lisansı, sürüm 3 veya üzeri koşulları kapsamında lisanslanmıştır.</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="159"/>
+        <location filename="../systemsettings/about/about.cpp" line="173"/>
         <source>About</source>
         <translation>Hakkında</translation>
     </message>
@@ -244,6 +254,39 @@
         <location filename="../background/background.cpp" line="355"/>
         <source>Select Background</source>
         <translation>Arkaplan seç</translation>
+    </message>
+</context>
+<context>
+    <name>ChangeHostnamePopover</name>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Form</translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="35"/>
+        <source>Change Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="62"/>
+        <source>New Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="69"/>
+        <source>This device name is used over the network to identify this device. It is also used to identify this device over Bluetooth.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="79"/>
+        <source>Network Compatible Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="95"/>
+        <source>Rename this Device</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

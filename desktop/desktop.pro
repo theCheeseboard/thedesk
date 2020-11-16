@@ -54,6 +54,7 @@ SOURCES += \
     statuscenter/statuscenterquickswitch.cpp \
     systemsettings/about/about.cpp \
     systemsettings/about/acknowledgements.cpp \
+    systemsettings/about/changehostnamepopover.cpp \
     systemsettings/pluginmanagement/managepluginpopover.cpp \
     systemsettings/pluginmanagement/pluginitemdelegate.cpp \
     systemsettings/pluginmanagement/pluginmanagement.cpp \
@@ -94,6 +95,7 @@ HEADERS += \
     statuscenter/statuscenterquickswitch.h \
     systemsettings/about/about.h \
     systemsettings/about/acknowledgements.h \
+    systemsettings/about/changehostnamepopover.h \
     systemsettings/pluginmanagement/managepluginpopover.h \
     systemsettings/pluginmanagement/pluginitemdelegate.h \
     systemsettings/pluginmanagement/pluginmanagement.h \
@@ -123,6 +125,7 @@ FORMS += \
     statuscenter/statuscenterquickswitch.ui \
     systemsettings/about/about.ui \
     systemsettings/about/acknowledgements.ui \
+    systemsettings/about/changehostnamepopover.ui \
     systemsettings/pluginmanagement/managepluginpopover.ui \
     systemsettings/pluginmanagement/pluginmanagement.ui \
     systemsettings/recovery/recovery.ui \

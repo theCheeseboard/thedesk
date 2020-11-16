@@ -23,17 +23,27 @@
 #include <QIcon>
 #include <QFile>
 #include <QBuffer>
+#include <QDBusInterface>
+#include <QHostInfo>
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <sys/sysinfo.h>
 #include <tpopover.h>
 #include <tlogger.h>
+#include "changehostnamepopover.h"
 #include "acknowledgements.h"
+
+struct AboutPrivate {
+    QDBusInterface* hostnamed;
+};
 
 About::About() :
     StatusCenterPane(),
     ui(new Ui::About) {
     ui->setupUi(this);
+
+    d = new AboutPrivate();
+    d->hostnamed = new QDBusInterface("org.freedesktop.hostname1", "/org/freedesktop/hostname1", "org.freedesktop.hostname1", QDBusConnection::systemBus());
 
     ui->titleLabel->setBackButtonIsMenu(true);
     ui->titleLabel->setBackButtonShown(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
@@ -115,6 +125,9 @@ About::About() :
         ui->processorType->setText(shownCpus.join(" · "));
     }
 
+    QDBusConnection::systemBus().connect("org.freedesktop.hostname1", "/org/freedesktop/hostname1", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(updateHostname()));
+    updateHostname();
+
 #ifdef BLUEPRINT
     ui->versionLabel->setText(tr("theDesk %1 - Blueprint").arg("1.0"));
     ui->compileDate->setText(tr("You compiled theDesk on %1").arg(__DATE__));
@@ -137,6 +150,7 @@ About::About() :
 }
 
 About::~About() {
+    delete d;
     delete ui;
 }
 
@@ -180,4 +194,22 @@ void About::on_acknowledgementsButton_clicked() {
 void About::on_debugLogButton_clicked() {
     StateManager::statusCenterManager()->hide();
     tLogger::openDebugLogWindow();
+}
+
+void About::on_changeHostnameButton_clicked() {
+    ChangeHostnamePopover* changeHostname = new ChangeHostnamePopover();
+    tPopover* popover = new tPopover(changeHostname);
+    popover->setPopoverWidth(SC_DPI(600));
+    connect(changeHostname, &ChangeHostnamePopover::done, popover, &tPopover::dismiss);
+    connect(popover, &tPopover::dismissed, changeHostname, &Acknowledgements::deleteLater);
+    connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
+    popover->show(this->window());
+}
+
+void About::updateHostname() {
+    QString hostname = d->hostnamed->property("PrettyHostname").toString();
+    if (hostname.isEmpty()) hostname = d->hostnamed->property("Hostname").toString();
+    if (hostname.isEmpty()) hostname = QHostInfo::localHostName();
+
+    ui->hostnameLabel->setText(hostname);
 }

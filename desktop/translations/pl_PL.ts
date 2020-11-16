@@ -24,95 +24,105 @@
         <translation>Pomoc</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="255"/>
+        <location filename="../systemsettings/about/about.ui" line="248"/>
+        <source>Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/about.ui" line="317"/>
         <source>Processor</source>
         <translation>Procesor</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="262"/>
+        <location filename="../systemsettings/about/about.ui" line="330"/>
+        <source>THIS DEVICE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/about.ui" line="344"/>
         <source>Available Memory</source>
         <translation>Dostępna Pamięć</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="269"/>
+        <location filename="../systemsettings/about/about.ui" line="255"/>
         <source>Available Swap</source>
         <translation>Dostępne Swap</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="276"/>
+        <location filename="../systemsettings/about/about.ui" line="296"/>
         <source>Qt Version</source>
         <translation>Wesja Qt</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="283"/>
+        <location filename="../systemsettings/about/about.ui" line="303"/>
         <source>Kernel Version</source>
         <translation>Wesrsja Kernel</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="296"/>
-        <source>HARDWARE AND SOFTWARE</source>
-        <translation>SPRZĘT I OPROGRAMOWANIE</translation>
+        <location filename="../systemsettings/about/about.ui" line="351"/>
+        <source>Change Device Name</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="398"/>
+        <location filename="../systemsettings/about/about.ui" line="422"/>
         <source>Desktop Environment</source>
         <translation>Pulpit</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="428"/>
+        <location filename="../systemsettings/about/about.ui" line="452"/>
         <source>Website</source>
         <translation>Strona Internetowa</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="439"/>
+        <location filename="../systemsettings/about/about.ui" line="463"/>
         <source>File Bug</source>
         <translation>Błąd Pliku</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="450"/>
+        <location filename="../systemsettings/about/about.ui" line="474"/>
         <source>Sources</source>
         <translation>Żródła</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="461"/>
+        <location filename="../systemsettings/about/about.ui" line="485"/>
         <source>View Debug Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="417"/>
+        <location filename="../systemsettings/about/about.ui" line="441"/>
         <source>Acknowledgements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="67"/>
-        <location filename="../systemsettings/about/about.cpp" line="68"/>
-        <location filename="../systemsettings/about/about.cpp" line="69"/>
-        <location filename="../systemsettings/about/about.cpp" line="113"/>
+        <location filename="../systemsettings/about/about.cpp" line="77"/>
+        <location filename="../systemsettings/about/about.cpp" line="78"/>
+        <location filename="../systemsettings/about/about.cpp" line="79"/>
+        <location filename="../systemsettings/about/about.cpp" line="123"/>
         <source>Unknown</source>
         <translation>Nieznany</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="119"/>
+        <location filename="../systemsettings/about/about.cpp" line="132"/>
         <source>theDesk %1 - Blueprint</source>
         <translation>Program theDesk %1 - Blueprint</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="120"/>
+        <location filename="../systemsettings/about/about.cpp" line="133"/>
         <source>You compiled theDesk on %1</source>
         <translation>Skompilowałeś theDesk na %1</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="122"/>
+        <location filename="../systemsettings/about/about.cpp" line="135"/>
         <source>theDesk %1</source>
         <translation>Program theDesk %1</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="126"/>
+        <location filename="../systemsettings/about/about.cpp" line="139"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
         <translation>Prawa Autorskie © Victor Tran %1. Licencjonowany na warunkach GNU General Public Licence, wersja 3 lub dalej.</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="159"/>
+        <location filename="../systemsettings/about/about.cpp" line="173"/>
         <source>About</source>
         <translation>O</translation>
     </message>
@@ -244,6 +254,39 @@
         <location filename="../background/background.cpp" line="355"/>
         <source>Select Background</source>
         <translation>Wybierz Tło</translation>
+    </message>
+</context>
+<context>
+    <name>ChangeHostnamePopover</name>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="35"/>
+        <source>Change Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="62"/>
+        <source>New Device Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="69"/>
+        <source>This device name is used over the network to identify this device. It is also used to identify this device over Bluetooth.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="79"/>
+        <source>Network Compatible Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/changehostnamepopover.ui" line="95"/>
+        <source>Rename this Device</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

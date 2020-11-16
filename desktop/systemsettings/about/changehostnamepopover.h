@@ -17,46 +17,36 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef ABOUT_H
-#define ABOUT_H
+#ifndef CHANGEHOSTNAMEPOPOVER_H
+#define CHANGEHOSTNAMEPOPOVER_H
 
-#include <statuscenterpane.h>
+#include <QWidget>
 
 namespace Ui {
-    class About;
+    class ChangeHostnamePopover;
 }
 
-struct AboutPrivate;
-class About : public StatusCenterPane {
+class ChangeHostnamePopover : public QWidget {
         Q_OBJECT
 
     public:
-        explicit About();
-        ~About();
+        explicit ChangeHostnamePopover(QWidget* parent = nullptr);
+        ~ChangeHostnamePopover();
 
     private slots:
         void on_titleLabel_backButtonClicked();
 
-        void on_acknowledgementsButton_clicked();
+        void on_renameButton_clicked();
 
-        void on_debugLogButton_clicked();
+        void on_hostnameEdit_textChanged(const QString& arg1);
 
-        void on_changeHostnameButton_clicked();
-
-        void updateHostname();
+    signals:
+        void done();
 
     private:
-        Ui::About* ui;
-        AboutPrivate* d;
+        Ui::ChangeHostnamePopover* ui;
 
-        void changeEvent(QEvent* event);
-
-        // StatusCenterPane interface
-    public:
-        QString name();
-        QString displayName();
-        QIcon icon();
-        QWidget* leftPane();
+        QString generateStaticHostname(QString hostname);
 };
 
-#endif // ABOUT_H
+#endif // CHANGEHOSTNAMEPOPOVER_H
