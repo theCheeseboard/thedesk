@@ -61,51 +61,51 @@
     </message>
     <message>
         <source>Enter SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN kodunu girin</translation>
     </message>
     <message>
         <source>SIM PIN Required</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN Gerekli</translation>
     </message>
     <message>
         <source>Enter SIM PUK</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PUK&apos;unu girin</translation>
     </message>
     <message>
         <source>SIM PUK Required</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PUK Gerekli</translation>
     </message>
     <message>
         <source>A SIM PIN is required to connect to the cellular network.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hücresel ağa bağlanmak için bir SIM PIN kodu gerekir.</translation>
     </message>
     <message>
         <source>A SIM PUK is required to connect to the cellular network.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hücresel ağa bağlanmak için bir SIM PUK gereklidir.</translation>
     </message>
     <message>
         <source>Modem Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Modem Ayarları</translation>
     </message>
     <message>
         <source>Disable Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Hücresel Bağlantıyı Devre Dışı Bırak</translation>
     </message>
     <message>
         <source>Enable Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Hücresel&apos;i etkinleştir</translation>
     </message>
     <message>
         <source>No SIM Card</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM Kart Yok</translation>
     </message>
     <message>
         <source>Insert a SIM card to connect to cellular services.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hücresel hizmetlere bağlanmak için bir SIM kart takın.</translation>
     </message>
     <message>
         <source>No SIM</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM yok</translation>
     </message>
 </context>
 <context>
@@ -595,6 +595,7 @@
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
+            <numerusform>%n deneme hakkınız kaldı</numerusform>
         </translation>
     </message>
     <message>
@@ -603,55 +604,55 @@
     </message>
     <message>
         <source>Modem Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Modem Ayarları</translation>
     </message>
     <message>
         <source>SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN</translation>
     </message>
     <message>
         <source>IMSI</source>
-        <translation type="unfinished"></translation>
+        <translation>IMSI</translation>
     </message>
     <message>
         <source>IMEI</source>
-        <translation type="unfinished"></translation>
+        <translation>IMEI</translation>
     </message>
     <message>
         <source>MODEM INFORMATION</source>
-        <translation type="unfinished"></translation>
+        <translation>MODEM BİLGİLERİ</translation>
     </message>
     <message>
         <source>Carrier</source>
-        <translation type="unfinished"></translation>
+        <translation>Carrying</translation>
     </message>
     <message>
         <source>No SIM card</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM Kart Yok</translation>
     </message>
     <message>
         <source>CALLS</source>
-        <translation type="unfinished"></translation>
+        <translation>ARAMALAR</translation>
     </message>
     <message>
         <source>Call Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>Görüşme beklemede</translation>
     </message>
     <message>
         <source>Enable Call Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>Çağrı Bekletmeyi Etkinleştir</translation>
     </message>
     <message>
         <source>Call Waiting allows you to receive calls while another call is currently active.</source>
-        <translation type="unfinished"></translation>
+        <translation>Çağrı Bekletme, o anda başka bir çağrı etkinken çağrı almanıza olanak tanır.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata</translation>
     </message>
     <message>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
-        <translation type="unfinished"></translation>
+        <translation>Operatörden mevcut Çağrı Bekletme durumu alınamadı</translation>
     </message>
 </context>
 <context>
@@ -673,7 +674,7 @@
     <name>UnlockModemPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Enter the SIM PIN</source>
