@@ -26,7 +26,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="248"/>
         <source>Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Cihaz adı</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="317"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="330"/>
         <source>THIS DEVICE</source>
-        <translation type="unfinished"></translation>
+        <translation>BU CİHAZ</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="344"/>
@@ -61,7 +61,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="351"/>
         <source>Change Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Cihaz Adını Değiştirin</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="422"/>
@@ -261,32 +261,32 @@
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="35"/>
         <source>Change Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Cihaz Adını Değiştirin</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="62"/>
         <source>New Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Cihaz Adı</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="69"/>
         <source>This device name is used over the network to identify this device. It is also used to identify this device over Bluetooth.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu cihaz adı, bu cihazı tanımlamak için ağ üzerinden kullanılır. Bu cihazı Bluetooth üzerinden tanımlamak için de kullanılır.</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="79"/>
         <source>Network Compatible Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Uyumlu Ad</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="95"/>
         <source>Rename this Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Rename This Device</translation>
     </message>
 </context>
 <context>
