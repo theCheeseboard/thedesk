@@ -624,7 +624,7 @@
     </message>
     <message>
         <source>Carrier</source>
-        <translation>Carrying</translation>
+        <translation>Taşımacı</translation>
     </message>
     <message>
         <source>No SIM card</source>
@@ -678,59 +678,62 @@
     </message>
     <message>
         <source>Enter the SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN kodunu girin</translation>
     </message>
     <message numerus="yes">
         <source>You have %n remaining tries</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
+            <numerusform>%n deneme hakkınızlar kaldı</numerusform>
         </translation>
     </message>
     <message>
         <source>SIM PUK REQUIRED</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PUK GEREKLİ</translation>
     </message>
     <message>
         <source>Confirm SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN&apos;ini onaylayın</translation>
     </message>
     <message>
         <source>SIM PUK</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PUK</translation>
     </message>
     <message>
         <source>New SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni SIM PIN kodu</translation>
     </message>
     <message>
         <source>You&apos;ll also need to provide a new SIM PIN to set once the SIM is unlocked.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayrıca, SIM kilidi açıldığında ayarlamak için yeni bir SIM PIN kodu sağlamanız gerekir.</translation>
     </message>
     <message>
         <source>Unlock SIM Card</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM Kartın Kilidini Açın</translation>
     </message>
     <message>
         <source>Don&apos;t guess the PUK!</source>
-        <translation type="unfinished"></translation>
+        <translation>PUK&apos;u tahmin etmeyin!</translation>
     </message>
     <message>
         <source>Once you exhaust your attempts, the SIM card will be blocked forever.
 
 You&apos;ll need to contact your carrier for a new SIM card.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denemelerinizi tükettiğinizde, SIM kart sonsuza kadar bloke olacaktır.
+
+Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
     </message>
     <message>
         <source>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;SIM PUK&lt;/b&gt; almak için operatörünüze başvurun ve %1&apos;in kilidini açmak için aşağıya girin.</translation>
     </message>
     <message>
         <source>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yanlış PIN kodunu tekrar girerseniz, SIM kartınız PUK ile kilitlenir ve operatörünüze başvurmanız gerekir.</translation>
     </message>
     <message>
         <source>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu, operatörünüzden yeni bir SIM kart almanız gerekmeden önce PUK&apos;U almak için son şansınız.</translation>
     </message>
 </context>
 <context>
