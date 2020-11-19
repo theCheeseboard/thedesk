@@ -33,6 +33,7 @@
 #include <QFontDatabase>
 #include <ttoast.h>
 #include <icontextchunk.h>
+#include "switchmanager.h"
 
 #include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/WirelessDevice>
@@ -47,6 +48,8 @@ struct WifiDevicePanePrivate {
     NetworkManager::WirelessDevice::Ptr device;
 
     IconTextChunk* tetheringChunk;
+
+    SwitchManager* switchManager = nullptr;
 
     tSettings settings;
 };
@@ -64,6 +67,10 @@ WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
     ui->actionsWidget->setFixedWidth(contentWidth);
     ui->statusWidget->setFixedWidth(contentWidth);
     ui->tetheringWidget->setFixedWidth(contentWidth);
+    ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
+    ui->wifiOffIcon->setPixmap(QIcon::fromTheme("network-wireless-disconnected").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
+    ui->wifiBlockedIcon->setPixmap(QIcon::fromTheme("network-wireless-disconnected").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
+    ui->wifiFlightIcon->setPixmap(QIcon::fromTheme("flight-mode").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
 
     ui->disconnectButton->setProperty("type", "destructive");
     ui->errorFrame->setVisible(false);
@@ -161,6 +168,10 @@ WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
             ui->errorFrame->setVisible(false);
         }
     });
+
+    connect(NetworkManager::notifier(), &NetworkManager::Notifier::wirelessEnabledChanged, this, &WifiDevicePane::updateNetworkCardState);
+    connect(NetworkManager::notifier(), &NetworkManager::Notifier::wirelessHardwareEnabledChanged, this, &WifiDevicePane::updateNetworkCardState);
+    updateNetworkCardState();
 }
 
 WifiDevicePane::~WifiDevicePane() {
@@ -168,6 +179,10 @@ WifiDevicePane::~WifiDevicePane() {
     d->tetheringChunk->deleteLater();
     delete d;
     delete ui;
+}
+
+void WifiDevicePane::setSwitchManager(SwitchManager* switchManager) {
+    d->switchManager = switchManager;
 }
 
 void WifiDevicePane::updateNetworkName() {
@@ -309,6 +324,20 @@ void WifiDevicePane::updateState() {
     }
 }
 
+void WifiDevicePane::updateNetworkCardState() {
+    if (!NetworkManager::isWirelessHardwareEnabled()) {
+        ui->stackedWidget->setCurrentWidget(ui->wifiBlockedPage);
+    } else if (!NetworkManager::isWirelessEnabled()) {
+        if (d->switchManager && d->switchManager->isFlightModeEnabled()) {
+            ui->stackedWidget->setCurrentWidget(ui->wifiFlightPage);
+        } else {
+            ui->stackedWidget->setCurrentWidget(ui->wifiOffPage);
+        }
+    } else {
+        ui->stackedWidget->setCurrentWidget(ui->mainPage);
+    }
+}
+
 QListWidgetItem* WifiDevicePane::leftPaneItem() {
     return d->item;
 }
@@ -426,4 +455,12 @@ void WifiDevicePane::on_tetheringSwitch_toggled(bool checked) {
             }
         }
     }
+}
+
+void WifiDevicePane::on_turnWifiOnButton_clicked() {
+    NetworkManager::setWirelessEnabled(true);
+}
+
+void WifiDevicePane::on_turnWifiOnButton_2_clicked() {
+    NetworkManager::setWirelessEnabled(true);
 }

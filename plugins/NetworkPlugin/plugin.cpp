@@ -57,11 +57,11 @@ void Plugin::activate() {
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NetworkPlugin/defaults.conf"));
     tSettings::registerDefaults("/etc/theSuite/theDesk/NetworkPlugin/defaults.conf");
 
-    d->statusCenterPane = new NetworkStatusCenterPane();
-    StateManager::statusCenterManager()->addPane(d->statusCenterPane);
-
     d->chunk = new NetworkChunk();
     d->switches = new SwitchManager();
+
+    d->statusCenterPane = new NetworkStatusCenterPane(d->switches);
+    StateManager::statusCenterManager()->addPane(d->statusCenterPane);
 }
 
 void Plugin::deactivate() {

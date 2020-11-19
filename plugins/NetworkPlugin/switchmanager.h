@@ -29,6 +29,9 @@ class SwitchManager : public QObject {
         explicit SwitchManager(QObject* parent = nullptr);
         ~SwitchManager();
 
+        bool isFlightModeEnabled();
+        void setFlightMode(bool flightOn);
+
     signals:
 
     private:
@@ -40,7 +43,6 @@ class SwitchManager : public QObject {
         void networkManagerGone();
         void updateDevices();
 
-        void setFlightMode(bool flightOn);
 };
 
 #endif // SWITCHMANAGER_H

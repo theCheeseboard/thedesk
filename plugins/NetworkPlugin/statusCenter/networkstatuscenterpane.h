@@ -26,12 +26,13 @@ namespace Ui {
     class NetworkStatusCenterPane;
 }
 
+class SwitchManager;
 struct NetworkStatusCenterPanePrivate;
 class NetworkStatusCenterPane : public StatusCenterPane {
         Q_OBJECT
 
     public:
-        explicit NetworkStatusCenterPane();
+        explicit NetworkStatusCenterPane(SwitchManager* switchManager);
         ~NetworkStatusCenterPane();
 
     private:

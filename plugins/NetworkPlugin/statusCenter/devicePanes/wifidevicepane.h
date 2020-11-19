@@ -26,6 +26,7 @@ namespace Ui {
     class WifiDevicePane;
 }
 
+class SwitchManager;
 struct WifiDevicePanePrivate;
 class WifiDevicePane : public AbstractDevicePane {
         Q_OBJECT
@@ -34,12 +35,15 @@ class WifiDevicePane : public AbstractDevicePane {
         explicit WifiDevicePane(QString uni, QWidget* parent = nullptr);
         ~WifiDevicePane();
 
+        void setSwitchManager(SwitchManager* switchManager);
+
     private:
         Ui::WifiDevicePane* ui;
         WifiDevicePanePrivate* d;
 
         void updateNetworkName();
         void updateState();
+        void updateNetworkCardState();
 
         // AbstractDevicePane interface
     public:
@@ -50,6 +54,8 @@ class WifiDevicePane : public AbstractDevicePane {
         void on_selectNetworkButton_clicked();
         void on_titleLabel_backButtonClicked();
         void on_tetheringSwitch_toggled(bool checked);
+        void on_turnWifiOnButton_clicked();
+        void on_turnWifiOnButton_2_clicked();
 };
 
 #endif // WIFIDEVICEPANE_H

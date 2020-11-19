@@ -27,6 +27,9 @@
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <quickswitch.h>
+#include <barmanager.h>
+#include <icontextchunk.h>
+#include <actionquickwidget.h>
 
 #include <tsettings.h>
 
@@ -41,6 +44,8 @@ struct SwitchManagerPrivate {
     QuickSwitch* wifiSwitch;
     QuickSwitch* cellularSwitch;
 
+    IconTextChunk* flightModeChunk;
+
     tSettings settings;
     bool block = false;
 };
@@ -53,6 +58,16 @@ SwitchManager::SwitchManager(QObject* parent) : QObject(parent) {
     d->flightModeSwitch = new QuickSwitch("NetworkFlight");
     d->wifiSwitch = new QuickSwitch("NetworkWireless");
     d->cellularSwitch = new QuickSwitch("NetworkCellular");
+
+    d->flightModeChunk = new IconTextChunk("flight-mode");
+    d->flightModeChunk->setText(tr("Flight Mode"));
+    d->flightModeChunk->setIcon(QIcon::fromTheme("flight-mode"));
+
+    ActionQuickWidget* flightChunkQuickWidget = new ActionQuickWidget(d->flightModeChunk);
+    flightChunkQuickWidget->addAction(QIcon::fromTheme("flight-mode"), tr("Switch off Flight Mode"), [ = ] {
+        this->setFlightMode(false);
+    });
+    d->flightModeChunk->setQuickWidget(flightChunkQuickWidget);
 
     d->flightModeSwitch->setTitle(tr("Flight Mode"));
     connect(d->flightModeSwitch, &QuickSwitch::toggled, this, &SwitchManager::setFlightMode);
@@ -96,6 +111,10 @@ SwitchManager::~SwitchManager() {
     d->wifiSwitch->deleteLater();
     d->cellularSwitch->deleteLater();
     delete d;
+}
+
+bool SwitchManager::isFlightModeEnabled() {
+    return d->flightModeSwitch->isChecked();
 }
 
 void SwitchManager::changeEvent(QEvent* event) {
@@ -151,10 +170,12 @@ void SwitchManager::setFlightMode(bool flightOn) {
 
         d->interface->asyncCall("Set", "org.freedesktop.NetworkManager", "WirelessEnabled", QVariant::fromValue(QDBusVariant(false)));
         d->interface->asyncCall("Set", "org.freedesktop.NetworkManager", "WwanEnabled", QVariant::fromValue(QDBusVariant(false)));
+        if (!StateManager::instance()->barManager()->isChunkRegistered(d->flightModeChunk)) StateManager::instance()->barManager()->addChunk(d->flightModeChunk);
     } else {
         d->interface->asyncCall("Set", "org.freedesktop.NetworkManager", "WirelessEnabled", QVariant::fromValue(QDBusVariant(d->settings.value("NetworkPlugin/flight.wifi").toBool())));
         d->interface->asyncCall("Set", "org.freedesktop.NetworkManager", "WwanEnabled", QVariant::fromValue(QDBusVariant(d->settings.value("NetworkPlugin/flight.cellular").toBool())));
 
         d->settings.setValue("NetworkPlugin/flight.on", false);
+        if (StateManager::instance()->barManager()->isChunkRegistered(d->flightModeChunk)) StateManager::instance()->barManager()->removeChunk(d->flightModeChunk);
     }
 }

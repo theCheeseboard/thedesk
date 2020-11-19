@@ -39,18 +39,20 @@
 struct NetworkStatusCenterPanePrivate {
     NetworkStatusCenterLeftPane* leftPane;
     QDBusServiceWatcher* nmWatcher;
+    SwitchManager* switchManager;
 
     QStringList unis;
     QStringList visibleUnis;
     QMap<QString, AbstractDevicePane*> devicePanes;
 };
 
-NetworkStatusCenterPane::NetworkStatusCenterPane() :
+NetworkStatusCenterPane::NetworkStatusCenterPane(SwitchManager* switchManager) :
     StatusCenterPane(),
     ui(new Ui::NetworkStatusCenterPane) {
     ui->setupUi(this);
 
     d = new NetworkStatusCenterPanePrivate();
+    d->switchManager = switchManager;
 
     ui->menuButtonErrorPage->setVisible(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
     connect(StateManager::instance()->statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, ui->menuButtonErrorPage, &QToolButton::setVisible);
@@ -108,6 +110,7 @@ void NetworkStatusCenterPane::deviceAdded(QString uni) {
     switch (device->type()) {
         case NetworkManager::Device::Wifi:
             devicePane = new WifiDevicePane(uni);
+            static_cast<WifiDevicePane*>(devicePane)->setSwitchManager(d->switchManager);
             break;
         case NetworkManager::Device::Ethernet:
             devicePane = new WiredDevicePane(uni);

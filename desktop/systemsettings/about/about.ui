@@ -32,7 +32,7 @@
    <item>
     <widget class="tTitleLabel" name="titleLabel">
      <property name="text">
-      <string>System Information</string>
+      <string>About</string>
      </property>
     </widget>
    </item>

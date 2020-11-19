@@ -595,7 +595,6 @@
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
-            <numerusform>%n deneme hakkınız kaldı</numerusform>
         </translation>
     </message>
     <message>
@@ -669,6 +668,10 @@
         <source>Cellular</source>
         <translation>Hücresel</translation>
     </message>
+    <message>
+        <source>Switch off Flight Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UnlockModemPopover</name>
@@ -684,7 +687,6 @@
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
-            <numerusform>%n deneme hakkınızlar kaldı</numerusform>
         </translation>
     </message>
     <message>
@@ -876,6 +878,34 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
     <message>
         <source>Couldn&apos;t switch off tethering</source>
         <translation>İnternet paylaşımı kapatılamadı</translation>
+    </message>
+    <message>
+        <source>Wi-Fi is off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch Wi-Fi On</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wi-Fi is disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch Wi-Fi on to connect to a wireless network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use the Wi-Fi switch to enable Wi-Fi and connect to a network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You&apos;re in flight mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch Wi-Fi on to connect to a wireless network. Flight mode won&apos;t be disabled.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

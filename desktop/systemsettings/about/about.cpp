@@ -84,7 +84,8 @@ About::About() :
         ui->availableMemory->setText(QLocale().formattedDataSize(static_cast<qint64>(info->totalram)));
         ui->availableSwap->setText(QLocale().formattedDataSize(static_cast<qint64>(info->totalswap)));
     } else {
-
+        ui->availableMemory->setText(tr("Unknown"));
+        ui->availableSwap->setText(tr("Unknown"));
     }
     delete info;
 

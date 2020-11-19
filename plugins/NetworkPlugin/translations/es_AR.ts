@@ -673,6 +673,10 @@
         <source>Cellular</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Switch off Flight Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>UnlockModemPopover</name>
@@ -879,6 +883,34 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     </message>
     <message>
         <source>Couldn&apos;t switch off tethering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wi-Fi is off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch Wi-Fi On</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wi-Fi is disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch Wi-Fi on to connect to a wireless network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use the Wi-Fi switch to enable Wi-Fi and connect to a network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You&apos;re in flight mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch Wi-Fi on to connect to a wireless network. Flight mode won&apos;t be disabled.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
