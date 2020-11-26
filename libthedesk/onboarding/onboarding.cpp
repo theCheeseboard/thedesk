@@ -25,7 +25,7 @@
 #include <powermanager.h>
 #include <tvariantanimation.h>
 #include <tsettings.h>
-#include <common/common.h>
+#include <common.h>
 #include <onboardingpage.h>
 #include "onboardingstepper.h"
 #include "onboardingbar.h"
@@ -67,6 +67,8 @@ Onboarding::Onboarding(QWidget* parent) :
     QDialog(parent),
     ui(new Ui::Onboarding) {
     ui->setupUi(this);
+
+    Q_INIT_RESOURCE(libthedesk_resources);
 
     this->setWindowFlag(Qt::WindowStaysOnTopHint);
     this->setWindowFlag(Qt::FramelessWindowHint);

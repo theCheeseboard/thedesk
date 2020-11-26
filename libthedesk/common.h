@@ -17,20 +17,21 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef PLUGININTERFACE_H
-#define PLUGININTERFACE_H
+#ifndef COMMON_H
+#define COMMON_H
 
-#include <QObject>
+#include <QStringList>
 
-class PluginInterface {
-    public:
-        virtual ~PluginInterface() {}
+namespace Common {
+    /**
+     * Given a list of items, find the correct index to insert this item into
+     *
+     * @param preferredOrder   The preferred order of items
+     * @param currentItems     The items that are currently in the layout
+     * @param item             The name of the current item
+     * @return                 An index, or -1 to add to the end of the layout
+     */
+    int getInsertionIndex(QStringList preferredOrder, QStringList currentItems, QString item);
+}
 
-        virtual void activate() = 0;
-        virtual void deactivate() = 0;
-};
-
-#define PluginInterface_iid "com.vicr123.thedesk.PluginInterface/1.0"
-Q_DECLARE_INTERFACE(PluginInterface, PluginInterface_iid);
-
-#endif // PLUGININTERFACE_H
+#endif // COMMON_H

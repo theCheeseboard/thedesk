@@ -36,7 +36,7 @@
      </property>
      <property name="source">
       <url>
-       <string>qrc:/thedesk/desktop/onboarding/OnboardingVideoForm.qml</string>
+       <string>qrc:/libthedesk/onboarding/OnboardingVideoForm.qml</string>
       </url>
      </property>
     </widget>
