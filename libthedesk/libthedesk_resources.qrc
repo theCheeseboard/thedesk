@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/libthedesk">
+        <file>onboarding/OnboardingVideoForm.qml</file>
+    </qresource>
+</RCC>

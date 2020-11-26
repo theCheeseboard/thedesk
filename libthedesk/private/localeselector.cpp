@@ -36,7 +36,9 @@ LocaleSelector::LocaleSelector(QWidget* parent) :
 
     QList<QListWidgetItem*> languages;
     for (int i = QLocale::C + 1; i < QLocale::LastLanguage; i++) {
+#if !QT_VERSION_CHECK(5, 15, 0)
         if (i == QLocale::UncodedLanguages) continue;
+#endif
         QLocale locale(static_cast<QLocale::Language>(i));
         if (locale.language() != i) continue;
         if (!locale.nativeLanguageName().isEmpty()) {

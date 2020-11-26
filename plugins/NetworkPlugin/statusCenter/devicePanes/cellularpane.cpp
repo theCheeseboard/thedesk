@@ -435,3 +435,7 @@ void CellularPane::on_simSettingsButton_clicked() {
 void CellularPane::on_unlockModemButton_clicked() {
     unlockDevice();
 }
+
+void CellularPane::on_titleLabel_backButtonClicked() {
+    StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}

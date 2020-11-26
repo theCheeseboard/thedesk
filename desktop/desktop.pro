@@ -29,23 +29,12 @@ SOURCES += \
     bar/mainbarwidget.cpp \
     bar/taskbarwidget.cpp \
     cli/commandline.cpp \
-    common/common.cpp \
     gateway/appselectionmodel.cpp \
     gateway/appselectionmodellistdelegate.cpp \
     gateway/gateway.cpp \
     gateway/maingatewaywidget.cpp \
     main.cpp \
-    onboarding/onboarding.cpp \
-    onboarding/onboardingbar.cpp \
-    onboarding/onboardingbetathankyou.cpp \
-    onboarding/onboardingcontroller.cpp \
-    onboarding/onboardingfinal.cpp \
-    onboarding/onboardingstepper.cpp \
-    onboarding/onboardingvideo.cpp \
-    onboarding/onboardingwelcome.cpp \
-    plugins/pluginmanager.cpp \
     run/rundialog.cpp \
-    server/sessionserver.cpp \
     session/endsession.cpp \
     session/endsessionbutton.cpp \
     statuscenter/leftpanedelegate.cpp \
@@ -70,23 +59,11 @@ HEADERS += \
     bar/mainbarwidget.h \
     bar/taskbarwidget.h \
     cli/commandline.h \
-    common/common.h \
     gateway/appselectionmodel.h \
     gateway/appselectionmodellistdelegate.h \
     gateway/gateway.h \
     gateway/maingatewaywidget.h \
-    onboarding/onboarding.h \
-    onboarding/onboardingbar.h \
-    onboarding/onboardingbetathankyou.h \
-    onboarding/onboardingcontroller.h \
-    onboarding/onboardingfinal.h \
-    onboarding/onboardingstepper.h \
-    onboarding/onboardingvideo.h \
-    onboarding/onboardingwelcome.h \
-    plugins/plugininterface.h \
-    plugins/pluginmanager.h \
     run/rundialog.h \
-    server/sessionserver.h \
     session/endsession.h \
     session/endsessionbutton.h \
     statuscenter/leftpanedelegate.h \
@@ -112,12 +89,6 @@ FORMS += \
     bar/taskbarwidget.ui \
     gateway/gateway.ui \
     gateway/maingatewaywidget.ui \
-    onboarding/onboarding.ui \
-    onboarding/onboardingbar.ui \
-    onboarding/onboardingbetathankyou.ui \
-    onboarding/onboardingfinal.ui \
-    onboarding/onboardingvideo.ui \
-    onboarding/onboardingwelcome.ui \
     run/rundialog.ui \
     session/endsession.ui \
     statuscenter/statuscenter.ui \
@@ -138,9 +109,6 @@ unix {
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/translations
 
-    headers.files = plugins/plugininterface.h
-    headers.path = $$[QT_INSTALL_HEADERS]/thedesk/
-
     defaults.files = defaults.conf
     defaults.path = /etc/theSuite/theDesk/
 
@@ -150,7 +118,7 @@ unix {
     acknowledgements.files = acknowledgements.html
     acknowledgements.path = /usr/share/thedesk/acknowledgements.html
 
-    INSTALLS += target translations defaults headers media acknowledgements
+    INSTALLS += target translations defaults media acknowledgements
 }
 
 DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"

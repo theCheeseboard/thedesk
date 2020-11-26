@@ -1,4 +1,4 @@
-QT += widgets thelib tdesktopenvironment dbus
+QT += widgets thelib tdesktopenvironment dbus multimedia multimediawidgets quickwidgets
 
 TEMPLATE = lib
 DEFINES += LIBTHEDESK_LIBRARY
@@ -24,18 +24,29 @@ SOURCES += \
     actionquickwidget.cpp \
     barmanager.cpp \
     chunk.cpp \
+    common.cpp \
     gatewaymanager.cpp \
     hudmanager.cpp \
     icontextchunk.cpp \
     keygrab.cpp \
     localemanager.cpp \
+    onboarding/onboarding.cpp \
+    onboarding/onboardingbar.cpp \
+    onboarding/onboardingbetathankyou.cpp \
+    onboarding/onboardingcontroller.cpp \
+    onboarding/onboardingfinal.cpp \
+    onboarding/onboardingstepper.cpp \
+    onboarding/onboardingvideo.cpp \
+    onboarding/onboardingwelcome.cpp \
     onboardingmanager.cpp \
     onboardingpage.cpp \
+    plugins/pluginmanager.cpp \
     powermanager.cpp \
     private/localeselector.cpp \
     private/quickwidgetcontainer.cpp \
     quickswitch.cpp \
     quietmodemanager.cpp \
+    server/sessionserver.cpp \
     statemanager.cpp \
     statuscentermanager.cpp \
     statuscenterpane.cpp \
@@ -45,20 +56,32 @@ HEADERS += \
     actionquickwidget.h \
     barmanager.h \
     chunk.h \
+    common.h \
     gatewaymanager.h \
     hudmanager.h \
     icontextchunk.h \
     keygrab.h \
     libthedesk_global.h \
     localemanager.h \
+    onboarding/onboarding.h \
+    onboarding/onboardingbar.h \
+    onboarding/onboardingbetathankyou.h \
+    onboarding/onboardingcontroller.h \
+    onboarding/onboardingfinal.h \
+    onboarding/onboardingstepper.h \
+    onboarding/onboardingvideo.h \
+    onboarding/onboardingwelcome.h \
     onboardingmanager.h \
     onboardingpage.h \
+    plugins/pluginmanager.h \
+    plugins/plugininterface.h \
     powermanager.h \
     private/localeselector.h \
     private/onboardingmanager_p.h \
     private/quickwidgetcontainer.h \
     quickswitch.h \
     quietmodemanager.h \
+    server/sessionserver.h \
     statemanager.h \
     statuscentermanager.h \
     statuscenterpane.h \
@@ -71,16 +94,38 @@ unix {
     headers.files = *.h
     headers.path = $$[QT_INSTALL_HEADERS]/libthedesk/
 
+    pluginheaders.files = plugins/plugininterface.h
+    pluginheaders.path = $$[QT_INSTALL_HEADERS]/thedesk/
+
+    pluginmanagerheaders.files = plugins/pluginmanager.h
+    pluginmanagerheaders.path = $$[QT_INSTALL_HEADERS]/libthedesk/plugins
+
+    onboardingheaders.files = onboarding/onboardingcontroller.h
+    onboardingheaders.path = $$[QT_INSTALL_HEADERS]/libthedesk/onboarding
+
     translations.files = translations/*.qm
     translations.path = /usr/share/thedesk/libthedesk/translations
 
-    INSTALLS += target translations headers
+    INSTALLS += target translations headers pluginheaders onboardingheaders pluginmanagerheaders
 }
 
+DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"
 
 FORMS += \
     actionquickwidget.ui \
     icontextchunk.ui \
+    onboarding/onboarding.ui \
+    onboarding/onboardingbar.ui \
+    onboarding/onboardingbetathankyou.ui \
+    onboarding/onboardingfinal.ui \
+    onboarding/onboardingvideo.ui \
+    onboarding/onboardingwelcome.ui \
     private/localeselector.ui \
     private/quickwidgetcontainer.ui \
     transparentdialog.ui
+
+DISTFILES += \
+    onboarding/OnboardingVideoForm.qml
+
+RESOURCES += \
+    libthedesk_resources.qrc

@@ -250,3 +250,7 @@ void WiredDevicePane::on_connectButton_clicked() {
         popover->show(this->window());
     }
 }
+
+void WiredDevicePane::on_titleLabel_backButtonClicked() {
+    StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}

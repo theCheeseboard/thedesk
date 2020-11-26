@@ -53,6 +53,7 @@ class CellularPane : public AbstractDevicePane {
         void on_disconnectButton_clicked();
         void on_simSettingsButton_clicked();
         void on_unlockModemButton_clicked();
+        void on_titleLabel_backButtonClicked();
 };
 
 #endif // CELLULARPANE_H

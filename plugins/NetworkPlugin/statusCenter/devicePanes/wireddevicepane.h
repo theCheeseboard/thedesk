@@ -47,6 +47,7 @@ class WiredDevicePane : public AbstractDevicePane {
     private slots:
         void on_disconnectButton_clicked();
         void on_connectButton_clicked();
+        void on_titleLabel_backButtonClicked();
 };
 
 #endif // WIREDDEVICEPANE_H

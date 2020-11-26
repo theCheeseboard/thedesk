@@ -35,7 +35,7 @@
 #include "session/endsession.h"
 #include "cli/commandline.h"
 #include "server/sessionserver.h"
-#include "onboarding/onboardingcontroller.h"
+#include <onboarding/onboardingcontroller.h>
 #include "run/rundialog.h"
 #include "tsettings.h"
 

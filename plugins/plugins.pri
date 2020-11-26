@@ -3,7 +3,7 @@ CONFIG += plugin
 
 unix:!macx: {
     LIBS += -L$$OUT_PWD/../../libthedesk/ -lthedesk
-    INCLUDEPATH += $$PWD/../libthedesk ../../desktop/plugins
+    INCLUDEPATH += $$PWD/../libthedesk ../../libthedesk/plugins
     DEPENDPATH += $$PWD/../libthedesk
 
     target.path = $$[QT_INSTALL_LIBS]/thedesk/plugins

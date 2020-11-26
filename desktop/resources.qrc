@@ -2,6 +2,5 @@
     <qresource prefix="/thedesk/desktop">
         <file>icons/thedesk.svg</file>
         <file>icons/cactus.svg</file>
-        <file>onboarding/OnboardingVideoForm.qml</file>
     </qresource>
 </RCC>
