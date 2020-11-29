@@ -27,7 +27,7 @@
     </message>
     <message>
         <source>Thank you!</source>
-        <translation type="unfinished"></translation>
+        <translation>Teşekkür ederim!</translation>
     </message>
     <message>
         <source>Thanks for giving theDesk Beta 1 a go!
@@ -38,68 +38,75 @@ That being said, however, if you happen to run into any ideas or issues, please 
 
 Once again, thanks for giving theDesk a go!
 - Victor :)</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk Beta 1&apos;i denediğiniz için teşekkür ederiz!
+
+Devam etmeden önce, lütfen bunun bir beta olduğunu unutmayın. Her şey düzgün çalışmayacak ve bazı kısımlarda bazı garip davranışlar yaşayabilirsiniz.
+
+Bununla birlikte, herhangi bir fikir veya sorunla karşılaşırsanız, lütfen bana bildirin. Geri bildirim, özellikle gelişimin ilk aşamalarında önemlidir.
+
+Bir kez daha, theDesk bir gitmek verdiğiniz için teşekkürler!
+- Victor :)</translation>
     </message>
     <message>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Ertesi</translation>
     </message>
     <message>
         <source>A Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir Mesaj</translation>
     </message>
 </context>
 <context>
     <name>OnboardingFinal</name>
     <message>
         <source>That&apos;s everything!</source>
-        <translation type="unfinished"></translation>
+        <translation>Biz bittik!</translation>
     </message>
     <message>
         <source>We hope you enjoy using theDesk!</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk kullanmaktan keyif alacağınızı umuyoruz!</translation>
     </message>
     <message>
         <source>Get Started</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlamak</translation>
     </message>
     <message>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitti</translation>
     </message>
 </context>
 <context>
     <name>OnboardingVideo</name>
     <message>
         <source>qrc:/libthedesk/onboarding/OnboardingVideoForm.qml</source>
-        <translation type="unfinished"></translation>
+        <translation>qrc:/libthedesk/onboarding/OnboardingVideoForm.qml</translation>
     </message>
 </context>
 <context>
     <name>OnboardingWelcome</name>
     <message>
         <source>Welcome!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoş geldin!</translation>
     </message>
     <message>
         <source>Let&apos;s get you up and running!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hadi seni çalıştıralım!</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Dil</translation>
     </message>
     <message>
         <source>Emergency</source>
-        <translation type="unfinished"></translation>
+        <translation>Acil Durum</translation>
     </message>
     <message>
         <source>Let&apos;s go!</source>
-        <translation type="unfinished"></translation>
+        <translation>Gidelim!</translation>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoş geldin</translation>
     </message>
 </context>
 <context>
