@@ -595,6 +595,7 @@
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
+            <numerusform>%n denemeler hakkınız kaldı</numerusform>
         </translation>
     </message>
     <message>
@@ -670,7 +671,7 @@
     </message>
     <message>
         <source>Switch off Flight Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Uçuş modunu kapatın</translation>
     </message>
 </context>
 <context>
@@ -687,6 +688,7 @@
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
+            <numerusform>%n denemeler hakkınız kaldı</numerusform>
         </translation>
     </message>
     <message>
@@ -881,31 +883,31 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
     </message>
     <message>
         <source>Wi-Fi is off</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi kapalı</translation>
     </message>
     <message>
         <source>Switch Wi-Fi On</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi&apos;yi Aç</translation>
     </message>
     <message>
         <source>Wi-Fi is disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi devre dışı bırakılır</translation>
     </message>
     <message>
         <source>Switch Wi-Fi on to connect to a wireless network</source>
-        <translation type="unfinished"></translation>
+        <translation>Kablosuz ağa bağlanmak için Wi-Fi&apos;yi açın</translation>
     </message>
     <message>
         <source>Use the Wi-Fi switch to enable Wi-Fi and connect to a network</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi&apos;yi etkinleştirmek ve bir ağa bağlanmak için Wi-Fi anahtarını kullanın</translation>
     </message>
     <message>
         <source>You&apos;re in flight mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Uçuş modundasın</translation>
     </message>
     <message>
         <source>Switch Wi-Fi on to connect to a wireless network. Flight mode won&apos;t be disabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir kablosuz ağa bağlanmak için Wi-Fi&apos;yi açın. Uçuş modu devre dışı bırakılmayacak.</translation>
     </message>
 </context>
 <context>
