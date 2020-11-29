@@ -23,7 +23,7 @@
     <name>OnboardingBetaThankYou</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Thank you!</source>
