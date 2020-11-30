@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    onboarding/onboardingusers.cpp \
     plugin.cpp \
     settings/adduserdialog.cpp \
     settings/changepassworddialog.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
     settings/usertypedialog.cpp
 
 HEADERS += \
+    onboarding/onboardingusers.h \
     plugin.h \
     settings/adduserdialog.h \
     settings/changepassworddialog.h \
@@ -65,6 +67,7 @@ unix {
 include(../plugins.pri)
 
 FORMS += \
+    onboarding/onboardingusers.ui \
     settings/adduserdialog.ui \
     settings/changepassworddialog.ui \
     settings/changerealnamedialog.ui \

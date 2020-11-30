@@ -37,6 +37,15 @@ bool OnboardingManager::isOnboardingRunning() {
     return d->onboardingRunning;
 }
 
+void OnboardingManager::setDateVisible(bool dateVisible) {
+    d->dateVisible = dateVisible;
+    emit dateVisibleChanged(dateVisible);
+}
+
+bool OnboardingManager::dateVisible() {
+    return d->dateVisible;
+}
+
 QList<OnboardingPage*> OnboardingManager::onboardingSteps() {
     return d->steps;
 }

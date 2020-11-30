@@ -34,12 +34,17 @@ class OnboardingManager : public QObject {
         void addOnboardingStep(OnboardingPage* onboardingStep);
         bool isOnboardingRunning();
 
+        void setDateVisible(bool dateVisible);
+        bool dateVisible();
+
     signals:
         void onboardingRequired();
 
         //Call these functions to step forwards/backwards in the onboarding
         void nextStep();
         void previousStep();
+
+        void dateVisibleChanged(bool dateVisible);
 
     protected:
         friend Onboarding;

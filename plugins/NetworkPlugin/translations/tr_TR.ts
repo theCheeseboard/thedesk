@@ -595,7 +595,6 @@
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
-            <numerusform>%n denemeler hakkınız kaldı</numerusform>
         </translation>
     </message>
     <message>
@@ -688,7 +687,6 @@
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
-            <numerusform>%n denemeler hakkınız kaldı</numerusform>
         </translation>
     </message>
     <message>

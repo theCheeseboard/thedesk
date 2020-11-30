@@ -17,35 +17,50 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef ONBOARDINGBAR_H
-#define ONBOARDINGBAR_H
+#ifndef ONBOARDINGUSERS_H
+#define ONBOARDINGUSERS_H
 
-#include <QWidget>
+#include <onboardingpage.h>
 
 namespace Ui {
-    class OnboardingBar;
+    class OnboardingUsers;
 }
 
-struct OnboardingBarPrivate;
-class OnboardingBar : public QWidget {
+struct OnboardingUsersPrivate;
+class OnboardingUsers : public OnboardingPage {
         Q_OBJECT
 
     public:
-        explicit OnboardingBar(QWidget* parent = nullptr);
-        ~OnboardingBar();
+        explicit OnboardingUsers(QWidget* parent = nullptr);
+        ~OnboardingUsers();
 
     private slots:
-        void on_closeButton_clicked();
+        void on_addUserTitleLabel_backButtonClicked();
 
-        void on_muteButton_toggled(bool checked);
+        void on_addUserCompleteButton_clicked();
 
-    signals:
-        void closeClicked();
-        void muteToggled(bool mute);
+        void on_addUserButton_clicked();
+
+        void on_nextButton_clicked();
+
+        void on_titleLabel_backButtonClicked();
+
+        void on_fullNameBox_textChanged(const QString& arg1);
+
+        void on_administratorButton_clicked();
+
+        void on_standardUserButton_clicked();
 
     private:
-        Ui::OnboardingBar* ui;
-        OnboardingBarPrivate* d;
+        Ui::OnboardingUsers* ui;
+        OnboardingUsersPrivate* d;
+
+        void resetAddUserForm();
+
+        // OnboardingPage interface
+    public:
+        QString name();
+        QString displayName();
 };
 
-#endif // ONBOARDINGBAR_H
+#endif // ONBOARDINGUSERS_H

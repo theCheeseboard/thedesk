@@ -20,12 +20,25 @@
 #include "onboardingbar.h"
 #include "ui_onboardingbar.h"
 
+#include <statemanager.h>
+#include <onboardingmanager.h>
+#include <tvariantanimation.h>
 #include <TimeDate/desktoptimedate.h>
+#include <QGraphicsOpacityEffect>
+
+struct OnboardingBarPrivate {
+    QGraphicsOpacityEffect* dateOpacity;
+};
 
 OnboardingBar::OnboardingBar(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::OnboardingBar) {
     ui->setupUi(this);
+
+    d = new OnboardingBarPrivate();
+    d->dateOpacity = new QGraphicsOpacityEffect();
+    d->dateOpacity->setOpacity(StateManager::onboardingManager()->dateVisible() ? 1.0 : 0.0);
+    ui->dateWidget->setGraphicsEffect(d->dateOpacity);
 
     QPalette pal = this->palette();
     pal.setColor(QPalette::WindowText, Qt::white);
@@ -33,6 +46,19 @@ OnboardingBar::OnboardingBar(QWidget* parent) :
 
     DesktopTimeDate::makeTimeLabel(ui->clock, DesktopTimeDate::Time);
     DesktopTimeDate::makeTimeLabel(ui->date, DesktopTimeDate::StandardDate);
+
+    connect(StateManager::onboardingManager(), &OnboardingManager::dateVisibleChanged, this, [ = ](bool dateVisible) {
+        tVariantAnimation* anim = new tVariantAnimation();
+        anim->setStartValue(d->dateOpacity->opacity());
+        anim->setEndValue(dateVisible ? 1.0 : 0.0);
+        anim->setDuration(500);
+        anim->setEasingCurve(QEasingCurve::OutCubic);
+        connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+            d->dateOpacity->setOpacity(value.toReal());
+        });
+        connect(anim, &tVariantAnimation::finished, anim, &tVariantAnimation::deleteLater);
+        anim->start();
+    });
 }
 
 OnboardingBar::~OnboardingBar() {

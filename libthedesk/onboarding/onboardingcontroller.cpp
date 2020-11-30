@@ -44,7 +44,6 @@ bool OnboardingController::performOnboarding() {
         manager->addOnboardingStep(new OnboardingFinal);
         emit manager->onboardingRequired();
 
-
         Onboarding o;
 
         QList<OnboardingVideo*> videoScreens;
@@ -79,6 +78,7 @@ bool OnboardingController::performOnboarding() {
 
             //Set the onboarding flag
             settings.setValue("Onboarding/lastOnboarding", 1);
+            settings.sync();
 
             return true;
         } else {

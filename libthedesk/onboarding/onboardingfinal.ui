@@ -60,7 +60,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="../resources.qrc">:/thedesk/desktop/icons/cactus.svg</pixmap>
+      <pixmap>:/thedesk/desktop/icons/cactus.svg</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -129,8 +129,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

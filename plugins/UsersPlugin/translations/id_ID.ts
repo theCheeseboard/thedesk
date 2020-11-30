@@ -378,6 +378,142 @@
     </message>
 </context>
 <context>
+    <name>OnboardingUsers</name>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="57"/>
+        <location filename="../onboarding/onboardingusers.ui" line="582"/>
+        <location filename="../onboarding/onboardingusers.cpp" line="157"/>
+        <source>Users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="130"/>
+        <source>Full Name</source>
+        <translation type="unfinished">Nama lengkap</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="137"/>
+        <source>Username</source>
+        <translation type="unfinished">Nama user</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="150"/>
+        <source>ABOUT YOU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="157"/>
+        <source>The username is generated based on the given full name. We recommend not changing it.</source>
+        <translation type="unfinished">Nama user dibuat berdasarkan nama lengkap yang Anda tulis, sebaiknya tidak perlu diganti.</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="199"/>
+        <source>Password</source>
+        <translation type="unfinished">Password</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="206"/>
+        <source>Password Hint</source>
+        <translation type="unfinished">Petunjuk Password</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="219"/>
+        <source>YOUR PASSWORD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="236"/>
+        <source>Confirm Password</source>
+        <translation type="unfinished">Ulangi Password</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="243"/>
+        <source>Protect this account with a password to prevent anyone else logging into it.</source>
+        <translation type="unfinished">Amankan akun dengan menggunakan password agar orang lain tak bisa login ke akun Anda.</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="257"/>
+        <source>If you forget your password, this will appear to help you remember.</source>
+        <translation type="unfinished">Jika suatu saat Anda lupa password akun, ini dapat membantu Anda mengingatnya.</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="329"/>
+        <source>ADMINISTRATOR</source>
+        <translation type="unfinished">ADMINISTRATOR</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="336"/>
+        <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
+        <translation type="unfinished">Administrator punya kendali penuh atas sistem. Mereka dapat mengubah konfigurasi sistem dan menginstal software.</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="346"/>
+        <source>Administrator</source>
+        <translation type="unfinished">Administrator</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="377"/>
+        <source>STANDARD USER</source>
+        <translation type="unfinished">USER BIASA</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="384"/>
+        <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
+        <translation type="unfinished">User biasa tak dapat mengubah konfigurasi sistem. Mereka hanya dapat melakukan hal-hal administratif pada akunnya sendiri.</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="394"/>
+        <source>Standard User</source>
+        <translation type="unfinished">User Biasa</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="419"/>
+        <source>USER TYPE</source>
+        <translation type="unfinished">TIPE USER</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="491"/>
+        <location filename="../onboarding/onboardingusers.ui" line="673"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="662"/>
+        <source>Add Another User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="45"/>
+        <source>It&apos;s time to get to know you. Apps will use this information to personalise your experience, and you&apos;ll use the password to log in.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="116"/>
+        <source>Thanks, %1. If other people will be using this device, you can add them now, or you can add them later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="114"/>
+        <source>You&apos;ve added these users to your system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="123"/>
+        <source>Enter the details of the next user to be added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="130"/>
+        <source>Couldn&apos;t create user</source>
+        <translation type="unfinished">Tidak dapat membuat user</translation>
+    </message>
+</context>
+<context>
     <name>UserTypeDialog</name>
     <message>
         <location filename="../settings/usertypedialog.ui" line="93"/>

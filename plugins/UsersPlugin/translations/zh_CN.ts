@@ -378,6 +378,142 @@
     </message>
 </context>
 <context>
+    <name>OnboardingUsers</name>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="57"/>
+        <location filename="../onboarding/onboardingusers.ui" line="582"/>
+        <location filename="../onboarding/onboardingusers.cpp" line="157"/>
+        <source>Users</source>
+        <translation type="unfinished">用户</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="130"/>
+        <source>Full Name</source>
+        <translation type="unfinished">全面</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="137"/>
+        <source>Username</source>
+        <translation type="unfinished">用户名</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="150"/>
+        <source>ABOUT YOU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="157"/>
+        <source>The username is generated based on the given full name. We recommend not changing it.</source>
+        <translation type="unfinished">用户名是根据给定的全名生成的。 我们建议不要更改它。</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="199"/>
+        <source>Password</source>
+        <translation type="unfinished">密码</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="206"/>
+        <source>Password Hint</source>
+        <translation type="unfinished">密码提示</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="219"/>
+        <source>YOUR PASSWORD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="236"/>
+        <source>Confirm Password</source>
+        <translation type="unfinished">确定密码</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="243"/>
+        <source>Protect this account with a password to prevent anyone else logging into it.</source>
+        <translation type="unfinished">使用密码保护该帐户，以防止其他人登录。</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="257"/>
+        <source>If you forget your password, this will appear to help you remember.</source>
+        <translation type="unfinished">如果您忘记密码，这将有助于您记忆。</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="329"/>
+        <source>ADMINISTRATOR</source>
+        <translation type="unfinished">管理员</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="336"/>
+        <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
+        <translation type="unfinished">管理员可以完全控制此设备。 他们将能够配置系统范围的设置并安装软件。</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="346"/>
+        <source>Administrator</source>
+        <translation type="unfinished">管理员</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="377"/>
+        <source>STANDARD USER</source>
+        <translation type="unfinished">普通用户</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="384"/>
+        <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
+        <translation type="unfinished">标准用户无法执行系统范围的操作。 他们将只能执行只会影响其帐户的管理操作。</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="394"/>
+        <source>Standard User</source>
+        <translation type="unfinished">普通用户</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="419"/>
+        <source>USER TYPE</source>
+        <translation type="unfinished">用户类型</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="491"/>
+        <location filename="../onboarding/onboardingusers.ui" line="673"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.ui" line="662"/>
+        <source>Add Another User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="45"/>
+        <source>It&apos;s time to get to know you. Apps will use this information to personalise your experience, and you&apos;ll use the password to log in.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="116"/>
+        <source>Thanks, %1. If other people will be using this device, you can add them now, or you can add them later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="114"/>
+        <source>You&apos;ve added these users to your system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="123"/>
+        <source>Enter the details of the next user to be added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingusers.cpp" line="130"/>
+        <source>Couldn&apos;t create user</source>
+        <translation type="unfinished">无法创建用户</translation>
+    </message>
+</context>
+<context>
     <name>UserTypeDialog</name>
     <message>
         <location filename="../settings/usertypedialog.ui" line="93"/>

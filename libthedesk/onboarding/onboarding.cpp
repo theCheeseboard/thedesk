@@ -52,6 +52,7 @@ struct OnboardingPrivate {
     QAudioOutput* audioOutput = nullptr;
     QIODevice* audioOutputDevice;
     int audioPointer = 0;
+    bool audioEnabled = true;
 
     OnboardingBar* bar;
 
@@ -110,10 +111,10 @@ Onboarding::Onboarding(QWidget* parent) :
 
         //Make sure this pane is actually configured to be in the onboarding
         if (index != -1) {
-            //Add this chunk at the beginning
+            //Add this pane at the correct index
             ui->stackedWidget->insertWidget(index, step);
             currentItems.insert(index, step->name());
-            d->steps.append({step->name(), step});
+            d->steps.insert(index, {step->name(), step});
 
             ui->stepperLayout->insertWidget(index, stepper);
             d->steppers.insert(index, {stepper, step});
@@ -184,6 +185,10 @@ Onboarding::Onboarding(QWidget* parent) :
                 array->append(buf.constData<char>(), buf.byteCount());
             });
             connect(audioDecoder, &QAudioDecoder::finished, this, [ = ] {
+                delete locker;
+                audioDecoder->deleteLater();
+            });
+            connect(audioDecoder, QOverload<QAudioDecoder::Error>::of(&QAudioDecoder::error), this, [ = ](QAudioDecoder::Error error) {
                 delete locker;
                 audioDecoder->deleteLater();
             });
@@ -291,6 +296,8 @@ void Onboarding::startOnboarding() {
 }
 
 void Onboarding::writeAudio() {
+    if (!d->audioEnabled) return;
+    if (!d->audioOutputDevice) return;
     int bytesFree = d->audioOutput->bytesFree();
     if (d->audioPointer < d->singleAudioData.count()) {
         QByteArray chunk = d->singleAudioData.mid(d->audioPointer, bytesFree);
@@ -298,12 +305,20 @@ void Onboarding::writeAudio() {
         bytesFree -= chunk.count();
         d->audioOutputDevice->write(chunk);
     }
-    while (bytesFree != 0 && d->audioPointer >= d->singleAudioData.count()) {
+
+    //Prevent ourselves from locking up in this loop
+    QDeadlineTimer lockTimer(50);
+    while (bytesFree != 0 && d->audioPointer >= d->singleAudioData.count() && !lockTimer.hasExpired()) {
         if (d->audioPointer >= d->singleAudioData.count() + d->loopAudioData.count()) d->audioPointer -= d->loopAudioData.count();
         QByteArray chunk = d->loopAudioData.mid(d->audioPointer - d->singleAudioData.count(), bytesFree);
         d->audioPointer += chunk.count();
         bytesFree -= chunk.count();
         d->audioOutputDevice->write(chunk);
+    }
+
+    //Disable the audio
+    if (lockTimer.hasExpired()) {
+        d->audioEnabled = false;
     }
 }
 

@@ -30,6 +30,8 @@
 
 #include "settings/userspane.h"
 
+#include "onboarding/onboardingusers.h"
+
 struct PluginPrivate {
     int translationSet;
 
@@ -55,6 +57,10 @@ void Plugin::activate() {
 
     d->userPane = new UsersPane();
     StateManager::statusCenterManager()->addPane(d->userPane, StatusCenterManager::SystemSettings);
+
+    QObject::connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, [ = ] {
+        StateManager::onboardingManager()->addOnboardingStep(new OnboardingUsers());
+    });
 }
 
 void Plugin::deactivate() {
