@@ -39,11 +39,11 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Thanks for giving theDesk Beta 1 a go!
+      <string notr="true">Welcome to theDesk Beta 3!
 
 Before we continue, please bear in mind that this is a beta. Not everything will be working correctly, and you may experience some strange behaviour in some parts.
 
-That being said, however, if you happen to run into any ideas or issues, please do let me know. Feedback is important, especially during the early stages of development.
+As always, feedback is appreciated! If you've got any ideas for me, or if something seems a little strange, please let me know!
 
 Once again, thanks for giving theDesk a go!
 - Victor :)</string>
@@ -118,7 +118,8 @@ Once again, thanks for giving theDesk a go!
         <string>Next</string>
        </property>
        <property name="icon">
-        <iconset theme="go-next"/>
+        <iconset theme="go-next">
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>

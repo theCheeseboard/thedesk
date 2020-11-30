@@ -30,17 +30,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Thanks for giving theDesk Beta 1 a go!
-
-Before we continue, please bear in mind that this is a beta. Not everything will be working correctly, and you may experience some strange behaviour in some parts.
-
-That being said, however, if you happen to run into any ideas or issues, please do let me know. Feedback is important, especially during the early stages of development.
-
-Once again, thanks for giving theDesk a go!
-- Victor :)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>

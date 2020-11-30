@@ -133,7 +133,7 @@ About::About() :
     ui->versionLabel->setText(tr("theDesk %1 - Blueprint").arg("1.0"));
     ui->compileDate->setText(tr("You compiled theDesk on %1").arg(__DATE__));
 #else
-    ui->versionLabel->setText(tr("theDesk %1").arg("Beta 2"));
+    ui->versionLabel->setText(tr("theDesk %1").arg("Beta 3"));
     ui->compileDate->setVisible(false);
 #endif
 
