@@ -674,6 +674,33 @@
     </message>
 </context>
 <context>
+    <name>TetheringSettingsPopover</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished">Form</translation>
+    </message>
+    <message>
+        <source>Tethering Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSID</source>
+        <translation type="unfinished">SSID</translation>
+    </message>
+    <message>
+        <source>Network Key</source>
+        <translation type="unfinished">Ağ Çözüm</translation>
+    </message>
+    <message>
+        <source>These settings will be used to set up a Wi-Fi network that other devices can connect to when tethering is enabled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network key needs to be at least 8 characters long</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UnlockModemPopover</name>
     <message>
         <source>Form</source>

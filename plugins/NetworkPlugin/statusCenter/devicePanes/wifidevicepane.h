@@ -56,6 +56,7 @@ class WifiDevicePane : public AbstractDevicePane {
         void on_tetheringSwitch_toggled(bool checked);
         void on_turnWifiOnButton_clicked();
         void on_turnWifiOnButton_2_clicked();
+        void on_tetheringSettings_clicked();
 };
 
 #endif // WIFIDEVICEPANE_H

@@ -62,6 +62,7 @@ SOURCES += \
     statusCenter/networkstatuscenterpane.cpp \
     statusCenter/popovers/connectionselectionpopover.cpp \
     statusCenter/popovers/simsettingspopover.cpp \
+    statusCenter/popovers/tetheringsettingspopover.cpp \
     statusCenter/popovers/unlockmodempopover.cpp \
     statusCenter/popovers/wirelessnetworkselectionpopover.cpp \
     switchmanager.cpp
@@ -94,6 +95,7 @@ HEADERS += \
     statusCenter/networkstatuscenterpane.h \
     statusCenter/popovers/connectionselectionpopover.h \
     statusCenter/popovers/simsettingspopover.h \
+    statusCenter/popovers/tetheringsettingspopover.h \
     statusCenter/popovers/unlockmodempopover.h \
     statusCenter/popovers/wirelessnetworkselectionpopover.h \
     switchmanager.h
@@ -131,5 +133,6 @@ FORMS += \
     statusCenter/networkstatuscenterpane.ui \
     statusCenter/popovers/connectionselectionpopover.ui \
     statusCenter/popovers/simsettingspopover.ui \
+    statusCenter/popovers/tetheringsettingspopover.ui \
     statusCenter/popovers/unlockmodempopover.ui \
     statusCenter/popovers/wirelessnetworkselectionpopover.ui

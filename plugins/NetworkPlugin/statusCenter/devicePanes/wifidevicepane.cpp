@@ -27,6 +27,7 @@
 #include <barmanager.h>
 #include <tpopover.h>
 #include "../popovers/wirelessnetworkselectionpopover.h"
+#include "../popovers/tetheringsettingspopover.h"
 #include "common.h"
 #include <QHostInfo>
 #include <QRandomGenerator>
@@ -463,4 +464,14 @@ void WifiDevicePane::on_turnWifiOnButton_clicked() {
 
 void WifiDevicePane::on_turnWifiOnButton_2_clicked() {
     NetworkManager::setWirelessEnabled(true);
+}
+
+void WifiDevicePane::on_tetheringSettings_clicked() {
+    TetheringSettingsPopover* tetheringSettings = new TetheringSettingsPopover();
+    tPopover* popover = new tPopover(tetheringSettings);
+    popover->setPopoverWidth(SC_DPI(600));
+    connect(tetheringSettings, &TetheringSettingsPopover::done, popover, &tPopover::dismiss);
+    connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
+    connect(popover, &tPopover::dismissed, tetheringSettings, &TetheringSettingsPopover::deleteLater);
+    popover->show(this->window());
 }
