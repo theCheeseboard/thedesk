@@ -595,6 +595,7 @@
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
+            <numerusform>%n deneme hakkınız kaldı</numerusform>
         </translation>
     </message>
     <message>
@@ -677,27 +678,27 @@
     <name>TetheringSettingsPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Tethering Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlama Ayarları</translation>
     </message>
     <message>
         <source>SSID</source>
-        <translation type="unfinished">SSID</translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <source>Network Key</source>
-        <translation type="unfinished">Ağ Çözüm</translation>
+        <translation>Ağ Şifre</translation>
     </message>
     <message>
         <source>These settings will be used to set up a Wi-Fi network that other devices can connect to when tethering is enabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu ayarlar, bağlama etkinleştirildiğinde diğer cihazların bağlanabileceği bir Wi-Fi ağı kurmak için kullanılacaktır.</translation>
     </message>
     <message>
         <source>Network key needs to be at least 8 characters long</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ şifresi en az 8 karakter uzunluğunda olmalıdır</translation>
     </message>
 </context>
 <context>
@@ -713,6 +714,7 @@
     <message numerus="yes">
         <source>You have %n remaining tries</source>
         <translation>
+            <numerusform>%n deneme hakkınız kaldı</numerusform>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
         </translation>
     </message>
