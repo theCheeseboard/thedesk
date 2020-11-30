@@ -13,6 +13,7 @@ SUBDIRS += \
     PowerPlugin \
     ScreenshotPlugin \
     ThemePlugin \
+    TimeDatePlugin \
     UsersPlugin
 
 DISTFILES += plugins.pri
