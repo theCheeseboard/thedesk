@@ -336,20 +336,6 @@
                 <property name="spacing">
                  <number>6</number>
                 </property>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_6">
-                  <property name="text">
-                   <string>SSID</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="1">
-                 <widget class="QLabel" name="tetheringKey">
-                  <property name="text">
-                   <string>TextLabel</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="0" colspan="2">
                  <widget class="QLabel" name="label_4">
                   <property name="font">
@@ -383,6 +369,21 @@
                   </property>
                  </widget>
                 </item>
+                <item row="1" column="0" colspan="2">
+                 <widget class="QLabel" name="label_8">
+                  <property name="text">
+                   <string>Use Tethering to share your internet connection with other devices over Wi-Fi.
+
+**While Tethering is active, you won't be able to connect to the Internet with Wi-Fi, so you'll need to make sure you have an alternate way to connect to the Internet.**</string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::MarkdownText</enum>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
                 <item row="2" column="0" colspan="2">
                  <layout class="QHBoxLayout" name="horizontalLayout_3">
                   <item>
@@ -407,18 +408,27 @@
                   </item>
                  </layout>
                 </item>
-                <item row="1" column="0" colspan="2">
-                 <widget class="QLabel" name="label_8">
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_6">
                   <property name="text">
-                   <string>Use Tethering to share your internet connection with other devices over Wi-Fi.
-
-**While Tethering is active, you won't be able to connect to the Internet with Wi-Fi, so you'll need to make sure you have an alternate way to connect to the Internet.**</string>
+                   <string>SSID</string>
                   </property>
-                  <property name="textFormat">
-                   <enum>Qt::MarkdownText</enum>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QLabel" name="tetheringKey">
+                  <property name="text">
+                   <string>TextLabel</string>
                   </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
+                 </widget>
+                </item>
+                <item row="5" column="0" colspan="2">
+                 <widget class="QLabel" name="tetheringQrCodeLabel">
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -512,7 +522,8 @@
           <string>Switch Wi-Fi On</string>
          </property>
          <property name="icon">
-          <iconset theme="network-wireless"/>
+          <iconset theme="network-wireless">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>

@@ -19,6 +19,7 @@
  * *************************************/
 #include "common.h"
 
+#include <Modem3Gpp>
 
 QString Common::stateChangeReasonToString(NetworkManager::Device::StateChangeReason reason) {
 
@@ -183,4 +184,17 @@ QString Common::iconForSignalStrength(int strength, Common::WirelessType type) {
     }
 
     return iconString;
+}
+
+QString Common::operatorNameForModem(ModemManager::ModemDevice::Ptr device) {
+    if (device->sim() && !device->sim()->operatorName().isEmpty()) {
+        return device->sim()->operatorName();
+    }
+
+    ModemManager::Modem3gpp::Ptr modem3gpp(new ModemManager::Modem3gpp(device->uni()));
+    if (!modem3gpp->operatorName().isEmpty()) {
+        return modem3gpp->operatorName();
+    }
+
+    return tr("Cellular");
 }

@@ -270,6 +270,10 @@
         <source>the wireless network wasn&apos;t found</source>
         <translation>kablosuz ağ bulunamadı</translation>
     </message>
+    <message>
+        <source>Cellular</source>
+        <translation type="unfinished">Hücresel</translation>
+    </message>
 </context>
 <context>
     <name>ConnectionSelectionPopover</name>

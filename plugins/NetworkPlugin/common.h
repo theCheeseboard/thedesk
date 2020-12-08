@@ -22,6 +22,7 @@
 
 #include <QCoreApplication>
 #include <NetworkManagerQt/Device>
+#include <ModemDevice>
 
 class Common {
         Q_DECLARE_TR_FUNCTIONS(Common)
@@ -35,6 +36,7 @@ class Common {
 
         static QString stateChangeReasonToString(NetworkManager::Device::StateChangeReason reason);
         static QString iconForSignalStrength(int strength, WirelessType type);
+        static QString operatorNameForModem(ModemManager::ModemDevice::Ptr device);
 };
 
 #endif // COMMON_H

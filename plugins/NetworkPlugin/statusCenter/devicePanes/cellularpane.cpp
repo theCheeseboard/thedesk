@@ -124,7 +124,7 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
                 case NetworkManager::Device::Disconnected:
                     if (oldState != NetworkManager::Device::Failed) StateManager::hudManager()->showHud({
                         {"icon", "network-cellular-disconnected"},
-                        {"title", tr("Cellular")},
+                        {"title", this->operatorName()},
                         {"text", tr("Disconnected")}
                     });
                     break;
@@ -134,7 +134,7 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
 
                     StateManager::hudManager()->showHud({
                         {"icon", "network-cellular-activated"},
-                        {"title", title},
+                        {"title", this->operatorName()},
                         {"text", tr("Connected")}
                     });
                     break;
@@ -143,7 +143,7 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
                     d->device->setAutoconnect(false);
                     StateManager::hudManager()->showHud({
                         {"icon", "network-cellular-error"},
-                        {"title", tr("Cellular")},
+                        {"title", this->operatorName()},
                         {"text", tr("Failed")}
                     });
                     break;
@@ -276,7 +276,7 @@ void CellularPane::updateState() {
             ModemManager::Modem::AccessTechnologies accessTechnology = d->modem->modemInterface()->accessTechnologies();
 
 #if MM_CHECK_VERSION(1, 14, 0)
-            if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_5GNR) {
+            if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_5GNR ) {
                 chunkParts.append("5G");
             } else
 #endif
@@ -385,10 +385,7 @@ void CellularPane::updateState() {
 }
 
 QString CellularPane::operatorName() {
-    if (!d->modem->sim()->operatorName().isEmpty()) {
-        return d->modem->sim()->operatorName();
-    }
-    return tr("Cellular");
+    return Common::operatorNameForModem(d->modem);
 }
 
 void CellularPane::unlockDevice() {

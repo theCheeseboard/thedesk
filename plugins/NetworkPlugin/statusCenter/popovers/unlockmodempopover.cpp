@@ -20,6 +20,7 @@
 #include "unlockmodempopover.h"
 #include "ui_unlockmodempopover.h"
 
+#include "common.h"
 #include <QDBusPendingCallWatcher>
 #include <terrorflash.h>
 
@@ -72,8 +73,8 @@ void UnlockModemPopover::updatePage() {
     } else {
         ui->pukRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PUK)));
     }
-    ui->simPinOperatorName->setText(d->modem->sim()->operatorName());
-    ui->pukDescription->setText(tr("Contact your carrier to obtain the <b>SIM PUK</b>, and enter it below to unlock %1.").arg(QLocale().quoteString(d->modem->sim()->operatorName())));
+    ui->simPinOperatorName->setText(Common::operatorNameForModem(d->modem));
+    ui->pukDescription->setText(tr("Contact your carrier to obtain the <b>SIM PUK</b>, and enter it below to unlock %1.").arg(QLocale().quoteString(Common::operatorNameForModem(d->modem))));
     ui->simPinBox->clear();
     ui->simPukBox->clear();
 

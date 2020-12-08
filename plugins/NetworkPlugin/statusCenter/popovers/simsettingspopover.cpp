@@ -20,6 +20,7 @@
 #include "simsettingspopover.h"
 #include "ui_simsettingspopover.h"
 
+#include <common.h>
 #include <ttoast.h>
 
 struct SimSettingsPopoverPrivate {
@@ -134,7 +135,7 @@ void SimSettingsPopover::prepareCurrentPinPage() {
     QDBusArgument unlockRetriesArg = unlockRetriesReply.arguments().first().value<QDBusVariant>().variant().value<QDBusArgument>();
     unlockRetriesArg >> retries;
 
-    ui->currentPinPageOperatorName->setText(d->modem->sim()->operatorName());
+    ui->currentPinPageOperatorName->setText(Common::operatorNameForModem(d->modem));
     ui->pinRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PIN)));
     ui->stackedWidget->setCurrentWidget(ui->currentPinPage);
 }
@@ -150,7 +151,7 @@ void SimSettingsPopover::on_changeSimPinAcceptButton_clicked() {
 void SimSettingsPopover::on_changeSimPinButton_clicked() {
     d->operation = SimSettingsPopoverPrivate::ChangePin;
     ui->currentPinTitleLabel->setText(tr("Change SIM PIN"));
-    ui->changeSimPinOperatorName->setText(d->modem->sim()->operatorName());
+    ui->changeSimPinOperatorName->setText(Common::operatorNameForModem(d->modem));
     ui->stackedWidget->setCurrentWidget(ui->changeSimPinPage);
 }
 

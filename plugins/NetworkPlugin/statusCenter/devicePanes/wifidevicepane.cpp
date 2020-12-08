@@ -35,6 +35,7 @@
 #include <ttoast.h>
 #include <icontextchunk.h>
 #include "switchmanager.h"
+#include <qrencode.h>
 
 #include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/WirelessDevice>
@@ -306,10 +307,32 @@ void WifiDevicePane::updateState() {
             }
         }
 
+        QString qrString = QStringLiteral("WIFI:T:WPA;S:%1;P:%2;;").arg(ssid, key.replace(":", "\\:"));
+        QRcode* qrc = QRcode_encodeString(qrString.toUtf8().data(), 0, QR_ECLEVEL_M, QR_MODE_8, 1);
+
+        QPixmap qrcode(ui->tetheringWidget->width() / 2, ui->tetheringWidget->width() / 2);
+        qrcode.fill(Qt::white);
+
+        int margin = ui->tetheringWidget->width() / 20;
+
+        QPainter qrcodePainter(&qrcode);
+        qrcodePainter.setWindow(QRect(0, 0, qrc->width, qrc->width));
+        qrcodePainter.setViewport(QRect(margin, margin, qrcode.width() - margin * 2, qrcode.width() - margin * 2));
+        for (int y = 0; y < qrc->width; y++) {
+            for (int x = 0; x < qrc->width; x++) {
+                if (qrc->data[qrc->width * y + x] & 1) qrcodePainter.fillRect(x, y, 1, 1, Qt::black);
+            }
+        }
+        qrcodePainter.end();
+        ui->tetheringQrCodeLabel->setPixmap(qrcode);
+
+        QRcode_free(qrc);
+
         ui->tetheringSwitch->setChecked(tetheringOn);
         ui->tetheringSettings->setVisible(!tetheringOn);
         ui->actionsWidget->setVisible(!tetheringOn);
         ui->actionsLine->setVisible(!tetheringOn);
+        ui->tetheringQrCodeLabel->setVisible(tetheringOn);
 
         if (tetheringOn && !StateManager::barManager()->isChunkRegistered(d->tetheringChunk)) {
             StateManager::barManager()->addChunk(d->tetheringChunk);

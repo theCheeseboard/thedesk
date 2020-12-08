@@ -270,6 +270,10 @@
         <source>the wireless network wasn&apos;t found</source>
         <translation>找不到无线网络</translation>
     </message>
+    <message>
+        <source>Cellular</source>
+        <translation type="unfinished">蜂窝</translation>
+    </message>
 </context>
 <context>
     <name>ConnectionSelectionPopover</name>
