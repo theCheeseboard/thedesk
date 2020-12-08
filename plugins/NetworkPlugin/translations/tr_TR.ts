@@ -272,7 +272,7 @@
     </message>
     <message>
         <source>Cellular</source>
-        <translation type="unfinished">Hücresel</translation>
+        <translation>Hücresel</translation>
     </message>
 </context>
 <context>
