@@ -16,7 +16,7 @@
     </message>
     <message>
         <source>Select a locale</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați limba și regiunea dumneavoastră</translation>
     </message>
 </context>
 <context>
@@ -27,34 +27,34 @@
     </message>
     <message>
         <source>Thank you!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vă mulțumim!</translation>
     </message>
     <message>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Următorul</translation>
     </message>
     <message>
         <source>A Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Un mesaj</translation>
     </message>
 </context>
 <context>
     <name>OnboardingFinal</name>
     <message>
         <source>That&apos;s everything!</source>
-        <translation type="unfinished"></translation>
+        <translation>Asta e tot!</translation>
     </message>
     <message>
         <source>We hope you enjoy using theDesk!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sperăm că veți folosi cu plăcere theDesk!</translation>
     </message>
     <message>
         <source>Get Started</source>
-        <translation type="unfinished"></translation>
+        <translation>Să începem</translation>
     </message>
     <message>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Gata</translation>
     </message>
 </context>
 <context>
@@ -68,27 +68,27 @@
     <name>OnboardingWelcome</name>
     <message>
         <source>Welcome!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bine ați venit!</translation>
     </message>
     <message>
         <source>Let&apos;s get you up and running!</source>
-        <translation type="unfinished"></translation>
+        <translation>Să terminăm de configurat sistemul!</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Limbă</translation>
     </message>
     <message>
         <source>Emergency</source>
-        <translation type="unfinished"></translation>
+        <translation>Urgență</translation>
     </message>
     <message>
         <source>Let&apos;s go!</source>
-        <translation type="unfinished"></translation>
+        <translation>Să începem!</translation>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Bine ați venit</translation>
     </message>
 </context>
 <context>
@@ -102,35 +102,35 @@
     <name>QuietModeManager</name>
     <message>
         <source>Allows all sounds</source>
-        <translation type="unfinished"></translation>
+        <translation>Permite toate sunetele</translation>
     </message>
     <message>
         <source>Hides non-critical notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Ascunde toate notificările care nu sunt critice</translation>
     </message>
     <message>
         <source>Hides all notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Ascunde toate notificările</translation>
     </message>
     <message>
         <source>Mutes all sound altogether</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezactivează toate sunetele</translation>
     </message>
     <message>
         <source>Sound</source>
-        <translation type="unfinished"></translation>
+        <translation>Sunet</translation>
     </message>
     <message>
         <source>Critical Only</source>
-        <translation type="unfinished"></translation>
+        <translation>Doar critice</translation>
     </message>
     <message>
         <source>No Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Notificări dezactivate</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mut</translation>
     </message>
 </context>
 </TS>
