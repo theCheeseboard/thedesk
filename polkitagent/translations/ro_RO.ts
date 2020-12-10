@@ -6,27 +6,27 @@
     <message>
         <location filename="../authwindow.ui" line="35"/>
         <source>PolicyKit Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Autentificare PolicyKit</translation>
     </message>
     <message>
         <location filename="../authwindow.ui" line="199"/>
         <source>Enter your password to confirm this action</source>
-        <translation type="unfinished"></translation>
+        <translation>Indroduceți parola pentru a confirma acțiunea</translation>
     </message>
     <message>
         <location filename="../authwindow.ui" line="441"/>
         <source>Pass the authentication challenge to confirm this action</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Treceți de provocarea de autentificare pentru a confirma acțiunea</translation>
     </message>
     <message>
         <location filename="../authwindow.cpp" line="160"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Eroare</translation>
     </message>
     <message>
         <location filename="../authwindow.cpp" line="167"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Mesaj</translation>
     </message>
 </context>
 <context>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../identitypopover.ui" line="35"/>
         <source>Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>Identitate</translation>
     </message>
     <message>
         <location filename="../identitypopover.ui" line="42"/>
