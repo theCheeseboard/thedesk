@@ -5,27 +5,27 @@
     <name>EventHandler</name>
     <message>
         <source>No Audio Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Niciun dispozitiv audio conectat</translation>
     </message>
     <message>
         <source>Speakers</source>
-        <translation type="unfinished"></translation>
+        <translation>Boxe</translation>
     </message>
     <message>
         <source>Headphones</source>
-        <translation type="unfinished"></translation>
+        <translation>Căști</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Volum</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mut</translation>
     </message>
     <message>
         <source>Unmute Quiet Mode before changing the volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezactivați modul silențios înainte de a schimba volumul</translation>
     </message>
 </context>
 </TS>
