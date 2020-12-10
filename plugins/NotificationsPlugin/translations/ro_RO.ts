@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>Media Players</source>
-        <translation type="unfinished"></translation>
+        <translation>Playere media</translation>
     </message>
 </context>
 <context>
@@ -20,7 +20,7 @@
     </message>
     <message>
         <source>Uncategorised</source>
-        <translation type="unfinished"></translation>
+        <translation>Necategorisite</translation>
     </message>
 </context>
 <context>
@@ -52,19 +52,19 @@
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Notificări</translation>
     </message>
     <message>
         <source>Is it Friday yet?</source>
-        <translation type="unfinished"></translation>
+        <translation>Este vineri?</translation>
     </message>
     <message>
         <source>You&apos;ve caught up with your notifications!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ați citit toate notificările!</translation>
     </message>
     <message>
         <source>QUIET MODE</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod silențios</translation>
     </message>
 </context>
 </TS>
