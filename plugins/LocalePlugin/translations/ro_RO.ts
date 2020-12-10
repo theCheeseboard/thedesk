@@ -7,107 +7,107 @@
         <location filename="../settings/localesettingspane.ui" line="35"/>
         <location filename="../settings/localesettingspane.cpp" line="119"/>
         <source>Locale</source>
-        <translation type="unfinished"></translation>
+        <translation>Limbă și regiune</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="107"/>
         <source>LANGUAGE</source>
-        <translation type="unfinished"></translation>
+        <translation>Limbă</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="114"/>
         <source>Prioritise the languages you&apos;d like to use on your device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordonați limbile pe care le folosiți pe dispozitiv.</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="133"/>
         <source>Add Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Adaugă o limbă</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="277"/>
         <source>Currency</source>
-        <translation type="unfinished"></translation>
+        <translation>Moneda</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="221"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Ora</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="242"/>
         <source>Measurement</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistemul de măsurători</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="263"/>
         <source>Country</source>
-        <translation type="unfinished"></translation>
+        <translation>Țară</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="184"/>
         <source>Select your preferred regional formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați formatele regionale pe care le folosiți</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="177"/>
         <source>Numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Numere</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="228"/>
         <source>First day of week</source>
-        <translation type="unfinished"></translation>
+        <translation>Prima zi din săptămână</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="207"/>
         <source>REGION</source>
-        <translation type="unfinished"></translation>
+        <translation>Regiune</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="256"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Dată</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="78"/>
         <source>Primary</source>
-        <translation type="unfinished"></translation>
+        <translation>Principal</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="95"/>
         <source>Metric</source>
-        <translation type="unfinished"></translation>
+        <translation>Metric</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="98"/>
         <source>Imperial</source>
-        <translation type="unfinished"></translation>
+        <translation>Imperial</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="101"/>
         <source>Imperial (United Kingdom)</source>
-        <translation type="unfinished"></translation>
+        <translation>Imperial (Regatul Unit)</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="152"/>
         <source>For this language</source>
-        <translation type="unfinished"></translation>
+        <translation>Pentru această limbă</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="153"/>
         <source>Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Mută sus</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="156"/>
         <source>Move Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Mută jos</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="159"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Elimină</translation>
     </message>
 </context>
 <context>
@@ -116,17 +116,17 @@
         <location filename="../onboarding/onboardingregion.ui" line="35"/>
         <location filename="../onboarding/onboardingregion.cpp" line="60"/>
         <source>Region</source>
-        <translation type="unfinished"></translation>
+        <translation>Regiune</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="42"/>
         <source>Whereabouts are you located? We&apos;ll use this information to format your dates, numbers and other items correctly.</source>
-        <translation type="unfinished"></translation>
+        <translation>Unde vă aflați? Vom folosi informația să aranjăm datele calendaristice, numerele și alte lucruri corect.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="115"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Următorul</translation>
     </message>
 </context>
 </TS>
