@@ -6,12 +6,12 @@
     <message>
         <source>Erase-o</source>
         <comment>This and the next translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+        <translation>Erase-o</translation>
     </message>
     <message>
         <source>matic 2000</source>
         <comment>This and the previous translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+        <translation>matic 2000</translation>
     </message>
 </context>
 <context>
@@ -22,27 +22,27 @@
     </message>
     <message>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Renunță</translation>
     </message>
     <message>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiază</translation>
     </message>
     <message>
         <source>SCREENSHOT</source>
-        <translation type="unfinished"></translation>
+        <translation>Captură de ecran</translation>
     </message>
     <message>
         <source>Crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Decupează</translation>
     </message>
     <message>
         <source>Redact</source>
-        <translation type="unfinished"></translation>
+        <translation>Redactează</translation>
     </message>
     <message>
         <source>Reset Markup</source>
-        <translation type="unfinished"></translation>
+        <translation>Resetează însemnările</translation>
     </message>
 </context>
 </TS>
