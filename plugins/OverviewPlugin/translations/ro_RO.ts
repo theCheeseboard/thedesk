@@ -6,32 +6,32 @@
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="106"/>
         <source>Hi %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Salut %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="108"/>
         <source>Good morning, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bună dimineața, %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="110"/>
         <source>Good afternoon, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bună ziua, %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="112"/>
         <source>Good evening, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bună seara, %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="254"/>
         <source>Overview</source>
-        <translation type="unfinished"></translation>
+        <translation>Privire de ansamblu</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.ui" line="102"/>
         <source>Hope you&apos;re having a great day. Here&apos;s what we&apos;ve got for you:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sperăm că aveți o zi minunată. Uitați ce avem pentru dumneavoastră:</translation>
     </message>
 </context>
 </TS>
