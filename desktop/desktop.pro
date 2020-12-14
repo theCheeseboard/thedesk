@@ -26,6 +26,7 @@ SOURCES += \
     background/background.cpp \
     bar/barwindow.cpp \
     bar/chunkcontainer.cpp \
+    bar/currentappwidget.cpp \
     bar/mainbarwidget.cpp \
     bar/taskbarwidget.cpp \
     cli/commandline.cpp \
@@ -56,6 +57,7 @@ HEADERS += \
     background/background.h \
     bar/barwindow.h \
     bar/chunkcontainer.h \
+    bar/currentappwidget.h \
     bar/mainbarwidget.h \
     bar/taskbarwidget.h \
     cli/commandline.h \
@@ -85,6 +87,7 @@ FORMS += \
     background/background.ui \
     bar/barwindow.ui \
     bar/chunkcontainer.ui \
+    bar/currentappwidget.ui \
     bar/mainbarwidget.ui \
     bar/taskbarwidget.ui \
     gateway/gateway.ui \

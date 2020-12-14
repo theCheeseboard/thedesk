@@ -17,45 +17,35 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef BARWINDOW_H
-#define BARWINDOW_H
+#ifndef CURRENTAPPWIDGET_H
+#define CURRENTAPPWIDGET_H
 
 #include <QWidget>
-#include <Wm/desktopwmwindow.h>
 
 namespace Ui {
-    class BarWindow;
+    class CurrentAppWidget;
 }
 
-struct BarWindowPrivate;
-class BarWindow : public QWidget {
+struct CurrentAppWidgetPrivate;
+class CurrentAppWidget : public QWidget {
         Q_OBJECT
 
     public:
-        explicit BarWindow(QWidget* parent = nullptr);
-        ~BarWindow();
+        explicit CurrentAppWidget(QWidget* parent = nullptr);
+        ~CurrentAppWidget();
+
+        void barHeightChanging(float barTransitionPercentage);
 
     private:
-        Ui::BarWindow* ui;
-        BarWindowPrivate* d;
+        Ui::CurrentAppWidget* ui;
+        CurrentAppWidgetPrivate* d;
 
-        void resizeEvent(QResizeEvent* event);
+        void activeWindowChanged();
+
+        // QWidget interface
+    protected:
         void enterEvent(QEvent* event);
         void leaveEvent(QEvent* event);
-        void paintEvent(QPaintEvent* event);
-        void mouseMoveEvent(QMouseEvent* event);
-
-        void trackWindow(DesktopWmWindowPtr window);
-
-        void updatePrimaryScreen();
-        void barHeightChanged();
-
-        void showStatusCenter();
-        void hideStatusCenter();
-
-        void showBar();
-        void hideBar();
-
 };
 
-#endif // BARWINDOW_H
+#endif // CURRENTAPPWIDGET_H

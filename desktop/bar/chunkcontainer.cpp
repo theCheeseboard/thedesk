@@ -87,6 +87,10 @@ int ChunkContainer::expandedHeight() {
     return maxHeight;
 }
 
+int ChunkContainer::currentAppWidgetX() {
+    return ui->currentAppWidget->x();
+}
+
 void ChunkContainer::barHeightChanged(int height) {
     if (height >= statusBarHeight() && height <= expandedHeight()) {
         this->setFixedHeight(height);
@@ -96,6 +100,7 @@ void ChunkContainer::barHeightChanged(int height) {
     if (percentageAnim < 0) percentageAnim = 0;
     if (percentageAnim > 1) percentageAnim = 1;
     d->barManager->barHeightTransitioning(percentageAnim);
+    ui->currentAppWidget->barHeightChanging(percentageAnim);
 }
 
 void ChunkContainer::paintEvent(QPaintEvent* event) {

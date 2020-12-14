@@ -57,6 +57,10 @@ int MainBarWidget::expandedHeight() {
     return ui->chunkContainer->expandedHeight() + ui->mainContentsWidget->sizeHint().height();
 }
 
+int MainBarWidget::currentAppWidgetX() {
+    return ui->chunkContainer->currentAppWidgetX();
+}
+
 void MainBarWidget::barHeightChanged(int height) {
     ui->chunkContainer->barHeightChanged(height);
 }

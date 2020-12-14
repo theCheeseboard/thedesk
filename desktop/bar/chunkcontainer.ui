@@ -55,8 +55,19 @@
      </property>
     </spacer>
    </item>
+   <item>
+    <widget class="CurrentAppWidget" name="currentAppWidget" native="true"/>
+   </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CurrentAppWidget</class>
+   <extends>QWidget</extends>
+   <header>bar/currentappwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

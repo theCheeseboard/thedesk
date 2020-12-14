@@ -22,6 +22,7 @@
 
 #include <QScreen>
 #include <QPainter>
+#include <QMouseEvent>
 #include <QGraphicsOpacityEffect>
 #include <Wm/desktopwm.h>
 
@@ -53,6 +54,7 @@ struct BarWindowPrivate {
 
     bool expanding = true;
     bool statusCenterShown = false;
+    bool barPendingShow = false;
 
     tSettings settings;
 };
@@ -65,6 +67,7 @@ BarWindow::BarWindow(QWidget* parent) :
     d = new BarWindowPrivate();
 
     this->setAttribute(Qt::WA_TranslucentBackground);
+    this->setMouseTracking(true);
 
     d->mainBarWidget = new MainBarWidget(this);
     connect(d->mainBarWidget, &MainBarWidget::expandedHeightChanged, this, &BarWindow::barHeightChanged);
@@ -186,7 +189,8 @@ void BarWindow::resizeEvent(QResizeEvent* event) {
 }
 
 void BarWindow::enterEvent(QEvent* event) {
-    showBar();
+    d->barPendingShow = true;
+    if (mapFromGlobal(QCursor::pos()).x() < d->mainBarWidget->currentAppWidgetX()) showBar();
 }
 
 void BarWindow::leaveEvent(QEvent* event) {
@@ -287,6 +291,7 @@ void BarWindow::hideStatusCenter() {
 }
 
 void BarWindow::showBar() {
+    d->barPendingShow = false;
     //If we're showing the status bar, don't touch the height
     if (!StateManager::statusCenterManager()->isShowingStatusCenter()) {
         QSignalBlocker blocker(d->heightAnim);
@@ -310,3 +315,6 @@ void BarWindow::hideBar() {
     }
 }
 
+void BarWindow::mouseMoveEvent(QMouseEvent* event) {
+    if (event->pos().x() < d->mainBarWidget->currentAppWidgetX() && d->barPendingShow) showBar();
+}

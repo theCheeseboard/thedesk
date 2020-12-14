@@ -37,6 +37,7 @@ class ChunkContainer : public QWidget {
 
         int statusBarHeight();
         int expandedHeight();
+        int currentAppWidgetX();
         void barHeightChanged(int height);
 
     signals:

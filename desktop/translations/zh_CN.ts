@@ -306,6 +306,14 @@
     </message>
 </context>
 <context>
+    <name>CurrentAppWidget</name>
+    <message>
+        <location filename="../bar/currentappwidget.cpp" line="70"/>
+        <source>Application</source>
+        <translation type="unfinished">应用程序</translation>
+    </message>
+</context>
+<context>
     <name>EndSession</name>
     <message>
         <location filename="../session/endsession.ui" line="57"/>

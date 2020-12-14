@@ -35,6 +35,7 @@ class MainBarWidget : public QWidget {
 
         int statusBarHeight();
         int expandedHeight();
+        int currentAppWidgetX();
 
         void barHeightChanged(int height);
 
