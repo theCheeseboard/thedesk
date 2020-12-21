@@ -239,17 +239,17 @@
         <translation>结束进程</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="198"/>
+        <location filename="../background/background.cpp" line="199"/>
         <source>by %1</source>
         <translation>与 %1</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="295"/>
+        <location filename="../background/background.cpp" line="296"/>
         <source>For desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="355"/>
+        <location filename="../background/background.cpp" line="356"/>
         <source>Select Background</source>
         <translation>选择背景</translation>
     </message>
@@ -303,14 +303,6 @@
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>path</source>
         <translation>路径</translation>
-    </message>
-</context>
-<context>
-    <name>CurrentAppWidget</name>
-    <message>
-        <location filename="../bar/currentappwidget.cpp" line="70"/>
-        <source>Application</source>
-        <translation type="unfinished">应用程序</translation>
     </message>
 </context>
 <context>

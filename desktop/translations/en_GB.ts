@@ -239,17 +239,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="198"/>
+        <location filename="../background/background.cpp" line="199"/>
         <source>by %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="295"/>
+        <location filename="../background/background.cpp" line="296"/>
         <source>For desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="355"/>
+        <location filename="../background/background.cpp" line="356"/>
         <source>Select Background</source>
         <translation type="unfinished"></translation>
     </message>
@@ -302,14 +302,6 @@
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>path</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>CurrentAppWidget</name>
-    <message>
-        <location filename="../bar/currentappwidget.cpp" line="70"/>
-        <source>Application</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

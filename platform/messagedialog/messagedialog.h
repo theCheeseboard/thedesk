@@ -20,7 +20,7 @@
 #ifndef MESSAGEDIALOG_H
 #define MESSAGEDIALOG_H
 
-#include <QDialog>
+#include <QWidget>
 #include <qpa/qplatformdialoghelper.h>
 
 namespace Ui {
@@ -28,7 +28,7 @@ namespace Ui {
 }
 
 struct MessageDialogPrivate;
-class MessageDialog : public QDialog {
+class MessageDialog : public QWidget {
         Q_OBJECT
 
     public:
@@ -37,12 +37,22 @@ class MessageDialog : public QDialog {
 
         void setOptions(const QSharedPointer<QMessageDialogOptions>& options);
 
+        void animateIn();
+        void animateOut();
+
+        QRect frameGeometry();
+        void updateGeometry();
+
     signals:
         void clicked(QPlatformDialogHelper::StandardButton button, QPlatformDialogHelper::ButtonRole role);
 
     private:
         Ui::MessageDialog* ui;
         MessageDialogPrivate* d;
+
+        // QWidget interface
+    protected:
+        void resizeEvent(QResizeEvent* event);
 };
 
 #endif // MESSAGEDIALOG_H

@@ -142,6 +142,7 @@ void Background::changeBackground() {
     ui->stackedWidget->setCurrentWidget(ui->loadingBackgroundPage);
 
     d->bg->getCurrentBackground(this->size())->then([ = ](BackgroundController::BackgroundData data) {
+        //TODO: what if the backgrounds change?
         d->background = data;
 
         if (d->background.extendedInfoAvailable) {
@@ -396,7 +397,6 @@ void Background::on_zoomFitButton_toggled(bool checked) {
     }
 }
 
-void Background::on_actionEndSession_triggered()
-{
+void Background::on_actionEndSession_triggered() {
 
 }

@@ -1,0 +1,8 @@
+{
+    "name": "Bluetooth",
+    "icon": "preferences-system-bluetooth",
+    "uuid": "e64f4005-56a6-4401-962d-e325b6109eec",
+    "vi": {
+        "name": "Bluetooth"
+    }
+}

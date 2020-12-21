@@ -20,13 +20,16 @@
 #include "currentappwidget.h"
 #include "ui_currentappwidget.h"
 
-#include <the-libs_global.h>
+#include <tvariantanimation.h>
 #include <Wm/desktopwm.h>
 #include <Applications/application.h>
+#include <QGraphicsOpacityEffect>
 #include <QIcon>
 
 struct CurrentAppWidgetPrivate {
     QPalette pal;
+    QGraphicsOpacityEffect* opacity;
+    tVariantAnimation* anim;
 };
 
 CurrentAppWidget::CurrentAppWidget(QWidget* parent) :
@@ -36,6 +39,18 @@ CurrentAppWidget::CurrentAppWidget(QWidget* parent) :
 
     d = new CurrentAppWidgetPrivate();
     d->pal = this->palette();
+
+    d->opacity = new QGraphicsOpacityEffect(this);
+    d->opacity->setOpacity(1);
+    this->setGraphicsEffect(d->opacity);
+
+    d->anim = new tVariantAnimation(this);
+    d->anim->setStartValue(0.0);
+    d->anim->setEndValue(1.0);
+    d->anim->setDuration(200);
+    connect(d->anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        d->opacity->setOpacity(value.toReal());
+    });
 
     connect(DesktopWm::instance(), &DesktopWm::activeWindowChanged, this, &CurrentAppWidget::activeWindowChanged);
     activeWindowChanged();
@@ -65,16 +80,26 @@ void CurrentAppWidget::activeWindowChanged() {
         if (app) {
             ui->iconLabel->setPixmap(QIcon::fromTheme(app->getProperty("Icon").toString()).pixmap(SC_DPI_T(QSize(16, 16), QSize)));
             ui->currentAppLabel->setText(app->getProperty("Name").toString());
+
+            if (d->anim->direction() == tVariantAnimation::Backward) {
+                d->anim->setDirection(tVariantAnimation::Forward);
+                d->anim->start();
+            }
         } else {
-            ui->iconLabel->setPixmap(active->icon().pixmap(SC_DPI_T(QSize(16, 16), QSize)));
-            ui->currentAppLabel->setText(tr("Application"));
+            if (d->anim->direction() == tVariantAnimation::Forward) {
+                d->anim->setDirection(tVariantAnimation::Backward);
+                d->anim->start();
+            }
         }
     } else {
         ui->iconLabel->setPixmap(QIcon(":/thedesk/desktop/thedesk.svg").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
         ui->currentAppLabel->setText(QStringLiteral("theDesk"));
+        if (d->anim->direction() == tVariantAnimation::Backward) {
+            d->anim->setDirection(tVariantAnimation::Forward);
+            d->anim->start();
+        }
     }
 }
-
 
 void CurrentAppWidget::enterEvent(QEvent* event) {
     QPalette pal = d->pal;

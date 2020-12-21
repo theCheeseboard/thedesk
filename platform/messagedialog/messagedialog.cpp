@@ -20,18 +20,28 @@
 #include "messagedialog.h"
 #include "ui_messagedialog.h"
 
+#include <tvariantanimation.h>
+#include <QGraphicsOpacityEffect>
 #include <QPushButton>
 
 struct MessageDialogPrivate {
     QList<QPushButton*> buttons;
+    QGraphicsOpacityEffect* opacity;
 };
 
 MessageDialog::MessageDialog(QWidget* parent) :
-    QDialog(parent),
+    QWidget(parent),
     ui(new Ui::MessageDialog) {
     ui->setupUi(this);
 
     d = new MessageDialogPrivate();
+
+//    this->setWindowFlags(Qt::Widget);
+    ui->frame->setMinimumWidth(SC_DPI(400));
+
+    d->opacity = new QGraphicsOpacityEffect(this);
+    d->opacity->setEnabled(false);
+    ui->frame->setGraphicsEffect(d->opacity);
 }
 
 MessageDialog::~MessageDialog() {
@@ -84,11 +94,81 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
         if (btn.role == QPlatformDialogHelper::DestructiveRole) button->setProperty("type", "destructive");
         connect(button, &QPushButton::clicked, this, [ = ] {
             emit clicked(static_cast<QPlatformDialogHelper::StandardButton>(btn.id), btn.role);
-            this->close();
         });
         ui->buttonLayout->addWidget(button);
         d->buttons.append(button);
     }
+}
 
-    this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
+void MessageDialog::animateIn() {
+    d->opacity->setEnabled(true);
+    d->opacity->setOpacity(0);
+
+    tVariantAnimation* anim = new tVariantAnimation(this);
+    anim->setStartValue(0.0);
+    anim->setEndValue(1.0);
+    anim->setDuration(400);
+    anim->setEasingCurve(QEasingCurve::OutCubic);
+    connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        d->opacity->setOpacity(value.toReal());
+
+        QRect geometry = frameGeometry();
+        geometry.moveTop(geometry.top() - SC_DPI(10) * (1.0 - value.toReal()));
+        this->setFixedSize(QSize(0, 0));
+        this->setFixedSize(geometry.size());
+        this->setGeometry(geometry);
+    });
+    connect(anim, &tVariantAnimation::finished, this, [ = ] {
+        d->opacity->setEnabled(false);
+        anim->deleteLater();
+    });
+    anim->start();
+}
+
+void MessageDialog::animateOut() {
+    d->opacity->setEnabled(true);
+
+    tVariantAnimation* anim = new tVariantAnimation(this);
+    anim->setStartValue(1.0);
+    anim->setEndValue(0.0);
+    anim->setDuration(400);
+    anim->setEasingCurve(QEasingCurve::OutCubic);
+    connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        d->opacity->setOpacity(value.toReal());
+
+        QRect geometry = frameGeometry();
+        geometry.moveTop(geometry.top() + SC_DPI(10) * (1.0 - value.toReal()));
+        this->setFixedSize(QSize(0, 0));
+        this->setFixedSize(geometry.size());
+        this->setGeometry(geometry);
+    });
+    connect(anim, &tVariantAnimation::finished, this, [ = ] {
+        anim->deleteLater();
+        this->hide();
+    });
+    anim->start();
+}
+
+QRect MessageDialog::frameGeometry() {
+    QRect geometry = this->geometry();
+    if (ui->frame->sizeHint().width() > SC_DPI(400)) {
+        geometry.setSize(ui->frame->sizeHint());
+    } else {
+        geometry.setSize(QSize(SC_DPI(400), ui->frame->heightForWidth(SC_DPI(400))));
+    }
+    if (this->parentWidget()) {
+        geometry.moveCenter(QRect(0, 0, this->parentWidget()->width(), this->parentWidget()->height()).center());
+    }
+
+    return geometry;
+}
+
+void MessageDialog::updateGeometry() {
+    QRect geometry = frameGeometry();
+    this->setFixedSize(geometry.size());
+    this->setGeometry(geometry);
+}
+
+void MessageDialog::resizeEvent(QResizeEvent* event) {
+    updateGeometry();
 }

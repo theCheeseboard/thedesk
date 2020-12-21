@@ -38,6 +38,7 @@ SOURCES += \
     fontformat.cpp \
     iconloaderengine.cpp \
     messagedialog/messagedialog.cpp \
+    messagedialog/messagedialogcontroller.cpp \
     messagedialog/messagedialoghelper.cpp \
     paletteformat.cpp \
     platformtheme.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
     fontformat.h \
     iconloaderengine.h \
     messagedialog/messagedialog.h \
+    messagedialog/messagedialogcontroller.h \
     messagedialog/messagedialoghelper.h \
     paletteformat.h \
     platformtheme.h \

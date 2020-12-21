@@ -3,6 +3,7 @@ TEMPLATE = subdirs
 SUBDIRS += \
     AccessibilityPlugin \
     AudioPlugin \
+    BluetoothPlugin \
     BrightnessPlugin \
     DisplayPlugin \
     InputPlugin \

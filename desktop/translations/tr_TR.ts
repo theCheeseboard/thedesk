@@ -239,17 +239,17 @@
         <translation>Oturumu Sonlandır</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="198"/>
+        <location filename="../background/background.cpp" line="199"/>
         <source>by %1</source>
         <translation>%1 tarafından</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="295"/>
+        <location filename="../background/background.cpp" line="296"/>
         <source>For desktop</source>
         <translation>Masaüstü için</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="355"/>
+        <location filename="../background/background.cpp" line="356"/>
         <source>Select Background</source>
         <translation>Arkaplan seç</translation>
     </message>
@@ -303,14 +303,6 @@
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>path</source>
         <translation>yol</translation>
-    </message>
-</context>
-<context>
-    <name>CurrentAppWidget</name>
-    <message>
-        <location filename="../bar/currentappwidget.cpp" line="70"/>
-        <source>Application</source>
-        <translation type="unfinished">Uygulama</translation>
     </message>
 </context>
 <context>
