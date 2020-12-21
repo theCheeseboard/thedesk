@@ -6,87 +6,87 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="157"/>
         <source>DISTRIBUTION</source>
-        <translation type="unfinished"></translation>
+        <translation>Distribuție</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="164"/>
         <source>You&apos;re using</source>
-        <translation type="unfinished"></translation>
+        <translation>Folosiți</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="201"/>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Suport</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="248"/>
         <source>Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nume dispozitiv</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="317"/>
         <source>Processor</source>
-        <translation type="unfinished"></translation>
+        <translation>Procesor</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="330"/>
         <source>THIS DEVICE</source>
-        <translation type="unfinished"></translation>
+        <translation>Acest dispozitiv</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="344"/>
         <source>Available Memory</source>
-        <translation type="unfinished"></translation>
+        <translation>Memorie disponibilă</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="255"/>
         <source>Available Swap</source>
-        <translation type="unfinished"></translation>
+        <translation>Memorie Swap disponibilă</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="296"/>
         <source>Qt Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versiune Qt</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="303"/>
         <source>Kernel Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versiune nucleu</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="351"/>
         <source>Change Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbă numele dispozitivului</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="422"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"></translation>
+        <translation>Mediu desktop</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="452"/>
         <source>Website</source>
-        <translation type="unfinished"></translation>
+        <translation>Site web</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="463"/>
         <source>File Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Raportați o problemă</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="474"/>
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Surse</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="485"/>
         <source>View Debug Log</source>
-        <translation type="unfinished"></translation>
+        <translation>Vizualizați jurnalul de depanare</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="441"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mulțumiri</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="77"/>
@@ -96,33 +96,33 @@
         <location filename="../systemsettings/about/about.cpp" line="88"/>
         <location filename="../systemsettings/about/about.cpp" line="124"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Necunoscut</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="133"/>
         <source>theDesk %1 - Blueprint</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk %1 - Blueprint</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="134"/>
         <source>You compiled theDesk on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ați compilat theDesk pe data de %1</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="136"/>
         <source>theDesk %1</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk %1</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="140"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright © Victor Tran %1. Licențiat sub termenii licenței GNU General Public Licence, versiunea 3 sau ulterioară.</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="35"/>
         <location filename="../systemsettings/about/about.cpp" line="174"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Despre</translation>
     </message>
 </context>
 <context>
@@ -130,12 +130,12 @@
     <message>
         <location filename="../systemsettings/about/acknowledgements.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/acknowledgements.ui" line="35"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished"></translation>
+        <translation>Mulțumiri</translation>
     </message>
 </context>
 <context>
@@ -143,12 +143,12 @@
     <message>
         <location filename="../gateway/appselectionmodel.cpp" line="63"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicația</translation>
     </message>
     <message>
         <location filename="../gateway/appselectionmodel.cpp" line="108"/>
         <source>Run Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Execută comanda</translation>
     </message>
 </context>
 <context>
@@ -156,102 +156,102 @@
     <message>
         <location filename="../background/background.ui" line="176"/>
         <source>Sorry, there was a problem displaying the background.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne pare rău, a intervenit o problemă la afișarea acestui fundal.</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="198"/>
         <source>Try Again</source>
-        <translation type="unfinished"></translation>
+        <translation>Reîncearcă</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="379"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Fundal</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="427"/>
         <source>IMAGE</source>
-        <translation type="unfinished"></translation>
+        <translation>Imagine</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="434"/>
         <source>Select an image to display on your background and lock screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați o imagine pentru a fi folosită ca și fundalul desktopului și al ecranului de blocare</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="522"/>
         <source>COMMUNITY BACKGROUNDS</source>
-        <translation type="unfinished"></translation>
+        <translation>Fundaluri create de comunitate</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="529"/>
         <source>Images from the theDesk community will be cycled through every so often.</source>
-        <translation type="unfinished"></translation>
+        <translation>Imaginile din comunitatea theDesk vor fi schimbate din când în când.</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="536"/>
         <source>Show image information</source>
-        <translation type="unfinished"></translation>
+        <translation>Arată informații despre imagini</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="584"/>
         <source>STRETCH</source>
-        <translation type="unfinished"></translation>
+        <translation>Întindere</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="591"/>
         <source>Select how you&apos;d like the background image to be sized</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați cum ați dori să fie afișată imaginea de fundal</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="603"/>
         <source>Stretch To Fit</source>
-        <translation type="unfinished"></translation>
+        <translation>Întindere pentru a se potrivi</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="629"/>
         <source>Zoom and Crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Mărire și decupare</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="655"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Centrat</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="681"/>
         <source>Tile</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cu dale</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="707"/>
         <source>Zoom To Fit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mărire pentru a încăpea</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="757"/>
         <source>Change Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbă fundalul</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="765"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Închide sesiunea</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="199"/>
         <source>by %1</source>
-        <translation type="unfinished"></translation>
+        <translation>de %1</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="296"/>
         <source>For desktop</source>
-        <translation type="unfinished"></translation>
+        <translation>Pentru desktop</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="356"/>
         <source>Select Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați fundalul</translation>
     </message>
 </context>
 <context>
@@ -259,17 +259,17 @@
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="35"/>
         <source>Change Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbă numele dispozitivului</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="62"/>
         <source>New Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Noul nume al dispozitivului</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="69"/>
