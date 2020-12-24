@@ -6,7 +6,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="157"/>
         <source>DISTRIBUTION</source>
-        <translation type="unfinished"></translation>
+        <translation>DISTRIBUTION</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="164"/>
@@ -482,7 +482,7 @@
     <message>
         <location filename="../session/endsession.cpp" line="48"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished">Hey %1, ready to head out? We&apos;ll %2 in %n second if you don&apos;t do anything.</translation>
+        <translation>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</translation>
     </message>
 </context>
 <context>
