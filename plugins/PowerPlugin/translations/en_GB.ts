@@ -1,108 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="en_GB">
 <context>
     <name>EventHandler</name>
     <message>
         <source>Unable to inhibit logind power management</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to inhibit logind power management</translation>
     </message>
     <message>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>Suspend</translation>
     </message>
     <message numerus="yes">
         <source>%n seconds</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n second</numerusform>
+            <numerusform>%n seconds</numerusform>
         </translation>
     </message>
     <message>
         <source>Battery</source>
-        <translation type="unfinished"></translation>
+        <translation>Battery</translation>
     </message>
     <message>
         <source>Charging</source>
-        <translation type="unfinished"></translation>
+        <translation>Charging</translation>
     </message>
     <message>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Full</translation>
     </message>
     <message>
         <source>Discharging</source>
-        <translation type="unfinished"></translation>
+        <translation>Discharging</translation>
     </message>
 </context>
 <context>
     <name>PowerSettings</name>
     <message>
         <source>Power</source>
-        <translation type="unfinished"></translation>
+        <translation>Power</translation>
     </message>
     <message>
         <source>TIMEOUTS</source>
-        <translation type="unfinished"></translation>
+        <translation>TIMEOUTS</translation>
     </message>
     <message>
         <source>Switch off the screen after</source>
-        <translation type="unfinished"></translation>
+        <translation>Switch off the screen after</translation>
     </message>
     <message>
         <source>seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>seconds</translation>
     </message>
     <message>
         <source>minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>minutes</translation>
     </message>
     <message>
         <source>hours</source>
-        <translation type="unfinished"></translation>
+        <translation>hours</translation>
     </message>
     <message>
         <source>never</source>
-        <translation type="unfinished"></translation>
+        <translation>never</translation>
     </message>
     <message>
         <source>If you leave your device idle for a period of time, we can automatically turn off the screen or suspend it for you.</source>
-        <translation type="unfinished"></translation>
+        <translation>If you leave your device idle for a period of time, we can automatically turn off the screen or suspend it for you.</translation>
     </message>
     <message>
         <source>Suspend after</source>
-        <translation type="unfinished"></translation>
+        <translation>Suspend after</translation>
     </message>
     <message>
         <source>When pressing the Power button</source>
-        <translation type="unfinished"></translation>
+        <translation>When pressing the Power button</translation>
     </message>
     <message>
         <source>Ask</source>
-        <translation type="unfinished"></translation>
+        <translation>Ask</translation>
     </message>
     <message>
         <source>Power Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Power Off</translation>
     </message>
     <message>
         <source>Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Reboot</translation>
     </message>
     <message>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>Suspend</translation>
     </message>
     <message>
         <source>Hibernate</source>
-        <translation type="unfinished"></translation>
+        <translation>Hibernate</translation>
     </message>
     <message>
         <source>Do Nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>Do Nothing</translation>
     </message>
     <message>
         <source>BUTTONS</source>
-        <translation type="unfinished"></translation>
+        <translation>BUTTONS</translation>
     </message>
 </context>
 </TS>
