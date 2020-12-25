@@ -1,132 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="en_GB">
 <context>
     <name>ArrangeWidget</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>DISPLAY PROPERTIES</source>
-        <translation type="unfinished"></translation>
+        <translation>DISPLAY PROPERTIES</translation>
     </message>
     <message>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Resolution</translation>
     </message>
     <message>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Refresh Rate</translation>
     </message>
     <message>
         <source>%1 hz</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 hz</translation>
     </message>
     <message>
         <source>Apply Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Apply Settings</translation>
     </message>
     <message>
         <source>Primary Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Primary Display</translation>
     </message>
 </context>
 <context>
     <name>DisplaySettings</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Displays</translation>
     </message>
     <message>
         <source>REDSHIFT</source>
-        <translation type="unfinished"></translation>
+        <translation>REDSHIFT</translation>
     </message>
     <message>
         <source>Redshift blocks blue light so that you can sleep better at night</source>
-        <translation type="unfinished"></translation>
+        <translation>Redshift blocks blue light so that you can sleep better at night</translation>
     </message>
     <message>
         <source>Schedule Redshift</source>
-        <translation type="unfinished"></translation>
+        <translation>Schedule Redshift</translation>
     </message>
     <message>
         <source>Intensity</source>
-        <translation type="unfinished"></translation>
+        <translation>Intensity</translation>
     </message>
     <message>
         <source>Follow Sunlight Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>Follow Sunlight Cycle</translation>
     </message>
     <message>
         <source>Start at</source>
-        <translation type="unfinished"></translation>
+        <translation>Start at</translation>
     </message>
     <message>
         <source>End at</source>
-        <translation type="unfinished"></translation>
+        <translation>End at</translation>
     </message>
     <message>
         <source>SCREENS</source>
-        <translation type="unfinished"></translation>
+        <translation>SCREENS</translation>
     </message>
     <message>
         <source>Change the resolution of your display and arrange your displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the resolution of your display and arrange your displays</translation>
     </message>
     <message>
         <source>Arrange and Resize Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Arrange and Resize Displays</translation>
     </message>
     <message>
         <source>Your physical location will be sent to MET Norway to determine sunrise and sunset times.</source>
-        <translation type="unfinished"></translation>
+        <translation>Your physical location will be sent to MET Norway to determine sunrise and sunset times.</translation>
     </message>
     <message>
         <source>SCALING</source>
-        <translation type="unfinished"></translation>
+        <translation>SCALING</translation>
     </message>
     <message>
         <source>If items on the screen are too small, you can scale them up to make them easier to see.</source>
-        <translation type="unfinished"></translation>
+        <translation>If items on the screen are too small, you can scale them up to make them easier to see.</translation>
     </message>
     <message>
         <source>100% (96 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>100% (96 DPI)</translation>
     </message>
     <message>
         <source>125% (120 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>125% (120 DPI)</translation>
     </message>
     <message>
         <source>150% (144 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>150% (144 DPI)</translation>
     </message>
     <message>
         <source>200% (192 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>200% (192 DPI)</translation>
     </message>
 </context>
 <context>
     <name>OverlayWindow</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dialog</translation>
     </message>
 </context>
 <context>
     <name>RedshiftDaemon</name>
     <message>
         <source>Redshift Active</source>
-        <translation type="unfinished"></translation>
+        <translation>Redshift Active</translation>
     </message>
     <message>
         <source>Disable Redshift until tomorrow</source>
-        <translation type="unfinished"></translation>
+        <translation>Disable Redshift until tomorrow</translation>
     </message>
 </context>
 </TS>
