@@ -1,1154 +1,1160 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US">
+<TS version="2.1" sourcelanguage="en_US" language="en_GB">
 <context>
     <name>CellularPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>STATUS</translation>
     </message>
     <message>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>This Device</translation>
     </message>
     <message>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACTIONS</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Connect</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnect</translation>
     </message>
     <message>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Cellular</translation>
     </message>
     <message>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnected</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Connected</translation>
     </message>
     <message>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Failed</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Unavailable</translation>
     </message>
     <message>
         <source>This network is unavailable because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>This network is unavailable because %2.</translation>
     </message>
     <message>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Connection Failure</translation>
     </message>
     <message>
         <source>Connecting to the network failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Connecting to the network failed because %2.</translation>
     </message>
     <message>
         <source>Enter SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter SIM PIN</translation>
     </message>
     <message>
         <source>SIM PIN Required</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN Required</translation>
     </message>
     <message>
         <source>Enter SIM PUK</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter SIM PUK</translation>
     </message>
     <message>
         <source>SIM PUK Required</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PUK Required</translation>
     </message>
     <message>
         <source>A SIM PIN is required to connect to the cellular network.</source>
-        <translation type="unfinished"></translation>
+        <translation>A SIM PIN is required to connect to the cellular network.</translation>
     </message>
     <message>
         <source>A SIM PUK is required to connect to the cellular network.</source>
-        <translation type="unfinished"></translation>
+        <translation>A SIM PUK is required to connect to the cellular network.</translation>
     </message>
     <message>
         <source>Modem Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Router Settings</translation>
     </message>
     <message>
         <source>Disable Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Disable Cellular</translation>
     </message>
     <message>
         <source>Enable Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Enable Cellular</translation>
     </message>
     <message>
         <source>No SIM Card</source>
-        <translation type="unfinished"></translation>
+        <translation>No SIM Card</translation>
     </message>
     <message>
         <source>Insert a SIM card to connect to cellular services.</source>
-        <translation type="unfinished"></translation>
+        <translation>Insert a SIM card to connect to cellular services.</translation>
     </message>
     <message>
         <source>No SIM</source>
-        <translation type="unfinished"></translation>
+        <translation>No SIM</translation>
     </message>
 </context>
 <context>
     <name>Common</name>
     <message>
         <source>an unknown error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>an unknown error occurred</translation>
     </message>
     <message>
         <source>the device is no longer managed by NetworkManager</source>
-        <translation type="unfinished"></translation>
+        <translation>the device is no longer managed by NetworkManager</translation>
     </message>
     <message>
         <source>configuration of the device failed</source>
-        <translation type="unfinished"></translation>
+        <translation>configuration of the device failed</translation>
     </message>
     <message>
         <source>configuration of the device is unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>configuration of the device is unavailable</translation>
     </message>
     <message>
         <source>configuration of the device expired</source>
-        <translation type="unfinished"></translation>
+        <translation>configuration of the device expired</translation>
     </message>
     <message>
         <source>required secrets were not provided</source>
-        <translation type="unfinished"></translation>
+        <translation>required secrets were not provided</translation>
     </message>
     <message>
         <source>the authentication supplicant disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>the authentication supplicant disconnected</translation>
     </message>
     <message>
         <source>configuration of the authentication supplicant failed</source>
-        <translation type="unfinished"></translation>
+        <translation>configuration of the authentication supplicant failed</translation>
     </message>
     <message>
         <source>the authentication supplicant failed</source>
-        <translation type="unfinished"></translation>
+        <translation>the authentication supplicant failed</translation>
     </message>
     <message>
         <source>the authentication supplicant timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>the authentication supplicant timed out</translation>
     </message>
     <message>
         <source>the PPP network failed to start</source>
-        <translation type="unfinished"></translation>
+        <translation>the PPP network failed to start</translation>
     </message>
     <message>
         <source>the PPP network was disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>the PPP network was disconnected</translation>
     </message>
     <message>
         <source>the PPP network failed</source>
-        <translation type="unfinished"></translation>
+        <translation>the PPP network failed</translation>
     </message>
     <message>
         <source>DHCP configuration failed to start</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP configuration failed to start</translation>
     </message>
     <message>
         <source>DHCP configuration had an error</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP configuration had an error</translation>
     </message>
     <message>
         <source>DHCP configuration failed</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP configuration failed</translation>
     </message>
     <message>
         <source>the modem is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>the router is busy</translation>
     </message>
     <message>
         <source>there is no dial tone on the modem</source>
-        <translation type="unfinished"></translation>
+        <translation>there is no dial tone on the modem</translation>
     </message>
     <message>
         <source>no carrier is available on the modem</source>
-        <translation type="unfinished"></translation>
+        <translation>no carrier is available on the router</translation>
     </message>
     <message>
         <source>dialling the number on the modem timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>dialling the number on the router timed out</translation>
     </message>
     <message>
         <source>dialling the number on the modem failed</source>
-        <translation type="unfinished"></translation>
+        <translation>dialling the number on the router failed</translation>
     </message>
     <message>
         <source>initialising the modem failed</source>
-        <translation type="unfinished"></translation>
+        <translation>initialising the router failed</translation>
     </message>
     <message>
         <source>APN selection failed</source>
-        <translation type="unfinished"></translation>
+        <translation>APN selection failed</translation>
     </message>
     <message>
         <source>the modem is not searching</source>
-        <translation type="unfinished"></translation>
+        <translation>the router is not searching</translation>
     </message>
     <message>
         <source>the cell tower denied registration of the modem</source>
-        <translation type="unfinished"></translation>
+        <translation>the cell tower denied registration of the router</translation>
     </message>
     <message>
         <source>registration of the modem on the cell tower timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>registration of the router on the cell tower timed out</translation>
     </message>
     <message>
         <source>registration of the modem on the cell tower failed</source>
-        <translation type="unfinished"></translation>
+        <translation>registration of the router on the cell tower failed</translation>
     </message>
     <message>
         <source>the device firmware is missing</source>
-        <translation type="unfinished"></translation>
+        <translation>the device firmware is missing</translation>
     </message>
     <message>
         <source>the device was removed</source>
-        <translation type="unfinished"></translation>
+        <translation>the device was removed</translation>
     </message>
     <message>
         <source>the device is sleeping</source>
-        <translation type="unfinished"></translation>
+        <translation>the device is sleeping</translation>
     </message>
     <message>
         <source>the connection was removed</source>
-        <translation type="unfinished"></translation>
+        <translation>the connection was removed</translation>
     </message>
     <message>
         <source>you requested the action</source>
-        <translation type="unfinished"></translation>
+        <translation>you requested the action</translation>
     </message>
     <message>
         <source>the modem was not found</source>
-        <translation type="unfinished"></translation>
+        <translation>the router was not found</translation>
     </message>
     <message>
         <source>Bluetooth is not available</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth is not available</translation>
     </message>
     <message>
         <source>the SIM card is not inserted</source>
-        <translation type="unfinished"></translation>
+        <translation>the SIM card is not inserted</translation>
     </message>
     <message>
         <source>the SIM PIN is required</source>
-        <translation type="unfinished"></translation>
+        <translation>the SIM PIN is required</translation>
     </message>
     <message>
         <source>the SIM PUK is required</source>
-        <translation type="unfinished"></translation>
+        <translation>the SIM PUK is required</translation>
     </message>
     <message>
         <source>the SIM PUK is exhausted</source>
-        <translation type="unfinished"></translation>
+        <translation>the SIM PUK is exhausted</translation>
     </message>
     <message>
         <source>ModemManager is not operational on this device</source>
-        <translation type="unfinished"></translation>
+        <translation>ModemManager is not operational on this device</translation>
     </message>
     <message>
         <source>the wireless network wasn&apos;t found</source>
-        <translation type="unfinished"></translation>
+        <translation>the wireless network wasn&apos;t found</translation>
     </message>
     <message>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Cellular</translation>
     </message>
 </context>
 <context>
     <name>ConnectionSelectionPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Select Connection Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Select Connection Profile</translation>
     </message>
     <message>
         <source>Select a connection profile to use</source>
-        <translation type="unfinished"></translation>
+        <translation>Select a connection profile to use</translation>
     </message>
 </context>
 <context>
     <name>DevicePane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>TextLabel</translation>
     </message>
     <message>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACTIONS</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnect</translation>
     </message>
     <message>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>STATUS</translation>
     </message>
     <message>
         <source>theDesk doesn&apos;t support this network interface, so you won&apos;t be able to configure it fully here.</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk doesn&apos;t support this network interface, so you won&apos;t be able to configure it fully here.</translation>
     </message>
 </context>
 <context>
     <name>GenericChunkUpdater</name>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Connected</translation>
     </message>
 </context>
 <context>
     <name>IPv4ConnectionEditorPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>IPv4</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv4</translation>
     </message>
     <message>
         <source>DHCP</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP</translation>
     </message>
     <message>
         <source>DHCP with manual DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP with manual DNS</translation>
     </message>
     <message>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Manual</translation>
     </message>
     <message>
         <source>Shared</source>
-        <translation type="unfinished"></translation>
+        <translation>Shared</translation>
     </message>
     <message>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Disabled</translation>
     </message>
     <message>
         <source>Configuration Method</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuration Method</translation>
     </message>
     <message>
         <source>Require IPv4</source>
-        <translation type="unfinished"></translation>
+        <translation>Require IPv4</translation>
     </message>
     <message>
         <source>IP Address</source>
-        <translation type="unfinished"></translation>
+        <translation>IP Address</translation>
     </message>
     <message>
         <source>Default Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Default Gateway</translation>
     </message>
     <message>
         <source>Subnet Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Subnet Length</translation>
     </message>
     <message>
         <source>ADDRESSES</source>
-        <translation type="unfinished"></translation>
+        <translation>ADDRESSES</translation>
     </message>
     <message>
         <source>1.1.1.1</source>
-        <translation type="unfinished"></translation>
+        <translation>1.1.1.1</translation>
     </message>
     <message>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <source>Set the IP address that this device will be assigned.</source>
-        <translation type="unfinished"></translation>
+        <translation>Set the IP address that this device will be assigned.</translation>
     </message>
     <message>
         <source>Configure the DNS servers that will be used to resolve domain names.</source>
-        <translation type="unfinished"></translation>
+        <translation>Configure the DNS servers that will be used to resolve domain names.</translation>
     </message>
     <message>
         <source>For DNS server %1</source>
-        <translation type="unfinished"></translation>
+        <translation>For DNS server %1</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Remove</translation>
     </message>
 </context>
 <context>
     <name>NetworkChunk</name>
     <message>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnected</translation>
     </message>
     <message>
         <source>Login Required</source>
-        <translation type="unfinished"></translation>
+        <translation>Login Required</translation>
     </message>
     <message>
         <source>Can&apos;t get to the Internet</source>
-        <translation type="unfinished"></translation>
+        <translation>Can&apos;t get to the Internet</translation>
     </message>
 </context>
 <context>
     <name>NetworkConnectionEditor</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>General</translation>
     </message>
     <message>
         <source>Connection Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Connection Name</translation>
     </message>
     <message>
         <source>DONE?</source>
-        <translation type="unfinished"></translation>
+        <translation>DONE?</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Save</translation>
     </message>
     <message>
         <source>Couldn&apos;t save settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Couldn&apos;t save preferences</translation>
     </message>
     <message>
         <source>SETTINGS MODIFIED</source>
-        <translation type="unfinished"></translation>
+        <translation>PREFERENCES MODIFIED</translation>
     </message>
     <message>
         <source>Revert</source>
-        <translation type="unfinished"></translation>
+        <translation>Revert</translation>
     </message>
 </context>
 <context>
     <name>NetworkStatusCenterLeftPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Network</translation>
     </message>
 </context>
 <context>
     <name>NetworkStatusCenterPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Network</translation>
     </message>
     <message>
         <source>NetworkManager is not operational</source>
-        <translation type="unfinished"></translation>
+        <translation>NetworkManager is not operational</translation>
     </message>
     <message>
         <source>Contact your system administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>Contact your system administrator</translation>
     </message>
 </context>
 <context>
     <name>SecurityEapPeap</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>PEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>PEAP</translation>
     </message>
     <message>
         <source>Enter the settings for this network</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter the preferences for this network</translation>
     </message>
     <message>
         <source>CA Certificate</source>
-        <translation type="unfinished"></translation>
+        <translation>CA Certificate</translation>
     </message>
     <message>
         <source>Anonymous Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonymous Identity</translation>
     </message>
     <message>
         <source>Phase-2 Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Phase-2 Authentication</translation>
     </message>
     <message>
         <source>MSCHAPv2</source>
-        <translation type="unfinished"></translation>
+        <translation>MSCHAPv2</translation>
     </message>
     <message>
         <source>MD5</source>
-        <translation type="unfinished"></translation>
+        <translation>MD5</translation>
     </message>
     <message>
         <source>GTC</source>
-        <translation type="unfinished"></translation>
+        <translation>GTC</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Username</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Password</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Connect</translation>
     </message>
     <message>
         <source>PEAP version</source>
-        <translation type="unfinished"></translation>
+        <translation>PEAP version</translation>
     </message>
     <message>
         <source>Automatic</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatic</translation>
     </message>
     <message>
         <source>Version 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Version 0</translation>
     </message>
     <message>
         <source>Version 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Version 1</translation>
     </message>
     <message>
         <source>Browse...</source>
-        <translation type="unfinished"></translation>
+        <translation>Browse...</translation>
     </message>
     <message>
         <source>Certificates (*.pem, *.cer)</source>
-        <translation type="unfinished"></translation>
+        <translation>Certificates (*.pem, *.cer)</translation>
     </message>
 </context>
 <context>
     <name>SecurityEapUnsupported</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Unsupported Security Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Unsupported Security Preferences</translation>
     </message>
     <message>
         <source>Sorry, theDesk doesn&apos;t support those security settings at the moment. You can try using the terminal to configure this network.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorry, theDesk doesn&apos;t support those security preferences at the moment. You can try using the terminal to configure this network.</translation>
     </message>
 </context>
 <context>
     <name>SimSettingsPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Enable SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Enable SIM PIN</translation>
     </message>
     <message>
         <source>Enter the current SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter the current SIM PIN</translation>
     </message>
     <message>
         <source>Disable SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Disable SIM PIN</translation>
     </message>
     <message>
         <source>Change SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Change SIM PIN</translation>
     </message>
     <message numerus="yes">
         <source>You have %n remaining tries</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>You have %n remaining try</numerusform>
+            <numerusform>You have %n remaining tries</numerusform>
         </translation>
     </message>
     <message>
         <source>Enter the new SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter the new SIM PIN</translation>
     </message>
     <message>
         <source>Modem Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Router Preferences</translation>
     </message>
     <message>
         <source>SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PIN</translation>
     </message>
     <message>
         <source>IMSI</source>
-        <translation type="unfinished"></translation>
+        <translation>IMSI</translation>
     </message>
     <message>
         <source>IMEI</source>
-        <translation type="unfinished"></translation>
+        <translation>IMEI</translation>
     </message>
     <message>
         <source>MODEM INFORMATION</source>
-        <translation type="unfinished"></translation>
+        <translation>MODEM INFORMATION</translation>
     </message>
     <message>
         <source>Carrier</source>
-        <translation type="unfinished"></translation>
+        <translation>Carrier</translation>
     </message>
     <message>
         <source>No SIM card</source>
-        <translation type="unfinished"></translation>
+        <translation>No SIM card</translation>
     </message>
     <message>
         <source>CALLS</source>
-        <translation type="unfinished"></translation>
+        <translation>CALLS</translation>
     </message>
     <message>
         <source>Call Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>Call Waiting</translation>
     </message>
     <message>
         <source>Enable Call Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>Enable Call Waiting</translation>
     </message>
     <message>
         <source>Call Waiting allows you to receive calls while another call is currently active.</source>
-        <translation type="unfinished"></translation>
+        <translation>Call Waiting allows you to receive calls while another call is currently active.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Error</translation>
     </message>
     <message>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
-        <translation type="unfinished"></translation>
+        <translation>Couldn&apos;t get current Call Waiting status from carrier</translation>
     </message>
 </context>
 <context>
     <name>SwitchManager</name>
     <message>
         <source>Flight Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Aeroplane Mode</translation>
     </message>
     <message>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Cellular</translation>
     </message>
     <message>
         <source>Switch off Flight Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Switch off Flight Mode</translation>
     </message>
 </context>
 <context>
     <name>TetheringSettingsPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Tethering Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Tethering Preferences</translation>
     </message>
     <message>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <source>Network Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Network Key</translation>
     </message>
     <message>
         <source>These settings will be used to set up a Wi-Fi network that other devices can connect to when tethering is enabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>These preferences will be used to set up a Wi-Fi network that other devices can connect to when tethering is enabled.</translation>
     </message>
     <message>
         <source>Network key needs to be at least 8 characters long</source>
-        <translation type="unfinished"></translation>
+        <translation>Network key needs to be at least 8 characters long</translation>
     </message>
 </context>
 <context>
     <name>UnlockModemPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Enter the SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter the SIM PIN</translation>
     </message>
     <message numerus="yes">
         <source>You have %n remaining tries</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>You have %n remaining try</numerusform>
+            <numerusform>You have %n remaining tries</numerusform>
         </translation>
     </message>
     <message>
         <source>SIM PUK REQUIRED</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PUK REQUIRED</translation>
     </message>
     <message>
         <source>Confirm SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirm SIM PIN</translation>
     </message>
     <message>
         <source>SIM PUK</source>
-        <translation type="unfinished"></translation>
+        <translation>SIM PUK</translation>
     </message>
     <message>
         <source>New SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>New SIM PIN</translation>
     </message>
     <message>
         <source>You&apos;ll also need to provide a new SIM PIN to set once the SIM is unlocked.</source>
-        <translation type="unfinished"></translation>
+        <translation>You&apos;ll also need to provide a new SIM PIN to set once the SIM is unlocked.</translation>
     </message>
     <message>
         <source>Unlock SIM Card</source>
-        <translation type="unfinished"></translation>
+        <translation>Unlock SIM Card</translation>
     </message>
     <message>
         <source>Don&apos;t guess the PUK!</source>
-        <translation type="unfinished"></translation>
+        <translation>Don&apos;t guess the PUK!</translation>
     </message>
     <message>
         <source>Once you exhaust your attempts, the SIM card will be blocked forever.
 
 You&apos;ll need to contact your carrier for a new SIM card.</source>
-        <translation type="unfinished"></translation>
+        <translation>Once you exhaust your attempts, the SIM card will be blocked forever.
+
+You&apos;ll need to contact your carrier for a new SIM card.</translation>
     </message>
     <message>
         <source>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</translation>
     </message>
     <message>
         <source>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</source>
-        <translation type="unfinished"></translation>
+        <translation>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</translation>
     </message>
     <message>
         <source>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</source>
-        <translation type="unfinished"></translation>
+        <translation>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</translation>
     </message>
 </context>
 <context>
     <name>WifiConnectionEditorPane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode</translation>
     </message>
     <message>
         <source>Infrastructure</source>
-        <translation type="unfinished"></translation>
+        <translation>Infrastructure</translation>
     </message>
     <message>
         <source>Ad-Hoc</source>
-        <translation type="unfinished"></translation>
+        <translation>Ad-Hoc</translation>
     </message>
     <message>
         <source>Access Point</source>
-        <translation type="unfinished"></translation>
+        <translation>Access Point</translation>
     </message>
 </context>
 <context>
     <name>WifiDevicePane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>STATUS</translation>
     </message>
     <message>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACTIONS</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnect</translation>
     </message>
     <message>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>This Device</translation>
     </message>
     <message>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnected</translation>
     </message>
     <message>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Failed</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Unknown</translation>
     </message>
     <message>
         <source>0 Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>0 Devices</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Connected</translation>
     </message>
     <message>
         <source>Select Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Select Network</translation>
     </message>
     <message>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Connection Failure</translation>
     </message>
     <message>
         <source>Connecting to %1 failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Connecting to %1 failed because %2.</translation>
     </message>
     <message>
         <source>the network</source>
-        <translation type="unfinished"></translation>
+        <translation>the network</translation>
     </message>
     <message>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <source>Network Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Network Key</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>TextLabel</translation>
     </message>
     <message>
         <source>Enable Tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Enable Tethering</translation>
     </message>
     <message>
         <source>TETHERING</source>
-        <translation type="unfinished"></translation>
+        <translation>TETHERING</translation>
     </message>
     <message>
         <source>Set Tethering Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Set Tethering Preferences</translation>
     </message>
     <message>
         <source>Couldn&apos;t configure tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Couldn&apos;t configure tethering</translation>
     </message>
     <message>
         <source>Tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Tethering</translation>
     </message>
     <message>
         <source>Active</source>
-        <translation type="unfinished"></translation>
+        <translation>Active</translation>
     </message>
     <message>
         <source>Use Tethering to share your internet connection with other devices over Wi-Fi.
 
 **While Tethering is active, you won&apos;t be able to connect to the Internet with Wi-Fi, so you&apos;ll need to make sure you have an alternate way to connect to the Internet.**</source>
-        <translation type="unfinished"></translation>
+        <translation>Use Tethering to share your internet connection with other devices over Wi-Fi.
+
+**While Tethering is active, you won&apos;t be able to connect to the Internet with Wi-Fi, so you&apos;ll need to make sure you have an alternate way to connect to the Internet.**</translation>
     </message>
     <message>
         <source>Couldn&apos;t switch off tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Couldn&apos;t switch off tethering</translation>
     </message>
     <message>
         <source>Wi-Fi is off</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi is off</translation>
     </message>
     <message>
         <source>Switch Wi-Fi On</source>
-        <translation type="unfinished"></translation>
+        <translation>Switch Wi-Fi On</translation>
     </message>
     <message>
         <source>Wi-Fi is disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi is disabled</translation>
     </message>
     <message>
         <source>Switch Wi-Fi on to connect to a wireless network</source>
-        <translation type="unfinished"></translation>
+        <translation>Switch Wi-Fi on to connect to a wireless network</translation>
     </message>
     <message>
         <source>Use the Wi-Fi switch to enable Wi-Fi and connect to a network</source>
-        <translation type="unfinished"></translation>
+        <translation>Use the Wi-Fi switch to enable Wi-Fi and connect to a network</translation>
     </message>
     <message>
         <source>You&apos;re in flight mode</source>
-        <translation type="unfinished"></translation>
+        <translation>You&apos;re in aeroplane mode</translation>
     </message>
     <message>
         <source>Switch Wi-Fi on to connect to a wireless network. Flight mode won&apos;t be disabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Switch Wi-Fi on to connect to a wireless network. Aeroplane mode won&apos;t be disabled.</translation>
     </message>
 </context>
 <context>
     <name>WiredChunkUpdater</name>
     <message>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation>Wired</translation>
     </message>
 </context>
 <context>
     <name>WiredDevicePane</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>STATUS</translation>
     </message>
     <message>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>This Device</translation>
     </message>
     <message>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACTIONS</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Connect</translation>
     </message>
     <message>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnect</translation>
     </message>
     <message>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation>Wired</translation>
     </message>
     <message>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnected</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Connected</translation>
     </message>
     <message>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Failed</translation>
     </message>
     <message>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Connection Failure</translation>
     </message>
     <message>
         <source>Connecting to the network failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Connecting to the network failed because %2.</translation>
     </message>
     <message>
         <source>Router</source>
-        <translation type="unfinished"></translation>
+        <translation>Router</translation>
     </message>
     <message>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Unavailable</translation>
     </message>
     <message>
         <source>Connect an Ethernet cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Connect an Ethernet cable.</translation>
     </message>
     <message>
         <source>This network is unavailable because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>This network is unavailable because %2.</translation>
     </message>
 </context>
 <context>
     <name>WirelessNetworkListDelegate</name>
     <message>
         <source>In Range</source>
-        <translation type="unfinished"></translation>
+        <translation>In Range</translation>
     </message>
     <message>
         <source>Out of range</source>
-        <translation type="unfinished"></translation>
+        <translation>Out of range</translation>
     </message>
     <message>
         <source>Not Secured</source>
-        <translation type="unfinished"></translation>
+        <translation>Not Secured</translation>
     </message>
     <message>
         <source>Secured with Static WEP</source>
-        <translation type="unfinished"></translation>
+        <translation>Secured with Static WEP</translation>
     </message>
     <message>
         <source>Secured with Dynamic WEP</source>
-        <translation type="unfinished"></translation>
+        <translation>Secured with Dynamic WEP</translation>
     </message>
     <message>
         <source>Secured with LEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>Secured with LEAP</translation>
     </message>
     <message>
         <source>Secured with WPA-PSK</source>
-        <translation type="unfinished"></translation>
+        <translation>Secured with WPA-PSK</translation>
     </message>
     <message>
         <source>Secured with WPA Enterprise</source>
-        <translation type="unfinished"></translation>
+        <translation>Secured with WPA Enterprise</translation>
     </message>
     <message>
         <source>Secured with WPA2-PSK</source>
-        <translation type="unfinished"></translation>
+        <translation>Secured with WPA2-PSK</translation>
     </message>
     <message>
         <source>Secured with WPA2 Enterprise</source>
-        <translation type="unfinished"></translation>
+        <translation>Secured with WPA2 Enterprise</translation>
     </message>
     <message>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Connected</translation>
     </message>
     <message>
         <source>Secured with WPA3</source>
-        <translation type="unfinished"></translation>
+        <translation>Secured with WPA3</translation>
     </message>
 </context>
 <context>
     <name>WirelessNetworkSelectionPopover</name>
     <message>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <source>Connect to a Wireless Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Connect to a Wireless Network</translation>
     </message>
     <message>
         <source>KNOWN NETWORKS</source>
-        <translation type="unfinished"></translation>
+        <translation>KNOWN NETWORKS</translation>
     </message>
     <message>
         <source>NEW NETWORKS</source>
-        <translation type="unfinished"></translation>
+        <translation>NEW NETWORKS</translation>
     </message>
     <message>
         <source>New Manual Connection</source>
-        <translation type="unfinished"></translation>
+        <translation>New Manual Connection</translation>
     </message>
     <message>
         <source>For network %1</source>
-        <translation type="unfinished"></translation>
+        <translation>For network %1</translation>
     </message>
     <message>
         <source>Forget Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Forget Network</translation>
     </message>
     <message>
         <source>Network Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Network Security</translation>
     </message>
     <message>
         <source>Unknown Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Unknown Security</translation>
     </message>
     <message>
         <source>Not sure how to connect to this network. Use manual setup to connect to it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Not sure how to connect to this network. Use manual setup to connect to it.</translation>
     </message>
     <message>
         <source>Enter the security key</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter the security key</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>TextLabel</translation>
     </message>
     <message>
         <source>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</translation>
     </message>
     <message>
         <source>TLS</source>
-        <translation type="unfinished"></translation>
+        <translation>TLS</translation>
     </message>
     <message>
         <source>LEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>LEAP</translation>
     </message>
     <message>
         <source>PWD</source>
-        <translation type="unfinished"></translation>
+        <translation>PWD</translation>
     </message>
     <message>
         <source>FAST</source>
-        <translation type="unfinished"></translation>
+        <translation>FAST</translation>
     </message>
     <message>
         <source>TTLS</source>
-        <translation type="unfinished"></translation>
+        <translation>TTLS</translation>
     </message>
     <message>
         <source>PEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>PEAP</translation>
     </message>
     <message>
         <source>Wireless</source>
-        <translation type="unfinished"></translation>
+        <translation>Wireless</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit</translation>
     </message>
     <message>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Connect</translation>
     </message>
 </context>
 </TS>
