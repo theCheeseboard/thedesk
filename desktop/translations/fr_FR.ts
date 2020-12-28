@@ -46,7 +46,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="296"/>
         <source>Qt Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Version de Qt</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="303"/>
