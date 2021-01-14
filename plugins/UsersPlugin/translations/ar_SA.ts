@@ -8,155 +8,155 @@
         <location filename="../settings/adduserdialog.ui" line="629"/>
         <location filename="../settings/adduserdialog.ui" line="745"/>
         <source>Add User</source>
-        <translation type="unfinished"></translation>
+        <translation>أضف مستخدم</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="161"/>
         <source>PERSONAL DETAILS</source>
-        <translation type="unfinished"></translation>
+        <translation>تفاصيل شخصية</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="168"/>
         <location filename="../settings/adduserdialog.ui" line="688"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>اسم المستخدم</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="175"/>
         <source>Full Name</source>
-        <translation type="unfinished"></translation>
+        <translation>الاسم الكامل</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="188"/>
         <source>The username is generated based on the given full name. We recommend not changing it.</source>
-        <translation type="unfinished"></translation>
+        <translation>يتم إنشاء اسم المستخدم بناءً على الاسم الكامل المحدد. نوصي ا بعدم تغييره.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="245"/>
         <source>ADMINISTRATOR</source>
-        <translation type="unfinished"></translation>
+        <translation>مدير</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="262"/>
         <location filename="../settings/adduserdialog.cpp" line="187"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>مدير</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="293"/>
         <source>STANDARD USER</source>
-        <translation type="unfinished"></translation>
+        <translation>مستخدم عادي</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="252"/>
         <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
-        <translation type="unfinished"></translation>
+        <translation>يمتلك مدير التحكم الكامل على هذا الجهاز. يستطيعون على تغيير إعدادات النظام و تحميل وتثبيت البرامج.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="300"/>
         <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
-        <translation type="unfinished"></translation>
+        <translation>لا يمكن للمستخدم عادي تنفيذ إجراءات على مستوى المدير. لن يتمكنوا إلا من تنفيذ الإجراءات الإدارية التي تؤثر فقط على حساباهم.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="310"/>
         <source>Standard User</source>
-        <translation type="unfinished"></translation>
+        <translation>مستخدم عادي</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="332"/>
         <source>USER TYPE</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع المستخدم</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="409"/>
         <source>Account Security</source>
-        <translation type="unfinished"></translation>
+        <translation>أمن حساب المستخدم</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="434"/>
         <source>Protect this account with a password to prevent anyone else logging into it.</source>
-        <translation type="unfinished"></translation>
+        <translation>قم بحماية هذا الحساب بكلمة مرور لمنع أي شخص آخر من تسجيل الدخول إلي هذا الحساب.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="474"/>
         <location filename="../settings/adduserdialog.ui" line="729"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>كلمة مرور</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="488"/>
         <source>Confirm Password</source>
-        <translation type="unfinished"></translation>
+        <translation>التأكيد من كلمة المرور</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="505"/>
         <source>Password Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>ملحوظة كلمة مرور</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="512"/>
         <source>If you forget your password, this will appear to help you remember.</source>
-        <translation type="unfinished"></translation>
+        <translation>إذا نسيت كلمة المرور الخاصة بك، فسيظهر هذه الملحوظة لكلمة مرور لمساعدتك على التذكر.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="524"/>
         <source>Use this password</source>
-        <translation type="unfinished"></translation>
+        <translation>استخدم كلمة المرور هذه</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="531"/>
         <source>Alternatively, choose one of the following options:</source>
-        <translation type="unfinished"></translation>
+        <translation>غير من ذلك، تستطيع اختر أحد الخيارات التالية:</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="541"/>
         <source>Ask for a password on the next login</source>
-        <translation type="unfinished"></translation>
+        <translation>اطلب كلمة مرور عند تسجيل الدخول التالي</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="544"/>
         <source>The first time the user logs in, we&apos;ll ask them for a password.</source>
-        <translation type="unfinished"></translation>
+        <translation>في المرة الأولى التي يسجل فيها الحساب المستخدم الدخول، سنقوم بطلب منه كلمة مرور.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="551"/>
         <source>Don&apos;t set a password</source>
-        <translation type="unfinished"></translation>
+        <translation>لا تضف كلمة مرور</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="554"/>
         <source>Anyone will be able to log into this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>سيتمكن أي حساب آخر من تسجيل الدخول إلى هذا الحساب.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="654"/>
         <source>Add this user to your system?</source>
-        <translation type="unfinished"></translation>
+        <translation>أضف هذا المستخدم إلى نظام التشغيل؟</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="695"/>
         <source>Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>الاسم الحقيقي</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="702"/>
         <source>User Type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع المستخدم</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="103"/>
         <source>Set Password</source>
-        <translation type="unfinished"></translation>
+        <translation>ضبط كلمة مرور</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="110"/>
         <source>Ask when logging in</source>
-        <translation type="unfinished"></translation>
+        <translation>اسأل عند تسجيل الدخول</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="117"/>
         <source>Not Set</source>
-        <translation type="unfinished"></translation>
+        <translation>لم يتم الوضع</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="165"/>
