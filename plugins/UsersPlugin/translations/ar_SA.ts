@@ -161,12 +161,12 @@
     <message>
         <location filename="../settings/adduserdialog.cpp" line="165"/>
         <source>Couldn&apos;t create user</source>
-        <translation type="unfinished"></translation>
+        <translation>غير قادر على إنشاء حساب المستخدم</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="194"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>اساسي</translation>
     </message>
 </context>
 <context>
@@ -174,77 +174,77 @@
     <message>
         <location filename="../settings/changepassworddialog.ui" line="68"/>
         <source>Change Password</source>
-        <translation type="unfinished"></translation>
+        <translation>تغيير كلمة المرور</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="94"/>
         <source>Set a password to protect this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>قم بتعيين كلمة مرور لحماية هذا الحساب.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="237"/>
         <source>WARNING</source>
-        <translation type="unfinished"></translation>
+        <translation>تحذير</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="244"/>
         <source>This account is locked. Changing the password will unlock it.</source>
-        <translation type="unfinished"></translation>
+        <translation>هذا الحساب مغلق. تغيير كلمة المرور إلى هذا الحساب يلغاء قفلها.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="289"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>كلمة مرور</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="303"/>
         <source>Confirm Password</source>
-        <translation type="unfinished"></translation>
+        <translation>التأكيد من كلمة المرور</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="320"/>
         <source>Password Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>ملحوظة كلمة مرور</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="327"/>
         <source>If you forget your password, this will appear to help you remember.</source>
-        <translation type="unfinished"></translation>
+        <translation>إذا نسيت كلمة المرور الخاصة بك، فسيظهر هذه الملحوظة لكلمة مرور لمساعدتك على التذكر.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="339"/>
         <source>Use this password</source>
-        <translation type="unfinished"></translation>
+        <translation>استخدم كلمة المرور هذه</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="346"/>
         <source>Alternatively, choose one of the following options:</source>
-        <translation type="unfinished"></translation>
+        <translation>غير من ذلك، تستطيع اختر أحد الخيارات التالية:</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="356"/>
         <source>Ask for a password on the next login</source>
-        <translation type="unfinished"></translation>
+        <translation>اطلب كلمة مرور عند تسجيل الدخول التالي</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="359"/>
         <source>The first time the user logs in, we&apos;ll ask them for a password.</source>
-        <translation type="unfinished"></translation>
+        <translation>في المرة الأولى التي يسجل فيها الحساب المستخدم الدخول، سنقوم بطلب منه كلمة مرور.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="366"/>
         <source>Don&apos;t set a password</source>
-        <translation type="unfinished"></translation>
+        <translation>لا تضف كلمة مرور</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="369"/>
         <source>Anyone will be able to log into this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>سيتمكن أي حساب آخر من تسجيل الدخول إلى هذا الحساب.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.cpp" line="71"/>
         <source>Couldn&apos;t set password</source>
-        <translation type="unfinished"></translation>
+        <translation>غير قادر على تعيين كلمة المرور</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.cpp" line="89"/>
