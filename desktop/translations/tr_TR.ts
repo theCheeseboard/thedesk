@@ -325,7 +325,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="252"/>
+        <location filename="../session/endsession.cpp" line="249"/>
         <source>Reboot</source>
         <translation>Yeniden başlat</translation>
     </message>
@@ -470,12 +470,12 @@
         <translation>sistemi hazırda bekletmek</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="251"/>
+        <location filename="../session/endsession.cpp" line="248"/>
         <source>Advanced Reboot</source>
         <translation>Gelişmiş Yeniden Başlatma</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="261"/>
+        <location filename="../session/endsession.cpp" line="258"/>
         <source>Reboot into System UEFI Setup</source>
         <translation>Sistem UEFI Kurulumunu Yeniden Başlatın</translation>
     </message>

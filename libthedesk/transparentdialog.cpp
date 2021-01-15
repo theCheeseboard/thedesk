@@ -20,17 +20,27 @@
 #include "transparentdialog.h"
 #include "ui_transparentdialog.h"
 
+#include <tscrim.h>
+
 TransparentDialog::TransparentDialog(QWidget* parent) :
     QDialog(parent),
     ui(new Ui::TransparentDialog) {
     ui->setupUi(this);
+
+//    this->setWindowFlag(Qt::FramelessWindowHint);
+    this->setWindowFlag(Qt::WindowStaysOnTopHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
+
+    tScrim::scrimForWidget(this)->setBlurEnabled(false);
 }
 
 TransparentDialog::~TransparentDialog() {
     delete ui;
 }
 
+#include <QPainter>
 void TransparentDialog::paintEvent(QPaintEvent* event) {
-
+    QPainter painter(this);
+    painter.setBrush(Qt::red);
+    painter.drawRect(100, 100, 100, 100);
 }

@@ -50,7 +50,6 @@ ArrangeWidget::ArrangeWidget(SystemScreen* screen, QWidget* parent) :
 
     d->popover = new tPopover(this);
     d->popover->setDismissable(false);
-    d->popover->setPerformBlur(false);
     d->popover->setPopoverSide(tPopover::Bottom);
     d->popover->setPopoverWidth(SC_DPI(600));
     connect(d->popover, &tPopover::dismissed, this, &ArrangeWidget::deleteLater);

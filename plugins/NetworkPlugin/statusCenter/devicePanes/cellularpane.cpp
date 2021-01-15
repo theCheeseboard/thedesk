@@ -400,7 +400,6 @@ void CellularPane::unlockDevice() {
         tPopover* popover = new tPopover(popoverContents);
         popover->setPopoverSide(tPopover::Bottom);
         popover->setPopoverWidth(SC_DPI(600));
-        popover->setPerformBlur(false);
         connect(popoverContents, &UnlockModemPopover::done, popover, &tPopover::dismiss);
         connect(popover, &tPopover::dismissed, [ = ] {
             popover->deleteLater();

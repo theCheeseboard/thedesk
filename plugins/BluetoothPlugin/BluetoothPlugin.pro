@@ -21,7 +21,8 @@ HEADERS += \
     settings/bluetoothsettingspane.h
 
 DISTFILES += Plugin.json \
-    defaults.conf
+    defaults.conf \
+    defaults.json
 
 unix {
     translations.files = translations/*.qm

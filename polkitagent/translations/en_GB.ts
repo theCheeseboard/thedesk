@@ -19,12 +19,12 @@
         <translation>Pass the authentication challenge to confirm this action</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="160"/>
+        <location filename="../authwindow.cpp" line="159"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="167"/>
+        <location filename="../authwindow.cpp" line="166"/>
         <source>Message</source>
         <translation>Message</translation>
     </message>

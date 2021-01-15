@@ -19,12 +19,12 @@
         <translation>Trả lời thử thách xác thực để xác nhận hoạt động này</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="160"/>
+        <location filename="../authwindow.cpp" line="159"/>
         <source>Error</source>
         <translation>Lỗi</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="167"/>
+        <location filename="../authwindow.cpp" line="166"/>
         <source>Message</source>
         <translation>Thông tin</translation>
     </message>

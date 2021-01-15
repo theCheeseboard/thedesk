@@ -27,6 +27,7 @@
 struct MessageDialogPrivate {
     QList<QPushButton*> buttons;
     QGraphicsOpacityEffect* opacity;
+    bool showingDetails = false;
 };
 
 MessageDialog::MessageDialog(QWidget* parent) :
@@ -42,6 +43,10 @@ MessageDialog::MessageDialog(QWidget* parent) :
     d->opacity = new QGraphicsOpacityEffect(this);
     d->opacity->setEnabled(false);
     ui->frame->setGraphicsEffect(d->opacity);
+
+    ui->detailsWidget->setVisible(false);
+
+    ui->dialogTypeWidget->setFixedWidth(SC_DPI(3));
 }
 
 MessageDialog::~MessageDialog() {
@@ -59,6 +64,36 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
     this->setWindowTitle(options->windowTitle());
     ui->titleLabel->setText(options->windowTitle().toUpper());
     ui->messageLabel->setText(options->text());
+    if (options->informativeText().isEmpty()) {
+        ui->informativeTextLabel->setVisible(false);
+    } else {
+        ui->informativeTextLabel->setVisible(true);
+        ui->informativeTextLabel->setText(options->informativeText());
+    }
+    if (options->detailedText().isEmpty()) {
+        ui->detailsButton->setVisible(false);
+    } else {
+        ui->detailsButton->setVisible(true);
+        ui->detailsLabel->setText(options->detailedText());
+    }
+
+    QPalette pal = ui->dialogTypeWidget->palette();
+    switch (options->icon()) {
+        case QMessageDialogOptions::NoIcon:
+        case QMessageDialogOptions::Information:
+            pal.setColor(QPalette::Window, Qt::transparent);
+            break;
+        case QMessageDialogOptions::Question:
+            pal.setColor(QPalette::Window, QColor(0, 150, 255));
+            break;
+        case QMessageDialogOptions::Warning:
+            pal.setColor(QPalette::Window, QColor(255, 150, 0));
+            break;
+        case QMessageDialogOptions::Critical:
+            pal.setColor(QPalette::Window, QColor(200, 0, 0));
+            break;
+    }
+    ui->dialogTypeWidget->setPalette(pal);
 
     QVector<QMessageDialogOptions::CustomButton> buttons;
 
@@ -83,6 +118,12 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
 
     buttons.append(options->customButtons());
 
+    for (int i = 0; i < buttons.length(); i++) {
+        if (buttons.at(i).label == "Show Details...") {
+            buttons.removeAt(i);
+        }
+    }
+
     if (buttons.isEmpty()) {
         //Add a failsafe button
         buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Ok, tr("OK"), QPlatformDialogHelper::AcceptRole));
@@ -98,6 +139,11 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
         ui->buttonLayout->addWidget(button);
         d->buttons.append(button);
     }
+}
+
+void MessageDialog::setParent(QWidget* parent) {
+    parent->installEventFilter(this);
+    QWidget::setParent(parent);
 }
 
 void MessageDialog::animateIn() {
@@ -151,10 +197,19 @@ void MessageDialog::animateOut() {
 
 QRect MessageDialog::frameGeometry() {
     QRect geometry = this->geometry();
-    if (ui->frame->sizeHint().width() > SC_DPI(400)) {
-        geometry.setSize(ui->frame->sizeHint());
+    if (d->showingDetails) {
+        if (ui->detailsContents->sizeHint().width() > SC_DPI(400)) {
+            geometry.setSize(ui->detailsContents->sizeHint());
+        } else {
+            geometry.setSize(QSize(SC_DPI(400), ui->detailsContents->heightForWidth(SC_DPI(400))));
+        }
+        if (this->parentWidget() && geometry.height() > this->parentWidget()->height()) geometry.setHeight(this->parentWidget()->height());
     } else {
-        geometry.setSize(QSize(SC_DPI(400), ui->frame->heightForWidth(SC_DPI(400))));
+        if (ui->frame->sizeHint().width() > SC_DPI(400)) {
+            geometry.setSize(ui->frame->sizeHint());
+        } else {
+            geometry.setSize(QSize(SC_DPI(400), ui->frame->heightForWidth(SC_DPI(400))));
+        }
     }
     if (this->parentWidget()) {
         geometry.moveCenter(QRect(0, 0, this->parentWidget()->width(), this->parentWidget()->height()).center());
@@ -171,4 +226,25 @@ void MessageDialog::updateGeometry() {
 
 void MessageDialog::resizeEvent(QResizeEvent* event) {
     updateGeometry();
+}
+
+void MessageDialog::on_backButton_clicked() {
+    ui->detailsWidget->setVisible(false);
+    d->showingDetails = false;
+    updateGeometry();
+    ui->frame->setVisible(true);
+}
+
+void MessageDialog::on_detailsButton_clicked() {
+    ui->frame->setVisible(false);
+    d->showingDetails = true;
+    updateGeometry();
+    ui->detailsWidget->setVisible(true);
+}
+
+bool MessageDialog::eventFilter(QObject* watched, QEvent* event) {
+    if (watched == this->parentWidget() && event->type() == QEvent::Resize) {
+        updateGeometry();
+    }
+    return false;
 }

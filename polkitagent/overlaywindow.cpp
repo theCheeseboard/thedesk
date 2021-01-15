@@ -20,12 +20,16 @@
 #include "overlaywindow.h"
 #include "ui_overlaywindow.h"
 
+#include <tscrim.h>
+
 OverlayWindow::OverlayWindow(QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::OverlayWindow) {
     ui->setupUi(this);
     this->setAttribute(Qt::WA_TranslucentBackground);
     this->setWindowFlag(Qt::WindowStaysOnTopHint);
+
+    tScrim::scrimForWidget(this)->setBlurEnabled(false);
 }
 
 OverlayWindow::~OverlayWindow() {

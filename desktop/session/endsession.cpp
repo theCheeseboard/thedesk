@@ -143,8 +143,6 @@ tPromise<void>* EndSession::showDialog(PowerManager::PowerOperation operation, Q
         Q_UNUSED(rej)
 
         TransparentDialog* dialog = new TransparentDialog();
-        dialog->setWindowFlag(Qt::FramelessWindowHint);
-        dialog->setWindowFlag(Qt::WindowStaysOnTopHint);
         dialog->showFullScreen();
 
         QTimer::singleShot(500, [ = ] {
@@ -153,7 +151,6 @@ tPromise<void>* EndSession::showDialog(PowerManager::PowerOperation operation, Q
             tPopover* popover = new tPopover(popoverContents);
             popover->setPopoverSide(tPopover::Bottom);
             popover->setPopoverWidth(popoverContents->heightForWidth(dialog->width()));
-            popover->setPerformBlur(false);
             connect(popoverContents, &EndSession::done, popover, &tPopover::dismiss);
             connect(popover, &tPopover::dismissed, popoverContents, &EndSession::deleteLater);
             connect(popover, &tPopover::dismissed, [ = ] {

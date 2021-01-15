@@ -36,6 +36,7 @@ class MessageDialog : public QWidget {
         ~MessageDialog();
 
         void setOptions(const QSharedPointer<QMessageDialogOptions>& options);
+        void setParent(QWidget* parent);
 
         void animateIn();
         void animateOut();
@@ -53,6 +54,14 @@ class MessageDialog : public QWidget {
         // QWidget interface
     protected:
         void resizeEvent(QResizeEvent* event);
+
+    private slots:
+        void on_backButton_clicked();
+        void on_detailsButton_clicked();
+
+        // QObject interface
+    public:
+        bool eventFilter(QObject* watched, QEvent* event);
 };
 
 #endif // MESSAGEDIALOG_H

@@ -19,12 +19,12 @@
         <translation type="unfinished">Treceți de provocarea de autentificare pentru a confirma acțiunea</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="160"/>
+        <location filename="../authwindow.cpp" line="159"/>
         <source>Error</source>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="167"/>
+        <location filename="../authwindow.cpp" line="166"/>
         <source>Message</source>
         <translation>Mesaj</translation>
     </message>

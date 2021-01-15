@@ -19,12 +19,12 @@
         <translation>Bu eylemi onaylamak için kimlik doğrulama sorgulamasını geçin</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="160"/>
+        <location filename="../authwindow.cpp" line="159"/>
         <source>Error</source>
         <translation>Hata</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="167"/>
+        <location filename="../authwindow.cpp" line="166"/>
         <source>Message</source>
         <translation>İleti</translation>
     </message>

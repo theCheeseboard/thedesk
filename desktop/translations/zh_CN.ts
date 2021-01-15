@@ -325,7 +325,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="252"/>
+        <location filename="../session/endsession.cpp" line="249"/>
         <source>Reboot</source>
         <translation>重启</translation>
     </message>
@@ -470,12 +470,12 @@
         <translation>休眠此系统</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="251"/>
+        <location filename="../session/endsession.cpp" line="248"/>
         <source>Advanced Reboot</source>
         <translation>高级重启</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="261"/>
+        <location filename="../session/endsession.cpp" line="258"/>
         <source>Reboot into System UEFI Setup</source>
         <translation>重新启动进入系统UEFI设置</translation>
     </message>
