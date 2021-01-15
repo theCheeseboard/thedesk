@@ -250,7 +250,7 @@
         <location filename="../settings/changepassworddialog.cpp" line="89"/>
         <location filename="../settings/changepassworddialog.cpp" line="107"/>
         <source>Couldn&apos;t set password policy</source>
-        <translation type="unfinished"></translation>
+        <translation>لا نستطيع اعادة تعيين قاعدة كلمة المرور</translation>
     </message>
 </context>
 <context>
@@ -258,27 +258,27 @@
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="68"/>
         <source>Change Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>غير الاسم الحقيقي</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="77"/>
         <source>Your Real Name appears on the login screen, on the Gateway and in any other location where we need to differentiate between users.</source>
-        <translation type="unfinished"></translation>
+        <translation>يظهر اسمك الحقيقي على شاشة تسجيل الدخول وعلى مدخل البوابة وفي أي مكان نحن بحاجة إليه لتمييز بين حسابات المستخدمين.</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="123"/>
         <source>Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>الاسم الحقيقي</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="132"/>
         <source>Set Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>عين الاسم الحقيقي</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.cpp" line="64"/>
         <source>Couldn&apos;t set real name</source>
-        <translation type="unfinished"></translation>
+        <translation>لا نستطيع اعادة تعيين الاسم الحقيقي</translation>
     </message>
 </context>
 <context>
@@ -288,37 +288,37 @@
         <location filename="../settings/deleteuserdialog.ui" line="153"/>
         <location filename="../settings/deleteuserdialog.ui" line="207"/>
         <source>Delete User</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف حساب المستخدم</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="77"/>
         <source>What do you want to do with this user&apos;s files?</source>
-        <translation type="unfinished"></translation>
+        <translation>بماذا تريد أن تفعل بملفات هذا المستخدم؟</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="90"/>
         <source>Delete Files</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف الملفات</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="93"/>
         <source>Files for this user will be removed from this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>سيتم إزالة ملفات هذا المستخدم من هذا الجهاز.</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="100"/>
         <source>Keep Files</source>
-        <translation type="unfinished"></translation>
+        <translation>احتفظ بالملفات</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="103"/>
         <source>Files for this user will be kept in the same location.</source>
-        <translation type="unfinished"></translation>
+        <translation>سيتم الاحتفاظ بملفات هذا المستخدم في نفس هذه المنطقة.</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="179"/>
         <source>Delete this user from this device?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل تريد ان تحذف هذا المستخدم من هذا الجهاز؟</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="189"/>
