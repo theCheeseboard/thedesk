@@ -81,19 +81,19 @@
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>MetinEtiketi</translation>
     </message>
     <message>
         <source>Details...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayrıntı...</translation>
     </message>
     <message>
         <source>DETAILS</source>
-        <translation type="unfinished"></translation>
+        <translation>DETAYLAR</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Geri</translation>
     </message>
 </context>
 </TS>
