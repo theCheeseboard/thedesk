@@ -11,7 +11,7 @@
     <message>
         <source>matic 2000</source>
         <comment>This and the previous translation span two lines. Be spiffy with these!</comment>
-        <translation>matic 2000</translation>
+        <translation>matik 2000</translation>
     </message>
 </context>
 <context>
