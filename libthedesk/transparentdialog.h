@@ -35,8 +35,6 @@ class TransparentDialog : public QDialog {
 
     private:
         Ui::TransparentDialog* ui;
-
-        void paintEvent(QPaintEvent* event);
 };
 
 #endif // TRANSPARENTDIALOG_H

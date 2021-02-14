@@ -29,6 +29,7 @@
 #include <tpopover.h>
 #include <tnotification.h>
 #include <transparentdialog.h>
+#include <tscrim.h>
 #include "../popovers/unlockmodempopover.h"
 #include "../popovers/simsettingspopover.h"
 #include "common.h"
@@ -392,6 +393,7 @@ void CellularPane::unlockDevice() {
     TransparentDialog* dialog = new TransparentDialog();
     dialog->setWindowFlag(Qt::FramelessWindowHint);
     dialog->setWindowFlag(Qt::WindowStaysOnTopHint);
+    tScrim::scrimForWidget(dialog)->setBlurEnabled(false);
     dialog->showFullScreen();
 
     QTimer::singleShot(500, [ = ] {

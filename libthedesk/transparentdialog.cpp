@@ -37,10 +37,3 @@ TransparentDialog::TransparentDialog(QWidget* parent) :
 TransparentDialog::~TransparentDialog() {
     delete ui;
 }
-
-#include <QPainter>
-void TransparentDialog::paintEvent(QPaintEvent* event) {
-    QPainter painter(this);
-    painter.setBrush(Qt::red);
-    painter.drawRect(100, 100, 100, 100);
-}

@@ -310,7 +310,7 @@
     <message>
         <location filename="../session/endsession.ui" line="57"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Închide sesiunea</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="115"/>
@@ -505,7 +505,7 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="230"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Închide sesiunea</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="55"/>
@@ -637,7 +637,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../run/rundialog.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Formular</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="35"/>

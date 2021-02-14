@@ -250,7 +250,7 @@
         <location filename="../settings/changepassworddialog.cpp" line="89"/>
         <location filename="../settings/changepassworddialog.cpp" line="107"/>
         <source>Couldn&apos;t set password policy</source>
-        <translation>لا نستطيع اعادة تعيين قاعدة كلمة المرور</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -258,27 +258,27 @@
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="68"/>
         <source>Change Real Name</source>
-        <translation>غير الاسم الحقيقي</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="77"/>
         <source>Your Real Name appears on the login screen, on the Gateway and in any other location where we need to differentiate between users.</source>
-        <translation>يظهر اسمك الحقيقي على شاشة تسجيل الدخول وعلى مدخل البوابة وفي أي مكان نحن بحاجة إليه لتمييز بين حسابات المستخدمين.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="123"/>
         <source>Real Name</source>
-        <translation>الاسم الحقيقي</translation>
+        <translation type="unfinished">الاسم الحقيقي</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="132"/>
         <source>Set Real Name</source>
-        <translation>عين الاسم الحقيقي</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.cpp" line="64"/>
         <source>Couldn&apos;t set real name</source>
-        <translation>لا نستطيع اعادة تعيين الاسم الحقيقي</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -288,37 +288,37 @@
         <location filename="../settings/deleteuserdialog.ui" line="153"/>
         <location filename="../settings/deleteuserdialog.ui" line="207"/>
         <source>Delete User</source>
-        <translation>حذف حساب المستخدم</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="77"/>
         <source>What do you want to do with this user&apos;s files?</source>
-        <translation>بماذا تريد أن تفعل بملفات هذا المستخدم؟</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="90"/>
         <source>Delete Files</source>
-        <translation>حذف الملفات</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="93"/>
         <source>Files for this user will be removed from this device.</source>
-        <translation>سيتم إزالة ملفات هذا المستخدم من هذا الجهاز.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="100"/>
         <source>Keep Files</source>
-        <translation>احتفظ بالملفات</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="103"/>
         <source>Files for this user will be kept in the same location.</source>
-        <translation>سيتم الاحتفاظ بملفات هذا المستخدم في نفس هذه المنطقة.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="179"/>
         <source>Delete this user from this device?</source>
-        <translation>هل تريد ان تحذف هذا المستخدم من هذا الجهاز؟</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="189"/>
@@ -391,12 +391,12 @@
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="130"/>
         <source>Full Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">الاسم الكامل</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="137"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">اسم المستخدم</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="150"/>
@@ -406,17 +406,17 @@
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="157"/>
         <source>The username is generated based on the given full name. We recommend not changing it.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">يتم إنشاء اسم المستخدم بناءً على الاسم الكامل المحدد. نوصي ا بعدم تغييره.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="199"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">كلمة مرور</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="206"/>
         <source>Password Hint</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ملحوظة كلمة مرور</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="219"/>
@@ -426,52 +426,52 @@
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="236"/>
         <source>Confirm Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">التأكيد من كلمة المرور</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="243"/>
         <source>Protect this account with a password to prevent anyone else logging into it.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">قم بحماية هذا الحساب بكلمة مرور لمنع أي شخص آخر من تسجيل الدخول إلي هذا الحساب.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="257"/>
         <source>If you forget your password, this will appear to help you remember.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">إذا نسيت كلمة المرور الخاصة بك، فسيظهر هذه الملحوظة لكلمة مرور لمساعدتك على التذكر.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="329"/>
         <source>ADMINISTRATOR</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مدير</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="336"/>
         <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">يمتلك مدير التحكم الكامل على هذا الجهاز. يستطيعون على تغيير إعدادات النظام و تحميل وتثبيت البرامج.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="346"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مدير</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="377"/>
         <source>STANDARD USER</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مستخدم عادي</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="384"/>
         <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">لا يمكن للمستخدم عادي تنفيذ إجراءات على مستوى المدير. لن يتمكنوا إلا من تنفيذ الإجراءات الإدارية التي تؤثر فقط على حساباهم.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="394"/>
         <source>Standard User</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مستخدم عادي</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="419"/>
         <source>USER TYPE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">نوع المستخدم</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="491"/>
@@ -507,7 +507,7 @@
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="130"/>
         <source>Couldn&apos;t create user</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">غير قادر على إنشاء حساب المستخدم</translation>
     </message>
 </context>
 <context>
@@ -520,7 +520,7 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="150"/>
         <source>ADMINISTRATOR</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مدير</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="157"/>
@@ -530,12 +530,12 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="167"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مدير</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="198"/>
         <source>STANDARD USER</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مستخدم عادي</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="205"/>
@@ -545,7 +545,7 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="215"/>
         <source>Standard User</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">مستخدم عادي</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.cpp" line="87"/>
@@ -589,7 +589,7 @@
     <message>
         <location filename="../settings/userspane.ui" line="305"/>
         <source>Change Password</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">تغيير كلمة المرور</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="312"/>
