@@ -5,6 +5,7 @@ SUBDIRS += \
     AudioPlugin \
     BluetoothPlugin \
     BrightnessPlugin \
+    DefaultsPlugin \
     DisplayPlugin \
     InputPlugin \
     LocalePlugin \
