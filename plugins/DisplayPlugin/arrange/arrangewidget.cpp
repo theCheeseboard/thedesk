@@ -24,6 +24,7 @@
 #include <Screens/systemscreen.h>
 #include <tpopover.h>
 #include <QTimer>
+#include <tscrim.h>
 
 struct ArrangeWidgetPrivate {
     OverlayWindow* overlay;
@@ -47,6 +48,8 @@ ArrangeWidget::ArrangeWidget(SystemScreen* screen, QWidget* parent) :
 
     d->overlay = new OverlayWindow();
     d->overlay->show();
+
+    tScrim::scrimForWidget(d->overlay)->setBlurEnabled(false);
 
     d->popover = new tPopover(this);
     d->popover->setDismissable(false);

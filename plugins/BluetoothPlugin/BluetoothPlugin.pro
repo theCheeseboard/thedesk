@@ -13,12 +13,16 @@ include(/usr/share/the-libs/pri/gentranslations.pri)
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    btagent.cpp \
     plugin.cpp \
-    settings/bluetoothsettingspane.cpp
+    settings/bluetoothsettingspane.cpp \
+    settings/pairpopover.cpp
 
 HEADERS += \
+    btagent.h \
     plugin.h \
-    settings/bluetoothsettingspane.h
+    settings/bluetoothsettingspane.h \
+    settings/pairpopover.h
 
 DISTFILES += Plugin.json \
     defaults.conf \
@@ -37,5 +41,6 @@ unix {
 include(../plugins.pri)
 
 FORMS += \
-    settings/bluetoothsettingspane.ui
+    settings/bluetoothsettingspane.ui \
+    settings/pairpopover.ui
 

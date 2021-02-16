@@ -1,7 +1,7 @@
 /****************************************
  *
  *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
- *   Copyright (C) 2020 Victor Tran
+ *   Copyright (C) 2021 Victor Tran
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,45 +17,49 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef BLUETOOTHSETTINGSPANE_H
-#define BLUETOOTHSETTINGSPANE_H
+#ifndef PAIRPOPOVER_H
+#define PAIRPOPOVER_H
 
-#include <statuscenterpane.h>
+#include <QWidget>
+#include <tpromise.h>
+#include <BluezQt/Manager>
 
 namespace Ui {
-    class BluetoothSettingsPane;
+    class PairPopover;
 }
 
-struct BluetoothSettingsPanePrivate;
-class BluetoothSettingsPane : public StatusCenterPane {
+struct PairPopoverPrivate;
+class BtAgent;
+class PairPopover : public QWidget {
         Q_OBJECT
 
     public:
-        explicit BluetoothSettingsPane();
-        ~BluetoothSettingsPane();
+        explicit PairPopover(BluezQt::Manager* manager, BtAgent* agent, QWidget* parent = nullptr);
+        ~PairPopover();
+
+        enum PairConfirmationType {
+            ConfirmPinCode,
+            KeyPinCode
+        };
+
+        tPromise<QString>* triggerPairConfirmation(PairConfirmationType pairType, QString pinCode);
+        void cancelPendingPairing();
+
+    signals:
+        void done();
 
     private slots:
         void on_titleLabel_backButtonClicked();
 
-        void updateHostname();
+        void on_pairList_activated(const QModelIndex& index);
 
-        void on_visibilitySwitch_toggled(bool checked);
+        void on_confirmCodeAcceptButton_clicked();
 
-        void on_pairButton_clicked();
+        void on_confirmCodeTitleLabel_backButtonClicked();
 
     private:
-        Ui::BluetoothSettingsPane* ui;
-        BluetoothSettingsPanePrivate* d;
-
-        void updateUsableAdapter();
-        void updateOperational();
-
-        // StatusCenterPane interface
-    public:
-        QString name();
-        QString displayName();
-        QIcon icon();
-        QWidget* leftPane();
+        Ui::PairPopover* ui;
+        PairPopoverPrivate* d;
 };
 
-#endif // BLUETOOTHSETTINGSPANE_H
+#endif // PAIRPOPOVER_H

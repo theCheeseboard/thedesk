@@ -23,16 +23,23 @@
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <QDBusInterface>
+#include "pairpopover.h"
+#include <tpopover.h>
+#include "btagent.h"
 
 #include <BluezQt/Manager>
 #include <BluezQt/DevicesModel>
 #include <BluezQt/Adapter>
+#include <BluezQt/PendingCall>
+#include <BluezQt/InitManagerJob>
+#include <QSortFilterProxyModel>
 
 struct BluetoothSettingsPanePrivate {
     QString currentHostname;
 
     BluezQt::Manager* manager;
     BluezQt::AdapterPtr usableAdapter;
+    BtAgent* agent;
 };
 
 BluetoothSettingsPane::BluetoothSettingsPane() :
@@ -42,6 +49,7 @@ BluetoothSettingsPane::BluetoothSettingsPane() :
 
     d = new BluetoothSettingsPanePrivate();
     d->manager = new BluezQt::Manager(this);
+    d->agent = new BtAgent(this);
 
     ui->titleLabel->setBackButtonIsMenu(true);
     ui->titleLabel->setBackButtonShown(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
@@ -59,7 +67,11 @@ BluetoothSettingsPane::BluetoothSettingsPane() :
     updateHostname();
 
     BluezQt::DevicesModel* devicesModel = new BluezQt::DevicesModel(d->manager);
-    ui->devicesList->setModel(devicesModel);
+    QSortFilterProxyModel* devicesFilter = new QSortFilterProxyModel();
+    devicesFilter->setSourceModel(devicesModel);
+    devicesFilter->setFilterRole(BluezQt::DevicesModel::PairedRole);
+    devicesFilter->setFilterFixedString("true");
+    ui->devicesList->setModel(devicesFilter);
 
     connect(d->manager, &BluezQt::Manager::adapterAdded, this, &BluetoothSettingsPane::updateUsableAdapter);
     connect(d->manager, &BluezQt::Manager::adapterRemoved, this, &BluetoothSettingsPane::updateUsableAdapter);
@@ -67,6 +79,15 @@ BluetoothSettingsPane::BluetoothSettingsPane() :
     connect(d->manager, &BluezQt::Manager::operationalChanged, this, &BluetoothSettingsPane::updateOperational);
     updateUsableAdapter();
     updateOperational();
+
+    BluezQt::InitManagerJob* initManagerJob = d->manager->init();
+    connect(initManagerJob, &BluezQt::InitManagerJob::result, this, [ = ] {
+        BluezQt::PendingCall* agentRegister = d->manager->registerAgent(d->agent);
+        connect(agentRegister, &BluezQt::PendingCall::finished, [ = ] {
+            d->manager->requestDefaultAgent(d->agent);
+        });
+    });
+    initManagerJob->start();
 }
 
 BluetoothSettingsPane::~BluetoothSettingsPane() {
@@ -84,6 +105,8 @@ void BluetoothSettingsPane::updateHostname() {
     if (hostname.isEmpty()) hostname = hostnamed.property("Hostname").toString();
     d->currentHostname = hostname;
 
+    if (d->usableAdapter) d->usableAdapter->setName(hostname);
+
     ui->discoverabilityMessage->setText(tr("To pair with this device, look for %1 on the other device.").arg("<b>" + hostname + "</b>"));
 }
 
@@ -94,7 +117,7 @@ void BluetoothSettingsPane::updateUsableAdapter() {
 
     //Find an adapter
     d->usableAdapter.clear();
-    for (BluezQt::AdapterPtr adapter : d->manager->adapters()) {
+    for (const BluezQt::AdapterPtr& adapter : d->manager->adapters()) {
         if (adapter->isPowered()) {
             d->usableAdapter = adapter;
             break;
@@ -106,17 +129,19 @@ void BluetoothSettingsPane::updateUsableAdapter() {
         connect(d->usableAdapter.data(), &BluezQt::Adapter::discoverableChanged, this, [ = ](bool discoverable) {
             ui->visibilitySwitch->setChecked(discoverable);
         });
-        ui->visibilitySwitch->setVisible(d->usableAdapter->isDiscoverable());
+        ui->visibilitySwitch->setChecked(d->usableAdapter->isDiscoverable());
+
+        updateHostname();
     }
 }
 
 void BluetoothSettingsPane::updateOperational() {
     if (!d->manager->isOperational()) {
-        ui->stackedWidget->setCurrentWidget(ui->unavailablePage);
+        ui->stackedWidget->setCurrentWidget(ui->unavailablePage, false);
     } else if (d->manager->adapters().isEmpty()) {
-        ui->stackedWidget->setCurrentWidget(ui->unavailablePage);
+        ui->stackedWidget->setCurrentWidget(ui->unavailablePage, false);
     } else {
-        ui->stackedWidget->setCurrentWidget(ui->mainPage);
+        ui->stackedWidget->setCurrentWidget(ui->mainPage, false);
     }
 }
 
@@ -138,4 +163,14 @@ QWidget* BluetoothSettingsPane::leftPane() {
 
 void BluetoothSettingsPane::on_visibilitySwitch_toggled(bool checked) {
     if (d->usableAdapter) d->usableAdapter->setDiscoverable(checked);
+}
+
+void BluetoothSettingsPane::on_pairButton_clicked() {
+    PairPopover* pairPopover = new PairPopover(d->manager, d->agent);
+    tPopover* popover = new tPopover(pairPopover);
+    popover->setPopoverWidth(SC_DPI(600));
+    connect(pairPopover, &PairPopover::done, popover, &tPopover::dismiss);
+    connect(popover, &tPopover::dismissed, pairPopover, &PairPopover::deleteLater);
+    connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
+    popover->show(this->window());
 }
