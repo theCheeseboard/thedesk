@@ -2,6 +2,15 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="tr_TR" sourcelanguage="en_US">
 <context>
+    <name>BluetoothChunk</name>
+    <message numerus="yes">
+        <source>%n devices connected</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>BluetoothSettingsPane</name>
     <message>
         <source>Form</source>

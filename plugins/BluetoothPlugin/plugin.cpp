@@ -27,11 +27,18 @@
 #include <QDir>
 #include <tsettings.h>
 #include "settings/bluetoothsettingspane.h"
+#include "chunk/bluetoothchunk.h"
+
+#include <BluezQt/InitManagerJob>
+#include <BluezQt/PendingCall>
 
 struct PluginPrivate {
     int translationSet;
 
+    BluezQt::ManagerPtr manager;
+    BtAgent* agent;
     BluetoothSettingsPane* bluetoothSettings;
+    BluetoothChunk* chunk;
 };
 
 Plugin::Plugin() {
@@ -51,11 +58,27 @@ void Plugin::activate() {
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BluetoothPlugin/defaults.conf"));
     tSettings::registerDefaults("/etc/theSuite/theDesk/BluetoothPlugin/defaults.conf");
 
-    d->bluetoothSettings = new BluetoothSettingsPane();
+    d->manager = BluezQt::ManagerPtr(new BluezQt::Manager());
+    d->agent = new BtAgent();
+
+    d->bluetoothSettings = new BluetoothSettingsPane(d->manager, d->agent);
     StateManager::statusCenterManager()->addPane(d->bluetoothSettings, StatusCenterManager::SystemSettings);
+
+    d->chunk = new BluetoothChunk(d->manager);
+
+    BluezQt::InitManagerJob* initManagerJob = d->manager->init();
+    connect(initManagerJob, &BluezQt::InitManagerJob::result, this, [ = ] {
+        BluezQt::PendingCall* agentRegister = d->manager->registerAgent(d->agent);
+        connect(agentRegister, &BluezQt::PendingCall::finished, this, [ = ] {
+            d->manager->requestDefaultAgent(d->agent);
+        });
+    });
+    initManagerJob->start();
 }
 
 void Plugin::deactivate() {
+    d->agent->deleteLater();
+    d->chunk->deleteLater();
     StateManager::statusCenterManager()->removePane(d->bluetoothSettings);
     d->bluetoothSettings->deleteLater();
     StateManager::localeManager()->removeTranslationSet(d->translationSet);

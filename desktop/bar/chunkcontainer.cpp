@@ -38,6 +38,7 @@ struct ChunkContainerPrivate {
         "network-cellular",
         "Network",
         "network-tethering",
+        "bluetooth",
         "redshift",
         "Accessibility-StickyKeys",
         "mpris"

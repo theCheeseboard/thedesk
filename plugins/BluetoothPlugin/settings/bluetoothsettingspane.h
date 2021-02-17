@@ -21,6 +21,8 @@
 #define BLUETOOTHSETTINGSPANE_H
 
 #include <statuscenterpane.h>
+#include <BluezQt/Manager>
+#include "btagent.h"
 
 namespace Ui {
     class BluetoothSettingsPane;
@@ -31,7 +33,7 @@ class BluetoothSettingsPane : public StatusCenterPane {
         Q_OBJECT
 
     public:
-        explicit BluetoothSettingsPane();
+        explicit BluetoothSettingsPane(BluezQt::ManagerPtr manager, BtAgent* agent);
         ~BluetoothSettingsPane();
 
     private slots:

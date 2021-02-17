@@ -40,21 +40,21 @@
 struct BluetoothSettingsPanePrivate {
     QString currentHostname;
 
-    BluezQt::Manager* manager;
+    BluezQt::ManagerPtr manager;
     BluezQt::AdapterPtr usableAdapter;
     BtAgent* agent;
 
     QuickSwitch* bluetoothSwitch;
 };
 
-BluetoothSettingsPane::BluetoothSettingsPane() :
+BluetoothSettingsPane::BluetoothSettingsPane(BluezQt::ManagerPtr manager, BtAgent* agent) :
     StatusCenterPane(),
     ui(new Ui::BluetoothSettingsPane) {
     ui->setupUi(this);
 
     d = new BluetoothSettingsPanePrivate();
-    d->manager = new BluezQt::Manager(this);
-    d->agent = new BtAgent(this);
+    d->manager = manager;
+    d->agent = agent;
 
     ui->titleLabel->setBackButtonIsMenu(true);
     ui->titleLabel->setBackButtonShown(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
@@ -82,7 +82,7 @@ BluetoothSettingsPane::BluetoothSettingsPane() :
         }
     });
 
-    BluezQt::DevicesModel* devicesModel = new BluezQt::DevicesModel(d->manager);
+    BluezQt::DevicesModel* devicesModel = new BluezQt::DevicesModel(d->manager.data());
     QSortFilterProxyModel* devicesFilter = new QSortFilterProxyModel();
     devicesFilter->setSourceModel(devicesModel);
     devicesFilter->setFilterRole(BluezQt::DevicesModel::PairedRole);
@@ -90,22 +90,13 @@ BluetoothSettingsPane::BluetoothSettingsPane() :
     ui->devicesList->setModel(devicesFilter);
     ui->devicesList->setItemDelegate(new DeviceDelegate(false));
 
-    connect(d->manager, &BluezQt::Manager::adapterAdded, this, &BluetoothSettingsPane::updateUsableAdapter);
-    connect(d->manager, &BluezQt::Manager::adapterRemoved, this, &BluetoothSettingsPane::updateUsableAdapter);
-    connect(d->manager, &BluezQt::Manager::usableAdapterChanged, this, &BluetoothSettingsPane::updateUsableAdapter);
-    connect(d->manager, &BluezQt::Manager::operationalChanged, this, &BluetoothSettingsPane::updateOperational);
-    connect(d->manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &BluetoothSettingsPane::updateOperational);
+    connect(d->manager.data(), &BluezQt::Manager::adapterAdded, this, &BluetoothSettingsPane::updateUsableAdapter);
+    connect(d->manager.data(), &BluezQt::Manager::adapterRemoved, this, &BluetoothSettingsPane::updateUsableAdapter);
+    connect(d->manager.data(), &BluezQt::Manager::usableAdapterChanged, this, &BluetoothSettingsPane::updateUsableAdapter);
+    connect(d->manager.data(), &BluezQt::Manager::operationalChanged, this, &BluetoothSettingsPane::updateOperational);
+    connect(d->manager.data(), &BluezQt::Manager::bluetoothBlockedChanged, this, &BluetoothSettingsPane::updateOperational);
     updateUsableAdapter();
     updateOperational();
-
-    BluezQt::InitManagerJob* initManagerJob = d->manager->init();
-    connect(initManagerJob, &BluezQt::InitManagerJob::result, this, [ = ] {
-        BluezQt::PendingCall* agentRegister = d->manager->registerAgent(d->agent);
-        connect(agentRegister, &BluezQt::PendingCall::finished, [ = ] {
-            d->manager->requestDefaultAgent(d->agent);
-        });
-    });
-    initManagerJob->start();
 }
 
 BluetoothSettingsPane::~BluetoothSettingsPane() {
@@ -203,7 +194,7 @@ void BluetoothSettingsPane::on_visibilitySwitch_toggled(bool checked) {
 }
 
 void BluetoothSettingsPane::on_pairButton_clicked() {
-    PairPopover* pairPopover = new PairPopover(d->manager, d->agent);
+    PairPopover* pairPopover = new PairPopover(d->manager.data(), d->agent);
     tPopover* popover = new tPopover(pairPopover);
     popover->setPopoverWidth(SC_DPI(600));
     connect(pairPopover, &PairPopover::done, popover, &tPopover::dismiss);
