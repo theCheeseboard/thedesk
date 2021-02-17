@@ -21,11 +21,11 @@
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Im lặng</translation>
     </message>
     <message>
         <source>Unmute Quiet Mode before changing the volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi khỏi chế độ im lặng trước khi đổi âm lượng</translation>
     </message>
 </context>
 </TS>
