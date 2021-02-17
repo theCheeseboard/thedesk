@@ -14,10 +14,6 @@
 <context>
     <name>BluetoothSettingsPane</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Bluetooth</source>
         <translation type="unfinished"></translation>
     </message>
@@ -183,10 +179,6 @@
 <context>
     <name>DevicePopover</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>ACTIONS</source>
         <translation type="unfinished"></translation>
     </message>
@@ -213,10 +205,6 @@
 </context>
 <context>
     <name>PairPopover</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Pair Device</source>
         <translation type="unfinished"></translation>

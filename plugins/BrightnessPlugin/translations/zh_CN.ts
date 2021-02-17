@@ -12,12 +12,4 @@
         <translation>亮度</translation>
     </message>
 </context>
-<context>
-    <name>ScreenBrightnessChunk</name>
-    <message>
-        <location filename="../screenbrightnesschunk.ui" line="14"/>
-        <source>Form</source>
-        <translation>表格</translation>
-    </message>
-</context>
 </TS>

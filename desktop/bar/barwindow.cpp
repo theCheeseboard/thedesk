@@ -52,7 +52,7 @@ struct BarWindowPrivate {
 
     QList<DesktopWmWindowPtr> maximisedWindows;
 
-    bool expanding = true;
+    bool barExpanding = true;
     bool statusCenterShown = false;
     bool barPendingShow = false;
 
@@ -162,7 +162,7 @@ BarWindow::BarWindow(QWidget* parent) :
             this->update();
         }
     });
-    for (DesktopWmWindowPtr window : DesktopWm::openWindows()) {
+    for (const DesktopWmWindowPtr& window : DesktopWm::openWindows()) {
         trackWindow(window);
     }
 
@@ -244,7 +244,7 @@ void BarWindow::updatePrimaryScreen() {
     d->statusCenterWidget->setFixedHeight(primaryScreen->geometry().height());
 
     //Refresh the state of all the windows
-    for (DesktopWmWindowPtr window : DesktopWm::openWindows()) {
+    for (const DesktopWmWindowPtr& window : DesktopWm::openWindows()) {
         trackWindow(window);
     }
 
@@ -258,7 +258,7 @@ void BarWindow::barHeightChanged() {
     if (!d->statusCenterShown) {
         QSignalBlocker blocker(d->heightAnim);
         d->heightAnim->setStartValue(this->height() - 1);
-        d->heightAnim->setEndValue(d->expanding ? d->mainBarWidget->expandedHeight() : d->mainBarWidget->statusBarHeight());
+        d->heightAnim->setEndValue(d->barExpanding ? d->mainBarWidget->expandedHeight() : d->mainBarWidget->statusBarHeight());
 
         d->heightAnim->stop();
         d->heightAnim->start();
@@ -300,6 +300,8 @@ void BarWindow::showBar() {
 
         d->heightAnim->stop();
         d->heightAnim->start();
+
+        d->barExpanding = true;
     }
 }
 
@@ -312,6 +314,8 @@ void BarWindow::hideBar() {
 
         d->heightAnim->stop();
         d->heightAnim->start();
+
+        d->barExpanding = false;
     }
 }
 
