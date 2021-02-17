@@ -9,27 +9,27 @@
     </message>
     <message>
         <source>DISPLAY PROPERTIES</source>
-        <translation type="unfinished"></translation>
+        <translation>THUỘC TÍNH MÀN HÌNH</translation>
     </message>
     <message>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Độ phân giải</translation>
     </message>
     <message>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Tốc độ làm tươi</translation>
     </message>
     <message>
         <source>%1 hz</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 hz</translation>
     </message>
     <message>
         <source>Apply Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Áp dụng cài đặt</translation>
     </message>
     <message>
         <source>Primary Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Màn hình chính</translation>
     </message>
 </context>
 <context>
@@ -72,43 +72,43 @@
     </message>
     <message>
         <source>SCREENS</source>
-        <translation type="unfinished"></translation>
+        <translation>MÀN HÌNH</translation>
     </message>
     <message>
         <source>Change the resolution of your display and arrange your displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi độ phân giải và sắp xếp màn hình của bạn</translation>
     </message>
     <message>
         <source>Arrange and Resize Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Điều chỉnh màn hình</translation>
     </message>
     <message>
         <source>Your physical location will be sent to MET Norway to determine sunrise and sunset times.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vị trí thực của bạn sẽ bị gửi đến MET Norway để xác định thời gian mặt trời mọc và lặn.</translation>
     </message>
     <message>
         <source>SCALING</source>
-        <translation type="unfinished"></translation>
+        <translation>TỶ LỆ PHÓNG TO</translation>
     </message>
     <message>
         <source>If items on the screen are too small, you can scale them up to make them easier to see.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nếu mục trên màn hình quá nhỏ, bạn có thể phóng to các mục để cho bạn xem dễ hơn.</translation>
     </message>
     <message>
         <source>100% (96 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>100% (96 DPI)</translation>
     </message>
     <message>
         <source>125% (120 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>125% (120 DPI)</translation>
     </message>
     <message>
         <source>150% (144 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>150% (144 DPI)</translation>
     </message>
     <message>
         <source>200% (192 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>200% (192 DPI)</translation>
     </message>
 </context>
 <context>
@@ -122,11 +122,11 @@
     <name>RedshiftDaemon</name>
     <message>
         <source>Redshift Active</source>
-        <translation type="unfinished"></translation>
+        <translation>Redshift hoạt động</translation>
     </message>
     <message>
         <source>Disable Redshift until tomorrow</source>
-        <translation type="unfinished"></translation>
+        <translation>Vô hiệu Redshift đến khi ngày mai</translation>
     </message>
 </context>
 </TS>
