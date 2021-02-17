@@ -22,10 +22,13 @@
 
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <quickswitch.h>
 #include <QDBusInterface>
 #include "pairpopover.h"
+#include "devicepopover.h"
 #include <tpopover.h>
 #include "btagent.h"
+#include "devicedelegate.h"
 
 #include <BluezQt/Manager>
 #include <BluezQt/DevicesModel>
@@ -40,6 +43,8 @@ struct BluetoothSettingsPanePrivate {
     BluezQt::Manager* manager;
     BluezQt::AdapterPtr usableAdapter;
     BtAgent* agent;
+
+    QuickSwitch* bluetoothSwitch;
 };
 
 BluetoothSettingsPane::BluetoothSettingsPane() :
@@ -61,10 +66,21 @@ BluetoothSettingsPane::BluetoothSettingsPane() :
     ui->devicesLabel->setFixedWidth(contentWidth);
 
     ui->bluetoothUnavailableIcon->setPixmap(QIcon::fromTheme("bluetooth").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
+    ui->bluetoothUnavailableIcon_2->setPixmap(QIcon::fromTheme("bluetooth").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
 
     QDBusConnection::systemBus().connect("org.freedesktop.hostname1", "/org/freedesktop/hostname1", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(updateHostname()));
     updateHostname();
+
+    d->bluetoothSwitch = new QuickSwitch("Bluetooth");
+    d->bluetoothSwitch->setTitle(tr("Bluetooth"));
+    connect(d->bluetoothSwitch, &QuickSwitch::toggled, this, [ = ](bool isEnabled) {
+        if (isEnabled) {
+            ui->enableBluetoothButton->click();
+        } else {
+            d->manager->setBluetoothBlocked(true);
+        }
+    });
 
     BluezQt::DevicesModel* devicesModel = new BluezQt::DevicesModel(d->manager);
     QSortFilterProxyModel* devicesFilter = new QSortFilterProxyModel();
@@ -72,11 +88,13 @@ BluetoothSettingsPane::BluetoothSettingsPane() :
     devicesFilter->setFilterRole(BluezQt::DevicesModel::PairedRole);
     devicesFilter->setFilterFixedString("true");
     ui->devicesList->setModel(devicesFilter);
+    ui->devicesList->setItemDelegate(new DeviceDelegate(false));
 
     connect(d->manager, &BluezQt::Manager::adapterAdded, this, &BluetoothSettingsPane::updateUsableAdapter);
     connect(d->manager, &BluezQt::Manager::adapterRemoved, this, &BluetoothSettingsPane::updateUsableAdapter);
     connect(d->manager, &BluezQt::Manager::usableAdapterChanged, this, &BluetoothSettingsPane::updateUsableAdapter);
     connect(d->manager, &BluezQt::Manager::operationalChanged, this, &BluetoothSettingsPane::updateOperational);
+    connect(d->manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &BluetoothSettingsPane::updateOperational);
     updateUsableAdapter();
     updateOperational();
 
@@ -116,16 +134,24 @@ void BluetoothSettingsPane::updateUsableAdapter() {
     }
 
     //Find an adapter
-    d->usableAdapter.clear();
-    for (const BluezQt::AdapterPtr& adapter : d->manager->adapters()) {
-        if (adapter->isPowered()) {
-            d->usableAdapter = adapter;
-            break;
-        }
+//    d->usableAdapter.clear();
+//    for (const BluezQt::AdapterPtr& adapter : d->manager->adapters()) {
+//        if (adapter->isPowered()) {
+//            d->usableAdapter = adapter;
+//            break;
+//        }
+//    }
+//    if (!d->usableAdapter && !d->manager->adapters().isEmpty()) d->usableAdapter = d->manager->adapters().first();
+    if (!d->manager->adapters().isEmpty()) {
+        d->usableAdapter = d->manager->adapters().at(0);
+    } else {
+        d->usableAdapter = nullptr;
     }
-    if (!d->usableAdapter && !d->manager->adapters().isEmpty()) d->usableAdapter = d->manager->adapters().first();
 
     if (d->usableAdapter) {
+        connect(d->usableAdapter.data(), &BluezQt::Adapter::poweredChanged, this, [ = ](bool powered) {
+            updateOperational();
+        });
         connect(d->usableAdapter.data(), &BluezQt::Adapter::discoverableChanged, this, [ = ](bool discoverable) {
             ui->visibilitySwitch->setChecked(discoverable);
         });
@@ -133,15 +159,26 @@ void BluetoothSettingsPane::updateUsableAdapter() {
 
         updateHostname();
     }
+
+    updateOperational();
 }
 
 void BluetoothSettingsPane::updateOperational() {
+    QSignalBlocker blocker(d->bluetoothSwitch);
     if (!d->manager->isOperational()) {
         ui->stackedWidget->setCurrentWidget(ui->unavailablePage, false);
+        if (StateManager::statusCenterManager()->isSwitchRegistered(d->bluetoothSwitch)) StateManager::statusCenterManager()->removeSwitch(d->bluetoothSwitch);
     } else if (d->manager->adapters().isEmpty()) {
         ui->stackedWidget->setCurrentWidget(ui->unavailablePage, false);
+        if (StateManager::statusCenterManager()->isSwitchRegistered(d->bluetoothSwitch)) StateManager::statusCenterManager()->removeSwitch(d->bluetoothSwitch);
+    } else if (d->manager->isBluetoothBlocked() || d->usableAdapter == nullptr || !d->usableAdapter->isPowered()) {
+        ui->stackedWidget->setCurrentWidget(ui->disabledPage, false);
+        d->bluetoothSwitch->setChecked(false);
+        if (!StateManager::statusCenterManager()->isSwitchRegistered(d->bluetoothSwitch)) StateManager::statusCenterManager()->addSwitch(d->bluetoothSwitch);
     } else {
         ui->stackedWidget->setCurrentWidget(ui->mainPage, false);
+        d->bluetoothSwitch->setChecked(true);
+        if (!StateManager::statusCenterManager()->isSwitchRegistered(d->bluetoothSwitch)) StateManager::statusCenterManager()->addSwitch(d->bluetoothSwitch);
     }
 }
 
@@ -171,6 +208,26 @@ void BluetoothSettingsPane::on_pairButton_clicked() {
     popover->setPopoverWidth(SC_DPI(600));
     connect(pairPopover, &PairPopover::done, popover, &tPopover::dismiss);
     connect(popover, &tPopover::dismissed, pairPopover, &PairPopover::deleteLater);
+    connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
+    popover->show(this->window());
+}
+
+void BluetoothSettingsPane::on_enableBluetoothButton_clicked() {
+    d->manager->setBluetoothBlocked(false);
+    if (!d->manager->adapters().isEmpty()) {
+        d->manager->adapters().at(0)->setPowered(true);
+    }
+}
+
+void BluetoothSettingsPane::on_devicesList_activated(const QModelIndex& index) {
+    BluezQt::AdapterPtr adapter = d->manager->adapterForAddress(index.data(BluezQt::DevicesModel::AdapterAddressRole).toString());
+    BluezQt::DevicePtr device = adapter->deviceForAddress(index.data(BluezQt::DevicesModel::AddressRole).toString());
+
+    DevicePopover* devicePopover = new DevicePopover(device);
+    tPopover* popover = new tPopover(devicePopover);
+    popover->setPopoverWidth(SC_DPI(600));
+    connect(devicePopover, &DevicePopover::done, popover, &tPopover::dismiss);
+    connect(popover, &tPopover::dismissed, devicePopover, &DevicePopover::deleteLater);
     connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
     popover->show(this->window());
 }

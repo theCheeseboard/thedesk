@@ -43,6 +43,18 @@
         <source>DEVICES</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Bluetooth is disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch Bluetooth on to connect to Bluetooth devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Bluetooth</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BtAgent</name>
@@ -76,6 +88,116 @@
     </message>
     <message>
         <source>In order to complete pairing, confirm that the following pairing code is shown on %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Common</name>
+    <message>
+        <source>Phone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Networking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Headset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Headphones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio/Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keyboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mouse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gamepad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Drawing Tablet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Peripheral</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Printer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imaging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wearable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Health</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DevicePopover</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ACTIONS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connecting to %1 failed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

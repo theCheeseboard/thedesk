@@ -14,14 +14,20 @@ include(/usr/share/the-libs/pri/gentranslations.pri)
 
 SOURCES += \
     btagent.cpp \
+    common.cpp \
+    devicedelegate.cpp \
     plugin.cpp \
     settings/bluetoothsettingspane.cpp \
+    settings/devicepopover.cpp \
     settings/pairpopover.cpp
 
 HEADERS += \
     btagent.h \
+    common.h \
+    devicedelegate.h \
     plugin.h \
     settings/bluetoothsettingspane.h \
+    settings/devicepopover.h \
     settings/pairpopover.h
 
 DISTFILES += Plugin.json \
@@ -42,5 +48,6 @@ include(../plugins.pri)
 
 FORMS += \
     settings/bluetoothsettingspane.ui \
+    settings/devicepopover.ui \
     settings/pairpopover.ui
 

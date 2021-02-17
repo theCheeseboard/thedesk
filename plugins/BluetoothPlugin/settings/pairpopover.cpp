@@ -27,6 +27,7 @@
 #include <QSortFilterProxyModel>
 #include <ttoast.h>
 #include "btagent.h"
+#include "devicedelegate.h"
 
 struct PairPopoverPrivate {
     BluezQt::Manager* manager;
@@ -60,6 +61,7 @@ PairPopover::PairPopover(BluezQt::Manager* manager, BtAgent* agent, QWidget* par
     devicesFilter2->setFilterRole(BluezQt::DevicesModel::AdapterAddressRole);
     devicesFilter2->setFilterFixedString(d->adapter->address());
     ui->pairList->setModel(devicesFilter2);
+    ui->pairList->setItemDelegate(new DeviceDelegate(true));
 
     d->adapter->startDiscovery();
 }
@@ -117,6 +119,8 @@ void PairPopover::on_pairList_activated(const QModelIndex& index) {
         d->agent->capturePairRequests(nullptr, nullptr);
 
         if (pairRequest->error() == BluezQt::PendingCall::NoError) {
+            device->setTrusted(true);
+            device->connectToDevice();
             emit done();
         } else {
             ui->stackedWidget->setCurrentWidget(ui->deviceSelectionPage);

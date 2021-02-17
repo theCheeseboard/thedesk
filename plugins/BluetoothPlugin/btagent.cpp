@@ -58,7 +58,7 @@ void BtAgent::requestPinCode(BluezQt::DevicePtr device, const BluezQt::Request<Q
 void BtAgent::displayPinCode(BluezQt::DevicePtr device, const QString& pinCode) {
     if (device == d->capturedDevice) {
         d->capturedPopover->triggerPairConfirmation(PairPopover::KeyPinCode, pinCode)->error([ = ](QString error) {
-            device->disconnectFromDevice();
+            device->cancelPairing();
         });
     } else {
         //TODO: Show a notification

@@ -29,6 +29,9 @@ int main(int argc, char* argv[]) {
     //Put environment variables
     qputenv("QT_QPA_PLATFORMTHEME", "thedesk-platform");
 
+    QString oldPath = qgetenv("PATH");
+    qputenv("PATH", ("/usr/bin/thedesk-xdg-utils:" + oldPath).toUtf8());
+
     tApplication a(argc, argv);
     a.setApplicationName("theDesk");
     a.setOrganizationName("theSuite");

@@ -43,6 +43,10 @@ class BluetoothSettingsPane : public StatusCenterPane {
 
         void on_pairButton_clicked();
 
+        void on_enableBluetoothButton_clicked();
+
+        void on_devicesList_activated(const QModelIndex& index);
+
     private:
         Ui::BluetoothSettingsPane* ui;
         BluetoothSettingsPanePrivate* d;
