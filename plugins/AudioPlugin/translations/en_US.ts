@@ -4,27 +4,33 @@
 <context>
     <name>EventHandler</name>
     <message>
+        <location filename="../eventhandler.cpp" line="93"/>
         <source>No Audio Devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Speakers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Headphones</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Volume</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../eventhandler.cpp" line="134"/>
         <source>Mute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../eventhandler.cpp" line="135"/>
         <source>Unmute Quiet Mode before changing the volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../eventhandler.cpp" line="151"/>
+        <source>Speakers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../eventhandler.cpp" line="155"/>
+        <source>Headphones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../eventhandler.cpp" line="159"/>
+        <source>Volume</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

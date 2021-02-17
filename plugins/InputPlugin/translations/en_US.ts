@@ -30,6 +30,21 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settings/mousesettings.ui" line="106"/>
+        <source>CLICKING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/mousesettings.ui" line="118"/>
+        <source>Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/mousesettings.ui" line="131"/>
+        <source>Right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settings/mousesettings.ui" line="152"/>
         <source>Primary Button</source>
         <translation type="unfinished"></translation>
@@ -47,21 +62,6 @@
     <message>
         <location filename="../settings/mousesettings.ui" line="225"/>
         <source>Mouse settings can&apos;t be changed on this platform.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/mousesettings.ui" line="118"/>
-        <source>Left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/mousesettings.ui" line="131"/>
-        <source>Right</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/mousesettings.ui" line="106"/>
-        <source>CLICKING</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

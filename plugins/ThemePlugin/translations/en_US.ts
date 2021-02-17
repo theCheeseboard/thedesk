@@ -49,6 +49,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settings/themesettingspane.ui" line="127"/>
+        <source>Accent Colour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settings/themesettingspane.ui" line="141"/>
         <source>Dark</source>
         <translation type="unfinished"></translation>
@@ -61,6 +66,11 @@
     <message>
         <location filename="../settings/themesettingspane.ui" line="154"/>
         <source>Change the colours of the interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/themesettingspane.ui" line="161"/>
+        <source>Base Colour</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -99,8 +109,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settings/themesettingspane.ui" line="363"/>
+        <source>Set the appearance of buttons, text boxes and other interface elements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settings/themesettingspane.ui" line="370"/>
         <source>Widget Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/themesettingspane.ui" line="383"/>
+        <source>WIDGETS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -151,26 +171,6 @@
     <message>
         <location filename="../settings/themesettingspane.ui" line="563"/>
         <source>EFFECTS</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/themesettingspane.ui" line="363"/>
-        <source>Set the appearance of buttons, text boxes and other interface elements</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/themesettingspane.ui" line="383"/>
-        <source>WIDGETS</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/themesettingspane.ui" line="161"/>
-        <source>Base Colour</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings/themesettingspane.ui" line="127"/>
-        <source>Accent Colour</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

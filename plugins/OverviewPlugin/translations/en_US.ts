@@ -4,6 +4,11 @@
 <context>
     <name>OverviewPane</name>
     <message>
+        <location filename="../OverviewPane/overviewpane.ui" line="102"/>
+        <source>Hope you&apos;re having a great day. Here&apos;s what we&apos;ve got for you:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="106"/>
         <source>Hi %1!</source>
         <translation type="unfinished"></translation>
@@ -26,11 +31,6 @@
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="254"/>
         <source>Overview</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../OverviewPane/overviewpane.ui" line="102"/>
-        <source>Hope you&apos;re having a great day. Here&apos;s what we&apos;ve got for you:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
