@@ -389,128 +389,128 @@
         <location filename="../onboarding/onboardingusers.ui" line="582"/>
         <location filename="../onboarding/onboardingusers.cpp" line="157"/>
         <source>Users</source>
-        <translation type="unfinished">Người dùng</translation>
+        <translation>Người dùng</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="130"/>
         <source>Full Name</source>
-        <translation type="unfinished">Họ và tên</translation>
+        <translation>Họ và tên</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="137"/>
         <source>Username</source>
-        <translation type="unfinished">Tên người dùng</translation>
+        <translation>Tên người dùng</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="150"/>
         <source>ABOUT YOU</source>
-        <translation type="unfinished"></translation>
+        <translation>VỀ BẠN</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="157"/>
         <source>The username is generated based on the given full name. We recommend not changing it.</source>
-        <translation type="unfinished">Tên người dùng bị tạo dựa trên họ và tên bạn nhập vào. Chúng tôi nên bạn không thay đổi nó.</translation>
+        <translation>Tên người dùng bị tạo dựa trên họ và tên bạn nhập vào. Chúng tôi nên bạn không thay đổi nó.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="199"/>
         <source>Password</source>
-        <translation type="unfinished">Mật khẩu</translation>
+        <translation>Mật khẩu</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="206"/>
         <source>Password Hint</source>
-        <translation type="unfinished">Gợi ý mật khẩu</translation>
+        <translation>Gợi ý mật khẩu</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="219"/>
         <source>YOUR PASSWORD</source>
-        <translation type="unfinished"></translation>
+        <translation>MẬT KHẨU CỦA BẠN</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="236"/>
         <source>Confirm Password</source>
-        <translation type="unfinished">Xác nhận mật khẩu</translation>
+        <translation>Xác nhận mật khẩu</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="243"/>
         <source>Protect this account with a password to prevent anyone else logging into it.</source>
-        <translation type="unfinished">Bảo vệ tài khoản này với một mật khẩu để ngăn chặn bất cứ ai khác đăng nhập vào nó.</translation>
+        <translation>Bảo vệ tài khoản này với một mật khẩu để ngăn chặn bất cứ ai khác đăng nhập vào nó.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="257"/>
         <source>If you forget your password, this will appear to help you remember.</source>
-        <translation type="unfinished">Nếu bạn quên mật khẩu, gợi ý này sẽ hiện lên để giúp bạn nhớ.</translation>
+        <translation>Nếu bạn quên mật khẩu, gợi ý này sẽ hiện lên để giúp bạn nhớ.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="329"/>
         <source>ADMINISTRATOR</source>
-        <translation type="unfinished">QUẢN TRỊ</translation>
+        <translation>QUẢN TRỊ</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="336"/>
         <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
-        <translation type="unfinished">Người dùng quản trị có quyền kiểm soát toàn thiết bị này. Họ có thể đổi cài đặt cho toàn bộ hệ thống và cài đặt phần mềm.</translation>
+        <translation>Người dùng quản trị có quyền kiểm soát toàn thiết bị này. Họ có thể đổi cài đặt cho toàn bộ hệ thống và cài đặt phần mềm.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="346"/>
         <source>Administrator</source>
-        <translation type="unfinished">Quản trị</translation>
+        <translation>Quản trị</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="377"/>
         <source>STANDARD USER</source>
-        <translation type="unfinished">CHUẨN</translation>
+        <translation>CHUẨN</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="384"/>
         <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
-        <translation type="unfinished">Người dùng chuẩn không thể thực hiện hành động trên toàn hệ thống. Họ chỉ được thực hiện hành động sẽ ảnh hưởng đến tài khoản đó.</translation>
+        <translation>Người dùng chuẩn không thể thực hiện hành động trên toàn hệ thống. Họ chỉ được thực hiện hành động sẽ ảnh hưởng đến tài khoản đó.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="394"/>
         <source>Standard User</source>
-        <translation type="unfinished">Chuẩn</translation>
+        <translation>Chuẩn</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="419"/>
         <source>USER TYPE</source>
-        <translation type="unfinished">KIỂU NGƯỜI DÙNG</translation>
+        <translation>KIỂU NGƯỜI DÙNG</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="491"/>
         <location filename="../onboarding/onboardingusers.ui" line="673"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiếp</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="662"/>
         <source>Add Another User</source>
-        <translation type="unfinished"></translation>
+        <translation>Thêm người dùng nữa</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="45"/>
         <source>It&apos;s time to get to know you. Apps will use this information to personalise your experience, and you&apos;ll use the password to log in.</source>
-        <translation type="unfinished"></translation>
+        <translation>Đến giờ làm quen với bạn. Ứng dụng sẽ sử dụng thông tin này để cá nhân hóa trải nghiệm của bạn và bạn sẽ sử dụng mật khẩu này để đăng nhập.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="116"/>
         <source>Thanks, %1. If other people will be using this device, you can add them now, or you can add them later.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cảm ơn %1. Nếu người khác sử dụng thiết bị này, bạn có thể thêm họ vào ngay bây giờ, hoặc bạn có thể thêm vào sau.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="114"/>
         <source>You&apos;ve added these users to your system</source>
-        <translation type="unfinished"></translation>
+        <translation>Bạn đã thêm người dùng này vào thiết bị này</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="123"/>
         <source>Enter the details of the next user to be added</source>
-        <translation type="unfinished"></translation>
+        <translation>Điền vào chi tiết cho người dùng tiếp theo để thêm vào</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="130"/>
         <source>Couldn&apos;t create user</source>
-        <translation type="unfinished">Không thể tạo người dùng</translation>
+        <translation>Không thể tạo người dùng</translation>
     </message>
 </context>
 <context>
