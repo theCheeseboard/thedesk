@@ -12,12 +12,4 @@
         <translation>Jasność</translation>
     </message>
 </context>
-<context>
-    <name>ScreenBrightnessChunk</name>
-    <message>
-        <location filename="../screenbrightnesschunk.ui" line="14"/>
-        <source>Form</source>
-        <translation>Formularz</translation>
-    </message>
-</context>
 </TS>

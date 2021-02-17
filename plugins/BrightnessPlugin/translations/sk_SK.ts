@@ -12,12 +12,4 @@
         <translation>jas</translation>
     </message>
 </context>
-<context>
-    <name>ScreenBrightnessChunk</name>
-    <message>
-        <location filename="../screenbrightnesschunk.ui" line="14"/>
-        <source>Form</source>
-        <translation>formulár</translation>
-    </message>
-</context>
 </TS>
