@@ -4,11 +4,6 @@
 <context>
     <name>ArrangeWidget</name>
     <message>
-        <location filename="../arrange/arrangewidget.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../arrange/arrangewidget.ui" line="54"/>
         <source>DISPLAY PROPERTIES</source>
         <translation type="unfinished"></translation>
@@ -41,11 +36,6 @@
 </context>
 <context>
     <name>DisplaySettings</name>
-    <message>
-        <location filename="../settings/displaysettings.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="35"/>
         <location filename="../settings/displaysettings.cpp" line="102"/>
@@ -135,14 +125,6 @@
     <message>
         <location filename="../settings/displaysettings.ui" line="356"/>
         <source>Your physical location will be sent to MET Norway to determine sunrise and sunset times.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>OverlayWindow</name>
-    <message>
-        <location filename="../arrange/overlaywindow.ui" line="13"/>
-        <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

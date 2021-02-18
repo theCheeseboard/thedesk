@@ -89,49 +89,44 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="77"/>
         <location filename="../systemsettings/about/about.cpp" line="78"/>
         <location filename="../systemsettings/about/about.cpp" line="79"/>
-        <location filename="../systemsettings/about/about.cpp" line="87"/>
+        <location filename="../systemsettings/about/about.cpp" line="80"/>
         <location filename="../systemsettings/about/about.cpp" line="88"/>
-        <location filename="../systemsettings/about/about.cpp" line="124"/>
+        <location filename="../systemsettings/about/about.cpp" line="89"/>
+        <location filename="../systemsettings/about/about.cpp" line="125"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="133"/>
+        <location filename="../systemsettings/about/about.cpp" line="134"/>
         <source>theDesk %1 - Blueprint</source>
         <translation>theDesk %1 - 蓝图</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="134"/>
+        <location filename="../systemsettings/about/about.cpp" line="135"/>
         <source>You compiled theDesk on %1</source>
         <translation>你在 %1 编译了 theDesk</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="136"/>
+        <location filename="../systemsettings/about/about.cpp" line="137"/>
         <source>theDesk %1</source>
         <translation>theDesk %1。</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="140"/>
+        <location filename="../systemsettings/about/about.cpp" line="141"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
         <translation>版权  © Victor Tran %1 根据GNU通用公共许可版本3或更高版本许可。</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="35"/>
-        <location filename="../systemsettings/about/about.cpp" line="174"/>
+        <location filename="../systemsettings/about/about.cpp" line="175"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
 </context>
 <context>
     <name>Acknowledgements</name>
-    <message>
-        <location filename="../systemsettings/about/acknowledgements.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished">表格</translation>
-    </message>
     <message>
         <location filename="../systemsettings/about/acknowledgements.ui" line="35"/>
         <source>Acknowledgements</source>
@@ -256,11 +251,6 @@
 </context>
 <context>
     <name>ChangeHostnamePopover</name>
-    <message>
-        <location filename="../systemsettings/about/changehostnamepopover.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished">表格</translation>
-    </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="35"/>
         <source>Change Device Name</source>
@@ -643,11 +633,6 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
 <context>
     <name>RunDialog</name>
     <message>
-        <location filename="../run/rundialog.ui" line="14"/>
-        <source>Form</source>
-        <translation>表格</translation>
-    </message>
-    <message>
         <location filename="../run/rundialog.ui" line="35"/>
         <source>Run</source>
         <translation>运行</translation>
@@ -705,12 +690,12 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="65"/>
+        <location filename="../main.cpp" line="66"/>
         <source>Safe Mode</source>
         <translation>安全模式</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="65"/>
+        <location filename="../main.cpp" line="66"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>您按住CTRL键。 以安全模式启动theDesk？</translation>
     </message>

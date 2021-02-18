@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string notr="true">Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -118,7 +118,8 @@
                <string>Yes</string>
               </property>
               <property name="icon">
-               <iconset theme="dialog-ok"/>
+               <iconset theme="dialog-ok">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -128,7 +129,8 @@
                <string>No</string>
               </property>
               <property name="icon">
-               <iconset theme="dialog-cancel"/>
+               <iconset theme="dialog-cancel">
+                <normaloff>.</normaloff>.</iconset>
               </property>
              </widget>
             </item>
@@ -176,6 +178,9 @@
    <extends>QStackedWidget</extends>
    <header location="global">tstackedwidget.h</header>
    <container>1</container>
+   <slots>
+    <signal>switchingFrame(int)</signal>
+   </slots>
   </customwidget>
   <customwidget>
    <class>SplashWidget</class>

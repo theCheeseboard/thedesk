@@ -2,18 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_GB" sourcelanguage="en_US">
 <context>
-    <name>ActionQuickWidget</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-</context>
-<context>
     <name>LocaleSelector</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Select a locale</source>
         <translation>Select a locale</translation>
@@ -21,10 +10,6 @@
 </context>
 <context>
     <name>OnboardingBetaThankYou</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Thank you!</source>
         <translation>Thank you!</translation>
@@ -89,13 +74,6 @@
     <message>
         <source>Welcome</source>
         <translation>Welcome</translation>
-    </message>
-</context>
-<context>
-    <name>QuickWidgetContainer</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
     </message>
 </context>
 <context>

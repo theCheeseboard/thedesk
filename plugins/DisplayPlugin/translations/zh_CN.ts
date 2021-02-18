@@ -4,10 +4,6 @@
 <context>
     <name>ArrangeWidget</name>
     <message>
-        <source>Form</source>
-        <translation>表格</translation>
-    </message>
-    <message>
         <source>DISPLAY PROPERTIES</source>
         <translation>显示器属性</translation>
     </message>
@@ -34,10 +30,6 @@
 </context>
 <context>
     <name>DisplaySettings</name>
-    <message>
-        <source>Form</source>
-        <translation>表格</translation>
-    </message>
     <message>
         <source>Displays</source>
         <translation>显示器</translation>
@@ -109,13 +101,6 @@
     <message>
         <source>200% (192 DPI)</source>
         <translation>200% (192 DPI)</translation>
-    </message>
-</context>
-<context>
-    <name>OverlayWindow</name>
-    <message>
-        <source>Dialog</source>
-        <translation>对话框</translation>
     </message>
 </context>
 <context>

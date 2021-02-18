@@ -4,10 +4,6 @@
 <context>
     <name>MprisChunk</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished">表格</translation>
-    </message>
-    <message>
         <source>Media Players</source>
         <translation type="unfinished"></translation>
     </message>
@@ -15,41 +11,12 @@
 <context>
     <name>NotificationAppGroup</name>
     <message>
-        <source>Form</source>
-        <translation>表格</translation>
-    </message>
-    <message>
         <source>Uncategorised</source>
         <translation>未分类的</translation>
     </message>
 </context>
 <context>
-    <name>NotificationWidget</name>
-    <message>
-        <source>Form</source>
-        <translation>表格</translation>
-    </message>
-</context>
-<context>
-    <name>NotificationsDrawer</name>
-    <message>
-        <source>Dialog</source>
-        <translation>对话框</translation>
-    </message>
-</context>
-<context>
-    <name>NotificationsDrawerWidget</name>
-    <message>
-        <source>Form</source>
-        <translation>表格</translation>
-    </message>
-</context>
-<context>
     <name>NotificationsStatusCenterPane</name>
-    <message>
-        <source>Form</source>
-        <translation>表格</translation>
-    </message>
     <message>
         <source>Notifications</source>
         <translation>通知</translation>

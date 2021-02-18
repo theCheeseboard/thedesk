@@ -17,10 +17,6 @@
 <context>
     <name>ScreenshotWindow</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Discard</source>
         <translation>Renunță</translation>
     </message>

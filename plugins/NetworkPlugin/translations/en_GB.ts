@@ -4,10 +4,6 @@
 <context>
     <name>CellularPane</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>STATUS</source>
         <translation>STATUS</translation>
     </message>
@@ -278,10 +274,6 @@
 <context>
     <name>ConnectionSelectionPopover</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Select Connection Profile</source>
         <translation>Select Connection Profile</translation>
     </message>
@@ -292,10 +284,6 @@
 </context>
 <context>
     <name>DevicePane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
@@ -326,10 +314,6 @@
 </context>
 <context>
     <name>IPv4ConnectionEditorPane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>IPv4</source>
         <translation>IPv4</translation>
@@ -421,10 +405,6 @@
 <context>
     <name>NetworkConnectionEditor</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>General</source>
         <translation>General</translation>
     </message>
@@ -456,20 +436,12 @@
 <context>
     <name>NetworkStatusCenterLeftPane</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Network</source>
         <translation>Network</translation>
     </message>
 </context>
 <context>
     <name>NetworkStatusCenterPane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Network</source>
         <translation>Network</translation>
@@ -485,10 +457,6 @@
 </context>
 <context>
     <name>SecurityEapPeap</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>PEAP</source>
         <translation>PEAP</translation>
@@ -561,10 +529,6 @@
 <context>
     <name>SecurityEapUnsupported</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Unsupported Security Settings</source>
         <translation>Unsupported Security Preferences</translation>
     </message>
@@ -575,10 +539,6 @@
 </context>
 <context>
     <name>SimSettingsPopover</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Enable SIM PIN</source>
         <translation>Enable SIM PIN</translation>
@@ -681,10 +641,6 @@
 <context>
     <name>TetheringSettingsPopover</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Tethering Settings</source>
         <translation>Tethering Preferences</translation>
     </message>
@@ -707,10 +663,6 @@
 </context>
 <context>
     <name>UnlockModemPopover</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Enter the SIM PIN</source>
         <translation>Enter the SIM PIN</translation>
@@ -774,10 +726,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</translation>
 <context>
     <name>WifiConnectionEditorPane</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Wi-Fi</source>
         <translation>Wi-Fi</translation>
     </message>
@@ -804,10 +752,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</translation>
 </context>
 <context>
     <name>WifiDevicePane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>STATUS</source>
         <translation>STATUS</translation>
@@ -871,10 +815,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</translation>
     <message>
         <source>Network Key</source>
         <translation>Network Key</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>TextLabel</translation>
     </message>
     <message>
         <source>Enable Tethering</source>
@@ -950,10 +890,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</translation>
 </context>
 <context>
     <name>WiredDevicePane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>STATUS</source>
         <translation>STATUS</translation>
@@ -1068,10 +1004,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</translation>
 </context>
 <context>
     <name>WirelessNetworkSelectionPopover</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Connect to a Wireless Network</source>
         <translation>Connect to a Wireless Network</translation>

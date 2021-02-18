@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -39,7 +39,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string notr="true">Welcome to theDesk Beta 3!
+      <string notr="true">Welcome to theDesk Beta 4!
 
 Before we continue, please bear in mind that this is a beta. Not everything will be working correctly, and you may experience some strange behaviour in some parts.
 

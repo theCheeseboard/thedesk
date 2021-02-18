@@ -4,16 +4,6 @@
 <context>
     <name>MessageDialog</name>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../messagedialog/messagedialog.ui" line="129"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../messagedialog/messagedialog.ui" line="143"/>
         <source>Details...</source>
         <translation type="unfinished"></translation>

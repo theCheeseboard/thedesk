@@ -4,11 +4,6 @@
 <context>
     <name>DefaultsPane</name>
     <message>
-        <location filename="../defaultspane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../defaultspane.ui" line="35"/>
         <location filename="../defaultspane.cpp" line="81"/>
         <source>Default Applications</source>

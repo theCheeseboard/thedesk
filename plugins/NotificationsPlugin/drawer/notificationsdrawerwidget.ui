@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <widget class="QFrame" name="mainFrame">
    <property name="geometry">
@@ -159,7 +159,8 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset theme="arrow-up"/>
+       <iconset theme="arrow-up">
+        <normaloff>.</normaloff>.</iconset>
       </property>
       <property name="autoRaise">
        <bool>true</bool>
@@ -172,7 +173,8 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset theme="dialog-close"/>
+       <iconset theme="dialog-close">
+        <normaloff>.</normaloff>.</iconset>
       </property>
       <property name="autoRaise">
        <bool>true</bool>

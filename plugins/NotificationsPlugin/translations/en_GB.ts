@@ -4,10 +4,6 @@
 <context>
     <name>MprisChunk</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Media Players</source>
         <translation>Media Players</translation>
     </message>
@@ -15,41 +11,12 @@
 <context>
     <name>NotificationAppGroup</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Uncategorised</source>
         <translation>Uncategorised</translation>
     </message>
 </context>
 <context>
-    <name>NotificationWidget</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-</context>
-<context>
-    <name>NotificationsDrawer</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-</context>
-<context>
-    <name>NotificationsDrawerWidget</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-</context>
-<context>
     <name>NotificationsStatusCenterPane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Notifications</source>
         <translation>Notifications</translation>

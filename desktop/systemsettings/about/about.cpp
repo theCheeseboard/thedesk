@@ -25,6 +25,7 @@
 #include <QBuffer>
 #include <QDBusInterface>
 #include <QHostInfo>
+#include <tapplication.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <sys/sysinfo.h>
@@ -133,11 +134,11 @@ About::About() :
     ui->versionLabel->setText(tr("theDesk %1 - Blueprint").arg("1.0"));
     ui->compileDate->setText(tr("You compiled theDesk on %1").arg(__DATE__));
 #else
-    ui->versionLabel->setText(tr("theDesk %1").arg("Beta 3"));
+    ui->versionLabel->setText(tr("theDesk %1").arg("Beta 4"));
     ui->compileDate->setVisible(false);
 #endif
 
-    ui->copyrightNotice->setText(tr("Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.").arg("2020"));
+    ui->copyrightNotice->setText(tr("Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.").arg(tApplication::copyrightYear()));
 
     const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
     ui->sysinfoFrame->layout()->setAlignment(ui->distributionPane, Qt::AlignHCenter);

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -73,7 +73,8 @@
         <string>Relaunch theDesk</string>
        </property>
        <property name="icon">
-        <iconset theme="view-refresh"/>
+        <iconset theme="view-refresh">
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>
@@ -83,7 +84,8 @@
         <string>Log Out</string>
        </property>
        <property name="icon">
-        <iconset theme="system-log-out"/>
+        <iconset theme="system-log-out">
+         <normaloff>.</normaloff>.</iconset>
        </property>
       </widget>
      </item>

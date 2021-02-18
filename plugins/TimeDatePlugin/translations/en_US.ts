@@ -4,11 +4,6 @@
 <context>
     <name>DateTimePane</name>
     <message>
-        <location filename="../settings/datetimepane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settings/datetimepane.ui" line="35"/>
         <location filename="../settings/datetimepane.cpp" line="71"/>
         <source>Date and Time</source>
@@ -43,11 +38,6 @@
 <context>
     <name>OnboardingTimeZone</name>
     <message>
-        <location filename="../onboarding/onboardingtimezone.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../onboarding/onboardingtimezone.ui" line="35"/>
         <location filename="../onboarding/onboardingtimezone.cpp" line="53"/>
         <source>Time Zone</source>
@@ -76,11 +66,6 @@
 </context>
 <context>
     <name>SetTimezonePopover</name>
-    <message>
-        <location filename="../popovers/settimezonepopover.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../popovers/settimezonepopover.ui" line="57"/>
         <source>Set Timezone</source>

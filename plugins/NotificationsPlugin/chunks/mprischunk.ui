@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
@@ -48,7 +48,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset theme="arrow-down"/>
+      <iconset theme="arrow-down">
+       <normaloff>.</normaloff>.</iconset>
      </property>
      <property name="popupMode">
       <enum>QToolButton::InstantPopup</enum>
@@ -102,7 +103,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="media-skip-backward"/>
+         <iconset theme="media-skip-backward">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
@@ -118,7 +120,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="media-playback-start"/>
+         <iconset theme="media-playback-start">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>
@@ -134,7 +137,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="media-skip-forward"/>
+         <iconset theme="media-skip-forward">
+          <normaloff>.</normaloff>.</iconset>
         </property>
        </widget>
       </item>

@@ -380,11 +380,6 @@
 <context>
     <name>OnboardingUsers</name>
     <message>
-        <location filename="../onboarding/onboardingusers.ui" line="14"/>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <location filename="../onboarding/onboardingusers.ui" line="57"/>
         <location filename="../onboarding/onboardingusers.ui" line="582"/>
         <location filename="../onboarding/onboardingusers.cpp" line="157"/>
@@ -527,8 +522,13 @@
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="157"/>
-        <source>Say something cool about what an administrator can do</source>
-        <translation>Say something cool about what an administrator can do</translation>
+        <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
+        <translation type="unfinished">An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</translation>
+    </message>
+    <message>
+        <location filename="../settings/usertypedialog.ui" line="205"/>
+        <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
+        <translation type="unfinished">A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="167"/>
@@ -539,11 +539,6 @@
         <location filename="../settings/usertypedialog.ui" line="198"/>
         <source>STANDARD USER</source>
         <translation>STANDARD USER</translation>
-    </message>
-    <message>
-        <location filename="../settings/usertypedialog.ui" line="205"/>
-        <source>Say something cool about what a stanard user can do</source>
-        <translation>Say something cool about what a stanard user can do</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="215"/>

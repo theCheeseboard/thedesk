@@ -2,18 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="tr_TR" sourcelanguage="en_US">
 <context>
-    <name>ActionQuickWidget</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-</context>
-<context>
     <name>LocaleSelector</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Select a locale</source>
         <translation>Bir yerel ayar seçin</translation>
@@ -21,10 +10,6 @@
 </context>
 <context>
     <name>OnboardingBetaThankYou</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Thank you!</source>
         <translation>Teşekkür ederim!</translation>
@@ -89,13 +74,6 @@
     <message>
         <source>Welcome</source>
         <translation>Hoş geldin</translation>
-    </message>
-</context>
-<context>
-    <name>QuickWidgetContainer</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
     </message>
 </context>
 <context>

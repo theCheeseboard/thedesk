@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>469</width>
     <height>300</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <cursorShape>CrossCursor</cursorShape>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -130,7 +130,8 @@
               <string>Crop</string>
              </property>
              <property name="icon">
-              <iconset theme="image-crop"/>
+              <iconset theme="image-crop">
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -149,7 +150,8 @@
               <string>Redact</string>
              </property>
              <property name="icon">
-              <iconset theme="visibility"/>
+              <iconset theme="visibility">
+               <normaloff>.</normaloff>.</iconset>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -203,7 +205,8 @@
            <string>Reset Markup</string>
           </property>
           <property name="icon">
-           <iconset theme="view-refresh"/>
+           <iconset theme="view-refresh">
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
@@ -213,7 +216,8 @@
            <string>Discard</string>
           </property>
           <property name="icon">
-           <iconset theme="edit-delete"/>
+           <iconset theme="edit-delete">
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>
@@ -223,7 +227,8 @@
            <string>Copy</string>
           </property>
           <property name="icon">
-           <iconset theme="edit-copy"/>
+           <iconset theme="edit-copy">
+            <normaloff>.</normaloff>.</iconset>
           </property>
          </widget>
         </item>

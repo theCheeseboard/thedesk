@@ -4,10 +4,6 @@
 <context>
     <name>CellularPane</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>STATUS</source>
         <translation>DURUM</translation>
     </message>
@@ -278,10 +274,6 @@
 <context>
     <name>ConnectionSelectionPopover</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Select Connection Profile</source>
         <translation>Bağlantı Profilini Seçin</translation>
     </message>
@@ -292,10 +284,6 @@
 </context>
 <context>
     <name>DevicePane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>TextLabel</source>
         <translation>MetinEtiketi</translation>
@@ -326,10 +314,6 @@
 </context>
 <context>
     <name>IPv4ConnectionEditorPane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>IPv4</source>
         <translation>IPv4</translation>
@@ -421,10 +405,6 @@
 <context>
     <name>NetworkConnectionEditor</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>General</source>
         <translation>Genel</translation>
     </message>
@@ -456,20 +436,12 @@
 <context>
     <name>NetworkStatusCenterLeftPane</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Network</source>
         <translation>Ağ</translation>
     </message>
 </context>
 <context>
     <name>NetworkStatusCenterPane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Network</source>
         <translation>Ağ</translation>
@@ -485,10 +457,6 @@
 </context>
 <context>
     <name>SecurityEapPeap</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>PEAP</source>
         <translation>PEAP</translation>
@@ -561,10 +529,6 @@
 <context>
     <name>SecurityEapUnsupported</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Unsupported Security Settings</source>
         <translation>Desteklenmeyen Güvenlik Ayarları</translation>
     </message>
@@ -575,10 +539,6 @@
 </context>
 <context>
     <name>SimSettingsPopover</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Enable SIM PIN</source>
         <translation>SIM PIN&apos;ini etkinleştir</translation>
@@ -680,10 +640,6 @@
 <context>
     <name>TetheringSettingsPopover</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Tethering Settings</source>
         <translation>Bağlama Ayarları</translation>
     </message>
@@ -706,10 +662,6 @@
 </context>
 <context>
     <name>UnlockModemPopover</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Enter the SIM PIN</source>
         <translation>SIM PIN kodunu girin</translation>
@@ -772,10 +724,6 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
 <context>
     <name>WifiConnectionEditorPane</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Wi-Fi</source>
         <translation>Wi-Fi</translation>
     </message>
@@ -802,10 +750,6 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
 </context>
 <context>
     <name>WifiDevicePane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>STATUS</source>
         <translation>DURUM</translation>
@@ -869,10 +813,6 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
     <message>
         <source>Network Key</source>
         <translation>Ağ Çözüm</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>MetinEtiketi</translation>
     </message>
     <message>
         <source>Enable Tethering</source>
@@ -948,10 +888,6 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
 </context>
 <context>
     <name>WiredDevicePane</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>STATUS</source>
         <translation>DURUM</translation>
@@ -1066,10 +1002,6 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
 </context>
 <context>
     <name>WirelessNetworkSelectionPopover</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Connect to a Wireless Network</source>
         <translation>Bir Kablosuz Ağa Bağlanın</translation>

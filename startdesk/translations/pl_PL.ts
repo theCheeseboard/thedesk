@@ -4,11 +4,6 @@
 <context>
     <name>CrashWidget</name>
     <message>
-        <location filename="../crash/crashwidget.ui" line="14"/>
-        <source>Form</source>
-        <translation>Forma</translation>
-    </message>
-    <message>
         <location filename="../crash/crashwidget.ui" line="38"/>
         <source>Oh, Bonkers!</source>
         <translation>O nie!</translation>
@@ -25,7 +20,7 @@
         <translation>Uruchom ponownie theDesk</translation>
     </message>
     <message>
-        <location filename="../crash/crashwidget.ui" line="83"/>
+        <location filename="../crash/crashwidget.ui" line="84"/>
         <source>Log Out</source>
         <translation>Wyloguj Sie</translation>
     </message>
@@ -36,20 +31,7 @@
     </message>
 </context>
 <context>
-    <name>SplashWidget</name>
-    <message>
-        <location filename="../splash/splashwidget.ui" line="14"/>
-        <source>Form</source>
-        <translation>Forma</translation>
-    </message>
-</context>
-<context>
     <name>SplashWindow</name>
-    <message>
-        <location filename="../splashwindow.ui" line="14"/>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
     <message>
         <location filename="../splashwindow.ui" line="104"/>
         <source>Question</source>
@@ -61,7 +43,7 @@
         <translation>Tak</translation>
     </message>
     <message>
-        <location filename="../splashwindow.ui" line="128"/>
+        <location filename="../splashwindow.ui" line="129"/>
         <source>No</source>
         <translation>Nie</translation>
     </message>

@@ -4,10 +4,6 @@
 <context>
     <name>ArrangeWidget</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>DISPLAY PROPERTIES</source>
         <translation>DISPLAY PROPERTIES</translation>
     </message>
@@ -34,10 +30,6 @@
 </context>
 <context>
     <name>DisplaySettings</name>
-    <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
     <message>
         <source>Displays</source>
         <translation>Displays</translation>
@@ -109,13 +101,6 @@
     <message>
         <source>200% (192 DPI)</source>
         <translation>200% (192 DPI)</translation>
-    </message>
-</context>
-<context>
-    <name>OverlayWindow</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
     </message>
 </context>
 <context>

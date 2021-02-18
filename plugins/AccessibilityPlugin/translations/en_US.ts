@@ -4,11 +4,6 @@
 <context>
     <name>AccessibilitySettingsPane</name>
     <message>
-        <location filename="../settings/accessibilitysettingspane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="35"/>
         <location filename="../settings/accessibilitysettingspane.cpp" line="66"/>
         <source>Accessibility</source>

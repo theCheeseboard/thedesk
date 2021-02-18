@@ -4,10 +4,6 @@
 <context>
     <name>MessageDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation>Diyalog</translation>
-    </message>
-    <message>
         <source>OK</source>
         <translation>PEKİ</translation>
     </message>
@@ -78,10 +74,6 @@
     <message>
         <source>Restore Defaults</source>
         <translation>Varsayılanları Geri Yükle</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>MetinEtiketi</translation>
     </message>
     <message>
         <source>Details...</source>

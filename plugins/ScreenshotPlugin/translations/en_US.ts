@@ -19,11 +19,6 @@
 <context>
     <name>ScreenshotWindow</name>
     <message>
-        <location filename="../screenshotwindow.ui" line="17"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../screenshotwindow.ui" line="55"/>
         <source>SCREENSHOT</source>
         <translation type="unfinished"></translation>
@@ -34,22 +29,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../screenshotwindow.ui" line="149"/>
+        <location filename="../screenshotwindow.ui" line="150"/>
         <source>Redact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../screenshotwindow.ui" line="203"/>
+        <location filename="../screenshotwindow.ui" line="205"/>
         <source>Reset Markup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../screenshotwindow.ui" line="213"/>
+        <location filename="../screenshotwindow.ui" line="216"/>
         <source>Discard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../screenshotwindow.ui" line="223"/>
+        <location filename="../screenshotwindow.ui" line="227"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>

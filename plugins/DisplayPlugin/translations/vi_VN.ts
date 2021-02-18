@@ -4,10 +4,6 @@
 <context>
     <name>ArrangeWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>DISPLAY PROPERTIES</source>
         <translation>THUỘC TÍNH MÀN HÌNH</translation>
     </message>
@@ -34,10 +30,6 @@
 </context>
 <context>
     <name>DisplaySettings</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Displays</source>
         <translation>Màn hình</translation>
@@ -109,13 +101,6 @@
     <message>
         <source>200% (192 DPI)</source>
         <translation>200% (192 DPI)</translation>
-    </message>
-</context>
-<context>
-    <name>OverlayWindow</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

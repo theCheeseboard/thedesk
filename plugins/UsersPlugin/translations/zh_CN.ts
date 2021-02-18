@@ -380,11 +380,6 @@
 <context>
     <name>OnboardingUsers</name>
     <message>
-        <location filename="../onboarding/onboardingusers.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../onboarding/onboardingusers.ui" line="57"/>
         <location filename="../onboarding/onboardingusers.ui" line="582"/>
         <location filename="../onboarding/onboardingusers.cpp" line="157"/>
@@ -527,8 +522,13 @@
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="157"/>
-        <source>Say something cool about what an administrator can do</source>
-        <translation>说一些关于管理员可以做的事情</translation>
+        <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
+        <translation type="unfinished">管理员可以完全控制此设备。 他们将能够配置系统范围的设置并安装软件。</translation>
+    </message>
+    <message>
+        <location filename="../settings/usertypedialog.ui" line="205"/>
+        <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
+        <translation type="unfinished">标准用户无法执行系统范围的操作。 他们将只能执行只会影响其帐户的管理操作。</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="167"/>
@@ -539,11 +539,6 @@
         <location filename="../settings/usertypedialog.ui" line="198"/>
         <source>STANDARD USER</source>
         <translation>普通用户</translation>
-    </message>
-    <message>
-        <location filename="../settings/usertypedialog.ui" line="205"/>
-        <source>Say something cool about what a stanard user can do</source>
-        <translation>对标准用户的功能说些很酷的话</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="215"/>

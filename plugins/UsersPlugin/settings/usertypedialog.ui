@@ -154,7 +154,7 @@
             <item>
              <widget class="QLabel" name="label_7">
               <property name="text">
-               <string>Say something cool about what an administrator can do</string>
+               <string>An administrator has full control over this device. They'll be able to configure systemwide settings and install software.</string>
               </property>
               <property name="wordWrap">
                <bool>true</bool>
@@ -202,7 +202,7 @@
             <item>
              <widget class="QLabel" name="label_8">
               <property name="text">
-               <string>Say something cool about what a stanard user can do</string>
+               <string>A standard user can't perform systemwide actions. They'll only be able to perform administrative actions that only affect their account.</string>
               </property>
               <property name="wordWrap">
                <bool>true</bool>

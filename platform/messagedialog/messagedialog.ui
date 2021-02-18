@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string notr="true">Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <property name="spacing">
@@ -126,7 +126,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>TextLabel</string>
+             <string notr="true">TextLabel</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -187,7 +187,7 @@
           </rect>
          </property>
          <property name="autoFillBackground">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>

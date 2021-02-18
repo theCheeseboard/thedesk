@@ -4,11 +4,6 @@
 <context>
     <name>CellularPane</name>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="84"/>
         <source>STATUS</source>
         <translation type="unfinished"></translation>
@@ -353,11 +348,6 @@
 <context>
     <name>ConnectionSelectionPopover</name>
     <message>
-        <location filename="../statusCenter/popovers/connectionselectionpopover.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../statusCenter/popovers/connectionselectionpopover.ui" line="35"/>
         <source>Select Connection Profile</source>
         <translation type="unfinished"></translation>
@@ -370,11 +360,6 @@
 </context>
 <context>
     <name>DevicePane</name>
-    <message>
-        <location filename="../statusCenter/devicePanes/devicepane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="35"/>
         <source>TextLabel</source>
@@ -411,11 +396,6 @@
 </context>
 <context>
     <name>IPv4ConnectionEditorPane</name>
-    <message>
-        <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="35"/>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.cpp" line="69"/>
@@ -483,17 +463,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="344"/>
+        <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="345"/>
         <source>DNS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="351"/>
+        <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="352"/>
         <source>1.1.1.1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="358"/>
+        <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="359"/>
         <source>Configure the DNS servers that will be used to resolve domain names.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -528,11 +508,6 @@
 </context>
 <context>
     <name>NetworkConnectionEditor</name>
-    <message>
-        <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="90"/>
         <source>SETTINGS MODIFIED</source>
@@ -575,11 +550,6 @@
 <context>
     <name>NetworkStatusCenterLeftPane</name>
     <message>
-        <location filename="../statusCenter/networkstatuscenterleftpane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../statusCenter/networkstatuscenterleftpane.ui" line="35"/>
         <source>Network</source>
         <translation type="unfinished"></translation>
@@ -588,17 +558,12 @@
 <context>
     <name>NetworkStatusCenterPane</name>
     <message>
-        <location filename="../statusCenter/networkstatuscenterpane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../statusCenter/networkstatuscenterpane.ui" line="99"/>
+        <location filename="../statusCenter/networkstatuscenterpane.ui" line="100"/>
         <source>NetworkManager is not operational</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/networkstatuscenterpane.ui" line="109"/>
+        <location filename="../statusCenter/networkstatuscenterpane.ui" line="110"/>
         <source>Contact your system administrator</source>
         <translation type="unfinished"></translation>
     </message>
@@ -610,11 +575,6 @@
 </context>
 <context>
     <name>SecurityEapPeap</name>
-    <message>
-        <location filename="../statusCenter/eap/securityeappeap.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="35"/>
         <source>PEAP</source>
@@ -704,11 +664,6 @@
 <context>
     <name>SecurityEapUnsupported</name>
     <message>
-        <location filename="../statusCenter/eap/securityeapunsupported.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../statusCenter/eap/securityeapunsupported.ui" line="35"/>
         <location filename="../statusCenter/eap/securityeapunsupported.ui" line="77"/>
         <source>Unsupported Security Settings</source>
@@ -722,11 +677,6 @@
 </context>
 <context>
     <name>SimSettingsPopover</name>
-    <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="57"/>
         <source>Modem Settings</source>
@@ -860,11 +810,6 @@
 <context>
     <name>TetheringSettingsPopover</name>
     <message>
-        <location filename="../statusCenter/popovers/tetheringsettingspopover.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../statusCenter/popovers/tetheringsettingspopover.ui" line="35"/>
         <source>Tethering Settings</source>
         <translation type="unfinished"></translation>
@@ -892,11 +837,6 @@
 </context>
 <context>
     <name>UnlockModemPopover</name>
-    <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.ui" line="190"/>
         <source>Enter the SIM PIN</source>
@@ -971,11 +911,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 <context>
     <name>WifiConnectionEditorPane</name>
     <message>
-        <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.ui" line="35"/>
         <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.cpp" line="47"/>
         <source>Wi-Fi</source>
@@ -1010,11 +945,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 <context>
     <name>WifiDevicePane</name>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="106"/>
         <source>STATUS</source>
         <translation type="unfinished"></translation>
@@ -1047,12 +977,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="355"/>
         <source>Network Key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="368"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="421"/>
-        <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1198,11 +1122,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 <context>
     <name>WiredDevicePane</name>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="35"/>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="64"/>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="83"/>
@@ -1347,11 +1266,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 </context>
 <context>
     <name>WirelessNetworkSelectionPopover</name>
-    <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="57"/>
         <source>Connect to a Wireless Network</source>

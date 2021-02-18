@@ -17,10 +17,6 @@
 <context>
     <name>ScreenshotWindow</name>
     <message>
-        <source>Form</source>
-        <translation>Form</translation>
-    </message>
-    <message>
         <source>Discard</source>
         <translation>Discard</translation>
     </message>

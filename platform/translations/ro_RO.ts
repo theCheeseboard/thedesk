@@ -4,10 +4,6 @@
 <context>
     <name>MessageDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -78,10 +74,6 @@
     <message>
         <source>Restore Defaults</source>
         <translation>Revenire la setările inițiale</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Details...</source>
