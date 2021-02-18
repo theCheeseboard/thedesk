@@ -21,7 +21,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="248"/>
         <source>Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên thiết bị</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="317"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="330"/>
         <source>THIS DEVICE</source>
-        <translation type="unfinished"></translation>
+        <translation>THIẾT BỊ NÀY</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="344"/>
@@ -56,7 +56,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="351"/>
         <source>Change Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi tên thiết bị</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="422"/>
@@ -81,12 +81,12 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="485"/>
         <source>View Debug Log</source>
-        <translation type="unfinished"></translation>
+        <translation>Xem nhật ký gỡ lỗi</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="441"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished"></translation>
+        <translation>Công nhận</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="78"/>
@@ -130,7 +130,7 @@
     <message>
         <location filename="../systemsettings/about/acknowledgements.ui" line="35"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished"></translation>
+        <translation>Công nhận</translation>
     </message>
 </context>
 <context>
@@ -254,27 +254,27 @@
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="35"/>
         <source>Change Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi tên thiết bị</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="62"/>
         <source>New Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên thiết bị mới</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="69"/>
         <source>This device name is used over the network to identify this device. It is also used to identify this device over Bluetooth.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên thiết bị sẽ bị sử dụng qua mạng để nhận định thiết bị này. Nó cũng bị dùng để nhận định qua Bluetooth.</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="79"/>
         <source>Network Compatible Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Tên tương thích với mạng</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="95"/>
         <source>Rename this Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi tên thiết bị này</translation>
     </message>
 </context>
 <context>
@@ -282,17 +282,17 @@
     <message>
         <location filename="../cli/commandline.cpp" line="37"/>
         <source>Start theDesk in Safe Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Khởi chạy theBeat trong chế độ an toàn</translation>
     </message>
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>Internal use; the path to a local socket to communicate with the session manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Sử dụng nội bộ; đường dẫn đến ổ cắm nội bộ để liên hệ với với trình quản lý phiên</translation>
     </message>
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>path</source>
-        <translation type="unfinished"></translation>
+        <translation>đường dẫn</translation>
     </message>
 </context>
 <context>
@@ -327,12 +327,12 @@
     <message>
         <location filename="../session/endsession.ui" line="148"/>
         <source>Reboot and install updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Khởi động lại và cài đặt bản cập nhật</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="155"/>
         <source>Turns off your computer, installs pending updates and turns it on again</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt máy tính của bạn, cài bản cập nhật rồi bắt nó lại</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="162"/>
@@ -397,22 +397,22 @@
     <message>
         <location filename="../session/endsession.ui" line="334"/>
         <source>Updates are available. What do you want to do?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bản cập nhật đang chờ xử lý. Bạn muốn làm gì?</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="349"/>
         <source>Reboot and update</source>
-        <translation type="unfinished"></translation>
+        <translation>Khởi động lại và cài</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="356"/>
         <source>We&apos;ll perform system updates once this device has rebooted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chúng tôi sẽ thực hiện các bản cập nhật sau khi thiết bị này khởi động lại.</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="376"/>
         <source>We&apos;ll reboot your device normally.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chúng tôi sẽ khởi động lại bình thường.</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="108"/>
@@ -427,7 +427,7 @@
     <message>
         <location filename="../session/endsession.cpp" line="110"/>
         <source>reboot the system and install any pending updates</source>
-        <translation type="unfinished"></translation>
+        <translation>khởi động lại và cài các cập nhật chờ xử lý</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="111"/>
@@ -462,12 +462,12 @@
     <message>
         <location filename="../session/endsession.cpp" line="248"/>
         <source>Advanced Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Khởi động lại nâng cao</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="258"/>
         <source>Reboot into System UEFI Setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Khởi động lại vào trình thiết lập UEFI hệ thống</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="48"/>
@@ -629,17 +629,17 @@ Chúng tôi sẽ đặt cài đặt của bạn lại sau %n giay nếu bạn kh
     <message>
         <location filename="../run/rundialog.ui" line="35"/>
         <source>Run</source>
-        <translation type="unfinished"></translation>
+        <translation>Chạy</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="60"/>
         <source>Enter a command to run.</source>
-        <translation type="unfinished"></translation>
+        <translation>Điền vào một lệnh để chạy.</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="73"/>
         <source>Run this command</source>
-        <translation type="unfinished"></translation>
+        <translation>Chạy lệnh này</translation>
     </message>
 </context>
 <context>
@@ -686,12 +686,12 @@ Chúng tôi sẽ đặt cài đặt của bạn lại sau %n giay nếu bạn kh
     <message>
         <location filename="../main.cpp" line="66"/>
         <source>Safe Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Chế độ an toàn</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="66"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bạn đang giữ nút CTRL. Khởi chạy theDesk vào chế độ an toàn?</translation>
     </message>
 </context>
 </TS>
