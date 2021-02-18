@@ -523,12 +523,12 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="157"/>
         <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
-        <translation type="unfinished">Người dùng quản trị có quyền kiểm soát toàn thiết bị này. Họ có thể đổi cài đặt cho toàn bộ hệ thống và cài đặt phần mềm.</translation>
+        <translation>Người dùng quản trị có quyền kiểm soát toàn thiết bị này. Họ có thể đổi cài đặt cho toàn bộ hệ thống và cài đặt phần mềm.</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="205"/>
         <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
-        <translation type="unfinished">Người dùng chuẩn không thể thực hiện hành động trên toàn hệ thống. Họ chỉ được thực hiện hành động sẽ ảnh hưởng đến tài khoản đó.</translation>
+        <translation>Người dùng chuẩn không thể thực hiện hành động trên toàn hệ thống. Họ chỉ được thực hiện hành động sẽ ảnh hưởng đến tài khoản đó.</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="167"/>
