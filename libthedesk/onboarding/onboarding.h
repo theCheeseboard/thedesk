@@ -51,8 +51,13 @@ class Onboarding : public QDialog {
         void paintEvent(QPaintEvent* event);
         void changeEvent(QEvent* event);
         void keyPressEvent(QKeyEvent* event);
+        bool eventFilter(QObject* watched, QEvent* event);
 
         void completeOnboarding();
+
+        void showBar();
+        void hideBar();
+        void updateBarVisiblity();
 };
 
 #endif // ONBOARDING_H

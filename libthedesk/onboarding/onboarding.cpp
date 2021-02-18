@@ -25,6 +25,7 @@
 #include <powermanager.h>
 #include <tvariantanimation.h>
 #include <tsettings.h>
+#include <tscrim.h>
 #include <common.h>
 #include <onboardingpage.h>
 #include "onboardingstepper.h"
@@ -55,6 +56,7 @@ struct OnboardingPrivate {
     bool audioEnabled = true;
 
     OnboardingBar* bar;
+    bool barVisible = false;
 
     tVariantAnimation* contentAnim;
     tVariantAnimation* barAnim;
@@ -100,7 +102,7 @@ Onboarding::Onboarding(QWidget* parent) :
 
     //Populate the stacked widget with all the onboarding items
     QStringList currentItems;
-    for (OnboardingPage* step : manager->d->steps) {
+    for (OnboardingPage* step : qAsConst(manager->d->steps)) {
         OnboardingStepper* stepper = new OnboardingStepper(this);
         stepper->setText(step->displayName());
         connect(ui->stackedWidget, &tStackedWidget::switchingFrame, this, [ = ](int step) {
@@ -138,6 +140,7 @@ Onboarding::Onboarding(QWidget* parent) :
         StateManager::instance()->powerManager()->showPowerOffConfirmation();
     });
     d->bar->setVisible(false);
+    d->bar->installEventFilter(this);
 
     d->contentAnim = new tVariantAnimation(this);
     d->contentAnim->setEasingCurve(QEasingCurve::OutCubic);
@@ -233,13 +236,21 @@ void Onboarding::on_bar_closeClicked() {
 }
 
 void Onboarding::resizeEvent(QResizeEvent* event) {
-    if (!d->onboardingStarted) {
-        d->bar->move(0, -d->bar->height());
+
+    if (this->geometry().width() <= SC_DPI(800)) {
+        ui->contentWrapper->setFrameShape(QFrame::NoFrame);
+        ui->stepperFrame->setVisible(false);
+        ui->line->setVisible(false);
+    } else if (this->geometry().width() < SC_DPI(1000)) {
+        ui->contentWrapper->setFrameShape(QFrame::StyledPanel);
+        ui->stepperFrame->setVisible(false);
+        ui->line->setVisible(false);
     } else {
-        d->bar->move(0, d->barAnim->currentValue().toInt());
+        ui->contentWrapper->setFrameShape(QFrame::StyledPanel);
+        ui->stepperFrame->setVisible(true);
+        ui->line->setVisible(true);
     }
-    d->bar->setFixedWidth(this->width());
-    d->bar->setFixedHeight(d->bar->height());
+    updateBarVisiblity();
 }
 
 void Onboarding::paintEvent(QPaintEvent* event) {
@@ -278,17 +289,22 @@ void Onboarding::startOnboarding() {
         delete c;
 
         //Animate in the bar
-        d->barAnim->setStartValue(-d->bar->height());
-        d->barAnim->setEndValue(0);
+        if (this->geometry().height() >= SC_DPI(600) + 2 * d->bar->height()) {
+            QMetaObject::Connection* c = new QMetaObject::Connection();
+            *c = connect(d->barAnim, &tVariantAnimation::finished, this, [ = ] {
+                disconnect(*c);
+                delete c;
 
-        QMetaObject::Connection* c = new QMetaObject::Connection();
-        *c = connect(d->barAnim, &tVariantAnimation::finished, this, [ = ] {
-            disconnect(*c);
-            delete c;
-
+                d->onboardingStarted = true;
+                updateBarVisiblity();
+            });
+            showBar();
+        } else {
             d->onboardingStarted = true;
-        });
-        d->barAnim->start();
+            d->barVisible = true;
+            updateBarVisiblity();
+        }
+
         d->bar->setVisible(true);
     });
     d->contentAnim->start();
@@ -345,14 +361,21 @@ void Onboarding::keyPressEvent(QKeyEvent* event) {
     }
 }
 
+bool Onboarding::eventFilter(QObject* watched, QEvent* event) {
+    if (watched == d->bar) {
+        if (event->type() == QEvent::Enter || event->type() == QEvent::Leave) {
+            updateBarVisiblity();
+        }
+    }
+    return false;
+}
+
 void Onboarding::completeOnboarding() {
     d->contentAnim->setStartValue(ui->contentWrapper->sizeHint().height());
     d->contentAnim->setEndValue(0);
     d->contentAnim->start();
 
     //Animate out the bar
-    d->barAnim->setStartValue(0);
-    d->barAnim->setEndValue(-d->bar->height());
     QMetaObject::Connection* c = new QMetaObject::Connection();
     *c = connect(d->barAnim, &tVariantAnimation::finished, this, [ = ] {
         disconnect(*c);
@@ -361,7 +384,7 @@ void Onboarding::completeOnboarding() {
         StateManager::onboardingManager()->d->onboardingRunning = false;
         this->accept();
     });
-    d->barAnim->start();
+    hideBar();
 
     //Fade out the music
     if (d->audioOutput) {
@@ -381,4 +404,43 @@ void Onboarding::completeOnboarding() {
 
     //Fade out the background
     d->fadeAnim->start();
+}
+
+void Onboarding::showBar() {
+    if (d->barVisible) return;
+    d->barAnim->setStartValue(-d->bar->height());
+    d->barAnim->setEndValue(0);
+    d->barAnim->start();
+    d->barVisible = true;
+}
+
+void Onboarding::hideBar() {
+    if (!d->barVisible) return;
+    d->barAnim->setStartValue(0);
+    d->barAnim->setEndValue(-d->bar->height());
+    d->barAnim->start();
+    d->barVisible = false;
+}
+
+void Onboarding::updateBarVisiblity() {
+    if (d->onboardingStarted) {
+        if (this->geometry().height() < SC_DPI(600) + 2 * d->bar->height()) {
+            if (d->bar->underMouse()) {
+                d->bar->move(0, d->barAnim->currentValue().toInt());
+            } else {
+                d->bar->move(0, -d->bar->height() + 1);
+            }
+            d->bar->setAutoFillBackground(true);
+            tScrim::scrimForWidget(this)->setBlurEnabled(true);
+        } else {
+            d->bar->move(0, d->barAnim->currentValue().toInt());
+            d->bar->setAutoFillBackground(false);
+            tScrim::scrimForWidget(this)->setBlurEnabled(false);
+        }
+    } else {
+        d->bar->move(0, -d->bar->height());
+    }
+
+    d->bar->setFixedWidth(this->width());
+    d->bar->setFixedHeight(d->bar->height());
 }
