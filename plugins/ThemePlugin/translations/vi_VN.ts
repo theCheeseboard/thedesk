@@ -71,7 +71,7 @@
     <message>
         <location filename="../settings/themesettingspane.ui" line="224"/>
         <source>WINDOW BORDERS</source>
-        <translation type="unfinished"></translation>
+        <translation>ĐƯỜNG VIỀN CỬA SỔ</translation>
     </message>
     <message>
         <location filename="../settings/themesettingspane.ui" line="231"/>
