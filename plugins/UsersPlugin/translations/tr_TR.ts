@@ -523,12 +523,12 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="157"/>
         <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
-        <translation type="unfinished">Bir yönetici, bu cihaz üzerinde tam denetime sahiptir. Sistem genelindeki ayarları yapılandırabilecek ve yazılım yükleyebilecekler.</translation>
+        <translation>Bir yönetici, bu cihaz üzerinde tam denetime sahiptir. Sistem genelindeki ayarları yapılandırabilecek ve yazılım yükleyebilecekler.</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="205"/>
         <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
-        <translation type="unfinished">Standart bir kullanıcı, sistem genelinde eylemler gerçekleştiremez. Yalnızca kendi hesaplarını etkileyen idari işlemleri gerçekleştirebilecekler.</translation>
+        <translation>Standart bir kullanıcı, sistem genelinde eylemler gerçekleştiremez. Yalnızca kendi hesaplarını etkileyen idari işlemleri gerçekleştirebilecekler.</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="167"/>
