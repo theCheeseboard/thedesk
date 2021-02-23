@@ -7,22 +7,22 @@
         <location filename="../defaultspane.ui" line="35"/>
         <location filename="../defaultspane.cpp" line="81"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılan Uygulamalar</translation>
     </message>
     <message>
         <location filename="../defaultspane.ui" line="54"/>
         <source>Web Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>İnternet tarayıcısı</translation>
     </message>
     <message>
         <location filename="../defaultspane.ui" line="61"/>
         <source>Set your default apps below</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılan uygulamalarınızı aşağıda ayarlayın</translation>
     </message>
     <message>
         <location filename="../defaultspane.ui" line="68"/>
         <source>Mail Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Posta İstemcisi</translation>
     </message>
 </context>
 </TS>
