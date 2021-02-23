@@ -6,8 +6,8 @@
     <message numerus="yes">
         <location filename="../chunk/bluetoothchunk.cpp" line="60"/>
         <source>%n devices connected</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n bağlı cihazlar</numerusform>
         </translation>
     </message>
 </context>
@@ -18,62 +18,62 @@
         <location filename="../settings/bluetoothsettingspane.cpp" line="76"/>
         <location filename="../settings/bluetoothsettingspane.cpp" line="181"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="106"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>HAREKETLER</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="113"/>
         <source>Pair New Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Cihazı Eşle</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="139"/>
         <source>Visible to other devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer cihazlara görünür</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="166"/>
         <source>DISCOVERABILITY</source>
-        <translation type="unfinished"></translation>
+        <translation>KEŞFEDİLEBİLİRLİK</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="213"/>
         <source>DEVICES</source>
-        <translation type="unfinished"></translation>
+        <translation>CIHAZLAR</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="272"/>
         <source>Bluetooth is unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth kullanılamıyor</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="295"/>
         <source>Install a Bluetooth card to use Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth&apos;u kullanmak için bir Bluetooth kartı takın</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="340"/>
         <source>Bluetooth is disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth devre dışı</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="363"/>
         <source>Switch Bluetooth on to connect to Bluetooth devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth cihazlarına bağlanmak için Bluetooth&apos;u açın</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="373"/>
         <source>Enable Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth&apos;u etkinleştir</translation>
     </message>
     <message>
         <location filename="../settings/bluetoothsettingspane.cpp" line="119"/>
         <source>To pair with this device, look for %1 on the other device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu aygıtla eşleştirmek için diğer aygıtta %1 öğesini arayın.</translation>
     </message>
 </context>
 <context>
@@ -82,44 +82,44 @@
         <location filename="../btagent.cpp" line="89"/>
         <location filename="../btagent.cpp" line="119"/>
         <source>Bluetooth</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth</translation>
     </message>
     <message>
         <location filename="../btagent.cpp" line="90"/>
         <location filename="../btagent.cpp" line="120"/>
         <source>Pair with %1?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ile eşleşecek mi?</translation>
     </message>
     <message>
         <location filename="../btagent.cpp" line="91"/>
         <source>In order to complete pairing, confirm that the following pairing code is shown on %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eşleştirmeyi tamamlamak için, %1 üzerinde aşağıdaki eşleştirme kodunun gösterildiğinden emin olun.</translation>
     </message>
     <message>
         <location filename="../btagent.cpp" line="92"/>
         <source>If it is, you can accept the pairing request.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eğer öyleyse, eşleştirme isteğini kabul edebilirsiniz.</translation>
     </message>
     <message>
         <location filename="../btagent.cpp" line="93"/>
         <location filename="../btagent.cpp" line="122"/>
         <source>Decline</source>
-        <translation type="unfinished"></translation>
+        <translation>Reddet</translation>
     </message>
     <message>
         <location filename="../btagent.cpp" line="94"/>
         <source>Accept and Pair</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabul et ve Eşleştir</translation>
     </message>
     <message>
         <location filename="../btagent.cpp" line="121"/>
         <source>Accept the pairing request from %1?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 gelen eşleştirme isteğini kabul ediyor musun?</translation>
     </message>
     <message>
         <location filename="../btagent.cpp" line="123"/>
         <source>Pair</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekle</translation>
     </message>
 </context>
 <context>
@@ -127,72 +127,72 @@
     <message>
         <location filename="../common.cpp" line="29"/>
         <source>Phone</source>
-        <translation type="unfinished"></translation>
+        <translation>Telefon</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="31"/>
         <source>Modem</source>
-        <translation type="unfinished"></translation>
+        <translation>Modem</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="33"/>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgisayar</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="35"/>
         <source>Networking</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="37"/>
         <source>Headset</source>
-        <translation type="unfinished"></translation>
+        <translation>Kulaklık</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="39"/>
         <source>Headphones</source>
-        <translation type="unfinished"></translation>
+        <translation>Kulaklıklar</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="41"/>
         <source>Audio/Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Ses/Video</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="43"/>
         <source>Keyboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Klavye</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="45"/>
         <source>Mouse</source>
-        <translation type="unfinished"></translation>
+        <translation>Mouse</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="47"/>
         <source>Gamepad</source>
-        <translation type="unfinished"></translation>
+        <translation>Oyun kumanda</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="49"/>
         <source>Drawing Tablet</source>
-        <translation type="unfinished"></translation>
+        <translation>Çizim Tableti</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="51"/>
         <source>Peripheral</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevresel</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="53"/>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="55"/>
         <source>Printer</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazıcı</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="57"/>
