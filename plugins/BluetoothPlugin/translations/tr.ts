@@ -197,27 +197,27 @@
     <message>
         <location filename="../common.cpp" line="57"/>
         <source>Imaging</source>
-        <translation type="unfinished"></translation>
+        <translation>Görüntüleme</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="59"/>
         <source>Wearable</source>
-        <translation type="unfinished"></translation>
+        <translation>Giyilebilir</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="61"/>
         <source>Toy</source>
-        <translation type="unfinished"></translation>
+        <translation>Oyuncak</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="63"/>
         <source>Health</source>
-        <translation type="unfinished"></translation>
+        <translation>Sağlık</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="65"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilinmeyen</translation>
     </message>
 </context>
 <context>
@@ -225,32 +225,32 @@
     <message>
         <location filename="../settings/devicepopover.ui" line="124"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>HAREKETLER</translation>
     </message>
     <message>
         <location filename="../settings/devicepopover.ui" line="133"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlan</translation>
     </message>
     <message>
         <location filename="../settings/devicepopover.ui" line="140"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantıyı kes</translation>
     </message>
     <message>
         <location filename="../settings/devicepopover.ui" line="147"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil</translation>
     </message>
     <message>
         <location filename="../settings/devicepopover.cpp" line="72"/>
         <source>Failed to connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlanılamadı</translation>
     </message>
     <message>
         <location filename="../settings/devicepopover.cpp" line="75"/>
         <source>Connecting to %1 failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1&apos;e bağlanılamadı.</translation>
     </message>
 </context>
 <context>
@@ -258,47 +258,47 @@
     <message>
         <location filename="../settings/pairpopover.ui" line="57"/>
         <source>Pair Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Cihazı Eşleştir</translation>
     </message>
     <message>
         <location filename="../settings/pairpopover.ui" line="64"/>
         <source>To get started, ensure the device you want to pair is visible. This may be achieved by opening the Bluetooth settings or pressing a button on the other device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlamak için, eşleştirmek istediğiniz cihazın görünür olduğundan emin olun. Bu, Bluetooth ayarlarını açarak ya da başka bir cihazdaki bir düğmeye basarak elde edilebilir.</translation>
     </message>
     <message>
         <location filename="../settings/pairpopover.ui" line="383"/>
         <source>Confirm Pairing Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Eşleştirme Kodunu Onayla</translation>
     </message>
     <message>
         <location filename="../settings/pairpopover.cpp" line="92"/>
         <source>Then press ENTER or RETURN.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ardından ENTER ya da RETURN&apos;e basın.</translation>
     </message>
     <message>
         <location filename="../settings/pairpopover.cpp" line="130"/>
         <source>Failed to pair</source>
-        <translation type="unfinished"></translation>
+        <translation>Eşleştirmek için başarısız oldu</translation>
     </message>
     <message>
         <location filename="../settings/pairpopover.cpp" line="133"/>
         <source>Pairing with %1 failed because the pairing code was incorrect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eşleştirme kodu yanlış olduğu için %1 ile eşleştirme başarısız oldu.</translation>
     </message>
     <message>
         <location filename="../settings/pairpopover.cpp" line="136"/>
         <source>Pairing with %1 failed because the device rejected the pairing request.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cihaz eşleştirme isteğini reddettiği için %1 ile eşleştirme başarısız oldu.</translation>
     </message>
     <message>
         <location filename="../settings/pairpopover.cpp" line="139"/>
         <source>Pairing with %1 failed because the pairing code was not confirmed in time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Eşleştirme kodu zamanında onaylanmadığı için %1 ile eşleştirme başarısız oldu.</translation>
     </message>
     <message>
         <location filename="../settings/pairpopover.cpp" line="142"/>
         <source>Pairing with %1 failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ile eşleştirme başarısız oldu.</translation>
     </message>
 </context>
 </TS>
