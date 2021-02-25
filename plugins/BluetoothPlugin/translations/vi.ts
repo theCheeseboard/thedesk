@@ -123,6 +123,56 @@
     </message>
 </context>
 <context>
+    <name>BtObex</name>
+    <message>
+        <location filename="../btobex.cpp" line="71"/>
+        <location filename="../btobex.cpp" line="111"/>
+        <location filename="../btobex.cpp" line="118"/>
+        <source>Bluetooth</source>
+        <translation type="unfinished">Bluetooth</translation>
+    </message>
+    <message>
+        <location filename="../btobex.cpp" line="72"/>
+        <source>Incoming file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../btobex.cpp" line="73"/>
+        <source>%1 is sending you the file %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../btobex.cpp" line="74"/>
+        <source>Decline</source>
+        <translation type="unfinished">Từ chối</translation>
+    </message>
+    <message>
+        <location filename="../btobex.cpp" line="75"/>
+        <source>Accept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../btobex.cpp" line="112"/>
+        <source>File received</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../btobex.cpp" line="113"/>
+        <source>The file %1 has been received and can be found in your Downloads folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../btobex.cpp" line="119"/>
+        <source>File transfer failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../btobex.cpp" line="120"/>
+        <source>The file %1 was unable to be received.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Common</name>
     <message>
         <location filename="../common.cpp" line="29"/>

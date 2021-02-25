@@ -14,6 +14,7 @@ include(/usr/share/the-libs/pri/gentranslations.pri)
 
 SOURCES += \
     btagent.cpp \
+    btobex.cpp \
     chunk/bluetoothchunk.cpp \
     common.cpp \
     devicedelegate.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     btagent.h \
+    btobex.h \
     chunk/bluetoothchunk.h \
     common.h \
     devicedelegate.h \

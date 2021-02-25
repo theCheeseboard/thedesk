@@ -27,6 +27,7 @@
 #include <QDir>
 #include <tsettings.h>
 #include "settings/bluetoothsettingspane.h"
+#include "btobex.h"
 #include "chunk/bluetoothchunk.h"
 
 #include <BluezQt/InitManagerJob>
@@ -37,6 +38,7 @@ struct PluginPrivate {
 
     BluezQt::ManagerPtr manager;
     BtAgent* agent;
+    BtObex* obex;
     BluetoothSettingsPane* bluetoothSettings;
     BluetoothChunk* chunk;
 };
@@ -65,18 +67,23 @@ void Plugin::activate() {
     StateManager::statusCenterManager()->addPane(d->bluetoothSettings, StatusCenterManager::SystemSettings);
 
     d->chunk = new BluetoothChunk(d->manager);
+    d->obex = new BtObex(d->manager);
 
-    BluezQt::InitManagerJob* initManagerJob = d->manager->init();
-    connect(initManagerJob, &BluezQt::InitManagerJob::result, this, [ = ] {
-        BluezQt::PendingCall* agentRegister = d->manager->registerAgent(d->agent);
-        connect(agentRegister, &BluezQt::PendingCall::finished, this, [ = ] {
-            d->manager->requestDefaultAgent(d->agent);
+    BluezQt::PendingCall* startCall = BluezQt::Manager::startService();
+    connect(startCall, &BluezQt::PendingCall::finished, this, [ = ] {
+        BluezQt::InitManagerJob* initManagerJob = d->manager->init();
+        connect(initManagerJob, &BluezQt::InitManagerJob::result, this, [ = ] {
+            BluezQt::PendingCall* agentRegister = d->manager->registerAgent(d->agent);
+            connect(agentRegister, &BluezQt::PendingCall::finished, this, [ = ] {
+                d->manager->requestDefaultAgent(d->agent);
+            });
         });
+        initManagerJob->start();
     });
-    initManagerJob->start();
 }
 
 void Plugin::deactivate() {
+    d->obex->deleteLater();
     d->agent->deleteLater();
     d->chunk->deleteLater();
     StateManager::statusCenterManager()->removePane(d->bluetoothSettings);
