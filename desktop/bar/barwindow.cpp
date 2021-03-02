@@ -143,9 +143,9 @@ BarWindow::BarWindow(QWidget* parent) :
     connect(StateManager::statusCenterManager(), &StatusCenterManager::showStatusCenter, this, &BarWindow::showStatusCenter);
     connect(StateManager::statusCenterManager(), &StatusCenterManager::hideStatusCenter, this, &BarWindow::hideStatusCenter);
     connect(StateManager::barManager(), &BarManager::barLockedChanged, this, [ = ](bool isBarLocked) {
-        if (isBarLocked) {
-            showBar();
-        } else {
+        if (!isBarLocked) {
+//            showBar();
+//        } else {
             if (!this->geometry().contains(QCursor::pos())) hideBar();
         }
     });

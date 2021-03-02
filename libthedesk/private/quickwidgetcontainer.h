@@ -27,16 +27,26 @@ namespace Ui {
 }
 
 class Chunk;
+class CurrentAppWidget;
 struct QuickWidgetContainerPrivate;
 class QuickWidgetContainer : public QWidget {
         Q_OBJECT
 
     public:
-        explicit QuickWidgetContainer(Chunk* parent = nullptr);
+        explicit QuickWidgetContainer(QWidget* parent = nullptr);
         ~QuickWidgetContainer();
 
         void showContainer();
         void hideContainer();
+        bool isShowing();
+
+    signals:
+        void showing();
+        void hiding();
+
+    protected:
+        friend CurrentAppWidget;
+        void setQuickWidget(QWidget* widget);
 
     private:
         Ui::QuickWidgetContainer* ui;
@@ -44,8 +54,10 @@ class QuickWidgetContainer : public QWidget {
 
         void paintEvent(QPaintEvent* event);
         void changeEvent(QEvent* event);
+        bool eventFilter(QObject* watched, QEvent* event);
 
         void calculatePosition();
+
 };
 
 #endif // QUICKWIDGETCONTAINER_H

@@ -25,26 +25,31 @@
 #include <tvariantanimation.h>
 #include <statemanager.h>
 #include <barmanager.h>
+#include <Wm/desktopwm.h>
 #include "chunk.h"
+#include <tlogger.h>
+#include <QScreen>
+#include <QTimer>
 
 struct QuickWidgetContainerPrivate {
-    Chunk* parentChunk;
+    QWidget* parentChunk;
+    QWidget* quickWidget;
     int pointX = 0;
 
     tVariantAnimation* yAnim;
     tVariantAnimation* opacityAnim;
+    bool isShowing = false;
 
     BarManager::BarLockPtr barLock;
 };
 
-QuickWidgetContainer::QuickWidgetContainer(Chunk* parent) :
+QuickWidgetContainer::QuickWidgetContainer(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::QuickWidgetContainer) {
     ui->setupUi(this);
 
     this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
-    this->setAttribute(Qt::WA_X11NetWmWindowTypeNotification);
 
     d = new QuickWidgetContainerPrivate();
     d->parentChunk = parent;
@@ -70,6 +75,7 @@ QuickWidgetContainer::QuickWidgetContainer(Chunk* parent) :
 
     this->setWindowOpacity(0);
     this->setContentsMargins(1, SC_DPI(5) + 1, 1, 1);
+    ui->chunkContainerLayout->installEventFilter(this);
 }
 
 QuickWidgetContainer::~QuickWidgetContainer() {
@@ -78,11 +84,22 @@ QuickWidgetContainer::~QuickWidgetContainer() {
 }
 
 void QuickWidgetContainer::showContainer() {
-    ui->chunkContainerLayout->addWidget(d->parentChunk->quickWidget());
+    Chunk* chunk = qobject_cast<Chunk*>(d->parentChunk);
+    if (chunk) {
+        ui->chunkContainerLayout->addWidget(chunk->quickWidget());
+        chunk->quickWidget()->installEventFilter(this);
+    } else {
+        ui->chunkContainerLayout->addWidget(d->quickWidget);
+        d->quickWidget->installEventFilter(this);
+    }
     calculatePosition();
 
+    d->isShowing = true;
+
     this->show();
+    DesktopWm::setSystemWindow(this, DesktopWm::SystemWindowTypeSkipTaskbarOnly);
     this->activateWindow();
+    calculatePosition();
 
     d->yAnim->setDirection(tVariantAnimation::Forward);
     d->opacityAnim->setDirection(tVariantAnimation::Forward);
@@ -90,6 +107,7 @@ void QuickWidgetContainer::showContainer() {
     d->opacityAnim->start();
 
     d->barLock = StateManager::barManager()->acquireLock();
+    emit showing();
 }
 
 void QuickWidgetContainer::hideContainer() {
@@ -98,7 +116,18 @@ void QuickWidgetContainer::hideContainer() {
     d->yAnim->start();
     d->opacityAnim->start();
 
+    d->isShowing = false;
+
     d->barLock->unlock();
+    emit hiding();
+}
+
+bool QuickWidgetContainer::isShowing() {
+    return d->isShowing;
+}
+
+void QuickWidgetContainer::setQuickWidget(QWidget* widget) {
+    d->quickWidget = widget;
 }
 
 void QuickWidgetContainer::paintEvent(QPaintEvent* event) {
@@ -137,17 +166,25 @@ void QuickWidgetContainer::calculatePosition() {
     this->setFixedSize(this->sizeHint());
 
     QPoint midpoint = d->parentChunk->mapToGlobal(QPoint(d->parentChunk->width() / 2, d->parentChunk->height()));
-    int xpoint = midpoint.x() - this->width() / 2;
+    QRect screenGeometry = qApp->screenAt(midpoint)->geometry();
 
-    d->pointX = this->width() / 2;
-    if (xpoint < SC_DPI(9)) {
-        int oldX = xpoint;
-        xpoint = SC_DPI(9);
-        d->pointX -= oldX - xpoint;
-    }
+    QRect geom = this->geometry();
+    geom.setSize(this->sizeHint());
+    geom.moveLeft(midpoint.x() - geom.width() / 2);
+    if (geom.left() < screenGeometry.left() + SC_DPI(9)) geom.moveLeft(screenGeometry.left() + SC_DPI(9));
+    if (geom.right() > screenGeometry.right() - SC_DPI(9)) geom.moveRight(screenGeometry.right() - SC_DPI(9));
+    this->setGeometry(geom);
+
+    d->pointX = this->mapFromGlobal(midpoint).x();
 
     d->yAnim->setStartValue(midpoint.y() - SC_DPI(50));
     d->yAnim->setEndValue(midpoint.y());
+}
 
-    this->move(xpoint, this->y());
+
+bool QuickWidgetContainer::eventFilter(QObject* watched, QEvent* event) {
+    if (event->type() == QEvent::Resize || event->type() == QEvent::LayoutRequest) {
+        QTimer::singleShot(0, this, &QuickWidgetContainer::calculatePosition);
+    }
+    return false;
 }

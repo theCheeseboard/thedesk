@@ -27,6 +27,7 @@ SOURCES += \
     bar/barwindow.cpp \
     bar/chunkcontainer.cpp \
     bar/currentappwidget.cpp \
+    bar/currentappwidgetmenu.cpp \
     bar/mainbarwidget.cpp \
     bar/taskbarwidget.cpp \
     cli/commandline.cpp \
@@ -58,6 +59,7 @@ HEADERS += \
     bar/barwindow.h \
     bar/chunkcontainer.h \
     bar/currentappwidget.h \
+    bar/currentappwidgetmenu.h \
     bar/mainbarwidget.h \
     bar/taskbarwidget.h \
     cli/commandline.h \
@@ -88,6 +90,7 @@ FORMS += \
     bar/barwindow.ui \
     bar/chunkcontainer.ui \
     bar/currentappwidget.ui \
+    bar/currentappwidgetmenu.ui \
     bar/mainbarwidget.ui \
     bar/taskbarwidget.ui \
     gateway/gateway.ui \

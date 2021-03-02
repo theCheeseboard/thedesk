@@ -25,11 +25,15 @@
 #include <Applications/application.h>
 #include <QGraphicsOpacityEffect>
 #include <QIcon>
+#include <private/quickwidgetcontainer.h>
+#include "currentappwidgetmenu.h"
 
 struct CurrentAppWidgetPrivate {
     QPalette pal;
     QGraphicsOpacityEffect* opacity;
     tVariantAnimation* anim;
+    QuickWidgetContainer* menuContainer;
+    CurrentAppWidgetMenu* menu;
 };
 
 CurrentAppWidget::CurrentAppWidget(QWidget* parent) :
@@ -51,6 +55,13 @@ CurrentAppWidget::CurrentAppWidget(QWidget* parent) :
     connect(d->anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
         d->opacity->setOpacity(value.toReal());
     });
+
+    d->menu = new CurrentAppWidgetMenu();
+
+    d->menuContainer = new QuickWidgetContainer(this);
+    d->menuContainer->setQuickWidget(d->menu);
+    connect(d->menuContainer, &QuickWidgetContainer::hiding, this, &CurrentAppWidget::activeWindowChanged);
+    connect(d->menu, &CurrentAppWidgetMenu::done, d->menuContainer, &QuickWidgetContainer::hideContainer);
 
     connect(DesktopWm::instance(), &DesktopWm::activeWindowChanged, this, &CurrentAppWidget::activeWindowChanged);
     activeWindowChanged();
@@ -74,6 +85,7 @@ void CurrentAppWidget::barHeightChanging(float barTransitionPercentage) {
 }
 
 void CurrentAppWidget::activeWindowChanged() {
+    if (d->menuContainer->isShowing()) return;
     DesktopWmWindowPtr active = DesktopWm::activeWindow();
     if (active) {
         ApplicationPointer app = active->application();
@@ -109,4 +121,24 @@ void CurrentAppWidget::enterEvent(QEvent* event) {
 
 void CurrentAppWidget::leaveEvent(QEvent* event) {
     this->setPalette(d->pal);
+}
+
+void CurrentAppWidget::mousePressEvent(QMouseEvent* event) {
+    QPalette pal = d->pal;
+    pal.setColor(QPalette::Window, QColor(0, 0, 0, 100));
+    this->setPalette(pal);
+}
+
+void CurrentAppWidget::mouseReleaseEvent(QMouseEvent* event) {
+    QPalette pal = d->pal;
+    pal.setColor(QPalette::Window, QColor(255, 255, 255, 100));
+    this->setPalette(pal);
+
+    if (this->underMouse()) {
+        //Click!
+        DesktopWmWindowPtr active = DesktopWm::activeWindow();
+        if (!active->application()) return;
+        d->menu->setWindow(active);
+        if (!d->menuContainer->isShowing()) d->menuContainer->showContainer();
+    }
 }

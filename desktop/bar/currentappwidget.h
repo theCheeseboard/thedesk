@@ -46,6 +46,8 @@ class CurrentAppWidget : public QWidget {
     protected:
         void enterEvent(QEvent* event);
         void leaveEvent(QEvent* event);
+        void mousePressEvent(QMouseEvent* event);
+        void mouseReleaseEvent(QMouseEvent* event);
 };
 
 #endif // CURRENTAPPWIDGET_H

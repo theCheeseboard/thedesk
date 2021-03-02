@@ -296,6 +296,45 @@
     </message>
 </context>
 <context>
+    <name>CurrentAppWidgetMenu</name>
+    <message>
+        <location filename="../bar/currentappwidgetmenu.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/currentappwidgetmenu.ui" line="57"/>
+        <source>Close Window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/currentappwidgetmenu.ui" line="116"/>
+        <source>QUIT IMMEDIATELY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/currentappwidgetmenu.ui" line="132"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="46"/>
+        <source>Force Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="47"/>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="49"/>
+        <source>Force Stop %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="48"/>
+        <source>%1 will be forced to exit and won&apos;t have a chance to save any unsaved data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EndSession</name>
     <message>
         <location filename="../session/endsession.ui" line="57"/>
