@@ -318,18 +318,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.cpp" line="46"/>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="48"/>
         <source>Force Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.cpp" line="47"/>
         <location filename="../bar/currentappwidgetmenu.cpp" line="49"/>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="51"/>
         <source>Force Stop %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.cpp" line="48"/>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="50"/>
         <source>%1 will be forced to exit and won&apos;t have a chance to save any unsaved data.</source>
         <translation type="unfinished"></translation>
     </message>

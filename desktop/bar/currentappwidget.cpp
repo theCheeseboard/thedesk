@@ -25,6 +25,7 @@
 #include <Applications/application.h>
 #include <QGraphicsOpacityEffect>
 #include <QIcon>
+#include <keygrab.h>
 #include <private/quickwidgetcontainer.h>
 #include "currentappwidgetmenu.h"
 
@@ -32,8 +33,11 @@ struct CurrentAppWidgetPrivate {
     QPalette pal;
     QGraphicsOpacityEffect* opacity;
     tVariantAnimation* anim;
+
     QuickWidgetContainer* menuContainer;
     CurrentAppWidgetMenu* menu;
+
+    KeyGrab* forceStopGrab;
 };
 
 CurrentAppWidget::CurrentAppWidget(QWidget* parent) :
@@ -65,6 +69,16 @@ CurrentAppWidget::CurrentAppWidget(QWidget* parent) :
 
     connect(DesktopWm::instance(), &DesktopWm::activeWindowChanged, this, &CurrentAppWidget::activeWindowChanged);
     activeWindowChanged();
+
+    d->forceStopGrab = new KeyGrab(QKeySequence(Qt::ControlModifier | Qt::AltModifier | Qt::Key_Escape), "force-stop");
+    connect(d->forceStopGrab, &KeyGrab::activated, this, [ = ] {
+        DesktopWmWindowPtr active = DesktopWm::activeWindow();
+        if (!active->application()) return;
+        d->menu->setWindow(active);
+        d->menu->showForceStopScreen();
+
+        if (!d->menuContainer->isShowing()) d->menuContainer->showContainer();
+    });
 }
 
 CurrentAppWidget::~CurrentAppWidget() {

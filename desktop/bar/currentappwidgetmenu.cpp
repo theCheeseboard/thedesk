@@ -33,6 +33,8 @@ CurrentAppWidgetMenu::CurrentAppWidgetMenu(QWidget* parent) :
     ui->quitImmediateButton->setProperty("type", "destructive");
     ui->doQuitImmediateButton->setProperty("type", "destructive");
     updateModifiers();
+
+    ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
 }
 
 CurrentAppWidgetMenu::~CurrentAppWidgetMenu() {
@@ -47,9 +49,16 @@ void CurrentAppWidgetMenu::setWindow(DesktopWmWindowPtr window) {
     ui->quitImmediateTitle->setText(tr("Force Stop %1").arg(applicationName).toUpper());
     ui->quitImmediateDescription->setText(tr("%1 will be forced to exit and won't have a chance to save any unsaved data.").arg(applicationName));
     ui->doQuitImmediateButton->setText(tr("Force Stop %1").arg(applicationName));
+    ui->cancelImmediateQuitButton->setVisible(true);
 
     ui->stackedWidget->setCurrentWidget(ui->initialPage, false);
     updateModifiers();
+}
+
+void CurrentAppWidgetMenu::showForceStopScreen() {
+    ui->cancelImmediateQuitButton->setVisible(false);
+    ui->stackedWidget->setCurrentWidget(ui->quitImmediatelyPage, false);
+    on_stackedWidget_switchingFrame(ui->stackedWidget->currentIndex());
 }
 
 void CurrentAppWidgetMenu::updateModifiers() {
@@ -86,5 +95,7 @@ void CurrentAppWidgetMenu::on_quitImmediateButton_clicked() {
 }
 
 void CurrentAppWidgetMenu::on_stackedWidget_switchingFrame(int frame) {
-    this->setFixedSize(ui->stackedWidget->widget(frame)->sizeHint());
+    tVariantAnimation::singleShot(this, this->size(), ui->stackedWidget->widget(frame)->sizeHint(), 250, [ = ](QVariant value) {
+        this->setFixedSize(value.toSize());
+    });
 }

@@ -36,6 +36,7 @@ class CurrentAppWidgetMenu : public QWidget {
         ~CurrentAppWidgetMenu();
 
         void setWindow(DesktopWmWindowPtr window);
+        void showForceStopScreen();
 
         void updateModifiers();
 
