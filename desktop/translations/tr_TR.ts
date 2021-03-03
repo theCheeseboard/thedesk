@@ -300,38 +300,38 @@
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="57"/>
         <source>Close Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekmeyi kapat</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="116"/>
         <source>QUIT IMMEDIATELY</source>
-        <translation type="unfinished"></translation>
+        <translation>ŞİMDİ ÇIKIN</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="132"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>İptal</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="48"/>
         <source>Force Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Zorla durdurma</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="49"/>
         <location filename="../bar/currentappwidgetmenu.cpp" line="51"/>
         <source>Force Stop %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 zorla durdurma</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="50"/>
         <source>%1 will be forced to exit and won&apos;t have a chance to save any unsaved data.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 çıkmak zorunda kalacak ve kaydedilmemiş verileri kaydetme şansı olmayacak.</translation>
     </message>
 </context>
 <context>
