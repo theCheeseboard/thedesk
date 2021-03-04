@@ -61,7 +61,7 @@ QuietModeManager::QuietMode QuietModeManager::nextQuietMode() const {
     }
 }
 
-QString QuietModeManager::name(QuietModeManager::QuietMode quietMode) const {
+QString QuietModeManager::name(QuietModeManager::QuietMode quietMode) {
     switch (quietMode) {
         case QuietModeManager::Sound:
             return tr("Sound");
@@ -76,7 +76,7 @@ QString QuietModeManager::name(QuietModeManager::QuietMode quietMode) const {
     }
 }
 
-QString QuietModeManager::description(QuietModeManager::QuietMode quietMode) const {
+QString QuietModeManager::description(QuietModeManager::QuietMode quietMode) {
     switch (quietMode) {
         case QuietModeManager::Sound:
             return tr("Allows all sounds");
@@ -91,7 +91,7 @@ QString QuietModeManager::description(QuietModeManager::QuietMode quietMode) con
     }
 }
 
-QString QuietModeManager::icon(QuietModeManager::QuietMode quietMode) const {
+QString QuietModeManager::icon(QuietModeManager::QuietMode quietMode) {
     switch (quietMode) {
         case QuietModeManager::Sound:
             return "audio-volume-high";

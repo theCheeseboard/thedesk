@@ -39,6 +39,7 @@ struct ChunkContainerPrivate {
         "Network",
         "network-tethering",
         "bluetooth",
+        "audio",
         "redshift",
         "Accessibility-StickyKeys",
         "mpris"

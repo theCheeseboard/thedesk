@@ -43,9 +43,9 @@ class QuietModeManager : public QObject {
 
         QuietMode nextQuietMode() const;
 
-        QString name(QuietMode quietMode) const;
-        QString description(QuietMode quietMode) const;
-        QString icon(QuietMode quietMode) const;
+        static QString name(QuietMode quietMode);
+        static QString description(QuietMode quietMode);
+        static QString icon(QuietMode quietMode);
 
         QList<QuietMode> availableQuietModes() const;
 

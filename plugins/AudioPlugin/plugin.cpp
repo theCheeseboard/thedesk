@@ -24,7 +24,9 @@
 #include <statemanager.h>
 #include <localemanager.h>
 #include <statuscentermanager.h>
+#include <barmanager.h>
 #include <QDir>
+#include "audiochunk.h"
 #include <tsettings.h>
 #include "eventhandler.h"
 
@@ -32,6 +34,7 @@ struct PluginPrivate {
     int translationSet;
 
     EventHandler* keyHandler;
+    AudioChunk* chunk;
 };
 
 Plugin::Plugin() {
@@ -52,9 +55,13 @@ void Plugin::activate() {
     tSettings::registerDefaults("/etc/theSuite/theDesk/AudioPlugin/defaults.conf");
 
     d->keyHandler = new EventHandler();
+    d->chunk = new AudioChunk();
+    StateManager::barManager()->addChunk(d->chunk);
 }
 
 void Plugin::deactivate() {
+    StateManager::barManager()->removeChunk(d->chunk);
+    d->chunk->deleteLater();
     d->keyHandler->deleteLater();
     StateManager::localeManager()->removeTranslationSet(d->translationSet);
 }

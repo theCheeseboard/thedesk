@@ -60,7 +60,6 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
         QuietModeManager::QuietMode newMode = StateManager::quietModeManager()->nextQuietMode();
         StateManager::quietModeManager()->setQuietMode(newMode);
 
-
         StateManager::instance()->hudManager()->showHud({
             {"icon", StateManager::quietModeManager()->icon(newMode)},
             {"title", StateManager::quietModeManager()->name(newMode)},

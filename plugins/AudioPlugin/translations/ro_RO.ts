@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ro_RO" sourcelanguage="en_US">
 <context>
+    <name>AudioQuickWidget</name>
+    <message>
+        <source>VOLUME</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QUIET MODE</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>EventHandler</name>
     <message>
         <source>No Audio Devices</source>

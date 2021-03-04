@@ -23,14 +23,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    audiochunk.cpp \
+    audioquickwidget.cpp \
     common.cpp \
     eventhandler.cpp \
-    plugin.cpp
+    plugin.cpp \
+    quickwidgetsink.cpp
 
 HEADERS += \
+    audiochunk.h \
+    audioquickwidget.h \
     common.h \
     eventhandler.h \
-    plugin.h
+    plugin.h \
+    quickwidgetsink.h
 
 DISTFILES += \
     Plugin.json \
@@ -47,3 +53,7 @@ unix {
 }
 
 include(../plugins.pri)
+
+FORMS += \
+    audioquickwidget.ui \
+    quickwidgetsink.ui
