@@ -303,33 +303,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="57"/>
+        <location filename="../bar/currentappwidgetmenu.ui" line="75"/>
         <source>Close Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="116"/>
+        <location filename="../bar/currentappwidgetmenu.ui" line="189"/>
         <source>QUIT IMMEDIATELY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="132"/>
+        <location filename="../bar/currentappwidgetmenu.ui" line="205"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.cpp" line="48"/>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="58"/>
         <source>Force Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.cpp" line="49"/>
-        <location filename="../bar/currentappwidgetmenu.cpp" line="51"/>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="59"/>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="61"/>
         <source>Force Stop %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.cpp" line="50"/>
+        <location filename="../bar/currentappwidgetmenu.cpp" line="60"/>
         <source>%1 will be forced to exit and won&apos;t have a chance to save any unsaved data.</source>
         <translation type="unfinished"></translation>
     </message>

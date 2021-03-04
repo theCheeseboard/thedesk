@@ -47,6 +47,8 @@ CurrentAppWidget::CurrentAppWidget(QWidget* parent) :
 
     d = new CurrentAppWidgetPrivate();
     d->pal = this->palette();
+    d->pal.setColor(QPalette::Window, QColor(0, 0, 0, 0));
+    this->setPalette(d->pal);
 
     d->opacity = new QGraphicsOpacityEffect(this);
     d->opacity->setOpacity(1);

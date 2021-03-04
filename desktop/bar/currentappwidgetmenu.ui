@@ -51,24 +51,97 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
-        <widget class="QPushButton" name="closeWindowButton">
-         <property name="text">
-          <string>Close Window</string>
-         </property>
-         <property name="icon">
-          <iconset theme="window-close"/>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="quitImmediateButton">
-         <property name="text">
-          <string notr="true">Quit Immediately</string>
-         </property>
-         <property name="icon">
-          <iconset theme="application-exit"/>
-         </property>
+       <item alignment="Qt::AlignTop">
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="closeWindowButton">
+            <property name="text">
+             <string>Close Window</string>
+            </property>
+            <property name="icon">
+             <iconset theme="window-close">
+              <normaloff>.</normaloff>.</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="actionsWidget" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="Line" name="line_2">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>1</height>
+                </size>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="actionsLayout"/>
+             </item>
+             <item>
+              <widget class="Line" name="line">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>1</height>
+                </size>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="quitImmediateButton">
+            <property name="text">
+             <string notr="true">Quit Immediately</string>
+            </property>
+            <property name="icon">
+             <iconset theme="application-exit">
+              <normaloff>.</normaloff>.</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -132,7 +205,8 @@
           <string>Cancel</string>
          </property>
          <property name="icon">
-          <iconset theme="dialog-cancel"/>
+          <iconset theme="dialog-cancel">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -142,7 +216,8 @@
           <string notr="true">Quit Immediately</string>
          </property>
          <property name="icon">
-          <iconset theme="application-exit"/>
+          <iconset theme="application-exit">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>

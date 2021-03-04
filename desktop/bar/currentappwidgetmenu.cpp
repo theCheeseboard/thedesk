@@ -20,8 +20,11 @@
 #include "currentappwidgetmenu.h"
 #include "ui_currentappwidgetmenu.h"
 
+#include <QTimer>
+
 struct CurrentAppWidgetMenuPrivate {
     DesktopWmWindowPtr window;
+    QList<QPushButton*> actionButtons;
 };
 
 CurrentAppWidgetMenu::CurrentAppWidgetMenu(QWidget* parent) :
@@ -43,6 +46,13 @@ CurrentAppWidgetMenu::~CurrentAppWidgetMenu() {
 }
 
 void CurrentAppWidgetMenu::setWindow(DesktopWmWindowPtr window) {
+    for (QPushButton* button : d->actionButtons) {
+        ui->actionsLayout->removeWidget(button);
+        button->setVisible(false);
+        button->deleteLater();
+    }
+    d->actionButtons.clear();
+
     d->window = window;
     QString applicationName = window->application()->getProperty("Name").toString();
     ui->quitImmediateButton->setText(tr("Force Stop"));
@@ -51,6 +61,19 @@ void CurrentAppWidgetMenu::setWindow(DesktopWmWindowPtr window) {
     ui->doQuitImmediateButton->setText(tr("Force Stop %1").arg(applicationName));
     ui->cancelImmediateQuitButton->setVisible(true);
 
+    QStringList actions = window->application()->getStringList("Actions");
+    for (const QString& action : qAsConst(actions)) {
+        QPushButton* button = new QPushButton();
+        button->setText(window->application()->getActionProperty(action, "Name").toString());
+        connect(button, &QPushButton::clicked, this, [ = ] {
+            window->application()->launchAction(action);
+            emit done();
+        });
+        ui->actionsLayout->addWidget(button);
+        d->actionButtons.append(button);
+    }
+    ui->actionsWidget->setVisible(!actions.isEmpty());
+
     ui->stackedWidget->setCurrentWidget(ui->initialPage, false);
     updateModifiers();
 }
@@ -58,7 +81,7 @@ void CurrentAppWidgetMenu::setWindow(DesktopWmWindowPtr window) {
 void CurrentAppWidgetMenu::showForceStopScreen() {
     ui->cancelImmediateQuitButton->setVisible(false);
     ui->stackedWidget->setCurrentWidget(ui->quitImmediatelyPage, false);
-    on_stackedWidget_switchingFrame(ui->stackedWidget->currentIndex());
+    this->setFixedSize(ui->stackedWidget->currentWidget()->sizeHint());
 }
 
 void CurrentAppWidgetMenu::updateModifiers() {
@@ -95,7 +118,9 @@ void CurrentAppWidgetMenu::on_quitImmediateButton_clicked() {
 }
 
 void CurrentAppWidgetMenu::on_stackedWidget_switchingFrame(int frame) {
-    tVariantAnimation::singleShot(this, this->size(), ui->stackedWidget->widget(frame)->sizeHint(), 250, [ = ](QVariant value) {
-        this->setFixedSize(value.toSize());
+    QTimer::singleShot(0, [ = ] {
+        tVariantAnimation::singleShot(this, this->size(), ui->stackedWidget->widget(frame)->sizeHint(), 250, [ = ](QVariant value) {
+            this->setFixedSize(value.toSize());
+        });
     });
 }
