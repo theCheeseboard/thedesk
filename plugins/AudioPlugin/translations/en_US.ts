@@ -83,7 +83,7 @@
 <context>
     <name>QuickWidgetSinkInput</name>
     <message>
-        <location filename="../quickwidgetsinkinput.cpp" line="62"/>
+        <location filename="../quickwidgetsinkinput.cpp" line="63"/>
         <source>Play on</source>
         <translation type="unfinished"></translation>
     </message>

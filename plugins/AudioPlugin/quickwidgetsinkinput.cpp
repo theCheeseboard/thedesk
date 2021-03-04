@@ -23,6 +23,7 @@
 #include <Context>
 #include <the-libs_global.h>
 #include <QMenu>
+#include <QPointer>
 #include "common.h"
 
 struct QuickWidgetSinkInputPrivate {
@@ -129,12 +130,12 @@ void QuickWidgetSinkInput::sinkAdded(PulseAudioQt::Sink* sink) {
     QAction* action = new QAction(this);
     action->setCheckable(true);
 
-    connect(sink, &PulseAudioQt::Sink::propertiesChanged, this, [ = ] {
+    connect(sink, &PulseAudioQt::Sink::propertiesChanged, action, [ = ] {
         action->setText(Common::nameForSink(sink));
     });
     action->setText(Common::nameForSink(sink));
 
-    connect(d->sinkInput, &PulseAudioQt::SinkInput::deviceIndexChanged, this, [ = ] {
+    connect(d->sinkInput, &PulseAudioQt::SinkInput::deviceIndexChanged, action, [ = ] {
         action->setChecked(sink->index() == d->sinkInput->deviceIndex());
     });
     action->setChecked(sink->index() == d->sinkInput->deviceIndex());
