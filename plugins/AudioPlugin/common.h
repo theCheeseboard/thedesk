@@ -26,10 +26,13 @@ namespace Common {
     enum DevicePort {
         Speakers,
         Headphones,
+        LineOut,
+        Bluetooth,
         Unknown
     };
 
     DevicePort portForSink(PulseAudioQt::Sink* sink);
+    QString nameForSink(PulseAudioQt::Sink* sink);
 }
 
 #endif // COMMON_H

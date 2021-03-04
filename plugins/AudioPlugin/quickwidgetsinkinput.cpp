@@ -23,6 +23,7 @@
 #include <Context>
 #include <the-libs_global.h>
 #include <QMenu>
+#include "common.h"
 
 struct QuickWidgetSinkInputPrivate {
     bool changingVolume = false;
@@ -129,9 +130,9 @@ void QuickWidgetSinkInput::sinkAdded(PulseAudioQt::Sink* sink) {
     action->setCheckable(true);
 
     connect(sink, &PulseAudioQt::Sink::propertiesChanged, this, [ = ] {
-        action->setText(sink->properties().value("device.product.name").toString());
+        action->setText(Common::nameForSink(sink));
     });
-    action->setText(sink->properties().value("device.product.name").toString());
+    action->setText(Common::nameForSink(sink));
 
     connect(d->sinkInput, &PulseAudioQt::SinkInput::deviceIndexChanged, this, [ = ] {
         action->setChecked(sink->index() == d->sinkInput->deviceIndex());

@@ -42,6 +42,10 @@
         <source>Unmute Quiet Mode before changing the volume</source>
         <translation>在更改音量之前请解除安静模式</translation>
     </message>
+    <message>
+        <source>Line Out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MicChunk</name>

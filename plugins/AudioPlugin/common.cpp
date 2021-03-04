@@ -20,32 +20,52 @@
 #include "common.h"
 
 #include <Port>
+#include <QVariantMap>
 
 Common::DevicePort Common::portForSink(PulseAudioQt::Sink* sink) {
-    PulseAudioQt::Port* port = sink->ports().at(sink->activePortIndex());
-    if (port->availability() == PulseAudioQt::Port::Unavailable) {
-        //Weird thing? Use a workaround here
-        QList<PulseAudioQt::Port*> availablePorts;
-        for (PulseAudioQt::Port* port : sink->ports()) {
-            if (port->availability() != PulseAudioQt::Port::Unavailable) availablePorts.append(port);
+    QVariantMap properties = sink->properties();
+    QString api = properties.value("device.api").toString();
+    if (api == QStringLiteral("bluez")) {
+        return Bluetooth;
+    } else {
+        PulseAudioQt::Port* port = sink->ports().at(sink->activePortIndex());
+        if (port->availability() == PulseAudioQt::Port::Unavailable) {
+            //Weird thing? Use a workaround here
+            QList<PulseAudioQt::Port*> availablePorts;
+            for (PulseAudioQt::Port* port : sink->ports()) {
+                if (port->availability() != PulseAudioQt::Port::Unavailable) availablePorts.append(port);
+            }
+
+            if (availablePorts.count() == 1) {
+                port = availablePorts.first();
+            } else {
+                port = nullptr;
+            }
         }
 
-        if (availablePorts.count() == 1) {
-            port = availablePorts.first();
-        } else {
-            port = nullptr;
+
+        if (port != nullptr) {
+            QString newPort;
+            if (port->name().contains("headphones", Qt::CaseInsensitive)) {
+                return Headphones;
+            } else if (port->name().contains("speaker", Qt::CaseInsensitive)) {
+                return Speakers;
+            }   else if (port->name().contains("lineout", Qt::CaseInsensitive)) {
+                return LineOut;
+            }
         }
+        return Unknown;
     }
+}
 
-
-    if (port != nullptr) {
-        QString newPort;
-        if (port->name().contains("headphones", Qt::CaseInsensitive)) {
-            return Headphones;
-        } else if (port->name().contains("speaker", Qt::CaseInsensitive)) {
-            return Speakers;
-        }
+QString Common::nameForSink(PulseAudioQt::Sink* sink) {
+    QVariantMap properties = sink->properties();
+    QString api = properties.value("device.api").toString();
+    if (api == QStringLiteral("alsa")) {
+        return sink->properties().value("device.product.name").toString();
+    } else if (api == QStringLiteral("bluez")) {
+        return sink->properties().value("bluez.alias").toString();
+    } else {
+        return sink->description();
     }
-
-    return Unknown;
 }

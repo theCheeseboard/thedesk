@@ -24,6 +24,7 @@
 #include <the-libs_global.h>
 #include <Context>
 #include <Server>
+#include "common.h"
 
 struct QuickWidgetSinkPrivate {
     PulseAudioQt::Sink* sink;
@@ -108,8 +109,7 @@ void QuickWidgetSink::updateVisibility() {
 }
 
 void QuickWidgetSink::updateName() {
-    QString name = d->sink->properties().value("device.product.name").toString();
-    ui->nameLabel->setText(this->fontMetrics().elidedText(name, Qt::ElideRight, SC_DPI(200)));
+    ui->nameLabel->setText(this->fontMetrics().elidedText(Common::nameForSink(d->sink), Qt::ElideRight, SC_DPI(200)));
 }
 
 void QuickWidgetSink::on_volumeSlider_valueChanged(int value) {

@@ -48,6 +48,11 @@
     </message>
     <message>
         <location filename="../eventhandler.cpp" line="158"/>
+        <source>Line Out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../eventhandler.cpp" line="166"/>
         <source>Volume</source>
         <translation type="unfinished"></translation>
     </message>
@@ -78,7 +83,7 @@
 <context>
     <name>QuickWidgetSinkInput</name>
     <message>
-        <location filename="../quickwidgetsinkinput.cpp" line="61"/>
+        <location filename="../quickwidgetsinkinput.cpp" line="62"/>
         <source>Play on</source>
         <translation type="unfinished"></translation>
     </message>

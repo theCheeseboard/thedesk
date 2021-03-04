@@ -153,6 +153,14 @@ void EventHandler::showHud(PulseAudioQt::Sink* sink, qint64 volume) {
             hudData.insert("icon", "audio-headphones");
             hudData.insert("title", tr("Headphones"));
             break;
+        case Common::LineOut:
+            hudData.insert("icon", "audio-lineout");
+            hudData.insert("title", tr("Line Out"));
+            break;
+        case Common::Bluetooth:
+            hudData.insert("icon", "bluetooth");
+            hudData.insert("title", Common::nameForSink(sink));
+            break;
         case Common::Unknown:
             hudData.insert("icon", "audio-volume-high");
             hudData.insert("title", tr("Volume"));
