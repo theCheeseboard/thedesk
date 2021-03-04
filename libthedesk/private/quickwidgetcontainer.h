@@ -36,6 +36,8 @@ class QuickWidgetContainer : public QWidget {
         explicit QuickWidgetContainer(QWidget* parent = nullptr);
         ~QuickWidgetContainer();
 
+        QSize sizeHint() const;
+
         void showContainer();
         void hideContainer();
         bool isShowing();

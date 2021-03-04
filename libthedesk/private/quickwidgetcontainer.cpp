@@ -83,6 +83,18 @@ QuickWidgetContainer::~QuickWidgetContainer() {
     delete d;
 }
 
+QSize QuickWidgetContainer::sizeHint() const {
+    QSize sizeHint;
+    Chunk* chunk = qobject_cast<Chunk*>(d->parentChunk);
+    if (chunk) {
+        sizeHint = chunk->quickWidget()->sizeHint();
+    } else {
+        sizeHint = d->quickWidget->sizeHint();
+    }
+
+    return sizeHint.grownBy(this->contentsMargins());
+}
+
 void QuickWidgetContainer::showContainer() {
     Chunk* chunk = qobject_cast<Chunk*>(d->parentChunk);
     if (chunk) {

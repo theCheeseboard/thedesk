@@ -35,6 +35,8 @@ class CurrentAppWidgetMenu : public QWidget {
         explicit CurrentAppWidgetMenu(QWidget* parent = nullptr);
         ~CurrentAppWidgetMenu();
 
+        QSize sizeHint() const;
+
         void setWindow(DesktopWmWindowPtr window);
         void showForceStopScreen();
 

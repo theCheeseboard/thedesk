@@ -45,6 +45,10 @@ CurrentAppWidgetMenu::~CurrentAppWidgetMenu() {
     delete ui;
 }
 
+QSize CurrentAppWidgetMenu::sizeHint() const {
+    return this->size();
+}
+
 void CurrentAppWidgetMenu::setWindow(DesktopWmWindowPtr window) {
     for (QPushButton* button : d->actionButtons) {
         ui->actionsLayout->removeWidget(button);

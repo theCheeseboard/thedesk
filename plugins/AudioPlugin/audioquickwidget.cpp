@@ -88,6 +88,7 @@ QSize AudioQuickWidget::sizeHint() const {
 
 void AudioQuickWidget::sinkAdded(PulseAudioQt::Sink* sink) {
     QuickWidgetSink* sinkWidget = new QuickWidgetSink(sink);
+    sinkWidget->installEventFilter(this);
     ui->sinksLayout->addWidget(sinkWidget);
     d->sinkWidgets.insert(sink, sinkWidget);
 }
@@ -101,6 +102,7 @@ void AudioQuickWidget::sinkRemoved(PulseAudioQt::Sink* sink) {
 
 void AudioQuickWidget::sinkInputAdded(PulseAudioQt::SinkInput* sinkInput) {
     QuickWidgetSinkInput* sinkInputWidget = new QuickWidgetSinkInput(sinkInput);
+    sinkInputWidget->installEventFilter(this);
     ui->sinkInputsLayout->addWidget(sinkInputWidget);
     d->sinkInputWidgets.insert(sinkInput, sinkInputWidget);
     ui->sinkInputsWidget->setVisible(true);
@@ -113,6 +115,16 @@ void AudioQuickWidget::sinkInputRemoved(PulseAudioQt::SinkInput* sinkInput) {
     sinkInputWidget->deleteLater();
 
     if (d->sinkInputWidgets.isEmpty()) ui->sinkInputsWidget->setVisible(false);
+}
+
+bool AudioQuickWidget::eventFilter(QObject* watched, QEvent* event) {
+    if (event->type() == QEvent::Show || event->type() == QEvent::Hide) {
+        this->updateGeometry();
+
+        QEvent* event = new QEvent(QEvent::LayoutRequest);
+        qApp->postEvent(this, event);
+    }
+    return false;
 }
 
 void AudioQuickWidget::updatePrimaryScreen() {

@@ -48,6 +48,8 @@ class AudioQuickWidget : public QWidget {
         Ui::AudioQuickWidget* ui;
         AudioQuickWidgetPrivate* d;
 
+        bool eventFilter(QObject* watched, QEvent* event);
+
         void updatePrimaryScreen();
         void updateMaxHeight();
 };
