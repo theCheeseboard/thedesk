@@ -43,6 +43,25 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QToolButton" name="menuButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string notr="true">...</string>
+     </property>
+     <property name="icon">
+      <iconset theme="application-menu"/>
+     </property>
+     <property name="popupMode">
+      <enum>QToolButton::InstantPopup</enum>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>

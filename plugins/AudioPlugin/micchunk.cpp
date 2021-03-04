@@ -54,6 +54,8 @@ void MicChunk::updateSourceOutputs() {
 //        }
     }
 
+    micClients.removeDuplicates();
+
     if (micClients.isEmpty()) {
         if (StateManager::barManager()->isChunkRegistered(this)) StateManager::barManager()->removeChunk(this);
     } else {

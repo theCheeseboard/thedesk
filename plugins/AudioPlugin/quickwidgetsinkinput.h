@@ -21,6 +21,7 @@
 #define QUICKWIDGETSINKINPUT_H
 
 #include <QWidget>
+#include <Sink>
 #include <SinkInput>
 
 namespace Ui {
@@ -45,6 +46,9 @@ class QuickWidgetSinkInput : public QWidget {
     private:
         Ui::QuickWidgetSinkInput* ui;
         QuickWidgetSinkInputPrivate* d;
+
+        void sinkAdded(PulseAudioQt::Sink* sink);
+        void sinkRemoved(PulseAudioQt::Sink* sink);
 
         void updateVolume();
         void updateClient();

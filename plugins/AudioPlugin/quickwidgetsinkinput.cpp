@@ -22,6 +22,7 @@
 
 #include <Context>
 #include <the-libs_global.h>
+#include <QMenu>
 
 struct QuickWidgetSinkInputPrivate {
     bool changingVolume = false;
@@ -29,6 +30,11 @@ struct QuickWidgetSinkInputPrivate {
 
     QString pid;
     static QMultiMap<QString, QuickWidgetSinkInput*> sinkInputsByPid;
+
+    QMenu* menu;
+    QMenu* devicesMenu;
+    QMap<PulseAudioQt::Sink*, QAction*> sinkActions;
+    QActionGroup* devicesGroup;
 };
 
 QMultiMap<QString, QuickWidgetSinkInput*> QuickWidgetSinkInputPrivate::sinkInputsByPid = QMultiMap<QString, QuickWidgetSinkInput*>();
@@ -47,6 +53,21 @@ QuickWidgetSinkInput::QuickWidgetSinkInput(PulseAudioQt::SinkInput* sinkInput, Q
     updateClient();
     updateVolume();
     updateProperties();
+
+    d->devicesGroup = new QActionGroup(this);
+    d->devicesGroup->setExclusive(true);
+
+    d->devicesMenu = new QMenu();
+    d->devicesMenu->setTitle(tr("Play on"));
+    d->devicesMenu->setIcon(QIcon::fromTheme("audio-headphones"));
+
+    d->menu = new QMenu();
+    d->menu->addMenu(d->devicesMenu);
+    ui->menuButton->setMenu(d->menu);
+
+    connect(PulseAudioQt::Context::instance(), &PulseAudioQt::Context::sinkAdded, this, &QuickWidgetSinkInput::sinkAdded);
+    connect(PulseAudioQt::Context::instance(), &PulseAudioQt::Context::sinkRemoved, this, &QuickWidgetSinkInput::sinkRemoved);
+    for (PulseAudioQt::Sink* sink : PulseAudioQt::Context::instance()->sinks()) sinkAdded(sink);
 
     this->setFixedWidth(SC_DPI(600));
     ui->nameLabel->setFixedWidth(SC_DPI(200));
@@ -101,4 +122,36 @@ void QuickWidgetSinkInput::on_volumeSlider_valueChanged(int value) {
     qint64 newVolume = value * factor;
 
     for (QuickWidgetSinkInput* sinkInputWidget : d->sinkInputsByPid.values(d->pid)) sinkInputWidget->d->sinkInput->setVolume(newVolume);
+}
+
+void QuickWidgetSinkInput::sinkAdded(PulseAudioQt::Sink* sink) {
+    QAction* action = new QAction(this);
+    action->setCheckable(true);
+
+    connect(sink, &PulseAudioQt::Sink::propertiesChanged, this, [ = ] {
+        action->setText(sink->properties().value("device.product.name").toString());
+    });
+    action->setText(sink->properties().value("device.product.name").toString());
+
+    connect(d->sinkInput, &PulseAudioQt::SinkInput::deviceIndexChanged, this, [ = ] {
+        action->setChecked(sink->index() == d->sinkInput->deviceIndex());
+    });
+    action->setChecked(sink->index() == d->sinkInput->deviceIndex());
+
+    connect(action, &QAction::toggled, this, [ = ](bool checked) {
+        if (checked) {
+            for (QuickWidgetSinkInput* sinkInputWidget : d->sinkInputsByPid.values(d->pid)) sinkInputWidget->d->sinkInput->setDeviceIndex(sink->index());
+        }
+    });
+
+    d->devicesMenu->addAction(action);
+    d->devicesGroup->addAction(action);
+    d->sinkActions.insert(sink, action);
+}
+
+void QuickWidgetSinkInput::sinkRemoved(PulseAudioQt::Sink* sink) {
+    QAction* action = d->sinkActions.take(sink);
+    d->devicesMenu->removeAction(action);
+    d->devicesGroup->removeAction(action);
+    action->deleteLater();
 }

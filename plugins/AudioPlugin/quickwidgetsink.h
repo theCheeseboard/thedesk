@@ -43,14 +43,19 @@ class QuickWidgetSink : public QWidget {
 
         void on_volumeSlider_valueChanged(int value);
 
+        void on_actionMake_Default_triggered();
+
+        void on_actionMove_All_Applications_triggered();
+
     private:
         Ui::QuickWidgetSink* ui;
         QuickWidgetSinkPrivate* d;
 
         void sinkInputAdded(PulseAudioQt::SinkInput* sinkInput);
         void updateVisibility();
-
+        void updateName();
         void updateVolume();
+        void updateDefault();
 };
 
 #endif // QUICKWIDGETSINK_H

@@ -55,11 +55,32 @@
 <context>
     <name>MicChunk</name>
     <message numerus="yes">
-        <location filename="../micchunk.cpp" line="64"/>
+        <location filename="../micchunk.cpp" line="66"/>
         <source>%n applications</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>QuickWidgetSink</name>
+    <message>
+        <location filename="../quickwidgetsink.ui" line="68"/>
+        <source>Make Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../quickwidgetsink.ui" line="76"/>
+        <source>Use for All Applications</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QuickWidgetSinkInput</name>
+    <message>
+        <location filename="../quickwidgetsinkinput.cpp" line="61"/>
+        <source>Play on</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

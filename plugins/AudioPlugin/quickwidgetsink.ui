@@ -40,7 +40,42 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QToolButton" name="menuButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string notr="true"/>
+     </property>
+     <property name="icon">
+      <iconset theme="application-menu"/>
+     </property>
+     <property name="popupMode">
+      <enum>QToolButton::InstantPopup</enum>
+     </property>
+    </widget>
+   </item>
   </layout>
+  <action name="actionMake_Default">
+   <property name="icon">
+    <iconset theme="default"/>
+   </property>
+   <property name="text">
+    <string>Make Default</string>
+   </property>
+  </action>
+  <action name="actionMove_All_Applications">
+   <property name="icon">
+    <iconset theme="edit-select-all"/>
+   </property>
+   <property name="text">
+    <string>Use for All Applications</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

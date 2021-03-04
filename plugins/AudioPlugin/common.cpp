@@ -37,6 +37,7 @@ Common::DevicePort Common::portForSink(PulseAudioQt::Sink* sink) {
         }
     }
 
+
     if (port != nullptr) {
         QString newPort;
         if (port->name().contains("headphones", Qt::CaseInsensitive)) {

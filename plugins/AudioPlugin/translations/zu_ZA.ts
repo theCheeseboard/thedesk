@@ -52,4 +52,22 @@
         </translation>
     </message>
 </context>
+<context>
+    <name>QuickWidgetSink</name>
+    <message>
+        <source>Make Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use for All Applications</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QuickWidgetSinkInput</name>
+    <message>
+        <source>Play on</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
