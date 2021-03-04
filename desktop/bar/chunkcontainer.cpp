@@ -40,12 +40,14 @@ struct ChunkContainerPrivate {
         "network-tethering",
         "bluetooth",
         "audio",
+        "audio-mic",
         "redshift",
         "Accessibility-StickyKeys",
         "mpris"
     };
 
     QMap<Chunk*, QWidget*> chunkWidgets;
+    qreal currentAnimProgress = 1;
 };
 
 ChunkContainer::ChunkContainer(QWidget* parent) :
@@ -103,6 +105,7 @@ void ChunkContainer::barHeightChanged(int height) {
     if (percentageAnim > 1) percentageAnim = 1;
     d->barManager->barHeightTransitioning(percentageAnim);
     ui->currentAppWidget->barHeightChanging(percentageAnim);
+    d->currentAnimProgress = percentageAnim;
 }
 
 void ChunkContainer::paintEvent(QPaintEvent* event) {
@@ -124,7 +127,7 @@ void ChunkContainer::chunkAdded(Chunk* chunk) {
     d->chunkWidgets.insert(chunk, chunkWidget);
 
     QGraphicsOpacityEffect* lineOpacity = new QGraphicsOpacityEffect(line);
-    lineOpacity->setOpacity(1);
+    lineOpacity->setOpacity(d->currentAnimProgress);
     line->setGraphicsEffect(lineOpacity);
 
     QStringList currentItems;

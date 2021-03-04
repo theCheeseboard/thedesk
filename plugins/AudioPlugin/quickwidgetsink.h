@@ -22,6 +22,7 @@
 
 #include <QWidget>
 #include <Sink>
+#include <SinkInput>
 
 namespace Ui {
     class QuickWidgetSink;
@@ -36,15 +37,18 @@ class QuickWidgetSink : public QWidget {
         ~QuickWidgetSink();
 
     private slots:
-        void on_volumeSlider_sliderMoved(int position);
-
         void on_volumeSlider_sliderPressed();
 
         void on_volumeSlider_sliderReleased();
 
+        void on_volumeSlider_valueChanged(int value);
+
     private:
         Ui::QuickWidgetSink* ui;
         QuickWidgetSinkPrivate* d;
+
+        void sinkInputAdded(PulseAudioQt::SinkInput* sinkInput);
+        void updateVisibility();
 
         void updateVolume();
 };

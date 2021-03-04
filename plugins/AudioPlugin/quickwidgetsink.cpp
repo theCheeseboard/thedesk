@@ -22,6 +22,7 @@
 
 #include <the-libs_global.h>
 #include <Context>
+#include <Server>
 
 struct QuickWidgetSinkPrivate {
     PulseAudioQt::Sink* sink;
@@ -37,8 +38,15 @@ QuickWidgetSink::QuickWidgetSink(PulseAudioQt::Sink* sink, QWidget* parent) :
 
     ui->nameLabel->setText(this->fontMetrics().elidedText(sink->description(), Qt::ElideRight, SC_DPI(200)));
 
+    connect(PulseAudioQt::Context::instance()->server(), &PulseAudioQt::Server::defaultSinkChanged, this, &QuickWidgetSink::updateVisibility);
+
     connect(sink, &PulseAudioQt::Sink::volumeChanged, this, &QuickWidgetSink::updateVolume);
     updateVolume();
+
+    connect(PulseAudioQt::Context::instance(), &PulseAudioQt::Context::sinkInputAdded, this, &QuickWidgetSink::sinkInputAdded);
+    connect(PulseAudioQt::Context::instance(), &PulseAudioQt::Context::sinkInputRemoved, this, &QuickWidgetSink::updateVisibility);
+    for (PulseAudioQt::SinkInput* sinkInput : PulseAudioQt::Context::instance()->sinkInputs()) sinkInputAdded(sinkInput);
+    updateVisibility();
 
     this->setFixedWidth(SC_DPI(600));
     ui->nameLabel->setFixedWidth(SC_DPI(200));
@@ -49,15 +57,10 @@ QuickWidgetSink::~QuickWidgetSink() {
     delete ui;
 }
 
-void QuickWidgetSink::on_volumeSlider_sliderMoved(int position) {
-    qint64 factor = PulseAudioQt::normalVolume() / 100;
-    qint64 newVolume = position * factor;
-    d->sink->setVolume(newVolume);
-}
-
 void QuickWidgetSink::updateVolume() {
     if (d->changingVolume) return;
     int volume = d->sink->volume() / static_cast<double>(PulseAudioQt::normalVolume()) * 100;
+    QSignalBlocker blocker(ui->volumeSlider);
     ui->volumeSlider->setValue(volume);
 }
 
@@ -67,4 +70,31 @@ void QuickWidgetSink::on_volumeSlider_sliderPressed() {
 
 void QuickWidgetSink::on_volumeSlider_sliderReleased() {
     d->changingVolume = false;
+}
+
+void QuickWidgetSink::sinkInputAdded(PulseAudioQt::SinkInput* sinkInput) {
+    connect(sinkInput, &PulseAudioQt::SinkInput::deviceIndexChanged, this, &QuickWidgetSink::updateVisibility);
+    updateVisibility();
+}
+
+void QuickWidgetSink::updateVisibility() {
+    if (PulseAudioQt::Context::instance()->server()->defaultSink() == d->sink) {
+        this->setVisible(true);
+        return;
+    }
+
+    for (PulseAudioQt::SinkInput* sinkInput : PulseAudioQt::Context::instance()->sinkInputs()) {
+        if (sinkInput->deviceIndex() == d->sink->index()) {
+            this->setVisible(true);
+            return;
+        }
+    }
+
+    this->setVisible(false);
+}
+
+void QuickWidgetSink::on_volumeSlider_valueChanged(int value) {
+    qint64 factor = PulseAudioQt::normalVolume() / 100;
+    qint64 newVolume = value * factor;
+    d->sink->setVolume(newVolume);
 }

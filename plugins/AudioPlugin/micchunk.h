@@ -17,39 +17,23 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef AUDIOQUICKWIDGET_H
-#define AUDIOQUICKWIDGET_H
+#ifndef MICCHUNK_H
+#define MICCHUNK_H
 
-#include <QWidget>
-#include <Sink>
-#include <SinkInput>
+#include <icontextchunk.h>
+#include <SourceOutput>
 
-namespace Ui {
-    class AudioQuickWidget;
-}
-
-struct AudioQuickWidgetPrivate;
-class AudioQuickWidget : public QWidget {
+class MicChunk : public IconTextChunk {
         Q_OBJECT
-
     public:
-        explicit AudioQuickWidget(QWidget* parent = nullptr);
-        ~AudioQuickWidget();
+        explicit MicChunk();
 
-        QSize sizeHint() const;
-
-        void sinkAdded(PulseAudioQt::Sink* sink);
-        void sinkRemoved(PulseAudioQt::Sink* sink);
-
-        void sinkInputAdded(PulseAudioQt::SinkInput* sinkInput);
-        void sinkInputRemoved(PulseAudioQt::SinkInput* sinkInput);
+    signals:
 
     private:
-        Ui::AudioQuickWidget* ui;
-        AudioQuickWidgetPrivate* d;
+        void sourceOutputAdded(PulseAudioQt::SourceOutput* sourceOutput);
 
-        void updatePrimaryScreen();
-        void updateMaxHeight();
+        void updateSourceOutputs();
 };
 
-#endif // AUDIOQUICKWIDGET_H
+#endif // MICCHUNK_H

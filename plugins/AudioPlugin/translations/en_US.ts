@@ -4,12 +4,17 @@
 <context>
     <name>AudioQuickWidget</name>
     <message>
-        <location filename="../audioquickwidget.ui" line="26"/>
+        <location filename="../audioquickwidget.ui" line="59"/>
         <source>VOLUME</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../audioquickwidget.ui" line="42"/>
+        <location filename="../audioquickwidget.ui" line="90"/>
+        <source>APPLICATIONS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../audioquickwidget.ui" line="109"/>
         <source>QUIET MODE</source>
         <translation type="unfinished"></translation>
     </message>
@@ -45,6 +50,16 @@
         <location filename="../eventhandler.cpp" line="158"/>
         <source>Volume</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MicChunk</name>
+    <message numerus="yes">
+        <location filename="../micchunk.cpp" line="64"/>
+        <source>%n applications</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 </TS>

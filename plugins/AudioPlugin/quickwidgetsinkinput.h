@@ -17,39 +17,39 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef AUDIOQUICKWIDGET_H
-#define AUDIOQUICKWIDGET_H
+#ifndef QUICKWIDGETSINKINPUT_H
+#define QUICKWIDGETSINKINPUT_H
 
 #include <QWidget>
-#include <Sink>
 #include <SinkInput>
 
 namespace Ui {
-    class AudioQuickWidget;
+    class QuickWidgetSinkInput;
 }
 
-struct AudioQuickWidgetPrivate;
-class AudioQuickWidget : public QWidget {
+struct QuickWidgetSinkInputPrivate;
+class QuickWidgetSinkInput : public QWidget {
         Q_OBJECT
 
     public:
-        explicit AudioQuickWidget(QWidget* parent = nullptr);
-        ~AudioQuickWidget();
+        explicit QuickWidgetSinkInput(PulseAudioQt::SinkInput* sinkInput, QWidget* parent = nullptr);
+        ~QuickWidgetSinkInput();
 
-        QSize sizeHint() const;
+    private slots:
+        void on_volumeSlider_sliderPressed();
 
-        void sinkAdded(PulseAudioQt::Sink* sink);
-        void sinkRemoved(PulseAudioQt::Sink* sink);
+        void on_volumeSlider_sliderReleased();
 
-        void sinkInputAdded(PulseAudioQt::SinkInput* sinkInput);
-        void sinkInputRemoved(PulseAudioQt::SinkInput* sinkInput);
+        void on_volumeSlider_valueChanged(int value);
 
     private:
-        Ui::AudioQuickWidget* ui;
-        AudioQuickWidgetPrivate* d;
+        Ui::QuickWidgetSinkInput* ui;
+        QuickWidgetSinkInputPrivate* d;
 
-        void updatePrimaryScreen();
-        void updateMaxHeight();
+        void updateVolume();
+        void updateClient();
+        void updateProperties();
+        void updateVisibility();
 };
 
-#endif // AUDIOQUICKWIDGET_H
+#endif // QUICKWIDGETSINKINPUT_H

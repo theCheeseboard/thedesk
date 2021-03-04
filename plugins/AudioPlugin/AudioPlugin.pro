@@ -27,16 +27,20 @@ SOURCES += \
     audioquickwidget.cpp \
     common.cpp \
     eventhandler.cpp \
+    micchunk.cpp \
     plugin.cpp \
-    quickwidgetsink.cpp
+    quickwidgetsink.cpp \
+    quickwidgetsinkinput.cpp
 
 HEADERS += \
     audiochunk.h \
     audioquickwidget.h \
     common.h \
     eventhandler.h \
+    micchunk.h \
     plugin.h \
-    quickwidgetsink.h
+    quickwidgetsink.h \
+    quickwidgetsinkinput.h
 
 DISTFILES += \
     Plugin.json \
@@ -56,4 +60,5 @@ include(../plugins.pri)
 
 FORMS += \
     audioquickwidget.ui \
-    quickwidgetsink.ui
+    quickwidgetsink.ui \
+    quickwidgetsinkinput.ui

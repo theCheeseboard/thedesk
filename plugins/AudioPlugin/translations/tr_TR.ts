@@ -11,6 +11,10 @@
         <source>QUIET MODE</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>APPLICATIONS</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EventHandler</name>
@@ -37,6 +41,15 @@
     <message>
         <source>Unmute Quiet Mode before changing the volume</source>
         <translation>Sesi değiştirmeden önce Sessiz Modu Açın</translation>
+    </message>
+</context>
+<context>
+    <name>MicChunk</name>
+    <message numerus="yes">
+        <source>%n applications</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 </TS>
