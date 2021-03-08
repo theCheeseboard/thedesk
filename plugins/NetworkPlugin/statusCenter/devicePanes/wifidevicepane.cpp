@@ -36,6 +36,7 @@
 #include <icontextchunk.h>
 #include "switchmanager.h"
 #include <qrencode.h>
+#include <actionquickwidget.h>
 
 #include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/WirelessDevice>
@@ -85,6 +86,12 @@ WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
     d->tetheringChunk = new IconTextChunk("network-tethering");
     d->tetheringChunk->setIcon(QIcon::fromTheme("network-wireless-tethered"));
     d->tetheringChunk->setText(tr("Tethering"));
+
+    ActionQuickWidget* tetheringQuickWidget = new ActionQuickWidget(d->tetheringChunk);
+    tetheringQuickWidget->addAction(QIcon::fromTheme("network-wireless-tethered"), tr("Disable Tethering"), [ = ] {
+        ui->tetheringSwitch->setChecked(false);
+    });
+    d->tetheringChunk->setQuickWidget(tetheringQuickWidget);
 
     connect(d->device.data(), &NetworkManager::WirelessDevice::activeConnectionChanged, this, &WifiDevicePane::updateNetworkName);
     connect(d->device.data(), &NetworkManager::WirelessDevice::activeAccessPointChanged, this, &WifiDevicePane::updateNetworkName);

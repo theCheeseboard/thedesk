@@ -878,6 +878,10 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
         <source>Switch Wi-Fi on to connect to a wireless network. Flight mode won&apos;t be disabled.</source>
         <translation>Bir kablosuz ağa bağlanmak için Wi-Fi&apos;yi açın. Uçuş modu devre dışı bırakılmayacak.</translation>
     </message>
+    <message>
+        <source>Disable Tethering</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WiredChunkUpdater</name>

@@ -880,6 +880,10 @@ You&apos;ll need to contact your carrier for a new SIM card.</translation>
         <source>Switch Wi-Fi on to connect to a wireless network. Flight mode won&apos;t be disabled.</source>
         <translation>Switch Wi-Fi on to connect to a wireless network. Aeroplane mode won&apos;t be disabled.</translation>
     </message>
+    <message>
+        <source>Disable Tethering</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WiredChunkUpdater</name>

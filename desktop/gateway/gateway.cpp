@@ -55,6 +55,12 @@ Gateway::Gateway() :
     d->width->setDuration(500);
     connect(d->width, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
         this->setFixedWidth(value.toInt());
+        QScreen* screen = qApp->primaryScreen();
+        QRect geometry;
+        geometry.setHeight(this->height());
+        geometry.setWidth(value.toInt());
+        geometry.moveTopLeft(screen->geometry().topLeft());
+        this->setGeometry(geometry);
     });
     connect(d->width, &tVariantAnimation::finished, this, [ = ] {
         if (this->width() == 0) {
@@ -100,7 +106,6 @@ Gateway* Gateway::instance() {
 void Gateway::show() {
     QScreen* screen = qApp->primaryScreen();
     this->setFixedHeight(screen->geometry().height());
-    this->move(screen->geometry().topLeft() - QPoint(0, 1));
 
     d->width->setStartValue(this->width());
     d->width->setEndValue(ui->gatewayContainer->sizeHint().width() + 1);

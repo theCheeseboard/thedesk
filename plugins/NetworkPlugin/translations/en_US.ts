@@ -1038,75 +1038,80 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="87"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="123"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="88"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="130"/>
         <source>Tethering</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="111"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="135"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="145"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="195"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="196"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="91"/>
+        <source>Disable Tethering</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="118"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="142"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="152"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="202"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="203"/>
         <source>Wi-Fi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="112"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="223"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="119"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="230"/>
         <source>Disconnected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="124"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="131"/>
         <source>Active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="130"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="136"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="137"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="143"/>
         <source>Connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="146"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="232"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="153"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="239"/>
         <source>Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="157"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="164"/>
         <source>Connection Failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="159"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="166"/>
         <source>Connecting to %1 failed because %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="163"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="170"/>
         <source>the network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="266"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="273"/>
         <source>0 Devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="275"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="282"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="445"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="452"/>
         <source>Couldn&apos;t configure tethering</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="471"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="478"/>
         <source>Couldn&apos;t switch off tethering</source>
         <translation type="unfinished"></translation>
     </message>
