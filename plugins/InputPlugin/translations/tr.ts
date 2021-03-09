@@ -6,12 +6,12 @@
     <message>
         <location filename="../settings/inputsettingsleftpane.ui" line="35"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Giriş</translation>
     </message>
     <message>
         <location filename="../settings/inputsettingsleftpane.ui" line="46"/>
         <source>Mouse and Touchpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Mouse ve Dokunmatik Yüzey</translation>
     </message>
 </context>
 <context>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../settings/inputsettingspane.cpp" line="55"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Giriş</translation>
     </message>
 </context>
 <context>
@@ -27,42 +27,42 @@
     <message>
         <location filename="../settings/mousesettings.ui" line="35"/>
         <source>Mouse and Touchpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Mouse ve Dokunmatik Yüzey</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="106"/>
         <source>CLICKING</source>
-        <translation type="unfinished"></translation>
+        <translation>TIKLAMA</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="118"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Sol</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="131"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Sağ</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="152"/>
         <source>Primary Button</source>
-        <translation type="unfinished"></translation>
+        <translation>Birincil Düğme</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="159"/>
         <source>Tap to Click</source>
-        <translation type="unfinished"></translation>
+        <translation>Tıklamak için Dokunun</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="215"/>
         <source>Settings Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayarlar Kullanılamıyor</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="225"/>
         <source>Mouse settings can&apos;t be changed on this platform.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu platformda mouse ayarları değiştirilemez.</translation>
     </message>
 </context>
 </TS>
