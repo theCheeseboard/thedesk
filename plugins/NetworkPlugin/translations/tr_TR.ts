@@ -880,7 +880,7 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
     </message>
     <message>
         <source>Disable Tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Tethering&apos;i Devre Dışı Bırak</translation>
     </message>
 </context>
 <context>
