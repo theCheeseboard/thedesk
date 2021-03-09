@@ -23,6 +23,7 @@
 #include <QObject>
 
 class Gateway;
+class GatewaySearchProvider;
 struct GatewayManagerPrivate;
 class GatewayManager : public QObject {
         Q_OBJECT
@@ -30,9 +31,16 @@ class GatewayManager : public QObject {
         explicit GatewayManager(QObject* parent = nullptr);
         ~GatewayManager();
 
+        void registerSearchProvider(GatewaySearchProvider* provider);
+        void deregisterSearchProvider(GatewaySearchProvider* provider);
+        bool isSearchProviderRegistered(GatewaySearchProvider* provider);
+        QList<GatewaySearchProvider*> searchProviders();
+
         int gatewayWidth();
 
     signals:
+        void searchProviderRegistered(GatewaySearchProvider* provider);
+        void searchProviderDeregistered(GatewaySearchProvider* provider);
         void gatewayWidthChanged(int width);
 
     protected:

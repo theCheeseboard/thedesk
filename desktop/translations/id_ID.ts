@@ -134,16 +134,19 @@
     </message>
 </context>
 <context>
+    <name>AppSearchProvider</name>
+    <message>
+        <location filename="../gateway/appsearchprovider.cpp" line="89"/>
+        <source>Application</source>
+        <translation type="unfinished">Aplikasi</translation>
+    </message>
+</context>
+<context>
     <name>AppSelectionModel</name>
     <message>
-        <location filename="../gateway/appselectionmodel.cpp" line="64"/>
+        <location filename="../gateway/appselectionmodel.cpp" line="62"/>
         <source>Application</source>
         <translation>Aplikasi</translation>
-    </message>
-    <message>
-        <location filename="../gateway/appselectionmodel.cpp" line="109"/>
-        <source>Run Command</source>
-        <translation>Jalankan Perintah</translation>
     </message>
 </context>
 <context>
@@ -789,12 +792,12 @@ Pengaturan theDesk akan reset dalam %n detik jika Anda tak melakukan apa-apa.</t
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="66"/>
+        <location filename="../main.cpp" line="69"/>
         <source>Safe Mode</source>
         <translation>Mode Aman</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="66"/>
+        <location filename="../main.cpp" line="69"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>Anda sedang menekan tombol CTRL. Mulai theDesk dalam Mode Aman?</translation>
     </message>

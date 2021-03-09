@@ -29,7 +29,6 @@ struct AppSelectionModelPrivate {
 
     QList<ApplicationPointer> apps;
     QList<ApplicationPointer> appsShown;
-    QMap<QString, QPixmap> appIcons;
 };
 
 AppSelectionModel::AppSelectionModel(QObject* parent)
@@ -58,8 +57,7 @@ QVariant AppSelectionModel::data(const QModelIndex& index, int role) const {
             return a->getProperty("Name", a->desktopEntry());
         } else if (role == Qt::DecorationRole) {
             //Cache the icon for smooth scrolling
-            if (!d->appIcons.contains(a->desktopEntry())) d->appIcons.insert(a->desktopEntry(), QIcon::fromTheme(a->getProperty("Icon").toString()).pixmap(SC_DPI_T(QSize(32, 32), QSize)));
-            return d->appIcons.value(a->desktopEntry());
+            return a->icon(SC_DPI_T(QSize(32, 32), QSize));
         } else if (role == Qt::UserRole) { //Description
             return a->getProperty("GenericName", tr("Application"));
         } else if (role == Qt::UserRole + 1) { //Pinned
@@ -88,29 +86,6 @@ void AppSelectionModel::search(QString query) {
 
     //TODO: Run the search query past search plugins
 
-    for (ApplicationPointer app : d->apps) {
-        QStringList possibleWords;
-        possibleWords.append(app->getProperty("Name").toString());
-        possibleWords.append(app->getProperty("GenericName").toString());
-        possibleWords.append(app->getStringList("Keywords"));
-
-        for (QString s : possibleWords) {
-            if (s.contains(query, Qt::CaseInsensitive)) {
-                d->appsShown.append(app);
-                break;
-            }
-        }
-    }
-
-    if (theLibsGlobal::searchInPath(query.split(" ")[0]).count() > 0) {
-        d->appsShown.append(ApplicationPointer(new Application({
-            {"Name", query},
-            {"Exec", query},
-            {"GenericName", tr("Run Command")},
-            {"Icon", "system-run"}
-        })));
-    }
-
     emit dataChanged(index(0), index(rowCount()));
 }
 
@@ -125,7 +100,7 @@ void AppSelectionModel::filterCategory(QString category) {
         return;
     }
 
-    for (ApplicationPointer app : d->apps) {
+    for (ApplicationPointer app : qAsConst(d->apps)) {
         QStringList categories = app->getStringList("Categories");
 
         if (categories.contains(category, Qt::CaseSensitive)) d->appsShown.append(app);
@@ -137,7 +112,6 @@ void AppSelectionModel::filterCategory(QString category) {
 void AppSelectionModel::updateData() {
     emit loading();
     d->apps.clear();
-    d->appIcons.clear();
 
     struct ApplicationListReturnValue {
         QList<ApplicationPointer> apps;

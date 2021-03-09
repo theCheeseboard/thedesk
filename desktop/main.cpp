@@ -26,6 +26,7 @@
 #include <powermanager.h>
 #include <localemanager.h>
 #include <statuscentermanager.h>
+#include <gatewaymanager.h>
 #include <Wm/desktopwm.h>
 #include <Screens/screendaemon.h>
 
@@ -38,6 +39,8 @@
 #include <onboarding/onboardingcontroller.h>
 #include "run/rundialog.h"
 #include "tsettings.h"
+
+#include "gateway/appsearchprovider.h"
 
 int main(int argc, char* argv[]) {
     tApplication a(argc, argv);
@@ -85,6 +88,8 @@ int main(int argc, char* argv[]) {
 
     //Prepare the background
     Background::reconfigureBackgrounds();
+
+    StateManager::gatewayManager()->registerSearchProvider(new AppSearchProvider());
 
     BarWindow w;
     w.show();

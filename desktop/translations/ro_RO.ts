@@ -134,16 +134,19 @@
     </message>
 </context>
 <context>
+    <name>AppSearchProvider</name>
+    <message>
+        <location filename="../gateway/appsearchprovider.cpp" line="89"/>
+        <source>Application</source>
+        <translation type="unfinished">Aplicația</translation>
+    </message>
+</context>
+<context>
     <name>AppSelectionModel</name>
     <message>
-        <location filename="../gateway/appselectionmodel.cpp" line="64"/>
+        <location filename="../gateway/appselectionmodel.cpp" line="62"/>
         <source>Application</source>
         <translation>Aplicația</translation>
-    </message>
-    <message>
-        <location filename="../gateway/appselectionmodel.cpp" line="109"/>
-        <source>Run Command</source>
-        <translation>Execută comanda</translation>
     </message>
 </context>
 <context>
@@ -781,12 +784,12 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="66"/>
+        <location filename="../main.cpp" line="69"/>
         <source>Safe Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="66"/>
+        <location filename="../main.cpp" line="69"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation type="unfinished"></translation>
     </message>

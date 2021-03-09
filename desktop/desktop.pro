@@ -31,9 +31,12 @@ SOURCES += \
     bar/mainbarwidget.cpp \
     bar/taskbarwidget.cpp \
     cli/commandline.cpp \
+    gateway/appsearchprovider.cpp \
     gateway/appselectionmodel.cpp \
     gateway/appselectionmodellistdelegate.cpp \
     gateway/gateway.cpp \
+    gateway/gatewaysearchmodel.cpp \
+    gateway/gatewaysearchmodeldelegate.cpp \
     gateway/maingatewaywidget.cpp \
     gateway/searchresultswidget.cpp \
     main.cpp \
@@ -64,9 +67,12 @@ HEADERS += \
     bar/mainbarwidget.h \
     bar/taskbarwidget.h \
     cli/commandline.h \
+    gateway/appsearchprovider.h \
     gateway/appselectionmodel.h \
     gateway/appselectionmodellistdelegate.h \
     gateway/gateway.h \
+    gateway/gatewaysearchmodel.h \
+    gateway/gatewaysearchmodeldelegate.h \
     gateway/maingatewaywidget.h \
     gateway/searchresultswidget.h \
     run/rundialog.h \

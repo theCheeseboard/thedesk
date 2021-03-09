@@ -134,16 +134,19 @@
     </message>
 </context>
 <context>
+    <name>AppSearchProvider</name>
+    <message>
+        <location filename="../gateway/appsearchprovider.cpp" line="89"/>
+        <source>Application</source>
+        <translation type="unfinished">Uygulama</translation>
+    </message>
+</context>
+<context>
     <name>AppSelectionModel</name>
     <message>
-        <location filename="../gateway/appselectionmodel.cpp" line="64"/>
+        <location filename="../gateway/appselectionmodel.cpp" line="62"/>
         <source>Application</source>
         <translation>Uygulama</translation>
-    </message>
-    <message>
-        <location filename="../gateway/appselectionmodel.cpp" line="109"/>
-        <source>Run Command</source>
-        <translation>Komutu Çalıştır</translation>
     </message>
 </context>
 <context>
@@ -789,12 +792,12 @@ Hiçbir şey yapmazsanız, ayarlarınızı %n saniye içinde sıfırlayacağız.
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="66"/>
+        <location filename="../main.cpp" line="69"/>
         <source>Safe Mode</source>
         <translation>Güvenli mod</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="66"/>
+        <location filename="../main.cpp" line="69"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>CTRL tuşunu basılı tutuyorsunuz. Güvenli modda theDesk başlatmak?</translation>
     </message>

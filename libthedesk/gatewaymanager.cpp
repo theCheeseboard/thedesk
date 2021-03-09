@@ -20,6 +20,7 @@
 #include "gatewaymanager.h"
 
 struct GatewayManagerPrivate {
+    QList<GatewaySearchProvider*> providers;
     int gatewayWidth = 0;
 };
 
@@ -29,6 +30,28 @@ GatewayManager::GatewayManager(QObject* parent) : QObject(parent) {
 
 GatewayManager::~GatewayManager() {
     delete d;
+}
+
+void GatewayManager::registerSearchProvider(GatewaySearchProvider* provider) {
+    if (!d->providers.contains(provider)) {
+        d->providers.append(provider);
+        emit searchProviderRegistered(provider);
+    }
+}
+
+void GatewayManager::deregisterSearchProvider(GatewaySearchProvider* provider) {
+    if (d->providers.contains(provider)) {
+        d->providers.removeOne(provider);
+        emit searchProviderDeregistered(provider);
+    }
+}
+
+bool GatewayManager::isSearchProviderRegistered(GatewaySearchProvider* provider) {
+    return d->providers.contains(provider);
+}
+
+QList<GatewaySearchProvider*> GatewayManager::searchProviders() {
+    return d->providers;
 }
 
 int GatewayManager::gatewayWidth() {

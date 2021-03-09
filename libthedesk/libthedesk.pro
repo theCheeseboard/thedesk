@@ -26,6 +26,7 @@ SOURCES += \
     chunk.cpp \
     common.cpp \
     gatewaymanager.cpp \
+    gatewaysearchprovider.cpp \
     hudmanager.cpp \
     icontextchunk.cpp \
     keygrab.cpp \
@@ -58,6 +59,7 @@ HEADERS += \
     chunk.h \
     common.h \
     gatewaymanager.h \
+    gatewaysearchprovider.h \
     hudmanager.h \
     icontextchunk.h \
     keygrab.h \

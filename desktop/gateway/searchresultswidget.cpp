@@ -21,11 +21,11 @@
 #include "ui_searchresultswidget.h"
 
 #include <Applications/application.h>
-#include "appselectionmodel.h"
-#include "appselectionmodellistdelegate.h"
+#include "gatewaysearchmodel.h"
+#include "gatewaysearchmodeldelegate.h"
 
 struct SearchResultsWidgetPrivate {
-    AppSelectionModel* model;
+    GatewaySearchModel* model;
     int maxHeight = 0;
 };
 
@@ -35,18 +35,23 @@ SearchResultsWidget::SearchResultsWidget(QWidget* parent) :
     ui->setupUi(this);
     d = new SearchResultsWidgetPrivate();
 
-    d->model = new AppSelectionModel();
+    d->model = new GatewaySearchModel();
     ui->listView->setModel(d->model);
-    ui->listView->setItemDelegate(new AppSelectionModelListDelegate(this, true));
+    ui->listView->setItemDelegate(new GatewaySearchModelDelegate(this));
 
-    connect(d->model, &AppSelectionModel::dataChanged, this, [ = ] {
+    connect(d->model, &GatewaySearchModel::dataChanged, this, [ = ] {
         int height = 1;
         for (int i = 0; i < d->model->rowCount(); i++) {
             height += ui->listView->sizeHintForRow(i);
         }
-        if (height > this->parentWidget()->height()) height = this->parentWidget()->height() + 1;
+        if (height > this->parentWidget()->height()) height = this->parentWidget()->height();// + 1;
         this->setFixedHeight(height);
     });
+
+    QPalette pal = ui->listView->palette();
+    pal.setColor(QPalette::Base, Qt::transparent);
+    ui->listView->setPalette(pal);
+    ui->line->setVisible(false);
 }
 
 SearchResultsWidget::~SearchResultsWidget() {
@@ -55,12 +60,13 @@ SearchResultsWidget::~SearchResultsWidget() {
 }
 
 void SearchResultsWidget::search(QString query) {
+    ui->listView->selectionModel()->clear();
     d->model->search(query);
 }
 
 void SearchResultsWidget::launchSelected() {
     QModelIndexList indices = ui->listView->selectionModel()->selectedIndexes();
-    if (indices.count() == 0) {
+    if (indices.isEmpty() || !indices.first().isValid()) {
         if (d->model->rowCount() > 0) launch(d->model->index(0));
     } else {
         launch(indices.at(0));
@@ -72,6 +78,6 @@ void SearchResultsWidget::on_listView_clicked(const QModelIndex& index) {
 }
 
 void SearchResultsWidget::launch(QModelIndex index) {
-    index.data(Qt::UserRole + 3).value<ApplicationPointer>()->launch();
+    d->model->launch(index);
     emit closeGateway();
 }
