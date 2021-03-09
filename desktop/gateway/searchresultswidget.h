@@ -1,7 +1,7 @@
 /****************************************
  *
  *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
- *   Copyright (C) 2020 Victor Tran
+ *   Copyright (C) 2021 Victor Tran
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,36 +17,38 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef APPSELECTIONMODEL_H
-#define APPSELECTIONMODEL_H
+#ifndef SEARCHRESULTSWIDGET_H
+#define SEARCHRESULTSWIDGET_H
 
-#include <QAbstractListModel>
+#include <QWidget>
 
-struct AppSelectionModelPrivate;
-class AppSelectionModel : public QAbstractListModel {
+namespace Ui {
+    class SearchResultsWidget;
+}
+
+struct SearchResultsWidgetPrivate;
+class SearchResultsWidget : public QWidget {
         Q_OBJECT
 
     public:
-        explicit AppSelectionModel(QObject* parent = nullptr);
-        ~AppSelectionModel() override;
-
-        // Basic functionality:
-        int rowCount(const QModelIndex& parent = QModelIndex()) const override;
-        QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+        explicit SearchResultsWidget(QWidget* parent = nullptr);
+        ~SearchResultsWidget();
 
         void search(QString query);
-        void filterCategory(QString category);
+
+        void launchSelected();
+
+    private slots:
+        void on_listView_clicked(const QModelIndex& index);
 
     signals:
-        void loading();
-        void ready();
+        void closeGateway();
 
     private:
-        AppSelectionModelPrivate* d;
+        Ui::SearchResultsWidget* ui;
+        SearchResultsWidgetPrivate* d;
 
-        void updateData();
+        void launch(QModelIndex index);
 };
 
-
-
-#endif // APPSELECTIONMODEL_H
+#endif // SEARCHRESULTSWIDGET_H

@@ -35,6 +35,7 @@ SOURCES += \
     gateway/appselectionmodellistdelegate.cpp \
     gateway/gateway.cpp \
     gateway/maingatewaywidget.cpp \
+    gateway/searchresultswidget.cpp \
     main.cpp \
     run/rundialog.cpp \
     session/endsession.cpp \
@@ -67,6 +68,7 @@ HEADERS += \
     gateway/appselectionmodellistdelegate.h \
     gateway/gateway.h \
     gateway/maingatewaywidget.h \
+    gateway/searchresultswidget.h \
     run/rundialog.h \
     session/endsession.h \
     session/endsessionbutton.h \
@@ -95,6 +97,7 @@ FORMS += \
     bar/taskbarwidget.ui \
     gateway/gateway.ui \
     gateway/maingatewaywidget.ui \
+    gateway/searchresultswidget.ui \
     run/rundialog.ui \
     session/endsession.ui \
     statuscenter/statuscenter.ui \

@@ -47,6 +47,14 @@ class MainGatewayWidget : public QWidget {
 
         void on_endSessionButton_clicked();
 
+        void on_allAppsButton_toggled(bool checked);
+
+        void on_titleLabel_backButtonClicked();
+
+        void on_statusCenterButton_clicked();
+
+        void on_systemSettingsButton_clicked();
+
     signals:
         void closeGateway();
 
@@ -57,6 +65,7 @@ class MainGatewayWidget : public QWidget {
         void launch(QModelIndex applicationIndex);
 
         void changeEvent(QEvent* event);
+        void resizeEvent(QResizeEvent* event);
 };
 
 #endif // MAINGATEWAYWIDGET_H

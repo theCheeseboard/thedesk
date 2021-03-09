@@ -25,6 +25,7 @@
 
 struct AppSelectionModelPrivate {
     QString currentQuery;
+    QString category;
 
     QList<ApplicationPointer> apps;
     QList<ApplicationPointer> appsShown;
@@ -108,6 +109,26 @@ void AppSelectionModel::search(QString query) {
             {"GenericName", tr("Run Command")},
             {"Icon", "system-run"}
         })));
+    }
+
+    emit dataChanged(index(0), index(rowCount()));
+}
+
+void AppSelectionModel::filterCategory(QString category) {
+    d->category = category;
+    d->appsShown.clear();
+
+    //If there is no current category, show all apps
+    if (category == "") {
+        d->appsShown.append(d->apps);
+        emit dataChanged(index(0), index(rowCount()));
+        return;
+    }
+
+    for (ApplicationPointer app : d->apps) {
+        QStringList categories = app->getStringList("Categories");
+
+        if (categories.contains(category, Qt::CaseSensitive)) d->appsShown.append(app);
     }
 
     emit dataChanged(index(0), index(rowCount()));

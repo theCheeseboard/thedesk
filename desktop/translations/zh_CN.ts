@@ -136,12 +136,12 @@
 <context>
     <name>AppSelectionModel</name>
     <message>
-        <location filename="../gateway/appselectionmodel.cpp" line="63"/>
+        <location filename="../gateway/appselectionmodel.cpp" line="64"/>
         <source>Application</source>
         <translation>应用程序</translation>
     </message>
     <message>
-        <location filename="../gateway/appselectionmodel.cpp" line="108"/>
+        <location filename="../gateway/appselectionmodel.cpp" line="109"/>
         <source>Run Command</source>
         <translation>执行命令</translation>
     </message>
@@ -522,24 +522,84 @@
         <translation>网关</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="112"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="150"/>
+        <source>CATEGORIES</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.ui" line="160"/>
+        <source>All Apps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.ui" line="276"/>
         <source>Preparing the Gateway...</source>
         <translation>准备网关中。。。</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="188"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="67"/>
         <source>Type to search...</source>
         <translation>输入以搜索。。。</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.ui" line="230"/>
+        <location filename="../gateway/maingatewaywidget.ui" line="192"/>
+        <source>Status Center</source>
+        <translation type="unfinished">状态中心</translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.ui" line="391"/>
+        <source>System Settings</source>
+        <translation type="unfinished">系统设置</translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.ui" line="407"/>
         <source>End Session</source>
         <translation>结束进程</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="55"/>
-        <source>Hey, %1!</source>
-        <translation>你好， %1!</translation>
+        <location filename="../gateway/maingatewaywidget.cpp" line="86"/>
+        <source>A/V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.cpp" line="87"/>
+        <source>Development</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.cpp" line="88"/>
+        <source>Education</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.cpp" line="89"/>
+        <source>Games</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.cpp" line="90"/>
+        <source>Graphics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.cpp" line="91"/>
+        <source>Networking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.cpp" line="92"/>
+        <source>Office</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.cpp" line="93"/>
+        <source>Science</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.cpp" line="94"/>
+        <source>Utilities</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

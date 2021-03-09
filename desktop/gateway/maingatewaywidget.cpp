@@ -29,9 +29,14 @@
 #include "session/endsession.h"
 #include <statemanager.h>
 #include <powermanager.h>
+#include <tscrim.h>
+#include "searchresultswidget.h"
+#include <statuscentermanager.h>
 
 struct MainGatewayWidgetPrivate {
     AppSelectionModel* model;
+
+    SearchResultsWidget* searchWidget;
 };
 
 MainGatewayWidget::MainGatewayWidget(QWidget* parent) :
@@ -45,14 +50,18 @@ MainGatewayWidget::MainGatewayWidget(QWidget* parent) :
         ui->gatewayTypeStack->setCurrentWidget(ui->gatewayLoading);
     });
     connect(d->model, &AppSelectionModel::ready, this, [ = ] {
-        QTimer::singleShot(500, [=] {
+        QTimer::singleShot(500, [ = ] {
             ui->gatewayTypeStack->setCurrentWidget(ui->gatewayList);
         });
     });
     ui->gatewayTypeStack->setCurrentWidget(ui->gatewayLoading);
     ui->gatewayTypeStack->setCurrentAnimation(tStackedWidget::Fade);
 
-    ui->usernameLabel->setText(tr("Hey, %1!").arg(DesktopWm::userDisplayName()));
+    ui->titleLabel->setBackButtonShown(true);
+    ui->leftPane->setFixedWidth(SC_DPI(200));
+
+//    ui->usernameLabel->setText(tr("Hey, %1!").arg(DesktopWm::userDisplayName()));
+    ui->usernameLabel->setText(DesktopWm::userDisplayName());
 
     ui->appsList->setModel(d->model);
     ui->appsList->setItemDelegate(new AppSelectionModelListDelegate(this, true));
@@ -61,6 +70,42 @@ MainGatewayWidget::MainGatewayWidget(QWidget* parent) :
 
     this->setFocusProxy(ui->searchBox);
     ui->endSessionButton->setFocusProxy(ui->searchBox);
+
+    d->searchWidget = new SearchResultsWidget(ui->searchResultsContainer);
+    d->searchWidget->move(0, 0);
+    d->searchWidget->hide();
+    connect(d->searchWidget, &SearchResultsWidget::closeGateway, this, &MainGatewayWidget::closeGateway);
+
+    connect(tScrim::scrimForWidget(ui->appContentsWidget), &tScrim::scrimClicked, this, [ = ] {
+        ui->searchBox->setText("");
+        tScrim::scrimForWidget(ui->appContentsWidget)->hide();
+        d->searchWidget->hide();
+    });
+
+    QList<QPair<QString, QString>> categories = {
+        {"AudioVideo", tr("A/V")},
+        {"Development", tr("Development")},
+        {"Education", tr("Education")},
+        {"Game", tr("Games")},
+        {"Graphics", tr("Graphics")},
+        {"Network", tr("Networking")},
+        {"Office", tr("Office")},
+        {"Science", tr("Science")},
+        {"Utility", tr("Utilities")}
+    };
+
+    //TODO: Sort the categories
+
+    for (QPair<QString, QString> category : categories) {
+        QPushButton* button = new QPushButton(this);
+        button->setAutoExclusive(true);
+        button->setCheckable(true);
+        button->setText(category.second);
+        connect(button, &QPushButton::toggled, this, [ = ](bool checked) {
+            if (checked) d->model->filterCategory(category.first);
+        });
+        ui->categoriesLayout->addWidget(button);
+    }
 }
 
 MainGatewayWidget::~MainGatewayWidget() {
@@ -71,16 +116,26 @@ MainGatewayWidget::~MainGatewayWidget() {
 QSize MainGatewayWidget::sizeHint() const {
     QSize sizeHint = QWidget::sizeHint();
     sizeHint.setWidth(SC_DPI(400));
+    sizeHint.setWidth(SC_DPI(700));
     return sizeHint;
 }
 
 void MainGatewayWidget::clearState() {
     ui->searchBox->setText("");
-    d->model->search("");
+    tScrim::scrimForWidget(ui->appContentsWidget)->hide();
+    d->searchWidget->hide();
+    ui->allAppsButton->setChecked(true);
 }
 
 void MainGatewayWidget::on_searchBox_textEdited(const QString& arg1) {
-    d->model->search(arg1);
+    if (arg1.isEmpty()) {
+        tScrim::scrimForWidget(ui->appContentsWidget)->hide();
+        d->searchWidget->hide();
+    } else {
+        tScrim::scrimForWidget(ui->appContentsWidget)->show();
+        d->searchWidget->show();
+    }
+    d->searchWidget->search(arg1);
 }
 
 void MainGatewayWidget::on_appsList_clicked(const QModelIndex& index) {
@@ -88,12 +143,7 @@ void MainGatewayWidget::on_appsList_clicked(const QModelIndex& index) {
 }
 
 void MainGatewayWidget::on_searchBox_returnPressed() {
-    QModelIndexList indices = ui->appsList->selectionModel()->selectedIndexes();
-    if (indices.count() == 0) {
-        if (d->model->rowCount() > 0) launch(d->model->index(0));
-    } else {
-        launch(indices.at(0));
-    }
+    if (!ui->searchBox->text().isEmpty()) d->searchWidget->launchSelected();
 }
 
 void MainGatewayWidget::launch(QModelIndex applicationIndex) {
@@ -107,6 +157,29 @@ void MainGatewayWidget::changeEvent(QEvent* event) {
     }
 }
 
+void MainGatewayWidget::resizeEvent(QResizeEvent* event) {
+    d->searchWidget->setFixedWidth(this->width());
+}
+
 void MainGatewayWidget::on_endSessionButton_clicked() {
     StateManager::instance()->powerManager()->showPowerOffConfirmation();
+}
+
+void MainGatewayWidget::on_allAppsButton_toggled(bool checked) {
+    if (checked) d->model->filterCategory("");
+}
+
+void MainGatewayWidget::on_titleLabel_backButtonClicked() {
+    emit closeGateway();
+}
+
+void MainGatewayWidget::on_statusCenterButton_clicked() {
+    StateManager::statusCenterManager()->show();
+    emit closeGateway();
+}
+
+void MainGatewayWidget::on_systemSettingsButton_clicked() {
+    //TODO: Show system settings
+    StateManager::statusCenterManager()->show();
+    emit closeGateway();
 }
