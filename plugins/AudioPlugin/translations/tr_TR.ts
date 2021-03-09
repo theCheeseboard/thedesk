@@ -5,15 +5,15 @@
     <name>AudioQuickWidget</name>
     <message>
         <source>VOLUME</source>
-        <translation type="unfinished"></translation>
+        <translation>SES</translation>
     </message>
     <message>
         <source>QUIET MODE</source>
-        <translation type="unfinished"></translation>
+        <translation>SESSİZ MOD</translation>
     </message>
     <message>
         <source>APPLICATIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>UYGULAMALAR</translation>
     </message>
 </context>
 <context>
@@ -44,7 +44,7 @@
     </message>
     <message>
         <source>Line Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Hat Çıkışı</translation>
     </message>
 </context>
 <context>
@@ -60,18 +60,18 @@
     <name>QuickWidgetSink</name>
     <message>
         <source>Make Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılan Yap</translation>
     </message>
     <message>
         <source>Use for All Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm uygulamalar için kullan</translation>
     </message>
 </context>
 <context>
     <name>QuickWidgetSinkInput</name>
     <message>
         <source>Play on</source>
-        <translation type="unfinished"></translation>
+        <translation>Oynamak</translation>
     </message>
 </context>
 </TS>
