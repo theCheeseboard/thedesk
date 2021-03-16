@@ -138,7 +138,7 @@
     <message>
         <location filename="../gateway/appsearchprovider.cpp" line="89"/>
         <source>Application</source>
-        <translation type="unfinished">Uygulama</translation>
+        <translation>Uygulama</translation>
     </message>
 </context>
 <context>
@@ -527,12 +527,12 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="150"/>
         <source>CATEGORIES</source>
-        <translation type="unfinished"></translation>
+        <translation>KATEGORİLER</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="160"/>
         <source>All Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Uygulamalar</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="276"/>
@@ -547,12 +547,12 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="192"/>
         <source>Status Center</source>
-        <translation type="unfinished">Durum Merkezi</translation>
+        <translation>Durum Merkezi</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="391"/>
         <source>System Settings</source>
-        <translation type="unfinished">Sistem Ayarları</translation>
+        <translation>Sistem Ayarları</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="407"/>
@@ -562,47 +562,47 @@
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="86"/>
         <source>A/V</source>
-        <translation type="unfinished"></translation>
+        <translation>A/V</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="87"/>
         <source>Development</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelişim</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="88"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>Eğitim</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="89"/>
         <source>Games</source>
-        <translation type="unfinished"></translation>
+        <translation>Oyunlar</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="90"/>
         <source>Graphics</source>
-        <translation type="unfinished"></translation>
+        <translation>Grafik</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="91"/>
         <source>Networking</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="92"/>
         <source>Office</source>
-        <translation type="unfinished"></translation>
+        <translation>Ofisçe</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="93"/>
         <source>Science</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilim</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="94"/>
         <source>Utilities</source>
-        <translation type="unfinished"></translation>
+        <translation>Araçlar</translation>
     </message>
 </context>
 <context>
