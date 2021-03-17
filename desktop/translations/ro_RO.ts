@@ -86,7 +86,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="441"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished">Mulțumiri</translation>
+        <translation>Recunoașteri</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="78"/>
@@ -159,7 +159,7 @@
     <message>
         <location filename="../background/background.ui" line="198"/>
         <source>Try Again</source>
-        <translation>Reîncearcă</translation>
+        <translation>Reîncercați</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="379"/>
@@ -194,7 +194,7 @@
     <message>
         <location filename="../background/background.ui" line="584"/>
         <source>STRETCH</source>
-        <translation>Întindere</translation>
+        <translation>ÎNTINDERE</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="591"/>
@@ -224,7 +224,7 @@
     <message>
         <location filename="../background/background.ui" line="707"/>
         <source>Zoom To Fit</source>
-        <translation type="unfinished">Mărire pentru a încăpea</translation>
+        <translation>Mărire pentru potrivire</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="757"/>
@@ -267,17 +267,17 @@
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="69"/>
         <source>This device name is used over the network to identify this device. It is also used to identify this device over Bluetooth.</source>
-        <translation type="unfinished"></translation>
+        <translation>Numele acesta este folosit pentru a identifica dispozitivul în rețea cât și prin Bluetooth.</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="79"/>
         <source>Network Compatible Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nume compatibil de rețea</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="95"/>
         <source>Rename this Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Redenumește dispozitivul</translation>
     </message>
 </context>
 <context>
@@ -285,17 +285,17 @@
     <message>
         <location filename="../cli/commandline.cpp" line="37"/>
         <source>Start theDesk in Safe Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Porniți theDesk în modul de siguranță</translation>
     </message>
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>Internal use; the path to a local socket to communicate with the session manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Uz intern; calea către un socket local de comunicare cu managerul de sesiune</translation>
     </message>
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>path</source>
-        <translation type="unfinished"></translation>
+        <translation>cale</translation>
     </message>
 </context>
 <context>
@@ -308,33 +308,33 @@
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="75"/>
         <source>Close Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Închide fereastra</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="189"/>
         <source>QUIT IMMEDIATELY</source>
-        <translation type="unfinished"></translation>
+        <translation>TERMINĂ IMEDIAT</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="205"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Anulare</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="62"/>
         <source>Force Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Termină forțat</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="63"/>
         <location filename="../bar/currentappwidgetmenu.cpp" line="65"/>
         <source>Force Stop %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Termină forțat %1</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="64"/>
         <source>%1 will be forced to exit and won&apos;t have a chance to save any unsaved data.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 va fi terminat forțat, iar toate datele nesalvate vor fi pierdute.</translation>
     </message>
 </context>
 <context>
@@ -347,79 +347,79 @@
     <message>
         <location filename="../session/endsession.ui" line="115"/>
         <source>Power Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprire</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="122"/>
         <source>Turns off your computer.</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprește calculatorul.</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
         <location filename="../session/endsession.cpp" line="249"/>
         <source>Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Repornire</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="141"/>
         <source>Turns off your computer and turns it on again</source>
-        <translation type="unfinished"></translation>
+        <translation>Orpește calculatorul și îl pornește din nou</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="148"/>
         <source>Reboot and install updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Repornește și instalează actualizările</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="155"/>
         <source>Turns off your computer, installs pending updates and turns it on again</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprește calculatorul, instalează actualizările în așteptare și îl pornește din nou</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="162"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectare</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="169"/>
         <source>Ends your session but keeps your computer on for other people to use</source>
-        <translation type="unfinished"></translation>
+        <translation>Închide sesiunea dvs, dar ține calculatorul pornit pentru a putea fi folosit de alte persoane</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="176"/>
         <source>Suspend</source>
-        <translation type="unfinished"></translation>
+        <translation>Suspendă</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="183"/>
         <source>Puts your computer in a low power state so it reopens quickly</source>
-        <translation type="unfinished"></translation>
+        <translation>Pune calculatorul dvs într-o stare de consum redus, pentru a se redeschide repede</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="190"/>
         <source>Lock</source>
-        <translation type="unfinished"></translation>
+        <translation>Blocare</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="197"/>
         <source>Locks your workspace with your password</source>
-        <translation type="unfinished"></translation>
+        <translation>Blochează spațiul dvs de lucru cu parola dvs</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="204"/>
         <source>Turn Off Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Închide ecranul</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="211"/>
         <source>Turns off the screen, but keeps everything else running in the background</source>
-        <translation type="unfinished"></translation>
+        <translation>Închide ecranul, dar menține programele deschise</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="218"/>
         <source>Switch Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbă utilizatorul</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="225"/>
