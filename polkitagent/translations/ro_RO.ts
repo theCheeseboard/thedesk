@@ -16,7 +16,7 @@
     <message>
         <location filename="../authwindow.ui" line="441"/>
         <source>Pass the authentication challenge to confirm this action</source>
-        <translation type="unfinished">Treceți de provocarea de autentificare pentru a confirma acțiunea</translation>
+        <translation>Treceți de testul de autentificare pentru a confirma acțiunea</translation>
     </message>
     <message>
         <location filename="../authwindow.cpp" line="159"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../identitypopover.ui" line="42"/>
         <source>Who do you want to authenticate as?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sub ce identitate doriți să vă autentificați?</translation>
     </message>
 </context>
 </TS>
