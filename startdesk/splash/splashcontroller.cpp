@@ -176,7 +176,7 @@ void SplashController::startWM() {
 }
 
 void SplashController::startDE() {
-    return;
+//    return;
     if (d->process) return;
 
     emit starting();

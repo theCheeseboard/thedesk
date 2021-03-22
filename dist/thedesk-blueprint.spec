@@ -1,6 +1,6 @@
 Name:           thedesk-blueprint
 Version:        beta4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Desktop Environment built on Qt
 
 License:        GPLv3+
