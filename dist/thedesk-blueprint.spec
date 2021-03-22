@@ -1,5 +1,5 @@
 Name:           thedesk-blueprint
-Version:        beta2
+Version:        beta4
 Release:        1%{?dist}
 Summary:        Desktop Environment built on Qt
 
