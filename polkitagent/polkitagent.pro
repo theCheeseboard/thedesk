@@ -46,7 +46,7 @@ FORMS += \
     overlaywindow.ui
 
 unix {
-    target.path = $$[QT_INSTALL_LIBS]
+    target.path = $$THELIBS_INSTALL_LIB
 
     INSTALLS += target
 }

@@ -32,6 +32,7 @@
 #include <tscrim.h>
 #include "searchresultswidget.h"
 #include <statuscentermanager.h>
+#include <QShortcut>
 
 struct MainGatewayWidgetPrivate {
     AppSelectionModel* model;
@@ -94,9 +95,11 @@ MainGatewayWidget::MainGatewayWidget(QWidget* parent) :
         {"Utility", tr("Utilities")}
     };
 
-    //TODO: Sort the categories
+    std::sort(categories.begin(), categories.end(), [ = ](const QPair<QString, QString>& first, const QPair<QString, QString>& second) {
+        return first.second.localeAwareCompare(second.second) < 0;
+    });
 
-    for (QPair<QString, QString> category : categories) {
+    for (const QPair<QString, QString>& category : categories) {
         QPushButton* button = new QPushButton(this);
         button->setAutoExclusive(true);
         button->setCheckable(true);

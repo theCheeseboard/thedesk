@@ -120,7 +120,7 @@ QString NotificationsStatusCenterPane::displayName() {
 }
 
 QIcon NotificationsStatusCenterPane::icon() {
-    return QIcon::fromTheme("notifications");
+    return QIcon::fromTheme("thedesk-notifications");
 }
 
 QWidget* NotificationsStatusCenterPane::leftPane() {

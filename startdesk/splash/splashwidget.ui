@@ -14,6 +14,12 @@
    <string notr="true">Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="topMargin">
+    <number>40</number>
+   </property>
+   <property name="bottomMargin">
+    <number>40</number>
+   </property>
    <item row="0" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
@@ -40,9 +46,6 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="1">
-    <widget class="tCircularSpinner" name="widget" native="true"/>
-   </item>
    <item row="1" column="2">
     <spacer name="horizontalSpacer_2">
      <property name="orientation">
@@ -68,6 +71,16 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="fortuneLabel">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" alignment="Qt::AlignHCenter">
+    <widget class="tCircularSpinner" name="widget" native="true"/>
    </item>
   </layout>
  </widget>

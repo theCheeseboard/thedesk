@@ -39,8 +39,11 @@ GatewaySearchModel::~GatewaySearchModel() {
 
 void GatewaySearchModel::search(QString query) {
     d->currentItems.clear();
+    d->query = query;
     for (GatewaySearchProvider* searchProvider : StateManager::gatewayManager()->searchProviders()) {
         searchProvider->searchResults(query)->then([ = ](QList<QVariantMap> results) {
+            if (d->query != query) return;
+
             QList<QVariantMap> endResults;
             for (QVariantMap result : results) {
                 endResults.append({

@@ -165,7 +165,7 @@ QString SystemSettings::displayName() {
 }
 
 QIcon SystemSettings::icon() {
-    return QIcon::fromTheme("configure");
+    return QIcon::fromTheme("preferences-system");
 }
 
 QWidget* SystemSettings::leftPane() {

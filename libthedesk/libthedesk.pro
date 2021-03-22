@@ -91,7 +91,7 @@ HEADERS += \
 
 # Default rules for deployment.
 unix {
-    target.path = $$[QT_INSTALL_LIBS]
+    target.path = $$THELIBS_INSTALL_LIB
 
     headers.files = *.h
     headers.path = $$[QT_INSTALL_HEADERS]/libthedesk/
@@ -111,7 +111,7 @@ unix {
     INSTALLS += target translations headers pluginheaders onboardingheaders pluginmanagerheaders
 }
 
-DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"
+DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$THELIBS_INSTALL_LIB\\\"
 
 FORMS += \
     actionquickwidget.ui \

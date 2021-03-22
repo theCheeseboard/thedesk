@@ -177,7 +177,7 @@ QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
             return d->settings->delimitedList("Platform/style");
         case QPlatformTheme::IconThemeSearchPaths:
         case QPlatformTheme::IconFallbackSearchPaths:
-            return QStringList({QDir::homePath() + "/.local/share/icons/", "/usr/share/icons"});
+            return QStringList({QDir::homePath() + "/.local/share/icons/", "/usr/share/icons", "/var/lib/flatpak/exports/share/icons"});
         case QPlatformTheme::KeyboardScheme:
             return KdeKeyboardScheme;
         case QPlatformTheme::SpellCheckUnderlineStyle:

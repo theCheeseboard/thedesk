@@ -30,6 +30,7 @@
 #include <QJsonObject>
 #include <QPointer>
 #include <QDir>
+#include <tsettings.h>
 #include <Applications/application.h>
 #include <the-libs_global.h>
 #include "splashwindow.h"
@@ -46,6 +47,8 @@ struct SplashControllerPrivate {
     QString serverPath;
 
     QByteArray buffer;
+
+    tSettings settings;
 
     bool autostartDone = false;
 };
@@ -168,11 +171,12 @@ void SplashController::runAutostart() {
 void SplashController::startWM() {
     if (!d->wm) {
         d->wm = new QProcess(this);
-        d->wm->start("kwin_x11", {"--replace"}); //TODO: make this a configurable setting
+        d->wm->start(d->settings.value("Session/WindowManager").toString(), d->settings.delimitedList("Session/WindowManagerArguments")); //TODO: make this a configurable setting
     }
 }
 
 void SplashController::startDE() {
+    return;
     if (d->process) return;
 
     emit starting();

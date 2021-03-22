@@ -136,7 +136,7 @@ unix {
     INSTALLS += target translations defaults media acknowledgements
 }
 
-DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"
+DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$THELIBS_INSTALL_LIB\\\"
 
 unix:!macx: LIBS += -L$$OUT_PWD/../libthedesk/ -lthedesk
 

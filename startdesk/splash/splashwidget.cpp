@@ -20,11 +20,26 @@
 #include "splashwidget.h"
 #include "ui_splashwidget.h"
 
+#include <QFontDatabase>
+#include <QProcess>
+
 SplashWidget::SplashWidget(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::SplashWidget) {
     ui->setupUi(this);
 
+//    QProcess proc;
+//    proc.start("fortune", QStringList());
+//    proc.waitForFinished();
+//    QProcess cs;
+//    cs.start("cowsay", QStringList());
+//    cs.write(proc.readAll());
+//    cs.closeWriteChannel();
+//    cs.waitForFinished();
+
+//    ui->fortuneLabel->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+//    ui->fortuneLabel->setText(cs.readAll().trimmed());
+    ui->fortuneLabel->setVisible(false);
 }
 
 SplashWidget::~SplashWidget() {

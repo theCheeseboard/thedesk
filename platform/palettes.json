@@ -90,7 +90,7 @@
             "blue": {
                 "button": {
                     "normal": [0,200,255],
-                    "inactive": [0,200,2500],
+                    "inactive": [0,200,255],
                     "disabled": [0,150,200]
                 },
                 "buttonText": {

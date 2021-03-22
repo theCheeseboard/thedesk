@@ -24,7 +24,6 @@
 #include <the-libs_global.h>
 
 struct AppSelectionModelPrivate {
-    QString currentQuery;
     QString category;
 
     QList<ApplicationPointer> apps;
@@ -71,22 +70,6 @@ QVariant AppSelectionModel::data(const QModelIndex& index, int role) const {
     }
 
     return QVariant();
-}
-
-void AppSelectionModel::search(QString query) {
-    d->currentQuery = query;
-    d->appsShown.clear();
-
-    //If there is no current search query, show all apps
-    if (query == "") {
-        d->appsShown.append(d->apps);
-        emit dataChanged(index(0), index(rowCount()));
-        return;
-    }
-
-    //TODO: Run the search query past search plugins
-
-    emit dataChanged(index(0), index(rowCount()));
 }
 
 void AppSelectionModel::filterCategory(QString category) {
@@ -146,8 +129,8 @@ void AppSelectionModel::updateData() {
     }))->then([ = ](QList<ApplicationPointer> apps) {
         d->apps = apps;
 
-        //Perform a search to initialize the list
-        search(d->currentQuery);
+        //Perform a category search to initialize the list
+        filterCategory(d->category);
         emit ready();
     });
 }

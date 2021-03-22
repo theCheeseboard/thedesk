@@ -144,7 +144,7 @@
 <context>
     <name>AppSelectionModel</name>
     <message>
-        <location filename="../gateway/appselectionmodel.cpp" line="62"/>
+        <location filename="../gateway/appselectionmodel.cpp" line="61"/>
         <source>Application</source>
         <translation>Uygulama</translation>
     </message>
@@ -560,47 +560,47 @@
         <translation>Oturum sonu</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="86"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="87"/>
         <source>A/V</source>
         <translation>A/V</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="87"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="88"/>
         <source>Development</source>
         <translation>Gelişim</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="88"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="89"/>
         <source>Education</source>
         <translation>Eğitim</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="89"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="90"/>
         <source>Games</source>
         <translation>Oyunlar</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="90"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="91"/>
         <source>Graphics</source>
         <translation>Grafik</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="91"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="92"/>
         <source>Networking</source>
         <translation>Ağ</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="92"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="93"/>
         <source>Office</source>
         <translation>Ofisçe</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="93"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="94"/>
         <source>Science</source>
         <translation>Bilim</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="94"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="95"/>
         <source>Utilities</source>
         <translation>Araçlar</translation>
     </message>

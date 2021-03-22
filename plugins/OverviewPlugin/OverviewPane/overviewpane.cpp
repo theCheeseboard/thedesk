@@ -255,7 +255,7 @@ QString OverviewPane::displayName() {
 }
 
 QIcon OverviewPane::icon() {
-    return QIcon::fromTheme("weather-clear");
+    return QIcon::fromTheme("thedesk-overview", QIcon::fromTheme("weather-clear"));
 }
 
 QWidget* OverviewPane::leftPane() {

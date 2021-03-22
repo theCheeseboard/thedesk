@@ -31,6 +31,14 @@
     </message>
 </context>
 <context>
+    <name>SplashWidget</name>
+    <message>
+        <location filename="../splash/splashwidget.ui" line="78"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SplashWindow</name>
     <message>
         <location filename="../splashwindow.ui" line="104"/>
