@@ -15,8 +15,8 @@ Requires:       qt5 kwin the-libs-blueprint libtdesktopenvironment-blueprint lib
 %endif
 
 %if 0%{?fedora} >= 33
-BuildRequires:  make qt5-qtbase-devel the-libs-blueprint-devel libtdesktopenvironment-blueprint-devel libX11-devel libXi-devel xorg-x11-drv-libinput-devel kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel pulseaudio-qt-devel polkit-qt5-devel libtwebservices-blueprint-devel qt5-qtmultimedia-devel qt5-qtquickcontrols2-devel qt5-qtx11extras-devel qt5-qtlocation-devel qt5-qtbase-private-devel qt5-qtsvg-devel qt5-linguist qrencode-devel
-Requires:       qt5-qtbase kwin the-libs-blueprint libtdesktopenvironment-blueprint libX11 libXi kf5-networkmanager-qt kf5-modemmanager-qt pulseaudio-qt accountsservice contemporary-widgets-blueprint contemporary-icons ttf-contemporary polkit-qt5 libtwebservices-blueprint qt5-qtmultimedia qt5-qtquickcontrols2 qt5-qtx11extras qt5-qtlocation qt5-qtsvg libthedesk-blueprint qrencode
+BuildRequires:  make qt5-qtbase-devel the-libs-blueprint-devel libtdesktopenvironment-blueprint-devel libX11-devel libXi-devel xorg-x11-drv-libinput-devel kf5-networkmanager-qt-devel kf5-modemmanager-qt-devel pulseaudio-qt-devel polkit-qt5-devel libtwebservices-blueprint-devel qt5-qtmultimedia-devel qt5-qtquickcontrols2-devel qt5-qtx11extras-devel qt5-qtlocation-devel qt5-qtbase-private-devel qt5-qtsvg-devel qt5-linguist qrencode-devel kf5-bluez-qt-devel
+Requires:       qt5-qtbase kwin the-libs-blueprint libtdesktopenvironment-blueprint libX11 libXi kf5-networkmanager-qt kf5-modemmanager-qt pulseaudio-qt accountsservice contemporary-widgets-blueprint contemporary-icons ttf-contemporary polkit-qt5 libtwebservices-blueprint qt5-qtmultimedia qt5-qtquickcontrols2 qt5-qtx11extras qt5-qtlocation qt5-qtsvg libthedesk-blueprint qrencode kf5-bluez-qt
 %endif
 
 %define debug_package %{nil}
