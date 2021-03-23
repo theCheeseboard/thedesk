@@ -23,6 +23,7 @@
 #include <QScreen>
 #include <QPainter>
 #include <QMouseEvent>
+#include <QTimer>
 #include <QGraphicsOpacityEffect>
 #include <Wm/desktopwm.h>
 
@@ -35,6 +36,8 @@
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <barmanager.h>
+
+#include <Gestures/gesturedaemon.h>
 
 #include <keygrab.h>
 
@@ -55,6 +58,8 @@ struct BarWindowPrivate {
     bool barExpanding = true;
     bool statusCenterShown = false;
     bool barPendingShow = false;
+
+    GestureInteractionPtr lastGesture;
 
     tSettings settings;
 };
@@ -86,9 +91,40 @@ BarWindow::BarWindow(QWidget* parent) :
 
     d->heightAnim = new tVariantAnimation(this);
     d->heightAnim->setDuration(500);
-    d->heightAnim->setEasingCurve(QEasingCurve::OutCubic);
     connect(d->heightAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
         this->setFixedHeight(value.toInt() + 1);
+    });
+
+    connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [ = ](GestureInteractionPtr gesture) {
+        if (!gesture->isValidInteraction(GestureTypes::Swipe, GestureTypes::Down, 3)) return;
+        if (d->statusCenterShown || d->barExpanding) return;
+
+        //Capture this gesture!
+        d->lastGesture = gesture;
+
+        QSignalBlocker blocker(d->heightAnim);
+
+        d->heightAnim->setStartValue(this->height() - 1);
+        d->heightAnim->setEndValue(d->mainBarWidget->expandedHeight());
+        d->heightAnim->setEasingCurve(QEasingCurve::Linear);
+
+        d->heightAnim->stop();
+        d->barExpanding = true;
+
+        connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+            d->heightAnim->setCurrentTime(d->heightAnim->totalDuration() * gesture->percentage());
+            d->heightAnim->valueChanged(d->heightAnim->currentValue());
+        });
+        connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+            if (gesture->percentage() > 0.7) {
+                showBar();
+                QTimer::singleShot(3000, this, [ = ] {
+                    if (gesture == d->lastGesture) hideBar();
+                });
+            } else {
+                hideBar();
+            }
+        });
     });
 
     d->barStatusCenterTransitionAnim = new tVariantAnimation();
@@ -259,6 +295,7 @@ void BarWindow::barHeightChanged() {
         QSignalBlocker blocker(d->heightAnim);
         d->heightAnim->setStartValue(this->height() - 1);
         d->heightAnim->setEndValue(d->barExpanding ? d->mainBarWidget->expandedHeight() : d->mainBarWidget->statusBarHeight());
+        d->heightAnim->setEasingCurve(QEasingCurve::OutCubic);
 
         d->heightAnim->stop();
         d->heightAnim->start();
@@ -297,6 +334,7 @@ void BarWindow::showBar() {
         QSignalBlocker blocker(d->heightAnim);
         d->heightAnim->setStartValue(this->height() - 1);
         d->heightAnim->setEndValue(d->mainBarWidget->expandedHeight());
+        d->heightAnim->setEasingCurve(QEasingCurve::OutCubic);
 
         d->heightAnim->stop();
         d->heightAnim->start();
@@ -311,6 +349,7 @@ void BarWindow::hideBar() {
         QSignalBlocker blocker(d->heightAnim);
         d->heightAnim->setStartValue(this->height() - 1);
         d->heightAnim->setEndValue(d->mainBarWidget->statusBarHeight());
+        d->heightAnim->setEasingCurve(QEasingCurve::OutCubic);
 
         d->heightAnim->stop();
         d->heightAnim->start();
