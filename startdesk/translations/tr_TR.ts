@@ -35,7 +35,7 @@
     <message>
         <location filename="../splash/splashwidget.ui" line="78"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>MetinEtiketi</translation>
     </message>
 </context>
 <context>
