@@ -96,35 +96,17 @@ BarWindow::BarWindow(QWidget* parent) :
     });
 
     connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [ = ](GestureInteractionPtr gesture) {
-        if (!gesture->isValidInteraction(GestureTypes::Swipe, GestureTypes::Down, 3)) return;
-        if (d->statusCenterShown || d->barExpanding) return;
-
-        //Capture this gesture!
-        d->lastGesture = gesture;
-
-        QSignalBlocker blocker(d->heightAnim);
-
-        d->heightAnim->setStartValue(this->height() - 1);
-        d->heightAnim->setEndValue(d->mainBarWidget->expandedHeight());
-        d->heightAnim->setEasingCurve(QEasingCurve::Linear);
-
-        d->heightAnim->stop();
-        d->barExpanding = true;
-
-        connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
-            d->heightAnim->setCurrentTime(d->heightAnim->totalDuration() * gesture->percentage());
-            d->heightAnim->valueChanged(d->heightAnim->currentValue());
-        });
-        connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
-            if (gesture->percentage() > 0.7) {
-                showBar();
-                QTimer::singleShot(3000, this, [ = ] {
-                    if (gesture == d->lastGesture) hideBar();
-                });
+        if (gesture->isValidInteraction(GestureTypes::Swipe, GestureTypes::Down, 3)) {
+            if (d->barExpanding) {
+                trackStatusCenterPullDownGesture(gesture);
             } else {
-                hideBar();
+                trackBarPullDownGesture(gesture);
             }
-        });
+        } else if (gesture->isValidInteraction(GestureTypes::Swipe, GestureTypes::Up, 3)) {
+            if (d->statusCenterShown) {
+                trackStatusCenterPullUpGesture(gesture);
+            }
+        }
     });
 
     d->barStatusCenterTransitionAnim = new tVariantAnimation();
@@ -225,11 +207,13 @@ void BarWindow::resizeEvent(QResizeEvent* event) {
 }
 
 void BarWindow::enterEvent(QEvent* event) {
+    if (d->lastGesture && d->lastGesture->isActive()) return;
     d->barPendingShow = true;
     if (mapFromGlobal(QCursor::pos()).x() < d->mainBarWidget->currentAppWidgetX()) showBar();
 }
 
 void BarWindow::leaveEvent(QEvent* event) {
+    if (d->lastGesture && d->lastGesture->isActive()) return;
     hideBar();
 }
 
@@ -356,6 +340,81 @@ void BarWindow::hideBar() {
 
         d->barExpanding = false;
     }
+}
+
+void BarWindow::trackBarPullDownGesture(GestureInteractionPtr gesture) {
+    if (d->statusCenterShown || d->barExpanding) return;
+
+    //Capture this gesture!
+    d->lastGesture = gesture;
+
+    QSignalBlocker blocker(d->heightAnim);
+
+    d->heightAnim->setStartValue(this->height() - 1);
+    d->heightAnim->setEndValue(d->mainBarWidget->expandedHeight());
+    d->heightAnim->setEasingCurve(QEasingCurve::Linear);
+
+    d->heightAnim->stop();
+    d->barExpanding = true;
+
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+        d->heightAnim->setCurrentTime(d->heightAnim->totalDuration() * gesture->percentage());
+        d->heightAnim->valueChanged(d->heightAnim->currentValue());
+    });
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+        if (gesture->percentage() > 0.7) {
+            showBar();
+            QTimer::singleShot(3000, this, [ = ] {
+                if (gesture == d->lastGesture && !this->underMouse()) hideBar();
+            });
+        } else {
+            hideBar();
+        }
+    });
+}
+
+void BarWindow::trackStatusCenterPullDownGesture(GestureInteractionPtr gesture) {
+    if (d->statusCenterShown) return;
+
+    //Capture this gesture!
+    d->lastGesture = gesture;
+
+    d->barStatusCenterTransitionAnim->setDirection(tVariantAnimation::Forward);
+    d->barStatusCenterTransitionAnim->setCurrentTime(0);
+
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+        d->barStatusCenterTransitionAnim->setCurrentTime(d->barStatusCenterTransitionAnim->totalDuration() * gesture->percentage());
+        d->barStatusCenterTransitionAnim->valueChanged(d->barStatusCenterTransitionAnim->currentValue());
+    });
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+        if (gesture->percentage() > 0.7) {
+            showStatusCenter();
+        } else {
+            hideStatusCenter();
+        }
+    });
+}
+
+void BarWindow::trackStatusCenterPullUpGesture(GestureInteractionPtr gesture) {
+    if (!d->statusCenterShown) return;
+
+    //Capture this gesture!
+    d->lastGesture = gesture;
+
+    d->barStatusCenterTransitionAnim->setDirection(tVariantAnimation::Forward);
+    d->barStatusCenterTransitionAnim->setCurrentTime(d->barStatusCenterTransitionAnim->duration());
+
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+        d->barStatusCenterTransitionAnim->setCurrentTime(d->barStatusCenterTransitionAnim->totalDuration() - d->barStatusCenterTransitionAnim->totalDuration() * gesture->percentage());
+        d->barStatusCenterTransitionAnim->valueChanged(d->barStatusCenterTransitionAnim->currentValue());
+    });
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+        if (gesture->percentage() > 0.1) {
+            hideStatusCenter();
+        } else {
+            showStatusCenter();
+        }
+    });
 }
 
 void BarWindow::mouseMoveEvent(QMouseEvent* event) {

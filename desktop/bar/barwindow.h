@@ -21,6 +21,7 @@
 #define BARWINDOW_H
 
 #include <QWidget>
+#include <Gestures/gestureinteraction.h>
 #include <Wm/desktopwmwindow.h>
 
 namespace Ui {
@@ -56,6 +57,9 @@ class BarWindow : public QWidget {
         void showBar();
         void hideBar();
 
+        void trackBarPullDownGesture(GestureInteractionPtr gesture);
+        void trackStatusCenterPullDownGesture(GestureInteractionPtr gesture);
+        void trackStatusCenterPullUpGesture(GestureInteractionPtr gesture);
 };
 
 #endif // BARWINDOW_H
