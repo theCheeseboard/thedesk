@@ -48,7 +48,7 @@ struct SplashControllerPrivate {
 
     QByteArray buffer;
 
-    tSettings settings;
+    tSettings* settings;
 
     bool autostartDone = false;
 };
@@ -56,6 +56,7 @@ struct SplashControllerPrivate {
 SplashControllerPrivate* SplashController::d = new SplashControllerPrivate();
 
 SplashController::SplashController(QObject* parent) : QObject(parent) {
+    d->settings = new tSettings();
     this->initSession();
 }
 
@@ -171,7 +172,8 @@ void SplashController::runAutostart() {
 void SplashController::startWM() {
     if (!d->wm) {
         d->wm = new QProcess(this);
-        d->wm->start(d->settings.value("Session/WindowManager").toString(), d->settings.delimitedList("Session/WindowManagerArguments")); //TODO: make this a configurable setting
+        QString wmgr = d->settings->value("Session/WindowManager").toString();
+        d->wm->start(d->settings->value("Session/WindowManager").toString(), d->settings->delimitedList("Session/WindowManagerArguments")); //TODO: make this a configurable setting
     }
 }
 

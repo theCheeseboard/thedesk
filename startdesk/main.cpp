@@ -41,13 +41,13 @@ int main(int argc, char* argv[]) {
     tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
     tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
 
-    tSettings settings;
-    ScreenDaemon::instance()->setDpi(settings.value("Display/dpi").toInt());
+    tSettings* settings = new tSettings();
+    ScreenDaemon::instance()->setDpi(settings->value("Display/dpi").toInt());
 
     //Check for initialisation script
-    if (settings.value("Session/UseInitializationScript").toBool()) {
+    if (settings->value("Session/UseInitializationScript").toBool()) {
         QProcess process;
-        process.start(settings.value("Session/InitializationScript").toString(), QStringList());
+        process.start(settings->value("Session/InitializationScript").toString(), QStringList());
         process.waitForFinished();
     }
 

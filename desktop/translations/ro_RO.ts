@@ -778,7 +778,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Deconectare</translation>
     </message>
 </context>
 <context>
