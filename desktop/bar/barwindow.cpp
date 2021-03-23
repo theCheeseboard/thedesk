@@ -291,8 +291,10 @@ void BarWindow::showStatusCenter() {
     d->heightAnim->stop();
 
     StateManager::statusCenterManager()->setIsShowingStatusCenter(true);
+    int time = d->barStatusCenterTransitionAnim->currentTime();
     d->barStatusCenterTransitionAnim->setDirection(tVariantAnimation::Forward);
     d->barStatusCenterTransitionAnim->start();
+    d->barStatusCenterTransitionAnim->setCurrentTime(time);
 
     //Tell the window manager that this is now a standard system window
     DesktopWm::instance()->setSystemWindow(this);
@@ -302,8 +304,10 @@ void BarWindow::showStatusCenter() {
 
 void BarWindow::hideStatusCenter() {
     StateManager::statusCenterManager()->setIsShowingStatusCenter(false);
+    int time = d->barStatusCenterTransitionAnim->currentTime();
     d->barStatusCenterTransitionAnim->setDirection(tVariantAnimation::Backward);
     d->barStatusCenterTransitionAnim->start();
+    d->barStatusCenterTransitionAnim->setCurrentTime(time);
 
     //Tell the window manager that this is now a "taskbar" type window
     DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
@@ -409,7 +413,7 @@ void BarWindow::trackStatusCenterPullUpGesture(GestureInteractionPtr gesture) {
         d->barStatusCenterTransitionAnim->valueChanged(d->barStatusCenterTransitionAnim->currentValue());
     });
     connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
-        if (gesture->percentage() > 0.1) {
+        if (gesture->percentage() > 0.3) {
             hideStatusCenter();
         } else {
             showStatusCenter();
