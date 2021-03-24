@@ -20,12 +20,17 @@
 #include "crashwidget.h"
 #include "ui_crashwidget.h"
 
+#include <the-libs_global.h>
 #include "splash/splashcontroller.h"
+#include <tpopover.h>
+#include "backtracepopover.h"
 
 CrashWidget::CrashWidget(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::CrashWidget) {
     ui->setupUi(this);
+
+    ui->iconLabel->setPixmap(QIcon(":/icons/crash.svg").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
 
     connect(SplashController::instance(), &SplashController::crash, this, [ = ] {
         ui->descriptionLabel->setText(tr("theDesk had a problem and has stopped working."));
@@ -45,4 +50,15 @@ void CrashWidget::on_logOutButton_clicked() {
 
 void CrashWidget::on_relaunchButton_clicked() {
     SplashController::instance()->startDE();
+}
+
+void CrashWidget::on_detailsButton_clicked() {
+    BacktracePopover* bt = new BacktracePopover();
+    tPopover* popover = new tPopover(bt);
+    popover->setPopoverWidth(SC_DPI(600));
+    popover->setPopoverSide(tPopover::Bottom);
+    connect(bt, &BacktracePopover::done, popover, &tPopover::dismiss);
+    connect(popover, &tPopover::dismissed, bt, &BacktracePopover::deleteLater);
+    connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
+    popover->show(this);
 }

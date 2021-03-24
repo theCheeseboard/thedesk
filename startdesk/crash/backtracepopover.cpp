@@ -1,7 +1,7 @@
 /****************************************
  *
  *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
- *   Copyright (C) 2020 Victor Tran
+ *   Copyright (C) 2021 Victor Tran
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,31 +17,21 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef CRASHWIDGET_H
-#define CRASHWIDGET_H
+#include "backtracepopover.h"
+#include "ui_backtracepopover.h"
 
-#include <QWidget>
+BacktracePopover::BacktracePopover(QWidget* parent) :
+    QWidget(parent),
+    ui(new Ui::BacktracePopover) {
+    ui->setupUi(this);
 
-namespace Ui {
-    class CrashWidget;
+    ui->titleLabel->setBackButtonShown(true);
 }
 
-class CrashWidget : public QWidget {
-        Q_OBJECT
+BacktracePopover::~BacktracePopover() {
+    delete ui;
+}
 
-    public:
-        explicit CrashWidget(QWidget* parent = nullptr);
-        ~CrashWidget();
-
-    private slots:
-        void on_logOutButton_clicked();
-
-        void on_relaunchButton_clicked();
-
-        void on_detailsButton_clicked();
-
-    private:
-        Ui::CrashWidget* ui;
-};
-
-#endif // CRASHWIDGET_H
+void BacktracePopover::on_titleLabel_backButtonClicked() {
+    emit done();
+}

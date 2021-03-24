@@ -792,12 +792,12 @@ Pójdziemy i zresetujemy twoje ustawienia za %n sekund, jeśli nic nie zrobisz.<
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="69"/>
+        <location filename="../main.cpp" line="72"/>
         <source>Safe Mode</source>
         <translation>Tryb bezpieczeństwa</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="69"/>
+        <location filename="../main.cpp" line="72"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>Trzymasz klawisz CTRL. Uruchomić theDesk w trybie awaryjnym?</translation>
     </message>

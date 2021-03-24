@@ -38,7 +38,8 @@
 #include "server/sessionserver.h"
 #include <onboarding/onboardingcontroller.h>
 #include "run/rundialog.h"
-#include "tsettings.h"
+#include <tsettings.h>
+#include "crash/crashhandling.h"
 
 #include "gateway/appsearchprovider.h"
 
@@ -57,6 +58,8 @@ int main(int argc, char* argv[]) {
 
     tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
     tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
+
+    CrashHandling::prepareCrashHandler();
 
     //Parse command line arguments
     int parseResult = CommandLine::parse(a.arguments());

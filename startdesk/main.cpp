@@ -36,6 +36,7 @@ int main(int argc, char* argv[]) {
     a.setApplicationName("theDesk");
     a.setOrganizationName("theSuite");
     a.setApplicationDisplayName("theDesk");
+    a.setQuitOnLastWindowClosed(false);
 
     //Set screen DPI settings
     tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");

@@ -19,6 +19,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    crash/backtracedialog.cpp \
+    crash/backtracepopover.cpp \
+    crash/backtracewidget.cpp \
     crash/crashwidget.cpp \
     main.cpp \
     splash/splashcontroller.cpp \
@@ -26,12 +29,18 @@ SOURCES += \
     splashwindow.cpp
 
 HEADERS += \
+    crash/backtracedialog.h \
+    crash/backtracepopover.h \
+    crash/backtracewidget.h \
     crash/crashwidget.h \
     splash/splashcontroller.h \
     splash/splashwidget.h \
     splashwindow.h
 
 FORMS += \
+    crash/backtracedialog.ui \
+    crash/backtracepopover.ui \
+    crash/backtracewidget.ui \
     crash/crashwidget.ui \
     splash/splashwidget.ui \
     splashwindow.ui
@@ -57,3 +66,6 @@ unix:!macx: LIBS += -L$$OUT_PWD/../libthedesk/ -lthedesk
 
 INCLUDEPATH += $$PWD/../libthedesk
 DEPENDPATH += $$PWD/../libthedesk
+
+RESOURCES += \
+    resources.qrc

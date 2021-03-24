@@ -38,6 +38,8 @@ class SplashController : public QObject {
 
         void respond(bool answer);
 
+        QStringList lastBacktrace();
+
     signals:
         void starting();
         void hideSplashes();

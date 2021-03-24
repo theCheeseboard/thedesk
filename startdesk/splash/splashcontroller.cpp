@@ -30,10 +30,14 @@
 #include <QJsonObject>
 #include <QPointer>
 #include <QDir>
+#include <QElapsedTimer>
+#include <QTimer>
 #include <tsettings.h>
+#include <tnotification.h>
 #include <Applications/application.h>
 #include <the-libs_global.h>
 #include "splashwindow.h"
+#include "crash/backtracedialog.h"
 
 struct SplashControllerPrivate {
     SplashController* instance = nullptr;
@@ -51,6 +55,11 @@ struct SplashControllerPrivate {
     tSettings* settings;
 
     bool autostartDone = false;
+    bool startedSuccessfully = false;
+    bool performingAutoRecovery = false;
+    QElapsedTimer timeSinceSuccessfulStart;
+    QStringList currentBacktrace;
+    QStringList lastBacktrace;
 };
 
 SplashControllerPrivate* SplashController::d = new SplashControllerPrivate();
@@ -86,6 +95,26 @@ void SplashController::socketDataAvailable() {
                 QString type = obj.value("type").toString();
                 if (type == "hideSplash") {
                     emit hideSplashes();
+                    d->startedSuccessfully = true;
+                    d->timeSinceSuccessfulStart.restart();
+
+                    if (d->performingAutoRecovery) {
+                        tNotification* notification = new tNotification();
+                        notification->setAppIcon("com.vicr123.thedesk");
+                        notification->setAppName("theDesk");
+                        notification->setSummary(tr("Oh, Bonkers!"));
+                        notification->setText(tr("theDesk had a problem and was restarted."));
+                        notification->setTransient(true);
+                        notification->insertAction("details", tr("View Details"));
+                        notification->post();
+                        connect(notification, &tNotification::actionClicked, this, [ = ](QString key) {
+                            if (key == "details") {
+                                BacktraceDialog* dialog = new BacktraceDialog();
+                                connect(dialog, &BacktraceDialog::finished, dialog, &BacktraceDialog::deleteLater);
+                                dialog->show();
+                            }
+                        });
+                    }
                 } else if (type == "showSplash") {
                     emit starting();
                 } else if (type == "autoStart") {
@@ -183,10 +212,11 @@ void SplashController::startDE() {
 
     emit starting();
     d->server->listen(d->serverPath);
+    d->startedSuccessfully = false;
 
     QString thedeskPath = qEnvironmentVariable("THEDESK_PATH", "/usr/bin/thedesk");
     d->process = new QProcess(this);
-    d->process->setProcessChannelMode(QProcess::ForwardedChannels);
+//    d->process->setProcessChannelMode(QProcess::ForwardedChannels);
     d->process->setProgram(thedeskPath);
     d->process->setArguments({
         "--sessionserver", d->serverPath
@@ -194,18 +224,29 @@ void SplashController::startDE() {
     d->process->start();
 
     connect(d->process, &QProcess::errorOccurred, this, [ = ](QProcess::ProcessError error) {
-        if (error == QProcess::FailedToStart) {
+        if (error == QProcess::FailedToStart || !d->startedSuccessfully) {
             emit startFail();
         } else if (error == QProcess::Crashed) {
-            emit crash();
+            d->lastBacktrace = d->currentBacktrace;
+            d->currentBacktrace.clear();
+
+            //Check to see if we should crash or not
+            if (d->timeSinceSuccessfulStart.hasExpired(60000)) {
+                //Attempt to recover
+                QTimer::singleShot(1000, this, [ = ] {
+                    d->performingAutoRecovery = true;
+                    this->startDE();
+                });
+            } else {
+                d->performingAutoRecovery = false;
+                emit crash();
+            }
         }
     });
     connect(d->process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [ = ](int exitCode, QProcess::ExitStatus status) {
         if (status == QProcess::NormalExit) {
             if (exitCode == 0) {
                 this->logout();
-            } else {
-                emit crash();
             }
         }
 
@@ -214,6 +255,24 @@ void SplashController::startDE() {
 
         d->server->close();
         if (d->socket) d->socket->close();
+    });
+    connect(d->process, &QProcess::readyReadStandardOutput, this, [ = ] {
+        QString data = d->process->readAllStandardOutput();
+
+        QTextStream output(stdout);
+        output << data;
+    });
+    connect(d->process, &QProcess::readyReadStandardError, this, [ = ] {
+        QString data = d->process->readAllStandardError();
+
+        for (QString line : data.split("\n")) {
+            if (line.startsWith("THEDESK-TRAP:")) {
+                d->currentBacktrace.append(line.mid(14));
+            }
+        }
+
+        QTextStream output(stderr);
+        output << data;
     });
 }
 
@@ -228,4 +287,8 @@ void SplashController::respond(bool answer) {
         {"response", answer}
     })).toJson());
     d->socket->flush();
+}
+
+QStringList SplashController::lastBacktrace() {
+    return d->lastBacktrace;
 }

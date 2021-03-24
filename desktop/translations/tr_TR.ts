@@ -792,12 +792,12 @@ Hiçbir şey yapmazsanız, ayarlarınızı %n saniye içinde sıfırlayacağız.
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="69"/>
+        <location filename="../main.cpp" line="72"/>
         <source>Safe Mode</source>
         <translation>Güvenli mod</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="69"/>
+        <location filename="../main.cpp" line="72"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>CTRL tuşunu basılı tutuyorsunuz. Güvenli modda theDesk başlatmak?</translation>
     </message>

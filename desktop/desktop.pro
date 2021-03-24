@@ -31,6 +31,7 @@ SOURCES += \
     bar/mainbarwidget.cpp \
     bar/taskbarwidget.cpp \
     cli/commandline.cpp \
+    crash/crashhandling.cpp \
     gateway/appsearchprovider.cpp \
     gateway/appselectionmodel.cpp \
     gateway/appselectionmodellistdelegate.cpp \
@@ -67,6 +68,7 @@ HEADERS += \
     bar/mainbarwidget.h \
     bar/taskbarwidget.h \
     cli/commandline.h \
+    crash/crashhandling.h \
     gateway/appsearchprovider.h \
     gateway/appselectionmodel.h \
     gateway/appselectionmodellistdelegate.h \

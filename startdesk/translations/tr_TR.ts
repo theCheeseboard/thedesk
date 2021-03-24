@@ -2,6 +2,46 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="tr_TR" sourcelanguage="en_US">
 <context>
+    <name>BacktraceDialog</name>
+    <message>
+        <location filename="../crash/backtracedialog.ui" line="14"/>
+        <location filename="../crash/backtracedialog.ui" line="35"/>
+        <source>Error Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BacktracePopover</name>
+    <message>
+        <location filename="../crash/backtracepopover.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../crash/backtracepopover.ui" line="35"/>
+        <source>Error Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>BacktraceWidget</name>
+    <message>
+        <location filename="../crash/backtracewidget.ui" line="50"/>
+        <source>Review the information below and ensure it does not contain any personal data. Attach the information to a bug report and we&apos;ll get back to you!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../crash/backtracewidget.ui" line="66"/>
+        <source>ACTIONS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../crash/backtracewidget.ui" line="73"/>
+        <source>Save to file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CrashWidget</name>
     <message>
         <location filename="../crash/crashwidget.ui" line="38"/>
@@ -9,25 +49,48 @@
         <translation>Oh, Bir Kaçık!</translation>
     </message>
     <message>
-        <location filename="../crash/crashwidget.ui" line="48"/>
-        <location filename="../crash/crashwidget.cpp" line="31"/>
+        <location filename="../crash/crashwidget.ui" line="61"/>
+        <location filename="../crash/crashwidget.cpp" line="36"/>
         <source>theDesk had a problem and has stopped working.</source>
         <translation>theDesk&apos;te bir sorun vardı ve çalışmayı durdurdu.</translation>
     </message>
     <message>
-        <location filename="../crash/crashwidget.ui" line="73"/>
+        <location filename="../crash/crashwidget.ui" line="86"/>
         <source>Relaunch theDesk</source>
         <translation>TheDesk&apos;i yeniden başlatın</translation>
     </message>
     <message>
-        <location filename="../crash/crashwidget.ui" line="84"/>
+        <location filename="../crash/crashwidget.ui" line="97"/>
         <source>Log Out</source>
         <translation>Çıkış Yap</translation>
     </message>
     <message>
-        <location filename="../crash/crashwidget.cpp" line="34"/>
+        <location filename="../crash/crashwidget.ui" line="151"/>
+        <source>View Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../crash/crashwidget.cpp" line="39"/>
         <source>theDesk couldn&apos;t start because of a problem.</source>
         <translation>theDesk bir sorun nedeniyle başlayamadı.</translation>
+    </message>
+</context>
+<context>
+    <name>SplashController</name>
+    <message>
+        <location filename="../splash/splashcontroller.cpp" line="105"/>
+        <source>Oh, Bonkers!</source>
+        <translation type="unfinished">Oh, Bir Kaçık!</translation>
+    </message>
+    <message>
+        <location filename="../splash/splashcontroller.cpp" line="106"/>
+        <source>theDesk had a problem and was restarted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../splash/splashcontroller.cpp" line="108"/>
+        <source>View Details</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

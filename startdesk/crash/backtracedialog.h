@@ -1,7 +1,7 @@
 /****************************************
  *
  *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
- *   Copyright (C) 2020 Victor Tran
+ *   Copyright (C) 2021 Victor Tran
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,31 +17,25 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef CRASHWIDGET_H
-#define CRASHWIDGET_H
+#ifndef BACKTRACEDIALOG_H
+#define BACKTRACEDIALOG_H
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
-    class CrashWidget;
+    class BacktraceDialog;
 }
 
-class CrashWidget : public QWidget {
+class BacktraceDialog : public QDialog
+{
         Q_OBJECT
 
     public:
-        explicit CrashWidget(QWidget* parent = nullptr);
-        ~CrashWidget();
-
-    private slots:
-        void on_logOutButton_clicked();
-
-        void on_relaunchButton_clicked();
-
-        void on_detailsButton_clicked();
+        explicit BacktraceDialog(QWidget *parent = nullptr);
+        ~BacktraceDialog();
 
     private:
-        Ui::CrashWidget* ui;
+        Ui::BacktraceDialog *ui;
 };
 
-#endif // CRASHWIDGET_H
+#endif // BACKTRACEDIALOG_H
