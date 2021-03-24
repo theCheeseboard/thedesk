@@ -25,6 +25,7 @@
 #include <QPainter>
 #include <tvariantanimation.h>
 #include <Wm/desktopwm.h>
+#include <Gestures/gesturedaemon.h>
 
 #include <tsettings.h>
 
@@ -36,6 +37,8 @@ struct GatewayPrivate {
 
     tVariantAnimation* width;
     tSettings settings;
+
+    GestureInteractionPtr lastGesture;
 };
 
 GatewayPrivate* Gateway::d = new GatewayPrivate();
@@ -51,7 +54,6 @@ Gateway::Gateway() :
     });
 
     d->width = new tVariantAnimation();
-    d->width->setEasingCurve(QEasingCurve::OutCubic);
     d->width->setDuration(500);
     connect(d->width, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
         this->setFixedWidth(value.toInt());
@@ -63,7 +65,8 @@ Gateway::Gateway() :
         this->setGeometry(geometry);
     });
     connect(d->width, &tVariantAnimation::finished, this, [ = ] {
-        if (this->width() == 0) {
+        if (d->lastGesture && d->lastGesture->isActive()) return;
+        if (this->geometry().width() == 0) {
             QDialog::hide();
             ui->gatewayContainer->clearState();
         }
@@ -73,14 +76,22 @@ Gateway::Gateway() :
     this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     this->setFixedWidth(0);
 
+    connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [ = ](GestureInteractionPtr interaction) {
+        if (interaction->isValidInteraction(GestureTypes::Swipe, GestureTypes::Right, 3)) {
+            trackGatewayOpenGesture(interaction);
+        } else if (interaction->isValidInteraction(GestureTypes::Swipe, GestureTypes::Left, 3)) {
+            trackGatewayCloseGesture(interaction);
+        }
+    });
+
     ui->line->raise();
 }
 
 void Gateway::resizeEvent(QResizeEvent* event) {
     ui->gatewayContainer->setFixedSize(ui->gatewayContainer->sizeHint().width(), this->height());
-    ui->gatewayContainer->move(this->width() - ui->gatewayContainer->width() - 1, 0);
-    ui->line->setGeometry(this->width() - 1, 0, 1, this->height());
-    StateManager::gatewayManager()->setGatewayWidth(this->width());
+    ui->gatewayContainer->move(this->geometry().width() - ui->gatewayContainer->width() - 1, 0);
+    ui->line->setGeometry(this->geometry().width() - 1, 0, 1, this->height());
+    StateManager::gatewayManager()->setGatewayWidth(this->geometry().width());
 }
 
 void Gateway::changeEvent(QEvent* event) {
@@ -92,6 +103,60 @@ void Gateway::changeEvent(QEvent* event) {
         default:
             ;
     }
+}
+
+void Gateway::trackGatewayOpenGesture(GestureInteractionPtr gesture) {
+    if (this->isVisible()) return;
+
+    //Capture this gesture!
+    d->lastGesture = gesture;
+
+    QScreen* screen = qApp->primaryScreen();
+    this->setFixedHeight(screen->geometry().height());
+    d->width->setEasingCurve(QEasingCurve::Linear);
+    d->width->setCurrentTime(0);
+    d->width->setStartValue(0);
+    d->width->setEndValue(ui->gatewayContainer->sizeHint().width() + 1);
+
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+        d->width->setCurrentTime(d->width->totalDuration() * gesture->percentage());
+        d->width->valueChanged(d->width->currentValue());
+    });
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+        if (gesture->extrapolatePercentage(100) > 0.3) {
+            show();
+        } else {
+            close();
+        }
+    });
+
+    QDialog::show();
+}
+
+void Gateway::trackGatewayCloseGesture(GestureInteractionPtr gesture) {
+    if (!this->isVisible()) return;
+
+    //Capture this gesture!
+    d->lastGesture = gesture;
+
+    QScreen* screen = qApp->primaryScreen();
+    this->setFixedHeight(screen->geometry().height());
+    d->width->setEasingCurve(QEasingCurve::Linear);
+    d->width->setCurrentTime(0);
+    d->width->setStartValue(ui->gatewayContainer->sizeHint().width() + 1);
+    d->width->setEndValue(0);
+
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+        d->width->setCurrentTime(d->width->totalDuration() * gesture->percentage());
+        d->width->valueChanged(d->width->currentValue());
+    });
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+        if (gesture->extrapolatePercentage(100) > 0.3) {
+            close();
+        } else {
+            show();
+        }
+    });
 }
 
 Gateway::~Gateway() {
@@ -107,7 +172,8 @@ void Gateway::show() {
     QScreen* screen = qApp->primaryScreen();
     this->setFixedHeight(screen->geometry().height());
 
-    d->width->setStartValue(this->width());
+    d->width->setEasingCurve(QEasingCurve::OutCubic);
+    d->width->setStartValue(this->geometry().width());
     d->width->setEndValue(ui->gatewayContainer->sizeHint().width() + 1);
     d->width->stop();
     d->width->start();
@@ -117,7 +183,8 @@ void Gateway::show() {
 }
 
 void Gateway::close() {
-    d->width->setStartValue(this->width());
+    d->width->setEasingCurve(QEasingCurve::OutCubic);
+    d->width->setStartValue(this->geometry().width());
     d->width->setEndValue(0);
     d->width->stop();
     d->width->start();

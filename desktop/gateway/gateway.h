@@ -21,6 +21,7 @@
 #define GATEWAY_H
 
 #include <QDialog>
+#include <Gestures/gestureinteraction.h>
 
 namespace Ui {
     class Gateway;
@@ -46,6 +47,9 @@ class Gateway : public QDialog {
 
         void resizeEvent(QResizeEvent* event);
         void changeEvent(QEvent* event);
+
+        void trackGatewayOpenGesture(GestureInteractionPtr gesture);
+        void trackGatewayCloseGesture(GestureInteractionPtr gesture);
 };
 
 #endif // GATEWAY_H

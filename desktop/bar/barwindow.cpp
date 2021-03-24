@@ -38,6 +38,9 @@
 #include <barmanager.h>
 
 #include <Gestures/gesturedaemon.h>
+#include <tpopover.h>
+
+#include "gateway/gateway.h"
 
 #include <keygrab.h>
 
@@ -190,6 +193,9 @@ BarWindow::BarWindow(QWidget* parent) :
     });
 
     ui->line->raise();
+
+    //Initialise the Gateway
+    Gateway::instance();
 }
 
 BarWindow::~BarWindow() {
@@ -366,7 +372,7 @@ void BarWindow::trackBarPullDownGesture(GestureInteractionPtr gesture) {
         d->heightAnim->valueChanged(d->heightAnim->currentValue());
     });
     connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
-        if (gesture->percentage() > 0.7) {
+        if (gesture->extrapolatePercentage(100) > 0.7) {
             showBar();
             QTimer::singleShot(3000, this, [ = ] {
                 if (gesture == d->lastGesture && !this->underMouse()) hideBar();
@@ -391,7 +397,7 @@ void BarWindow::trackStatusCenterPullDownGesture(GestureInteractionPtr gesture) 
         d->barStatusCenterTransitionAnim->valueChanged(d->barStatusCenterTransitionAnim->currentValue());
     });
     connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
-        if (gesture->percentage() > 0.7) {
+        if (gesture->extrapolatePercentage(100) > 0.7) {
             showStatusCenter();
         } else {
             hideStatusCenter();
@@ -401,6 +407,17 @@ void BarWindow::trackStatusCenterPullDownGesture(GestureInteractionPtr gesture) 
 
 void BarWindow::trackStatusCenterPullUpGesture(GestureInteractionPtr gesture) {
     if (!d->statusCenterShown) return;
+
+    //Only accept this gesture if there is not currently a popover active
+    QList<QWidget*> childWidgets;
+    childWidgets.append(this);
+    while (!childWidgets.isEmpty()) {
+        QWidget* w = childWidgets.takeFirst();
+        if (tPopover::popoverForPopoverWidget(w)) return;
+        for (QObject* o : w->children()) {
+            if (qobject_cast<QWidget*>(o)) childWidgets.append(qobject_cast<QWidget*>(o));
+        }
+    }
 
     //Capture this gesture!
     d->lastGesture = gesture;
@@ -413,7 +430,7 @@ void BarWindow::trackStatusCenterPullUpGesture(GestureInteractionPtr gesture) {
         d->barStatusCenterTransitionAnim->valueChanged(d->barStatusCenterTransitionAnim->currentValue());
     });
     connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
-        if (gesture->percentage() > 0.3) {
+        if (gesture->extrapolatePercentage(100) > 0.3) {
             hideStatusCenter();
         } else {
             showStatusCenter();
