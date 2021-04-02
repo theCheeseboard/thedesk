@@ -5,7 +5,12 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++11
 
 # Include the-libs build tools
-include(/usr/share/the-libs/pri/gentranslations.pri)
+# Include the-libs build tools
+equals(THELIBS_BUILDTOOLS_PATH, "") {
+    THELIBS_BUILDTOOLS_PATH = $$[QT_INSTALL_PREFIX]/share/the-libs/pri
+}
+include($$THELIBS_BUILDTOOLS_PATH/gentranslations.pri)
+include($$THELIBS_BUILDTOOLS_PATH/varset.pri)
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings

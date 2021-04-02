@@ -37,7 +37,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QPushButton" name="lastDesktopButton">
+    <widget class="QToolButton" name="lastDesktopButton">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -48,9 +48,6 @@
       <iconset theme="list-add"/>
      </property>
      <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <property name="flat">
       <bool>true</bool>
      </property>
     </widget>

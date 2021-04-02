@@ -179,6 +179,9 @@ void SplashController::runAutostart() {
         if (!app->getStringList("OnlyShowIn", {"thedesk"}).contains("thedesk")) continue;
         if (app->getStringList("NotShowIn").contains("thedesk")) continue;
 
+        //Blacklist Touchegg
+        if (desktopEntry == "touchegg") continue;
+
         if (app->hasProperty("TryExec")) {
             QString tryExecPath = app->getProperty("TryExec").toString();
             if (tryExecPath.startsWith("/")) {
