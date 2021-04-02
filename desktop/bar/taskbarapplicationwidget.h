@@ -1,7 +1,7 @@
 /****************************************
  *
  *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
- *   Copyright (C) 2020 Victor Tran
+ *   Copyright (C) 2021 Victor Tran
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,41 +17,36 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef TASKBARWIDGET_H
-#define TASKBARWIDGET_H
+#ifndef TASKBARAPPLICATIONWIDGET_H
+#define TASKBARAPPLICATIONWIDGET_H
 
-#include <QWidget>
-
-namespace Ui {
-    class TaskbarWidget;
-}
+#include <QPushButton>
 
 class DesktopWmWindow;
 typedef QPointer<DesktopWmWindow> DesktopWmWindowPtr;
 
-struct TaskbarWidgetPrivate;
-class TaskbarWidget : public QWidget {
+struct TaskbarApplicationWidgetPrivate;
+class TaskbarApplicationWidget : public QPushButton {
         Q_OBJECT
-
     public:
-        explicit TaskbarWidget(QWidget* parent = nullptr);
-        ~TaskbarWidget();
+        explicit TaskbarApplicationWidget(QString desktopEntry, uint desktop, QWidget* parent = nullptr);
+        ~TaskbarApplicationWidget();
 
-    private slots:
-        void on_lastDesktopButton_clicked();
+        void trackWindow(DesktopWmWindowPtr window);
+        void removeTrackedWindow(DesktopWmWindowPtr window);
+        QList<DesktopWmWindowPtr> trackedWindows();
+
+        void setColor(QColor color);
+
+    signals:
+        void iconChanged();
+        void windowsRemoved();
 
     private:
-        Ui::TaskbarWidget* ui;
-        TaskbarWidgetPrivate* d;
+        TaskbarApplicationWidgetPrivate* d;
 
         void resizeEvent(QResizeEvent* event);
-
-        void addWindow(DesktopWmWindowPtr window);
-        void removeWindow(DesktopWmWindowPtr window);
-        void activeWindowChanged();
-
-        void normaliseDesktops();
-        void updateDesktop();
+        void updateIcon();
 };
 
-#endif // TASKBARWIDGET_H
+#endif // TASKBARAPPLICATIONWIDGET_H

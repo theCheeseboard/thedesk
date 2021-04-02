@@ -29,6 +29,8 @@ SOURCES += \
     bar/currentappwidget.cpp \
     bar/currentappwidgetmenu.cpp \
     bar/mainbarwidget.cpp \
+    bar/taskbarapplicationwidget.cpp \
+    bar/taskbardesktopwidget.cpp \
     bar/taskbarwidget.cpp \
     cli/commandline.cpp \
     crash/crashhandling.cpp \
@@ -66,6 +68,8 @@ HEADERS += \
     bar/currentappwidget.h \
     bar/currentappwidgetmenu.h \
     bar/mainbarwidget.h \
+    bar/taskbarapplicationwidget.h \
+    bar/taskbardesktopwidget.h \
     bar/taskbarwidget.h \
     cli/commandline.h \
     crash/crashhandling.h \
@@ -102,6 +106,7 @@ FORMS += \
     bar/currentappwidget.ui \
     bar/currentappwidgetmenu.ui \
     bar/mainbarwidget.ui \
+    bar/taskbardesktopwidget.ui \
     bar/taskbarwidget.ui \
     gateway/gateway.ui \
     gateway/maingatewaywidget.ui \

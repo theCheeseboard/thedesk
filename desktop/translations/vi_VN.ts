@@ -784,6 +784,22 @@ Chúng tôi sẽ đặt cài đặt của bạn lại sau %n giay nếu bạn kh
     </message>
 </context>
 <context>
+    <name>TaskbarDesktopWidget</name>
+    <message>
+        <location filename="../bar/taskbardesktopwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TaskbarWidget</name>
+    <message>
+        <location filename="../bar/taskbarwidget.ui" line="48"/>
+        <source>+</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
         <location filename="../main.cpp" line="72"/>

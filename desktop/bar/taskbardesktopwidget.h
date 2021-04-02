@@ -1,7 +1,7 @@
 /****************************************
  *
  *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
- *   Copyright (C) 2020 Victor Tran
+ *   Copyright (C) 2021 Victor Tran
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,41 +17,46 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef TASKBARWIDGET_H
-#define TASKBARWIDGET_H
+#ifndef TASKBARDESKTOPWIDGET_H
+#define TASKBARDESKTOPWIDGET_H
 
 #include <QWidget>
 
 namespace Ui {
-    class TaskbarWidget;
+    class TaskbarDesktopWidget;
 }
 
 class DesktopWmWindow;
 typedef QPointer<DesktopWmWindow> DesktopWmWindowPtr;
 
-struct TaskbarWidgetPrivate;
-class TaskbarWidget : public QWidget {
+struct TaskbarDesktopWidgetPrivate;
+class TaskbarDesktopWidget : public QWidget {
         Q_OBJECT
 
     public:
-        explicit TaskbarWidget(QWidget* parent = nullptr);
-        ~TaskbarWidget();
+        explicit TaskbarDesktopWidget(uint desktop, QWidget* parent = nullptr);
+        ~TaskbarDesktopWidget();
+
+        void moveDesktop(uint newDesktop);
 
     private slots:
-        void on_lastDesktopButton_clicked();
+        void on_desktopOverviewButton_clicked();
 
     private:
-        Ui::TaskbarWidget* ui;
-        TaskbarWidgetPrivate* d;
+        Ui::TaskbarDesktopWidget* ui;
+        TaskbarDesktopWidgetPrivate* d;
 
         void resizeEvent(QResizeEvent* event);
 
-        void addWindow(DesktopWmWindowPtr window);
-        void removeWindow(DesktopWmWindowPtr window);
-        void activeWindowChanged();
+        void windowAdded(DesktopWmWindowPtr window);
+        void windowRemoved(DesktopWmWindowPtr window);
+        void registerOnDesktop(DesktopWmWindowPtr window);
+        void deregisterFromDesktop(DesktopWmWindowPtr window);
 
-        void normaliseDesktops();
+        void updateOverviewButtonIcon();
         void updateDesktop();
+        void updateAnimation();
+        void finishAnimation();
 };
 
-#endif // TASKBARWIDGET_H
+#endif // TASKBARDESKTOPWIDGET_H

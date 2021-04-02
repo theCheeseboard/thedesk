@@ -180,6 +180,7 @@ void Gateway::show() {
 
     QDialog::show();
     QDialog::activateWindow();
+    ui->gatewayContainer->setFocus();
 }
 
 void Gateway::close() {
