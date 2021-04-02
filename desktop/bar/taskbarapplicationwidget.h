@@ -47,6 +47,7 @@ class TaskbarApplicationWidget : public QPushButton {
 
         void resizeEvent(QResizeEvent* event);
         void updateIcon();
+        void updateActive();
 };
 
 #endif // TASKBARAPPLICATIONWIDGET_H

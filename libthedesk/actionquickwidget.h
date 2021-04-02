@@ -28,12 +28,14 @@ namespace Ui {
 }
 
 class Chunk;
+class QuickWidgetContainer;
 struct ActionQuickWidgetPrivate;
 class ActionQuickWidget : public QWidget {
         Q_OBJECT
 
     public:
         explicit ActionQuickWidget(Chunk* parent = nullptr);
+        explicit ActionQuickWidget(QuickWidgetContainer* parent = nullptr);
         ~ActionQuickWidget();
 
         void addAction(QAction* action);

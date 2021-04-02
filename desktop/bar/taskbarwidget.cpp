@@ -54,8 +54,9 @@ TaskbarWidget::TaskbarWidget(QWidget* parent) :
     connect(DesktopWm::instance(), &DesktopWm::windowAdded, this, &TaskbarWidget::addWindow);
     connect(DesktopWm::instance(), &DesktopWm::windowRemoved, this, &TaskbarWidget::removeWindow);
 
-    normaliseDesktops();
+    ui->lastDesktopButton->setIconSize(SC_DPI_T(QSize(24, 24), QSize));
 
+    normaliseDesktops();
     updateDesktop();
 }
 
@@ -134,7 +135,10 @@ void TaskbarWidget::normaliseDesktops() {
 }
 
 void TaskbarWidget::updateDesktop() {
-    ui->lastDesktopButton->setChecked(DesktopWm::currentDesktop() == DesktopWm::desktops().count() - 1);
+    //Race condition?
+    QTimer::singleShot(500, this, [ = ] {
+        ui->lastDesktopButton->setChecked(DesktopWm::currentDesktop() == DesktopWm::desktops().count() - 1);
+    });
 }
 
 void TaskbarWidget::on_lastDesktopButton_clicked() {

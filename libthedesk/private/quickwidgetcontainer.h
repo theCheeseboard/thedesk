@@ -28,6 +28,7 @@ namespace Ui {
 
 class Chunk;
 class CurrentAppWidget;
+class TaskbarApplicationWidget;
 struct QuickWidgetContainerPrivate;
 class QuickWidgetContainer : public QWidget {
         Q_OBJECT
@@ -48,6 +49,7 @@ class QuickWidgetContainer : public QWidget {
 
     protected:
         friend CurrentAppWidget;
+        friend TaskbarApplicationWidget;
         void setQuickWidget(QWidget* widget);
 
     private:

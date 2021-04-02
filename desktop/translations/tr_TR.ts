@@ -798,14 +798,6 @@ Hiçbir şey yapmazsanız, ayarlarınızı %n saniye içinde sıfırlayacağız.
     </message>
 </context>
 <context>
-    <name>TaskbarWidget</name>
-    <message>
-        <location filename="../bar/taskbarwidget.ui" line="48"/>
-        <source>+</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>main</name>
     <message>
         <location filename="../main.cpp" line="72"/>

@@ -44,8 +44,8 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="text">
-      <string>+</string>
+     <property name="icon">
+      <iconset theme="list-add"/>
      </property>
      <property name="checkable">
       <bool>true</bool>

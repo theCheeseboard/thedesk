@@ -106,7 +106,7 @@ void TaskbarDesktopWidget::windowAdded(DesktopWmWindowPtr window) {
         }
     });
 
-    if (window->desktop() == d->desktop) registerOnDesktop(window);
+    if (window->desktop() == d->desktop && window->shouldShowInTaskbar()) registerOnDesktop(window);
 }
 
 void TaskbarDesktopWidget::windowRemoved(DesktopWmWindowPtr window) {
@@ -129,6 +129,8 @@ void TaskbarDesktopWidget::registerOnDesktop(DesktopWmWindowPtr window) {
             d->applicationWidgetOrder.removeOne(widget);
             ui->applicationsLayout->removeWidget(widget);
             widget->deleteLater();
+
+            updateOverviewButtonIcon();
         });
         ui->applicationsLayout->addWidget(widget);
         d->applicationWidgets.insert(desktopEntry, widget);

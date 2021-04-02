@@ -23,10 +23,12 @@
 #include <QPushButton>
 #include <QActionEvent>
 #include <QAction>
+#include "private/quickwidgetcontainer.h"
 #include "chunk.h"
 
 struct ActionQuickWidgetPrivate {
-    Chunk* parentChunk;
+    Chunk* parentChunk = nullptr;
+    QuickWidgetContainer* parentQuickWidget = nullptr;
     QMap<QAction*, QWidget*> buttons;
 };
 
@@ -37,6 +39,15 @@ ActionQuickWidget::ActionQuickWidget(Chunk* parent) :
 
     d = new ActionQuickWidgetPrivate();
     d->parentChunk = parent;
+}
+
+ActionQuickWidget::ActionQuickWidget(QuickWidgetContainer* parent) :
+    QWidget(parent),
+    ui(new Ui::ActionQuickWidget) {
+    ui->setupUi(this);
+
+    d = new ActionQuickWidgetPrivate();
+    d->parentQuickWidget = parent;
 }
 
 ActionQuickWidget::~ActionQuickWidget() {
@@ -74,7 +85,11 @@ bool ActionQuickWidget::event(QEvent* event) {
             button->setVisible(action->isVisible());
 
             connect(button, &QPushButton::clicked, this, [ = ] {
-                d->parentChunk->hideQuickWidget();
+                if (d->parentChunk) {
+                    d->parentChunk->hideQuickWidget();
+                } else {
+                    d->parentQuickWidget->hideContainer();
+                }
                 action->trigger();
             });
             connect(action, &QAction::changed, this, [ = ] {
