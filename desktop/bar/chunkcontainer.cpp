@@ -96,9 +96,10 @@ int ChunkContainer::currentAppWidgetX() {
 }
 
 void ChunkContainer::barHeightChanged(int height) {
-    if (height >= statusBarHeight() && height <= expandedHeight()) {
-        this->setFixedHeight(height);
-    }
+//    if (height >= statusBarHeight() && height <= expandedHeight()) {
+//        this->setFixedHeight(height);
+//    }
+    this->setFixedHeight(qBound(statusBarHeight(), height, expandedHeight()));
 
     qreal percentageAnim = static_cast<qreal>((height - statusBarHeight())) / (expandedHeight() - statusBarHeight());
     if (percentageAnim < 0) percentageAnim = 0;
