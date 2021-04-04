@@ -23,6 +23,7 @@
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <QToolButton>
+#include <QDBusInterface>
 #include <QIcon>
 #include <Wm/desktopwm.h>
 #include <TimeDate/desktoptimedate.h>
@@ -91,6 +92,7 @@ OverviewPane::OverviewPane() :
         }
     });
     updateWorldClocks();
+    updateDSTNotification();
 }
 
 OverviewPane::~OverviewPane() {
@@ -126,6 +128,92 @@ void OverviewPane::updateWorldClocks() {
         ui->worldClocksLayout->addWidget(wc);
         d->worldClocks.append(wc);
     }
+}
+
+void OverviewPane::updateDSTNotification() {
+    QDBusInterface dateTimeInterface("org.freedesktop.timedate1", "/org/freedesktop/timedate1", "org.freedesktop.timedate1", QDBusConnection::systemBus());
+    QString currentTimezone = dateTimeInterface.property("Timezone").toString();
+
+    QString timezoneInfoPath = "/usr/share/zoneinfo/" + currentTimezone;
+    QProcess* timezoneProcess = new QProcess();
+    connect(timezoneProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [ = ](int exitCode, QProcess::ExitStatus exitStatus) {
+        timezoneProcess->deleteLater();
+
+        struct Changeover {
+            QDateTime changeoverDate;
+            bool isDST;
+            int gmtOffset;
+        };
+
+        QList<Changeover> changeovers;
+
+        while (!timezoneProcess->atEnd()) {
+            QStringList parts = QString(timezoneProcess->readLine()).split(" ", Qt::SkipEmptyParts);
+            if (parts.length() == 16) {
+                QStringList dateText;
+
+                const QStringList months = {
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec"
+                };
+                dateText.append(parts.at(3));
+                dateText.append(QString::number(months.indexOf(parts.at(2)) + 1).rightJustified(2, '0'));
+                dateText.append(parts.at(5));
+                dateText.append(parts.at(4));
+
+                Changeover c;
+                QString dateConnectedText = dateText.join(".");
+
+                QDate date = QDate(parts.at(5).toInt(), months.indexOf(parts.at(2)) + 1, parts.at(3).toInt());
+                QTime time = QTime::fromString(parts.at(4), "hh:mm:ss");
+                c.changeoverDate = QDateTime(date, time, Qt::LocalTime);
+                c.changeoverDate.setTimeSpec(Qt::UTC);
+                c.isDST = parts.at(14).endsWith("1");
+                c.gmtOffset = parts.at(15).mid(7).toInt();
+                changeovers.append(c);
+            }
+        }
+
+        bool showDaylightSavingsPanel = false;
+        Changeover changeover;
+        QDateTime current = QDateTime::currentDateTimeUtc();
+        QDateTime currentLocal = QDateTime::currentDateTime();
+
+        for (int i = 0; i < changeovers.count(); i++) {
+            Changeover c = changeovers.at(i);
+
+            int days = current.daysTo(c.changeoverDate);
+            if (days > 0 && days < 14) {
+                if ((currentLocal.isDaylightTime() && !c.isDST) || (!currentLocal.isDaylightTime() && c.isDST)) {
+                    showDaylightSavingsPanel = true;
+                    changeover = c;
+                }
+            }
+        }
+
+        if (showDaylightSavingsPanel) {
+            ui->dstPanel->setVisible(true);
+
+            if (currentLocal.isDaylightTime()) {
+                ui->dstLabel->setText(tr("Daylight Savings Time is ending on %2. The clock will automatically shift backwards by %n hour(s).", nullptr, 1));
+            } else {
+                ui->dstLabel->setText(tr("Daylight Savings Time is starting on %2. The clock will automatically shift forwards by %n hour(s).", nullptr, 1));
+            }
+        } else {
+            ui->dstPanel->setVisible(false);
+        }
+    });
+    timezoneProcess->start("zdump", {"-v", currentTimezone});
 }
 
 void OverviewPane::changeEvent(QEvent* event) {

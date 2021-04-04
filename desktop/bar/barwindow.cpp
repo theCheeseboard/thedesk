@@ -235,19 +235,23 @@ void BarWindow::paintEvent(QPaintEvent* event) {
 
 void BarWindow::trackWindow(DesktopWmWindowPtr window) {
     window->disconnect(this);
+    DesktopWm::instance()->disconnect(window);
     connect(window, &DesktopWmWindow::geometryChanged, this, [ = ] {
         trackWindow(window);
     });
     connect(window, &DesktopWmWindow::windowStateChanged, this, [ = ] {
         trackWindow(window);
     });
+    connect(DesktopWm::instance(), &DesktopWm::currentDesktopChanged, window, [ = ] {
+        trackWindow(window);
+    });
 
     QRect screenGeometry = QApplication::primaryScreen()->geometry();
-    if (window->isMaximised() && !window->isMinimized() && screenGeometry.contains(window->geometry())) {
+    if (window->isMaximised() && !window->isMinimized() && screenGeometry.contains(window->geometry()) && window->isOnCurrentDesktop()) {
         if (d->maximisedWindows.contains(window)) return;
         d->maximisedWindows.append(window);
         this->update();
-    } else if (!window->isMaximised() || window->isMinimized()) {
+    } else if (!window->isMaximised() || window->isMinimized() || !window->isOnCurrentDesktop()) {
         if (!d->maximisedWindows.contains(window)) return;
         d->maximisedWindows.removeAll(window);
         this->update();
