@@ -4,32 +4,62 @@
 <context>
     <name>ArrangeWidget</name>
     <message>
-        <location filename="../arrange/arrangewidget.ui" line="54"/>
+        <location filename="../arrange/arrangewidget.ui" line="164"/>
         <source>DISPLAY PROPERTIES</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../arrange/arrangewidget.ui" line="64"/>
+        <location filename="../arrange/arrangewidget.ui" line="100"/>
         <source>Refresh Rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../arrange/arrangewidget.ui" line="77"/>
+        <location filename="../arrange/arrangewidget.ui" line="90"/>
         <source>Resolution</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../arrange/arrangewidget.ui" line="84"/>
+        <location filename="../arrange/arrangewidget.ui" line="141"/>
         <source>Primary Display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../arrange/arrangewidget.ui" line="101"/>
+        <location filename="../arrange/arrangewidget.ui" line="110"/>
+        <source>Orientation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../arrange/arrangewidget.ui" line="118"/>
+        <source>Landscape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../arrange/arrangewidget.ui" line="123"/>
+        <source>Portrait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../arrange/arrangewidget.ui" line="128"/>
+        <source>Upside Down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../arrange/arrangewidget.ui" line="133"/>
+        <source>Portrait (Upside Down)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../arrange/arrangewidget.ui" line="177"/>
+        <source>Enable Display</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../arrange/arrangewidget.ui" line="194"/>
         <source>Apply Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../arrange/arrangewidget.cpp" line="119"/>
+        <location filename="../arrange/arrangewidget.cpp" line="116"/>
         <source>%1 hz</source>
         <translation type="unfinished"></translation>
     </message>

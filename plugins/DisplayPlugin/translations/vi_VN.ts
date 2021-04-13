@@ -27,6 +27,30 @@
         <source>Primary Display</source>
         <translation>Màn hình chính</translation>
     </message>
+    <message>
+        <source>Orientation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Landscape</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Portrait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Upside Down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Portrait (Upside Down)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Display</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DisplaySettings</name>

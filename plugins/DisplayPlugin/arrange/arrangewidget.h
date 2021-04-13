@@ -48,6 +48,10 @@ class ArrangeWidget : public QWidget {
 
         void on_primaryDisplaySwitch_toggled(bool checked);
 
+        void on_orientationBox_currentIndexChanged(int index);
+
+        void on_enableDisplaySwitch_toggled(bool checked);
+
     signals:
         void reject();
         void accept();
@@ -59,7 +63,12 @@ class ArrangeWidget : public QWidget {
         void updateScreenGeometry();
         void updateAvailableModes();
         void updateRefreshRateBox();
+        void updateOrientationBox();
         void updateIsPrimary();
+        void updatePowered();
+
+        void updateScreenList();
+        void setScreen(SystemScreen* screen);
 };
 
 #endif // MAINARRANGEWIDGET_H

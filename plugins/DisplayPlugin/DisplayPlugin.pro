@@ -23,6 +23,7 @@ SOURCES += \
     arrange/arrangecontroller.cpp \
     arrange/arrangewidget.cpp \
     arrange/overlaywindow.cpp \
+    arrange/screenarranger.cpp \
     plugin.cpp \
     redshift/colorramp.cpp \
     redshift/redshiftdaemon.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     arrange/arrangecontroller.h \
     arrange/arrangewidget.h \
     arrange/overlaywindow.h \
+    arrange/screenarranger.h \
     plugin.h \
     redshift/colorramp.h \
     redshift/redshiftdaemon.h \

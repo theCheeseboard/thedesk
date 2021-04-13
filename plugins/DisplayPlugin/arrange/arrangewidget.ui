@@ -36,11 +36,121 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="ScreenArranger" name="screenArranger" native="true"/>
+   </item>
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QWidget" name="screensWidget" native="true">
+     <layout class="QHBoxLayout" name="screensLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+     </layout>
+    </widget>
+   </item>
    <item alignment="Qt::AlignHCenter">
     <widget class="QWidget" name="displayPropertiesWidget" native="true">
      <layout class="QGridLayout" name="gridLayout">
-      <item row="1" column="1">
-       <widget class="QComboBox" name="resolutionBox"/>
+      <item row="2" column="0" colspan="2">
+       <widget class="tConditionalWidget" name="displaySettingsWidget" native="true">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Resolution</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="resolutionBox"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Refresh Rate</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="refreshRateBox"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Orientation</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="orientationBox">
+           <item>
+            <property name="text">
+             <string>Landscape</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Portrait</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Upside Down</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Portrait (Upside Down)</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Primary Display</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1" alignment="Qt::AlignRight">
+          <widget class="tSwitch" name="primaryDisplaySwitch">
+           <property name="text">
+            <string notr="true">PrimaryDisplaySwitch</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </item>
       <item row="0" column="0" colspan="2">
        <widget class="QLabel" name="label">
@@ -55,18 +165,8 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
-       <widget class="QComboBox" name="refreshRateBox"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Refresh Rate</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="label_6">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -74,21 +174,14 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Resolution</string>
+         <string>Enable Display</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
+      <item row="1" column="1">
+       <widget class="tSwitch" name="enableDisplaySwitch">
         <property name="text">
-         <string>Primary Display</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="tSwitch" name="primaryDisplaySwitch">
-        <property name="text">
-         <string notr="true">PrimaryDisplaySwitch</string>
+         <string notr="true">EnableDisplaySwitch</string>
         </property>
        </widget>
       </item>
@@ -130,6 +223,18 @@
    <class>tSwitch</class>
    <extends>QPushButton</extends>
    <header location="global">tswitch.h</header>
+  </customwidget>
+  <customwidget>
+   <class>tConditionalWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">tconditionalwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ScreenArranger</class>
+   <extends>QWidget</extends>
+   <header>arrange/screenarranger.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

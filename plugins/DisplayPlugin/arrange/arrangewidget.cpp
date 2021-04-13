@@ -21,6 +21,7 @@
 #include "ui_arrangewidget.h"
 
 #include "overlaywindow.h"
+#include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
 #include <tpopover.h>
 #include <QTimer>
@@ -28,8 +29,10 @@
 
 struct ArrangeWidgetPrivate {
     OverlayWindow* overlay;
-    SystemScreen* screen;
+    SystemScreen* screen = nullptr;
     tPopover* popover;
+
+    QMap<SystemScreen*, QPushButton*> buttons;
 
     bool init = true;
 };
@@ -40,9 +43,9 @@ ArrangeWidget::ArrangeWidget(SystemScreen* screen, QWidget* parent) :
     ui->setupUi(this);
 
     d = new ArrangeWidgetPrivate();
-    d->screen = screen;
 
     ui->titleLabel->setBackButtonShown(true);
+    ui->screensWidget->setFixedWidth(SC_DPI(600));
     ui->displayPropertiesWidget->setFixedWidth(SC_DPI(600));
     ui->applyButton->setFixedWidth(SC_DPI(600));
 
@@ -61,17 +64,8 @@ ArrangeWidget::ArrangeWidget(SystemScreen* screen, QWidget* parent) :
         d->popover->show(d->overlay);
     });
 
-    connect(screen, &SystemScreen::geometryChanged, this, &ArrangeWidget::updateScreenGeometry);
-    connect(screen, &SystemScreen::availableModesChanged, this, &ArrangeWidget::updateAvailableModes);
-    connect(screen, &SystemScreen::currentModeChanged, this, &ArrangeWidget::updateAvailableModes);
-    connect(screen, &SystemScreen::isPrimaryChanged, this, &ArrangeWidget::updateIsPrimary);
-    updateScreenGeometry();
-    updateAvailableModes();
-    updateIsPrimary();
-
-    ui->titleLabel->setText(d->screen->displayName());
-
-    d->init = false;
+    updateScreenList();
+    setScreen(screen);
 }
 
 ArrangeWidget::~ArrangeWidget() {
@@ -94,6 +88,7 @@ void ArrangeWidget::updateScreenGeometry() {
 }
 
 void ArrangeWidget::updateAvailableModes() {
+    QSignalBlocker blocker(ui->resolutionBox);
     ui->resolutionBox->clear();
 
     QList<QSize> resolutions;
@@ -110,21 +105,83 @@ void ArrangeWidget::updateAvailableModes() {
 }
 
 void ArrangeWidget::updateRefreshRateBox() {
+    QSignalBlocker blocker(ui->refreshRateBox);
     QSize selected = ui->resolutionBox->currentData().toSize();
 
     ui->refreshRateBox->clear();
+    int select = -1;
     for (SystemScreen::Mode mode : d->screen->availableModes()) {
         QSize res = QSize(mode.width, mode.height);
         if (res == selected) {
             ui->refreshRateBox->addItem(tr("%1 hz").arg(mode.framerate, 0, 'f', 2), mode.id);
-            if (d->init && d->screen->currentMode() == mode.id) ui->refreshRateBox->setCurrentIndex(ui->refreshRateBox->count() - 1);
+            if (d->init && d->screen->currentMode() == mode.id) select = ui->refreshRateBox->count() - 1;
         }
     }
+
+    if (select != -1) ui->refreshRateBox->setCurrentIndex(select);
+}
+
+void ArrangeWidget::updateOrientationBox() {
+    QSignalBlocker blocker(ui->orientationBox);
+    ui->orientationBox->setCurrentIndex(d->screen->currentRotation());
 }
 
 void ArrangeWidget::updateIsPrimary() {
     ui->primaryDisplaySwitch->setChecked(d->screen->isPrimary());
     ui->primaryDisplaySwitch->setEnabled(!d->screen->isPrimary());
+}
+
+void ArrangeWidget::updatePowered() {
+    QSignalBlocker blocker(ui->enableDisplaySwitch);
+    ui->enableDisplaySwitch->setChecked(d->screen->powered());
+    ui->displaySettingsWidget->setExpanded(d->screen->powered());
+}
+
+void ArrangeWidget::updateScreenList() {
+    for (QPushButton* button : d->buttons.values()) {
+        ui->screensLayout->removeWidget(button);
+        button->deleteLater();
+    }
+    d->buttons.clear();
+
+    for (SystemScreen* screen : ScreenDaemon::instance()->screens()) {
+        QPushButton* button = new QPushButton(this);
+        button->setText(screen->displayName());
+        button->setCheckable(true);
+        button->setAutoExclusive(true);
+        button->setChecked(d->screen == screen);
+        connect(button, &QPushButton::toggled, this, [ = ](bool checked) {
+            if (checked) setScreen(screen);
+        });
+        ui->screensLayout->addWidget(button);
+        d->buttons.insert(screen, button);
+    }
+}
+
+void ArrangeWidget::setScreen(SystemScreen* screen) {
+    d->init = true;
+    if (d->screen) {
+        d->screen->disconnect(this);
+    }
+
+    d->screen = screen;
+
+    connect(screen, &SystemScreen::rotationChanged, this, &ArrangeWidget::updateOrientationBox);
+    connect(screen, &SystemScreen::geometryChanged, this, &ArrangeWidget::updateScreenGeometry);
+    connect(screen, &SystemScreen::availableModesChanged, this, &ArrangeWidget::updateAvailableModes);
+    connect(screen, &SystemScreen::currentModeChanged, this, &ArrangeWidget::updateAvailableModes);
+    connect(screen, &SystemScreen::isPrimaryChanged, this, &ArrangeWidget::updateIsPrimary);
+    connect(screen, &SystemScreen::poweredChanged, this, &ArrangeWidget::updatePowered);
+    updateScreenGeometry();
+    updateAvailableModes();
+    updateOrientationBox();
+    updateIsPrimary();
+    updatePowered();
+
+    d->buttons.value(screen)->setChecked(true);
+
+    ui->titleLabel->setText(d->screen->displayName());
+    d->init = false;
 }
 
 void ArrangeWidget::on_refreshRateBox_currentIndexChanged(int index) {
@@ -136,11 +193,22 @@ void ArrangeWidget::on_resolutionBox_currentIndexChanged(int index) {
 }
 
 void ArrangeWidget::on_applyButton_clicked() {
-    d->screen->set();
+    for (SystemScreen* screen : ScreenDaemon::instance()->screens()) {
+        screen->set();
+    }
+//    d->screen->set();
 }
 
 void ArrangeWidget::on_primaryDisplaySwitch_toggled(bool checked) {
     if (checked) {
         d->screen->setAsPrimary();
     }
+}
+
+void ArrangeWidget::on_orientationBox_currentIndexChanged(int index) {
+    d->screen->setRotation(static_cast<SystemScreen::Rotation>(index));
+}
+
+void ArrangeWidget::on_enableDisplaySwitch_toggled(bool checked) {
+    d->screen->setPowered(checked);
 }
