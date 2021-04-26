@@ -8,7 +8,11 @@ CONFIG += c++11
 
 unix {
     # Include the-libs build tools
-    include(/usr/share/the-libs/pri/gentranslations.pri)
+    equals(THELIBS_BUILDTOOLS_PATH, "") {
+        THELIBS_BUILDTOOLS_PATH = $$[QT_INSTALL_PREFIX]/share/the-libs/pri
+    }
+    include($$THELIBS_BUILDTOOLS_PATH/gentranslations.pri)
+    include($$THELIBS_BUILDTOOLS_PATH/varset.pri)
 
     CONFIG += link_pkgconfig
 
@@ -73,7 +77,7 @@ unix {
     INSTALLS += target translations defaults
 }
 
-DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$THELIBS_INSTALL_LIB\\\"
+DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$[QT_INSTALL_LIBS]\\\"
 
 RESOURCES += \
     thedesk-platform-resources.qrc

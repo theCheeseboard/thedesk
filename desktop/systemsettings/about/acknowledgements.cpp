@@ -30,7 +30,7 @@ Acknowledgements::Acknowledgements(QWidget* parent) :
     ui->setupUi(this);
 
     ui->titleLabel->setBackButtonShown(true);
-    ui->textBrowser->setSource(QUrl::fromLocalFile(QStringLiteral("/home/victor/Documents/Apps/thedesk/desktop/acknowledgements.html")), QTextDocument::HtmlResource);
+    ui->textBrowser->setSource(QUrl::fromLocalFile(QStringLiteral("/usr/share/thedesk/acknowledgements.html")), QTextDocument::HtmlResource);
 }
 
 Acknowledgements::~Acknowledgements() {

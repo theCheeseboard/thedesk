@@ -28,6 +28,8 @@ Common::DevicePort Common::portForSink(PulseAudioQt::Sink* sink) {
     if (api == QStringLiteral("bluez")) {
         return Bluetooth;
     } else {
+        if (sink->ports().count() <= sink->activePortIndex()) return Unknown;
+
         PulseAudioQt::Port* port = sink->ports().at(sink->activePortIndex());
         if (port->availability() == PulseAudioQt::Port::Unavailable) {
             //Weird thing? Use a workaround here
@@ -62,9 +64,9 @@ QString Common::nameForSink(PulseAudioQt::Sink* sink) {
     QVariantMap properties = sink->properties();
     QString api = properties.value("device.api").toString();
     if (api == QStringLiteral("alsa")) {
-        return sink->properties().value("device.product.name").toString();
+        return properties.value("device.product.name", properties.value("node.nick")).toString();
     } else if (api == QStringLiteral("bluez")) {
-        return sink->properties().value("bluez.alias").toString();
+        return properties.value("bluez.alias").toString();
     } else {
         return sink->description();
     }

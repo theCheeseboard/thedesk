@@ -138,7 +138,7 @@ unix {
     media.path = /usr/share/thedesk/
 
     acknowledgements.files = acknowledgements.html
-    acknowledgements.path = /usr/share/thedesk/acknowledgements.html
+    acknowledgements.path = /usr/share/thedesk
 
     INSTALLS += target translations defaults media acknowledgements
 }

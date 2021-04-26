@@ -62,8 +62,8 @@ void DefaultsPane::loadDefaults() {
 
             ApplicationPointer app = MimeAssociationManager::defaultApplicationForMimeType(mimeType);
             if (app) {
-                for (int i = 0; i < ui->defaultBrowserBox->count(); i++) {
-                    if (box->itemData(i).toString() == app->desktopEntry()) ui->defaultBrowserBox->setCurrentIndex(i);
+                for (int i = 0; i < box->count(); i++) {
+                    if (box->itemData(i).toString() == app->desktopEntry()) box->setCurrentIndex(i);
                 }
             }
         }

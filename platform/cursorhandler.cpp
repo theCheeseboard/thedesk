@@ -19,6 +19,7 @@
  * *************************************/
 #include "cursorhandler.h"
 
+#include <tlogger.h>
 #include <tsettings.h>
 #include <QLibrary>
 
@@ -51,7 +52,7 @@ void CursorHandler::updateApplicationCursor() {
 #ifdef HAVE_X11
     if (QX11Info::isPlatformX11()) {
         //Load cursor library
-        QLibrary xc(QString(SYSTEM_LIBRARY_DIRECTORY).append("/libXcursor"));
+        QLibrary xc(QString(SYSTEM_LIBRARY_DIRECTORY).append("/libXcursor.so"));
 
         if (xc.load()) {
             typedef int (*setThemeFunc) (Display*, const char*);
@@ -63,6 +64,8 @@ void CursorHandler::updateApplicationCursor() {
             //Set cursors
             XcursorSetTheme(QX11Info::display(), qPrintable(d->settings->value("Platform/cursor").toString()));
             XcursorSetDefaultSize(QX11Info::display(), d->settings->value("Platform/cursorSize").toInt());
+        } else {
+            tDebug("CursorHandler") << "Could not load XCursor library: " + xc.errorString();
         }
     }
 #endif
