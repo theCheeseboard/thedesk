@@ -71,8 +71,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>400</width>
-            <height>283</height>
+            <width>386</width>
+            <height>385</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -171,6 +171,71 @@
             </widget>
            </item>
            <item>
+            <widget class="Line" name="line">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>1</height>
+              </size>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QWidget" name="scrollingWidget" native="true">
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="1" column="1">
+               <widget class="tSwitch" name="naturalScrollingSwitch">
+                <property name="text">
+                 <string notr="true">NaturalScrolling</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Natural Scrolling</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="2">
+               <widget class="QLabel" name="label_6">
+                <property name="font">
+                 <font>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>SCROLLING</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" colspan="2">
+               <widget class="QLabel" name="label_8">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Reverse the direction that you scroll in so that the content moves in the same direction as your fingers.</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
             <spacer name="verticalSpacer">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
@@ -250,17 +315,17 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>tSwitch</class>
-   <extends>QPushButton</extends>
-   <header location="global">tswitch.h</header>
-  </customwidget>
-  <customwidget>
    <class>tTitleLabel</class>
    <extends>QLabel</extends>
    <header location="global">ttitlelabel.h</header>
    <slots>
     <signal>backButtonClicked()</signal>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>tSwitch</class>
+   <extends>QPushButton</extends>
+   <header location="global">tswitch.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

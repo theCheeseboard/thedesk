@@ -37,6 +37,7 @@ class SettingsBackend : public QObject {
         virtual void setPrimaryMouseButton(MousePrimaryButton button) = 0;
         virtual void setPrimaryTouchpadButton(MousePrimaryButton button) = 0;
         virtual void setTapToClick(bool tapToClick) = 0;
+        virtual void setNaturalScrolling(bool naturalScrolling) = 0;
 
     signals:
 

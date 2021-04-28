@@ -43,6 +43,8 @@ class MouseSettings : public QWidget {
 
         void on_tapToClickSwitch_toggled(bool checked);
 
+        void on_naturalScrollingSwitch_toggled(bool checked);
+
     private:
         Ui::MouseSettings* ui;
         MouseSettingsPrivate* d;

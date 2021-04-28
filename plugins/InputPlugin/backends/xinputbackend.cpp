@@ -128,3 +128,7 @@ void XInputBackend::setPrimaryTouchpadButton(MousePrimaryButton button) {
 void XInputBackend::setTapToClick(bool tapToClick) {
     writeXiSetting(LIBINPUT_PROP_TAP, {tapToClick}, Touchpads);
 }
+
+void XInputBackend::setNaturalScrolling(bool naturalScrolling) {
+    writeXiSetting(LIBINPUT_PROP_NATURAL_SCROLL, {naturalScrolling}, Touchpads);
+}

@@ -43,6 +43,7 @@ class XInputBackend : public SettingsBackend {
         void setPrimaryMouseButton(MousePrimaryButton button);
         void setPrimaryTouchpadButton(MousePrimaryButton button);
         void setTapToClick(bool tapToClick);
+        void setNaturalScrolling(bool naturalScrolling);
 };
 
 #endif // XINPUTBACKEND_H

@@ -42,6 +42,7 @@ MouseSettings::MouseSettings(QWidget* parent) :
 
     const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
     ui->clickingWidget->setFixedWidth(contentWidth);
+    ui->scrollingWidget->setFixedWidth(contentWidth);
 
     d->backend = SettingsBackend::backendForPlatform();
     if (!d->backend) {
@@ -93,14 +94,22 @@ void MouseSettings::updateSettings(QString key) {
     } else if (key == "Input/touchpad.tapClick") {
         d->backend->setTapToClick(value.toBool());
         ui->tapToClickSwitch->setChecked(value.toBool());
+    } else if (key == "Input/touchpad.naturalScroll") {
+        d->backend->setNaturalScrolling(value.toBool());
+        ui->naturalScrollingSwitch->setChecked(value.toBool());
     }
 }
 
 void MouseSettings::updateAllSettings() {
     updateSettings("Input/mouse.primary");
     updateSettings("Input/touchpad.tapClick");
+    updateSettings("Input/touchpad.naturalScroll");
 }
 
 void MouseSettings::on_tapToClickSwitch_toggled(bool checked) {
     d->settings.setValue("Input/touchpad.tapClick", checked);
+}
+
+void MouseSettings::on_naturalScrollingSwitch_toggled(bool checked) {
+    d->settings.setValue("Input/touchpad.naturalScroll", checked);
 }

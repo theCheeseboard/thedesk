@@ -42,6 +42,6 @@ make install
 
 ---
 
-> © Victor Tran, 2020. This project is licensed under the GNU General Public License, version 3, or at your option, any later version.
+> © Victor Tran, 2021. This project is licensed under the GNU General Public License, version 3, or at your option, any later version.
 > 
 > Check the [LICENSE](LICENSE) file for more information.

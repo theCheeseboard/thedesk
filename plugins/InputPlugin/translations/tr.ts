@@ -55,12 +55,27 @@
         <translation>Tıklamak için Dokunun</translation>
     </message>
     <message>
-        <location filename="../settings/mousesettings.ui" line="215"/>
+        <location filename="../settings/mousesettings.ui" line="205"/>
+        <source>Natural Scrolling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/mousesettings.ui" line="218"/>
+        <source>SCROLLING</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/mousesettings.ui" line="228"/>
+        <source>Reverse the direction that you scroll in so that the content moves in the same direction as your fingers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/mousesettings.ui" line="280"/>
         <source>Settings Unavailable</source>
         <translation>Ayarlar Kullanılamıyor</translation>
     </message>
     <message>
-        <location filename="../settings/mousesettings.ui" line="225"/>
+        <location filename="../settings/mousesettings.ui" line="290"/>
         <source>Mouse settings can&apos;t be changed on this platform.</source>
         <translation>Bu platformda mouse ayarları değiştirilemez.</translation>
     </message>
