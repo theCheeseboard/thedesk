@@ -1,6 +1,6 @@
 Name:           thedesk
 Version:        beta4
-Release:        1%{?dist}
+Release:        11%{?dist}
 Summary:        Desktop Environment built on Qt
 
 License:        GPLv3+
