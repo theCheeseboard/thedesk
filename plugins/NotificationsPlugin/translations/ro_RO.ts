@@ -23,7 +23,7 @@
     </message>
     <message>
         <source>Is it Friday yet?</source>
-        <translation>Este vineri?</translation>
+        <translation>Este vineri azi?</translation>
     </message>
     <message>
         <source>You&apos;ve caught up with your notifications!</source>
@@ -31,7 +31,7 @@
     </message>
     <message>
         <source>QUIET MODE</source>
-        <translation>Mod silențios</translation>
+        <translation>MOD SILENȚIOS</translation>
     </message>
 </context>
 </TS>
