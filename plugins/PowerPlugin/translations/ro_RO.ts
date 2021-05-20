@@ -44,7 +44,7 @@
     </message>
     <message>
         <source>TIMEOUTS</source>
-        <translation>Ieșiri din timp</translation>
+        <translation>OPRIRE AUTOMATĂ</translation>
     </message>
     <message>
         <source>Switch off the screen after</source>
@@ -68,7 +68,7 @@
     </message>
     <message>
         <source>If you leave your device idle for a period of time, we can automatically turn off the screen or suspend it for you.</source>
-        <translation>În lipsa activității, putem opri ecranul automat pentru dumneavoastră.</translation>
+        <translation>În lipsa activității, putem opri ecranul sau intra în modul de suspendare automat pentru dumneavoastră.</translation>
     </message>
     <message>
         <source>Suspend after</source>
@@ -104,7 +104,7 @@
     </message>
     <message>
         <source>BUTTONS</source>
-        <translation>Butoane</translation>
+        <translation>BUTOANE</translation>
     </message>
 </context>
 </TS>
