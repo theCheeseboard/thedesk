@@ -537,22 +537,22 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="276"/>
         <source>Preparing the Gateway...</source>
-        <translation type="unfinished"></translation>
+        <translation>Pregătim portalul...</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="67"/>
         <source>Type to search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tastați pentru a căuta...</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="192"/>
         <source>Status Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Centrul de stare</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="391"/>
         <source>System Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurări de sistem</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="407"/>
@@ -562,47 +562,47 @@
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="87"/>
         <source>A/V</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio/Video</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="88"/>
         <source>Development</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezvoltare</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="89"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>Educație</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="90"/>
         <source>Games</source>
-        <translation type="unfinished"></translation>
+        <translation>Jocuri</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="91"/>
         <source>Graphics</source>
-        <translation type="unfinished"></translation>
+        <translation>Grafică</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="92"/>
         <source>Networking</source>
-        <translation type="unfinished"></translation>
+        <translation>Rețelistică</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="93"/>
         <source>Office</source>
-        <translation type="unfinished"></translation>
+        <translation>Birou</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="94"/>
         <source>Science</source>
-        <translation type="unfinished"></translation>
+        <translation>Știință</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="95"/>
         <source>Utilities</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilitare</translation>
     </message>
 </context>
 <context>
@@ -610,44 +610,44 @@
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="135"/>
         <source>ERROR DETAILS</source>
-        <translation type="unfinished"></translation>
+        <translation>DETALII EROARE</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="190"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACȚIUNI</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="199"/>
         <source>Activate Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Activează extensia</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="206"/>
         <source>Deactivate Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezactivează extensia</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="213"/>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="276"/>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="296"/>
         <source>Blacklist Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Pune extensia pe lista neagră</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="220"/>
         <source>Remove Plugin from Blacklist</source>
-        <translation type="unfinished"></translation>
+        <translation>Elimină extensia de pe lista neagră</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.ui" line="283"/>
         <source>Placing this plugin on the blacklist will prevent it from being loaded next time you log in. If the plugin is not already deactivated, we&apos;ll also deactivate it for you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Plasarea acestei extensii pe lista neagră va împiedica pornirea sa la următoarea conectare. Extensia va fi dezactivată dacă nu este deja.</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/managepluginpopover.cpp" line="43"/>
         <source>UUID: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>UUID: %1</translation>
     </message>
 </context>
 <context>
@@ -656,12 +656,12 @@
         <location filename="../systemsettings/pluginmanagement/pluginmanagement.ui" line="35"/>
         <location filename="../systemsettings/pluginmanagement/pluginmanagement.cpp" line="72"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>Extensii</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmanagement.ui" line="75"/>
         <source>Plugins add core and extra functionality to theDesk.</source>
-        <translation type="unfinished"></translation>
+        <translation>Extensiile activează funcționalitățile theDesk și/sau adaugă unele noi.</translation>
     </message>
 </context>
 <context>
@@ -669,22 +669,22 @@
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="52"/>
         <source>Loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>În funcțiune</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="54"/>
         <source>Blacklisted</source>
-        <translation type="unfinished"></translation>
+        <translation>Pe lista neagră</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="56"/>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Indisponibilă</translation>
     </message>
     <message>
         <location filename="../systemsettings/pluginmanagement/pluginmodel.cpp" line="58"/>
         <source>Inactive</source>
-        <translation type="unfinished"></translation>
+        <translation>Inactivă</translation>
     </message>
 </context>
 <context>
@@ -693,12 +693,12 @@
         <location filename="../systemsettings/recovery/recovery.ui" line="35"/>
         <location filename="../systemsettings/recovery/recovery.cpp" line="64"/>
         <source>Recovery</source>
-        <translation type="unfinished"></translation>
+        <translation>Recuperare</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="104"/>
         <source>RESET THEDESK</source>
-        <translation type="unfinished"></translation>
+        <translation>RESETEAZĂ THEDESK</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="111"/>
@@ -709,19 +709,27 @@ Here&apos;s what will happen:
 - The next time you log into theDesk, you&apos;ll need to run through the setup again
 
 Save your documents and close all apps before starting the reset. This won&apos;t take long, but you&apos;ll need to log out to perform the reset. You won&apos;t be able to use your device while the reset is taking place.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dacă lucrurile nu merg cum trebuie puteți reseta theDesk.
+
+Ce se va întâmpla:
+- Setările dumneavoastră vor fi readuse la cele din fabrică
+- Atunci când vă veți conecta din nou în theDesk, va trebui să treceți prin procedura de configurare din nou
+
+Salvați-vă documentele și închideți toate aplicațiile deschise înainte de a începe. Resetarea nu va dura mult, dar va trebui să vă deconectați pentru a executa operațiunea. Nu vă veți putea folosi sistemul în timp ce se restaurează.</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="129"/>
         <source>Log Out and Reset theDesk</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectați-vă și resetați theDesk</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.cpp" line="89"/>
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1, doriți să vă deconectați și să resetați theDesk? Această acțiune este ireversibilă.
+
+O să continuăm cu resetarea în %n secunde dacă nu faceți nimic.</translation>
     </message>
 </context>
 <context>
@@ -729,17 +737,17 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../run/rundialog.ui" line="35"/>
         <source>Run</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Execută</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="60"/>
         <source>Enter a command to run.</source>
-        <translation type="unfinished"></translation>
+        <translation>Introduceți o comandă pentru a fi executată.</translation>
     </message>
     <message>
         <location filename="../run/rundialog.ui" line="73"/>
         <source>Run this command</source>
-        <translation type="unfinished"></translation>
+        <translation>Executați această comandă</translation>
     </message>
 </context>
 <context>
@@ -747,7 +755,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../statuscenter/statuscenterleftpane.ui" line="54"/>
         <source>Status Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Centrul de stare</translation>
     </message>
 </context>
 <context>
@@ -755,7 +763,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettings.cpp" line="164"/>
         <source>System Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurări de sistem</translation>
     </message>
 </context>
 <context>
@@ -763,17 +771,17 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="35"/>
         <source>System Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurări de sistem</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="103"/>
         <source>LOG OUT</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DECONECTARE</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="110"/>
         <source>You&apos;ve changed some settings that require you to log out for them to apply completely</source>
-        <translation type="unfinished"></translation>
+        <translation>Ați schimbat niște setări ce necesită să vă deconectați pentru a se putea aplica în totalitate</translation>
     </message>
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
@@ -786,7 +794,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../bar/taskbardesktopwidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
 </context>
 <context>
@@ -794,12 +802,12 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../main.cpp" line="72"/>
         <source>Safe Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul de siguranță</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="72"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
-        <translation type="unfinished"></translation>
+        <translation>Țineți apăsata tasta CTRL. Porniți theDesk în modul de siguranță?</translation>
     </message>
 </context>
 </TS>
