@@ -5,7 +5,7 @@
     <name>ArrangeWidget</name>
     <message>
         <source>DISPLAY PROPERTIES</source>
-        <translation>Proprietățile ecranului</translation>
+        <translation>PROPRIETĂȚILE ECRANULUI</translation>
     </message>
     <message>
         <source>Resolution</source>
@@ -29,27 +29,27 @@
     </message>
     <message>
         <source>Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientație</translation>
     </message>
     <message>
         <source>Landscape</source>
-        <translation type="unfinished"></translation>
+        <translation>Peisaj</translation>
     </message>
     <message>
         <source>Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Portret</translation>
     </message>
     <message>
         <source>Upside Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Invers</translation>
     </message>
     <message>
         <source>Portrait (Upside Down)</source>
-        <translation type="unfinished"></translation>
+        <translation>Portret(invers)</translation>
     </message>
     <message>
         <source>Enable Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Folosiți ecranul</translation>
     </message>
 </context>
 <context>
@@ -64,7 +64,7 @@
     </message>
     <message>
         <source>Redshift blocks blue light so that you can sleep better at night</source>
-        <translation>Redshift blochează lumina albastră ca să dormiți mai bine noaptea</translation>
+        <translation>Redshift blochează lumina albastră ca să puteți dormi mai bine noaptea</translation>
     </message>
     <message>
         <source>Schedule Redshift</source>
@@ -84,11 +84,11 @@
     </message>
     <message>
         <source>End at</source>
-        <translation>Se termină la</translation>
+        <translation>Termină la</translation>
     </message>
     <message>
         <source>SCREENS</source>
-        <translation>Ecrane</translation>
+        <translation>ECRANE</translation>
     </message>
     <message>
         <source>Change the resolution of your display and arrange your displays</source>
@@ -104,7 +104,7 @@
     </message>
     <message>
         <source>SCALING</source>
-        <translation>Scalare</translation>
+        <translation>SCALARE</translation>
     </message>
     <message>
         <source>If items on the screen are too small, you can scale them up to make them easier to see.</source>
