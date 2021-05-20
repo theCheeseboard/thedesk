@@ -77,15 +77,15 @@
     </message>
     <message>
         <source>Details...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Detalii...</translation>
     </message>
     <message>
         <source>DETAILS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DETALII</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Înapoi</translation>
     </message>
 </context>
 </TS>
