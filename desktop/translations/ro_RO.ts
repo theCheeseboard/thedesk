@@ -138,7 +138,7 @@
     <message>
         <location filename="../gateway/appsearchprovider.cpp" line="89"/>
         <source>Application</source>
-        <translation type="unfinished">Aplicația</translation>
+        <translation>Aplicație</translation>
     </message>
 </context>
 <context>
@@ -219,7 +219,7 @@
     <message>
         <location filename="../background/background.ui" line="681"/>
         <source>Tile</source>
-        <translation type="unfinished">Cu dale</translation>
+        <translation type="unfinished">Mozaic</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="707"/>
@@ -384,7 +384,7 @@
     <message>
         <location filename="../session/endsession.ui" line="169"/>
         <source>Ends your session but keeps your computer on for other people to use</source>
-        <translation>Închide sesiunea dvs, dar ține calculatorul pornit pentru a putea fi folosit de alte persoane</translation>
+        <translation>Închide sesiunea dvs, dar menține calculatorul pornit pentru a putea fi folosit de alte persoane</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="176"/>
@@ -394,7 +394,7 @@
     <message>
         <location filename="../session/endsession.ui" line="183"/>
         <source>Puts your computer in a low power state so it reopens quickly</source>
-        <translation>Pune calculatorul dvs într-o stare de consum redus, pentru a se redeschide repede</translation>
+        <translation>Pune calculatorul dvs într-o stare de consum redus, pentru redeschidere rapidă</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="190"/>
