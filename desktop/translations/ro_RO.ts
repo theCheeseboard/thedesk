@@ -6,7 +6,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="157"/>
         <source>DISTRIBUTION</source>
-        <translation>Distribuție</translation>
+        <translation>DISTRIBUȚIE</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="164"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="330"/>
         <source>THIS DEVICE</source>
-        <translation>Acest dispozitiv</translation>
+        <translation>ACEST DISPOZITIV</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="344"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../background/background.ui" line="427"/>
         <source>IMAGE</source>
-        <translation>Imagine</translation>
+        <translation>IMAGINE</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="434"/>
@@ -204,27 +204,27 @@
     <message>
         <location filename="../background/background.ui" line="603"/>
         <source>Stretch To Fit</source>
-        <translation>Întindere pentru a se potrivi</translation>
+        <translation>Întinsă până la potrivire</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="629"/>
         <source>Zoom and Crop</source>
-        <translation>Mărire și decupare</translation>
+        <translation>Mărită și decupată</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="655"/>
         <source>Center</source>
-        <translation>Centrat</translation>
+        <translation>Centrată</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="681"/>
         <source>Tile</source>
-        <translation type="unfinished">Mozaic</translation>
+        <translation>În mozaic</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="707"/>
         <source>Zoom To Fit</source>
-        <translation>Mărire pentru potrivire</translation>
+        <translation>Mărită până se potrivește</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="757"/>
@@ -272,7 +272,7 @@
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="79"/>
         <source>Network Compatible Name</source>
-        <translation type="unfinished">Nume compatibil de rețea</translation>
+        <translation>Nume compatibil în rețea</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="95"/>
@@ -303,7 +303,7 @@
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="75"/>
@@ -342,7 +342,7 @@
     <message>
         <location filename="../session/endsession.ui" line="57"/>
         <source>End Session</source>
-        <translation type="unfinished">Închide sesiunea</translation>
+        <translation>Închide sesiunea</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="115"/>
@@ -424,97 +424,97 @@
     <message>
         <location filename="../session/endsession.ui" line="225"/>
         <source>Switches to the logon screen, but keeps your session in the background</source>
-        <translation type="unfinished"></translation>
+        <translation>Trece la ecranul de conectare, punând sesiunea curentă în fundal</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="232"/>
         <source>Hibernate</source>
-        <translation type="unfinished"></translation>
+        <translation>Hibernare</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="239"/>
         <source>Powers off your computer, but restores the session when powered back on</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprește calculatorul, dar va restaura această sesiune la următoarea pornire</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="334"/>
         <source>Updates are available. What do you want to do?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sunt disponibile actualizări. Cum doriți să procedați?</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="349"/>
         <source>Reboot and update</source>
-        <translation type="unfinished"></translation>
+        <translation>Repornește și actualizează</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="356"/>
         <source>We&apos;ll perform system updates once this device has rebooted.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vom aplica actualizările de îndată ce sistemul va reporni.</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="376"/>
         <source>We&apos;ll reboot your device normally.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dispozitivul va reporni ca de obicei.</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="108"/>
         <source>power off the system</source>
-        <translation type="unfinished"></translation>
+        <translation>opri sistemul</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="109"/>
         <source>reboot the system</source>
-        <translation type="unfinished"></translation>
+        <translation>reporni sistemul</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="110"/>
         <source>reboot the system and install any pending updates</source>
-        <translation type="unfinished"></translation>
+        <translation>reporni sistemul și vom instala actualizările în așteptare</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="111"/>
         <source>log you out</source>
-        <translation type="unfinished"></translation>
+        <translation>deconecta</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="112"/>
         <source>suspend the system</source>
-        <translation type="unfinished"></translation>
+        <translation>suspenda sistemul</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="113"/>
         <source>lock the screen</source>
-        <translation type="unfinished"></translation>
+        <translation>închide ecranul</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="114"/>
         <source>turn off the screen</source>
-        <translation type="unfinished"></translation>
+        <translation>opri ecranul</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="115"/>
         <source>switch users</source>
-        <translation type="unfinished"></translation>
+        <translation>schimba utilizatorul</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="116"/>
         <source>hibernate the system</source>
-        <translation type="unfinished"></translation>
+        <translation>hibernăm sistemul</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="248"/>
         <source>Advanced Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Repornire avansată</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="258"/>
         <source>Reboot into System UEFI Setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Repornește în configurările UEFI ale sistemului</translation>
     </message>
     <message>
         <location filename="../session/endsession.cpp" line="48"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1, sunteți gata de plecare? O să %2 în %n secunde dacă nu faceți nimic.</translation>
     </message>
 </context>
 <context>
@@ -522,17 +522,17 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="57"/>
         <source>Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Portal</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="150"/>
         <source>CATEGORIES</source>
-        <translation type="unfinished"></translation>
+        <translation>CATEGORII</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="160"/>
         <source>All Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Toate aplicațiile</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="276"/>
@@ -557,7 +557,7 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="407"/>
         <source>End Session</source>
-        <translation type="unfinished">Închide sesiunea</translation>
+        <translation>Închide sesiunea</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="87"/>
@@ -778,7 +778,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
-        <translation type="unfinished">Deconectare</translation>
+        <translation>Deconectare</translation>
     </message>
 </context>
 <context>
