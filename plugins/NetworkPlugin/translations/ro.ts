@@ -91,7 +91,7 @@
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="243"/>
         <source>Connection Failure</source>
-        <translation type="unfinished">Eroare la conectare</translation>
+        <translation>Eroare la conectare</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="245"/>
@@ -129,7 +129,7 @@
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="355"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="367"/>
         <source>SIM PUK Required</source>
-        <translation type="unfinished">Este necesar PUK-ul pentru cartela SIM</translation>
+        <translation>Este necesar PUK-ul pentru cartela SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
@@ -167,7 +167,7 @@
     <message>
         <location filename="../common.cpp" line="38"/>
         <source>the authentication supplicant disconnected</source>
-        <translation type="unfinished">solicitantul de autentificare s-a deconectat</translation>
+        <translation>solicitantul de autentificare s-a deconectat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="40"/>
@@ -182,12 +182,12 @@
     <message>
         <location filename="../common.cpp" line="44"/>
         <source>the authentication supplicant timed out</source>
-        <translation type="unfinished">solicitantul de autentificare nu a răspuns la timp</translation>
+        <translation>solicitantul de autentificare nu a răspuns la timp</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="46"/>
         <source>the PPP network failed to start</source>
-        <translation type="unfinished">rețeaua PPP nu a putut porni</translation>
+        <translation>rețeaua PPP nu a putut porni</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="48"/>
@@ -373,17 +373,17 @@
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="91"/>
         <source>theDesk doesn&apos;t support this network interface, so you won&apos;t be able to configure it fully here.</source>
-        <translation type="unfinished"></translation>
+        <translation>Această interfață de rețea nu poate fi configurată în totalitate aici, deoarece nu este suportată de theDesk.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="146"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACȚIUNI</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="155"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectare</translation>
     </message>
 </context>
 <context>
@@ -391,7 +391,7 @@
     <message>
         <location filename="../chunk/genericchunkupdater.cpp" line="24"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectat</translation>
     </message>
 </context>
 <context>
@@ -400,92 +400,92 @@
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="35"/>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.cpp" line="69"/>
         <source>IPv4</source>
-        <translation type="unfinished"></translation>
+        <translation>IPv4</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="99"/>
         <source>DHCP</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="104"/>
         <source>DHCP with manual DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DHCP cu DNS manual</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="109"/>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Manual</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="114"/>
         <source>Shared</source>
-        <translation type="unfinished"></translation>
+        <translation>Partajat</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="119"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezactivat</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="127"/>
         <source>Configuration Method</source>
-        <translation type="unfinished"></translation>
+        <translation>Metodă de configurare</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="143"/>
         <source>Require IPv4</source>
-        <translation type="unfinished"></translation>
+        <translation>Necesită IPv4</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="208"/>
         <source>IP Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresa IP</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="215"/>
         <source>Default Gateway</source>
-        <translation type="unfinished"></translation>
+        <translation>Gateway-ul implicit</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="222"/>
         <source>Subnet Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Lungimea de subnet</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="235"/>
         <source>ADDRESSES</source>
-        <translation type="unfinished"></translation>
+        <translation>ADRESE</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="255"/>
         <source>Set the IP address that this device will be assigned.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setați adresa IP care va fi atribuită acestui dispozitiv.</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="345"/>
         <source>DNS</source>
-        <translation type="unfinished"></translation>
+        <translation>DNS</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="352"/>
         <source>1.1.1.1</source>
-        <translation type="unfinished"></translation>
+        <translation>1.1.1.1</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.ui" line="359"/>
         <source>Configure the DNS servers that will be used to resolve domain names.</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurați serverele DNS care vor fi folosite să proceseze numele de domeniu.</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.cpp" line="217"/>
         <source>For DNS server %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pentru serverul DNS %1</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/ipv4connectioneditorpane.cpp" line="218"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Elimină</translation>
     </message>
 </context>
 <context>
@@ -493,17 +493,17 @@
     <message>
         <location filename="../chunk/networkchunk.cpp" line="94"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectat</translation>
     </message>
     <message>
         <location filename="../chunk/networkchunk.cpp" line="128"/>
         <source>Login Required</source>
-        <translation type="unfinished"></translation>
+        <translation>Autentificare necesară</translation>
     </message>
     <message>
         <location filename="../chunk/networkchunk.cpp" line="131"/>
         <source>Can&apos;t get to the Internet</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu se poate conecta la internet</translation>
     </message>
 </context>
 <context>
@@ -511,40 +511,40 @@
     <message>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="90"/>
         <source>SETTINGS MODIFIED</source>
-        <translation type="unfinished"></translation>
+        <translation>SETĂRI MODIFICATE</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="125"/>
         <source>Revert</source>
-        <translation type="unfinished"></translation>
+        <translation>Restabilește</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="136"/>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="224"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvează</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="195"/>
         <source>DONE?</source>
-        <translation type="unfinished"></translation>
+        <translation>GATA?</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="260"/>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="303"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>General</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.ui" line="327"/>
         <source>Connection Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Numele conexiunii</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.cpp" line="203"/>
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.cpp" line="231"/>
         <source>Couldn&apos;t save settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu au putut fi salvate setările</translation>
     </message>
 </context>
 <context>
@@ -552,7 +552,7 @@
     <message>
         <location filename="../statusCenter/networkstatuscenterleftpane.ui" line="35"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Rețea</translation>
     </message>
 </context>
 <context>
@@ -560,17 +560,17 @@
     <message>
         <location filename="../statusCenter/networkstatuscenterpane.ui" line="100"/>
         <source>NetworkManager is not operational</source>
-        <translation type="unfinished"></translation>
+        <translation>Serviciul NetworkManager nu este operațional</translation>
     </message>
     <message>
         <location filename="../statusCenter/networkstatuscenterpane.ui" line="110"/>
         <source>Contact your system administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>Contactați-vă administratorul de sistem</translation>
     </message>
     <message>
         <location filename="../statusCenter/networkstatuscenterpane.cpp" line="159"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Rețea</translation>
     </message>
 </context>
 <context>
@@ -578,87 +578,87 @@
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="35"/>
         <source>PEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>PEAP</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="42"/>
         <source>Enter the settings for this network</source>
-        <translation type="unfinished"></translation>
+        <translation>Completați setările pentru această rețea</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="82"/>
         <source>Phase-2 Authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Autentificare Phase-2</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="89"/>
         <source>Anonymous Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>Identitate anonimă</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="99"/>
         <source>PEAP version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versiunea PEAP</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="106"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Nume de utilizator</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="113"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Parolă</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="120"/>
         <source>CA Certificate</source>
-        <translation type="unfinished"></translation>
+        <translation>Certificat CA</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="127"/>
         <source>Browse...</source>
-        <translation type="unfinished"></translation>
+        <translation>Răsfoiește...</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="135"/>
         <source>MSCHAPv2</source>
-        <translation type="unfinished"></translation>
+        <translation>MSCHAPv2</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="140"/>
         <source>MD5</source>
-        <translation type="unfinished"></translation>
+        <translation>MD5</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="145"/>
         <source>GTC</source>
-        <translation type="unfinished"></translation>
+        <translation>GTC</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="171"/>
         <source>Automatic</source>
-        <translation type="unfinished"></translation>
+        <translation>Automat</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="187"/>
         <source>Version 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Versiunea 0</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="200"/>
         <source>Version 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Versiunea 1</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="244"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectare</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.cpp" line="107"/>
         <source>Certificates (*.pem, *.cer)</source>
-        <translation type="unfinished"></translation>
+        <translation>Certificate (*.pem,*.cer)</translation>
     </message>
 </context>
 <context>
@@ -667,12 +667,12 @@
         <location filename="../statusCenter/eap/securityeapunsupported.ui" line="35"/>
         <location filename="../statusCenter/eap/securityeapunsupported.ui" line="77"/>
         <source>Unsupported Security Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Setări de securitate nesuportate</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeapunsupported.ui" line="87"/>
         <source>Sorry, theDesk doesn&apos;t support those security settings at the moment. You can try using the terminal to configure this network.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne pare rău, theDesk nu suportă acele setări de securitate la acest moment. Puteți folosi terminalul pentru a configura această rețea.</translation>
     </message>
 </context>
 <context>
@@ -680,104 +680,106 @@
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="57"/>
         <source>Modem Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Setări modem</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="88"/>
         <source>SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN cartelă</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="98"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="111"/>
         <source>Enable SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Activează PIN pentru cartelă</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="105"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="117"/>
         <source>Disable SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezactivează PIN pentru cartelă</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="112"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="153"/>
         <source>Change SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbă PIN-ul cartelei</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="128"/>
         <source>CALLS</source>
-        <translation type="unfinished"></translation>
+        <translation>APELURI</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="138"/>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="769"/>
         <source>Call Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>Apel în așteptare</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="188"/>
         <source>IMSI</source>
-        <translation type="unfinished"></translation>
+        <translation>IMSI</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="195"/>
         <source>IMEI</source>
-        <translation type="unfinished"></translation>
+        <translation>IMEI</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="208"/>
         <source>MODEM INFORMATION</source>
-        <translation type="unfinished"></translation>
+        <translation>INFORMAȚII DESPRE MODEM</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="215"/>
         <source>Carrier</source>
-        <translation type="unfinished"></translation>
+        <translation>Operator</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="340"/>
         <source>Enter the new SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Introduceți noul PIN pentru SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="537"/>
         <source>Enter the current SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Introduceți PIN-ul cartelei curent</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="806"/>
         <source>Enable Call Waiting</source>
-        <translation type="unfinished"></translation>
+        <translation>Activează apeluri în așteptare</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="813"/>
         <source>Call Waiting allows you to receive calls while another call is currently active.</source>
-        <translation type="unfinished"></translation>
+        <translation>Apeluri în așteptare vă permite să primiți apeluri în timp ce un alt apel este activ.</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="56"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="57"/>
         <source>No SIM card</source>
-        <translation type="unfinished"></translation>
+        <translation>Fără cartelă SIM</translation>
     </message>
     <message numerus="yes">
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="139"/>
         <source>You have %n remaining tries</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Mai aveți o încercare</numerusform>
+            <numerusform>Mai aveți %n încercări</numerusform>
+            <numerusform>Mai aveți %n încercări</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="193"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Eroare</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="194"/>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut obține starea funcției apeluri în așteptare de la operator</translation>
     </message>
 </context>
 <context>
@@ -787,24 +789,24 @@
         <location filename="../switchmanager.cpp" line="72"/>
         <location filename="../switchmanager.cpp" line="122"/>
         <source>Flight Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod avion</translation>
     </message>
     <message>
         <location filename="../switchmanager.cpp" line="67"/>
         <source>Switch off Flight Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Oprește modul avion</translation>
     </message>
     <message>
         <location filename="../switchmanager.cpp" line="78"/>
         <location filename="../switchmanager.cpp" line="123"/>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <location filename="../switchmanager.cpp" line="88"/>
         <location filename="../switchmanager.cpp" line="124"/>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Date mobile</translation>
     </message>
 </context>
 <context>
@@ -812,27 +814,27 @@
     <message>
         <location filename="../statusCenter/popovers/tetheringsettingspopover.ui" line="35"/>
         <source>Tethering Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Setări pentru Tethering</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/tetheringsettingspopover.ui" line="63"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/tetheringsettingspopover.ui" line="73"/>
         <source>These settings will be used to set up a Wi-Fi network that other devices can connect to when tethering is enabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aceste setări vor fi folosite pentru a configura o rețea Wi-Fi la care alte dispozitive se pot conecta cât timp tethering-ul este activat.</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/tetheringsettingspopover.ui" line="96"/>
         <source>Network Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Cheie de rețea</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/tetheringsettingspopover.cpp" line="64"/>
         <source>Network key needs to be at least 8 characters long</source>
-        <translation type="unfinished"></translation>
+        <translation>Cheia de rețea trebuie să aibă minim 8 caractere</translation>
     </message>
 </context>
 <context>
@@ -840,72 +842,76 @@
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.ui" line="190"/>
         <source>Enter the SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Introduceți PIN-ul de la SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.ui" line="356"/>
         <source>SIM PUK</source>
-        <translation type="unfinished"></translation>
+        <translation>PUK de la cartela SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.ui" line="363"/>
         <source>You&apos;ll also need to provide a new SIM PIN to set once the SIM is unlocked.</source>
-        <translation type="unfinished"></translation>
+        <translation>Va trebui să furnizați un nou pin pentru SIM atunci când SIM-ul va fi deblocat.</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.ui" line="379"/>
         <source>SIM PUK REQUIRED</source>
-        <translation type="unfinished"></translation>
+        <translation>PUK-ul este necesar</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.ui" line="425"/>
         <source>Unlock SIM Card</source>
-        <translation type="unfinished"></translation>
+        <translation>Deblochează cartela SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.ui" line="456"/>
         <source>New SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN nou</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.ui" line="466"/>
         <source>Confirm SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirmă PIN-ul</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="47"/>
         <source>Don&apos;t guess the PUK!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu ghici codul PUK!</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="48"/>
         <source>Once you exhaust your attempts, the SIM card will be blocked forever.
 
 You&apos;ll need to contact your carrier for a new SIM card.</source>
-        <translation type="unfinished"></translation>
+        <translation>După ce se vor termina încercările, cartela SIM va fi blocată pe viață
+
+Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă cartelă SIM.</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="67"/>
         <source>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dacă mi introduceți PIN-ul greșit încă o dată, cartela dumneavoastră SIM va fi blocată PUK și va trebui să vă contactați operatorul de telefonie mobilă.</translation>
     </message>
     <message numerus="yes">
         <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="69"/>
         <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="74"/>
         <source>You have %n remaining tries</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Mai aveți o încercare</numerusform>
+            <numerusform>Mai aveți %n încercări</numerusform>
+            <numerusform>Mai aveți %n încercări</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="72"/>
         <source>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aceasta este ultima șansă de a introduce codul PUK corect înainte de a obține un nou SIM de la operatorul dvs.</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="77"/>
         <source>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Contactați-vă operatorul pentru a obține &lt;b&gt;CODUL PUK&lt;/b&gt;, apoi introduceți-l mai jos pentru a debloca %1.</translation>
     </message>
 </context>
 <context>
@@ -914,32 +920,32 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.ui" line="35"/>
         <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.cpp" line="47"/>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.ui" line="59"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mod</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.ui" line="66"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.ui" line="77"/>
         <source>Infrastructure</source>
-        <translation type="unfinished"></translation>
+        <translation>Infrastructură</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.ui" line="82"/>
         <source>Ad-Hoc</source>
-        <translation type="unfinished"></translation>
+        <translation>Ad-Hoc</translation>
     </message>
     <message>
         <location filename="../statusCenter/connectionEditor/wificonnectioneditorpane.ui" line="87"/>
         <source>Access Point</source>
-        <translation type="unfinished"></translation>
+        <translation>Punct de acces</translation>
     </message>
 </context>
 <context>
@@ -947,106 +953,108 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="106"/>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>STARE</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="124"/>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Acest dispozitiv</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="268"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACȚIUNI</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="277"/>
         <source>Select Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați rețeaua</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="284"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectare</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="348"/>
         <source>TETHERING</source>
-        <translation type="unfinished"></translation>
+        <translation>TETHERING</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="355"/>
         <source>Network Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Cheie de rețea</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="375"/>
         <source>Use Tethering to share your internet connection with other devices over Wi-Fi.
 
 **While Tethering is active, you won&apos;t be able to connect to the Internet with Wi-Fi, so you&apos;ll need to make sure you have an alternate way to connect to the Internet.**</source>
-        <translation type="unfinished"></translation>
+        <translation>Folosiți tethering pentru a vă partaja conexiunea cu alte dispozitive prin Wi-Fi
+
+**Cât timp tethering-ul este activ, nu vă veți putea conecta la internet prin Wi-Fi, deci fiți sigur că aveți o variantă alternativă pentru a vă conecta la internet.**</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="398"/>
         <source>Enable Tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Activați tethering</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="414"/>
         <source>SSID</source>
-        <translation type="unfinished"></translation>
+        <translation>SSID</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="440"/>
         <source>Set Tethering Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurați tethering</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="489"/>
         <source>Wi-Fi is off</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi-ul este oprit</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="512"/>
         <source>Switch Wi-Fi on to connect to a wireless network</source>
-        <translation type="unfinished"></translation>
+        <translation>Porniți Wi-Fi-ul pentru a vă conecta la o rețea fără fir</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="522"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="669"/>
         <source>Switch Wi-Fi On</source>
-        <translation type="unfinished"></translation>
+        <translation>Activați Wi-Fi</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="568"/>
         <source>Wi-Fi is disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi-ul este dezactivat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="591"/>
         <source>Use the Wi-Fi switch to enable Wi-Fi and connect to a network</source>
-        <translation type="unfinished"></translation>
+        <translation>Folosiți acest buton pentru a activa Wi-Fi și pentru a vă conecta la o rețea</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="636"/>
         <source>You&apos;re in flight mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Sunteți pe mod avion</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="659"/>
         <source>Switch Wi-Fi on to connect to a wireless network. Flight mode won&apos;t be disabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Activați Wi-Fi pentru a vă conecta la o rețea wireless. Modul avion nu va fi dezactivat.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="88"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="130"/>
         <source>Tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Tethering</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="91"/>
         <source>Disable Tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezactivați tethering</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="118"/>
@@ -1055,65 +1063,65 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="202"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="203"/>
         <source>Wi-Fi</source>
-        <translation type="unfinished"></translation>
+        <translation>Wi-Fi</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="119"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="230"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="131"/>
         <source>Active</source>
-        <translation type="unfinished"></translation>
+        <translation>Activ</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="137"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="143"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="153"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="239"/>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Eșuat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="164"/>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Eroare la conexiune</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="166"/>
         <source>Connecting to %1 failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectarea la rețeaua %1 a eșuat, deoarece %2.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="170"/>
         <source>the network</source>
-        <translation type="unfinished"></translation>
+        <translation>rețeaua</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="273"/>
         <source>0 Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>0 dispozitive</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="282"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Necunoscut</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="452"/>
         <source>Couldn&apos;t configure tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut configura tethering-ul</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="478"/>
         <source>Couldn&apos;t switch off tethering</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut opri tethering-ul</translation>
     </message>
 </context>
 <context>
@@ -1121,7 +1129,7 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../chunk/wiredchunkupdater.cpp" line="25"/>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation>Pe fir</translation>
     </message>
 </context>
 <context>
@@ -1133,77 +1141,77 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="89"/>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="102"/>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation>Pe fir</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="84"/>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>STARE</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="102"/>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Acest dispozitiv</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="246"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACȚIUNI</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="255"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectare</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="262"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectare</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="84"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="94"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="103"/>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Eșuat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="122"/>
         <source>Router</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruter</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="143"/>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Indisponibil</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="147"/>
         <source>Connect an Ethernet cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectați un cablu Ethernet.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="149"/>
         <source>This network is unavailable because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Rețeaua este indisponibilă, deoarece %2.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="175"/>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Eroare de conexiune</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="177"/>
         <source>Connecting to the network failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectarea la rețea a eșuat, deoarece %2.</translation>
     </message>
 </context>
 <context>
@@ -1211,62 +1219,62 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="86"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectat</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="90"/>
         <source>In Range</source>
-        <translation type="unfinished"></translation>
+        <translation>În aria de acoperire</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="98"/>
         <source>Out of range</source>
-        <translation type="unfinished"></translation>
+        <translation>În afara ariei de acoperire</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="108"/>
         <source>Not Secured</source>
-        <translation type="unfinished"></translation>
+        <translation>Nesecurizat</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="111"/>
         <source>Secured with Static WEP</source>
-        <translation type="unfinished"></translation>
+        <translation>Securizat cu WEP static</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="114"/>
         <source>Secured with Dynamic WEP</source>
-        <translation type="unfinished"></translation>
+        <translation>Securizat cu WEP dinamic</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="117"/>
         <source>Secured with LEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>Securizat cu LEAP</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="120"/>
         <source>Secured with WPA-PSK</source>
-        <translation type="unfinished"></translation>
+        <translation>Securizat cu WPA-PSK</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="123"/>
         <source>Secured with WPA Enterprise</source>
-        <translation type="unfinished"></translation>
+        <translation>Securizat cu WPA-Enterprise</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="126"/>
         <source>Secured with WPA2-PSK</source>
-        <translation type="unfinished"></translation>
+        <translation>Securizat cu WPA2-PSK</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="129"/>
         <source>Secured with WPA2 Enterprise</source>
-        <translation type="unfinished"></translation>
+        <translation>Securizat cu WPA2-Enterprise</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="132"/>
         <source>Secured with WPA3</source>
-        <translation type="unfinished"></translation>
+        <translation>Securizat cu WPA3</translation>
     </message>
 </context>
 <context>
@@ -1274,107 +1282,107 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="57"/>
         <source>Connect to a Wireless Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectați-vă la o rețea wireless</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="108"/>
         <source>KNOWN NETWORKS</source>
-        <translation type="unfinished"></translation>
+        <translation>REȚELE CUNOSCUTE</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="160"/>
         <source>NEW NETWORKS</source>
-        <translation type="unfinished"></translation>
+        <translation>REȚELE NOI</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="183"/>
         <source>New Manual Connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Crează o conexiune manual</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="299"/>
         <source>Enter the security key</source>
-        <translation type="unfinished"></translation>
+        <translation>Introduceți cheia de securitate</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="423"/>
         <source>Network Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Securitatea rețelei</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="449"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>EtichetăText</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="456"/>
         <source>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați metoda EAP. Dacă nu știți ce să selectați, contactați-vă administratorul de sistem pentru mai multe detalii.</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="486"/>
         <source>TLS</source>
-        <translation type="unfinished"></translation>
+        <translation>TLS</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="491"/>
         <source>LEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>LEAP</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="496"/>
         <source>PWD</source>
-        <translation type="unfinished"></translation>
+        <translation>PWD</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="501"/>
         <source>FAST</source>
-        <translation type="unfinished"></translation>
+        <translation>FAST</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="506"/>
         <source>TTLS</source>
-        <translation type="unfinished"></translation>
+        <translation>TTLS</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="511"/>
         <source>PEAP</source>
-        <translation type="unfinished"></translation>
+        <translation>PEAP</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="141"/>
         <source>Unknown Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Securitate necunoscută</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="142"/>
         <source>Not sure how to connect to this network. Use manual setup to connect to it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu suntem siguri cum să ne conectăm la această rețea. Folosiți configurarea manuală pentru a vă conecta.</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="217"/>
         <source>For network %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pentru rețeaua %1</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="218"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Editare</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="235"/>
         <source>Forget Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Uită rețeaua</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="316"/>
         <source>Wireless</source>
-        <translation type="unfinished"></translation>
+        <translation>Fără fir</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="319"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectare</translation>
     </message>
 </context>
 </TS>
