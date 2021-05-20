@@ -80,7 +80,7 @@
     <message>
         <location filename="../splash/splashcontroller.cpp" line="105"/>
         <source>Oh, Bonkers!</source>
-        <translation type="unfinished">O, vai!</translation>
+        <translation>O, vai!</translation>
     </message>
     <message>
         <location filename="../splash/splashcontroller.cpp" line="106"/>
