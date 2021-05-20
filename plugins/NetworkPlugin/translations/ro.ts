@@ -6,135 +6,135 @@
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="84"/>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>STARE</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="102"/>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Acest dispozitiv</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="246"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACȚIUNI</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="262"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectează</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="269"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectează</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="276"/>
         <source>Modem Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Setări modem</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="105"/>
         <source>Disable Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Dezactivează datele mobile</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="107"/>
         <source>Enable Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Activează datele mobile</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="129"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Deconectat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="134"/>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Date mobile</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="139"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="148"/>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Eșuat</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="204"/>
         <source>No SIM Card</source>
-        <translation type="unfinished"></translation>
+        <translation>Fără cartelă SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="205"/>
         <source>Insert a SIM card to connect to cellular services.</source>
-        <translation type="unfinished"></translation>
+        <translation>Introduceți o cartelă SIM pentru a vă conecta la date mobile.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="207"/>
         <source>No SIM</source>
-        <translation type="unfinished"></translation>
+        <translation>Fără SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="210"/>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Indisponibil</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="213"/>
         <source>This network is unavailable because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Această rețea este indisponibilă deoarece %2.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="243"/>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Eroare la conectare</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="245"/>
         <source>Connecting to the network failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut conecta la rețea, deoarece %2.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="319"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="332"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="339"/>
         <source>Enter SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Indroduceți PIN-ul pentru cartela SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="321"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="325"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="337"/>
         <source>SIM PIN Required</source>
-        <translation type="unfinished"></translation>
+        <translation>Este necesar PIN-ul pentru cartela SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="327"/>
         <source>A SIM PIN is required to connect to the cellular network.</source>
-        <translation type="unfinished"></translation>
+        <translation>Este necesar PIN-ul cartelei pentru conectarea la rețeaua celulară.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="349"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="362"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
         <source>Enter SIM PUK</source>
-        <translation type="unfinished"></translation>
+        <translation>Introduceți codul PUK al cartelei SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="351"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="355"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="367"/>
         <source>SIM PUK Required</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Este necesar PUK-ul pentru cartela SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
         <source>A SIM PUK is required to connect to the cellular network.</source>
-        <translation type="unfinished"></translation>
+        <translation>Codul PUK al cartelei SIM este necesar pentru conectarea la rețeaua celulară.</translation>
     </message>
 </context>
 <context>
@@ -142,207 +142,207 @@
     <message>
         <location filename="../common.cpp" line="28"/>
         <source>the device is no longer managed by NetworkManager</source>
-        <translation type="unfinished"></translation>
+        <translation>dispozitivul nu mai este gestionat de NetworkManager</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="30"/>
         <source>configuration of the device failed</source>
-        <translation type="unfinished"></translation>
+        <translation>configurarea acestui dispozitiv a eșuat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="32"/>
         <source>configuration of the device is unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>setările dispozitivului nu sunt disponibile</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="34"/>
         <source>configuration of the device expired</source>
-        <translation type="unfinished"></translation>
+        <translation>setările dispozitivului au expirat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="36"/>
         <source>required secrets were not provided</source>
-        <translation type="unfinished"></translation>
+        <translation>secretele necesare nu au fost furnizate</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="38"/>
         <source>the authentication supplicant disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">solicitantul de autentificare s-a deconectat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="40"/>
         <source>configuration of the authentication supplicant failed</source>
-        <translation type="unfinished"></translation>
+        <translation>configurarea solicitantului de autentificare a eșuat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="42"/>
         <source>the authentication supplicant failed</source>
-        <translation type="unfinished"></translation>
+        <translation>solicitantul de autentificare a eșuat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="44"/>
         <source>the authentication supplicant timed out</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">solicitantul de autentificare nu a răspuns la timp</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="46"/>
         <source>the PPP network failed to start</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">rețeaua PPP nu a putut porni</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="48"/>
         <source>the PPP network was disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>rețeaua PPP a fost deconectată</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="50"/>
         <source>the PPP network failed</source>
-        <translation type="unfinished"></translation>
+        <translation>rețeaua PPP a eșuat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="52"/>
         <source>DHCP configuration failed to start</source>
-        <translation type="unfinished"></translation>
+        <translation>configurația DHCP nu a putut porni</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="54"/>
         <source>DHCP configuration had an error</source>
-        <translation type="unfinished"></translation>
+        <translation>a survenit o eroare la configurația DHCP</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="56"/>
         <source>DHCP configuration failed</source>
-        <translation type="unfinished"></translation>
+        <translation>configurarea DHCP a eșuat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="68"/>
         <source>the modem is busy</source>
-        <translation type="unfinished"></translation>
+        <translation>modem-ul este ocupat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="70"/>
         <source>there is no dial tone on the modem</source>
-        <translation type="unfinished"></translation>
+        <translation>nu există un ton de apel pe modem</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="72"/>
         <source>no carrier is available on the modem</source>
-        <translation type="unfinished"></translation>
+        <translation>nu există un operator pe modem</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="74"/>
         <source>dialling the number on the modem timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>apelarea numărului de pe modem nu a primit un răspuns la timp</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="76"/>
         <source>dialling the number on the modem failed</source>
-        <translation type="unfinished"></translation>
+        <translation>apelarea numărului de pe modem a eșuat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="78"/>
         <source>initialising the modem failed</source>
-        <translation type="unfinished"></translation>
+        <translation>nu s-a putut inițializa modem-ul</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="80"/>
         <source>APN selection failed</source>
-        <translation type="unfinished"></translation>
+        <translation>selecția unui APN a eșuat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="82"/>
         <source>the modem is not searching</source>
-        <translation type="unfinished"></translation>
+        <translation>modemul nu este în modul de căutare</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="84"/>
         <source>the cell tower denied registration of the modem</source>
-        <translation type="unfinished"></translation>
+        <translation>turnul de telefonie mobilă a refuzat înregistrarea modemului</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="86"/>
         <source>registration of the modem on the cell tower timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>înregistrarea modemului la turnul de telefonie mobilă nu s-a terminat la timp</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="88"/>
         <source>registration of the modem on the cell tower failed</source>
-        <translation type="unfinished"></translation>
+        <translation>înregistrarea modemului pe turnul de telefonie mobilă a eșuat</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="92"/>
         <source>the device firmware is missing</source>
-        <translation type="unfinished"></translation>
+        <translation>firmware-ul dispozitivului lipsește</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="94"/>
         <source>the device was removed</source>
-        <translation type="unfinished"></translation>
+        <translation>dispozitivul a fost scos</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="96"/>
         <source>the device is sleeping</source>
-        <translation type="unfinished"></translation>
+        <translation>dispozitivul este în adormire</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="98"/>
         <source>the connection was removed</source>
-        <translation type="unfinished"></translation>
+        <translation>conexiunea a fost înlăturată</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="100"/>
         <source>you requested the action</source>
-        <translation type="unfinished"></translation>
+        <translation>ați solicitat anularea</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="108"/>
         <source>the modem was not found</source>
-        <translation type="unfinished"></translation>
+        <translation>modemul nu a fost găsit</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="110"/>
         <source>Bluetooth is not available</source>
-        <translation type="unfinished"></translation>
+        <translation>Bluetooth nu este disponibil</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="112"/>
         <source>the SIM card is not inserted</source>
-        <translation type="unfinished"></translation>
+        <translation>cartela SIM nu este inserată</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="114"/>
         <source>the SIM PIN is required</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN-ul de la SIM este necesar</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="116"/>
         <source>the SIM PUK is required</source>
-        <translation type="unfinished"></translation>
+        <translation>PUK-ul de la SIM este necesar</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="119"/>
         <source>the SIM PUK is exhausted</source>
-        <translation type="unfinished"></translation>
+        <translation>PUK-ul cartelei a fost folosit de prea multe ori</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="127"/>
         <source>ModemManager is not operational on this device</source>
-        <translation type="unfinished"></translation>
+        <translation>ModemManager nu este funcțional pe acest dispozitiv</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="129"/>
         <source>the wireless network wasn&apos;t found</source>
-        <translation type="unfinished"></translation>
+        <translation>rețeaua wireless nu a fost găsită</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="153"/>
         <source>an unknown error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>a survenit o eroare necunoscută</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="199"/>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Date mobile</translation>
     </message>
 </context>
 <context>
@@ -350,12 +350,12 @@
     <message>
         <location filename="../statusCenter/popovers/connectionselectionpopover.ui" line="35"/>
         <source>Select Connection Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați profilul de conexiune</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/connectionselectionpopover.ui" line="42"/>
         <source>Select a connection profile to use</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați profilul de conexiune pe care doriți să-l folosiți</translation>
     </message>
 </context>
 <context>
@@ -363,12 +363,12 @@
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="35"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>EtichetăText</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="84"/>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>STARE</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="91"/>
