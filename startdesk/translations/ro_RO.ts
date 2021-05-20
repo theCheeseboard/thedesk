@@ -7,7 +7,7 @@
         <location filename="../crash/backtracedialog.ui" line="14"/>
         <location filename="../crash/backtracedialog.ui" line="35"/>
         <source>Error Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Detalii eroare</translation>
     </message>
 </context>
 <context>
@@ -15,12 +15,12 @@
     <message>
         <location filename="../crash/backtracepopover.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../crash/backtracepopover.ui" line="35"/>
         <source>Error Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Detalii eroare</translation>
     </message>
 </context>
 <context>
@@ -28,17 +28,17 @@
     <message>
         <location filename="../crash/backtracewidget.ui" line="50"/>
         <source>Review the information below and ensure it does not contain any personal data. Attach the information to a bug report and we&apos;ll get back to you!</source>
-        <translation type="unfinished"></translation>
+        <translation>Revizuiți informațiile de mai jos și asigurați-vă că nu conțin date personale. Atașați aceste date la un raport de eroare și o să vă contactăm!</translation>
     </message>
     <message>
         <location filename="../crash/backtracewidget.ui" line="66"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACȚIUNI</translation>
     </message>
     <message>
         <location filename="../crash/backtracewidget.ui" line="73"/>
         <source>Save to file</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvați în fișier</translation>
     </message>
 </context>
 <context>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../crash/crashwidget.ui" line="151"/>
         <source>View Details</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vedeți detaliile</translation>
     </message>
     <message>
         <location filename="../crash/crashwidget.cpp" line="39"/>
@@ -85,12 +85,12 @@
     <message>
         <location filename="../splash/splashcontroller.cpp" line="106"/>
         <source>theDesk had a problem and was restarted.</source>
-        <translation type="unfinished"></translation>
+        <translation>theDesk a întâmpinat o problemă și a fost repornit.</translation>
     </message>
     <message>
         <location filename="../splash/splashcontroller.cpp" line="108"/>
         <source>View Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Vedeți detaliile</translation>
     </message>
 </context>
 <context>
