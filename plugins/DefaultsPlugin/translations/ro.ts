@@ -7,22 +7,22 @@
         <location filename="../defaultspane.ui" line="35"/>
         <location filename="../defaultspane.cpp" line="81"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicații implicite</translation>
     </message>
     <message>
         <location filename="../defaultspane.ui" line="54"/>
         <source>Web Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Browser web</translation>
     </message>
     <message>
         <location filename="../defaultspane.ui" line="61"/>
         <source>Set your default apps below</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurați aplicațiile implicite aici</translation>
     </message>
     <message>
         <location filename="../defaultspane.ui" line="68"/>
         <source>Mail Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Client de mail</translation>
     </message>
 </context>
 </TS>
