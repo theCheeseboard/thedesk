@@ -39,7 +39,7 @@
     <message>
         <location filename="../identitypopover.ui" line="42"/>
         <source>Who do you want to authenticate as?</source>
-        <translation type="unfinished">Sub ce identitate doriți să vă autentificați?</translation>
+        <translation>Sub ce identitate doriți să vă autentificați?</translation>
     </message>
 </context>
 </TS>
