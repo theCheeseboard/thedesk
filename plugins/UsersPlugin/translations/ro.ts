@@ -318,7 +318,7 @@
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="179"/>
         <source>Delete this user from this device?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ștergeți utilizatorul de pe acest dispozitiv?</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="189"/>
@@ -326,17 +326,20 @@
 - Home Directory
 - Mail Spool
 - Temporary Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Orice date asociate cu acest utilizator vor fi șterse permanent. Acestea cuprind:
+-Folderul Home
+-Mailurile
+-Fișierele temporare</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="210"/>
         <source>They&apos;ll be gone forever!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vor fi șterse permanent!</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.cpp" line="74"/>
         <source>Couldn&apos;t delete user</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut șterge utilizatorul</translation>
     </message>
 </context>
 <context>
@@ -345,33 +348,33 @@
         <location filename="../settings/lockuserdialog.ui" line="68"/>
         <location filename="../settings/lockuserdialog.ui" line="90"/>
         <source>Lock Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Blochează contul</translation>
     </message>
     <message>
         <location filename="../settings/lockuserdialog.ui" line="77"/>
         <source>After locking this account, you won&apos;t be able to log in as this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>După blocarea contului, acesta nu va mai putea fi folosit pentru autentificare.</translation>
     </message>
     <message>
         <location filename="../settings/lockuserdialog.ui" line="140"/>
         <location filename="../settings/lockuserdialog.ui" line="162"/>
         <source>Unlock Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Deblochează contul</translation>
     </message>
     <message>
         <location filename="../settings/lockuserdialog.ui" line="149"/>
         <source>After unlocking this account, you&apos;ll be able to log in as this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>După deblocarea contului, acesta va putea fi folosit pentru autentificare.</translation>
     </message>
     <message>
         <location filename="../settings/lockuserdialog.cpp" line="63"/>
         <source>Couldn&apos;t unlock user</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut debloca contul</translation>
     </message>
     <message>
         <location filename="../settings/lockuserdialog.cpp" line="66"/>
         <source>Couldn&apos;t lock user</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut bloca contul</translation>
     </message>
 </context>
 <context>
@@ -381,128 +384,128 @@
         <location filename="../onboarding/onboardingusers.ui" line="582"/>
         <location filename="../onboarding/onboardingusers.cpp" line="157"/>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizatori</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="130"/>
         <source>Full Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nume complet</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="137"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Nume de utilizator</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="150"/>
         <source>ABOUT YOU</source>
-        <translation type="unfinished"></translation>
+        <translation>DESPRE DUMNEAVOASTRĂ</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="157"/>
         <source>The username is generated based on the given full name. We recommend not changing it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Numele complet determină numele de utilizator. Nu recomandăm schimbarea acestuia.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="199"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Parolă</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="206"/>
         <source>Password Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>Indiciu de parolă</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="219"/>
         <source>YOUR PASSWORD</source>
-        <translation type="unfinished"></translation>
+        <translation>PAROLA DUMNEAVOASTRĂ</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="236"/>
         <source>Confirm Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirmați parola</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="243"/>
         <source>Protect this account with a password to prevent anyone else logging into it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Protejați acest cont cu o parolă pentru a împiedica accesul neautorizat.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="257"/>
         <source>If you forget your password, this will appear to help you remember.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dacă vă uitați parola, acest indiciu va apărea ca să vă ajute să vă reamintiți.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="329"/>
         <source>ADMINISTRATOR</source>
-        <translation type="unfinished"></translation>
+        <translation>ADMINISTRATOR</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="336"/>
         <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un administrator are control complet asupra dispozitivului. Acesta va putea să schimbe setări pe întregul sistem și să instaleze software.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="346"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>Administrator</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="377"/>
         <source>STANDARD USER</source>
-        <translation type="unfinished"></translation>
+        <translation>UTILIZATOR NORMAL</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="384"/>
         <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un utilizator normal nu poate executa acțiuni la întregul sistem. Acesta va putea să execute acțiuni administrative doar pe contul său.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="394"/>
         <source>Standard User</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizator normal</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="419"/>
         <source>USER TYPE</source>
-        <translation type="unfinished"></translation>
+        <translation>TIP DE UTILIZATOR</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="491"/>
         <location filename="../onboarding/onboardingusers.ui" line="673"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Următorul</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="662"/>
         <source>Add Another User</source>
-        <translation type="unfinished"></translation>
+        <translation>Adăugați un alt utilizatăr</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="45"/>
         <source>It&apos;s time to get to know you. Apps will use this information to personalise your experience, and you&apos;ll use the password to log in.</source>
-        <translation type="unfinished"></translation>
+        <translation>Haideți să ne cunoaștem. Aplicațiile vor folosi aceste informații pentru a vă personaliza experiența, iar dumneavoastră veți putea folosi parola pentru a vă autentifica.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="116"/>
         <source>Thanks, %1. If other people will be using this device, you can add them now, or you can add them later.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mulțumim, %1. Dacă mai folosesc și alte persoane acest dispozitiv, le puteți adăuga acum sau mai târziu.</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="114"/>
         <source>You&apos;ve added these users to your system</source>
-        <translation type="unfinished"></translation>
+        <translation>Ați adăugat acești utilizatori la sistemul dumneavoastă</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="123"/>
         <source>Enter the details of the next user to be added</source>
-        <translation type="unfinished"></translation>
+        <translation>Introduceți detaliile următorului utilizator de adăugat</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingusers.cpp" line="130"/>
         <source>Couldn&apos;t create user</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut crea utilizatorul</translation>
     </message>
 </context>
 <context>
@@ -510,42 +513,42 @@
     <message>
         <location filename="../settings/usertypedialog.ui" line="93"/>
         <source>Change User Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbați tipul utilizatorului</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="150"/>
         <source>ADMINISTRATOR</source>
-        <translation type="unfinished"></translation>
+        <translation>ADMINISTRATOR</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="157"/>
         <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un administrator are control complet asupra dispozitivului. Acesta va putea să schimbe setări pe întregul sistem și să instaleze software.</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="205"/>
         <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un utilizator normal nu poate executa acțiuni la întregul sistem. Acesta va putea să execute acțiuni administrative doar pe contul său.</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="167"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>Administrator</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="198"/>
         <source>STANDARD USER</source>
-        <translation type="unfinished"></translation>
+        <translation>UTILIZATOR NORMAL</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.ui" line="215"/>
         <source>Standard User</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizator normal</translation>
     </message>
     <message>
         <location filename="../settings/usertypedialog.cpp" line="87"/>
         <source>Couldn&apos;t set user type</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut seta tipul utilizatorului</translation>
     </message>
 </context>
 <context>
@@ -554,77 +557,77 @@
         <location filename="../settings/userspane.ui" line="89"/>
         <location filename="../settings/userspane.cpp" line="217"/>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizatori</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="105"/>
         <source>New User</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizator nou</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="172"/>
         <source>No User Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Niciun utilizator selectat</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="182"/>
         <source>Select a user to get started</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectați un utilizator pentru a începe</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="288"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ACȚIUNI</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="298"/>
         <source>Change Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbă numele real</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="305"/>
         <source>Change Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbă parola</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="312"/>
         <source>Change User Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbați tipul utilizatorului</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="359"/>
         <source>DANGER</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">PERICOL</translation>
     </message>
     <message>
         <location filename="../settings/userspane.ui" line="376"/>
         <source>Delete User</source>
-        <translation type="unfinished"></translation>
+        <translation>Șterge utilizatorul</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="91"/>
         <source>Username: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nume utilizator: %1</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="94"/>
         <source>Unlock User</source>
-        <translation type="unfinished"></translation>
+        <translation>Deblochează utilizatorul</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="96"/>
         <source>Lock User</source>
-        <translation type="unfinished"></translation>
+        <translation>Blochează utilizatorul</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="138"/>
         <source>Unauthorized</source>
-        <translation type="unfinished"></translation>
+        <translation>Neautorizat</translation>
     </message>
     <message>
         <location filename="../settings/userspane.cpp" line="139"/>
         <source>Polkit does not allow you to manage users on the system.</source>
-        <translation type="unfinished"></translation>
+        <translation>Polkit nu vă permite să gestionați utilizatorii pe acest sistem.</translation>
     </message>
 </context>
 </TS>
