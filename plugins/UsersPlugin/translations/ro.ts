@@ -8,165 +8,165 @@
         <location filename="../settings/adduserdialog.ui" line="629"/>
         <location filename="../settings/adduserdialog.ui" line="745"/>
         <source>Add User</source>
-        <translation type="unfinished"></translation>
+        <translation>Adaugă un utilizator</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="161"/>
         <source>PERSONAL DETAILS</source>
-        <translation type="unfinished"></translation>
+        <translation>INFORMAȚII PERSONALE</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="168"/>
         <location filename="../settings/adduserdialog.ui" line="688"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Nume de utilizator</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="175"/>
         <source>Full Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nume complet</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="188"/>
         <source>The username is generated based on the given full name. We recommend not changing it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Numele complet determină numele de utilizator. Nu recomandăm schimbarea acestuia.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="245"/>
         <source>ADMINISTRATOR</source>
-        <translation type="unfinished"></translation>
+        <translation>ADMINISTRATOR</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="262"/>
         <location filename="../settings/adduserdialog.cpp" line="187"/>
         <source>Administrator</source>
-        <translation type="unfinished"></translation>
+        <translation>Administrator</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="293"/>
         <source>STANDARD USER</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizator normal</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="252"/>
         <source>An administrator has full control over this device. They&apos;ll be able to configure systemwide settings and install software.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un administrator are control complet asupra dispozitivului. Acesta va putea să schimbe setări pe întregul sistem și să instaleze software.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="300"/>
         <source>A standard user can&apos;t perform systemwide actions. They&apos;ll only be able to perform administrative actions that only affect their account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un utilizator normal nu poate executa acțiuni la întregul sistem. Acesta va putea să execute acțiuni administrative doar pe contul său.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="310"/>
         <source>Standard User</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizator normal</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="332"/>
         <source>USER TYPE</source>
-        <translation type="unfinished"></translation>
+        <translation>TIP DE UTILIZATOR</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="409"/>
         <source>Account Security</source>
-        <translation type="unfinished"></translation>
+        <translation>Securitatea contului</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="434"/>
         <source>Protect this account with a password to prevent anyone else logging into it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Protejați acest cont cu o parolă pentru a împiedica accesul neautorizat.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="474"/>
         <location filename="../settings/adduserdialog.ui" line="729"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Parola</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="488"/>
         <source>Confirm Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirmați parola</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="505"/>
         <source>Password Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>Indiciu de parolă</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="512"/>
         <source>If you forget your password, this will appear to help you remember.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dacă vă uitați parola, acest indiciu va apărea ca să vă ajute să vă reamintiți.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="524"/>
         <source>Use this password</source>
-        <translation type="unfinished"></translation>
+        <translation>Folosiți parola</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="531"/>
         <source>Alternatively, choose one of the following options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sau, alegeți una dintre următoarele opțiuni:</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="541"/>
         <source>Ask for a password on the next login</source>
-        <translation type="unfinished"></translation>
+        <translation>Solicită parola la următoarea autentificare</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="544"/>
         <source>The first time the user logs in, we&apos;ll ask them for a password.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prima dată când utilizatorul se autentifică, îi vom cere o parolă.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="551"/>
         <source>Don&apos;t set a password</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu seta o parolă</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="554"/>
         <source>Anyone will be able to log into this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Oricine va putea intra pe acest cont.</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="654"/>
         <source>Add this user to your system?</source>
-        <translation type="unfinished"></translation>
+        <translation>Adăugați acest utilizator la sistemul dvs.?</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="695"/>
         <source>Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Numele real</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="702"/>
         <source>User Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipul utilizatorului</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="103"/>
         <source>Set Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Setează o parolă</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="110"/>
         <source>Ask when logging in</source>
-        <translation type="unfinished"></translation>
+        <translation>Solicită la autentificare</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="117"/>
         <source>Not Set</source>
-        <translation type="unfinished"></translation>
+        <translation>Nesetat</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="165"/>
         <source>Couldn&apos;t create user</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut crea utilizatorul</translation>
     </message>
     <message>
         <location filename="../settings/adduserdialog.cpp" line="194"/>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal</translation>
     </message>
 </context>
 <context>
@@ -174,83 +174,83 @@
     <message>
         <location filename="../settings/changepassworddialog.ui" line="68"/>
         <source>Change Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbă parola</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="94"/>
         <source>Set a password to protect this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setați o parolă pentru a proteja acest cont.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="237"/>
         <source>WARNING</source>
-        <translation type="unfinished"></translation>
+        <translation>ATENȚIE</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="244"/>
         <source>This account is locked. Changing the password will unlock it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Acest cont este blocat. Schimbarea parolei îl va debloca.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="289"/>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Parolă</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="303"/>
         <source>Confirm Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Confirmați parola</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="320"/>
         <source>Password Hint</source>
-        <translation type="unfinished"></translation>
+        <translation>Indiciu de parolă</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="327"/>
         <source>If you forget your password, this will appear to help you remember.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dacă vă uitați parola, acest indiciu va apărea ca să vă ajute să vă reamintiți.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="339"/>
         <source>Use this password</source>
-        <translation type="unfinished"></translation>
+        <translation>Folosiți parola</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="346"/>
         <source>Alternatively, choose one of the following options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sau, alegeți una dintre următoarele opțiuni:</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="356"/>
         <source>Ask for a password on the next login</source>
-        <translation type="unfinished"></translation>
+        <translation>Solicită parola la următoarea autentificare</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="359"/>
         <source>The first time the user logs in, we&apos;ll ask them for a password.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prima dată când utilizatorul se autentifică, îi vom cere o parolă.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="366"/>
         <source>Don&apos;t set a password</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu seta o parolă</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.ui" line="369"/>
         <source>Anyone will be able to log into this account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Oricine va putea intra pe acest cont.</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.cpp" line="71"/>
         <source>Couldn&apos;t set password</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut seta o parolă</translation>
     </message>
     <message>
         <location filename="../settings/changepassworddialog.cpp" line="89"/>
         <location filename="../settings/changepassworddialog.cpp" line="107"/>
         <source>Couldn&apos;t set password policy</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut seta o politică de parolă</translation>
     </message>
 </context>
 <context>
@@ -258,27 +258,27 @@
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="68"/>
         <source>Change Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Schimbă numele real</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="77"/>
         <source>Your Real Name appears on the login screen, on the Gateway and in any other location where we need to differentiate between users.</source>
-        <translation type="unfinished"></translation>
+        <translation>Numele real va apărea pe ecranul de autentificare, pe portal și în orice altă locație unde trebuie să diferențiem utilizatorii.</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="123"/>
         <source>Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Numele real</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.ui" line="132"/>
         <source>Set Real Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Setează numele real</translation>
     </message>
     <message>
         <location filename="../settings/changerealnamedialog.cpp" line="64"/>
         <source>Couldn&apos;t set real name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu s-a putut seta numele real</translation>
     </message>
 </context>
 <context>
@@ -288,32 +288,32 @@
         <location filename="../settings/deleteuserdialog.ui" line="153"/>
         <location filename="../settings/deleteuserdialog.ui" line="207"/>
         <source>Delete User</source>
-        <translation type="unfinished"></translation>
+        <translation>Șterge utilizatorul</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="77"/>
         <source>What do you want to do with this user&apos;s files?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce doriți să faceți cu fișierele acestui utilizator?</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="90"/>
         <source>Delete Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Șterge fișierele</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="93"/>
         <source>Files for this user will be removed from this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fișierele utilizatorului vor fi șterse de pe dispozitiv.</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="100"/>
         <source>Keep Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Păstrează fișierele</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="103"/>
         <source>Files for this user will be kept in the same location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fișierele utilizatorului vor fi păstrate acolo unde sunt.</translation>
     </message>
     <message>
         <location filename="../settings/deleteuserdialog.ui" line="179"/>
