@@ -50,7 +50,7 @@
         <x>0</x>
         <y>0</y>
         <width>854</width>
-        <height>607</height>
+        <height>630</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -242,38 +242,10 @@
                 <property name="spacing">
                  <number>6</number>
                 </property>
-                <item row="6" column="0">
-                 <widget class="QLabel" name="label">
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_91">
                   <property name="text">
-                   <string>Device Name</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_89">
-                  <property name="text">
-                   <string>Available Swap</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="1">
-                 <widget class="QLabel" name="kernelVersion">
-                  <property name="text">
-                   <string notr="true">4.11</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <widget class="QLabel" name="availableSwap">
-                  <property name="text">
-                   <string notr="true">8 GiB</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="1">
-                 <widget class="QLabel" name="qtVersion">
-                  <property name="text">
-                   <string notr="true">5.9.0</string>
+                   <string>Kernel Version</string>
                   </property>
                  </widget>
                 </item>
@@ -290,24 +262,31 @@
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="0">
-                 <widget class="QLabel" name="label_90">
+                <item row="5" column="1">
+                 <widget class="QLabel" name="qtVersion">
                   <property name="text">
-                   <string>Qt Version</string>
+                   <string notr="true">5.9.0</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_91">
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_89">
                   <property name="text">
-                   <string>Kernel Version</string>
+                   <string>Available Swap</string>
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="1">
-                 <widget class="QLabel" name="hostnameLabel">
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_88">
                   <property name="text">
-                   <string notr="true">TextLabel</string>
+                   <string>Available Memory</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QLabel" name="kernelVersion">
+                  <property name="text">
+                   <string notr="true">4.11</string>
                   </property>
                  </widget>
                 </item>
@@ -315,6 +294,52 @@
                  <widget class="QLabel" name="label_107">
                   <property name="text">
                    <string>Processor</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_90">
+                  <property name="text">
+                   <string>Qt Version</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1">
+                 <widget class="QLabel" name="hostnameLabel">
+                  <property name="text">
+                   <string notr="true">TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLabel" name="processorType">
+                  <property name="text">
+                   <string notr="true">Intel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="QLabel" name="label">
+                  <property name="text">
+                   <string>Device Name</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="0" colspan="2">
+                 <widget class="QPushButton" name="changeHostnameButton">
+                  <property name="text">
+                   <string>Change Device Name</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="edit-rename">
+                    <normaloff>.</normaloff>.</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLabel" name="availableSwap">
+                  <property name="text">
+                   <string notr="true">8 GiB</string>
                   </property>
                  </widget>
                 </item>
@@ -331,27 +356,17 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="1">
-                 <widget class="QLabel" name="processorType">
+                <item row="6" column="0">
+                 <widget class="QLabel" name="label_2">
                   <property name="text">
-                   <string notr="true">Intel</string>
+                   <string>Window System</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="label_88">
+                <item row="6" column="1">
+                 <widget class="QLabel" name="windowSystemLabel">
                   <property name="text">
-                   <string>Available Memory</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="0" colspan="2">
-                 <widget class="QPushButton" name="changeHostnameButton">
-                  <property name="text">
-                   <string>Change Device Name</string>
-                  </property>
-                  <property name="icon">
-                   <iconset theme="edit-rename"/>
+                   <string notr="true">TextLabel</string>
                   </property>
                  </widget>
                 </item>

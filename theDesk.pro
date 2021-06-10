@@ -16,4 +16,5 @@ SUBDIRS = libraryproj \
     platform \
     pluginsproj \
     polkitagent \
-    startdeskproj
+    startdeskproj \
+    wayfire-plugins

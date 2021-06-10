@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=/usr/bin/wayfire --config /usr/share/thedesk/startdesk/wayfire-thedesk-config.conf
+TryExec=/usr/bin/wayfire
+DesktopNames=theDesk
+Name=theDesk (Wayland)
+Comment=theDesk Desktop Environment

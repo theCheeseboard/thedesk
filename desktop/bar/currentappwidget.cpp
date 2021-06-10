@@ -153,7 +153,7 @@ void CurrentAppWidget::mouseReleaseEvent(QMouseEvent* event) {
     if (this->underMouse()) {
         //Click!
         DesktopWmWindowPtr active = DesktopWm::activeWindow();
-        if (!active->application()) return;
+        if (!active || !active->application()) return;
         d->menu->setWindow(active);
         if (!d->menuContainer->isShowing()) d->menuContainer->showContainer();
     }

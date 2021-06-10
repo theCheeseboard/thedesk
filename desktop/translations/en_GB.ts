@@ -19,108 +19,113 @@
         <translation>Support</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="248"/>
+        <location filename="../systemsettings/about/about.ui" line="324"/>
         <source>Device Name</source>
         <translation>Device Name</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="317"/>
+        <location filename="../systemsettings/about/about.ui" line="296"/>
         <source>Processor</source>
         <translation>Processor</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="330"/>
+        <location filename="../systemsettings/about/about.ui" line="355"/>
         <source>THIS DEVICE</source>
         <translation>THIS DEVICE</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="344"/>
+        <location filename="../systemsettings/about/about.ui" line="282"/>
         <source>Available Memory</source>
         <translation>Available Memory</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="255"/>
+        <location filename="../systemsettings/about/about.ui" line="275"/>
         <source>Available Swap</source>
         <translation>Available Swap</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="296"/>
+        <location filename="../systemsettings/about/about.ui" line="303"/>
         <source>Qt Version</source>
         <translation>Qt Version</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="303"/>
+        <location filename="../systemsettings/about/about.ui" line="248"/>
         <source>Kernel Version</source>
         <translation>Kernel Version</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="351"/>
+        <location filename="../systemsettings/about/about.ui" line="331"/>
         <source>Change Device Name</source>
         <translation>Change Device Name</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="422"/>
+        <location filename="../systemsettings/about/about.ui" line="362"/>
+        <source>Window System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/about.ui" line="437"/>
         <source>Desktop Environment</source>
         <translation>Desktop Environment</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="452"/>
+        <location filename="../systemsettings/about/about.ui" line="467"/>
         <source>Website</source>
         <translation>Website</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="463"/>
+        <location filename="../systemsettings/about/about.ui" line="478"/>
         <source>File Bug</source>
         <translation>File Bug</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="474"/>
+        <location filename="../systemsettings/about/about.ui" line="489"/>
         <source>Sources</source>
         <translation>Sources</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="485"/>
+        <location filename="../systemsettings/about/about.ui" line="500"/>
         <source>View Debug Log</source>
         <translation>View Debug Log</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="441"/>
+        <location filename="../systemsettings/about/about.ui" line="456"/>
         <source>Acknowledgements</source>
         <translation>Acknowledgements</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="78"/>
         <location filename="../systemsettings/about/about.cpp" line="79"/>
         <location filename="../systemsettings/about/about.cpp" line="80"/>
-        <location filename="../systemsettings/about/about.cpp" line="88"/>
+        <location filename="../systemsettings/about/about.cpp" line="81"/>
         <location filename="../systemsettings/about/about.cpp" line="89"/>
-        <location filename="../systemsettings/about/about.cpp" line="125"/>
+        <location filename="../systemsettings/about/about.cpp" line="90"/>
+        <location filename="../systemsettings/about/about.cpp" line="126"/>
         <source>Unknown</source>
         <translation>Unknown</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="134"/>
+        <location filename="../systemsettings/about/about.cpp" line="137"/>
         <source>theDesk %1 - Blueprint</source>
         <translation>theDesk %1 - Blueprint</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="135"/>
+        <location filename="../systemsettings/about/about.cpp" line="138"/>
         <source>You compiled theDesk on %1</source>
         <translation>You compiled theDesk on %1</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="137"/>
+        <location filename="../systemsettings/about/about.cpp" line="140"/>
         <source>theDesk %1</source>
         <translation>theDesk %1</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="141"/>
+        <location filename="../systemsettings/about/about.cpp" line="144"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
         <translation>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="35"/>
-        <location filename="../systemsettings/about/about.cpp" line="175"/>
+        <location filename="../systemsettings/about/about.cpp" line="178"/>
         <source>About</source>
         <translation>About</translation>
     </message>

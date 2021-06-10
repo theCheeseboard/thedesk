@@ -31,6 +31,7 @@
 #include <sys/sysinfo.h>
 #include <tpopover.h>
 #include <tlogger.h>
+#include <Wm/desktopwm.h>
 #include "changehostnamepopover.h"
 #include "acknowledgements.h"
 
@@ -129,6 +130,8 @@ About::About() :
 
     QDBusConnection::systemBus().connect("org.freedesktop.hostname1", "/org/freedesktop/hostname1", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(updateHostname()));
     updateHostname();
+
+    ui->windowSystemLabel->setText(DesktopWm::windowSystemName());
 
 #ifdef BLUEPRINT
     ui->versionLabel->setText(tr("theDesk %1 - Blueprint").arg("1.0"));

@@ -5,7 +5,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += c++11
 
 # Include the-libs build tools
-# Include the-libs build tools
 equals(THELIBS_BUILDTOOLS_PATH, "") {
     THELIBS_BUILDTOOLS_PATH = $$[QT_INSTALL_PREFIX]/share/the-libs/pri
 }
@@ -62,7 +61,13 @@ unix {
     xsession.path = /usr/share/xsessions
     xsession.files = thedesk.desktop
 
-    INSTALLS += target translations xsession
+    wayland-session.path = /usr/share/wayland-sessions
+    wayland-session.files = thedesk-wayland.desktop
+
+    wayfire-config.path = /usr/share/thedesk/startdesk
+    wayfire-config.files = wayfire-thedesk-config.conf
+
+    INSTALLS += target translations xsession wayland-session wayfire-config
 }
 
 DEFINES += SYSTEM_LIBRARY_DIRECTORY=\\\"$$THELIBS_INSTALL_LIB\\\"

@@ -72,7 +72,7 @@ Gateway::Gateway() :
         }
     });
 
-    DesktopWm::setSystemWindow(this);
+    DesktopWm::setSystemWindow(this, DesktopWm::SystemWindowTypeMenu);
     this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     this->setFixedWidth(0);
 
