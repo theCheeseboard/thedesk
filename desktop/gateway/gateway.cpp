@@ -72,8 +72,8 @@ Gateway::Gateway() :
         }
     });
 
-    DesktopWm::setSystemWindow(this, DesktopWm::SystemWindowTypeMenu);
     this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    DesktopWm::setSystemWindow(this, DesktopWm::SystemWindowTypeMenu);
     this->setFixedWidth(0);
 
     connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [ = ](GestureInteractionPtr interaction) {
