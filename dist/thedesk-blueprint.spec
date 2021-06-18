@@ -64,6 +64,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 %{_libdir}/td-polkitagent
 %{_libdir}/thedesk/plugins/*.so
 %{_libdir}/qt5/plugins/platformthemes/*.so
+%{_libdir}/wayfire/*.so
 %{_sysconfdir}/*
 
 %files -n libthedesk-blueprint
