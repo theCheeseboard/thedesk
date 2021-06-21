@@ -696,17 +696,17 @@
     <name>Recovery</name>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="35"/>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="64"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="68"/>
         <source>Recovery</source>
         <translation>复原</translation>
     </message>
     <message>
-        <location filename="../systemsettings/recovery/recovery.ui" line="104"/>
+        <location filename="../systemsettings/recovery/recovery.ui" line="113"/>
         <source>RESET THEDESK</source>
         <translation>重置TheDesk</translation>
     </message>
     <message>
-        <location filename="../systemsettings/recovery/recovery.ui" line="111"/>
+        <location filename="../systemsettings/recovery/recovery.ui" line="120"/>
         <source>If things aren&apos;t working correctly, resetting theDesk might help.
 
 Here&apos;s what will happen:
@@ -723,12 +723,27 @@ Save your documents and close all apps before starting the reset. This won&apos;
 在开始重置之前，请保存您的文档并关闭所有应用。 这不会花很长时间，但是您需要注销才能执行重置。 重置发生时，您将无法使用设备。</translation>
     </message>
     <message>
-        <location filename="../systemsettings/recovery/recovery.ui" line="129"/>
+        <location filename="../systemsettings/recovery/recovery.ui" line="138"/>
         <source>Log Out and Reset theDesk</source>
         <translation>注销并重置桌面</translation>
     </message>
     <message>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="89"/>
+        <location filename="../systemsettings/recovery/recovery.ui" line="203"/>
+        <source>RESET DEVICE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/recovery/recovery.ui" line="210"/>
+        <source>If resetting theDesk didn&apos;t work, or if you just need a fresh start, you can reset this device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/recovery/recovery.ui" line="222"/>
+        <source>Reset this device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="93"/>
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>

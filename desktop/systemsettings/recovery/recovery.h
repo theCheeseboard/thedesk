@@ -47,6 +47,7 @@ class Recovery : public StatusCenterPane {
     private slots:
         void on_resetDEButton_clicked();
         void on_titleLabel_backButtonClicked();
+        void on_resetDeviceButton_clicked();
 };
 
 #endif // RECOVERY_H

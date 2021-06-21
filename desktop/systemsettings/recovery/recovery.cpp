@@ -36,12 +36,16 @@ Recovery::Recovery() :
     connect(StateManager::instance()->statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, ui->titleLabel, &tTitleLabel::setBackButtonShown);
 
     const int contentWidth = StateManager::instance()->statusCenterManager()->preferredContentWidth();
-    ui->scrollAreaWidgetContents->layout()->setAlignment(ui->resetDEContainer, Qt::AlignHCenter);
-//    ui->scrollAreaWidgetContents->layout()->setAlignment(ui->redshiftWidget, Qt::AlignHCenter);
     ui->resetDEContainer->setFixedWidth(contentWidth);
-//    ui->redshiftWidget->setFixedWidth(contentWidth);
+    ui->resetDeviceContainer->setFixedWidth(contentWidth);
 
     ui->resetDEButton->setProperty("type", "destructive");
+    ui->resetDeviceButton->setProperty("type", "destructive");
+
+    if (theLibsGlobal::searchInPath("scallop-reset-ui").isEmpty()) {
+        ui->resetDeviceContainer->setVisible(false);
+        ui->resetDeviceLine->setVisible(false);
+    }
 }
 
 Recovery::~Recovery() {
@@ -95,3 +99,9 @@ void Recovery::on_resetDEButton_clicked() {
 void Recovery::on_titleLabel_backButtonClicked() {
     StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
 }
+
+void Recovery::on_resetDeviceButton_clicked() {
+    QProcess::startDetached("scallop-reset-ui", QStringList());
+    StateManager::statusCenterManager()->hide();
+}
+
