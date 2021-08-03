@@ -24,6 +24,7 @@
 #include <iostream>
 
 #include <QProcess>
+#include <QPointer>
 
 StartdeskPlugin::StartdeskPlugin() {
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
@@ -35,13 +36,19 @@ StartdeskPlugin::StartdeskPlugin() {
         env.insert("DISPLAY", x11Display);
     }
 
-    QProcess* deskProcess = new QProcess();
+    QString startdeskCommand = qEnvironmentVariable("TD_WF_STARTDESK", "startdesk");
+    std::cout << "Running startdesk command " << startdeskCommand.toStdString() << "\n";
+
+    QPointer<QProcess> deskProcess = new QProcess();
     deskProcess->setProcessEnvironment(env);
-    deskProcess->start("startdesk", QStringList());
+    deskProcess->start(startdeskCommand, QStringList());
     deskProcess->waitForStarted();
+    QObject::connect(deskProcess.data(), QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [ = ] {
+        std::cout << "Finished!\n";
+    });
 
     waiter.set_timeout(1000, [ = ] {
-        if (deskProcess->waitForFinished(0)) {
+        if (!deskProcess || deskProcess->waitForFinished(0)) {
             wf::get_core().shutdown();
             return false;
         }

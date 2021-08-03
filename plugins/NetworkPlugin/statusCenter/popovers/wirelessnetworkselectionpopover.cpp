@@ -109,7 +109,7 @@ void WirelessNetworkSelectionPopover::activateConnection(const QModelIndex& inde
         NetworkManager::activateConnection(networkInformation.value<NetworkManager::Connection::Ptr>()->path(), d->device->uni(), "");
         emit done();
     } else if (networkInformation.canConvert<NetworkManager::AccessPoint::Ptr>()) {
-        //TODO: Connect to a new AP
+        //Connect to a new AP
         d->apConnect = networkInformation.value<NetworkManager::AccessPoint::Ptr>();
         d->connectWithSecurity = NetworkManager::findBestWirelessSecurity(d->device->wirelessCapabilities(), true, false, d->apConnect->capabilities(), d->apConnect->wpaFlags(), d->apConnect->rsnFlags());
 

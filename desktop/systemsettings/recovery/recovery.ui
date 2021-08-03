@@ -85,7 +85,7 @@
            <number>0</number>
           </property>
           <property name="bottomMargin">
-           <number>0</number>
+           <number>9</number>
           </property>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_4">

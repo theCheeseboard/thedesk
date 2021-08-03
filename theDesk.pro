@@ -16,5 +16,8 @@ SUBDIRS = libraryproj \
     platform \
     pluginsproj \
     polkitagent \
-    startdeskproj \
-    wayfire-plugins
+    startdeskproj
+
+packagesExist(wayfire) {
+    SUBDIRS +=  wayfire-plugins
+}
