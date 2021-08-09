@@ -19,6 +19,11 @@
  * *************************************/
 #include "platformtheme.h"
 
+#include <private/qguiapplication_p.h>
+#include <qpa/qplatformtheme_p.h>
+#include <qpa/qplatformthemefactory_p.h>
+#include <qpa/qplatformintegration.h>
+
 #include <QPixmap>
 #include <QVariant>
 #include <QIcon>
@@ -31,7 +36,7 @@
 #include <QScrollerProperties>
 #include <QMimeDatabase>
 #include <QMimeType>
-#include <QDebug>
+#include <tlogger.h>
 #include <QTextCharFormat>
 #include "iconloaderengine.h"
 #include "cursorhandler.h"
@@ -50,6 +55,8 @@ struct PlatformThemePrivate {
     QMimeDatabase mimeDb;
 
     QMap<QPlatformTheme::Font, QFont*> fonts;
+
+    QPlatformTheme* flatpakPlatformTheme = nullptr;
 };
 
 PlatformTheme::PlatformTheme() : QPlatformTheme() {
@@ -100,6 +107,14 @@ PlatformTheme::PlatformTheme() : QPlatformTheme() {
 
     this->updateFont();
     this->updatePalette();
+
+    tDebug("PlatformTheme") << "Using theDesk platform theme";
+
+    //Initialise the Flatpak platform theme so that we can use the portal to open files
+    d->flatpakPlatformTheme = QPlatformThemeFactory::create("flatpak", nullptr);
+    if (d->flatpakPlatformTheme) {
+        tDebug("PlatformTheme") << "Created Flatpak platform theme";
+    }
 }
 
 PlatformTheme::~PlatformTheme() {
@@ -126,12 +141,14 @@ void PlatformTheme::showPlatformMenuBar() {
 
 bool PlatformTheme::usePlatformNativeDialog(QPlatformTheme::DialogType type) const {
     switch (type) {
-        case QPlatformTheme::FileDialog:
         case QPlatformTheme::ColorDialog:
         case QPlatformTheme::FontDialog:
             return false;
         case QPlatformTheme::MessageDialog:
             return true;
+        case QPlatformTheme::FileDialog:
+            if (d->flatpakPlatformTheme) return d->flatpakPlatformTheme->usePlatformNativeDialog(type);
+            return false;
     }
 }
 
@@ -140,6 +157,8 @@ QPlatformDialogHelper* PlatformTheme::createPlatformDialogHelper(QPlatformTheme:
         case QPlatformTheme::MessageDialog:
             return new MessageDialogHelper();
         case QPlatformTheme::FileDialog:
+            if (d->flatpakPlatformTheme && d->flatpakPlatformTheme->usePlatformNativeDialog(type)) return d->flatpakPlatformTheme->createPlatformDialogHelper(type);
+            return QPlatformTheme::createPlatformDialogHelper(type);
         case QPlatformTheme::ColorDialog:
         case QPlatformTheme::FontDialog:
             return QPlatformTheme::createPlatformDialogHelper(type);
