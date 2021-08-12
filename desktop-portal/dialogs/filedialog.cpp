@@ -20,7 +20,10 @@
 #include "filedialog.h"
 #include "ui_filedialog.h"
 
+#include <tinputdialog.h>
 #include <QDBusMetaType>
+#include <resourcemanager.h>
+#include <QMessageBox>
 
 struct FileDialogPrivate {
     QStringList urls;
@@ -75,29 +78,62 @@ FileDialog::FileDialog(bool isSave, QVariantMap options, QWidget* parent) :
 
     ui->titleLabel->setBackButtonShown(true);
 
-    QString openButtonText = options.value("accept_label", isSave ? tr("Overwrite") : tr("Open")).toString();
-    QIcon openButtonIcon = QIcon::fromTheme(isSave ? "document-save" : "document-open");
-
-    ui->filePicker->setOpenFileButtons({
-        {
-            openButtonText,
-            openButtonIcon,
-            [ = ](QList<QUrl> selected) {
-                for (QUrl url : selected) {
-                    d->urls.append(url.toString());
-                }
-                this->accept();
-            }
-        }
-    });
+    bool setOpenButton = true;
+    QList<FileTab::ColumnAction> columnActions;
 
     if (isSave) {
-        ui->filePicker->setColumnActions({
-            {
-                tr("Save Here"),
-                tr("Create New File Here"),
+        columnActions.append({
+            tr("Save Here"),
+            tr("Create New File Here"),
+            [ = ](DirectoryPtr directory) {
+                QUrl directoryUrl = directory->url();
+                if (!directoryUrl.path().endsWith("/")) directoryUrl.setPath(directoryUrl.path() + "/");
+
+                bool saved = false;
+                QString filename;
+
+                while (!saved) {
+                    bool ok;
+                    filename = tInputDialog::getText(this, tr("Name this file"), tr("What do you want to name the file?"), QLineEdit::Normal, filename, &ok);
+                    if (!ok) return;
+
+                    saved = acceptSave(directoryUrl.resolved(filename));
+                }
+            }
+        });
+    } else {
+        if (options.value("directory", false).toBool()) {
+            columnActions.append({
+                tr("Open Folder"),
+                tr("Choose This Folder"),
                 [ = ](DirectoryPtr directory) {
-                    //TODO
+                    d->urls.append(directory->url().toString());
+                    this->accept();
+                }
+            });
+            setOpenButton = false;
+        }
+    }
+
+    ui->filePicker->setColumnActions(columnActions);
+
+    if (setOpenButton) {
+        QString openButtonText = options.value("accept_label", isSave ? tr("Overwrite") : tr("Open")).toString();
+        QIcon openButtonIcon = QIcon::fromTheme(isSave ? "document-save" : "document-open");
+
+        ui->filePicker->setOpenFileButtons({
+            {
+                openButtonText,
+                openButtonIcon,
+                [ = ](QList<QUrl> selected) {
+                    if (isSave) {
+                        acceptSave(selected.first());
+                    } else {
+                        for (QUrl url : selected) {
+                            d->urls.append(url.toString());
+                        }
+                        this->accept();
+                    }
                 }
             }
         });
@@ -149,5 +185,21 @@ void FileDialog::setWindowTitle(QString windowTitle) {
 
 void FileDialog::on_titleLabel_backButtonClicked() {
     this->reject();
+}
+
+bool FileDialog::acceptSave(QUrl url) {
+    if (ResourceManager::parentDirectoryForUrl(url)->isFile(url.fileName())) {
+        QMessageBox box(this);
+        box.setWindowTitle(tr("Overwrite?"));
+        box.setText(tr("A file named %1 already exists. Do you want to overwrite it?").arg(QLocale().quoteString(url.fileName())));
+        box.setInformativeText(tr("Overwriting the file will replace its contents."));
+        box.setIcon(QMessageBox::Warning);
+        box.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        if (box.exec() == QMessageBox::No) return false;
+    }
+
+    d->urls.append(url.toString());
+    this->accept();
+    return true;
 }
 

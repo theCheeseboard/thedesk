@@ -47,6 +47,8 @@ class FileDialog : public QDialog {
     private:
         Ui::FileDialog* ui;
         FileDialogPrivate* d;
+
+        bool acceptSave(QUrl url);
 };
 
 #endif // FILEDIALOG_H
