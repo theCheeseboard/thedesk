@@ -13,6 +13,7 @@ startdeskproj.depends = libraryproj
 
 SUBDIRS = libraryproj \
     deskproj \
+    desktop-portal \
     platform \
     pluginsproj \
     polkitagent \
