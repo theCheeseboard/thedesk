@@ -34,6 +34,7 @@ struct ChunkContainerPrivate {
     QStringList preferredChunkOrder = {
         "OverviewClock",
         "Power",
+        "PowerStretch",
         "flight-mode",
         "network-cellular",
         "Network",

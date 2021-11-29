@@ -35,6 +35,17 @@
     </message>
 </context>
 <context>
+    <name>Plugin</name>
+    <message>
+        <source>Power Stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable Power Stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PowerSettings</name>
     <message>
         <source>Power</source>
@@ -103,6 +114,66 @@
     <message>
         <source>BUTTONS</source>
         <translation>按键</translation>
+    </message>
+    <message>
+        <source>POWER PROFILE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Balanced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Power Stretch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reduce the performance of your device to save on power</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance mode unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance mode is %1 because your device is getting warm.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance mode is %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance mode is %1 because the device is on your lap.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance mode temporarily unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>temporarily unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A power profile tweaks the way your system runs in order to prioritise performance or reduce power consumption.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance and power consumption will be average</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Performance will be increased at the cost of power consumption</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

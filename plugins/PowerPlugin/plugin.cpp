@@ -33,12 +33,19 @@
 #include "eventhandler.h"
 #include <UPower/desktopupower.h>
 #include "settings/powersettings.h"
+#include <quickswitch.h>
+#include <actionquickwidget.h>
+#include <DesktopPowerProfiles/desktoppowerprofiles.h>
 
 struct PluginPrivate {
+    DesktopPowerProfiles* powerProfiles;
+
     DesktopUPower* upower;
     IconTextChunk* powerChunk;
     EventHandler* logind;
     PowerSettings* powerSettings;
+    QuickSwitch* powerStretchSwitch;
+    IconTextChunk* powerStretchChunk;
 };
 
 Plugin::Plugin() {
@@ -58,6 +65,8 @@ void Plugin::activate() {
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/PowerPlugin/defaults.conf"));
     tSettings::registerDefaults("/etc/theSuite/theDesk/PowerPlugin/defaults.conf");
 
+    d->powerProfiles = new DesktopPowerProfiles();
+
     d->upower = new DesktopUPower(this);
     d->powerChunk = new IconTextChunk("Power");
     connect(d->upower, &DesktopUPower::overallStateChanged, this, [ = ] {
@@ -74,8 +83,42 @@ void Plugin::activate() {
     });
     d->logind = new EventHandler();
 
-    d->powerSettings = new PowerSettings();
+    d->powerSettings = new PowerSettings(d->powerProfiles);
     StateManager::statusCenterManager()->addPane(d->powerSettings, StatusCenterManager::SystemSettings);
+
+    d->powerStretchSwitch = new QuickSwitch("PowerStretch");
+    d->powerStretchSwitch->setTitle(tr("Power Stretch"));
+    d->powerStretchSwitch->setChecked(d->powerProfiles->currentPowerProfile() == DesktopPowerProfiles::PowerStretch);
+    connect(d->powerStretchSwitch, &QuickSwitch::toggled, this, [ = ](bool powerStretch) {
+        if (powerStretch) {
+            d->powerProfiles->setCurrentPowerProfile(DesktopPowerProfiles::PowerStretch);
+        } else {
+            d->powerProfiles->setCurrentPowerProfile(DesktopPowerProfiles::Balanced);
+        }
+    });
+
+    d->powerStretchChunk = new IconTextChunk("PowerStretch");
+    d->powerStretchChunk->setIcon(QIcon::fromTheme("battery-stretch-100"));
+    d->powerStretchChunk->setText(tr("Power Stretch"));
+    if (d->powerProfiles->currentPowerProfile() == DesktopPowerProfiles::PowerStretch) StateManager::barManager()->addChunk(d->powerStretchChunk);
+
+    ActionQuickWidget* quickWidget = new ActionQuickWidget(d->powerStretchChunk);
+    quickWidget->addAction(QIcon::fromTheme("battery-stretch-100"), tr("Disable Power Stretch"), [ = ] {
+        d->powerProfiles->setCurrentPowerProfile(DesktopPowerProfiles::Balanced);
+    });
+    d->powerStretchChunk->setQuickWidget(quickWidget);
+
+    connect(d->powerProfiles, &DesktopPowerProfiles::powerProfileChanged, this, [ = ] {
+        d->powerStretchSwitch->setChecked(d->powerProfiles->currentPowerProfile() == DesktopPowerProfiles::PowerStretch);
+        if (d->powerProfiles->currentPowerProfile() == DesktopPowerProfiles::PowerStretch && !d->powerStretchChunk->chunkRegistered()) {
+            //Register the chunk
+            StateManager::barManager()->addChunk(d->powerStretchChunk);
+        } else if (d->powerProfiles->currentPowerProfile() != DesktopPowerProfiles::PowerStretch && d->powerStretchChunk->chunkRegistered()) {
+            //Deregister the chunk
+            StateManager::barManager()->removeChunk(d->powerStretchChunk);
+        }
+    });
+    StateManager::statusCenterManager()->addSwitch(d->powerStretchSwitch);
 }
 
 void Plugin::deactivate() {
@@ -83,11 +126,19 @@ void Plugin::deactivate() {
         //Deregister the chunk
         StateManager::barManager()->removeChunk(d->powerChunk);
     }
+    if (d->powerStretchChunk->chunkRegistered()) {
+        //Deregister the chunk
+        StateManager::barManager()->removeChunk(d->powerStretchChunk);
+    }
 
+    StateManager::statusCenterManager()->removeSwitch(d->powerStretchSwitch);
     StateManager::statusCenterManager()->removePane(d->powerSettings);
 
+    d->powerStretchSwitch->deleteLater();
     d->powerChunk->deleteLater();
+    d->powerStretchChunk->deleteLater();
     d->upower->deleteLater();
     d->logind->deleteLater();
     d->powerSettings->deleteLater();
+    d->powerProfiles->deleteLater();
 }

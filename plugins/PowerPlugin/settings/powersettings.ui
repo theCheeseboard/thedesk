@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>725</width>
-    <height>412</height>
+    <height>556</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,7 +50,7 @@
         <x>0</x>
         <y>0</y>
         <width>725</width>
-        <height>395</height>
+        <height>539</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -69,6 +69,120 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QWidget" name="powerProfileWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>POWER PROFILE</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>A power profile tweaks the way your system runs in order to prioritise performance or reduce power consumption.</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="tStatusFrame" name="performanceInhibition"/>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="powerStretchProfileButton">
+            <property name="text">
+             <string>Power Stretch</string>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">powerProfilesGroup</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_10">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Reduce the performance of your device to save on power</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="balancedProfileButton">
+            <property name="text">
+             <string>Balanced</string>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">powerProfilesGroup</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_9">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Performance and power consumption will be average</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="performanceProfileButton">
+            <property name="text">
+             <string>Performance</string>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">powerProfilesGroup</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="performanceDescription">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Performance will be increased at the cost of power consumption</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>1</height>
+          </size>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
        <item alignment="Qt::AlignHCenter">
         <widget class="QWidget" name="timeoutsWidget" native="true">
          <layout class="QGridLayout" name="gridLayout">
@@ -293,7 +407,16 @@
     <signal>backButtonClicked()</signal>
    </slots>
   </customwidget>
+  <customwidget>
+   <class>tStatusFrame</class>
+   <extends>QFrame</extends>
+   <header location="global">tstatusframe.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="powerProfilesGroup"/>
+ </buttongroups>
 </ui>

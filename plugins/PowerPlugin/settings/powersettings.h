@@ -9,12 +9,13 @@ namespace Ui {
     class PowerSettings;
 }
 
+class DesktopPowerProfiles;
 struct PowerSettingsPrivate;
 class PowerSettings : public StatusCenterPane {
         Q_OBJECT
 
     public:
-        explicit PowerSettings();
+        explicit PowerSettings(DesktopPowerProfiles* powerProfiles);
         ~PowerSettings();
 
     private slots:
@@ -28,11 +29,20 @@ class PowerSettings : public StatusCenterPane {
 
         void on_powerButtonActionBox_currentIndexChanged(int index);
 
+        void on_balancedProfileButton_toggled(bool checked);
+
+        void on_powerStretchProfileButton_toggled(bool checked);
+
+        void on_performanceProfileButton_toggled(bool checked);
+
     private:
         Ui::PowerSettings* ui;
         PowerSettingsPrivate* d;
 
         void settingChanged(QString key, QVariant value);
+
+        void updatePowerProfiles();
+        QString performanceInhibitionReason(QString reason);
 
         // StatusCenterPane interface
     public:
