@@ -17,24 +17,28 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#include <tapplication.h>
+#ifndef SETTINGSINTERFACE_H
+#define SETTINGSINTERFACE_H
 
-#include "interfaces/filechooserinterface.h"
-#include "interfaces/settingsinterface.h"
+#include <QObject>
+#include <QDBusAbstractAdaptor>
 
-#include <QDBusConnection>
+class SettingsInterface : public QDBusAbstractAdaptor {
+        Q_OBJECT
+        Q_CLASSINFO("D-Bus Interface", "org.freedesktop.impl.portal.Settings");
+        Q_PROPERTY(uint version READ version)
 
-int main(int argc, char* argv[]) {
-    tApplication a(argc, argv);
-    a.setQuitOnLastWindowClosed(false);
+    public:
+        explicit SettingsInterface(QObject* parent = nullptr);
 
-    QDBusConnection::sessionBus().registerService("org.freedesktop.impl.portal.desktop.thedesk");
+        uint version();
 
-    QObject* rootDbusObject = new QObject();
-    new FileChooserInterface(rootDbusObject);
-    new SettingsInterface(rootDbusObject);
+    public slots:
+        Q_SCRIPTABLE QMap<QString, QVariantMap> ReadAll(QStringList namespaces);
+        Q_SCRIPTABLE QVariant Read(QString ns, QString key);
 
-    QDBusConnection::sessionBus().registerObject("/org/freedesktop/portal/desktop", rootDbusObject, QDBusConnection::ExportAdaptors);
+    signals:
+        Q_SCRIPTABLE void SettingChanged(QString ns, QString key, QVariant value);
+};
 
-    return a.exec();
-}
+#endif // SETTINGSINTERFACE_H

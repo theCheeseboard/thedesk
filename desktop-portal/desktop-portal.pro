@@ -3,7 +3,7 @@ SHARE_APP_NAME = thedesk/portal
 
 TARGET = thedesk-desktop-portal
 
-CONFIG += c++11 console
+CONFIG += c++20 console
 CONFIG -= app_bundle
 
 # Include the-libs build tools
@@ -16,6 +16,7 @@ include(/usr/share/the-libs/pri/buildmaster.pri)
 SOURCES += \
         dialogs/filedialog.cpp \
         interfaces/filechooserinterface.cpp \
+        interfaces/settingsinterface.cpp \
         main.cpp \
         portalhandle.cpp
 
@@ -51,6 +52,7 @@ DISTFILES += \
 HEADERS += \
     dialogs/filedialog.h \
     interfaces/filechooserinterface.h \
+    interfaces/settingsinterface.h \
     portalhandle.h
 
 FORMS += \

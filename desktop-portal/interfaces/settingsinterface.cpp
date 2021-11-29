@@ -17,24 +17,37 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#include <tapplication.h>
+#include "settingsinterface.h"
+#include <tsettings.h>
 
-#include "interfaces/filechooserinterface.h"
-#include "interfaces/settingsinterface.h"
+SettingsInterface::SettingsInterface(QObject* parent) : QDBusAbstractAdaptor(parent) {
 
-#include <QDBusConnection>
+}
 
-int main(int argc, char* argv[]) {
-    tApplication a(argc, argv);
-    a.setQuitOnLastWindowClosed(false);
+uint SettingsInterface::version() {
+    return 1;
+}
 
-    QDBusConnection::sessionBus().registerService("org.freedesktop.impl.portal.desktop.thedesk");
+QMap<QString, QVariantMap> SettingsInterface::ReadAll(QStringList namespaces) {
+    return {
+        {
+            "org.freedesktop.appearance", {
+                {"color-scheme", QVariant(0u)}
+            }
+        }
+    };
+}
 
-    QObject* rootDbusObject = new QObject();
-    new FileChooserInterface(rootDbusObject);
-    new SettingsInterface(rootDbusObject);
+QVariant SettingsInterface::Read(QString ns, QString key) {
+    if (ns == "org.freedesktop.appearance" && key == "color-scheme") {
+        tSettings themeSettings("theDesk.platform");
 
-    QDBusConnection::sessionBus().registerObject("/org/freedesktop/portal/desktop", rootDbusObject, QDBusConnection::ExportAdaptors);
-
-    return a.exec();
+        QString baseColor = themeSettings.value("Palette/base").toString();
+        if (baseColor == "dark") {
+            return 1u;
+        } else if (baseColor == "light") {
+            return 2u;
+        }
+    }
+    return QVariant();
 }

@@ -134,7 +134,8 @@ FileDialog::FileDialog(bool isSave, QVariantMap options, QWidget* parent) :
                         }
                         this->accept();
                     }
-                }
+                },
+                true
             }
         });
     }
