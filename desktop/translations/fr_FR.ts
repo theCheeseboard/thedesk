@@ -362,7 +362,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="249"/>
+        <location filename="../session/endsession.cpp" line="250"/>
         <source>Reboot</source>
         <translation type="unfinished"></translation>
     </message>
@@ -462,57 +462,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="108"/>
+        <location filename="../session/endsession.cpp" line="109"/>
         <source>power off the system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="109"/>
+        <location filename="../session/endsession.cpp" line="110"/>
         <source>reboot the system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="110"/>
+        <location filename="../session/endsession.cpp" line="111"/>
         <source>reboot the system and install any pending updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="111"/>
+        <location filename="../session/endsession.cpp" line="112"/>
         <source>log you out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="112"/>
+        <location filename="../session/endsession.cpp" line="113"/>
         <source>suspend the system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="113"/>
+        <location filename="../session/endsession.cpp" line="114"/>
         <source>lock the screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="114"/>
+        <location filename="../session/endsession.cpp" line="115"/>
         <source>turn off the screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="115"/>
+        <location filename="../session/endsession.cpp" line="116"/>
         <source>switch users</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="116"/>
+        <location filename="../session/endsession.cpp" line="117"/>
         <source>hibernate the system</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="248"/>
+        <location filename="../session/endsession.cpp" line="249"/>
         <source>Advanced Reboot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="258"/>
+        <location filename="../session/endsession.cpp" line="259"/>
         <source>Reboot into System UEFI Setup</source>
         <translation type="unfinished"></translation>
     </message>

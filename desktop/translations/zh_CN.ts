@@ -362,7 +362,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="249"/>
+        <location filename="../session/endsession.cpp" line="250"/>
         <source>Reboot</source>
         <translation>重启</translation>
     </message>
@@ -462,57 +462,57 @@
         <translation>我们将正常重启您的设备。</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="108"/>
+        <location filename="../session/endsession.cpp" line="109"/>
         <source>power off the system</source>
         <translation>关闭系统</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="109"/>
+        <location filename="../session/endsession.cpp" line="110"/>
         <source>reboot the system</source>
         <translation>重启系统</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="110"/>
+        <location filename="../session/endsession.cpp" line="111"/>
         <source>reboot the system and install any pending updates</source>
         <translation>重新启动系统并安装所有挂起的更新</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="111"/>
+        <location filename="../session/endsession.cpp" line="112"/>
         <source>log you out</source>
         <translation>讲注销</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="112"/>
+        <location filename="../session/endsession.cpp" line="113"/>
         <source>suspend the system</source>
         <translation>休眠此系统</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="113"/>
+        <location filename="../session/endsession.cpp" line="114"/>
         <source>lock the screen</source>
         <translation>锁定屏幕</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="114"/>
+        <location filename="../session/endsession.cpp" line="115"/>
         <source>turn off the screen</source>
         <translation>关闭屏幕</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="115"/>
+        <location filename="../session/endsession.cpp" line="116"/>
         <source>switch users</source>
         <translation>更换用户</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="116"/>
+        <location filename="../session/endsession.cpp" line="117"/>
         <source>hibernate the system</source>
         <translation>休眠此系统</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="248"/>
+        <location filename="../session/endsession.cpp" line="249"/>
         <source>Advanced Reboot</source>
         <translation>高级重启</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="258"/>
+        <location filename="../session/endsession.cpp" line="259"/>
         <source>Reboot into System UEFI Setup</source>
         <translation>重新启动进入系统UEFI设置</translation>
     </message>

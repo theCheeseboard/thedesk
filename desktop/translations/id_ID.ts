@@ -362,7 +362,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="249"/>
+        <location filename="../session/endsession.cpp" line="250"/>
         <source>Reboot</source>
         <translation>Nyalakan ulang</translation>
     </message>
@@ -462,57 +462,57 @@
         <translation>Sistem akan reboot seperti biasa.</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="108"/>
+        <location filename="../session/endsession.cpp" line="109"/>
         <source>power off the system</source>
         <translation>matikan sistem</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="109"/>
+        <location filename="../session/endsession.cpp" line="110"/>
         <source>reboot the system</source>
         <translation>menyalakan ulang sistem</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="110"/>
+        <location filename="../session/endsession.cpp" line="111"/>
         <source>reboot the system and install any pending updates</source>
         <translation>nyalakan ulang sistem dan install update-update yang menunggu</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="111"/>
+        <location filename="../session/endsession.cpp" line="112"/>
         <source>log you out</source>
         <translation>me-logout</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="112"/>
+        <location filename="../session/endsession.cpp" line="113"/>
         <source>suspend the system</source>
         <translation>menonaktifkan sistem</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="113"/>
+        <location filename="../session/endsession.cpp" line="114"/>
         <source>lock the screen</source>
         <translation>mengunci desktop</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="114"/>
+        <location filename="../session/endsession.cpp" line="115"/>
         <source>turn off the screen</source>
         <translation>mematikan layar</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="115"/>
+        <location filename="../session/endsession.cpp" line="116"/>
         <source>switch users</source>
         <translation>mengganti user</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="116"/>
+        <location filename="../session/endsession.cpp" line="117"/>
         <source>hibernate the system</source>
         <translation>menonaktifkan sistem</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="248"/>
+        <location filename="../session/endsession.cpp" line="249"/>
         <source>Advanced Reboot</source>
         <translation>Reboot Lanjutan</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="258"/>
+        <location filename="../session/endsession.cpp" line="259"/>
         <source>Reboot into System UEFI Setup</source>
         <translation>Reboot ke Pengaturan UEFI</translation>
     </message>

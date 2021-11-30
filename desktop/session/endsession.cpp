@@ -103,6 +103,7 @@ EndSession::EndSession(PowerManager::PowerOperation operation, QString message, 
     d->powerOffAnimation->setStartValue(60.0);
     d->powerOffAnimation->setEndValue(0.0);
     d->powerOffAnimation->setDuration(60000);
+    d->powerOffAnimation->setForceAnimation(true);
     connect(d->powerOffAnimation, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
         const QMap<EndSessionButton*, const char*> text = {
             {ui->powerOffButton, QT_TR_NOOP("power off the system")},

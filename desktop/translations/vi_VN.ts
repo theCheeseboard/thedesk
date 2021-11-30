@@ -362,7 +362,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="249"/>
+        <location filename="../session/endsession.cpp" line="250"/>
         <source>Reboot</source>
         <translation>Khởi động lại</translation>
     </message>
@@ -462,57 +462,57 @@
         <translation>Chúng tôi sẽ khởi động lại bình thường.</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="108"/>
+        <location filename="../session/endsession.cpp" line="109"/>
         <source>power off the system</source>
         <translation>tắt hệ thống</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="109"/>
+        <location filename="../session/endsession.cpp" line="110"/>
         <source>reboot the system</source>
         <translation>khởi động hệ thống lại</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="110"/>
+        <location filename="../session/endsession.cpp" line="111"/>
         <source>reboot the system and install any pending updates</source>
         <translation>khởi động lại và cài các cập nhật chờ xử lý</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="111"/>
+        <location filename="../session/endsession.cpp" line="112"/>
         <source>log you out</source>
         <translation>đăng xuất bản</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="112"/>
+        <location filename="../session/endsession.cpp" line="113"/>
         <source>suspend the system</source>
         <translation>tạm dừng hệ thống</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="113"/>
+        <location filename="../session/endsession.cpp" line="114"/>
         <source>lock the screen</source>
         <translation>khóa màn hình</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="114"/>
+        <location filename="../session/endsession.cpp" line="115"/>
         <source>turn off the screen</source>
         <translation>tắt màn hình</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="115"/>
+        <location filename="../session/endsession.cpp" line="116"/>
         <source>switch users</source>
         <translation>chuyển đổi người dùng</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="116"/>
+        <location filename="../session/endsession.cpp" line="117"/>
         <source>hibernate the system</source>
         <translation>đặt hệ thống vào chế độ ngủ đông</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="248"/>
+        <location filename="../session/endsession.cpp" line="249"/>
         <source>Advanced Reboot</source>
         <translation>Khởi động lại nâng cao</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="258"/>
+        <location filename="../session/endsession.cpp" line="259"/>
         <source>Reboot into System UEFI Setup</source>
         <translation>Khởi động lại vào trình thiết lập UEFI hệ thống</translation>
     </message>
