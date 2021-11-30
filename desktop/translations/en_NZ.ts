@@ -286,6 +286,14 @@
     </message>
 </context>
 <context>
+    <name>ChunkContainer</name>
+    <message>
+        <location filename="../bar/chunkcontainer.ui" line="41"/>
+        <source>Open Status Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CommandLine</name>
     <message>
         <location filename="../cli/commandline.cpp" line="37"/>

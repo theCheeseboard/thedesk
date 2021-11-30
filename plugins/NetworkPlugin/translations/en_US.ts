@@ -64,75 +64,75 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="204"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="206"/>
         <source>No SIM Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="205"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="207"/>
         <source>Insert a SIM card to connect to cellular services.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="207"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="209"/>
         <source>No SIM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="210"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="212"/>
         <source>Unavailable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="213"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="215"/>
         <source>This network is unavailable because %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="243"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="245"/>
         <source>Connection Failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="245"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="247"/>
         <source>Connecting to the network failed because %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="319"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="332"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="339"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="321"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="334"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="341"/>
         <source>Enter SIM PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="321"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="325"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="337"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="323"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="327"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="339"/>
         <source>SIM PIN Required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="327"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="329"/>
         <source>A SIM PIN is required to connect to the cellular network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="349"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="362"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="351"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="364"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="371"/>
         <source>Enter SIM PUK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="351"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="355"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="367"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="353"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
         <source>SIM PUK Required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="359"/>
         <source>A SIM PUK is required to connect to the cellular network.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -689,19 +689,19 @@
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="98"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="111"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="115"/>
         <source>Enable SIM PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="105"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="117"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="121"/>
         <source>Disable SIM PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="112"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="153"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="165"/>
         <source>Change SIM PIN</source>
         <translation type="unfinished"></translation>
     </message>
@@ -757,25 +757,25 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="56"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="57"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="58"/>
         <source>No SIM card</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="139"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="143"/>
         <source>You have %n remaining tries</source>
         <translation type="unfinished">
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="193"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="205"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="194"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="206"/>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
         <translation type="unfinished"></translation>
     </message>

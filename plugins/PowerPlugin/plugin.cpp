@@ -98,12 +98,12 @@ void Plugin::activate() {
     });
 
     d->powerStretchChunk = new IconTextChunk("PowerStretch");
-    d->powerStretchChunk->setIcon(QIcon::fromTheme("battery-stretch-100"));
+    d->powerStretchChunk->setIcon(QIcon::fromTheme("battery-stretch"));
     d->powerStretchChunk->setText(tr("Power Stretch"));
     if (d->powerProfiles->currentPowerProfile() == DesktopPowerProfiles::PowerStretch) StateManager::barManager()->addChunk(d->powerStretchChunk);
 
     ActionQuickWidget* quickWidget = new ActionQuickWidget(d->powerStretchChunk);
-    quickWidget->addAction(QIcon::fromTheme("battery-stretch-100"), tr("Disable Power Stretch"), [ = ] {
+    quickWidget->addAction(QIcon::fromTheme("battery-stretch"), tr("Disable Power Stretch"), [ = ] {
         d->powerProfiles->setCurrentPowerProfile(DesktopPowerProfiles::Balanced);
     });
     d->powerStretchChunk->setQuickWidget(quickWidget);

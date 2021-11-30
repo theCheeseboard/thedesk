@@ -64,75 +64,75 @@
         <translation>Eșuat</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="204"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="206"/>
         <source>No SIM Card</source>
         <translation>Fără cartelă SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="205"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="207"/>
         <source>Insert a SIM card to connect to cellular services.</source>
         <translation>Introduceți o cartelă SIM pentru a vă conecta la date mobile.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="207"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="209"/>
         <source>No SIM</source>
         <translation>Fără SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="210"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="212"/>
         <source>Unavailable</source>
         <translation>Indisponibil</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="213"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="215"/>
         <source>This network is unavailable because %2.</source>
         <translation>Această rețea este indisponibilă deoarece %2.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="243"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="245"/>
         <source>Connection Failure</source>
         <translation>Eroare la conectare</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="245"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="247"/>
         <source>Connecting to the network failed because %2.</source>
         <translation>Nu s-a putut conecta la rețea, deoarece %2.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="319"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="332"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="339"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="321"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="334"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="341"/>
         <source>Enter SIM PIN</source>
         <translation>Indroduceți PIN-ul pentru cartela SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="321"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="325"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="337"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="323"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="327"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="339"/>
         <source>SIM PIN Required</source>
         <translation>Este necesar PIN-ul pentru cartela SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="327"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="329"/>
         <source>A SIM PIN is required to connect to the cellular network.</source>
         <translation>Este necesar PIN-ul cartelei pentru conectarea la rețeaua celulară.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="349"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="362"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="351"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="364"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="371"/>
         <source>Enter SIM PUK</source>
         <translation>Introduceți codul PUK al cartelei SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="351"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="355"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="367"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="353"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
         <source>SIM PUK Required</source>
         <translation>Este necesar PUK-ul pentru cartela SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="359"/>
         <source>A SIM PUK is required to connect to the cellular network.</source>
         <translation>Codul PUK al cartelei SIM este necesar pentru conectarea la rețeaua celulară.</translation>
     </message>
@@ -689,19 +689,19 @@
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="98"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="111"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="115"/>
         <source>Enable SIM PIN</source>
         <translation>Activează PIN pentru cartelă</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="105"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="117"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="121"/>
         <source>Disable SIM PIN</source>
         <translation>Dezactivează PIN pentru cartelă</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="112"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="153"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="165"/>
         <source>Change SIM PIN</source>
         <translation>Schimbă PIN-ul cartelei</translation>
     </message>
@@ -757,13 +757,13 @@
         <translation>Apeluri în așteptare vă permite să primiți apeluri în timp ce un alt apel este activ.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="56"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="57"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="58"/>
         <source>No SIM card</source>
         <translation>Fără cartelă SIM</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="139"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="143"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>Mai aveți o încercare</numerusform>
@@ -772,12 +772,12 @@
         </translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="193"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="205"/>
         <source>Error</source>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="194"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="206"/>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
         <translation>Nu s-a putut obține starea funcției apeluri în așteptare de la operator</translation>
     </message>

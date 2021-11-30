@@ -66,6 +66,7 @@ class SimSettingsPopover : public QWidget {
         SimSettingsPopoverPrivate* d;
 
         void prepareCurrentPinPage();
+        void prepareMainPage();
 };
 
 #endif // SIMSETTINGSPOPOVER_H

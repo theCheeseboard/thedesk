@@ -170,6 +170,8 @@ CellularPane::~CellularPane() {
 }
 
 void CellularPane::updateState() {
+    if (!d->modem) return;
+
     QIcon signalIcon = QIcon::fromTheme(Common::iconForSignalStrength(d->modem->modemInterface()->signalQuality().signal, Common::Cellular));
     QIcon signalErrorIcon = QIcon::fromTheme(Common::iconForSignalStrength(d->modem->modemInterface()->signalQuality().signal, Common::CellularError));
     ui->deviceIcon->setPixmap(QIcon::fromTheme("computer").pixmap(SC_DPI_T(QSize(96, 96), QSize)));

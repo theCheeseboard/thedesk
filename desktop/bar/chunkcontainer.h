@@ -45,6 +45,9 @@ class ChunkContainer : public QWidget {
         void expandedHeightChanged();
         void chunksChanged();
 
+    private slots:
+        void on_statusCenterButton_clicked();
+
     private:
         Ui::ChunkContainer* ui;
         ChunkContainerPrivate* d;

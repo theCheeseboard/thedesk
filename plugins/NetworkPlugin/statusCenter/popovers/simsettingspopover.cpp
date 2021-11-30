@@ -22,6 +22,7 @@
 
 #include <common.h>
 #include <ttoast.h>
+#include <Modem3Gpp>
 
 struct SimSettingsPopoverPrivate {
     ModemManager::ModemDevice::Ptr modem;
@@ -61,6 +62,8 @@ SimSettingsPopover::SimSettingsPopover(ModemManager::ModemDevice::Ptr modem, QWi
         ui->modemCarrierLabel->setText(modem->sim()->operatorName());
         ui->simSettingsWidget->setVisible(true);
     }
+
+    prepareMainPage();
 }
 
 SimSettingsPopover::~SimSettingsPopover() {
@@ -97,6 +100,7 @@ void SimSettingsPopover::on_currentSimPinAcceptButton_clicked() {
         } else {
             ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
             ui->stackedWidget->setCurrentWidget(ui->startPage);
+            prepareMainPage();
         }
 
     });
@@ -138,6 +142,14 @@ void SimSettingsPopover::prepareCurrentPinPage() {
     ui->currentPinPageOperatorName->setText(Common::operatorNameForModem(d->modem));
     ui->pinRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PIN)));
     ui->stackedWidget->setCurrentWidget(ui->currentPinPage);
+}
+
+void SimSettingsPopover::prepareMainPage() {
+    ModemManager::Modem3gpp::Ptr modem3gpp(new ModemManager::Modem3gpp(d->modem->uni()));
+    bool simLockEnabled = modem3gpp->enabledFacilityLocks() & MM_MODEM_3GPP_FACILITY_SIM;
+
+    ui->enableSimPinButton->setVisible(!simLockEnabled);
+    ui->disableSimPinButton->setVisible(simLockEnabled);
 }
 
 void SimSettingsPopover::on_changeSimPinTitleLabel_backButtonClicked() {

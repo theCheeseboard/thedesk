@@ -25,6 +25,7 @@
 #include <chunk.h>
 #include <QFrame>
 #include <QGraphicsOpacityEffect>
+#include <statuscentermanager.h>
 #include "common/common.h"
 
 struct ChunkContainerPrivate {
@@ -180,3 +181,8 @@ void ChunkContainer::chunkRemoved(Chunk* chunk) {
         }
     }
 }
+
+void ChunkContainer::on_statusCenterButton_clicked() {
+    StateManager::statusCenterManager()->showStatusCenter();
+}
+
