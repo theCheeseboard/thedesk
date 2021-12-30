@@ -51,35 +51,10 @@ About::About() :
     ui->titleLabel->setBackButtonShown(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
     connect(StateManager::instance()->statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, ui->titleLabel, &tTitleLabel::setBackButtonShown);
 
-    //Get distribution information
-    QString osreleaseFile = "";
-    if (QFile("/etc/os-release").exists()) {
-        osreleaseFile = "/etc/os-release";
-    } else if (QFile("/usr/lib/os-release").exists()) {
-        osreleaseFile = "/usr/lib/os-release";
-    }
-
-    if (osreleaseFile != "") {
-        QMap<QString, QString> values;
-
-        QFile information(osreleaseFile);
-        information.open(QFile::ReadOnly);
-
-        while (!information.atEnd()) {
-            QString line = information.readLine().trimmed();
-            int equalsIndex = line.indexOf("=");
-
-            QString key = line.left(equalsIndex);
-            QString value = line.mid(equalsIndex + 1);
-            if (value.startsWith("\"") && value.endsWith("\"")) value = value.mid(1, value.count() - 2);
-            values.insert(key, value);
-        }
-        information.close();
-
-        ui->distroName->setText(values.value("PRETTY_NAME", tr("Unknown")));
-        ui->distroWebpage->setText(values.value("HOME_URL", tr("Unknown")));
-        ui->distroSupport->setText(values.value("SUPPORT_URL", tr("Unknown")));
-    }
+    //Fill in details from hostnamed
+    ui->deviceTypeLabel->setText(QStringLiteral("%1 %2").arg(d->hostnamed->property("HardwareVendor").toString(), d->hostnamed->property("HardwareModel").toString()));
+    ui->distroWebpage->setText(d->hostnamed->property("HomeURL").toString());
+    ui->distroName->setText(d->hostnamed->property("OperatingSystemPrettyName").toString());
 
     struct sysinfo* info = new struct sysinfo;
     if (sysinfo(info) == 0) {

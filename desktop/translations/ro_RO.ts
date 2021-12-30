@@ -4,128 +4,125 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="157"/>
+        <location filename="../systemsettings/about/about.ui" line="165"/>
         <source>DISTRIBUTION</source>
         <translation>DISTRIBUȚIE</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="164"/>
+        <location filename="../systemsettings/about/about.ui" line="182"/>
         <source>You&apos;re using</source>
         <translation>Folosiți</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="201"/>
-        <source>Support</source>
-        <translation>Suport</translation>
-    </message>
-    <message>
-        <location filename="../systemsettings/about/about.ui" line="324"/>
+        <location filename="../systemsettings/about/about.ui" line="349"/>
         <source>Device Name</source>
         <translation>Nume dispozitiv</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="296"/>
+        <location filename="../systemsettings/about/about.ui" line="229"/>
         <source>Processor</source>
         <translation>Procesor</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="355"/>
+        <location filename="../systemsettings/about/about.ui" line="266"/>
         <source>THIS DEVICE</source>
         <translation>ACEST DISPOZITIV</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="282"/>
+        <location filename="../systemsettings/about/about.ui" line="280"/>
         <source>Available Memory</source>
         <translation>Memorie disponibilă</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="275"/>
+        <location filename="../systemsettings/about/about.ui" line="342"/>
         <source>Available Swap</source>
         <translation>Memorie Swap disponibilă</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="303"/>
+        <location filename="../systemsettings/about/about.ui" line="335"/>
         <source>Qt Version</source>
         <translation>Versiune Qt</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="248"/>
+        <location filename="../systemsettings/about/about.ui" line="287"/>
         <source>Kernel Version</source>
         <translation>Versiune nucleu</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="331"/>
+        <location filename="../systemsettings/about/about.ui" line="236"/>
         <source>Change Device Name</source>
         <translation>Schimbă numele dispozitivului</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="362"/>
+        <location filename="../systemsettings/about/about.ui" line="301"/>
         <source>Window System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="437"/>
+        <location filename="../systemsettings/about/about.ui" line="356"/>
+        <source>Device Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/about.ui" line="431"/>
         <source>Desktop Environment</source>
         <translation>Mediu desktop</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="467"/>
+        <location filename="../systemsettings/about/about.ui" line="461"/>
         <source>Website</source>
         <translation>Site web</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="478"/>
+        <location filename="../systemsettings/about/about.ui" line="472"/>
         <source>File Bug</source>
         <translation>Raportați o problemă</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="489"/>
+        <location filename="../systemsettings/about/about.ui" line="483"/>
         <source>Sources</source>
         <translation>Surse</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="500"/>
+        <location filename="../systemsettings/about/about.ui" line="494"/>
         <source>View Debug Log</source>
         <translation>Vizualizați jurnalul de depanare</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="456"/>
+        <location filename="../systemsettings/about/about.ui" line="450"/>
         <source>Acknowledgements</source>
         <translation>Recunoașteri</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="79"/>
-        <location filename="../systemsettings/about/about.cpp" line="80"/>
-        <location filename="../systemsettings/about/about.cpp" line="81"/>
-        <location filename="../systemsettings/about/about.cpp" line="89"/>
-        <location filename="../systemsettings/about/about.cpp" line="90"/>
-        <location filename="../systemsettings/about/about.cpp" line="126"/>
+        <location filename="../systemsettings/about/about.cpp" line="64"/>
+        <location filename="../systemsettings/about/about.cpp" line="65"/>
+        <location filename="../systemsettings/about/about.cpp" line="101"/>
         <source>Unknown</source>
         <translation>Necunoscut</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="137"/>
+        <location filename="../systemsettings/about/about.cpp" line="112"/>
         <source>theDesk %1 - Blueprint</source>
         <translation>theDesk %1 - Blueprint</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="138"/>
+        <location filename="../systemsettings/about/about.cpp" line="113"/>
         <source>You compiled theDesk on %1</source>
         <translation>Ați compilat theDesk pe data de %1</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="140"/>
+        <location filename="../systemsettings/about/about.cpp" line="115"/>
         <source>theDesk %1</source>
         <translation>theDesk %1</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="144"/>
+        <location filename="../systemsettings/about/about.cpp" line="119"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
         <translation>Copyright © Victor Tran %1. Licențiat sub termenii licenței GNU General Public Licence, versiunea 3 sau ulterioară.</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="35"/>
-        <location filename="../systemsettings/about/about.cpp" line="178"/>
+        <location filename="../systemsettings/about/about.cpp" line="153"/>
         <source>About</source>
         <translation>Despre</translation>
     </message>
