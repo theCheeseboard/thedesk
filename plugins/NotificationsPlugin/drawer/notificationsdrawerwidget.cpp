@@ -59,6 +59,7 @@ NotificationsDrawerWidget::NotificationsDrawerWidget(NotificationPtr notificatio
     d->timeout->setStartValue(1.0);
     d->timeout->setEndValue(0.0);
     d->timeout->setEasingCurve(QEasingCurve::Linear);
+    d->timeout->setForceAnimation(true);
     if (notification->timeout() == 0) {
         d->timeout->setDuration(-1);
     } else {
