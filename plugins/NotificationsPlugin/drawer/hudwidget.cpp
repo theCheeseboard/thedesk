@@ -84,7 +84,7 @@ HudWidget::HudWidget(QWidget* parent) :
         }
 
         this->animateShow();
-    });
+    }, Qt::QueuedConnection);
     connect(StateManager::hudManager(), &HudManager::requestHideHud, this, [ = ] {
         //Immediately hide the HUD
         this->animateHide();

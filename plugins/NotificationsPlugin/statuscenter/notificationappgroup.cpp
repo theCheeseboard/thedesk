@@ -64,12 +64,18 @@ void NotificationAppGroup::pushNotification(NotificationPtr notification) {
         } else {
             setOrdering();
         }
-    });
+    }, Qt::QueuedConnection);
     ui->notificationsLayout->insertWidget(0, w);
     d->widgets.insert(notification, w);
     d->ordering.insert(0, w);
 
     setOrdering();
+}
+
+void NotificationAppGroup::dismissAll() {
+    for (NotificationPtr notification : d->widgets.keys()) {
+        notification->dismiss(Notification::NotificationUserDismissed);
+    }
 }
 
 void NotificationAppGroup::setOrdering() {
@@ -80,7 +86,5 @@ void NotificationAppGroup::setOrdering() {
 }
 
 void NotificationAppGroup::on_dismissAllButton_clicked() {
-    for (NotificationPtr notification : d->widgets.keys()) {
-        notification->dismiss(Notification::NotificationUserDismissed);
-    }
+    dismissAll();
 }

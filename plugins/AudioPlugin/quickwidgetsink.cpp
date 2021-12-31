@@ -40,7 +40,7 @@ QuickWidgetSink::QuickWidgetSink(PulseAudioQt::Sink* sink, QWidget* parent) :
     d = new QuickWidgetSinkPrivate();
     d->sink = sink;
 
-    connect(PulseAudioQt::Context::instance()->server(), &PulseAudioQt::Server::defaultSinkChanged, this, &QuickWidgetSink::updateDefault);
+    connect(PulseAudioQt::Context::instance()->server(), &PulseAudioQt::Server::defaultSinkChanged, this, &QuickWidgetSink::updateDefault, Qt::QueuedConnection);
     updateDefault();
 
     connect(sink, &PulseAudioQt::Sink::volumeChanged, this, &QuickWidgetSink::updateVolume);

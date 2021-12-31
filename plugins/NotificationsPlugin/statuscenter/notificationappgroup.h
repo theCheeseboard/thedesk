@@ -37,6 +37,7 @@ class NotificationAppGroup : public QWidget {
         ~NotificationAppGroup();
 
         void pushNotification(NotificationPtr notification);
+        void dismissAll();
 
     private slots:
         void on_dismissAllButton_clicked();

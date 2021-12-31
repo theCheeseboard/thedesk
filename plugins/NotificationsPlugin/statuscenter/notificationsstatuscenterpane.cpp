@@ -68,7 +68,7 @@ NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker
                 d->groups.remove(desktopEntry);
 
                 if (d->groups.isEmpty()) ui->stackedWidget->setCurrentWidget(ui->noNotificationsPage);
-            });
+            }, Qt::QueuedConnection);
             ui->notificationsLayout->insertWidget(0, group);
             d->groups.insert(desktopEntry, group);
         }

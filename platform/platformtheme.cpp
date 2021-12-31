@@ -249,11 +249,7 @@ QIcon PlatformTheme::fileIcon(const QFileInfo& fileInfo, QPlatformTheme::IconOpt
 }
 
 QIconEngine* PlatformTheme::createIconEngine(const QString& iconName) const {
-    QString iconNameModified = iconName;
-    if (!iconNameModified.endsWith("-rtl") && QApplication::layoutDirection() == Qt::RightToLeft) {
-        iconNameModified += "-rtl";
-    }
-    return new IconLoaderEngine(QPlatformTheme::createIconEngine(iconNameModified));
+    return new IconLoaderEngine(QPlatformTheme::createIconEngine(iconName));
 }
 
 QList<QKeySequence> PlatformTheme::keyBindings(QKeySequence::StandardKey key) const {
