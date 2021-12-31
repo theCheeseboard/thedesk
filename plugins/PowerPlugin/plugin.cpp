@@ -36,6 +36,7 @@
 #include <quickswitch.h>
 #include <actionquickwidget.h>
 #include <DesktopPowerProfiles/desktoppowerprofiles.h>
+#include "sleepmonitor.h"
 
 struct PluginPrivate {
     DesktopPowerProfiles* powerProfiles;
@@ -46,6 +47,8 @@ struct PluginPrivate {
     PowerSettings* powerSettings;
     QuickSwitch* powerStretchSwitch;
     IconTextChunk* powerStretchChunk;
+
+    SleepMonitor* sleepMonitor;
 };
 
 Plugin::Plugin() {
@@ -119,6 +122,8 @@ void Plugin::activate() {
         }
     });
     StateManager::statusCenterManager()->addSwitch(d->powerStretchSwitch);
+
+    d->sleepMonitor = new SleepMonitor();
 }
 
 void Plugin::deactivate() {
@@ -141,4 +146,5 @@ void Plugin::deactivate() {
     d->logind->deleteLater();
     d->powerSettings->deleteLater();
     d->powerProfiles->deleteLater();
+    d->sleepMonitor->deleteLater();
 }

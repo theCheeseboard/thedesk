@@ -25,6 +25,7 @@
 
 class EndSession;
 class EventHandler;
+class SleepMonitor;
 struct PowerManagerPrivate;
 class PowerManager : public QObject {
         Q_OBJECT
@@ -57,6 +58,7 @@ class PowerManager : public QObject {
     protected:
         friend EndSession;
         friend EventHandler;
+        friend SleepMonitor;
         void performPowerOperation(PowerOperation operation, QStringList flags = {});
 
     private:

@@ -35,7 +35,9 @@ class PowerSettings : public StatusCenterPane {
 
         void on_performanceProfileButton_toggled(bool checked);
 
-    private:
+        void on_lockScreenAfterSuspendSwitch_toggled(bool checked);
+
+private:
         Ui::PowerSettings* ui;
         PowerSettingsPrivate* d;
 

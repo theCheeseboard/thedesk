@@ -54,7 +54,8 @@ PowerSettings::PowerSettings(DesktopPowerProfiles* powerProfiles) :
             "Power/timeouts.screenoff.unit",
             "Power/timeouts.suspend.value",
             "Power/timeouts.suspend.unit",
-            "Power/actions.powerbutton"
+            "Power/actions.powerbutton",
+            "Power/suspend.lockScreen"
         }) {
         settingChanged(setting, d->settings.value(setting));
     }
@@ -111,6 +112,8 @@ void PowerSettings::settingChanged(QString key, QVariant value) {
         ui->suspendSpin->setEnabled(unit != "never");
     } else if (key == "Power/actions.powerbutton") {
         ui->powerButtonActionBox->setCurrentIndex(d->powerActions.indexOf(value.toString()));
+    } else if (key == "Power/suspend.lockScreen") {
+        ui->lockScreenAfterSuspendSwitch->setChecked(value.toBool());
     }
 }
 
@@ -179,5 +182,10 @@ void PowerSettings::on_powerStretchProfileButton_toggled(bool checked) {
 
 void PowerSettings::on_performanceProfileButton_toggled(bool checked) {
     if (checked) d->profiles->setCurrentPowerProfile(DesktopPowerProfiles::Performance);
+}
+
+void PowerSettings::on_lockScreenAfterSuspendSwitch_toggled(bool checked)
+{
+    d->settings.setValue("Power/suspend.lockScreen", checked);
 }
 

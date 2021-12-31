@@ -176,5 +176,9 @@
         <source>Performance will be increased at the cost of power consumption</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>After suspending, lock the screen</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

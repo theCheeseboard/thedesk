@@ -34,12 +34,14 @@ include(../plugins.pri)
 HEADERS += \
     eventhandler.h \
     plugin.h \
-    settings/powersettings.h
+    settings/powersettings.h \
+    sleepmonitor.h
 
 SOURCES += \
     eventhandler.cpp \
     plugin.cpp \
-    settings/powersettings.cpp
+    settings/powersettings.cpp \
+    sleepmonitor.cpp
 
 DISTFILES += \
     Plugin.json \

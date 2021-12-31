@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
     a.setOrganizationName("theSuite");
     a.setOrganizationDomain("vicr123.com");
     a.setApplicationName("theDesk");
-    a.setCopyrightYear("2021");
+    a.setCopyrightYear("2022");
 
     StateManager::instance();
     StateManager::localeManager()->addTranslationSet({

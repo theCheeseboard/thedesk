@@ -76,7 +76,6 @@
            <widget class="QLabel" name="label_7">
             <property name="font">
              <font>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -190,7 +189,6 @@
            <widget class="QLabel" name="label">
             <property name="font">
              <font>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -329,6 +327,18 @@
             </property>
            </widget>
           </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="label_5">
+            <property name="font">
+             <font>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>BUTTONS</string>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="1">
            <widget class="QComboBox" name="powerButtonActionBox">
             <item>
@@ -363,16 +373,17 @@
             </item>
            </widget>
           </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label_5">
-            <property name="font">
-             <font>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_11">
             <property name="text">
-             <string>BUTTONS</string>
+             <string>After suspending, lock the screen</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1" alignment="Qt::AlignRight">
+           <widget class="tSwitch" name="lockScreenAfterSuspendSwitch">
+            <property name="text">
+             <string notr="true">LockScreenAfterSuspendSwitch</string>
             </property>
            </widget>
           </item>
@@ -412,6 +423,11 @@
    <extends>QFrame</extends>
    <header location="global">tstatusframe.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>tSwitch</class>
+   <extends>QPushButton</extends>
+   <header location="global">tswitch.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
