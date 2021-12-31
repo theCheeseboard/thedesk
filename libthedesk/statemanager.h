@@ -30,7 +30,7 @@ class StatusCenterManager;
 class LocaleManager;
 class HudManager;
 class OnboardingManager;
-class QuietModeManager;
+class QuietModeManagerTd;
 
 struct StateManagerPrivate;
 class LIBTHEDESK_EXPORT StateManager : public QObject {
@@ -45,7 +45,7 @@ class LIBTHEDESK_EXPORT StateManager : public QObject {
         static LocaleManager* localeManager();
         static HudManager* hudManager();
         static OnboardingManager* onboardingManager();
-        static QuietModeManager* quietModeManager();
+        static QuietModeManagerTd* quietModeManager();
 
     private:
         explicit StateManager();

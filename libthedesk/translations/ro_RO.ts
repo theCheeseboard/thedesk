@@ -77,38 +77,38 @@
     </message>
 </context>
 <context>
-    <name>QuietModeManager</name>
-    <message>
-        <source>Allows all sounds</source>
-        <translation>Permite toate sunetele</translation>
-    </message>
-    <message>
-        <source>Hides non-critical notifications</source>
-        <translation>Ascunde toate notificările care nu sunt critice</translation>
-    </message>
-    <message>
-        <source>Hides all notifications</source>
-        <translation>Ascunde toate notificările</translation>
-    </message>
-    <message>
-        <source>Mutes all sound altogether</source>
-        <translation>Dezactivează toate sunetele</translation>
-    </message>
+    <name>QuietModeManagerTd</name>
     <message>
         <source>Sound</source>
-        <translation>Sunet</translation>
+        <translation type="unfinished">Sunet</translation>
     </message>
     <message>
         <source>Critical Only</source>
-        <translation>Doar critice</translation>
+        <translation type="unfinished">Doar critice</translation>
     </message>
     <message>
         <source>No Notifications</source>
-        <translation>Notificări dezactivate</translation>
+        <translation type="unfinished">Notificări dezactivate</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Mut</translation>
+        <translation type="unfinished">Mut</translation>
+    </message>
+    <message>
+        <source>Allows all sounds</source>
+        <translation type="unfinished">Permite toate sunetele</translation>
+    </message>
+    <message>
+        <source>Hides non-critical notifications</source>
+        <translation type="unfinished">Ascunde toate notificările care nu sunt critice</translation>
+    </message>
+    <message>
+        <source>Hides all notifications</source>
+        <translation type="unfinished">Ascunde toate notificările</translation>
+    </message>
+    <message>
+        <source>Mutes all sound altogether</source>
+        <translation type="unfinished">Dezactivează toate sunetele</translation>
     </message>
 </context>
 </TS>

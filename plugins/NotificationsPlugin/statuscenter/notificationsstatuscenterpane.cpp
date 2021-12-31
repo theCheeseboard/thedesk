@@ -81,8 +81,8 @@ NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
     ui->notificationSplash->setPixmap(QIcon::fromTheme("notifications").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
 
-    for (QuietModeManager::QuietMode mode : StateManager::quietModeManager()->availableQuietModes()) {
-        QuietModeManager::QuietMode m = mode;
+    for (QuietModeManagerTd::QuietMode mode : StateManager::quietModeManager()->availableQuietModes()) {
+        QuietModeManagerTd::QuietMode m = mode;
         QPushButton* button = new QPushButton(this);
         button->setText(StateManager::quietModeManager()->name(m));
         button->setIcon(QIcon::fromTheme(StateManager::quietModeManager()->icon(m)));
@@ -94,7 +94,7 @@ NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker
                 StateManager::quietModeManager()->setQuietMode(m);
             }
         });
-        connect(StateManager::quietModeManager(), &QuietModeManager::quietModeChanged, this, [ = ](QuietModeManager::QuietMode newMode, QuietModeManager::QuietMode oldMode) {
+        connect(StateManager::quietModeManager(), &QuietModeManagerTd::quietModeChanged, this, [ = ](QuietModeManagerTd::QuietMode newMode, QuietModeManagerTd::QuietMode oldMode) {
             Q_UNUSED(oldMode);
             button->setChecked(newMode == m);
         });

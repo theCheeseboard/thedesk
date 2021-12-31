@@ -77,38 +77,38 @@
     </message>
 </context>
 <context>
-    <name>QuietModeManager</name>
-    <message>
-        <source>Allows all sounds</source>
-        <translation>Tüm seslere izin verir</translation>
-    </message>
-    <message>
-        <source>Hides non-critical notifications</source>
-        <translation>Kritik olmayan bildirimleri gizler</translation>
-    </message>
-    <message>
-        <source>Hides all notifications</source>
-        <translation>Tüm bildirimleri gizler</translation>
-    </message>
-    <message>
-        <source>Mutes all sound altogether</source>
-        <translation>Tüm sesleri tamamen kapatır</translation>
-    </message>
+    <name>QuietModeManagerTd</name>
     <message>
         <source>Sound</source>
-        <translation>Ses</translation>
+        <translation type="unfinished">Ses</translation>
     </message>
     <message>
         <source>Critical Only</source>
-        <translation>Yalnızca Kritik</translation>
+        <translation type="unfinished">Yalnızca Kritik</translation>
     </message>
     <message>
         <source>No Notifications</source>
-        <translation>Bildirim Yok</translation>
+        <translation type="unfinished">Bildirim Yok</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Sessiz</translation>
+        <translation type="unfinished">Sessiz</translation>
+    </message>
+    <message>
+        <source>Allows all sounds</source>
+        <translation type="unfinished">Tüm seslere izin verir</translation>
+    </message>
+    <message>
+        <source>Hides non-critical notifications</source>
+        <translation type="unfinished">Kritik olmayan bildirimleri gizler</translation>
+    </message>
+    <message>
+        <source>Hides all notifications</source>
+        <translation type="unfinished">Tüm bildirimleri gizler</translation>
+    </message>
+    <message>
+        <source>Mutes all sound altogether</source>
+        <translation type="unfinished">Tüm sesleri tamamen kapatır</translation>
     </message>
 </context>
 </TS>

@@ -37,7 +37,7 @@ struct StateManagerPrivate {
     LocaleManager* localeManager;
     HudManager* hudManager;
     OnboardingManager* onboardingManager;
-    QuietModeManager* quietModeManager;
+    QuietModeManagerTd* quietModeManager;
 };
 
 StateManagerPrivate* StateManager::d = new StateManagerPrivate();
@@ -50,7 +50,7 @@ StateManager::StateManager() : QObject(nullptr) {
     d->localeManager = new LocaleManager(this);
     d->hudManager = new HudManager(this);
     d->onboardingManager = new OnboardingManager(this);
-    d->quietModeManager = new QuietModeManager(this);
+    d->quietModeManager = new QuietModeManagerTd(this);
 }
 
 StateManager* StateManager::instance() {
@@ -86,6 +86,6 @@ OnboardingManager* StateManager::onboardingManager() {
     return d->onboardingManager;
 }
 
-QuietModeManager* StateManager::quietModeManager() {
+QuietModeManagerTd* StateManager::quietModeManager() {
     return d->quietModeManager;
 }

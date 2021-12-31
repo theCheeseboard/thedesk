@@ -51,8 +51,8 @@ AudioQuickWidget::AudioQuickWidget(QWidget* parent) :
     for (PulseAudioQt::SinkInput* sinkInput : PulseAudioQt::Context::instance()->sinkInputs()) sinkInputAdded(sinkInput);
     ui->sinkInputsWidget->setVisible(false);
 
-    for (QuietModeManager::QuietMode mode : StateManager::quietModeManager()->availableQuietModes()) {
-        QuietModeManager::QuietMode m = mode;
+    for (QuietModeManagerTd::QuietMode mode : StateManager::quietModeManager()->availableQuietModes()) {
+        QuietModeManagerTd::QuietMode m = mode;
         QPushButton* button = new QPushButton(this);
         button->setText(StateManager::quietModeManager()->name(m));
         button->setIcon(QIcon::fromTheme(StateManager::quietModeManager()->icon(m)));
@@ -64,7 +64,7 @@ AudioQuickWidget::AudioQuickWidget(QWidget* parent) :
                 StateManager::quietModeManager()->setQuietMode(m);
             }
         });
-        connect(StateManager::quietModeManager(), &QuietModeManager::quietModeChanged, this, [ = ](QuietModeManager::QuietMode newMode, QuietModeManager::QuietMode oldMode) {
+        connect(StateManager::quietModeManager(), &QuietModeManagerTd::quietModeChanged, this, [ = ](QuietModeManagerTd::QuietMode newMode, QuietModeManagerTd::QuietMode oldMode) {
             Q_UNUSED(oldMode);
             button->setChecked(newMode == m);
         });

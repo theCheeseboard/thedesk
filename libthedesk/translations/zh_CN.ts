@@ -77,38 +77,38 @@
     </message>
 </context>
 <context>
-    <name>QuietModeManager</name>
-    <message>
-        <source>Allows all sounds</source>
-        <translation>允许所有的声音</translation>
-    </message>
-    <message>
-        <source>Hides non-critical notifications</source>
-        <translation>隐藏不重要的通知</translation>
-    </message>
-    <message>
-        <source>Hides all notifications</source>
-        <translation>隐藏所有通知</translation>
-    </message>
-    <message>
-        <source>Mutes all sound altogether</source>
-        <translation>开启全局静音</translation>
-    </message>
+    <name>QuietModeManagerTd</name>
     <message>
         <source>Sound</source>
-        <translation>声音</translation>
+        <translation type="unfinished">声音</translation>
     </message>
     <message>
         <source>Critical Only</source>
-        <translation>限紧急</translation>
+        <translation type="unfinished">限紧急</translation>
     </message>
     <message>
         <source>No Notifications</source>
-        <translation>无通知</translation>
+        <translation type="unfinished">无通知</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>静音</translation>
+        <translation type="unfinished">静音</translation>
+    </message>
+    <message>
+        <source>Allows all sounds</source>
+        <translation type="unfinished">允许所有的声音</translation>
+    </message>
+    <message>
+        <source>Hides non-critical notifications</source>
+        <translation type="unfinished">隐藏不重要的通知</translation>
+    </message>
+    <message>
+        <source>Hides all notifications</source>
+        <translation type="unfinished">隐藏所有通知</translation>
+    </message>
+    <message>
+        <source>Mutes all sound altogether</source>
+        <translation type="unfinished">开启全局静音</translation>
     </message>
 </context>
 </TS>

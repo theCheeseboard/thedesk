@@ -77,38 +77,38 @@
     </message>
 </context>
 <context>
-    <name>QuietModeManager</name>
-    <message>
-        <source>Allows all sounds</source>
-        <translation>Allows all sounds</translation>
-    </message>
-    <message>
-        <source>Hides non-critical notifications</source>
-        <translation>Hides non-critical notifications</translation>
-    </message>
-    <message>
-        <source>Hides all notifications</source>
-        <translation>Hides all notifications</translation>
-    </message>
-    <message>
-        <source>Mutes all sound altogether</source>
-        <translation>Mutes all sound altogether</translation>
-    </message>
+    <name>QuietModeManagerTd</name>
     <message>
         <source>Sound</source>
-        <translation>Sound</translation>
+        <translation type="unfinished">Sound</translation>
     </message>
     <message>
         <source>Critical Only</source>
-        <translation>Critical Only</translation>
+        <translation type="unfinished">Critical Only</translation>
     </message>
     <message>
         <source>No Notifications</source>
-        <translation>No Notifications</translation>
+        <translation type="unfinished">No Notifications</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Mute</translation>
+        <translation type="unfinished">Mute</translation>
+    </message>
+    <message>
+        <source>Allows all sounds</source>
+        <translation type="unfinished">Allows all sounds</translation>
+    </message>
+    <message>
+        <source>Hides non-critical notifications</source>
+        <translation type="unfinished">Hides non-critical notifications</translation>
+    </message>
+    <message>
+        <source>Hides all notifications</source>
+        <translation type="unfinished">Hides all notifications</translation>
+    </message>
+    <message>
+        <source>Mutes all sound altogether</source>
+        <translation type="unfinished">Mutes all sound altogether</translation>
     </message>
 </context>
 </TS>

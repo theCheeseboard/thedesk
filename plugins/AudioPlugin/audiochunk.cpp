@@ -31,7 +31,7 @@ struct AudioChunkPrivate {
 AudioChunk::AudioChunk() : IconTextChunk("audio") {
     d = new AudioChunkPrivate();
 
-    connect(StateManager::quietModeManager(), &QuietModeManager::quietModeChanged, this, &AudioChunk::updateData);
+    connect(StateManager::quietModeManager(), &QuietModeManagerTd::quietModeChanged, this, &AudioChunk::updateData);
     updateData();
 
     d->qw = new AudioQuickWidget();
@@ -44,6 +44,6 @@ AudioChunk::~AudioChunk() {
 }
 
 void AudioChunk::updateData() {
-    this->setIcon(QIcon::fromTheme(QuietModeManager::icon(StateManager::quietModeManager()->currentMode())));
-    this->setText(QuietModeManager::name(StateManager::quietModeManager()->currentMode()));
+    this->setIcon(QIcon::fromTheme(QuietModeManagerTd::icon(StateManager::quietModeManager()->currentMode())));
+    this->setText(QuietModeManagerTd::name(StateManager::quietModeManager()->currentMode()));
 }

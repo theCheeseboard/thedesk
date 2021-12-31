@@ -77,38 +77,38 @@
     </message>
 </context>
 <context>
-    <name>QuietModeManager</name>
-    <message>
-        <source>Allows all sounds</source>
-        <translation>Phát các âm thanh</translation>
-    </message>
-    <message>
-        <source>Hides non-critical notifications</source>
-        <translation>Ẩn thông báo không quan trọng</translation>
-    </message>
-    <message>
-        <source>Hides all notifications</source>
-        <translation>Ẩn các thông báo</translation>
-    </message>
-    <message>
-        <source>Mutes all sound altogether</source>
-        <translation>Tắt âm hoàn toàn</translation>
-    </message>
+    <name>QuietModeManagerTd</name>
     <message>
         <source>Sound</source>
-        <translation>Âm thanh</translation>
+        <translation type="unfinished">Âm thanh</translation>
     </message>
     <message>
         <source>Critical Only</source>
-        <translation>Chỉ quan trọng</translation>
+        <translation type="unfinished">Chỉ quan trọng</translation>
     </message>
     <message>
         <source>No Notifications</source>
-        <translation>Không có thông báo</translation>
+        <translation type="unfinished">Không có thông báo</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Im lặng</translation>
+        <translation type="unfinished">Im lặng</translation>
+    </message>
+    <message>
+        <source>Allows all sounds</source>
+        <translation type="unfinished">Phát các âm thanh</translation>
+    </message>
+    <message>
+        <source>Hides non-critical notifications</source>
+        <translation type="unfinished">Ẩn thông báo không quan trọng</translation>
+    </message>
+    <message>
+        <source>Hides all notifications</source>
+        <translation type="unfinished">Ẩn các thông báo</translation>
+    </message>
+    <message>
+        <source>Mutes all sound altogether</source>
+        <translation type="unfinished">Tắt âm hoàn toàn</translation>
     </message>
 </context>
 </TS>

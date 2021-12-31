@@ -103,11 +103,11 @@ void NotificationsDrawer::updateGeometry() {
 
 void NotificationsDrawer::showNotification(NotificationPtr notification) {
     switch (StateManager::quietModeManager()->currentMode()) {
-        case QuietModeManager::CriticalOnly:
+        case QuietModeManagerTd::CriticalOnly:
             if (notification->urgency() != Notification::Critical) return;
             break;
-        case QuietModeManager::NoNotifications:
-        case QuietModeManager::Mute:
+        case QuietModeManagerTd::NoNotifications:
+        case QuietModeManagerTd::Mute:
             return;
         default:
             break;

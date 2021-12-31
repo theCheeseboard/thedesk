@@ -23,90 +23,90 @@
 #include "onboardingmanager.h"
 
 struct QuietModeManagerPrivate {
-    QuietModeManager::QuietMode quietMode = QuietModeManager::Sound;
+    QuietModeManagerTd::QuietMode quietMode = QuietModeManagerTd::Sound;
 };
 
-QuietModeManager::QuietModeManager(QObject* parent) : QObject(parent) {
+QuietModeManagerTd::QuietModeManagerTd(QObject* parent) : QObject(parent) {
     d = new QuietModeManagerPrivate();
 }
 
-QuietModeManager::~QuietModeManager() {
+QuietModeManagerTd::~QuietModeManagerTd() {
     delete d;
 }
 
-void QuietModeManager::setQuietMode(QuietModeManager::QuietMode quietMode) {
-    QuietModeManager::QuietMode oldMode = d->quietMode;
+void QuietModeManagerTd::setQuietMode(QuietModeManagerTd::QuietMode quietMode) {
+    QuietModeManagerTd::QuietMode oldMode = d->quietMode;
     d->quietMode = quietMode;
     emit quietModeChanged(quietMode, oldMode);
 }
 
-QuietModeManager::QuietMode QuietModeManager::currentMode() {
+QuietModeManagerTd::QuietMode QuietModeManagerTd::currentMode() {
     return d->quietMode;
 }
 
-QuietModeManager::QuietMode QuietModeManager::nextQuietMode() const {
+QuietModeManagerTd::QuietMode QuietModeManagerTd::nextQuietMode() const {
     switch (d->quietMode) {
-        case QuietModeManager::Sound:
+        case QuietModeManagerTd::Sound:
             //If we're in onboarding, mute the audio if the user hits mute
             return StateManager::onboardingManager()->isOnboardingRunning() ? Mute : CriticalOnly;
-        case QuietModeManager::CriticalOnly:
+        case QuietModeManagerTd::CriticalOnly:
             //If we're in onboarding, mute the audio if the user hits mute
             return StateManager::onboardingManager()->isOnboardingRunning() ? Mute : NoNotifications;
-        case QuietModeManager::NoNotifications:
+        case QuietModeManagerTd::NoNotifications:
             return Mute;
-        case QuietModeManager::Mute:
+        case QuietModeManagerTd::Mute:
             return Sound;
         default:
-            return QuietModeManager::Sound;
+            return QuietModeManagerTd::Sound;
     }
 }
 
-QString QuietModeManager::name(QuietModeManager::QuietMode quietMode) {
+QString QuietModeManagerTd::name(QuietModeManagerTd::QuietMode quietMode) {
     switch (quietMode) {
-        case QuietModeManager::Sound:
+        case QuietModeManagerTd::Sound:
             return tr("Sound");
-        case QuietModeManager::CriticalOnly:
+        case QuietModeManagerTd::CriticalOnly:
             return tr("Critical Only");
-        case QuietModeManager::NoNotifications:
+        case QuietModeManagerTd::NoNotifications:
             return tr("No Notifications");
-        case QuietModeManager::Mute:
+        case QuietModeManagerTd::Mute:
             return tr("Mute");
         default:
             return "";
     }
 }
 
-QString QuietModeManager::description(QuietModeManager::QuietMode quietMode) {
+QString QuietModeManagerTd::description(QuietModeManagerTd::QuietMode quietMode) {
     switch (quietMode) {
-        case QuietModeManager::Sound:
+        case QuietModeManagerTd::Sound:
             return tr("Allows all sounds");
-        case QuietModeManager::CriticalOnly:
+        case QuietModeManagerTd::CriticalOnly:
             return tr("Hides non-critical notifications");
-        case QuietModeManager::NoNotifications:
+        case QuietModeManagerTd::NoNotifications:
             return tr("Hides all notifications");
-        case QuietModeManager::Mute:
+        case QuietModeManagerTd::Mute:
             return tr("Mutes all sound altogether");
         default:
             return "";
     }
 }
 
-QString QuietModeManager::icon(QuietModeManager::QuietMode quietMode) {
+QString QuietModeManagerTd::icon(QuietModeManagerTd::QuietMode quietMode) {
     switch (quietMode) {
-        case QuietModeManager::Sound:
+        case QuietModeManagerTd::Sound:
             return "audio-volume-high";
-        case QuietModeManager::CriticalOnly:
+        case QuietModeManagerTd::CriticalOnly:
             return "quiet-mode-critical-only";
-        case QuietModeManager::NoNotifications:
+        case QuietModeManagerTd::NoNotifications:
             return "quiet-mode";
-        case QuietModeManager::Mute:
+        case QuietModeManagerTd::Mute:
             return "audio-volume-muted";
         default:
             return "";
     }
 }
 
-QList<QuietModeManager::QuietMode> QuietModeManager::availableQuietModes() const {
+QList<QuietModeManagerTd::QuietMode> QuietModeManagerTd::availableQuietModes() const {
     QList<QuietMode> modes;
     for (QuietMode mode = Sound; mode != LastQuietMode; mode = static_cast<QuietMode>(mode + 1)) {
         modes.append(mode);

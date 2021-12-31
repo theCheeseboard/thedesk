@@ -57,7 +57,7 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
         this->adjustVolume(-5);
     });
     connect(d->volumeMute, &KeyGrab::activated, this, [ = ] {
-        QuietModeManager::QuietMode newMode = StateManager::quietModeManager()->nextQuietMode();
+        QuietModeManagerTd::QuietMode newMode = StateManager::quietModeManager()->nextQuietMode();
         StateManager::quietModeManager()->setQuietMode(newMode);
 
         StateManager::instance()->hudManager()->showHud({
@@ -67,7 +67,7 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
         });
     });
 
-    connect(StateManager::quietModeManager(), &QuietModeManager::quietModeChanged, this, &EventHandler::quietModeChanged);
+    connect(StateManager::quietModeManager(), &QuietModeManagerTd::quietModeChanged, this, &EventHandler::quietModeChanged);
     quietModeChanged();
 }
 
@@ -79,7 +79,7 @@ EventHandler::~EventHandler() {
 }
 
 void EventHandler::adjustVolume(int percentageChange) {
-    if (StateManager::quietModeManager()->currentMode() == QuietModeManager::Mute) {
+    if (StateManager::quietModeManager()->currentMode() == QuietModeManagerTd::Mute) {
         showHud(nullptr);
         return;
     }
@@ -127,9 +127,9 @@ void EventHandler::defaultSinkChanged(PulseAudioQt::Sink* defaultSink) {
 }
 
 void EventHandler::showHud(PulseAudioQt::Sink* sink, qint64 volume) {
-    if (StateManager::quietModeManager()->currentMode() == QuietModeManager::Mute) {
+    if (StateManager::quietModeManager()->currentMode() == QuietModeManagerTd::Mute) {
         StateManager::instance()->hudManager()->showHud({
-            {"icon", StateManager::quietModeManager()->icon(QuietModeManager::Mute)},
+            {"icon", StateManager::quietModeManager()->icon(QuietModeManagerTd::Mute)},
             {"title", tr("Mute")},
             {"text", tr("Unmute Quiet Mode before changing the volume")}
         });
@@ -171,9 +171,9 @@ void EventHandler::showHud(PulseAudioQt::Sink* sink, qint64 volume) {
 }
 
 void EventHandler::quietModeChanged() {
-    QuietModeManager::QuietMode mode = StateManager::quietModeManager()->currentMode();
+    QuietModeManagerTd::QuietMode mode = StateManager::quietModeManager()->currentMode();
     QVector<PulseAudioQt::Sink*> sinks = PulseAudioQt::Context::instance()->sinks();
     for (PulseAudioQt::Sink* sink : sinks) {
-        sink->setMuted(mode == QuietModeManager::Mute);
+        sink->setMuted(mode == QuietModeManagerTd::Mute);
     }
 }

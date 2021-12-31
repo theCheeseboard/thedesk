@@ -23,7 +23,7 @@
 #include <QObject>
 
 struct QuietModeManagerPrivate;
-class QuietModeManager : public QObject {
+class QuietModeManagerTd : public QObject {
         Q_OBJECT
     public:
         enum QuietMode {
@@ -35,8 +35,8 @@ class QuietModeManager : public QObject {
             LastQuietMode
         };
 
-        explicit QuietModeManager(QObject* parent = nullptr);
-        ~QuietModeManager();
+        explicit QuietModeManagerTd(QObject* parent = nullptr);
+        ~QuietModeManagerTd();
 
         void setQuietMode(QuietMode quietMode);
         QuietMode currentMode();
