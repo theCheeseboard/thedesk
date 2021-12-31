@@ -101,7 +101,9 @@ void ChunkContainer::barHeightChanged(int height) {
 //    if (height >= statusBarHeight() && height <= expandedHeight()) {
 //        this->setFixedHeight(height);
 //    }
-    this->setFixedHeight(qBound(statusBarHeight(), height, expandedHeight()));
+    int boundHeight = qBound(statusBarHeight(), height, expandedHeight());
+    this->setFixedHeight(boundHeight);
+    ui->chunkWidget->setFixedHeight(boundHeight);
 
     qreal percentageAnim = static_cast<qreal>((height - statusBarHeight())) / (expandedHeight() - statusBarHeight());
     if (percentageAnim < 0) percentageAnim = 0;
