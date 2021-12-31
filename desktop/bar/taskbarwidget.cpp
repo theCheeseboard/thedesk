@@ -25,6 +25,7 @@
 #include <Wm/desktopwm.h>
 #include <the-libs_global.h>
 #include <Applications/application.h>
+#include <Gestures/gesturedaemon.h>
 #include "taskbardesktopwidget.h"
 
 struct TaskbarWidgetPrivate {
@@ -53,6 +54,23 @@ TaskbarWidget::TaskbarWidget(QWidget* parent) :
     connect(DesktopWm::instance(), &DesktopWm::desktopCountChanged, this, &TaskbarWidget::normaliseDesktops);
     connect(DesktopWm::instance(), &DesktopWm::windowAdded, this, &TaskbarWidget::addWindow);
     connect(DesktopWm::instance(), &DesktopWm::windowRemoved, this, &TaskbarWidget::removeWindow);
+
+    //TODO: Move to window manager
+    connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [ = ](GestureInteractionPtr gesture) {
+        if (gesture->isValidInteraction(GestureTypes::Swipe, GestureTypes::Left, 4)) {
+            connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+                if (gesture->extrapolatePercentage(100) > 0.7 && DesktopWm::currentDesktop() != DesktopWm::desktops().length() - 1) {
+                    DesktopWm::setCurrentDesktop(DesktopWm::currentDesktop() + 1);
+                }
+            });
+        } else if (gesture->isValidInteraction(GestureTypes::Swipe, GestureTypes::Right, 4)) {
+            connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+                if (gesture->extrapolatePercentage(100) > 0.7 && DesktopWm::currentDesktop() != 0) {
+                    DesktopWm::setCurrentDesktop(DesktopWm::currentDesktop() - 1);
+                }
+            });
+        }
+    });
 
     ui->lastDesktopButton->setIconSize(SC_DPI_T(QSize(24, 24), QSize));
 

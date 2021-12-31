@@ -50,6 +50,19 @@
     </widget>
    </item>
    <item>
+    <widget class="Line" name="statusCenterButtonLine">
+     <property name="maximumSize">
+      <size>
+       <width>1</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QScrollArea" name="scrollArea">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -77,7 +90,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>366</width>
+        <width>365</width>
         <height>23</height>
        </rect>
       </property>

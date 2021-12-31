@@ -24,6 +24,7 @@
 #include <barmanager.h>
 #include <chunk.h>
 #include <QFrame>
+#include <QScrollBar>
 #include <QGraphicsOpacityEffect>
 #include <statuscentermanager.h>
 #include "common/common.h"
@@ -59,6 +60,8 @@ ChunkContainer::ChunkContainer(QWidget* parent) :
     d = new ChunkContainerPrivate();
     d->barManager = StateManager::barManager();
 
+    ui->statusCenterButtonLine->setVisible(false);
+
     connect(d->barManager, &BarManager::chunkAdded, this, &ChunkContainer::chunkAdded);
     connect(d->barManager, &BarManager::chunkRemoved, this, &ChunkContainer::chunkRemoved);
     for (Chunk* chunk : d->barManager->chunks()) {
@@ -69,6 +72,15 @@ ChunkContainer::ChunkContainer(QWidget* parent) :
         int spacing = 3 + 3 * percentage;
         ui->chunkLayout->setSpacing(spacing);
     });
+
+    connect(ui->scrollArea->horizontalScrollBar(), &QScrollBar::valueChanged, this, [=](int value) {
+        ui->statusCenterButtonLine->setVisible(value != 0);
+    });
+
+    QPalette pal;
+    pal.setBrush(QPalette::Window, Qt::transparent);
+    ui->scrollArea->setPalette(pal);
+    ui->scrollAreaWidgetContents->setPalette(pal);
 }
 
 ChunkContainer::~ChunkContainer() {
