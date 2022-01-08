@@ -1,7 +1,7 @@
 /****************************************
  *
  *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
- *   Copyright (C) 2020 Victor Tran
+ *   Copyright (C) 2022 Victor Tran
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,28 +17,36 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef ONBOARDINGNETWORK_H
+#define ONBOARDINGNETWORK_H
 
-#include <QCoreApplication>
-#include <NetworkManagerQt/Device>
-#include <ModemDevice>
+#include <onboardingpage.h>
 
-class Common {
-        Q_DECLARE_TR_FUNCTIONS(Common)
+namespace Ui {
+    class OnboardingNetwork;
+}
+
+class OnboardingNetwork : public OnboardingPage {
+        Q_OBJECT
+
     public:
-        enum WirelessType {
-            WiFi,
-            Cellular,
-            WiFiError,
-            CellularError
-        };
+        explicit OnboardingNetwork(QWidget* parent = nullptr);
+        ~OnboardingNetwork();
 
-        static QString stateChangeReasonToString(NetworkManager::Device::StateChangeReason reason);
-        static QString iconForSignalStrength(int strength, WirelessType type);
-        static QString operatorNameForModem(ModemManager::ModemDevice::Ptr device);
+    private:
+        Ui::OnboardingNetwork* ui;
 
-        static bool isDeviceConnecting(NetworkManager::Device::Ptr device);
+        void updateConnectivity();
+
+        // OnboardingPage interface
+    public:
+        QString name();
+        QString displayName();
+
+    private slots:
+        void on_titleLabel_backButtonClicked();
+        void on_nextButton_clicked();
+        void on_disconnectButton_clicked();
 };
 
-#endif // COMMON_H
+#endif // ONBOARDINGNETWORK_H

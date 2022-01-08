@@ -456,6 +456,41 @@
     </message>
 </context>
 <context>
+    <name>OnboardingNetwork</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <translation type="unfinished">Ağ</translation>
+    </message>
+    <message>
+        <source>Connect to the Internet to get updates and install new software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You&apos;re connected!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disconnect and connect to a different network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue without Internet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can always set up the network connection later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SecurityEapPeap</name>
     <message>
         <source>PEAP</source>
@@ -954,6 +989,29 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
     </message>
 </context>
 <context>
+    <name>WiredOnboardingSetup</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WIRED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Wired Connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To connect to the Internet using a wired network, connect the network cable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect to the Internet using a wired network</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WirelessNetworkListDelegate</name>
     <message>
         <source>In Range</source>
@@ -1089,6 +1147,25 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
     <message>
         <source>Connect</source>
         <translation>Bağlan</translation>
+    </message>
+</context>
+<context>
+    <name>WirelessOnboardingSetup</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WI-FI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connect to the Internet using a Wi-Fi network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select Network</source>
+        <translation type="unfinished">Ağ Seçin</translation>
     </message>
 </context>
 </TS>

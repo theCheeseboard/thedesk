@@ -31,6 +31,7 @@
 #include "tsettings.h"
 
 #include "statusCenter/networkstatuscenterpane.h"
+#include "onboarding/onboardingnetwork.h"
 
 struct PluginPrivate {
     int translationSet;
@@ -62,6 +63,10 @@ void Plugin::activate() {
 
     d->statusCenterPane = new NetworkStatusCenterPane(d->switches);
     StateManager::statusCenterManager()->addPane(d->statusCenterPane);
+
+    QObject::connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, [ = ] {
+        StateManager::onboardingManager()->addOnboardingStep(new OnboardingNetwork());
+    });
 }
 
 void Plugin::deactivate() {

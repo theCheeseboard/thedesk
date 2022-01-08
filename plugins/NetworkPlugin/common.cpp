@@ -198,3 +198,16 @@ QString Common::operatorNameForModem(ModemManager::ModemDevice::Ptr device) {
 
     return tr("Cellular");
 }
+
+bool Common::isDeviceConnecting(NetworkManager::Device::Ptr device) {
+    QList<NetworkManager::Device::State> connectingStates = {
+        NetworkManager::Device::Preparing,
+        NetworkManager::Device::ConfiguringHardware,
+        NetworkManager::Device::NeedAuth,
+        NetworkManager::Device::ConfiguringIp,
+        NetworkManager::Device::CheckingIp,
+        NetworkManager::Device::WaitingForSecondaries
+    };
+
+    return connectingStates.contains(device->state());
+}

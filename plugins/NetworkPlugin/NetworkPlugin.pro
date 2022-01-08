@@ -47,6 +47,9 @@ SOURCES += \
     models/wirelessaccesspointsmodel.cpp \
     models/wirelessconnectionlistmodel.cpp \
     models/wirelessnetworklistdelegate.cpp \
+    onboarding/onboardingnetwork.cpp \
+    onboarding/wiredonboardingsetup.cpp \
+    onboarding/wirelessonboardingsetup.cpp \
     plugin.cpp \
     statusCenter/connectionEditor/connectioneditorpane.cpp \
     statusCenter/connectionEditor/ipv4connectioneditorpane.cpp \
@@ -80,6 +83,9 @@ HEADERS += \
     models/wirelessaccesspointsmodel.h \
     models/wirelessconnectionlistmodel.h \
     models/wirelessnetworklistdelegate.h \
+    onboarding/onboardingnetwork.h \
+    onboarding/wiredonboardingsetup.h \
+    onboarding/wirelessonboardingsetup.h \
     plugin.h \
     statusCenter/connectionEditor/connectioneditorpane.h \
     statusCenter/connectionEditor/ipv4connectioneditorpane.h \
@@ -122,6 +128,9 @@ unix {
 include(../plugins.pri)
 
 FORMS += \
+    onboarding/onboardingnetwork.ui \
+    onboarding/wiredonboardingsetup.ui \
+    onboarding/wirelessonboardingsetup.ui \
     statusCenter/connectionEditor/ipv4connectioneditorpane.ui \
     statusCenter/connectionEditor/networkconnectioneditor.ui \
     statusCenter/connectionEditor/wificonnectioneditorpane.ui \

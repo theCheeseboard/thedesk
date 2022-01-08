@@ -1,7 +1,7 @@
 /****************************************
  *
  *   INSERT-PROJECT-NAME-HERE - INSERT-GENERIC-NAME-HERE
- *   Copyright (C) 2020 Victor Tran
+ *   Copyright (C) 2022 Victor Tran
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,28 +17,32 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef WIREDONBOARDINGSETUP_H
+#define WIREDONBOARDINGSETUP_H
 
-#include <QCoreApplication>
-#include <NetworkManagerQt/Device>
-#include <ModemDevice>
+#include <QWidget>
 
-class Common {
-        Q_DECLARE_TR_FUNCTIONS(Common)
+namespace Ui {
+    class WiredOnboardingSetup;
+}
+
+struct WiredOnboardingSetupPrivate;
+
+class WiredOnboardingSetup : public QWidget {
+        Q_OBJECT
+
     public:
-        enum WirelessType {
-            WiFi,
-            Cellular,
-            WiFiError,
-            CellularError
-        };
+        explicit WiredOnboardingSetup(QString device, QWidget* parent = nullptr);
+        ~WiredOnboardingSetup();
 
-        static QString stateChangeReasonToString(NetworkManager::Device::StateChangeReason reason);
-        static QString iconForSignalStrength(int strength, WirelessType type);
-        static QString operatorNameForModem(ModemManager::ModemDevice::Ptr device);
+    private slots:
+        void on_connectButton_clicked();
 
-        static bool isDeviceConnecting(NetworkManager::Device::Ptr device);
+    private:
+        Ui::WiredOnboardingSetup* ui;
+        WiredOnboardingSetupPrivate* d;
+
+        void updateState();
 };
 
-#endif // COMMON_H
+#endif // WIREDONBOARDINGSETUP_H

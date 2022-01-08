@@ -574,6 +574,51 @@
     </message>
 </context>
 <context>
+    <name>OnboardingNetwork</name>
+    <message>
+        <location filename="../onboarding/onboardingnetwork.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingnetwork.ui" line="35"/>
+        <location filename="../onboarding/onboardingnetwork.cpp" line="94"/>
+        <source>Network</source>
+        <translation type="unfinished">Rețea</translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingnetwork.ui" line="42"/>
+        <source>Connect to the Internet to get updates and install new software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingnetwork.ui" line="194"/>
+        <source>You&apos;re connected!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingnetwork.ui" line="204"/>
+        <source>Disconnect and connect to a different network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingnetwork.ui" line="274"/>
+        <source>You can always set up the network connection later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingnetwork.cpp" line="72"/>
+        <source>Continue without Internet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingnetwork.cpp" line="78"/>
+        <location filename="../onboarding/onboardingnetwork.cpp" line="83"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SecurityEapPeap</name>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="35"/>
@@ -1215,6 +1260,34 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
     </message>
 </context>
 <context>
+    <name>WiredOnboardingSetup</name>
+    <message>
+        <location filename="../onboarding/wiredonboardingsetup.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/wiredonboardingsetup.ui" line="57"/>
+        <source>WIRED</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/wiredonboardingsetup.ui" line="73"/>
+        <source>Use Wired Connection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/wiredonboardingsetup.cpp" line="91"/>
+        <source>Connect to the Internet using a wired network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/wiredonboardingsetup.cpp" line="94"/>
+        <source>To connect to the Internet using a wired network, connect the network cable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WirelessNetworkListDelegate</name>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="86"/>
@@ -1383,6 +1456,29 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="319"/>
         <source>Connect</source>
         <translation>Conectare</translation>
+    </message>
+</context>
+<context>
+    <name>WirelessOnboardingSetup</name>
+    <message>
+        <location filename="../onboarding/wirelessonboardingsetup.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/wirelessonboardingsetup.ui" line="57"/>
+        <source>WI-FI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/wirelessonboardingsetup.ui" line="64"/>
+        <source>Connect to the Internet using a Wi-Fi network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/wirelessonboardingsetup.ui" line="73"/>
+        <source>Select Network</source>
+        <translation type="unfinished">Selectați rețeaua</translation>
     </message>
 </context>
 </TS>
