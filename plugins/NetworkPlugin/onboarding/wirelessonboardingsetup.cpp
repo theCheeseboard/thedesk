@@ -25,6 +25,7 @@
 #include <tpopover.h>
 #include "statusCenter/popovers/wirelessnetworkselectionpopover.h"
 
+#include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/WirelessDevice>
 
 struct WirelessOnboardingSetupPrivate {
@@ -51,6 +52,9 @@ WirelessOnboardingSetup::~WirelessOnboardingSetup() {
 }
 
 void WirelessOnboardingSetup::on_selectNetworkButton_clicked() {
+    //Turn on Wi-Fi in case it is disabled
+    NetworkManager::setWirelessEnabled(true);
+
     WirelessNetworkSelectionPopover* selection = new WirelessNetworkSelectionPopover(d->device->uni());
     tPopover* popover = new tPopover(selection);
     popover->setPopoverWidth(SC_DPI(600));

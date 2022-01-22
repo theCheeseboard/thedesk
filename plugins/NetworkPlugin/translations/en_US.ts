@@ -582,7 +582,7 @@
     </message>
     <message>
         <location filename="../onboarding/onboardingnetwork.ui" line="35"/>
-        <location filename="../onboarding/onboardingnetwork.cpp" line="94"/>
+        <location filename="../onboarding/onboardingnetwork.cpp" line="96"/>
         <source>Network</source>
         <translation type="unfinished"></translation>
     </message>
@@ -607,13 +607,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingnetwork.cpp" line="72"/>
+        <location filename="../onboarding/onboardingnetwork.cpp" line="73"/>
         <source>Continue without Internet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingnetwork.cpp" line="78"/>
-        <location filename="../onboarding/onboardingnetwork.cpp" line="83"/>
+        <location filename="../onboarding/onboardingnetwork.cpp" line="79"/>
+        <location filename="../onboarding/onboardingnetwork.cpp" line="85"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>

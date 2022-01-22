@@ -32,7 +32,7 @@
    <item>
     <widget class="tStackedWidget" name="stackedWidget">
      <widget class="MouseSettings" name="mousePage"/>
-     <widget class="QWidget" name="page_2"/>
+     <widget class="KeyboardSettings" name="keyboardPage"/>
     </widget>
    </item>
   </layout>
@@ -51,6 +51,12 @@
    <class>MouseSettings</class>
    <extends>QWidget</extends>
    <header>settings/mousesettings.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>KeyboardSettings</class>
+   <extends>QWidget</extends>
+   <header>settings/keyboardsettings.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

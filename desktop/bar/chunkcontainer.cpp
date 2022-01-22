@@ -45,6 +45,7 @@ struct ChunkContainerPrivate {
         "audio",
         "audio-mic",
         "redshift",
+        "keyboardlayout",
         "Accessibility-StickyKeys",
         "mpris"
     };
@@ -73,7 +74,7 @@ ChunkContainer::ChunkContainer(QWidget* parent) :
         ui->chunkLayout->setSpacing(spacing);
     });
 
-    connect(ui->scrollArea->horizontalScrollBar(), &QScrollBar::valueChanged, this, [=](int value) {
+    connect(ui->scrollArea->horizontalScrollBar(), &QScrollBar::valueChanged, this, [ = ](int value) {
         ui->statusCenterButtonLine->setVisible(value != 0);
     });
 

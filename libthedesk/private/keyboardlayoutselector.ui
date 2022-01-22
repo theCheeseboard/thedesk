@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>InputSettingsLeftPane</class>
- <widget class="QWidget" name="InputSettingsLeftPane">
+ <class>KeyboardLayoutSelector</class>
+ <widget class="QWidget" name="KeyboardLayoutSelector">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string notr="true">Form</string>
+   <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -32,32 +32,15 @@
    <item>
     <widget class="tTitleLabel" name="titleLabel">
      <property name="text">
-      <string>Input</string>
+      <string>Select a keyboard layout</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QListWidget" name="listWidget">
+    <widget class="QListView" name="keyboardLayoutSelection">
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
-     <item>
-      <property name="text">
-       <string>Mouse and Touchpad</string>
-      </property>
-      <property name="icon">
-       <iconset theme="preferences-desktop-mouse">
-        <normaloff>.</normaloff>.</iconset>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Keyboard</string>
-      </property>
-      <property name="icon">
-       <iconset theme="preferences-desktop-keyboard"/>
-      </property>
-     </item>
     </widget>
    </item>
   </layout>

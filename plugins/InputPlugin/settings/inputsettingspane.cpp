@@ -34,7 +34,7 @@ InputSettingsPane::InputSettingsPane() :
 
     d = new InputSettingsPanePrivate();
     d->leftPane = new InputSettingsLeftPane();
-    ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
+    ui->stackedWidget->setCurrentAnimation(tStackedWidget::Lift);
     connect(d->leftPane, &InputSettingsLeftPane::currentPaneChanged, this, [ = ](int row) {
         ui->stackedWidget->setCurrentIndex(row);
     });

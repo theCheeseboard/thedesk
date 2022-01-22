@@ -24,6 +24,7 @@
 #include <QApplication>
 #include <QDir>
 #include "private/localeselector.h"
+#include "private/keyboardlayoutselector.h"
 #include <tpopover.h>
 #include <tpromise.h>
 #include <tsettings.h>
@@ -99,7 +100,7 @@ void LocaleManager::removeTranslationSet(int translationSet) {
 QLocale LocaleManager::showLocaleSelector(QWidget* parent, bool* ok) {
     if (ok) *ok = true;
 
-    tPromiseResults<QLocale> results = tPromise<QLocale>::runOnSameThread([ = ](tPromiseFunctions<QLocale>::SuccessFunction res, tPromiseFunctions<QLocale>::FailureFunction rej) {
+    tPromiseResults<QLocale> results = TPROMISE_CREATE_SAME_THREAD(QLocale, {
         bool* stillValid = new bool(true);
 
         LocaleSelector* selector = new LocaleSelector();
@@ -184,6 +185,38 @@ void LocaleManager::setFormatCountry(QLocale::Country country) {
     QList<QLocale> locales = QLocale::matchingLocales(QLocale::AnyLanguage, QLocale::AnyScript, country);
     if (locales.isEmpty()) locales.append(QLocale());
     d->settings.setValue("Locale/formats", locales.first().name());
+}
+
+QString LocaleManager::showKeyboardLayoutSelector(QWidget* parent, bool* ok) {
+    if (ok) *ok = true;
+
+    tPromiseResults<QString> results = TPROMISE_CREATE_SAME_THREAD(QString, {
+        bool* stillValid = new bool(true);
+
+        KeyboardLayoutSelector* selector = new KeyboardLayoutSelector();
+        tPopover* popover = new tPopover(selector);
+        popover->setPopoverWidth(SC_DPI(500));
+        connect(selector, &KeyboardLayoutSelector::rejected, this, [ = ] {
+            rej("");
+            *stillValid = false;
+            popover->dismiss();
+        });
+        connect(selector, &KeyboardLayoutSelector::accepted, this, [ = ](QString locale) {
+            res(locale);
+            *stillValid = false;
+            popover->dismiss();
+        });
+        connect(popover, &tPopover::dismissed, this, [ = ] {
+            if (*stillValid) rej("");
+            popover->deleteLater();
+            selector->deleteLater();
+            delete stillValid;
+        });
+        popover->show(parent);
+    })->await();
+
+    if (!results.error.isEmpty() && ok) *ok = false;
+    return results.result;
 }
 
 QLocale LocaleManager::formatLocale() {

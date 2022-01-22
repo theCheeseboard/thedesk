@@ -2,6 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ro_RO" sourcelanguage="en_US">
 <context>
+    <name>KeyboardLayoutSelector</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select a keyboard layout</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LocaleSelector</name>
     <message>
         <source>Select a locale</source>

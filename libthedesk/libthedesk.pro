@@ -44,6 +44,8 @@ SOURCES += \
     onboardingpage.cpp \
     plugins/pluginmanager.cpp \
     powermanager.cpp \
+    private/keyboardlayoutmodel.cpp \
+    private/keyboardlayoutselector.cpp \
     private/localeselector.cpp \
     private/quickwidgetcontainer.cpp \
     quickswitch.cpp \
@@ -79,6 +81,8 @@ HEADERS += \
     plugins/pluginmanager.h \
     plugins/plugininterface.h \
     powermanager.h \
+    private/keyboardlayoutmodel.h \
+    private/keyboardlayoutselector.h \
     private/localeselector.h \
     private/onboardingmanager_p.h \
     private/quickwidgetcontainer.h \
@@ -123,6 +127,7 @@ FORMS += \
     onboarding/onboardingfinal.ui \
     onboarding/onboardingvideo.ui \
     onboarding/onboardingwelcome.ui \
+    private/keyboardlayoutselector.ui \
     private/localeselector.ui \
     private/quickwidgetcontainer.ui \
     transparentdialog.ui

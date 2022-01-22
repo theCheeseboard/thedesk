@@ -43,6 +43,8 @@ class LocaleManager : public QObject {
         QLocale::Country formatCountry();
         void setFormatCountry(QLocale::Country country);
 
+        QString showKeyboardLayoutSelector(QWidget* parent, bool* ok = nullptr);
+
         QLocale formatLocale();
 
     signals:

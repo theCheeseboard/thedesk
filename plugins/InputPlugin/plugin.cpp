@@ -27,11 +27,13 @@
 #include <QDir>
 #include <tsettings.h>
 #include "settings/inputsettingspane.h"
+#include "daemons/keyboarddaemon.h"
 
 struct PluginPrivate {
     int translationSet;
 
     InputSettingsPane* settings;
+    KeyboardDaemon* keyboardDaemon;
 };
 
 Plugin::Plugin() {
@@ -53,10 +55,13 @@ void Plugin::activate() {
 
     d->settings = new InputSettingsPane();
     StateManager::statusCenterManager()->addPane(d->settings, StatusCenterManager::SystemSettings);
+
+    d->keyboardDaemon = new KeyboardDaemon();
 }
 
 void Plugin::deactivate() {
     StateManager::statusCenterManager()->removePane(d->settings);
     d->settings->deleteLater();
     StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    delete d->keyboardDaemon;
 }

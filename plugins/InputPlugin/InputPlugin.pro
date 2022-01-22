@@ -43,16 +43,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     backends/settingsbackend.cpp \
+    chunks/keyboardlayoutchunk.cpp \
+    daemons/keyboarddaemon.cpp \
+    models/selectedkeyboardlayoutsmodel.cpp \
     plugin.cpp \
     settings/inputsettingsleftpane.cpp \
     settings/inputsettingspane.cpp \
+    settings/keyboardsettings.cpp \
     settings/mousesettings.cpp
 
 HEADERS += \
     backends/settingsbackend.h \
+    chunks/keyboardlayoutchunk.h \
+    daemons/keyboarddaemon.h \
+    models/selectedkeyboardlayoutsmodel.h \
     plugin.h \
     settings/inputsettingsleftpane.h \
     settings/inputsettingspane.h \
+    settings/keyboardsettings.h \
     settings/mousesettings.h
 
 DISTFILES += \
@@ -73,6 +81,8 @@ unix {
 include(../plugins.pri)
 
 FORMS += \
+    chunks/keyboardlayoutchunk.ui \
     settings/inputsettingsleftpane.ui \
     settings/inputsettingspane.ui \
+    settings/keyboardsettings.ui \
     settings/mousesettings.ui

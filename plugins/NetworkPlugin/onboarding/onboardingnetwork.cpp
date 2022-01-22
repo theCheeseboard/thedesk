@@ -36,6 +36,7 @@ OnboardingNetwork::OnboardingNetwork(QWidget* parent) :
     ui->titleLabel->setBackButtonShown(true);
     ui->disconnectButton->setProperty("type", "destructive");
     ui->networkConnectedIcon->setPixmap(QIcon::fromTheme("network-wired-activated").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
+    ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
 
     connect(NetworkManager::notifier(), &NetworkManager::Notifier::connectivityChanged, this, &OnboardingNetwork::updateConnectivity);
     updateConnectivity();
@@ -79,6 +80,7 @@ void OnboardingNetwork::updateConnectivity() {
             ui->stackedWidget->setCurrentWidget(ui->networkConnectionCompletePage);
             break;
         case NetworkManager::Portal:
+            //TODO: something cool, maybe pop open a browser or something
             ui->skipInfoPrompt->setVisible(false);
             ui->nextButton->setText(tr("Next"));
             ui->stackedWidget->setCurrentWidget(ui->networkConnectionCompletePage);
