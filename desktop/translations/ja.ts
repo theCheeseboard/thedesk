@@ -71,7 +71,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="461"/>
         <source>Website</source>
-        <translation type="unfinished"></translation>
+        <translation>ウェブサイト</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="472"/>
@@ -81,7 +81,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="483"/>
         <source>Sources</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ソースコード</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="494"/>
@@ -91,14 +91,14 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="450"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished"></translation>
+        <translation>認知</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="64"/>
         <location filename="../systemsettings/about/about.cpp" line="65"/>
         <location filename="../systemsettings/about/about.cpp" line="101"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>未知</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.cpp" line="112"/>
@@ -124,7 +124,7 @@
         <location filename="../systemsettings/about/about.ui" line="35"/>
         <location filename="../systemsettings/about/about.cpp" line="153"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>情報</translation>
     </message>
 </context>
 <context>
@@ -166,12 +166,12 @@
     <message>
         <location filename="../background/background.ui" line="379"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>背景</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="427"/>
         <source>IMAGE</source>
-        <translation type="unfinished"></translation>
+        <translation>映像</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="434"/>
@@ -216,7 +216,7 @@
     <message>
         <location filename="../background/background.ui" line="655"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>中心</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="681"/>
@@ -259,7 +259,7 @@
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="35"/>
         <source>Change Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>構築の名前を変更する</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="62"/>
@@ -279,7 +279,7 @@
     <message>
         <location filename="../systemsettings/about/changehostnamepopover.ui" line="95"/>
         <source>Rename this Device</source>
-        <translation type="unfinished"></translation>
+        <translation>構築の名前を変更する</translation>
     </message>
 </context>
 <context>
@@ -318,17 +318,17 @@
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="75"/>
         <source>Close Window</source>
-        <translation type="unfinished"></translation>
+        <translation>ウィンドウを終了する</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="189"/>
         <source>QUIT IMMEDIATELY</source>
-        <translation type="unfinished"></translation>
+        <translation>すぐに止める</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="205"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>止める</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="62"/>
@@ -389,7 +389,7 @@
     <message>
         <location filename="../session/endsession.ui" line="162"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation>ログアウト</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="169"/>
