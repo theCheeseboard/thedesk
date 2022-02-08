@@ -6,12 +6,12 @@
     <message>
         <location filename="../settings/inputsettingsleftpane.ui" line="35"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Thiết bị đầu vào</translation>
     </message>
     <message>
         <location filename="../settings/inputsettingsleftpane.ui" line="46"/>
         <source>Mouse and Touchpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Chuột và bàn di chuột</translation>
     </message>
     <message>
         <location filename="../settings/inputsettingsleftpane.ui" line="55"/>
