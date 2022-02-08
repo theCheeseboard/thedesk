@@ -5,15 +5,15 @@
     <name>AudioQuickWidget</name>
     <message>
         <source>VOLUME</source>
-        <translation type="unfinished"></translation>
+        <translation>ÂM LƯỢNG</translation>
     </message>
     <message>
         <source>QUIET MODE</source>
-        <translation type="unfinished"></translation>
+        <translation>CHẾ ĐỘ IM</translation>
     </message>
     <message>
         <source>APPLICATIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>ỨNG DỤNG</translation>
     </message>
 </context>
 <context>
@@ -44,15 +44,15 @@
     </message>
     <message>
         <source>Line Out</source>
-        <translation type="unfinished"></translation>
+        <translation>Dòng ra</translation>
     </message>
 </context>
 <context>
     <name>MicChunk</name>
     <message numerus="yes">
         <source>%n applications</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ứng dụng</numerusform>
         </translation>
     </message>
 </context>
@@ -60,18 +60,18 @@
     <name>QuickWidgetSink</name>
     <message>
         <source>Make Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Đặt thành mặc định</translation>
     </message>
     <message>
         <source>Use for All Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Sử dụng cho các ứng dụng</translation>
     </message>
 </context>
 <context>
     <name>QuickWidgetSinkInput</name>
     <message>
         <source>Play on</source>
-        <translation type="unfinished"></translation>
+        <translation>Phát trên</translation>
     </message>
 </context>
 </TS>
