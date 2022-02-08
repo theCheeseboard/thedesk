@@ -56,12 +56,12 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="301"/>
         <source>Window System</source>
-        <translation type="unfinished"></translation>
+        <translation>Hệ thống cửa sổ</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="356"/>
         <source>Device Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiểu thiết bị</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="431"/>
@@ -140,7 +140,7 @@
     <message>
         <location filename="../gateway/appsearchprovider.cpp" line="89"/>
         <source>Application</source>
-        <translation type="unfinished">Ứng Dụng</translation>
+        <translation>Ứng Dụng</translation>
     </message>
 </context>
 <context>
@@ -287,7 +287,7 @@
     <message>
         <location filename="../bar/chunkcontainer.ui" line="41"/>
         <source>Open Status Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở trạng thái</translation>
     </message>
 </context>
 <context>
@@ -318,33 +318,33 @@
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="75"/>
         <source>Close Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Đóng cửa sổ</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="189"/>
         <source>QUIT IMMEDIATELY</source>
-        <translation type="unfinished"></translation>
+        <translation>THOÁT NGAY</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="205"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Hủy</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="62"/>
         <source>Force Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Buộc dừng</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="63"/>
         <location filename="../bar/currentappwidgetmenu.cpp" line="65"/>
         <source>Force Stop %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Buộc dừng %1</translation>
     </message>
     <message>
         <location filename="../bar/currentappwidgetmenu.cpp" line="64"/>
         <source>%1 will be forced to exit and won&apos;t have a chance to save any unsaved data.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 sẽ bị bắt buộc dừng lại, và sẽ không có cơ hội để lưu dữ liệu nào chưa được lưu.</translation>
     </message>
 </context>
 <context>
@@ -537,12 +537,12 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="150"/>
         <source>CATEGORIES</source>
-        <translation type="unfinished"></translation>
+        <translation>THỂ LOẠI</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="160"/>
         <source>All Apps</source>
-        <translation type="unfinished"></translation>
+        <translation>Các ứng dụng</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="276"/>
@@ -557,12 +557,12 @@
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="192"/>
         <source>Status Center</source>
-        <translation type="unfinished">Bảng Trạng thái</translation>
+        <translation>Bảng Trạng thái</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="391"/>
         <source>System Settings</source>
-        <translation type="unfinished">Cài đặt hệ thống</translation>
+        <translation>Cài đặt hệ thống</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.ui" line="407"/>
@@ -572,47 +572,47 @@
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="87"/>
         <source>A/V</source>
-        <translation type="unfinished"></translation>
+        <translation>Âm thanh / Video</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="88"/>
         <source>Development</source>
-        <translation type="unfinished"></translation>
+        <translation>Phát triển</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="89"/>
         <source>Education</source>
-        <translation type="unfinished"></translation>
+        <translation>Giáo dục</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="90"/>
         <source>Games</source>
-        <translation type="unfinished"></translation>
+        <translation>Trò chơi</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="91"/>
         <source>Graphics</source>
-        <translation type="unfinished"></translation>
+        <translation>Đồ họa</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="92"/>
         <source>Networking</source>
-        <translation type="unfinished"></translation>
+        <translation>Mạng</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="93"/>
         <source>Office</source>
-        <translation type="unfinished"></translation>
+        <translation>Văn phòng</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="94"/>
         <source>Science</source>
-        <translation type="unfinished"></translation>
+        <translation>Khoa học</translation>
     </message>
     <message>
         <location filename="../gateway/maingatewaywidget.cpp" line="95"/>
         <source>Utilities</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiện ích</translation>
     </message>
 </context>
 <context>
@@ -719,7 +719,13 @@ Here&apos;s what will happen:
 - The next time you log into theDesk, you&apos;ll need to run through the setup again
 
 Save your documents and close all apps before starting the reset. This won&apos;t take long, but you&apos;ll need to log out to perform the reset. You won&apos;t be able to use your device while the reset is taking place.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nếu bạn có điều nào không có hoạt dụng đúng, bạn có thể đặt lại Word để xem nếu nó có khắc phục được sự cố không.
+
+Đây là những gì sẽ xảy ra:
+- Các cài đặt của bạn sẽ bị xóa và đặt lại mặc định
+- Lần sau bạn đăng nhập vào theDesk, bạn cần thực hiện các thiết lập lần đầu
+
+Lưu các tài liệu, và đóng các ứng dụng trước khi bạn bắt đầu đặt lại. Điều này sẽ không mất nhiều thời gian, nhưng bạn cần đăng xuất để thực hiện hoạt động đặt lại. Bạn không thể sử dụng thiết bị của bạn khi hoạt động đặt lại đang thực hiện.</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="138"/>
@@ -729,17 +735,17 @@ Save your documents and close all apps before starting the reset. This won&apos;
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="203"/>
         <source>RESET DEVICE</source>
-        <translation type="unfinished"></translation>
+        <translation>ĐẶT LẠI THIẾT BỊ</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="210"/>
         <source>If resetting theDesk didn&apos;t work, or if you just need a fresh start, you can reset this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nếu hoạt động đặt lại theDesk không giải quyết vấn đề, hoặc nếu bạn chỉ cần bắt đầu lại, bạn có thể đặt lại thiết bị này.</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="222"/>
         <source>Reset this device</source>
-        <translation type="unfinished"></translation>
+        <translation>Đặt lại thiết bị này</translation>
     </message>
     <message>
         <location filename="../systemsettings/recovery/recovery.cpp" line="93"/>
