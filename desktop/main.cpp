@@ -73,7 +73,7 @@ int main(int argc, char* argv[]) {
         if (results.result) PluginManager::instance()->setSafeMode(true);
     }
 
-    DesktopWm::instance();
+    DesktopWm::instance()->registerAsPrimaryProvider();
     PluginManager::instance()->scanPlugins();
 
     QObject::connect(StateManager::instance()->powerManager(), &PowerManager::powerOffConfirmationRequested, [ = ](PowerManager::PowerOperation operation, QString message, QStringList flags, tPromiseFunctions<void>::SuccessFunction cb) {
