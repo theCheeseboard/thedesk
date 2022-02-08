@@ -32,12 +32,12 @@
     <message>
         <location filename="../onboarding/onboardingtheme.cpp" line="76"/>
         <source>Intellect has spoken; blinding shall be no more!</source>
-        <translation type="unfinished"></translation>
+        <translation>Người khôn ngoan đã nói; không bao giờ chói mắt nữa!</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingtheme.cpp" line="81"/>
         <source>One whose wisdom has brought them the light of day!</source>
-        <translation type="unfinished"></translation>
+        <translation>Người mà sự khôn ngoan đã mang lại ánh sáng ban ngày!</translation>
     </message>
 </context>
 <context>
@@ -76,12 +76,12 @@
     <message>
         <location filename="../settings/themesettingspane.ui" line="231"/>
         <source>If the window borders don&apos;t look correct, we can fix that up for you. This will also change your window borders in KDE, and any other desktop that uses KWin for the window manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nếu viền cửa sổ không chính xác, chúng tôi có thể sửa lại cho bạn. Nếu viền cửa sổ không chính xác, chúng tôi có thể sửa lại cho bạn. Hoạt động này cũng sẽ thay đổi viền cửa sổ của bạn trong KDE và bất kỳ môi trường desktop khác sử dụng KWin cho trình quản lý cửa sổ.</translation>
     </message>
     <message>
         <location filename="../settings/themesettingspane.ui" line="243"/>
         <source>Set Window Borders</source>
-        <translation type="unfinished"></translation>
+        <translation>Sửa viền cửa sổ</translation>
     </message>
     <message>
         <location filename="../settings/themesettingspane.ui" line="274"/>
@@ -146,12 +146,12 @@
     <message>
         <location filename="../settings/themesettingspane.ui" line="543"/>
         <source>Transparency Effects</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiệu ứng trong suốt</translation>
     </message>
     <message>
         <location filename="../settings/themesettingspane.ui" line="563"/>
         <source>EFFECTS</source>
-        <translation type="unfinished"></translation>
+        <translation>HIỆU ỨNG</translation>
     </message>
     <message>
         <location filename="../settings/themesettingspane.ui" line="363"/>
