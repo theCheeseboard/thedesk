@@ -16,7 +16,7 @@
     <message>
         <location filename="../settings/inputsettingsleftpane.ui" line="55"/>
         <source>Keyboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Bàn phím</translation>
     </message>
 </context>
 <context>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../settings/inputsettingspane.cpp" line="55"/>
         <source>Input</source>
-        <translation type="unfinished"></translation>
+        <translation>Thiết bị đầu vào</translation>
     </message>
 </context>
 <context>
@@ -32,7 +32,7 @@
     <message>
         <location filename="../daemons/keyboarddaemon.cpp" line="83"/>
         <source>Keyboard Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Bố cục bàn phím</translation>
     </message>
 </context>
 <context>
@@ -45,7 +45,7 @@
     <message>
         <location filename="../chunks/keyboardlayoutchunk.cpp" line="75"/>
         <source>Select Keyboard Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn bố cục bàn phím</translation>
     </message>
 </context>
 <context>
@@ -53,42 +53,42 @@
     <message>
         <location filename="../settings/keyboardsettings.ui" line="35"/>
         <source>Keyboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Bàn phím</translation>
     </message>
     <message>
         <location filename="../settings/keyboardsettings.ui" line="106"/>
         <source>LAYOUTS</source>
-        <translation type="unfinished"></translation>
+        <translation>BỐ CỤC</translation>
     </message>
     <message>
         <location filename="../settings/keyboardsettings.ui" line="113"/>
         <source>Prioritise the keyboard layouts you&apos;d like to use on your device. You can switch between keyboard layouts with SUPER+Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Xếp hạng các bố cục bàn phím bạn muốn sử dụng. Bạn có thể chuyển đổi giữa các bố cục bàn phím với SUPER+Space</translation>
     </message>
     <message>
         <location filename="../settings/keyboardsettings.ui" line="135"/>
         <source>Add Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Thêm bố cục</translation>
     </message>
     <message>
         <location filename="../settings/keyboardsettings.cpp" line="77"/>
         <source>For this layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Cho bố cục này</translation>
     </message>
     <message>
         <location filename="../settings/keyboardsettings.cpp" line="78"/>
         <source>Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Chuyển lên</translation>
     </message>
     <message>
         <location filename="../settings/keyboardsettings.cpp" line="81"/>
         <source>Move Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Chuyển xuống</translation>
     </message>
     <message>
         <location filename="../settings/keyboardsettings.cpp" line="84"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Xóa</translation>
     </message>
 </context>
 <context>
@@ -96,57 +96,57 @@
     <message>
         <location filename="../settings/mousesettings.ui" line="35"/>
         <source>Mouse and Touchpad</source>
-        <translation type="unfinished"></translation>
+        <translation>Chuột và bàn di chuột</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="105"/>
         <source>CLICKING</source>
-        <translation type="unfinished"></translation>
+        <translation>NHẤP CHUỘT</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="117"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Trái</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="130"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Phải</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="151"/>
         <source>Primary Button</source>
-        <translation type="unfinished"></translation>
+        <translation>Nút chính</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="158"/>
         <source>Tap to Click</source>
-        <translation type="unfinished"></translation>
+        <translation>Chạm để nhấp chuột</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="204"/>
         <source>Natural Scrolling</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuộn tự nhiên</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="216"/>
         <source>SCROLLING</source>
-        <translation type="unfinished"></translation>
+        <translation>CUỘN</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="226"/>
         <source>Reverse the direction that you scroll in so that the content moves in the same direction as your fingers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Đảo ngược hướng cuộn để cho nội dung di chuyển cùng hướng với ngón tay của bạn.</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="278"/>
         <source>Settings Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt không có sẵn</translation>
     </message>
     <message>
         <location filename="../settings/mousesettings.ui" line="288"/>
         <source>Mouse settings can&apos;t be changed on this platform.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt chuột không thể bị đổi ngay bây giờ.</translation>
     </message>
 </context>
 </TS>
