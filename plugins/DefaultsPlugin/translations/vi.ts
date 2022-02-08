@@ -7,22 +7,22 @@
         <location filename="../defaultspane.ui" line="35"/>
         <location filename="../defaultspane.cpp" line="81"/>
         <source>Default Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Ứng dụng mặc định</translation>
     </message>
     <message>
         <location filename="../defaultspane.ui" line="54"/>
         <source>Web Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Trình duyệt web</translation>
     </message>
     <message>
         <location filename="../defaultspane.ui" line="61"/>
         <source>Set your default apps below</source>
-        <translation type="unfinished"></translation>
+        <translation>Đặt các ứng dụng mặc định dưới đây</translation>
     </message>
     <message>
         <location filename="../defaultspane.ui" line="68"/>
         <source>Mail Client</source>
-        <translation type="unfinished"></translation>
+        <translation>Ứng dụng thư</translation>
     </message>
 </context>
 </TS>
