@@ -126,7 +126,7 @@
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="71"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tìm kiếm...</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="138"/>
