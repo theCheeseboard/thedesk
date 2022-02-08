@@ -5,11 +5,11 @@
     <name>FileChooserInterface</name>
     <message>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Lưu</translation>
     </message>
 </context>
 <context>
@@ -24,47 +24,47 @@
     </message>
     <message>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở</translation>
     </message>
     <message>
         <source>Overwrite</source>
-        <translation type="unfinished"></translation>
+        <translation>Ghi đè</translation>
     </message>
     <message>
         <source>Save Here</source>
-        <translation type="unfinished"></translation>
+        <translation>Lưu đây</translation>
     </message>
     <message>
         <source>Create New File Here</source>
-        <translation type="unfinished"></translation>
+        <translation>Tạo tệp mới đây</translation>
     </message>
     <message>
         <source>Open Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở thư mục</translation>
     </message>
     <message>
         <source>Choose This Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn thư mục này</translation>
     </message>
     <message>
         <source>Name this file</source>
-        <translation type="unfinished"></translation>
+        <translation>Đặt tên tệp này</translation>
     </message>
     <message>
         <source>What do you want to name the file?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bạn muốn gọi tệp này tên gì?</translation>
     </message>
     <message>
         <source>Overwrite?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ghi đè?</translation>
     </message>
     <message>
         <source>A file named %1 already exists. Do you want to overwrite it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Tệp tên %1 đã tồn tại. Bạn có muốn ghi đè không?</translation>
     </message>
     <message>
         <source>Overwriting the file will replace its contents.</source>
-        <translation type="unfinished"></translation>
+        <translation>Việc ghi đè tệp này sẽ thay thế nội dung của nó.</translation>
     </message>
 </context>
 </TS>
