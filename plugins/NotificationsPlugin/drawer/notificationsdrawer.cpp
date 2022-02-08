@@ -87,8 +87,12 @@ void NotificationsDrawer::updateGeometry() {
     this->setFixedHeight(this->sizeHint().height());
 
     QRect geometry;
-    geometry.setTopLeft(primaryScreen->geometry().topLeft() + QPoint(StateManager::gatewayManager()->gatewayWidth(), StateManager::barManager()->barHeight()));
     geometry.setSize(this->size());
+    if (this->layoutDirection() == Qt::RightToLeft) {
+        geometry.moveTopRight(primaryScreen->geometry().topRight() + QPoint(-StateManager::gatewayManager()->gatewayWidth(), StateManager::barManager()->barHeight()));
+    } else {
+        geometry.moveTopLeft(primaryScreen->geometry().topLeft() + QPoint(StateManager::gatewayManager()->gatewayWidth(), StateManager::barManager()->barHeight()));
+    }
 
     if (geometry.bottom() > primaryScreen->geometry().bottom()) geometry.moveBottom(primaryScreen->geometry().bottom());
 

@@ -108,7 +108,7 @@ NotificationsDrawerWidget::NotificationsDrawerWidget(NotificationPtr notificatio
     });
 
     ui->buttonBox->setParent(ui->mainFrame);
-    ui->buttonBox->move(ui->mainFrame->width() - ui->buttonBox->width(), 0);
+    ui->buttonBox->move(this->layoutDirection() == Qt::RightToLeft ? 0 : ui->mainFrame->width() - ui->buttonBox->width(), 0);
     ui->buttonBox->setVisible(false);
 
     ui->mainFrame->installEventFilter(this);
@@ -127,7 +127,7 @@ void NotificationsDrawerWidget::show() {
     QWidget::show();
 
     tVariantAnimation* anim = new tVariantAnimation(this);
-    anim->setStartValue(-ui->mainFrame->width());
+    anim->setStartValue(this->layoutDirection() == Qt::RightToLeft ? ui->mainFrame->width() : -ui->mainFrame->width());
     anim->setEndValue(SC_DPI(9));
     anim->setEasingCurve(QEasingCurve::OutCubic);
     anim->setDuration(250);
@@ -184,7 +184,7 @@ QSize NotificationsDrawerWidget::sizeHint() const {
 void NotificationsDrawerWidget::resizeEvent(QResizeEvent* event) {
     ui->mainFrame->setFixedWidth(this->width() - SC_DPI(18));
     ui->mainFrame->setFixedHeight(ui->mainFrame->sizeHint().height());
-    ui->buttonBox->move(ui->mainFrame->width() - ui->buttonBox->width(), 0);
+    ui->buttonBox->move(this->layoutDirection() == Qt::RightToLeft ? 0 : ui->mainFrame->width() - ui->buttonBox->width(), 0);
 }
 
 bool NotificationsDrawerWidget::eventFilter(QObject* watched, QEvent* event) {

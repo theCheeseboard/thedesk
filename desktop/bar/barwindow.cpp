@@ -215,7 +215,8 @@ void BarWindow::resizeEvent(QResizeEvent* event) {
 void BarWindow::enterEvent(QEvent* event) {
     if (d->lastGesture && d->lastGesture->isActive()) return;
     d->barPendingShow = true;
-    if (mapFromGlobal(QCursor::pos()).x() < d->mainBarWidget->currentAppWidgetX()) showBar();
+    if ((this->layoutDirection() == Qt::RightToLeft && mapFromGlobal(QCursor::pos()).x() > d->mainBarWidget->currentAppWidgetX()) ||
+        (this->layoutDirection() == Qt::LeftToRight && mapFromGlobal(QCursor::pos()).x() < d->mainBarWidget->currentAppWidgetX())) showBar();
 }
 
 void BarWindow::leaveEvent(QEvent* event) {

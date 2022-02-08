@@ -21,6 +21,7 @@
 
 #include <the-libs_global.h>
 #include <QPainter>
+#include <tpaintcalculator.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
 
@@ -70,8 +71,12 @@ PluginItemDelegate::~PluginItemDelegate() {
 void PluginItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
     painter->save();
 
+    tPaintCalculator calculator;
+    calculator.setPainter(painter);
+    calculator.setLayoutDirection(option.direction);
+    calculator.setDrawBounds(option.rect);
+
     painter->setFont(option.font);
-    painter->setLayoutDirection(option.direction);
 
     PluginItemDelegatePrivate::Rects rects(option);
     QString text = index.data().toString();
@@ -80,57 +85,78 @@ void PluginItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     bool active = index.data(Qt::UserRole + 2).toBool();
     bool blacklisted = index.data(Qt::UserRole + 3).toBool();
 
-    if (option.direction == Qt::RightToLeft) {
-        rects.iconRect.moveRight(option.rect.right() - SC_DPI(6));
-        rects.textRect.moveRight(rects.iconRect.left() - SC_DPI(6));
-        rects.descRect.moveRight(rects.iconRect.left() - SC_DPI(6));
-    }
 
     if (option.state & QStyle::State_Selected) {
-        painter->setPen(Qt::transparent);
-        painter->setBrush(option.palette.color(QPalette::Highlight));
-        painter->drawRect(option.rect);
-        painter->setBrush(Qt::transparent);
-        painter->setPen(option.palette.color(QPalette::HighlightedText));
+        calculator.addRect(option.rect, [ = ](QRectF drawBounds) {
+            painter->setPen(Qt::transparent);
+            painter->setBrush(option.palette.color(QPalette::Highlight));
+            painter->drawRect(drawBounds);
+        });
 
-        if (!active) painter->setOpacity(0.5);
-        painter->drawText(rects.textRect, Qt::AlignLeading, text);
-        painter->drawText(rects.descRect, Qt::AlignLeading, desc);
+        calculator.addRect(rects.textRect, [ = ](QRectF drawBounds) {
+            painter->setBrush(Qt::transparent);
+            painter->setPen(option.palette.color(QPalette::HighlightedText));
+
+            if (!active) painter->setOpacity(0.5);
+            painter->drawText(drawBounds, Qt::AlignLeading, text);
+        });
+
+        calculator.addRect(rects.descRect, [ = ](QRectF drawBounds) {
+            painter->drawText(drawBounds, Qt::AlignLeading, desc);
+        });
     } else if (option.state & QStyle::State_MouseOver) {
-        QColor col = option.palette.color(QPalette::Highlight);
-        col.setAlpha(127);
-        painter->setBrush(col);
-        painter->setPen(Qt::transparent);
-        painter->drawRect(option.rect);
+        calculator.addRect(option.rect, [ = ](QRectF drawBounds) {
+            QColor col = option.palette.color(QPalette::Highlight);
+            col.setAlpha(127);
+            painter->setBrush(col);
+            painter->setPen(Qt::transparent);
+            painter->drawRect(drawBounds);
+        });
 
-        if (!active) painter->setOpacity(0.5);
-        painter->setBrush(Qt::transparent);
-        painter->setPen(option.palette.color(QPalette::WindowText));
-        painter->drawText(rects.textRect, Qt::AlignLeading, text);
-        painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
-        painter->drawText(rects.descRect, Qt::AlignLeading, desc);
+        calculator.addRect(rects.textRect, [ = ](QRectF drawBounds) {
+            if (!active) painter->setOpacity(0.5);
+            painter->setBrush(Qt::transparent);
+            painter->setPen(option.palette.color(QPalette::WindowText));
+            painter->drawText(drawBounds, Qt::AlignLeading, text);
+        });
+        calculator.addRect(rects.descRect, [ = ](QRectF drawBounds) {
+            painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
+            painter->drawText(drawBounds, Qt::AlignLeading, desc);
+        });
     } else {
-        if (!active) painter->setOpacity(0.5);
-        painter->setPen(option.palette.color(QPalette::WindowText));
-        painter->drawText(rects.textRect, Qt::AlignLeading, text);
-        painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
-        painter->drawText(rects.descRect, Qt::AlignLeading, desc);
+        calculator.addRect(rects.textRect, [ = ](QRectF drawBounds) {
+            if (!active) painter->setOpacity(0.5);
+            painter->setPen(option.palette.color(QPalette::WindowText));
+            painter->drawText(drawBounds, Qt::AlignLeading, text);
+        });
+        calculator.addRect(rects.descRect, [ = ](QRectF drawBounds) {
+            painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
+            painter->drawText(drawBounds, Qt::AlignLeading, desc);
+        });
     }
 
     if (!icon.isNull()) {
-        painter->drawPixmap(rects.iconRect, icon.pixmap(rects.iconRect.size()));
+        calculator.addRect(rects.iconRect, [ = ](QRectF drawBounds) {
+            painter->drawPixmap(drawBounds.toRect(), icon.pixmap(drawBounds.toRect().size()));
+        });
     }
 
     if (blacklisted) {
-        painter->setOpacity(1);
-        painter->setPen(QPen(option.palette.color(QPalette::WindowText), 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
-//        painter->drawLine(rects.iconRect.left() - SC_DPI(6), rects.iconRect.center().y(), rects.textRect.right(), rects.iconRect.center().y());
-        painter->drawLine(rects.iconRect.topLeft(), rects.iconRect.bottomRight());
-        painter->drawLine(rects.iconRect.bottomLeft(), rects.iconRect.topRight());
+        calculator.addRect(rects.iconRect, [ = ](QRectF drawBounds) {
+            painter->setOpacity(1);
+            painter->setPen(QPen(option.palette.color(QPalette::WindowText), 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+
+            painter->drawLine(drawBounds.topLeft(), drawBounds.bottomRight());
+            painter->drawLine(drawBounds.bottomLeft(), drawBounds.topRight());
+        });
     }
 
-    painter->setOpacity(1);
-    painter->drawPixmap(rects.arrowRect, QIcon::fromTheme("go-next").pixmap(rects.arrowRect.size()));
+    calculator.addRect(rects.arrowRect, [ = ](QRectF drawBounds) {
+        painter->setOpacity(1);
+        painter->drawPixmap(drawBounds.toRect(), QIcon::fromTheme("go-next").pixmap(drawBounds.toRect().size()));
+    });
+
+    calculator.performPaint();
 
     painter->restore();
 }

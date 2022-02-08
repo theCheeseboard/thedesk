@@ -20,6 +20,7 @@
 #include "leftpanedelegate.h"
 
 #include <QPainter>
+#include <tpaintcalculator.h>
 #include <the-libs_global.h>
 
 LeftPaneDelegate::LeftPaneDelegate(QObject* parent) : QStyledItemDelegate(parent) {
@@ -31,11 +32,18 @@ void LeftPaneDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
     QStyledItemDelegate::paint(painter, option, index);
     if (index.data(Qt::UserRole).toBool()) {
         //Draw an indicator arrow
+        tPaintCalculator calculator;
+        calculator.setDrawBounds(option.rect);
+        calculator.setLayoutDirection(option.direction);
+
         QRect iconRect;
         iconRect.setSize(SC_DPI_T(QSize(16, 16), QSize));
         iconRect.moveCenter(option.rect.center());
         iconRect.moveRight(option.rect.right() - SC_DPI(6));
 
-        painter->drawPixmap(iconRect, QIcon::fromTheme("arrow-right").pixmap(iconRect.size()));
+        calculator.addRect(iconRect, [ = ](QRectF drawBounds) {
+            painter->drawPixmap(drawBounds.toRect(), QIcon::fromTheme("arrow-right").pixmap(iconRect.size()));
+        });
+        calculator.performPaint();
     }
 }

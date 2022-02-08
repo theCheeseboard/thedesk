@@ -107,7 +107,7 @@ int ChunkContainer::expandedHeight() {
 }
 
 int ChunkContainer::currentAppWidgetX() {
-    return ui->currentAppWidget->x();
+    return this->layoutDirection() == Qt::RightToLeft ? ui->currentAppWidget->width() : ui->currentAppWidget->x();
 }
 
 void ChunkContainer::barHeightChanged(int height) {

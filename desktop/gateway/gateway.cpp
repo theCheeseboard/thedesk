@@ -61,7 +61,11 @@ Gateway::Gateway() :
         QRect geometry;
         geometry.setHeight(this->height());
         geometry.setWidth(value.toInt());
-        geometry.moveTopLeft(screen->geometry().topLeft());
+        if (this->layoutDirection() == Qt::RightToLeft) {
+            geometry.moveTopRight(screen->geometry().topRight());
+        } else {
+            geometry.moveTopLeft(screen->geometry().topLeft());
+        }
         this->setGeometry(geometry);
     });
     connect(d->width, &tVariantAnimation::finished, this, [ = ] {
@@ -77,9 +81,9 @@ Gateway::Gateway() :
     this->setFixedWidth(0);
 
     connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [ = ](GestureInteractionPtr interaction) {
-        if (interaction->isValidInteraction(GestureTypes::Swipe, GestureTypes::Right, 3)) {
+        if (interaction->isValidInteraction(GestureTypes::Swipe, this->layoutDirection() == Qt::RightToLeft ? GestureTypes::Left : GestureTypes::Right, 3)) {
             trackGatewayOpenGesture(interaction);
-        } else if (interaction->isValidInteraction(GestureTypes::Swipe, GestureTypes::Left, 3)) {
+        } else if (interaction->isValidInteraction(GestureTypes::Swipe, this->layoutDirection() == Qt::RightToLeft ? GestureTypes::Right : GestureTypes::Left, 3)) {
             trackGatewayCloseGesture(interaction);
         }
     });
@@ -89,8 +93,14 @@ Gateway::Gateway() :
 
 void Gateway::resizeEvent(QResizeEvent* event) {
     ui->gatewayContainer->setFixedSize(ui->gatewayContainer->sizeHint().width(), this->height());
-    ui->gatewayContainer->move(this->geometry().width() - ui->gatewayContainer->width() - 1, 0);
-    ui->line->setGeometry(this->geometry().width() - 1, 0, 1, this->height());
+
+    if (this->layoutDirection() == Qt::RightToLeft) {
+        ui->gatewayContainer->move(1, 0);
+        ui->line->setGeometry(0, 0, 1, this->height());
+    } else {
+        ui->gatewayContainer->move(this->geometry().width() - ui->gatewayContainer->width() - 1, 0);
+        ui->line->setGeometry(this->geometry().width() - 1, 0, 1, this->height());
+    }
     StateManager::gatewayManager()->setGatewayWidth(this->geometry().width());
 }
 

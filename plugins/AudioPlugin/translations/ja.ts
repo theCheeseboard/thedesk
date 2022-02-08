@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="ja">
+<TS version="2.1" language="ja" sourcelanguage="en_US">
 <context>
     <name>AudioQuickWidget</name>
     <message>

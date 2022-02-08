@@ -51,7 +51,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="236"/>
         <source>Change Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">構築の名前を変更する</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="301"/>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../systemsettings/about/acknowledgements.ui" line="35"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">認知</translation>
     </message>
 </context>
 <context>
@@ -803,7 +803,7 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ログアウト</translation>
     </message>
 </context>
 <context>
