@@ -53,7 +53,7 @@
     <name>OnboardingVideo</name>
     <message>
         <source>qrc:/libthedesk/onboarding/OnboardingVideoForm.qml</source>
-        <translation type="unfinished"></translation>
+        <translation>qrc:/libthedesk/onboarding/OnboardingVideoForm.qml</translation>
     </message>
 </context>
 <context>
