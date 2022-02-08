@@ -7,13 +7,13 @@
         <location filename="../penbutton.cpp" line="54"/>
         <source>Erase-o</source>
         <comment>This and the next translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cục tẩy</translation>
     </message>
     <message>
         <location filename="../penbutton.cpp" line="55"/>
         <source>matic 2000</source>
         <comment>This and the previous translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+        <translation>đẹp xinh</translation>
     </message>
 </context>
 <context>
@@ -21,32 +21,32 @@
     <message>
         <location filename="../screenshotwindow.ui" line="55"/>
         <source>SCREENSHOT</source>
-        <translation type="unfinished"></translation>
+        <translation>ẢNH CHỤP MÀN HÌNH</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="130"/>
         <source>Crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Cắt xén</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="150"/>
         <source>Redact</source>
-        <translation type="unfinished"></translation>
+        <translation>Ẩn</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="205"/>
         <source>Reset Markup</source>
-        <translation type="unfinished"></translation>
+        <translation>Xóa đánh dấu</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="216"/>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Bỏ</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="227"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Chép</translation>
     </message>
 </context>
 </TS>
