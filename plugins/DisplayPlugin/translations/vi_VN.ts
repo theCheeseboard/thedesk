@@ -29,27 +29,27 @@
     </message>
     <message>
         <source>Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Hướng</translation>
     </message>
     <message>
         <source>Landscape</source>
-        <translation type="unfinished"></translation>
+        <translation>Ngang</translation>
     </message>
     <message>
         <source>Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Dọc</translation>
     </message>
     <message>
         <source>Upside Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Lật ngược</translation>
     </message>
     <message>
         <source>Portrait (Upside Down)</source>
-        <translation type="unfinished"></translation>
+        <translation>Dọc (Lật ngược)</translation>
     </message>
     <message>
         <source>Enable Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Bật màn hình</translation>
     </message>
 </context>
 <context>
