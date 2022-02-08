@@ -25,7 +25,7 @@
 struct IconLoaderEnginePrivate;
 class IconLoaderEngine : public QIconEngine {
     public:
-        explicit IconLoaderEngine(QIconEngine* parentEngine);
+        explicit IconLoaderEngine(QIconEngine* parentEngine, QIconEngine* rtlParentEngine);
         ~IconLoaderEngine();
 
     private:

@@ -249,7 +249,7 @@ QIcon PlatformTheme::fileIcon(const QFileInfo& fileInfo, QPlatformTheme::IconOpt
 }
 
 QIconEngine* PlatformTheme::createIconEngine(const QString& iconName) const {
-    return new IconLoaderEngine(QPlatformTheme::createIconEngine(iconName));
+    return new IconLoaderEngine(QPlatformTheme::createIconEngine(iconName), QPlatformTheme::createIconEngine(iconName + "-rtl"));
 }
 
 QList<QKeySequence> PlatformTheme::keyBindings(QKeySequence::StandardKey key) const {

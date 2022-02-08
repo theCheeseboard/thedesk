@@ -23,11 +23,13 @@
 
 struct IconLoaderEnginePrivate {
     QIconEngine* parentEngine;
+    QIconEngine* rtlParentEngine;
 };
 
-IconLoaderEngine::IconLoaderEngine(QIconEngine* parentEngine) {
+IconLoaderEngine::IconLoaderEngine(QIconEngine* parentEngine, QIconEngine* rtlParentEngine) {
     d = new IconLoaderEnginePrivate();
     d->parentEngine = parentEngine;
+    d->rtlParentEngine = rtlParentEngine;
 }
 
 IconLoaderEngine::~IconLoaderEngine() {
@@ -36,26 +38,41 @@ IconLoaderEngine::~IconLoaderEngine() {
 }
 
 QPixmap IconLoaderEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::State state) {
-    QImage image = d->parentEngine->pixmap(size, mode, state).toImage();
+    QImage image;
+    if (QApplication::layoutDirection() == Qt::RightToLeft && d->rtlParentEngine->availableSizes(mode, state).length() > 0) {
+        image = d->rtlParentEngine->pixmap(size, mode, state).toImage();
+    } else {
+        image = d->parentEngine->pixmap(size, mode, state).toImage();
+    }
     theLibsGlobal::tintImage(image, QApplication::palette().color(QPalette::WindowText));
     return QPixmap::fromImage(image);
 }
 
 
 void IconLoaderEngine::paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state) {
-    d->parentEngine->paint(painter, rect, mode, state);
+    if (QApplication::layoutDirection() == Qt::RightToLeft && d->rtlParentEngine->availableSizes(mode, state).length() > 0) {
+        d->rtlParentEngine->paint(painter, rect, mode, state);
+    } else {
+        d->parentEngine->paint(painter, rect, mode, state);
+    }
 }
 
 QSize IconLoaderEngine::actualSize(const QSize& size, QIcon::Mode mode, QIcon::State state) {
-    return d->parentEngine->actualSize(size, mode, state);
+    if (QApplication::layoutDirection() == Qt::RightToLeft) {
+        return d->rtlParentEngine->actualSize(size, mode, state);
+    } else {
+        return d->parentEngine->actualSize(size, mode, state);
+    }
 }
 
 void IconLoaderEngine::addPixmap(const QPixmap& pixmap, QIcon::Mode mode, QIcon::State state) {
     d->parentEngine->addPixmap(pixmap, mode, state);
+    d->rtlParentEngine->addPixmap(pixmap, mode, state);
 }
 
 void IconLoaderEngine::addFile(const QString& fileName, const QSize& size, QIcon::Mode mode, QIcon::State state) {
     d->parentEngine->addFile(fileName, size, mode, state);
+    d->rtlParentEngine->addFile(fileName, size, mode, state);
 }
 
 QString IconLoaderEngine::key() const {
@@ -63,7 +80,7 @@ QString IconLoaderEngine::key() const {
 }
 
 QIconEngine* IconLoaderEngine::clone() const {
-    return new IconLoaderEngine(d->parentEngine->clone());
+    return new IconLoaderEngine(d->parentEngine->clone(), d->rtlParentEngine->clone());
 }
 
 bool IconLoaderEngine::read(QDataStream& in) {
@@ -75,7 +92,11 @@ bool IconLoaderEngine::write(QDataStream& out) const {
 }
 
 QList<QSize> IconLoaderEngine::availableSizes(QIcon::Mode mode, QIcon::State state) const {
-    return d->parentEngine->availableSizes(mode, state);
+    if (QApplication::layoutDirection() == Qt::RightToLeft) {
+        return d->rtlParentEngine->availableSizes(mode, state);
+    } else {
+        return d->parentEngine->availableSizes(mode, state);
+    }
 }
 
 QString IconLoaderEngine::iconName() const {

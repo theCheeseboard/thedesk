@@ -19,6 +19,7 @@
  * *************************************/
 #include "endsessionbutton.h"
 
+#include <tpaintcalculator.h>
 #include <QPainter>
 
 struct EndSessionButtonPrivate {
@@ -41,8 +42,20 @@ void EndSessionButton::setTimeRemaining(double timeRemaining) {
 void EndSessionButton::paintEvent(QPaintEvent* event) {
     QCommandLinkButton::paintEvent(event);
 
-    QPainter painter(this);
-    painter.setBrush(QColor(255, 255, 255, 50));
-    painter.setPen(Qt::transparent);
-    painter.drawRect(0, 0, static_cast<int>(this->width() * d->timeRemaining / 60.0), this->height());
+    QPainter* painter = new QPainter(this);
+
+    tPaintCalculator calculator;
+    calculator.setDrawBounds(this->size());
+    calculator.setPainter(painter);
+    calculator.setLayoutDirection(this->layoutDirection());
+
+
+    calculator.addRect(QRectF(0, 0, this->width() * d->timeRemaining / 60.0, this->height()), [ = ](QRectF drawBounds) {
+        painter->setBrush(QColor(255, 255, 255, 50));
+        painter->setPen(Qt::transparent);
+        painter->drawRect(drawBounds);
+    });
+    calculator.performPaint();
+
+    delete painter;
 }
