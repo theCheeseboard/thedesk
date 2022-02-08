@@ -63,6 +63,29 @@
     </widget>
    </item>
    <item>
+    <widget class="QLineEdit" name="searchEdit">
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>Search...</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="singlePixelHorizontalLine">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>1</height>
+      </size>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QListWidget" name="countriesWidget">
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>

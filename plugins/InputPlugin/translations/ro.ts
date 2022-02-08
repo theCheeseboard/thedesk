@@ -30,7 +30,7 @@
 <context>
     <name>KeyboardDaemon</name>
     <message>
-        <location filename="../daemons/keyboarddaemon.cpp" line="82"/>
+        <location filename="../daemons/keyboarddaemon.cpp" line="83"/>
         <source>Keyboard Layout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -43,7 +43,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../chunks/keyboardlayoutchunk.cpp" line="66"/>
+        <location filename="../chunks/keyboardlayoutchunk.cpp" line="75"/>
         <source>Select Keyboard Layout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -62,11 +62,11 @@
     </message>
     <message>
         <location filename="../settings/keyboardsettings.ui" line="113"/>
-        <source>Prioritise the keyboard layouts you&apos;d like to use on your device.</source>
+        <source>Prioritise the keyboard layouts you&apos;d like to use on your device. You can switch between keyboard layouts with SUPER+Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/keyboardsettings.ui" line="132"/>
+        <location filename="../settings/keyboardsettings.ui" line="135"/>
         <source>Add Layout</source>
         <translation type="unfinished"></translation>
     </message>

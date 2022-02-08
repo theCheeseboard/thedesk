@@ -23,6 +23,7 @@
 #include <QObject>
 
 class Onboarding;
+class OnboardingController;
 class OnboardingPage;
 struct OnboardingManagerPrivate;
 class OnboardingManager : public QObject {
@@ -37,6 +38,8 @@ class OnboardingManager : public QObject {
         void setDateVisible(bool dateVisible);
         bool dateVisible();
 
+        bool isSystemOnboarding();
+
     signals:
         void onboardingRequired();
 
@@ -48,9 +51,11 @@ class OnboardingManager : public QObject {
 
     protected:
         friend Onboarding;
+        friend OnboardingController;
 
         OnboardingManagerPrivate* d;
         QList<OnboardingPage*> onboardingSteps();
+        void setIsSystemOnboarding(bool isSystemOnboarding);
 };
 
 #endif // ONBOARDINGMANAGER_H

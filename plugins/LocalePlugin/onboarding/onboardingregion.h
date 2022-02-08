@@ -41,8 +41,12 @@ class OnboardingRegion : public OnboardingPage {
 
         void on_countriesWidget_currentItemChanged(QListWidgetItem* current, QListWidgetItem* previous);
 
+        void on_searchEdit_textChanged(const QString& arg1);
+
     private:
         Ui::OnboardingRegion* ui;
+
+        void search(QString query);
 
         // OnboardingPage interface
     public:

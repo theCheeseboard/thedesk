@@ -33,15 +33,7 @@ OnboardingRegion::OnboardingRegion(QWidget* parent) :
     ui->setupUi(this);
 
     ui->titleLabel->setBackButtonShown(true);
-
-    QList<Common::Country> countries = Common::countries();
-    for (Common::Country country : countries) {
-        QListWidgetItem* item = new QListWidgetItem();
-        item->setText(country.text);
-        item->setData(Qt::UserRole, country.country);
-        ui->countriesWidget->addItem(item);
-        if (country.isCurrent) ui->countriesWidget->setCurrentItem(item);
-    }
+    search("");
 }
 
 OnboardingRegion::~OnboardingRegion() {
@@ -68,3 +60,23 @@ void OnboardingRegion::on_countriesWidget_currentItemChanged(QListWidgetItem* cu
         StateManager::localeManager()->setFormatCountry(current->data(Qt::UserRole).value<QLocale::Country>());
     }
 }
+
+void OnboardingRegion::on_searchEdit_textChanged(const QString& arg1) {
+    search(arg1);
+}
+
+void OnboardingRegion::search(QString query) {
+    ui->countriesWidget->clear();
+
+    QList<Common::Country> countries = Common::countries();
+    for (const Common::Country &country : qAsConst(countries)) {
+        if (!country.text.contains(query, Qt::CaseInsensitive)) continue;
+
+        QListWidgetItem* item = new QListWidgetItem();
+        item->setText(country.text);
+        item->setData(Qt::UserRole, country.country);
+        ui->countriesWidget->addItem(item);
+        if (country.isCurrent) ui->countriesWidget->setCurrentItem(item);
+    }
+}
+

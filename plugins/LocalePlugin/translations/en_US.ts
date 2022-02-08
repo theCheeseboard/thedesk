@@ -114,7 +114,7 @@
     <name>OnboardingRegion</name>
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="35"/>
-        <location filename="../onboarding/onboardingregion.cpp" line="60"/>
+        <location filename="../onboarding/onboardingregion.cpp" line="52"/>
         <source>Region</source>
         <translation type="unfinished"></translation>
     </message>
@@ -124,7 +124,12 @@
         <translation>Where are you located? This&apos;ll format your dates, numbers, and other items correctly.</translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingregion.ui" line="115"/>
+        <location filename="../onboarding/onboardingregion.ui" line="71"/>
+        <source>Search...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingregion.ui" line="138"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>

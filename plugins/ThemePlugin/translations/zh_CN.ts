@@ -25,7 +25,7 @@
         <translation>日光</translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingtheme.ui" line="238"/>
+        <location filename="../onboarding/onboardingtheme.ui" line="241"/>
         <source>Next</source>
         <translation>下一项</translation>
     </message>

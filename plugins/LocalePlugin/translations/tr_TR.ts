@@ -114,7 +114,7 @@
     <name>OnboardingRegion</name>
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="35"/>
-        <location filename="../onboarding/onboardingregion.cpp" line="60"/>
+        <location filename="../onboarding/onboardingregion.cpp" line="52"/>
         <source>Region</source>
         <translation>Bölge</translation>
     </message>
@@ -124,7 +124,12 @@
         <translation>Nerelerde bulunuyorsunuz? Bu bilgileri tarihlerinizi, sayılarınızı ve diğer öğelerinizi doğru şekilde biçimlendirmek için kullanacağız.</translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingregion.ui" line="115"/>
+        <location filename="../onboarding/onboardingregion.ui" line="71"/>
+        <source>Search...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingregion.ui" line="138"/>
         <source>Next</source>
         <translation>Sonraki</translation>
     </message>

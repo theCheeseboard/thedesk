@@ -29,7 +29,6 @@
 #include "chunks/keyboardlayoutchunk.h"
 
 struct KeyboardDaemonPrivate {
-    KeyGrab* nextLayoutGrab;
     tSettings settings;
     KeyboardLayoutChunk* chunk;
 };
@@ -40,8 +39,10 @@ KeyboardDaemon::KeyboardDaemon(QObject* parent)
 
     d->chunk = new KeyboardLayoutChunk();
 
-    d->nextLayoutGrab = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::Key_Space), "nextlayout", this);
-    connect(d->nextLayoutGrab, &KeyGrab::activated, this, &KeyboardDaemon::setNextKeyboardLayout);
+    KeyGrab* nextLayoutGrab = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::Key_Space), "nextlayout", this);
+    connect(nextLayoutGrab, &KeyGrab::activated, this, &KeyboardDaemon::setNextKeyboardLayout);
+    KeyGrab* nextLayoutGrabAlternate = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::Key_Return), this);
+    connect(nextLayoutGrabAlternate, &KeyGrab::activated, this, &KeyboardDaemon::setNextKeyboardLayout);
 
     connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key) {
         if (key == "Input/keyboard.layouts") {

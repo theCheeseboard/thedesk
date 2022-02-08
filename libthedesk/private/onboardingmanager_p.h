@@ -27,6 +27,7 @@ struct OnboardingManagerPrivate {
     QList<OnboardingPage*> steps;
     bool onboardingRunning = false;
     bool dateVisible = true;
+    bool isSystemOnboarding = false;
 };
 
 #endif // ONBOARDINGMANAGER_P_H

@@ -115,6 +115,12 @@
       </item>
       <item>
        <widget class="Line" name="line">
+        <property name="maximumSize">
+         <size>
+          <width>1</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>

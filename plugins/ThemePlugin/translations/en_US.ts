@@ -25,7 +25,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingtheme.ui" line="238"/>
+        <location filename="../onboarding/onboardingtheme.ui" line="241"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>

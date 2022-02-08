@@ -1,4 +1,4 @@
-QT += widgets thelib tdesktopenvironment dbus multimedia multimediawidgets quickwidgets
+QT += widgets thelib tdesktopenvironment dbus multimedia multimediawidgets quickwidgets svg
 
 TEMPLATE = lib
 DEFINES += LIBTHEDESK_LIBRARY

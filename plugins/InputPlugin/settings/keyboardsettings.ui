@@ -110,7 +110,10 @@
             <item>
              <widget class="QLabel" name="label_3">
               <property name="text">
-               <string>Prioritise the keyboard layouts you'd like to use on your device.</string>
+               <string>Prioritise the keyboard layouts you'd like to use on your device. You can switch between keyboard layouts with SUPER+Space</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
               </property>
              </widget>
             </item>

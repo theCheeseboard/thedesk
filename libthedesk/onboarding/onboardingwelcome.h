@@ -26,6 +26,7 @@ namespace Ui {
     class OnboardingWelcome;
 }
 
+struct OnboardingWelcomePrivate;
 class OnboardingWelcome : public OnboardingPage {
         Q_OBJECT
 
@@ -35,6 +36,7 @@ class OnboardingWelcome : public OnboardingPage {
 
     private:
         Ui::OnboardingWelcome* ui;
+        OnboardingWelcomePrivate* d;
 
         void changeEvent(QEvent* event);
 
@@ -45,6 +47,11 @@ class OnboardingWelcome : public OnboardingPage {
     private slots:
         void on_nextButton_clicked();
         void on_languageButton_clicked();
+        void on_keyboardButton_clicked();
+
+        // QWidget interface
+    protected:
+        void paintEvent(QPaintEvent* event);
 };
 
 #endif // ONBOARDINGWELCOME_H

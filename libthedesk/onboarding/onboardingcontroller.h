@@ -27,7 +27,7 @@ class OnboardingController : public QObject {
     public:
         explicit OnboardingController(QObject* parent = nullptr);
 
-        static bool performOnboarding();
+        static bool performOnboarding(bool isSystemOnboarding);
 
     signals:
 

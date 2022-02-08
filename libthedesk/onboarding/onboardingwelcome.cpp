@@ -23,17 +23,50 @@
 #include <statemanager.h>
 #include <onboardingmanager.h>
 #include <localemanager.h>
+#include <tsettings.h>
+#include <Wm/desktopwm.h>
+#include <QSvgRenderer>
+#include <QPainter>
+#include <QDBusInterface>
+
+struct OnboardingWelcomePrivate {
+    tSettings settings;
+    QSvgRenderer backgroundRenderer;
+    QDBusInterface* hostnamed;
+};
 
 OnboardingWelcome::OnboardingWelcome(QWidget* parent) :
     OnboardingPage(parent),
     ui(new Ui::OnboardingWelcome) {
     ui->setupUi(this);
 
+    d = new OnboardingWelcomePrivate();
+    d->backgroundRenderer.load(d->settings.value("Onboarding/welcomeGraphic").toString());
+
     ui->emergencyButton->setVisible(false);
 
+    connect(DesktopWm::instance(), &DesktopWm::currentKeyboardLayoutChanged, this, [ = ] {
+        ui->keyboardButton->setText(DesktopWm::currentKeyboardLayout());
+    });
+    ui->keyboardButton->setText(DesktopWm::currentKeyboardLayout());
+
+    d->hostnamed = new QDBusInterface("org.freedesktop.hostname1", "/org/freedesktop/hostname1", "org.freedesktop.hostname1", QDBusConnection::systemBus(), this);
+
+    if (StateManager::onboardingManager()->isSystemOnboarding()) {
+        ui->titleLabel->setText(tr("Welcome to %1!").arg(d->hostnamed->property("OperatingSystemPrettyName").toString()));
+        ui->descriptionLabel->setText(tr("You've made it! We'll quickly go through some important setup like setting up accounts and connecting to the Internet, and then you'll be up and running."));
+    } else {
+        ui->titleLabel->setText(tr("Welcome to %1!").arg(QApplication::applicationName()));
+        ui->descriptionLabel->setText(tr("Just a bit of important setup to do before you get started. This won't take long!"));
+    }
+
+    QPalette pal = this->palette();
+    pal.setColor(QPalette::WindowText, Qt::white);
+    this->setPalette(pal);
 }
 
 OnboardingWelcome::~OnboardingWelcome() {
+    delete d;
     delete ui;
 }
 
@@ -64,4 +97,25 @@ void OnboardingWelcome::on_languageButton_clicked() {
         if (manager->locales().contains(locale)) manager->removeLocale(locale);
         manager->prependLocale(locale);
     }
+}
+
+void OnboardingWelcome::on_keyboardButton_clicked() {
+    bool ok;
+    QString newLayout = StateManager::localeManager()->showKeyboardLayoutSelector(this->window(), &ok);
+    if (!ok) return;
+
+    QStringList layouts = d->settings.delimitedList("Input/keyboard.layouts");
+    if (!layouts.contains(newLayout)) {
+        layouts.append(newLayout);
+        layouts.removeAll("");
+        d->settings.setDelimitedList("Input/keyboard.layouts", layouts);
+    }
+
+    DesktopWm::setCurrentKeyboardLayout(newLayout);
+}
+
+
+void OnboardingWelcome::paintEvent(QPaintEvent* event) {
+    QPainter painter(this);
+    d->backgroundRenderer.render(&painter);
 }

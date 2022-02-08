@@ -114,7 +114,7 @@
     <name>OnboardingRegion</name>
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="35"/>
-        <location filename="../onboarding/onboardingregion.cpp" line="60"/>
+        <location filename="../onboarding/onboardingregion.cpp" line="52"/>
         <source>Region</source>
         <translation>地区</translation>
     </message>
@@ -124,7 +124,12 @@
         <translation>你在哪里？ 我们会用这个信息来定制您的日期， 数字和其它数据。</translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingregion.ui" line="115"/>
+        <location filename="../onboarding/onboardingregion.ui" line="71"/>
+        <source>Search...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../onboarding/onboardingregion.ui" line="138"/>
         <source>Next</source>
         <translation>下一个</translation>
     </message>

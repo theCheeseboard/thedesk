@@ -63,14 +63,6 @@
 <context>
     <name>OnboardingWelcome</name>
     <message>
-        <source>Welcome!</source>
-        <translation>Bine ați venit!</translation>
-    </message>
-    <message>
-        <source>Let&apos;s get you up and running!</source>
-        <translation>Să terminăm de configurat sistemul!</translation>
-    </message>
-    <message>
         <source>Language</source>
         <translation>Limbă</translation>
     </message>
@@ -85,6 +77,22 @@
     <message>
         <source>Welcome</source>
         <translation>Bine ați venit</translation>
+    </message>
+    <message>
+        <source>Welcome to %1!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You&apos;ve made it! We&apos;ll quickly go through some important setup like setting up accounts and connecting to the Internet, and then you&apos;ll be up and running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Just a bit of important setup to do before you get started. This won&apos;t take long!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OTHER OPTIONS</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

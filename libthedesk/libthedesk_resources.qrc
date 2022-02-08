@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/libthedesk">
         <file>onboarding/OnboardingVideoForm.qml</file>
+        <file>images/splash-background.svg</file>
     </qresource>
 </RCC>

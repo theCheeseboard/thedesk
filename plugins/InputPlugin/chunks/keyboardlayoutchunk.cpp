@@ -23,12 +23,15 @@
 #include <Wm/desktopwm.h>
 #include <tsettings.h>
 #include <QMenu>
+#include <statemanager.h>
+#include <barmanager.h>
 
 struct KeyboardLayoutChunkPrivate {
     tSettings settings;
     QMenu* layoutSelectMenu;
 
     QList<QAction*> layoutsActions;
+    BarManager::BarLockPtr barLocker;
 };
 
 KeyboardLayoutChunk::KeyboardLayoutChunk() :
@@ -48,6 +51,12 @@ KeyboardLayoutChunk::KeyboardLayoutChunk() :
     connect(DesktopWm::instance(), &DesktopWm::currentKeyboardLayoutChanged, this, &KeyboardLayoutChunk::updateCurrentLayout);
     updateCurrentLayout();
 
+    connect(d->layoutSelectMenu, &QMenu::aboutToShow, this, [ = ] {
+        d->barLocker = StateManager::barManager()->acquireLock();
+    });
+    connect(d->layoutSelectMenu, &QMenu::aboutToHide, this, [ = ] {
+        d->barLocker->unlock();
+    });
     ui->layoutSelectButton->setMenu(d->layoutSelectMenu);
 }
 

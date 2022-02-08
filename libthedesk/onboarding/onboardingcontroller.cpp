@@ -35,10 +35,11 @@ OnboardingController::OnboardingController(QObject* parent) : QObject(parent) {
 
 }
 
-bool OnboardingController::performOnboarding() {
+bool OnboardingController::performOnboarding(bool isSystemOnboarding) {
     tSettings settings;
     if (settings.value("Onboarding/lastOnboarding").toInt() < 1) {
         OnboardingManager* manager = StateManager::onboardingManager();
+        manager->setIsSystemOnboarding(isSystemOnboarding);
         manager->addOnboardingStep(new OnboardingWelcome);
         manager->addOnboardingStep(new OnboardingBetaThankYou);
         manager->addOnboardingStep(new OnboardingFinal);

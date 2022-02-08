@@ -46,6 +46,14 @@ bool OnboardingManager::dateVisible() {
     return d->dateVisible;
 }
 
+bool OnboardingManager::isSystemOnboarding() {
+    return d->isSystemOnboarding;
+}
+
 QList<OnboardingPage*> OnboardingManager::onboardingSteps() {
     return d->steps;
+}
+
+void OnboardingManager::setIsSystemOnboarding(bool isSystemOnboarding) {
+    d->isSystemOnboarding = isSystemOnboarding;
 }

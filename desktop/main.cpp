@@ -81,7 +81,7 @@ int main(int argc, char* argv[]) {
     });
 
     //Perform onboarding if required
-    if (!OnboardingController::performOnboarding()) {
+    if (!OnboardingController::performOnboarding(false)) {
         //Exit now because onboarding failed (probably the user chose to log out)
         return 0;
     }

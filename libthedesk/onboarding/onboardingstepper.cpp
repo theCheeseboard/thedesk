@@ -20,6 +20,7 @@
 #include "onboardingstepper.h"
 
 #include <QPainter>
+#include <tpaintcalculator.h>
 #include <the-libs_global.h>
 
 struct OnboardingStepperPrivate {
@@ -66,8 +67,13 @@ QSize OnboardingStepper::sizeHint() const {
 }
 
 void OnboardingStepper::paintEvent(QPaintEvent* event) {
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing);
+    QPainter* painter = new QPainter(this);
+    painter->setRenderHint(QPainter::Antialiasing);
+
+    tPaintCalculator calculator;
+    calculator.setPainter(painter);
+    calculator.setDrawBounds(this->size());
+    calculator.setLayoutDirection(this->layoutDirection());
 
     QPalette::ColorGroup group = d->currentStep < d->step ? QPalette::Disabled : QPalette::Normal;
 
@@ -77,25 +83,39 @@ void OnboardingStepper::paintEvent(QPaintEvent* event) {
     circleRect.moveLeft(SC_DPI(9));
     circleRect.moveTop(this->height() / 2 - radius / 2);
 
-    painter.setPen(Qt::transparent);
-    painter.setBrush(this->palette().color(group, QPalette::WindowText));
-    painter.drawEllipse(circleRect);
+    calculator.addRect(circleRect, [ = ](QRectF drawBounds) {
+        painter->setPen(Qt::transparent);
+        painter->setBrush(this->palette().color(group, QPalette::WindowText));
+        painter->drawEllipse(drawBounds);
 
-    painter.setPen(this->palette().color(group, QPalette::Window));
-    painter.drawText(circleRect, Qt::AlignCenter, QString::number(d->step));
+        painter->setPen(this->palette().color(group, QPalette::Window));
+        painter->drawText(drawBounds, Qt::AlignCenter, QLocale().toString(d->step));
+    });
+
 
     QRect textRect;
     textRect.setWidth(this->fontMetrics().horizontalAdvance(d->text));
     textRect.setHeight(this->fontMetrics().height());
     textRect.moveLeft(circleRect.right() + SC_DPI(9));
     textRect.moveTop(this->height() / 2 - textRect.height() / 2);
-    painter.setPen(this->palette().color(group, QPalette::WindowText));
-    painter.drawText(textRect, Qt::AlignLeft, d->text);
+
+    calculator.addRect(textRect, [ = ](QRectF drawBounds) {
+        painter->setPen(this->palette().color(group, QPalette::WindowText));
+        painter->drawText(drawBounds, Qt::AlignLeft, d->text);
+    });
 
     if (d->step != 1) {
-        painter.drawLine(circleRect.center().x(), 0, circleRect.center().x(), circleRect.top());
+        calculator.addRect(circleRect, [ = ](QRectF drawBounds) {
+            painter->drawLine(drawBounds.center().x(), 0, drawBounds.center().x(), drawBounds.top());
+        });
     }
     if (!d->isFinal) {
-        painter.drawLine(circleRect.center().x(), circleRect.bottom(), circleRect.center().x(), this->height());
+        calculator.addRect(circleRect, [ = ](QRectF drawBounds) {
+            painter->drawLine(drawBounds.center().x(), drawBounds.bottom(), drawBounds.center().x(), this->height());
+        });
     }
+
+    calculator.performPaint();
+
+    delete painter;
 }
