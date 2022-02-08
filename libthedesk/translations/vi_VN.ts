@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>Select a keyboard layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn bố trí bàn phím</translation>
     </message>
 </context>
 <context>
@@ -80,54 +80,54 @@
     </message>
     <message>
         <source>Welcome to %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Chào mừng bạn với %1!</translation>
     </message>
     <message>
         <source>You&apos;ve made it! We&apos;ll quickly go through some important setup like setting up accounts and connecting to the Internet, and then you&apos;ll be up and running.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bạn đã đến! Chúng tôi sẽ thực hiện một số thiết lập quan trọng, ví dụ thiết lập tài khoản và kết nối Internet, sau đó bạn sẵn sàng sử dụng thiết bị của bạn.</translation>
     </message>
     <message>
         <source>Just a bit of important setup to do before you get started. This won&apos;t take long!</source>
-        <translation type="unfinished"></translation>
+        <translation>Chỉ có một chút thiết lập quan trọng chúng tôi cần thực hiện trước khi bạn bắt đầu được. Điều này sẽ không mất nhiều thời gian!</translation>
     </message>
     <message>
         <source>OTHER OPTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>TÙY CHỌN KHÁC</translation>
     </message>
 </context>
 <context>
     <name>QuietModeManagerTd</name>
     <message>
         <source>Sound</source>
-        <translation type="unfinished">Âm thanh</translation>
+        <translation>Âm thanh</translation>
     </message>
     <message>
         <source>Critical Only</source>
-        <translation type="unfinished">Chỉ quan trọng</translation>
+        <translation>Chỉ quan trọng</translation>
     </message>
     <message>
         <source>No Notifications</source>
-        <translation type="unfinished">Không có thông báo</translation>
+        <translation>Không có thông báo</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished">Im lặng</translation>
+        <translation>Im lặng</translation>
     </message>
     <message>
         <source>Allows all sounds</source>
-        <translation type="unfinished">Phát các âm thanh</translation>
+        <translation>Phát các âm thanh</translation>
     </message>
     <message>
         <source>Hides non-critical notifications</source>
-        <translation type="unfinished">Ẩn thông báo không quan trọng</translation>
+        <translation>Ẩn thông báo không quan trọng</translation>
     </message>
     <message>
         <source>Hides all notifications</source>
-        <translation type="unfinished">Ẩn các thông báo</translation>
+        <translation>Ẩn các thông báo</translation>
     </message>
     <message>
         <source>Mutes all sound altogether</source>
-        <translation type="unfinished">Tắt âm hoàn toàn</translation>
+        <translation>Tắt âm hoàn toàn</translation>
     </message>
 </context>
 </TS>
