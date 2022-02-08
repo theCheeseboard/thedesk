@@ -13,11 +13,6 @@
 <context>
     <name>BacktracePopover</name>
     <message>
-        <location filename="../crash/backtracepopover.ui" line="14"/>
-        <source>Form</source>
-        <translation>Formular</translation>
-    </message>
-    <message>
         <location filename="../crash/backtracepopover.ui" line="35"/>
         <source>Error Details</source>
         <translation>Detalii eroare</translation>
@@ -91,14 +86,6 @@
         <location filename="../splash/splashcontroller.cpp" line="108"/>
         <source>View Details</source>
         <translation>Vedeți detaliile</translation>
-    </message>
-</context>
-<context>
-    <name>SplashWidget</name>
-    <message>
-        <location filename="../splash/splashwidget.ui" line="78"/>
-        <source>TextLabel</source>
-        <translation>EtichetăText</translation>
     </message>
 </context>
 <context>

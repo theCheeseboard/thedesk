@@ -311,22 +311,17 @@
 <context>
     <name>CurrentAppWidgetMenu</name>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="14"/>
-        <source>Form</source>
-        <translation>Formular</translation>
-    </message>
-    <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="75"/>
         <source>Close Window</source>
         <translation>Închide fereastra</translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="189"/>
+        <location filename="../bar/currentappwidgetmenu.ui" line="188"/>
         <source>QUIT IMMEDIATELY</source>
         <translation>TERMINĂ IMEDIAT</translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="205"/>
+        <location filename="../bar/currentappwidgetmenu.ui" line="204"/>
         <source>Cancel</source>
         <translation>Anulare</translation>
     </message>
@@ -812,14 +807,6 @@ O să continuăm cu resetarea în %n secunde dacă nu faceți nimic.</translatio
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
         <translation>Deconectare</translation>
-    </message>
-</context>
-<context>
-    <name>TaskbarDesktopWidget</name>
-    <message>
-        <location filename="../bar/taskbardesktopwidget.ui" line="14"/>
-        <source>Form</source>
-        <translation>Formular</translation>
     </message>
 </context>
 <context>

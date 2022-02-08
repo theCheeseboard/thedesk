@@ -361,27 +361,22 @@
 <context>
     <name>DevicePane</name>
     <message>
-        <location filename="../statusCenter/devicePanes/devicepane.ui" line="35"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../statusCenter/devicePanes/devicepane.ui" line="84"/>
+        <location filename="../statusCenter/devicePanes/devicepane.ui" line="83"/>
         <source>STATUS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/devicepane.ui" line="91"/>
+        <location filename="../statusCenter/devicePanes/devicepane.ui" line="90"/>
         <source>theDesk doesn&apos;t support this network interface, so you won&apos;t be able to configure it fully here.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/devicepane.ui" line="146"/>
+        <location filename="../statusCenter/devicePanes/devicepane.ui" line="144"/>
         <source>ACTIONS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/devicepane.ui" line="155"/>
+        <location filename="../statusCenter/devicePanes/devicepane.ui" line="153"/>
         <source>Disconnect</source>
         <translation type="unfinished"></translation>
     </message>
@@ -576,11 +571,6 @@
 <context>
     <name>OnboardingNetwork</name>
     <message>
-        <location filename="../onboarding/onboardingnetwork.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../onboarding/onboardingnetwork.ui" line="35"/>
         <location filename="../onboarding/onboardingnetwork.cpp" line="96"/>
         <source>Network</source>
@@ -602,7 +592,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingnetwork.ui" line="274"/>
+        <location filename="../onboarding/onboardingnetwork.ui" line="275"/>
         <source>You can always set up the network connection later.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1254,11 +1244,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 <context>
     <name>WiredOnboardingSetup</name>
     <message>
-        <location filename="../onboarding/wiredonboardingsetup.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../onboarding/wiredonboardingsetup.ui" line="57"/>
         <source>WIRED</source>
         <translation type="unfinished"></translation>
@@ -1350,67 +1335,62 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="108"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="107"/>
         <source>KNOWN NETWORKS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="160"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="158"/>
         <source>NEW NETWORKS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="183"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="181"/>
         <source>New Manual Connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="299"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="297"/>
         <source>Enter the security key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="423"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="421"/>
         <source>Network Security</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="449"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="456"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="454"/>
         <source>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="486"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="484"/>
         <source>TLS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="491"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="489"/>
         <source>LEAP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="496"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="494"/>
         <source>PWD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="501"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="499"/>
         <source>FAST</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="506"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="504"/>
         <source>TTLS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="511"/>
+        <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.ui" line="509"/>
         <source>PEAP</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1452,11 +1432,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 </context>
 <context>
     <name>WirelessOnboardingSetup</name>
-    <message>
-        <location filename="../onboarding/wirelessonboardingsetup.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../onboarding/wirelessonboardingsetup.ui" line="57"/>
         <source>WI-FI</source>

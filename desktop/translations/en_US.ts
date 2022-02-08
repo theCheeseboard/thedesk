@@ -311,22 +311,17 @@
 <context>
     <name>CurrentAppWidgetMenu</name>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="75"/>
         <source>Close Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="189"/>
+        <location filename="../bar/currentappwidgetmenu.ui" line="188"/>
         <source>QUIT IMMEDIATELY</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="205"/>
+        <location filename="../bar/currentappwidgetmenu.ui" line="204"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -811,14 +806,6 @@ We&apos;ll reset your settings in %n seconds if you don&apos;t do anything.</tra
     <message>
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TaskbarDesktopWidget</name>
-    <message>
-        <location filename="../bar/taskbardesktopwidget.ui" line="14"/>
-        <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

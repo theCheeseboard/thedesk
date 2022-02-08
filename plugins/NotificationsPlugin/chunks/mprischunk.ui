@@ -110,7 +110,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QToolButton" name="forwardButton">
+          <widget class="QToolButton" name="backButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -121,7 +121,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset theme="media-skip-forward">
+            <iconset theme="media-skip-backward">
              <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
@@ -144,7 +144,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QToolButton" name="backButton">
+          <widget class="QToolButton" name="forwardButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -155,7 +155,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset theme="media-skip-backward">
+            <iconset theme="media-skip-forward">
              <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>

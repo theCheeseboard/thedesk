@@ -100,7 +100,6 @@
               <widget class="QLabel" name="label">
                <property name="font">
                 <font>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -152,7 +151,6 @@
               <widget class="QLabel" name="label_2">
                <property name="font">
                 <font>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -446,7 +444,7 @@
        <item>
         <widget class="tTitleLabel" name="eapMethodTitleLabel">
          <property name="text">
-          <string>TextLabel</string>
+          <string notr="true">TextLabel</string>
          </property>
         </widget>
        </item>
@@ -540,20 +538,20 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>tTitleLabel</class>
-   <extends>QLabel</extends>
-   <header location="global">ttitlelabel.h</header>
-   <slots>
-    <signal>backButtonClicked()</signal>
-   </slots>
-  </customwidget>
-  <customwidget>
    <class>tStackedWidget</class>
    <extends>QStackedWidget</extends>
    <header location="global">tstackedwidget.h</header>
    <container>1</container>
    <slots>
     <signal>switchingFrame(int)</signal>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>tTitleLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">ttitlelabel.h</header>
+   <slots>
+    <signal>backButtonClicked()</signal>
    </slots>
   </customwidget>
  </customwidgets>

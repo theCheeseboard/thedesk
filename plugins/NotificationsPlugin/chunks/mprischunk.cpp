@@ -111,8 +111,10 @@ MprisChunk::MprisChunk() :
     ui->stateIcon->setPixmap(QIcon::fromTheme("media-playback-start").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
 
     //Ensure that the player controls are always LTR
+//    if (this->layoutDirection() == Qt::RightToLeft) {
     ui->playerControlsWidget->setLayoutDirection(Qt::LeftToRight);
-    if (this->layoutDirection() == Qt::RightToLeft) ui->playerControlsLayout->setDirection(QBoxLayout::RightToLeft);
+//        ui->playerControlsLayout->setDirection(QBoxLayout::RightToLeft);
+//    }
 }
 
 MprisChunk::~MprisChunk() {

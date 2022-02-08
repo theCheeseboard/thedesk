@@ -285,10 +285,6 @@
 <context>
     <name>DevicePane</name>
     <message>
-        <source>TextLabel</source>
-        <translation>TextLabel</translation>
-    </message>
-    <message>
         <source>ACTIONS</source>
         <translation>ACTIONS</translation>
     </message>
@@ -457,10 +453,6 @@
 </context>
 <context>
     <name>OnboardingNetwork</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Network</source>
         <translation type="unfinished">Network</translation>
@@ -993,10 +985,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</translation>
 <context>
     <name>WiredOnboardingSetup</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>WIRED</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1107,10 +1095,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</translation>
         <translation>Enter the security key</translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation>TextLabel</translation>
-    </message>
-    <message>
         <source>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</source>
         <translation>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</translation>
     </message>
@@ -1153,10 +1137,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</translation>
 </context>
 <context>
     <name>WirelessOnboardingSetup</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>WI-FI</source>
         <translation type="unfinished"></translation>

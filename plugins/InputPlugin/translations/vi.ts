@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="vi">
+<TS version="2.1" language="vi" sourcelanguage="en_US">
 <context>
     <name>InputSettingsLeftPane</name>
     <message>
@@ -37,11 +37,6 @@
 </context>
 <context>
     <name>KeyboardLayoutChunk</name>
-    <message>
-        <location filename="../chunks/keyboardlayoutchunk.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../chunks/keyboardlayoutchunk.cpp" line="75"/>
         <source>Select Keyboard Layout</source>

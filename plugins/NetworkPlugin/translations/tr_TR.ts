@@ -285,10 +285,6 @@
 <context>
     <name>DevicePane</name>
     <message>
-        <source>TextLabel</source>
-        <translation>MetinEtiketi</translation>
-    </message>
-    <message>
         <source>ACTIONS</source>
         <translation>HAREKETLER</translation>
     </message>
@@ -457,10 +453,6 @@
 </context>
 <context>
     <name>OnboardingNetwork</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Network</source>
         <translation type="unfinished">Ağ</translation>
@@ -991,10 +983,6 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
 <context>
     <name>WiredOnboardingSetup</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>WIRED</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1105,10 +1093,6 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
         <translation>Güvenlik anahtarını girin</translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation>MetinEtiketi</translation>
-    </message>
-    <message>
         <source>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</source>
         <translation>EAP yöntemini seçin. Neyi seçeceğinizi bilmiyorsanız, ayrıntılar için sistem yöneticinize başvurun.</translation>
     </message>
@@ -1151,10 +1135,6 @@ Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
 </context>
 <context>
     <name>WirelessOnboardingSetup</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>WI-FI</source>
         <translation type="unfinished"></translation>

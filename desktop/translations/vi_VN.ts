@@ -311,22 +311,17 @@
 <context>
     <name>CurrentAppWidgetMenu</name>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../bar/currentappwidgetmenu.ui" line="75"/>
         <source>Close Window</source>
         <translation>Đóng cửa sổ</translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="189"/>
+        <location filename="../bar/currentappwidgetmenu.ui" line="188"/>
         <source>QUIT IMMEDIATELY</source>
         <translation>THOÁT NGAY</translation>
     </message>
     <message>
-        <location filename="../bar/currentappwidgetmenu.ui" line="205"/>
+        <location filename="../bar/currentappwidgetmenu.ui" line="204"/>
         <source>Cancel</source>
         <translation>Hủy</translation>
     </message>
@@ -812,14 +807,6 @@ Chúng tôi sẽ đặt cài đặt của bạn lại sau %n giay nếu bạn kh
         <location filename="../systemsettings/systemsettingsleftpane.ui" line="135"/>
         <source>Log Out</source>
         <translation>Đăng xuất</translation>
-    </message>
-</context>
-<context>
-    <name>TaskbarDesktopWidget</name>
-    <message>
-        <location filename="../bar/taskbardesktopwidget.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

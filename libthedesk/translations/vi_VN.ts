@@ -4,10 +4,6 @@
 <context>
     <name>KeyboardLayoutSelector</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select a keyboard layout</source>
         <translation>Chọn bố trí bàn phím</translation>
     </message>

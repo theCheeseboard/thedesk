@@ -285,10 +285,6 @@
 <context>
     <name>DevicePane</name>
     <message>
-        <source>TextLabel</source>
-        <translation>文字标签</translation>
-    </message>
-    <message>
         <source>ACTIONS</source>
         <translation>行动</translation>
     </message>
@@ -457,10 +453,6 @@
 </context>
 <context>
     <name>OnboardingNetwork</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Network</source>
         <translation type="unfinished">网络</translation>
@@ -989,10 +981,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 <context>
     <name>WiredOnboardingSetup</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>WIRED</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1103,10 +1091,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <translation>输入安全密钥</translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation>文字标签</translation>
-    </message>
-    <message>
         <source>Select the EAP method. If you don&apos;t know what to select, contact your system administrator for the details.</source>
         <translation>选择EAP方法。 如果您不知道要选择什么，请与系统管理员联系以获取详细信息。</translation>
     </message>
@@ -1149,10 +1133,6 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 </context>
 <context>
     <name>WirelessOnboardingSetup</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>WI-FI</source>
         <translation type="unfinished"></translation>
