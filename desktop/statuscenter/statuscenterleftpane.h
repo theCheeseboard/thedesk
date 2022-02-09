@@ -38,6 +38,7 @@ class StatusCenterLeftPane : public QWidget {
         void appendItem(QListWidgetItem* item);
         void insertItem(int index, QListWidgetItem* item);
         void removeItem(QListWidgetItem* item);
+        void setSelected(QListWidgetItem* item);
         void setAttached(bool attached);
 
         void pushMenu(QWidget* menu);

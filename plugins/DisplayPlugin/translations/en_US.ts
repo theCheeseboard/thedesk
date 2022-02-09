@@ -170,5 +170,10 @@
         <source>Disable Redshift until tomorrow</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../redshift/redshiftdaemon.cpp" line="92"/>
+        <source>Display Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

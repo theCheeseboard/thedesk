@@ -27,6 +27,8 @@
 
 #include <statemanager.h>
 #include <barmanager.h>
+#include <statuscentermanager.h>
+#include <actionquickwidget.h>
 
 #include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/AccessPoint>
@@ -56,6 +58,12 @@ NetworkChunk::NetworkChunk() : IconTextChunk("Network") {
 
     connect(NetworkManager::notifier(), &NetworkManager::Notifier::primaryConnectionChanged, this, &NetworkChunk::updatePrimaryConnection);
     connect(NetworkManager::notifier(), &NetworkManager::Notifier::connectivityChanged, this, &NetworkChunk::updateText);
+
+    ActionQuickWidget* quickWidget = new ActionQuickWidget(this);
+    quickWidget->addAction(QIcon::fromTheme("configure"), tr("Network Settings"), [ = ] {
+        StateManager::statusCenterManager()->showWithPane("NetworkManagerPane");
+    });
+    this->setQuickWidget(quickWidget);
 }
 
 NetworkChunk::~NetworkChunk() {

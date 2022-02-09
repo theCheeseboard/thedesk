@@ -56,6 +56,10 @@ void StatusCenterLeftPane::removeItem(QListWidgetItem* item) {
     ui->mainList->removeItemWidget(item);
 }
 
+void StatusCenterLeftPane::setSelected(QListWidgetItem* item) {
+    item->setSelected(true);
+}
+
 void StatusCenterLeftPane::setAttached(bool attached) {
     d->attached = attached;
     if (attached) {

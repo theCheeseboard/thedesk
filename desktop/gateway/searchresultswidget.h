@@ -36,6 +36,8 @@ class SearchResultsWidget : public QWidget {
 
         void search(QString query);
 
+        void moveSelectionUp();
+        void moveSelectionDown();
         void launchSelected();
 
     private slots:

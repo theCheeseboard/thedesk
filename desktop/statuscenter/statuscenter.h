@@ -49,6 +49,8 @@ class StatusCenter : public QWidget {
         void detachLeftPane();
         void showHamburgerMenu();
 
+        void selectPane(StatusCenterPane* pane);
+        void selectPane(QString pane);
         void selectPane(int index);
         void enterMenu(int index);
 

@@ -68,8 +68,23 @@ SystemSettings::SystemSettings(StatusCenterLeftPane* leftPane) :
         if (StateManager::statusCenterManager()->paneType(pane) == StatusCenterManager::SystemSettings) this->addPane(pane);
     }
 
-    connect(d->leftPane, &SystemSettingsLeftPane::indexChanged, this, &SystemSettings::selectPane);
+    connect(d->leftPane, &SystemSettingsLeftPane::indexChanged, this, QOverload<int>::of(&SystemSettings::selectPane));
     connect(d->leftPane, &SystemSettingsLeftPane::enterMenu, this, &SystemSettings::enterMenu);
+
+    connect(StateManager::statusCenterManager(), QOverload<QString>::of(&StatusCenterManager::paneRequest), this, [ = ](QString paneName) {
+        for (StatusCenterPane* pane : StateManager::statusCenterManager()->panes()) {
+            if (pane->name() == paneName) {
+                if (StateManager::statusCenterManager()->paneType(pane) == StatusCenterManager::SystemSettings) {
+                    selectPane(pane);
+                }
+            }
+        }
+    });
+    connect(StateManager::statusCenterManager(), QOverload<StatusCenterPane*>::of(&StatusCenterManager::paneRequest), this, [ = ](StatusCenterPane * pane) {
+        if (StateManager::statusCenterManager()->paneType(pane) == StatusCenterManager::SystemSettings) {
+            selectPane(pane);
+        }
+    });
 
     StateManager::statusCenterManager()->addPane(new About(), StatusCenterManager::SystemSettings);
     StateManager::statusCenterManager()->addPane(new Recovery(), StatusCenterManager::SystemSettings);
@@ -82,9 +97,20 @@ SystemSettings::~SystemSettings() {
     delete ui;
 }
 
+void SystemSettings::selectPane(QString pane) {
+    for (QPair<QString, StatusCenterPane*> loadedPane : d->loadedPanes) {
+        if (loadedPane.first == pane) selectPane(loadedPane.second);
+    }
+}
+
 void SystemSettings::selectPane(int index) {
-    StatusCenterPane* pane = d->loadedPanes.at(index).second;
+    selectPane(d->loadedPanes.at(index).second);
+}
+
+void SystemSettings::selectPane(StatusCenterPane* pane) {
     ui->stackedWidget->setCurrentWidget(pane);
+    if (pane->leftPane()) d->mainLeftPane->pushMenu(pane->leftPane());
+    d->paneItems.value(pane)->setSelected(true);
 }
 
 void SystemSettings::enterMenu(int index) {

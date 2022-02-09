@@ -64,6 +64,16 @@ void SearchResultsWidget::search(QString query) {
     d->model->search(query);
 }
 
+void SearchResultsWidget::moveSelectionUp()
+{
+
+}
+
+void SearchResultsWidget::moveSelectionDown()
+{
+
+}
+
 void SearchResultsWidget::launchSelected() {
     QModelIndexList indices = ui->listView->selectionModel()->selectedIndexes();
     if (indices.isEmpty() || !indices.first().isValid()) {

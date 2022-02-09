@@ -84,6 +84,24 @@ void StatusCenterManager::removePane(StatusCenterPane* pane) {
     }
 }
 
+void StatusCenterManager::setPane(QString pane) {
+    emit paneRequest(pane);
+}
+
+void StatusCenterManager::setPane(StatusCenterPane* pane) {
+    emit paneRequest(pane);
+}
+
+void StatusCenterManager::showWithPane(QString pane) {
+    setPane(pane);
+    emit showStatusCenter();
+}
+
+void StatusCenterManager::showWithPane(StatusCenterPane* pane) {
+    setPane(pane);
+    emit showStatusCenter();
+}
+
 void StatusCenterManager::addSwitch(QuickSwitch* sw) {
     if (!d->switches.contains(sw)) {
         d->switches.append(sw);

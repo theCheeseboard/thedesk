@@ -94,8 +94,27 @@ StatusCenter::StatusCenter(QWidget* parent) :
         this->addSwitch(sw);
     }
 
-    connect(d->leftPane, &StatusCenterLeftPane::indexChanged, this, &StatusCenter::selectPane);
+    connect(d->leftPane, &StatusCenterLeftPane::indexChanged, this, QOverload<int>::of(&StatusCenter::selectPane));
     connect(d->leftPane, &StatusCenterLeftPane::enterMenu, this, &StatusCenter::enterMenu);
+
+    connect(StateManager::statusCenterManager(), QOverload<QString>::of(&StatusCenterManager::paneRequest), this, [ = ](QString paneName) {
+        for (StatusCenterPane* pane : StateManager::statusCenterManager()->panes()) {
+            if (pane->name() == paneName) {
+                if (StateManager::statusCenterManager()->paneType(pane) == StatusCenterManager::Informational) {
+                    selectPane(pane);
+                } else {
+                    selectPane("SystemSettings");
+                }
+            }
+        }
+    });
+    connect(StateManager::statusCenterManager(), QOverload<StatusCenterPane*>::of(&StatusCenterManager::paneRequest), this, [ = ](StatusCenterPane * pane) {
+        if (StateManager::statusCenterManager()->paneType(pane) == StatusCenterManager::Informational) {
+            selectPane(pane);
+        } else {
+            selectPane("SystemSettings");
+        }
+    });
 
     //Add internal items to the Status Center
     StateManager::instance()->statusCenterManager()->addPane(new SystemSettings(d->leftPane), StatusCenterManager::Informational);
@@ -151,9 +170,20 @@ void StatusCenter::showHamburgerMenu() {
     }
 }
 
-void StatusCenter::selectPane(int index) {
-    StatusCenterPane* pane = d->loadedPanes.at(index).second;
+void StatusCenter::selectPane(StatusCenterPane* pane) {
     ui->stackedWidget->setCurrentWidget(pane);
+    if (pane->leftPane()) d->leftPane->pushMenu(pane->leftPane());
+    d->paneItems.value(pane)->setSelected(true);
+}
+
+void StatusCenter::selectPane(QString pane) {
+    for (QPair<QString, StatusCenterPane*> loadedPane : d->loadedPanes) {
+        if (loadedPane.first == pane) selectPane(loadedPane.second);
+    }
+}
+
+void StatusCenter::selectPane(int index) {
+    selectPane(d->loadedPanes.at(index).second);
 }
 
 void StatusCenter::enterMenu(int index) {

@@ -39,6 +39,8 @@ class SystemSettings : public StatusCenterPane {
         Ui::SystemSettings* ui;
         SystemSettingsPrivate* d;
 
+        void selectPane(QString pane);
+        void selectPane(StatusCenterPane* pane);
         void selectPane(int index);
         void enterMenu(int index);
 

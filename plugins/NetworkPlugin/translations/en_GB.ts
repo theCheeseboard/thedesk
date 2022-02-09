@@ -397,6 +397,10 @@
         <source>Can&apos;t get to the Internet</source>
         <translation>Can&apos;t get to the Internet</translation>
     </message>
+    <message>
+        <source>Network Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NetworkConnectionEditor</name>

@@ -89,6 +89,9 @@ RedshiftDaemon::RedshiftDaemon(QObject* parent) : QObject(parent) {
     quickWidget->addAction(QIcon::fromTheme("redshift-on"), tr("Disable Redshift until tomorrow"), [ = ] {
         d->sw->setChecked(false);
     });
+    quickWidget->addAction(QIcon::fromTheme("configure"), tr("Display Settings"), [ = ] {
+        StateManager::statusCenterManager()->showWithPane("DisplaySettings");
+    });
     d->chunk->setQuickWidget(quickWidget);
 
     d->redshiftStateTimer = new QTimer();

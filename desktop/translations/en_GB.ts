@@ -781,7 +781,7 @@ We&apos;ll go ahead and reset your preferences in %n seconds if you don&apos;t d
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="164"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="190"/>
         <source>System Settings</source>
         <translation>System Preferences</translation>
     </message>

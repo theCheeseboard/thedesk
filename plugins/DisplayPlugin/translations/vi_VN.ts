@@ -137,5 +137,9 @@
         <source>Disable Redshift until tomorrow</source>
         <translation>Vô hiệu Redshift đến khi ngày mai</translation>
     </message>
+    <message>
+        <source>Display Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

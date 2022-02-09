@@ -781,7 +781,7 @@ Pengaturan theDesk akan reset dalam %n detik jika Anda tak melakukan apa-apa.</t
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="164"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="190"/>
         <source>System Settings</source>
         <translation>Pengaturan Sistem</translation>
     </message>

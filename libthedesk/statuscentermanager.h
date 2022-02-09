@@ -52,6 +52,11 @@ class StatusCenterManager : public QObject {
         void addPane(StatusCenterPane* pane, PaneType type = Informational);
         void removePane(StatusCenterPane* pane);
 
+        void setPane(QString pane);
+        void setPane(StatusCenterPane* pane);
+        void showWithPane(QString pane);
+        void showWithPane(StatusCenterPane* pane);
+
         void addSwitch(QuickSwitch* sw);
         void removeSwitch(QuickSwitch* sw);
         bool isSwitchRegistered(QuickSwitch* sw);
@@ -67,10 +72,13 @@ class StatusCenterManager : public QObject {
 
         void requestLogout();
 
-        void paneAdded(StatusCenterPane* pane, PaneType type);
+        void paneAdded(StatusCenterPane* pane, StatusCenterManager::PaneType type);
         void paneRemoved(StatusCenterPane* pane);
         void switchAdded(QuickSwitch* sw);
         void switchRemoved(QuickSwitch* sw);
+
+        void paneRequest(QString pane);
+        void paneRequest(StatusCenterPane* pane);
 
         void isHamburgerMenuRequiredChanged(bool isHamburgerMenuRequired);
 

@@ -781,7 +781,7 @@ Chúng tôi sẽ đặt cài đặt của bạn lại sau %n giay nếu bạn kh
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="164"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="190"/>
         <source>System Settings</source>
         <translation>Cài đặt hệ thống</translation>
     </message>

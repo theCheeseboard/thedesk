@@ -781,7 +781,7 @@ O să continuăm cu resetarea în %n secunde dacă nu faceți nimic.</translatio
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="164"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="190"/>
         <source>System Settings</source>
         <translation>Configurări de sistem</translation>
     </message>

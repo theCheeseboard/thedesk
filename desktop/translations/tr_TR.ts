@@ -781,7 +781,7 @@ Hiçbir şey yapmazsanız, ayarlarınızı %n saniye içinde sıfırlayacağız.
 <context>
     <name>SystemSettings</name>
     <message>
-        <location filename="../systemsettings/systemsettings.cpp" line="164"/>
+        <location filename="../systemsettings/systemsettings.cpp" line="190"/>
         <source>System Settings</source>
         <translation>Sistem Ayarları</translation>
     </message>

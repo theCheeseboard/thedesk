@@ -182,7 +182,7 @@ void MainGatewayWidget::on_statusCenterButton_clicked() {
 }
 
 void MainGatewayWidget::on_systemSettingsButton_clicked() {
-    //TODO: Show system settings
     StateManager::statusCenterManager()->show();
+    StateManager::statusCenterManager()->setPane("SystemSettings");
     emit closeGateway();
 }
