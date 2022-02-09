@@ -22,6 +22,7 @@
 
 #include <gatewaysearchprovider.h>
 
+class tPaintCalculator;
 struct AppSearchProviderPrivate;
 class AppSearchProvider : public GatewaySearchProvider {
         Q_OBJECT
@@ -33,6 +34,8 @@ class AppSearchProvider : public GatewaySearchProvider {
         void launch(QVariantMap data);
         void paint(QPainter* painter, const QStyleOptionViewItem& option, const QVariantMap data) const;
         QSize sizeHint(const QStyleOptionViewItem& option, const QVariantMap data) const;
+
+        tPaintCalculator calculator(QPainter* painter, const QStyleOptionViewItem& option, const QVariantMap data) const;
 
     signals:
 

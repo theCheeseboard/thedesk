@@ -64,14 +64,26 @@ void SearchResultsWidget::search(QString query) {
     d->model->search(query);
 }
 
-void SearchResultsWidget::moveSelectionUp()
-{
-
+void SearchResultsWidget::moveSelectionUp() {
+    QItemSelectionModel* selectionModel = ui->listView->selectionModel();
+    int selectionRow = d->model->rowCount() - 1;
+    if (selectionModel->hasSelection()) {
+        int row = selectionModel->selectedIndexes().first().row();
+        if (row != 0) selectionRow = row - 1;
+    }
+    selectionModel->select(d->model->index(selectionRow), QItemSelectionModel::ClearAndSelect);
+    ui->listView->scrollTo(d->model->index(selectionRow), QListView::PositionAtCenter);
 }
 
-void SearchResultsWidget::moveSelectionDown()
-{
-
+void SearchResultsWidget::moveSelectionDown() {
+    QItemSelectionModel* selectionModel = ui->listView->selectionModel();
+    int selectionRow = 0;
+    if (selectionModel->hasSelection()) {
+        int row = selectionModel->selectedIndexes().first().row();
+        if (row != d->model->rowCount() - 1) selectionRow = row + 1;
+    }
+    selectionModel->select(d->model->index(selectionRow), QItemSelectionModel::ClearAndSelect);
+    ui->listView->scrollTo(d->model->index(selectionRow), QListView::PositionAtCenter);
 }
 
 void SearchResultsWidget::launchSelected() {

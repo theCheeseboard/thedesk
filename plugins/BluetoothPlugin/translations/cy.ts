@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="cy">
+<TS version="2.1" language="cy" sourcelanguage="en_US">
 <context>
     <name>BluetoothChunk</name>
     <message numerus="yes">
         <location filename="../chunk/bluetoothchunk.cpp" line="60"/>
         <source>%n devices connected</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>

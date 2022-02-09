@@ -138,7 +138,7 @@
 <context>
     <name>AppSearchProvider</name>
     <message>
-        <location filename="../gateway/appsearchprovider.cpp" line="89"/>
+        <location filename="../gateway/appsearchprovider.cpp" line="149"/>
         <source>Application</source>
         <translation>Ứng Dụng</translation>
     </message>

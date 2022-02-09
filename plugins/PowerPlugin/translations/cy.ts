@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="cy">
+<TS version="2.1" language="cy" sourcelanguage="en_US">
 <context>
     <name>EventHandler</name>
     <message>
@@ -17,6 +17,10 @@
         <location filename="../eventhandler.cpp" line="122"/>
         <source>%n seconds</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>

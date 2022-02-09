@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="au_AU">
+<TS version="2.1" language="au_AU" sourcelanguage="en_US">
 <context>
     <name>BacktraceDialog</name>
     <message>

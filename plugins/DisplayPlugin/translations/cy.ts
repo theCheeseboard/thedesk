@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="cy">
+<TS version="2.1" language="cy" sourcelanguage="en_US">
 <context>
     <name>ArrangeWidget</name>
     <message>
@@ -168,6 +168,11 @@
     <message>
         <location filename="../redshift/redshiftdaemon.cpp" line="89"/>
         <source>Disable Redshift until tomorrow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../redshift/redshiftdaemon.cpp" line="92"/>
+        <source>Display Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

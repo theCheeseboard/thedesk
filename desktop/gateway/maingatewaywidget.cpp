@@ -109,6 +109,8 @@ MainGatewayWidget::MainGatewayWidget(QWidget* parent) :
         });
         ui->categoriesLayout->addWidget(button);
     }
+
+    ui->searchBox->installEventFilter(this);
 }
 
 MainGatewayWidget::~MainGatewayWidget() {
@@ -185,4 +187,43 @@ void MainGatewayWidget::on_systemSettingsButton_clicked() {
     StateManager::statusCenterManager()->show();
     StateManager::statusCenterManager()->setPane("SystemSettings");
     emit closeGateway();
+}
+
+
+bool MainGatewayWidget::eventFilter(QObject* watched, QEvent* event) {
+    if (watched == ui->searchBox) {
+        if (event->type() == QEvent::KeyPress) {
+            QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+            if (keyEvent->key() == Qt::Key_Down) {
+                if (ui->searchBox->text().isEmpty()) {
+                    QItemSelectionModel* selectionModel = ui->appsList->selectionModel();
+                    int selectionRow = 0;
+                    if (selectionModel->hasSelection()) {
+                        int row = selectionModel->selectedIndexes().first().row();
+                        if (row != d->model->rowCount() - 1) selectionRow = row + 1;
+                    }
+                    selectionModel->select(d->model->index(selectionRow), QItemSelectionModel::ClearAndSelect);
+                    ui->appsList->scrollTo(d->model->index(selectionRow), QListView::PositionAtCenter);
+                } else {
+                    d->searchWidget->moveSelectionDown();
+                }
+                return true;
+            } else if (keyEvent->key() == Qt::Key_Up) {
+                if (ui->searchBox->text().isEmpty()) {
+                    QItemSelectionModel* selectionModel = ui->appsList->selectionModel();
+                    int selectionRow = d->model->rowCount() - 1;
+                    if (selectionModel->hasSelection()) {
+                        int row = selectionModel->selectedIndexes().first().row();
+                        if (row != 0) selectionRow = row - 1;
+                    }
+                    selectionModel->select(d->model->index(selectionRow), QItemSelectionModel::ClearAndSelect);
+                    ui->appsList->scrollTo(d->model->index(selectionRow), QListView::PositionAtCenter);
+                } else {
+                    d->searchWidget->moveSelectionUp();
+                }
+                return true;
+            }
+        }
+    }
+    return false;
 }

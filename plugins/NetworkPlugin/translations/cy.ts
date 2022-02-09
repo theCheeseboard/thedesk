@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="cy">
+<TS version="2.1" language="cy" sourcelanguage="en_US">
 <context>
     <name>CellularPane</name>
     <message>
@@ -486,17 +486,22 @@
 <context>
     <name>NetworkChunk</name>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="94"/>
+        <location filename="../chunk/networkchunk.cpp" line="63"/>
+        <source>Network Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../chunk/networkchunk.cpp" line="102"/>
         <source>Disconnected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="128"/>
+        <location filename="../chunk/networkchunk.cpp" line="136"/>
         <source>Login Required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="131"/>
+        <location filename="../chunk/networkchunk.cpp" line="139"/>
         <source>Can&apos;t get to the Internet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -802,6 +807,10 @@
         <source>You have %n remaining tries</source>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -929,6 +938,10 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="74"/>
         <source>You have %n remaining tries</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>

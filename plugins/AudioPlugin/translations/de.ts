@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="de">
+<TS version="2.1" language="de" sourcelanguage="en_US">
 <context>
     <name>AudioQuickWidget</name>
     <message>
@@ -63,6 +63,7 @@
         <location filename="../micchunk.cpp" line="66"/>
         <source>%n applications</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>

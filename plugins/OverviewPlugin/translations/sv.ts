@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="sv">
+<TS version="2.1" language="sv" sourcelanguage="en_US">
 <context>
     <name>OverviewPane</name>
     <message>
@@ -33,12 +33,14 @@
         <source>Daylight Savings Time is ending on %2. The clock will automatically shift backwards by %n hour(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../OverviewPane/overviewpane.cpp" line="210"/>
         <source>Daylight Savings Time is starting on %2. The clock will automatically shift forwards by %n hour(s).</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>

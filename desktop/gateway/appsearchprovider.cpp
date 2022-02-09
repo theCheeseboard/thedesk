@@ -20,6 +20,7 @@
 #include "appsearchprovider.h"
 
 #include <QPainter>
+#include <tpaintcalculator.h>
 #include <Applications/application.h>
 
 struct AppSearchProviderPrivate {
@@ -54,13 +55,22 @@ tPromise<QList<QVariantMap>>* AppSearchProvider::searchResults(QString query) {
             possibleWords.append(a->getProperty("GenericName").toString());
             possibleWords.append(a->getStringList("Keywords"));
 
-            for (QString s : possibleWords) {
+            for (const QString& s : possibleWords) {
                 if (s.contains(query, Qt::CaseInsensitive)) {
                     results.append({
                         {"application", a->desktopEntry()},
                         {"mainText", a->getProperty("Name").toString()},
                         {"priority", 0}
                     });
+
+                    for (QString action : a->getStringList("Actions")) {
+                        results.append({
+                            {"application", a->desktopEntry()},
+                            {"action", action},
+                            {"mainText", a->getProperty("Name").toString()},
+                            {"priority", 0}
+                        });
+                    }
                     break;
                 }
             }
@@ -80,90 +90,141 @@ tPromise<QList<QVariantMap>>* AppSearchProvider::searchResults(QString query) {
 }
 
 void AppSearchProvider::launch(QVariantMap data) {
-    Application(data.value("application").toString()).launch();
+    Application app(data.value("application").toString());
+    if (data.contains("action")) {
+        app.launchAction(data.value("action").toString());
+    } else {
+        app.launch();
+    }
 }
 
 void AppSearchProvider::paint(QPainter* painter, const QStyleOptionViewItem& option, const QVariantMap data) const {
-    Application app(data.value("application").toString());
-    QString name = app.getProperty("Name").toString();
-    QString genericName = app.getProperty("GenericName", tr("Application")).toString();
-    QPixmap icon = app.icon(SC_DPI_T(QSize(32, 32), QSize));
+    tPaintCalculator calculator = this->calculator(painter, option, data);
+    calculator.setPainter(painter);
 
     painter->setFont(option.font);
-    painter->setLayoutDirection(option.direction);
+
+    calculator.performPaint();
+}
+
+QSize AppSearchProvider::sizeHint(const QStyleOptionViewItem& option, const QVariantMap data) const {
+//    Application app(data.value("application").toString());
+//    int fontHeight = option.fontMetrics.height() * 2 + SC_DPI(14);
+//    int iconHeight = SC_DPI(46);
+
+//    return QSize(option.fontMetrics.horizontalAdvance(app.getProperty("Name").toString()), qMax(fontHeight, iconHeight));
+    return calculator(nullptr, option, data).sizeWithMargins().toSize();
+}
+
+tPaintCalculator AppSearchProvider::calculator(QPainter* painter, const QStyleOptionViewItem& option, const QVariantMap data) const {
+    Application app(data.value("application").toString());
+
+    tPaintCalculator calculator;
+    calculator.setDrawBounds(option.rect);
+    calculator.setLayoutDirection(option.direction);
+
+    QString name;
+    QString genericName;
+    QPixmap icon;
 
     QRect iconRect;
-    iconRect.setLeft(option.rect.left() + SC_DPI(6));
-    iconRect.setTop(option.rect.top() + SC_DPI(6));
-    iconRect.setBottom(iconRect.top() + SC_DPI(32));
-    iconRect.setRight(iconRect.left() + SC_DPI(32));
-
     QRect textRect;
-    textRect.setLeft(iconRect.right() + SC_DPI(6));
-    textRect.setTop(option.rect.top() + SC_DPI(6));
-    textRect.setBottom(option.rect.top() + option.fontMetrics.height() + SC_DPI(6));
-    textRect.setRight(option.rect.right());
-
     QRect descRect;
-    descRect.setLeft(iconRect.right() + SC_DPI(6));
-    descRect.setTop(option.rect.top() + option.fontMetrics.height() + SC_DPI(8));
-    descRect.setBottom(option.rect.top() + option.fontMetrics.height() * 2 + SC_DPI(6));
-    descRect.setRight(option.rect.right());
 
-    if (option.direction == Qt::RightToLeft) {
-        iconRect.moveRight(option.rect.right() - SC_DPI(6));
-        textRect.moveRight(iconRect.left() - SC_DPI(6));
-        descRect.moveRight(iconRect.left() - SC_DPI(6));
+    if (data.contains("action")) {
+        QString action = data.value("action").toString();
+        name = app.getActionProperty(action, "Name").toString();
+        icon = app.icon(SC_DPI_T(QSize(16, 16), QSize));
+
+        iconRect.setLeft(option.rect.left() + SC_DPI(12));
+        iconRect.setTop(option.rect.top() + SC_DPI(6));
+        iconRect.setSize(icon.size());
+
+        textRect.setHeight(option.fontMetrics.height());
+        textRect.setWidth(option.fontMetrics.horizontalAdvance(name) + 1);
+        textRect.moveCenter(iconRect.center());
+        textRect.moveLeft(iconRect.right() + SC_DPI(6));
+    } else {
+        name = app.getProperty("Name").toString();
+        genericName = app.getProperty("GenericName", tr("Application")).toString();
+        icon = app.icon(SC_DPI_T(QSize(32, 32), QSize));
+
+        iconRect.setLeft(option.rect.left() + SC_DPI(6));
+        iconRect.setTop(option.rect.top() + SC_DPI(6));
+        iconRect.setSize(icon.size());
+
+        textRect.setLeft(iconRect.right() + SC_DPI(6));
+        textRect.setTop(option.rect.top() + SC_DPI(6));
+        textRect.setBottom(option.rect.top() + option.fontMetrics.height() + SC_DPI(6));
+        textRect.setRight(option.rect.right());
+
+        descRect.setLeft(iconRect.right() + SC_DPI(6));
+        descRect.setTop(option.rect.top() + option.fontMetrics.height() + SC_DPI(8));
+        descRect.setBottom(option.rect.top() + option.fontMetrics.height() * 2 + SC_DPI(6));
+        descRect.setRight(option.rect.right());
     }
+
 
     if (option.state & QStyle::State_Selected) {
-        painter->setPen(Qt::transparent);
-        painter->setBrush(option.palette.color(QPalette::Highlight));
-        painter->drawRect(option.rect);
-        painter->setBrush(Qt::transparent);
-        painter->setPen(option.palette.color(QPalette::HighlightedText));
-        painter->drawText(textRect, Qt::AlignLeading, name);
-        painter->drawText(descRect, Qt::AlignLeading, genericName);
+        calculator.addRect(option.rect, [ = ](QRectF drawBounds) {
+            painter->setPen(Qt::transparent);
+            painter->setBrush(option.palette.color(QPalette::Highlight));
+            painter->drawRect(drawBounds);
+        });
+        calculator.addRect(textRect, [ = ](QRectF drawBounds) {
+            painter->setBrush(Qt::transparent);
+            painter->setPen(option.palette.color(QPalette::HighlightedText));
+            painter->drawText(drawBounds, Qt::AlignLeading, name);
+        });
+        calculator.addRect(descRect, [ = ](QRectF drawBounds) {
+            painter->drawText(drawBounds, Qt::AlignLeading, genericName);
+        });
     } else if (option.state & QStyle::State_MouseOver) {
-        QColor col = option.palette.color(QPalette::Highlight);
-        col.setAlpha(127);
-        painter->setBrush(col);
-        painter->setPen(Qt::transparent);
-        painter->drawRect(option.rect);
-        painter->setBrush(Qt::transparent);
-        painter->setPen(option.palette.color(QPalette::WindowText));
-        painter->drawText(textRect, Qt::AlignLeading, name);
-        painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
-        painter->drawText(descRect, Qt::AlignLeading, genericName);
+        calculator.addRect(option.rect, [ = ](QRectF drawBounds) {
+            QColor col = option.palette.color(QPalette::Highlight);
+            col.setAlpha(127);
+            painter->setBrush(col);
+            painter->setPen(Qt::transparent);
+            painter->drawRect(drawBounds);
+        });
+        calculator.addRect(textRect, [ = ](QRectF drawBounds) {
+            painter->setBrush(Qt::transparent);
+            painter->setPen(option.palette.color(QPalette::WindowText));
+            painter->drawText(drawBounds, Qt::AlignLeading, name);
+        });
+        calculator.addRect(descRect, [ = ](QRectF drawBounds) {
+            painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
+            painter->drawText(drawBounds, Qt::AlignLeading, genericName);
+        });
     } else {
-        painter->setPen(option.palette.color(QPalette::WindowText));
-        painter->drawText(textRect, Qt::AlignLeading, name);
-        painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
-        painter->drawText(descRect, Qt::AlignLeading, genericName);
+        calculator.addRect(textRect, [ = ](QRectF drawBounds) {
+            painter->setPen(option.palette.color(QPalette::WindowText));
+            painter->drawText(drawBounds, Qt::AlignLeading, name);
+        });
+        calculator.addRect(descRect, [ = ](QRectF drawBounds) {
+            painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
+            painter->drawText(drawBounds, Qt::AlignLeading, genericName);
+        });
     }
-    painter->drawPixmap(iconRect, icon);
+
+    calculator.addRect(iconRect, [ = ](QRectF drawBounds) {
+        painter->drawPixmap(drawBounds.toRect(), icon);
+    });
+
 
     if (data.value("drawArrows", true).toBool()) {
         if (app.getStringList("Actions").count() > 0) { //Actions included
             QRect actionsRect;
             actionsRect.setWidth(SC_DPI(16));
             actionsRect.setHeight(SC_DPI(16));
+            actionsRect.moveCenter(iconRect.center());
             actionsRect.moveRight(option.rect.right() - SC_DPI(9));
-            actionsRect.moveTop(option.rect.top() + option.rect.height() / 2 - SC_DPI(8));
 
-            if (option.direction == Qt::RightToLeft) {
-                actionsRect.moveLeft(option.rect.left() + SC_DPI(9));
-            }
-
-            painter->drawPixmap(actionsRect, QIcon::fromTheme("arrow-right").pixmap(SC_DPI(16), SC_DPI(16)));
+            calculator.addRect(actionsRect, [ = ](QRectF drawBounds) {
+                painter->drawPixmap(drawBounds.toRect(), QIcon::fromTheme("arrow-right").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
+            });
         }
     }
-}
 
-QSize AppSearchProvider::sizeHint(const QStyleOptionViewItem& option, const QVariantMap data) const {
-    Application app(data.value("application").toString());
-    int fontHeight = option.fontMetrics.height() * 2 + SC_DPI(14);
-    int iconHeight = SC_DPI(46);
-
-    return QSize(option.fontMetrics.horizontalAdvance(app.getProperty("Name").toString()), qMax(fontHeight, iconHeight));
+    return calculator;
 }

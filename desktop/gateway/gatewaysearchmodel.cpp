@@ -76,6 +76,8 @@ int GatewaySearchModel::rowCount(const QModelIndex& parent) const {
 QVariant GatewaySearchModel::data(const QModelIndex& index, int role) const {
     if (!index.isValid()) return QVariant();
 
+    if (d->currentItems.length() <= index.row()) return QVariant();
+
     switch (role) {
         case Qt::UserRole:
             return d->currentItems.at(index.row()).value("data");

@@ -66,6 +66,10 @@ class MainGatewayWidget : public QWidget {
 
         void changeEvent(QEvent* event);
         void resizeEvent(QResizeEvent* event);
+
+        // QObject interface
+    public:
+        bool eventFilter(QObject*watched, QEvent*event);
 };
 
 #endif // MAINGATEWAYWIDGET_H
