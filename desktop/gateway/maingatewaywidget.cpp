@@ -171,6 +171,7 @@ bool MainGatewayWidget::showActionMenu(QModelIndex applicationIndex) {
     for (const QString& action : application->getStringList("Actions")) {
         menu->addAction(application->actionIcon(action), application->getActionProperty(action, "Name").toString(), this, [ = ] {
             application->launchAction(action);
+            emit closeGateway();
         });
     }
 
