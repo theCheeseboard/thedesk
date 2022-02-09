@@ -63,13 +63,14 @@ class MainGatewayWidget : public QWidget {
         MainGatewayWidgetPrivate* d;
 
         void launch(QModelIndex applicationIndex);
+        bool showActionMenu(QModelIndex applicationIndex);
 
         void changeEvent(QEvent* event);
         void resizeEvent(QResizeEvent* event);
 
         // QObject interface
     public:
-        bool eventFilter(QObject*watched, QEvent*event);
+        bool eventFilter(QObject* watched, QEvent* event);
 };
 
 #endif // MAINGATEWAYWIDGET_H

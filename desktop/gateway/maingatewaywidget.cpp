@@ -33,6 +33,7 @@
 #include "searchresultswidget.h"
 #include <statuscentermanager.h>
 #include <QShortcut>
+#include <QMenu>
 
 struct MainGatewayWidgetPrivate {
     AppSelectionModel* model;
@@ -144,6 +145,11 @@ void MainGatewayWidget::on_searchBox_textEdited(const QString& arg1) {
 }
 
 void MainGatewayWidget::on_appsList_clicked(const QModelIndex& index) {
+    int x = ui->appsList->mapFromGlobal(QCursor::pos()).x();
+    if ((this->layoutDirection() == Qt::RightToLeft && x < SC_DPI(32)) ||
+        (this->layoutDirection() == Qt::LeftToRight && x > ui->appsList->width() - SC_DPI(32))) {
+        if (showActionMenu(index)) return;
+    }
     launch(index);
 }
 
@@ -154,6 +160,29 @@ void MainGatewayWidget::on_searchBox_returnPressed() {
 void MainGatewayWidget::launch(QModelIndex applicationIndex) {
     applicationIndex.data(Qt::UserRole + 3).value<ApplicationPointer>()->launch();
     emit closeGateway();
+}
+
+bool MainGatewayWidget::showActionMenu(QModelIndex applicationIndex) {
+    ApplicationPointer application = applicationIndex.data(Qt::UserRole + 3).value<ApplicationPointer>();
+    if (application->getStringList("Actions").isEmpty()) return false;
+
+    QMenu* menu = new QMenu();
+    menu->addSection(tr("Actions for %1").arg(QLocale().quoteString(application->getProperty("Name").toString())));
+    for (const QString& action : application->getStringList("Actions")) {
+        menu->addAction(application->actionIcon(action), application->getActionProperty(action, "Name").toString(), this, [ = ] {
+            application->launchAction(action);
+        });
+    }
+
+    connect(menu, &QMenu::aboutToHide, menu, &QMenu::deleteLater);
+
+    QRect rect = ui->appsList->visualRect(applicationIndex);
+    if (layoutDirection() == Qt::RightToLeft) {
+        menu->popup(ui->appsList->mapToGlobal(rect.topLeft()));
+    } else {
+        menu->popup(ui->appsList->mapToGlobal(rect.topRight()));
+    }
+    return true;
 }
 
 void MainGatewayWidget::changeEvent(QEvent* event) {
@@ -222,6 +251,15 @@ bool MainGatewayWidget::eventFilter(QObject* watched, QEvent* event) {
                     d->searchWidget->moveSelectionUp();
                 }
                 return true;
+            } else if ((layoutDirection() == Qt::LeftToRight && keyEvent->key() == Qt::Key_Right) ||
+                (layoutDirection() == Qt::RightToLeft && keyEvent->key() == Qt::Key_Left)) {
+                if (ui->searchBox->text().isEmpty()) {
+                    QItemSelectionModel* selectionModel = ui->appsList->selectionModel();
+                    if (selectionModel->hasSelection()) {
+                        showActionMenu(selectionModel->selectedIndexes().first());
+                    }
+                    return true;
+                }
             }
         }
     }

@@ -60,7 +60,8 @@ tPromise<QList<QVariantMap>>* AppSearchProvider::searchResults(QString query) {
                     results.append({
                         {"application", a->desktopEntry()},
                         {"mainText", a->getProperty("Name").toString()},
-                        {"priority", 0}
+                        {"priority", 0},
+                        {"drawArrows", false}
                     });
 
                     for (QString action : a->getStringList("Actions")) {
@@ -68,7 +69,8 @@ tPromise<QList<QVariantMap>>* AppSearchProvider::searchResults(QString query) {
                             {"application", a->desktopEntry()},
                             {"action", action},
                             {"mainText", a->getProperty("Name").toString()},
-                            {"priority", 0}
+                            {"priority", 0},
+                            {"drawArrows", false}
                         });
                     }
                     break;
@@ -134,7 +136,7 @@ tPaintCalculator AppSearchProvider::calculator(QPainter* painter, const QStyleOp
     if (data.contains("action")) {
         QString action = data.value("action").toString();
         name = app.getActionProperty(action, "Name").toString();
-        icon = app.icon(SC_DPI_T(QSize(16, 16), QSize));
+        icon = app.actionIcon(action, SC_DPI_T(QSize(16, 16), QSize));
 
         iconRect.setLeft(option.rect.left() + SC_DPI(12));
         iconRect.setTop(option.rect.top() + SC_DPI(6));

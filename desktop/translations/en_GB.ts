@@ -138,7 +138,7 @@
 <context>
     <name>AppSearchProvider</name>
     <message>
-        <location filename="../gateway/appsearchprovider.cpp" line="149"/>
+        <location filename="../gateway/appsearchprovider.cpp" line="151"/>
         <source>Application</source>
         <translation type="unfinished">Application</translation>
     </message>
@@ -565,48 +565,53 @@
         <translation>End Session</translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="87"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="88"/>
         <source>A/V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="88"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="89"/>
         <source>Development</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="89"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="90"/>
         <source>Education</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="90"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="91"/>
         <source>Games</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="91"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="92"/>
         <source>Graphics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="92"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="93"/>
         <source>Networking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="93"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="94"/>
         <source>Office</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="94"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="95"/>
         <source>Science</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gateway/maingatewaywidget.cpp" line="95"/>
+        <location filename="../gateway/maingatewaywidget.cpp" line="96"/>
         <source>Utilities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gateway/maingatewaywidget.cpp" line="170"/>
+        <source>Actions for %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
