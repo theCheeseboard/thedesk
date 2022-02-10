@@ -6,135 +6,135 @@
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="84"/>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation>STATUS</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="102"/>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Este dispositivo</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="246"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>AÇÕES</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="262"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectar</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="269"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Desconectar</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.ui" line="276"/>
         <source>Modem Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurações do modem</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="105"/>
         <source>Disable Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Desativar dados móveis</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="107"/>
         <source>Enable Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Ativar dados móveis</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="129"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>Desconectado</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="134"/>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation>Dados móveis</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="139"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectado</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="148"/>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Falha</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="206"/>
         <source>No SIM Card</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum cartão SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="207"/>
         <source>Insert a SIM card to connect to cellular services.</source>
-        <translation type="unfinished"></translation>
+        <translation>Insira um cartão SIM para conectar aos dados móveis.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="209"/>
         <source>No SIM</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum cartão SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="212"/>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>Indisponível</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="215"/>
         <source>This network is unavailable because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Essa rede está indisponível porque %2.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="245"/>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation>Falha na conexão</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="247"/>
         <source>Connecting to the network failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>A conexão com a rede falhou porque %2.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="321"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="334"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="341"/>
         <source>Enter SIM PIN</source>
-        <translation type="unfinished"></translation>
+        <translation>Insira o PIN do SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="323"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="327"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="339"/>
         <source>SIM PIN Required</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN do SIM obrigatório</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="329"/>
         <source>A SIM PIN is required to connect to the cellular network.</source>
-        <translation type="unfinished"></translation>
+        <translation>O PIN do SIM é obrigatório para conectar com os dados móveis.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="351"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="364"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="371"/>
         <source>Enter SIM PUK</source>
-        <translation type="unfinished"></translation>
+        <translation>Insira PUK do SIM</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="353"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
         <source>SIM PUK Required</source>
-        <translation type="unfinished"></translation>
+        <translation>PUK do SIM obrigatório</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="359"/>
         <source>A SIM PUK is required to connect to the cellular network.</source>
-        <translation type="unfinished"></translation>
+        <translation>O PUK do SIM é obrigatório para conectar aos dados móveis.</translation>
     </message>
 </context>
 <context>
@@ -142,47 +142,47 @@
     <message>
         <location filename="../common.cpp" line="28"/>
         <source>the device is no longer managed by NetworkManager</source>
-        <translation type="unfinished"></translation>
+        <translation>o dispositivo não é mais gerido pelo NetworkManager</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="30"/>
         <source>configuration of the device failed</source>
-        <translation type="unfinished"></translation>
+        <translation>a configuração do dispositivo falhou</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="32"/>
         <source>configuration of the device is unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation>a configuração do dispositivo está indisponível</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="34"/>
         <source>configuration of the device expired</source>
-        <translation type="unfinished"></translation>
+        <translation>a configuração do dispositivo expirou</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="36"/>
         <source>required secrets were not provided</source>
-        <translation type="unfinished"></translation>
+        <translation>dados secretos obrigatórios não foram fornecidos</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="38"/>
         <source>the authentication supplicant disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation>o requerente da autenticação desconectou</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="40"/>
         <source>configuration of the authentication supplicant failed</source>
-        <translation type="unfinished"></translation>
+        <translation>a configuração do requerente da autenticação falhou</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="42"/>
         <source>the authentication supplicant failed</source>
-        <translation type="unfinished"></translation>
+        <translation>o requerente da autenticação falhou</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="44"/>
         <source>the authentication supplicant timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>o requerente da autenticação expirou</translation>
     </message>
     <message>
         <location filename="../common.cpp" line="46"/>
