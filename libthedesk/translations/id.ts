@@ -5,33 +5,33 @@
     <name>KeyboardLayoutSelector</name>
     <message>
         <source>Select a keyboard layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilihlah susunan keyboard yang sesuai</translation>
     </message>
 </context>
 <context>
     <name>LocaleSelector</name>
     <message>
         <source>Select a locale</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih bahasa yang diinginkan</translation>
     </message>
 </context>
 <context>
     <name>OnboardingFinal</name>
     <message>
         <source>That&apos;s everything!</source>
-        <translation type="unfinished"></translation>
+        <translation>Selesai!</translation>
     </message>
     <message>
         <source>We hope you enjoy using theDesk!</source>
-        <translation type="unfinished"></translation>
+        <translation>Kami harap Anda dapat menikmati theDesk!</translation>
     </message>
     <message>
         <source>Get Started</source>
-        <translation type="unfinished"></translation>
+        <translation>Mulai</translation>
     </message>
     <message>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Selesai</translation>
     </message>
 </context>
 <context>
@@ -45,23 +45,23 @@
     <name>OnboardingWelcome</name>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Bahasa</translation>
     </message>
     <message>
         <source>Emergency</source>
-        <translation type="unfinished"></translation>
+        <translation>Darurat</translation>
     </message>
     <message>
         <source>Let&apos;s go!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mari kita mulai!</translation>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Selamat Datang</translation>
     </message>
     <message>
         <source>Welcome to %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Selamat datang di %1!</translation>
     </message>
     <message>
         <source>You&apos;ve made it! We&apos;ll quickly go through some important setup like setting up accounts and connecting to the Internet, and then you&apos;ll be up and running.</source>
