@@ -86,7 +86,7 @@
     <message>
         <location filename="../quickwidgetsinkinput.cpp" line="63"/>
         <source>Play on</source>
-        <translation>Tocar em</translation>
+        <translation>Reproduzir em</translation>
     </message>
 </context>
 </TS>
