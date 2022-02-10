@@ -61,6 +61,10 @@ class DisplaySettings : public StatusCenterPane {
         void on_dpi125Button_toggled(bool checked);
         void on_dpi150Button_toggled(bool checked);
         void on_dpi200Button_toggled(bool checked);
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // DISPLAYSETTINGS_H

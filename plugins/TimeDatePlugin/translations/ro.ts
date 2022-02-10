@@ -5,32 +5,32 @@
     <name>DateTimePane</name>
     <message>
         <location filename="../settings/datetimepane.ui" line="35"/>
-        <location filename="../settings/datetimepane.cpp" line="71"/>
+        <location filename="../settings/datetimepane.cpp" line="72"/>
         <source>Date and Time</source>
         <translation>Ora și data</translation>
     </message>
     <message>
-        <location filename="../settings/datetimepane.ui" line="84"/>
+        <location filename="../settings/datetimepane.ui" line="83"/>
         <source>ACTIONS</source>
         <translation>ACȚIUNI</translation>
     </message>
     <message>
-        <location filename="../settings/datetimepane.ui" line="111"/>
+        <location filename="../settings/datetimepane.ui" line="107"/>
         <source>Change Date and Time</source>
         <translation>Schimbați ora și data</translation>
     </message>
     <message>
-        <location filename="../settings/datetimepane.ui" line="118"/>
+        <location filename="../settings/datetimepane.ui" line="114"/>
         <source>Change Timezone</source>
         <translation>Schimbați fusul orar</translation>
     </message>
     <message>
-        <location filename="../settings/datetimepane.ui" line="146"/>
+        <location filename="../settings/datetimepane.ui" line="142"/>
         <source>Synchronise clock with the Internet</source>
         <translation>Sincronizați ceasul cu internetul</translation>
     </message>
     <message>
-        <location filename="../settings/datetimepane.ui" line="166"/>
+        <location filename="../settings/datetimepane.ui" line="161"/>
         <source>TIME SYNCHRONISATION</source>
         <translation>SINCRONIZAREA CEASULUI</translation>
     </message>
@@ -62,6 +62,24 @@
         <location filename="../onboarding/onboardingtimezone.ui" line="177"/>
         <source>Next</source>
         <translation>Următorul</translation>
+    </message>
+</context>
+<context>
+    <name>SetTimeDatePopover</name>
+    <message>
+        <location filename="../popovers/settimedatepopover.ui" line="57"/>
+        <source>Set Date and Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popovers/settimedatepopover.ui" line="64"/>
+        <source>What&apos;s the current date and time?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popovers/settimedatepopover.ui" line="77"/>
+        <source>Apply Date and Time</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

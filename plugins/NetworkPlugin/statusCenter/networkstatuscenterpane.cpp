@@ -170,3 +170,11 @@ QWidget* NetworkStatusCenterPane::leftPane() {
 void NetworkStatusCenterPane::on_menuButtonErrorPage_clicked() {
     StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
 }
+
+
+void NetworkStatusCenterPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}

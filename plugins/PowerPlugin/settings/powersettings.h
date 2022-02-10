@@ -37,7 +37,7 @@ class PowerSettings : public StatusCenterPane {
 
         void on_lockScreenAfterSuspendSwitch_toggled(bool checked);
 
-private:
+    private:
         Ui::PowerSettings* ui;
         PowerSettingsPrivate* d;
 
@@ -52,6 +52,10 @@ private:
         QString displayName();
         QIcon icon();
         QWidget* leftPane();
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // POWERSETTINGS_H

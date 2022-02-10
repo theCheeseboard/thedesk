@@ -505,3 +505,10 @@ void WifiDevicePane::on_tetheringSettings_clicked() {
     connect(popover, &tPopover::dismissed, tetheringSettings, &TetheringSettingsPopover::deleteLater);
     popover->show(this->window());
 }
+
+
+void WifiDevicePane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}

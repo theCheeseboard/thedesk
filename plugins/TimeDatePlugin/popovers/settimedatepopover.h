@@ -17,37 +17,34 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef KEYBOARDSETTINGS_H
-#define KEYBOARDSETTINGS_H
+#ifndef SETTIMEDATEPOPOVER_H
+#define SETTIMEDATEPOPOVER_H
 
 #include <QWidget>
 
 namespace Ui {
-    class KeyboardSettings;
+    class SetTimeDatePopover;
 }
 
-struct KeyboardSettingsPrivate;
-class KeyboardSettings : public QWidget {
+struct SetTimeDatePopoverPrivate;
+class SetTimeDatePopover : public QWidget {
         Q_OBJECT
 
     public:
-        explicit KeyboardSettings(QWidget* parent = nullptr);
-        ~KeyboardSettings();
+        explicit SetTimeDatePopover(QWidget* parent = nullptr);
+        ~SetTimeDatePopover();
+
+    signals:
+        void done();
 
     private slots:
         void on_titleLabel_backButtonClicked();
 
-        void on_addLayoutButton_clicked();
-
-        void on_layoutsList_customContextMenuRequested(const QPoint& pos);
+        void on_applyButton_clicked();
 
     private:
-        Ui::KeyboardSettings* ui;
-        KeyboardSettingsPrivate* d;
-
-        // QWidget interface
-    protected:
-        void changeEvent(QEvent* event);
+        Ui::SetTimeDatePopover* ui;
+        SetTimeDatePopoverPrivate* d;
 };
 
-#endif // KEYBOARDSETTINGS_H
+#endif // SETTIMEDATEPOPOVER_H

@@ -184,8 +184,15 @@ void PowerSettings::on_performanceProfileButton_toggled(bool checked) {
     if (checked) d->profiles->setCurrentPowerProfile(DesktopPowerProfiles::Performance);
 }
 
-void PowerSettings::on_lockScreenAfterSuspendSwitch_toggled(bool checked)
-{
+void PowerSettings::on_lockScreenAfterSuspendSwitch_toggled(bool checked) {
     d->settings.setValue("Power/suspend.lockScreen", checked);
 }
 
+
+
+void PowerSettings::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}

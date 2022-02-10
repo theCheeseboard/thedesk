@@ -48,6 +48,10 @@ class DefaultsPane : public StatusCenterPane {
         void on_titleLabel_backButtonClicked();
         void on_defaultBrowserBox_currentIndexChanged(int index);
         void on_defaultMailBox_currentIndexChanged(int index);
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // DEFAULTSPANE_H

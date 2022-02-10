@@ -89,3 +89,10 @@ void KeyboardSettings::on_layoutsList_customContextMenuRequested(const QPoint& p
     }
 }
 
+
+
+void KeyboardSettings::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}

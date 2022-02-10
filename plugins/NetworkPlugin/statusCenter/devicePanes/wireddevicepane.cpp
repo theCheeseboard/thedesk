@@ -254,3 +254,10 @@ void WiredDevicePane::on_connectButton_clicked() {
 void WiredDevicePane::on_titleLabel_backButtonClicked() {
     StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
 }
+
+
+void WiredDevicePane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}

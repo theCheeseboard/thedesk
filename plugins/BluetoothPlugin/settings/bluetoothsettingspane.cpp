@@ -222,3 +222,11 @@ void BluetoothSettingsPane::on_devicesList_activated(const QModelIndex& index) {
     connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
     popover->show(this->window());
 }
+
+
+void BluetoothSettingsPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}

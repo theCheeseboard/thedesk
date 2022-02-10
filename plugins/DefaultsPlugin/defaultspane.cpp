@@ -103,3 +103,11 @@ void DefaultsPane::on_defaultMailBox_currentIndexChanged(int index) {
     QString app = ui->defaultMailBox->itemData(index).toString();
     MimeAssociationManager::setDefaultApplicationForMimeType(app, "x-scheme-handler/mailto");
 }
+
+
+void DefaultsPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}

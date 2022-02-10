@@ -44,6 +44,10 @@ class DevicePane : public AbstractDevicePane {
     private slots:
         void on_disconnectButton_clicked();
         void on_titleLabel_backButtonClicked();
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // DEVICEPANE_H

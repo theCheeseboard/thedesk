@@ -43,6 +43,10 @@ class InputSettingsLeftPane : public QWidget {
 
     private:
         Ui::InputSettingsLeftPane* ui;
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // INPUTSETTINGSLEFTPANE_H

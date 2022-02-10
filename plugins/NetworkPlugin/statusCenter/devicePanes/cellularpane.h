@@ -54,6 +54,10 @@ class CellularPane : public AbstractDevicePane {
         void on_simSettingsButton_clicked();
         void on_unlockModemButton_clicked();
         void on_titleLabel_backButtonClicked();
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // CELLULARPANE_H

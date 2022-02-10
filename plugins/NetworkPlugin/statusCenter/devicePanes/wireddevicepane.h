@@ -48,6 +48,10 @@ class WiredDevicePane : public AbstractDevicePane {
         void on_disconnectButton_clicked();
         void on_connectButton_clicked();
         void on_titleLabel_backButtonClicked();
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // WIREDDEVICEPANE_H

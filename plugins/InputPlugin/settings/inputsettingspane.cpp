@@ -62,3 +62,11 @@ QIcon InputSettingsPane::icon() {
 QWidget* InputSettingsPane::leftPane() {
     return d->leftPane;
 }
+
+
+void InputSettingsPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}

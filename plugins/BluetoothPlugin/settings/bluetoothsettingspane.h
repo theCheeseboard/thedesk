@@ -62,6 +62,10 @@ class BluetoothSettingsPane : public StatusCenterPane {
         QString displayName();
         QIcon icon();
         QWidget* leftPane();
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // BLUETOOTHSETTINGSPANE_H

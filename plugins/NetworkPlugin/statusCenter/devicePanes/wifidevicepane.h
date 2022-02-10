@@ -57,6 +57,10 @@ class WifiDevicePane : public AbstractDevicePane {
         void on_turnWifiOnButton_clicked();
         void on_turnWifiOnButton_2_clicked();
         void on_tetheringSettings_clicked();
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // WIFIDEVICEPANE_H

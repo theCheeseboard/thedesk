@@ -76,3 +76,10 @@ void DevicePane::on_disconnectButton_clicked() {
 void DevicePane::on_titleLabel_backButtonClicked() {
     StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
 }
+
+
+void DevicePane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}

@@ -439,3 +439,10 @@ void CellularPane::on_unlockModemButton_clicked() {
 void CellularPane::on_titleLabel_backButtonClicked() {
     StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
 }
+
+
+void CellularPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}

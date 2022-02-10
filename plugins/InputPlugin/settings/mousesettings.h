@@ -51,6 +51,10 @@ class MouseSettings : public QWidget {
 
         void updateSettings(QString key);
         void updateAllSettings();
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // MOUSESETTINGS_H

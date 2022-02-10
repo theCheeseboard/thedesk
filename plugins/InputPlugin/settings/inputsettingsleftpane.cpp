@@ -43,3 +43,10 @@ void InputSettingsLeftPane::on_titleLabel_backButtonClicked() {
 void InputSettingsLeftPane::on_listWidget_currentRowChanged(int currentRow) {
     emit currentPaneChanged(currentRow);
 }
+
+
+void InputSettingsLeftPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}

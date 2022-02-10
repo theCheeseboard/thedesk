@@ -44,6 +44,10 @@ class InputSettingsPane : public StatusCenterPane {
         QString displayName();
         QIcon icon();
         QWidget* leftPane();
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // INPUTSETTINGSPANE_H

@@ -53,6 +53,10 @@ class NetworkStatusCenterPane : public StatusCenterPane {
         QWidget* leftPane();
     private slots:
         void on_menuButtonErrorPage_clicked();
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // NETWORKSTATUSCENTERPANE_H

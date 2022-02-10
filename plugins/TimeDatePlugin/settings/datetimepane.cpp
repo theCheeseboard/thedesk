@@ -26,6 +26,7 @@
 #include <QDBusInterface>
 #include <tpopover.h>
 #include "popovers/settimezonepopover.h"
+#include "popovers/settimedatepopover.h"
 
 struct DateTimePanePrivate {
     bool updating = false;
@@ -98,7 +99,10 @@ void DateTimePane::propertiesChanged(QString interfaceName, QVariantMap changedP
     Q_UNUSED(interfaceName)
 
     d->updating = true;
-    if (invalidatedProperties.contains("NTP")) ui->ntpSwitch->setChecked(changedProperties.value("NTP").toBool());
+    if (invalidatedProperties.contains("NTP")) {
+        ui->ntpSwitch->setChecked(changedProperties.value("NTP").toBool());
+        ui->changeDateTimeButton->setEnabled(!changedProperties.value("NTP").toBool());
+    }
     d->updating = false;
 }
 
@@ -111,3 +115,22 @@ void DateTimePane::on_changeTimezoneButton_clicked() {
     connect(popover, &tPopover::dismissed, setTimezone, &SetTimezonePopover::deleteLater);
     popover->show(this->window());
 }
+
+
+void DateTimePane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}
+
+void DateTimePane::on_changeDateTimeButton_clicked() {
+    SetTimeDatePopover* setTimeDate = new SetTimeDatePopover();
+    tPopover* popover = new tPopover(setTimeDate);
+    popover->setPopoverWidth(SC_DPI(600));
+    connect(setTimeDate, &SetTimeDatePopover::done, popover, &tPopover::dismiss);
+    connect(popover, &tPopover::dismissed, popover, &tPopover::deleteLater);
+    connect(popover, &tPopover::dismissed, setTimeDate, &SetTimezonePopover::deleteLater);
+    popover->show(this->window());
+}
+

@@ -126,3 +126,11 @@ QIcon NotificationsStatusCenterPane::icon() {
 QWidget* NotificationsStatusCenterPane::leftPane() {
     return nullptr;
 }
+
+
+void NotificationsStatusCenterPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}

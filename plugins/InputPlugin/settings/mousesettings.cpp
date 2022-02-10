@@ -113,3 +113,10 @@ void MouseSettings::on_tapToClickSwitch_toggled(bool checked) {
 void MouseSettings::on_naturalScrollingSwitch_toggled(bool checked) {
     d->settings.setValue("Input/touchpad.naturalScroll", checked);
 }
+
+
+void MouseSettings::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+    }
+}

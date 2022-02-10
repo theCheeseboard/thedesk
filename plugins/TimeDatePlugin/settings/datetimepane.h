@@ -53,6 +53,12 @@ class DateTimePane : public StatusCenterPane {
         void on_ntpSwitch_toggled(bool checked);
         void propertiesChanged(QString interfaceName, QVariantMap changedProperties, QStringList invalidatedProperties);
         void on_changeTimezoneButton_clicked();
+
+        // QWidget interface
+        void on_changeDateTimeButton_clicked();
+
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // DATETIMEPANE_H

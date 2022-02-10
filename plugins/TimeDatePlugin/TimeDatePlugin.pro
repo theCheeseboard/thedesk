@@ -15,6 +15,7 @@ include(/usr/share/the-libs/pri/gentranslations.pri)
 SOURCES += \
     onboarding/onboardingtimezone.cpp \
     plugin.cpp \
+    popovers/settimedatepopover.cpp \
     popovers/settimezonepopover.cpp \
     settings/datetimepane.cpp \
     timezonesmodel.cpp
@@ -22,6 +23,7 @@ SOURCES += \
 HEADERS += \
     onboarding/onboardingtimezone.h \
     plugin.h \
+    popovers/settimedatepopover.h \
     popovers/settimezonepopover.h \
     settings/datetimepane.h \
     timezonesmodel.h
@@ -44,5 +46,6 @@ include(../plugins.pri)
 
 FORMS += \
     onboarding/onboardingtimezone.ui \
+    popovers/settimedatepopover.ui \
     popovers/settimezonepopover.ui \
     settings/datetimepane.ui

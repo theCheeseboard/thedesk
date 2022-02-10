@@ -93,3 +93,11 @@ void AccessibilitySettingsPane::updateSetting(QString key, QVariant value) {
 void AccessibilitySettingsPane::on_mouseKeysSwitch_toggled(bool checked) {
     d->settings.setValue("Accessibility/mousekeys.active", checked);
 }
+
+
+void AccessibilitySettingsPane::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}

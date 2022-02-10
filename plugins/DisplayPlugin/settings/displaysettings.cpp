@@ -171,3 +171,11 @@ void DisplaySettings::on_dpi200Button_toggled(bool checked) {
         StateManager::statusCenterManager()->requestLogout();
     }
 }
+
+
+void DisplaySettings::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::LanguageChange) {
+        ui->retranslateUi(this);
+        emit displayNameChanged();
+    }
+}
