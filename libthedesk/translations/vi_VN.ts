@@ -16,21 +16,6 @@
     </message>
 </context>
 <context>
-    <name>OnboardingBetaThankYou</name>
-    <message>
-        <source>Thank you!</source>
-        <translation>Cảm ơn!</translation>
-    </message>
-    <message>
-        <source>Next</source>
-        <translation>Tiếp</translation>
-    </message>
-    <message>
-        <source>A Message</source>
-        <translation>Lá thư cho bạn</translation>
-    </message>
-</context>
-<context>
     <name>OnboardingFinal</name>
     <message>
         <source>That&apos;s everything!</source>

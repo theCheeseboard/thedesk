@@ -16,21 +16,6 @@
     </message>
 </context>
 <context>
-    <name>OnboardingBetaThankYou</name>
-    <message>
-        <source>Thank you!</source>
-        <translation>Teşekkür ederim!</translation>
-    </message>
-    <message>
-        <source>Next</source>
-        <translation>Ertesi</translation>
-    </message>
-    <message>
-        <source>A Message</source>
-        <translation>Bir Mesaj</translation>
-    </message>
-</context>
-<context>
     <name>OnboardingFinal</name>
     <message>
         <source>That&apos;s everything!</source>

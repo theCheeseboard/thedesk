@@ -16,21 +16,6 @@
     </message>
 </context>
 <context>
-    <name>OnboardingBetaThankYou</name>
-    <message>
-        <source>Thank you!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Next</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A Message</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>OnboardingFinal</name>
     <message>
         <source>That&apos;s everything!</source>

@@ -41,7 +41,6 @@ bool OnboardingController::performOnboarding(bool isSystemOnboarding) {
         OnboardingManager* manager = StateManager::onboardingManager();
         manager->setIsSystemOnboarding(isSystemOnboarding);
         manager->addOnboardingStep(new OnboardingWelcome);
-        manager->addOnboardingStep(new OnboardingBetaThankYou);
         manager->addOnboardingStep(new OnboardingFinal);
         emit manager->onboardingRequired();
 

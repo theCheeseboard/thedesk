@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="pt_BR">
+<TS version="2.1" language="pt_BR" sourcelanguage="en_US">
 <context>
     <name>CellularPane</name>
     <message>
@@ -807,6 +807,7 @@
         <source>You have %n remaining tries</source>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -934,6 +935,7 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="74"/>
         <source>You have %n remaining tries</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>

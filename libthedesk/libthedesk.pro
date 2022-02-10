@@ -34,7 +34,6 @@ SOURCES += \
     localemanager.cpp \
     onboarding/onboarding.cpp \
     onboarding/onboardingbar.cpp \
-    onboarding/onboardingbetathankyou.cpp \
     onboarding/onboardingcontroller.cpp \
     onboarding/onboardingfinal.cpp \
     onboarding/onboardingstepper.cpp \
@@ -70,7 +69,6 @@ HEADERS += \
     localemanager.h \
     onboarding/onboarding.h \
     onboarding/onboardingbar.h \
-    onboarding/onboardingbetathankyou.h \
     onboarding/onboardingcontroller.h \
     onboarding/onboardingfinal.h \
     onboarding/onboardingstepper.h \
@@ -123,7 +121,6 @@ FORMS += \
     icontextchunk.ui \
     onboarding/onboarding.ui \
     onboarding/onboardingbar.ui \
-    onboarding/onboardingbetathankyou.ui \
     onboarding/onboardingfinal.ui \
     onboarding/onboardingvideo.ui \
     onboarding/onboardingwelcome.ui \
