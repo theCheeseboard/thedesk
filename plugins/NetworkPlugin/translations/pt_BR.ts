@@ -342,7 +342,7 @@
     <message>
         <location filename="../common.cpp" line="199"/>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dados móveis</translation>
     </message>
 </context>
 <context>
@@ -363,7 +363,7 @@
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="83"/>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STATUS</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="90"/>
@@ -373,12 +373,12 @@
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="144"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AÇÕES</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/devicepane.ui" line="153"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Desconectar</translation>
     </message>
 </context>
 <context>
@@ -386,7 +386,7 @@
     <message>
         <location filename="../chunk/genericchunkupdater.cpp" line="24"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conectado</translation>
     </message>
 </context>
 <context>
@@ -493,7 +493,7 @@
     <message>
         <location filename="../chunk/networkchunk.cpp" line="102"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Desconectado</translation>
     </message>
     <message>
         <location filename="../chunk/networkchunk.cpp" line="136"/>
@@ -693,7 +693,7 @@
     <message>
         <location filename="../statusCenter/eap/securityeappeap.ui" line="244"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conectar</translation>
     </message>
     <message>
         <location filename="../statusCenter/eap/securityeappeap.cpp" line="107"/>
@@ -720,7 +720,7 @@
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="57"/>
         <source>Modem Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Configurações do modem</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="88"/>
@@ -845,7 +845,7 @@
         <location filename="../switchmanager.cpp" line="88"/>
         <location filename="../switchmanager.cpp" line="124"/>
         <source>Cellular</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dados móveis</translation>
     </message>
 </context>
 <context>
@@ -989,17 +989,17 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="106"/>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STATUS</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="124"/>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Este dispositivo</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="268"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AÇÕES</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="277"/>
@@ -1009,7 +1009,7 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="284"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Desconectar</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.ui" line="348"/>
@@ -1103,7 +1103,7 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="119"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="230"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Desconectado</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="131"/>
@@ -1114,18 +1114,18 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="137"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="143"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conectado</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="153"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="239"/>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Falha</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="164"/>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Falha na conexão</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="166"/>
@@ -1180,42 +1180,42 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="84"/>
         <source>STATUS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">STATUS</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="102"/>
         <source>This Device</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Este dispositivo</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="246"/>
         <source>ACTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AÇÕES</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="255"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conectar</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="262"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Desconectar</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="84"/>
         <source>Disconnected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Desconectado</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="94"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conectado</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="103"/>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Falha</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="122"/>
@@ -1225,7 +1225,7 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="143"/>
         <source>Unavailable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Indisponível</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="147"/>
@@ -1235,17 +1235,17 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="149"/>
         <source>This network is unavailable because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Essa rede está indisponível porque %2.</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="175"/>
         <source>Connection Failure</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Falha na conexão</translation>
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="177"/>
         <source>Connecting to the network failed because %2.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A conexão com a rede falhou porque %2.</translation>
     </message>
 </context>
 <context>
@@ -1276,7 +1276,7 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="86"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conectado</translation>
     </message>
     <message>
         <location filename="../models/wirelessnetworklistdelegate.cpp" line="90"/>
@@ -1434,7 +1434,7 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
     <message>
         <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="319"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conectar</translation>
     </message>
 </context>
 <context>
