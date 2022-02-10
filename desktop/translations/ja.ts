@@ -16,7 +16,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="349"/>
         <source>Device Name</source>
-        <translation type="unfinished"></translation>
+        <translation>デバイスの名前</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="229"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="266"/>
         <source>THIS DEVICE</source>
-        <translation type="unfinished"></translation>
+        <translation>このデバイス</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="280"/>
@@ -86,7 +86,7 @@
     <message>
         <location filename="../systemsettings/about/about.ui" line="494"/>
         <source>View Debug Log</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">デバッグの履歴を見る</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="450"/>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../systemsettings/about/acknowledgements.ui" line="35"/>
         <source>Acknowledgements</source>
-        <translation type="unfinished">認知</translation>
+        <translation type="unfinished">礼状</translation>
     </message>
 </context>
 <context>
@@ -140,7 +140,7 @@
     <message>
         <location filename="../gateway/appsearchprovider.cpp" line="151"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">アプリケーション</translation>
     </message>
 </context>
 <context>
@@ -148,7 +148,7 @@
     <message>
         <location filename="../gateway/appselectionmodel.cpp" line="61"/>
         <source>Application</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">アプリケーション</translation>
     </message>
 </context>
 <context>
@@ -196,7 +196,7 @@
     <message>
         <location filename="../background/background.ui" line="584"/>
         <source>STRETCH</source>
-        <translation type="unfinished"></translation>
+        <translation>伸ばす</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="591"/>
@@ -231,12 +231,12 @@
     <message>
         <location filename="../background/background.ui" line="757"/>
         <source>Change Background</source>
-        <translation type="unfinished"></translation>
+        <translation>壁紙を変更する</translation>
     </message>
     <message>
         <location filename="../background/background.ui" line="765"/>
         <source>End Session</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">セッションを終了する</translation>
     </message>
     <message>
         <location filename="../background/background.cpp" line="199"/>
@@ -305,7 +305,7 @@
     <message>
         <location filename="../cli/commandline.cpp" line="40"/>
         <source>path</source>
-        <translation type="unfinished"></translation>
+        <translation>経路</translation>
     </message>
 </context>
 <context>
@@ -352,19 +352,19 @@
     <message>
         <location filename="../session/endsession.ui" line="115"/>
         <source>Power Off</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">電源を消す</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="122"/>
         <source>Turns off your computer.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">コンピューターを消す</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
         <location filename="../session/endsession.cpp" line="250"/>
         <source>Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>再起動</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="141"/>
@@ -404,7 +404,7 @@
     <message>
         <location filename="../session/endsession.ui" line="190"/>
         <source>Lock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">セッションをロックする</translation>
     </message>
     <message>
         <location filename="../session/endsession.ui" line="197"/>
