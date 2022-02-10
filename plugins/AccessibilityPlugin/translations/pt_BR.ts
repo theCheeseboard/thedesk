@@ -7,37 +7,37 @@
         <location filename="../settings/accessibilitysettingspane.ui" line="35"/>
         <location filename="../settings/accessibilitysettingspane.cpp" line="66"/>
         <source>Accessibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Acessibilidade</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="84"/>
         <source>Sticky Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Teclas aderentes</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="104"/>
         <source>TYPING</source>
-        <translation type="unfinished"></translation>
+        <translation>TECLADO</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="114"/>
         <source>Allows you to press modifier keys sequentially</source>
-        <translation type="unfinished"></translation>
+        <translation>Permite apertar teclas modificadores em sequência</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="149"/>
         <source>POINTING</source>
-        <translation type="unfinished"></translation>
+        <translation>MOUSE</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="163"/>
         <source>Mouse Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Teclas do mouse</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="173"/>
         <source>Allows you to move the cursor using the number pad</source>
-        <translation type="unfinished"></translation>
+        <translation>Permite mover o cursor do mouse usando o teclado numérico</translation>
     </message>
 </context>
 <context>
@@ -45,7 +45,7 @@
     <message>
         <location filename="../chunks/stickykeyschunk.cpp" line="57"/>
         <source>Disable Sticky Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Desativar teclas aderentes</translation>
     </message>
 </context>
 </TS>
