@@ -42,12 +42,16 @@ unix {
     dbusactivation.files = org.freedesktop.impl.portal.desktop.thedesk.service
     dbusactivation.path = $$THELIBS_INSTALL_PREFIX/share/dbus-1/services
 
-    INSTALLS += target portaldef dbusactivation
+    systemdservice.files = xdg-desktop-portal-thedesk.service
+    systemdservice.path = $$THELIBS_INSTALL_PREFIX/lib/systemd/user/
+
+    INSTALLS += target portaldef dbusactivation systemdservice
 }
 
 DISTFILES += \
     org.freedesktop.impl.portal.desktop.thedesk.service \
-    thedesk.portal
+    thedesk.portal \
+    xdg-desktop-portal-thedesk.service
 
 HEADERS += \
     dialogs/filedialog.h \

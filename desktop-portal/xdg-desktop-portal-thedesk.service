@@ -1,0 +1,8 @@
+[Unit]
+Description=XDG Portal (theDesk)
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.impl.portal.desktop.thedesk
+ExecStart=/usr/lib/thedesk-desktop-portal
+Restart=no

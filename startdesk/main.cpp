@@ -52,6 +52,17 @@ int main(int argc, char* argv[]) {
         process.waitForFinished();
     }
 
+    //Ask systemd to import environment variables
+    QDBusMessage setEnvironmentMessage = QDBusMessage::createMethodCall("org.freedesktop.systemd1", "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", "SetEnvironment");
+    setEnvironmentMessage.setArguments({
+                                           QStringList({
+                                               QStringLiteral("XDG_CURRENT_DESKTOP=%1").arg(qEnvironmentVariable("XDG_CURRENT_DESKTOP")),
+                                               QStringLiteral("QT_QPA_PLATFORMTHEME=%1").arg(qEnvironmentVariable("QT_QPA_PLATFORMTHEME")),
+                                               QStringLiteral("PATH=%1").arg(qEnvironmentVariable("PATH"))
+                                           })
+                                       });
+    QDBusConnection::sessionBus().asyncCall(setEnvironmentMessage);
+
     SplashController::instance()->startDE();
 
     return a.exec();
