@@ -7,37 +7,37 @@
         <location filename="../settings/accessibilitysettingspane.ui" line="35"/>
         <location filename="../settings/accessibilitysettingspane.cpp" line="66"/>
         <source>Accessibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Barrrierefreiheit</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="84"/>
         <source>Sticky Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Sticky Keys</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="104"/>
         <source>TYPING</source>
-        <translation type="unfinished"></translation>
+        <translation>TIPPEN</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="114"/>
         <source>Allows you to press modifier keys sequentially</source>
-        <translation type="unfinished"></translation>
+        <translation>Lässt dich mehrere Modifikatortasten hintereinander drücken</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="149"/>
         <source>POINTING</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MAUSZEIGER</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="163"/>
         <source>Mouse Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Mouse Keys</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="173"/>
         <source>Allows you to move the cursor using the number pad</source>
-        <translation type="unfinished"></translation>
+        <translation>Lässt dich den Mauscursor mit dem Ziffernblock steuern</translation>
     </message>
 </context>
 <context>
@@ -45,7 +45,7 @@
     <message>
         <location filename="../chunks/stickykeyschunk.cpp" line="57"/>
         <source>Disable Sticky Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Sticky Keys deaktivieren</translation>
     </message>
 </context>
 </TS>
