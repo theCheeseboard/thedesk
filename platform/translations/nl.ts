@@ -6,108 +6,108 @@
     <message>
         <location filename="../messagedialog/messagedialog.ui" line="143"/>
         <source>Details...</source>
-        <translation type="unfinished"></translation>
+        <translation>Details...</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.ui" line="202"/>
         <source>DETAILS</source>
-        <translation type="unfinished"></translation>
+        <translation>DETAILS</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.ui" line="219"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Terug</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="100"/>
         <location filename="../messagedialog/messagedialog.cpp" line="129"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="101"/>
         <source>Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Opslaan</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="102"/>
         <source>Save All</source>
-        <translation type="unfinished"></translation>
+        <translation>Alles Opslaan</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="103"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>OPenen</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="104"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="105"/>
         <source>Yes to All</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja voor Alles</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="106"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Nee</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="107"/>
         <source>No to All</source>
-        <translation type="unfinished"></translation>
+        <translation>Nee voor Alles</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="108"/>
         <source>Abort</source>
-        <translation type="unfinished"></translation>
+        <translation>Onderbreken</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="109"/>
         <source>Retry</source>
-        <translation type="unfinished"></translation>
+        <translation>Opnieuw Proberen</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="110"/>
         <source>Ignore</source>
-        <translation type="unfinished"></translation>
+        <translation>Negeren</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="111"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluiten</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="112"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleren</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="113"/>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Verwijderen</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="114"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hulp</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="115"/>
         <source>Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Toepassen</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="116"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstellen</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="117"/>
         <source>Restore Defaults</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaarden Herstellen</translation>
     </message>
 </context>
 </TS>
