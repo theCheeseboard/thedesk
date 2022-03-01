@@ -6,62 +6,62 @@
     <message>
         <location filename="../arrange/arrangewidget.ui" line="164"/>
         <source>DISPLAY PROPERTIES</source>
-        <translation type="unfinished"></translation>
+        <translation>BEELDEIGENSCHAPPEN</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="100"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Verversingssnelheid</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="90"/>
         <source>Resolution</source>
-        <translation type="unfinished"></translation>
+        <translation>Resolutie</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="141"/>
         <source>Primary Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Primair Beeld</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="110"/>
         <source>Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Oriëntatie</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="118"/>
         <source>Landscape</source>
-        <translation type="unfinished"></translation>
+        <translation>Landschap</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="123"/>
         <source>Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Portret</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="128"/>
         <source>Upside Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Ondersteboven</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="133"/>
         <source>Portrait (Upside Down)</source>
-        <translation type="unfinished"></translation>
+        <translation>Portret (Ondersteboven)</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="177"/>
         <source>Enable Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Scherm Inschakelen</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.ui" line="194"/>
         <source>Apply Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen Toepassen</translation>
     </message>
     <message>
         <location filename="../arrange/arrangewidget.cpp" line="116"/>
         <source>%1 hz</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Hz</translation>
     </message>
 </context>
 <context>
@@ -70,92 +70,92 @@
         <location filename="../settings/displaysettings.ui" line="35"/>
         <location filename="../settings/displaysettings.cpp" line="102"/>
         <source>Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Schermen</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="84"/>
         <source>SCREENS</source>
-        <translation type="unfinished"></translation>
+        <translation>SCHERMEN</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="91"/>
         <source>Change the resolution of your display and arrange your displays</source>
-        <translation type="unfinished"></translation>
+        <translation>De resolutie van het beeld aanpassen en je schermen verplaatsen</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="101"/>
         <source>Arrange and Resize Displays</source>
-        <translation type="unfinished"></translation>
+        <translation>Schermen Verplaatsen en van Formaat Wijzigen</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="146"/>
         <source>SCALING</source>
-        <translation type="unfinished"></translation>
+        <translation>SCHALEN</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="153"/>
         <source>If items on the screen are too small, you can scale them up to make them easier to see.</source>
-        <translation type="unfinished"></translation>
+        <translation>Als dingen op het scherm te klein zijn, kun je ze opschalen, zodat ze makkelijker te zien zijn.</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="163"/>
         <source>100% (96 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>100% (96 DPI)</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="170"/>
         <source>125% (120 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>125% (120 DPI)</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="177"/>
         <source>150% (144 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>150% (144 DPI)</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="184"/>
         <source>200% (192 DPI)</source>
-        <translation type="unfinished"></translation>
+        <translation>200% (192 DPI)</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="216"/>
         <source>Schedule Redshift</source>
-        <translation type="unfinished"></translation>
+        <translation>Redshift Plannen</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="229"/>
         <source>REDSHIFT</source>
-        <translation type="unfinished"></translation>
+        <translation>REDSHIFT</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="236"/>
         <source>Redshift blocks blue light so that you can sleep better at night</source>
-        <translation type="unfinished"></translation>
+        <translation>Redshift blokkeert blauw licht zodat je &apos;s nachts beter kunt slapen</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="252"/>
         <source>Intensity</source>
-        <translation type="unfinished"></translation>
+        <translation>Intensiteit</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="302"/>
         <source>Follow Sunlight Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>Zonlichtcyclus Volgen</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="330"/>
         <source>Start at</source>
-        <translation type="unfinished"></translation>
+        <translation>Beginnen Om</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="337"/>
         <source>End at</source>
-        <translation type="unfinished"></translation>
+        <translation>Eindigen Om</translation>
     </message>
     <message>
         <location filename="../settings/displaysettings.ui" line="356"/>
         <source>Your physical location will be sent to MET Norway to determine sunrise and sunset times.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je fysieke locatie zal worden opgestuurd naar MET Norway om de tijden van zonsopkomst en -ondergang te bepalen.</translation>
     </message>
 </context>
 <context>
@@ -163,17 +163,17 @@
     <message>
         <location filename="../redshift/redshiftdaemon.cpp" line="86"/>
         <source>Redshift Active</source>
-        <translation type="unfinished"></translation>
+        <translation>Redshift Actief</translation>
     </message>
     <message>
         <location filename="../redshift/redshiftdaemon.cpp" line="89"/>
         <source>Disable Redshift until tomorrow</source>
-        <translation type="unfinished"></translation>
+        <translation>Redshift uitschakelen tot morgen</translation>
     </message>
     <message>
         <location filename="../redshift/redshiftdaemon.cpp" line="92"/>
         <source>Display Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Beeldinstellingen</translation>
     </message>
 </context>
 </TS>
