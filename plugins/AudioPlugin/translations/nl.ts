@@ -6,17 +6,17 @@
     <message>
         <location filename="../audioquickwidget.ui" line="59"/>
         <source>VOLUME</source>
-        <translation type="unfinished"></translation>
+        <translation>VOLUME</translation>
     </message>
     <message>
         <location filename="../audioquickwidget.ui" line="90"/>
         <source>APPLICATIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>APPLICATIES</translation>
     </message>
     <message>
         <location filename="../audioquickwidget.ui" line="109"/>
         <source>QUIET MODE</source>
-        <translation type="unfinished"></translation>
+        <translation>STILTEMODUS</translation>
     </message>
 </context>
 <context>
@@ -24,37 +24,37 @@
     <message>
         <location filename="../eventhandler.cpp" line="92"/>
         <source>No Audio Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen Audio-apparaten</translation>
     </message>
     <message>
         <location filename="../eventhandler.cpp" line="133"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Stil</translation>
     </message>
     <message>
         <location filename="../eventhandler.cpp" line="134"/>
         <source>Unmute Quiet Mode before changing the volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Zet Stiltemodus uit voordat je het volume aanpast</translation>
     </message>
     <message>
         <location filename="../eventhandler.cpp" line="150"/>
         <source>Speakers</source>
-        <translation type="unfinished"></translation>
+        <translation>Speakers</translation>
     </message>
     <message>
         <location filename="../eventhandler.cpp" line="154"/>
         <source>Headphones</source>
-        <translation type="unfinished"></translation>
+        <translation>Koptelefoons</translation>
     </message>
     <message>
         <location filename="../eventhandler.cpp" line="158"/>
         <source>Line Out</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lijn Uit</translation>
     </message>
     <message>
         <location filename="../eventhandler.cpp" line="166"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Volume</translation>
     </message>
 </context>
 <context>
@@ -62,9 +62,9 @@
     <message numerus="yes">
         <location filename="../micchunk.cpp" line="66"/>
         <source>%n applications</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n applicatie</numerusform>
+            <numerusform>%n applicaties</numerusform>
         </translation>
     </message>
 </context>
@@ -73,12 +73,12 @@
     <message>
         <location filename="../quickwidgetsink.ui" line="68"/>
         <source>Make Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard Maken</translation>
     </message>
     <message>
         <location filename="../quickwidgetsink.ui" line="76"/>
         <source>Use for All Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Voor Alle Applicaties Gebruiken</translation>
     </message>
 </context>
 <context>
