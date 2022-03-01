@@ -6,27 +6,27 @@
     <message>
         <location filename="../OverviewPane/overviewpane.ui" line="102"/>
         <source>Hope you&apos;re having a great day. Here&apos;s what we&apos;ve got for you:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hopelijk heb je een geweldige dag. Dit hebben we voor je:</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="108"/>
         <source>Hi %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoi %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="110"/>
         <source>Good morning, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Goedemorgen, %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="112"/>
         <source>Good afternoon, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Goedemiddag, %1!</translation>
     </message>
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="114"/>
         <source>Good evening, %1!</source>
-        <translation type="unfinished"></translation>
+        <translation>Goedenavond, %1!</translation>
     </message>
     <message numerus="yes">
         <location filename="../OverviewPane/overviewpane.cpp" line="208"/>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../OverviewPane/overviewpane.cpp" line="342"/>
         <source>Overview</source>
-        <translation type="unfinished"></translation>
+        <translation>Overzicht</translation>
     </message>
 </context>
 </TS>
