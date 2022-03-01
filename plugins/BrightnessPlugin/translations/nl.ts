@@ -9,7 +9,7 @@
         <location filename="../plugin.cpp" line="88"/>
         <location filename="../plugin.cpp" line="94"/>
         <source>Brightness</source>
-        <translation type="unfinished"></translation>
+        <translation>Helderheid</translation>
     </message>
 </context>
 </TS>
