@@ -21,12 +21,12 @@
     <message>
         <location filename="../screenshotwindow.ui" line="55"/>
         <source>SCREENSHOT</source>
-        <translation type="unfinished"></translation>
+        <translation>SCHERMAFBEELDING</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="130"/>
         <source>Crop</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijsnijden</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="150"/>
@@ -36,17 +36,17 @@
     <message>
         <location filename="../screenshotwindow.ui" line="205"/>
         <source>Reset Markup</source>
-        <translation type="unfinished"></translation>
+        <translation>Opmaak Herstellen</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="216"/>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijderen</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="227"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiëren</translation>
     </message>
 </context>
 </TS>
