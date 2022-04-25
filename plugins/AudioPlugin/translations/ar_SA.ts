@@ -6,17 +6,17 @@
     <message>
         <location filename="../audioquickwidget.ui" line="59"/>
         <source>VOLUME</source>
-        <translation type="unfinished"></translation>
+        <translation>الصوت</translation>
     </message>
     <message>
         <location filename="../audioquickwidget.ui" line="90"/>
         <source>APPLICATIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>التطبيقات</translation>
     </message>
     <message>
         <location filename="../audioquickwidget.ui" line="109"/>
         <source>QUIET MODE</source>
-        <translation type="unfinished"></translation>
+        <translation>الوضع الصامت</translation>
     </message>
 </context>
 <context>
@@ -24,12 +24,12 @@
     <message>
         <location filename="../eventhandler.cpp" line="92"/>
         <source>No Audio Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>لا يوجد أجهزة صوت</translation>
     </message>
     <message>
         <location filename="../eventhandler.cpp" line="133"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>صامت</translation>
     </message>
     <message>
         <location filename="../eventhandler.cpp" line="134"/>
