@@ -21,12 +21,15 @@
 #include "splash/splashcontroller.h"
 #include <tapplication.h>
 
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCall>
 #include <QProcess>
 #include <Screens/screendaemon.h>
 #include <tsettings.h>
 
 int main(int argc, char* argv[]) {
-    //Put environment variables
+    // Put environment variables
     qputenv("QT_QPA_PLATFORMTHEME", "thedesk-platform");
 
     QString oldPath = qgetenv("PATH");
@@ -38,29 +41,25 @@ int main(int argc, char* argv[]) {
     a.setApplicationDisplayName("theDesk");
     a.setQuitOnLastWindowClosed(false);
 
-    //Set screen DPI settings
+    // Set screen DPI settings
     tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
     tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
 
     tSettings* settings = new tSettings();
     ScreenDaemon::instance()->setDpi(settings->value("Display/dpi").toInt());
 
-    //Check for initialisation script
+    // Check for initialisation script
     if (settings->value("Session/UseInitializationScript").toBool()) {
         QProcess process;
         process.start(settings->value("Session/InitializationScript").toString(), QStringList());
         process.waitForFinished();
     }
 
-    //Ask systemd to import environment variables
+    // Ask systemd to import environment variables
     QDBusMessage setEnvironmentMessage = QDBusMessage::createMethodCall("org.freedesktop.systemd1", "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", "SetEnvironment");
-    setEnvironmentMessage.setArguments({
-                                           QStringList({
-                                               QStringLiteral("XDG_CURRENT_DESKTOP=%1").arg(qEnvironmentVariable("XDG_CURRENT_DESKTOP")),
-                                               QStringLiteral("QT_QPA_PLATFORMTHEME=%1").arg(qEnvironmentVariable("QT_QPA_PLATFORMTHEME")),
-                                               QStringLiteral("PATH=%1").arg(qEnvironmentVariable("PATH"))
-                                           })
-                                       });
+    setEnvironmentMessage.setArguments({QStringList({QStringLiteral("XDG_CURRENT_DESKTOP=%1").arg(qEnvironmentVariable("XDG_CURRENT_DESKTOP")),
+        QStringLiteral("QT_QPA_PLATFORMTHEME=%1").arg(qEnvironmentVariable("QT_QPA_PLATFORMTHEME")),
+        QStringLiteral("PATH=%1").arg(qEnvironmentVariable("PATH"))})});
     QDBusConnection::sessionBus().asyncCall(setEnvironmentMessage);
 
     SplashController::instance()->startDE();

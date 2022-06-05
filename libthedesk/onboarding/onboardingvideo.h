@@ -21,7 +21,7 @@
 #define ONBOARDINGVIDEO_H
 
 #include <QDialog>
-#include <QMediaObject>
+#include <QMediaPlayer>
 
 namespace Ui {
     class OnboardingVideo;
@@ -30,13 +30,13 @@ namespace Ui {
 struct OnboardingVideoPrivate;
 class OnboardingVideo : public QDialog {
         Q_OBJECT
-        Q_PROPERTY(QMediaObject* mediaObject READ mediaObject NOTIFY mediaObjectChanged)
+        Q_PROPERTY(QMediaPlayer* mediaObject READ mediaObject NOTIFY mediaObjectChanged)
 
     public:
         explicit OnboardingVideo(QWidget* parent = nullptr);
         ~OnboardingVideo();
 
-        QMediaObject* mediaObject() const;
+        QMediaPlayer* mediaObject() const;
 
     signals:
         void startOnboarding();

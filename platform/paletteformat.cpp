@@ -20,40 +20,38 @@
 
 #include <paletteformat.h>
 
-#include <QJsonValue>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QJsonValue>
 
 const QMap<QString, QPalette::ColorRole> roles = {
-    {"window", QPalette::Window},
-    {"windowText", QPalette::WindowText},
-    {"base", QPalette::Base},
-    {"altBase", QPalette::AlternateBase},
-    {"alternateBase", QPalette::AlternateBase},
-    {"text", QPalette::Text},
-    {"brightText", QPalette::BrightText},
-    {"button", QPalette::Button},
-    {"buttonText", QPalette::ButtonText},
-    {"highlight", QPalette::Highlight},
-    {"highlightText", QPalette::HighlightedText},
+    {"window",          QPalette::Window         },
+    {"windowText",      QPalette::WindowText     },
+    {"base",            QPalette::Base           },
+    {"altBase",         QPalette::AlternateBase  },
+    {"alternateBase",   QPalette::AlternateBase  },
+    {"text",            QPalette::Text           },
+    {"brightText",      QPalette::BrightText     },
+    {"button",          QPalette::Button         },
+    {"buttonText",      QPalette::ButtonText     },
+    {"highlight",       QPalette::Highlight      },
+    {"highlightText",   QPalette::HighlightedText},
     {"highlightedText", QPalette::HighlightedText},
-    {"link", QPalette::Link},
-    {"linkVisited", QPalette::LinkVisited},
-    {"tooltip", QPalette::ToolTipBase},
-    {"tooltipBase", QPalette::ToolTipBase},
-    {"tooltipText", QPalette::ToolTipText},
+    {"link",            QPalette::Link           },
+    {"linkVisited",     QPalette::LinkVisited    },
+    {"tooltip",         QPalette::ToolTipBase    },
+    {"tooltipBase",     QPalette::ToolTipBase    },
+    {"tooltipText",     QPalette::ToolTipText    },
     {"placeholderText", QPalette::PlaceholderText},
-    {"light", QPalette::Light},
-    {"midLight", QPalette::Midlight},
-    {"mid", QPalette::Mid},
-    {"dark", QPalette::Dark},
-    {"shadow", QPalette::Shadow},
-    {"foreground", QPalette::Foreground},
-    {"background", QPalette::Background}
+    {"light",           QPalette::Light          },
+    {"midLight",        QPalette::Midlight       },
+    {"mid",             QPalette::Mid            },
+    {"dark",            QPalette::Dark           },
+    {"shadow",          QPalette::Shadow         }
 };
 
 const QMap<QString, QPalette::ColorGroup> groups = {
-    {"normal", QPalette::Normal},
+    {"normal",   QPalette::Normal  },
     {"inactive", QPalette::Inactive},
     {"disabled", QPalette::Disabled}
 };
@@ -78,19 +76,21 @@ void PaletteFormat::applyColor(QPalette* pal, QString key, QJsonValue value) {
 
 QColor PaletteFormat::colorFromValue(QJsonValue value) {
     switch (value.type()) {
-        case QJsonValue::Double: {
-            //Grayscale value
-            int v = value.toInt();
-            return QColor(v, v, v);
-        }
+        case QJsonValue::Double:
+            {
+                // Grayscale value
+                int v = value.toInt();
+                return QColor(v, v, v);
+            }
         case QJsonValue::String:
-            //Name color
+            // Name color
             return QColor(value.toString());
-        case QJsonValue::Array: {
-            //RGB Triplet
-            QJsonArray array = value.toArray();
-            return QColor(array.at(0).toInt(), array.at(1).toInt(), array.at(2).toInt());
-        }
+        case QJsonValue::Array:
+            {
+                // RGB Triplet
+                QJsonArray array = value.toArray();
+                return QColor(array.at(0).toInt(), array.at(1).toInt(), array.at(2).toInt());
+            }
         default:
             //??? invalid format
             return QColor();

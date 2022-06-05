@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="ar_SA">
+<TS version="2.1" language="ar_SA" sourcelanguage="en_US">
 <context>
     <name>BacktraceDialog</name>
     <message>
@@ -73,17 +73,17 @@
 <context>
     <name>SplashController</name>
     <message>
-        <location filename="../splash/splashcontroller.cpp" line="105"/>
+        <location filename="../splash/splashcontroller.cpp" line="106"/>
         <source>Oh, Bonkers!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../splash/splashcontroller.cpp" line="106"/>
+        <location filename="../splash/splashcontroller.cpp" line="107"/>
         <source>theDesk had a problem and was restarted.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../splash/splashcontroller.cpp" line="108"/>
+        <location filename="../splash/splashcontroller.cpp" line="109"/>
         <source>View Details</source>
         <translation type="unfinished"></translation>
     </message>
@@ -92,16 +92,19 @@
     <name>SplashWindow</name>
     <message>
         <location filename="../splashwindow.ui" line="104"/>
+        <location filename="../../../build-thedesk-Chroot_6-Debug/startdesk/startdesk_autogen/include/ui_splashwindow.h" line="161"/>
         <source>Question</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../splashwindow.ui" line="118"/>
+        <location filename="../../../build-thedesk-Chroot_6-Debug/startdesk/startdesk_autogen/include/ui_splashwindow.h" line="162"/>
         <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../splashwindow.ui" line="129"/>
+        <location filename="../../../build-thedesk-Chroot_6-Debug/startdesk/startdesk_autogen/include/ui_splashwindow.h" line="163"/>
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>

@@ -161,17 +161,17 @@
 <context>
     <name>RedshiftDaemon</name>
     <message>
-        <location filename="../redshift/redshiftdaemon.cpp" line="86"/>
+        <location filename="../redshift/redshiftdaemon.cpp" line="87"/>
         <source>Redshift Active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../redshift/redshiftdaemon.cpp" line="89"/>
+        <location filename="../redshift/redshiftdaemon.cpp" line="90"/>
         <source>Disable Redshift until tomorrow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../redshift/redshiftdaemon.cpp" line="92"/>
+        <location filename="../redshift/redshiftdaemon.cpp" line="93"/>
         <source>Display Settings</source>
         <translation type="unfinished"></translation>
     </message>

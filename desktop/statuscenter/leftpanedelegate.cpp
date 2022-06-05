@@ -20,18 +20,17 @@
 #include "leftpanedelegate.h"
 
 #include <QPainter>
+#include <libcontemporary_global.h>
 #include <tpaintcalculator.h>
-#include <the-libs_global.h>
 
-LeftPaneDelegate::LeftPaneDelegate(QObject* parent) : QStyledItemDelegate(parent) {
-
+LeftPaneDelegate::LeftPaneDelegate(QObject* parent) :
+    QStyledItemDelegate(parent) {
 }
-
 
 void LeftPaneDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
     QStyledItemDelegate::paint(painter, option, index);
     if (index.data(Qt::UserRole).toBool()) {
-        //Draw an indicator arrow
+        // Draw an indicator arrow
         tPaintCalculator calculator;
         calculator.setDrawBounds(option.rect);
         calculator.setLayoutDirection(option.direction);
@@ -41,7 +40,7 @@ void LeftPaneDelegate::paint(QPainter* painter, const QStyleOptionViewItem& opti
         iconRect.moveCenter(option.rect.center());
         iconRect.moveRight(option.rect.right() - SC_DPI(6));
 
-        calculator.addRect(iconRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(iconRect, [=](QRectF drawBounds) {
             painter->drawPixmap(drawBounds.toRect(), QIcon::fromTheme("arrow-right").pixmap(iconRect.size()));
         });
         calculator.performPaint();

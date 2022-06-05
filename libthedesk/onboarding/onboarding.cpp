@@ -20,50 +20,50 @@
 #include "onboarding.h"
 #include "ui_onboarding.h"
 
-#include <statemanager.h>
-#include <onboardingmanager.h>
-#include <powermanager.h>
-#include <tvariantanimation.h>
-#include <tsettings.h>
-#include <tscrim.h>
-#include <common.h>
-#include <onboardingpage.h>
-#include "onboardingstepper.h"
 #include "onboardingbar.h"
-#include <QPainter>
-#include <QKeyEvent>
+#include "onboardingstepper.h"
 #include <QAudioDecoder>
 #include <QAudioOutput>
+#include <QKeyEvent>
+#include <QPainter>
+#include <common.h>
+#include <onboardingmanager.h>
+#include <onboardingpage.h>
+#include <powermanager.h>
+#include <statemanager.h>
+#include <tscrim.h>
+#include <tsettings.h>
+#include <tvariantanimation.h>
 
 #include <QMediaPlayer>
-#include <QMediaPlaylist>
-#include <QVideoWidget>
+//#include <QMediaPlaylist>
+//#include <QVideoWidget>
 
 #include <private/onboardingmanager_p.h>
 
 struct OnboardingPrivate {
-    QStringList preferredOnboardingOrder;
-    QList<QPair<QString, OnboardingPage*>> steps;
-    QList<QPair<OnboardingStepper*, OnboardingPage*>> steppers;
+        QStringList preferredOnboardingOrder;
+        QList<QPair<QString, OnboardingPage*>> steps;
+        QList<QPair<OnboardingStepper*, OnboardingPage*>> steppers;
 
-//    QMediaPlayer* audioPlayer = nullptr;
-//    QMediaPlaylist* audioPlaylist;
-    QByteArray singleAudioData;
-    QByteArray loopAudioData;
-    QAudioOutput* audioOutput = nullptr;
-    QIODevice* audioOutputDevice;
-    int audioPointer = 0;
-    bool audioEnabled = true;
+        //    QMediaPlayer* audioPlayer = nullptr;
+        //    QMediaPlaylist* audioPlaylist;
+        QByteArray singleAudioData;
+        QByteArray loopAudioData;
+        QAudioOutput* audioOutput = nullptr;
+        QIODevice* audioOutputDevice;
+        int audioPointer = 0;
+        bool audioEnabled = true;
 
-    OnboardingBar* bar;
-    bool barVisible = false;
+        OnboardingBar* bar;
+        bool barVisible = false;
 
-    tVariantAnimation* contentAnim;
-    tVariantAnimation* barAnim;
-    tVariantAnimation* fadeAnim;
+        tVariantAnimation* contentAnim;
+        tVariantAnimation* barAnim;
+        tVariantAnimation* fadeAnim;
 
-    bool onboardingStarted = false;
-    tSettings settings;
+        bool onboardingStarted = false;
+        tSettings settings;
 };
 
 Onboarding::Onboarding(QWidget* parent) :
@@ -89,31 +89,31 @@ Onboarding::Onboarding(QWidget* parent) :
 
     OnboardingManager* manager = StateManager::onboardingManager();
     manager->d->onboardingRunning = true;
-    connect(manager, &OnboardingManager::nextStep, this, [ = ] {
+    connect(manager, &OnboardingManager::nextStep, this, [=] {
         if (ui->stackedWidget->count() == ui->stackedWidget->currentIndex() + 1) {
             completeOnboarding();
         } else {
             ui->stackedWidget->setCurrentIndex(ui->stackedWidget->currentIndex() + 1);
         }
     });
-    connect(manager, &OnboardingManager::previousStep, this, [ = ] {
+    connect(manager, &OnboardingManager::previousStep, this, [=] {
         ui->stackedWidget->setCurrentIndex(ui->stackedWidget->currentIndex() - 1);
     });
 
-    //Populate the stacked widget with all the onboarding items
+    // Populate the stacked widget with all the onboarding items
     QStringList currentItems;
     for (OnboardingPage* step : qAsConst(manager->d->steps)) {
         OnboardingStepper* stepper = new OnboardingStepper(this);
         stepper->setText(step->displayName());
-        connect(ui->stackedWidget, &tStackedWidget::switchingFrame, this, [ = ](int step) {
+        connect(ui->stackedWidget, &tStackedWidget::switchingFrame, this, [=](int step) {
             stepper->setCurrentStep(step + 1);
         });
 
         int index = Common::getInsertionIndex(d->preferredOnboardingOrder, currentItems, step->name());
 
-        //Make sure this pane is actually configured to be in the onboarding
+        // Make sure this pane is actually configured to be in the onboarding
         if (index != -1) {
-            //Add this pane at the correct index
+            // Add this pane at the correct index
             ui->stackedWidget->insertWidget(index, step);
             currentItems.insert(index, step->name());
             d->steps.insert(index, {step->name(), step});
@@ -121,7 +121,7 @@ Onboarding::Onboarding(QWidget* parent) :
             ui->stepperLayout->insertWidget(index, stepper);
             d->steppers.insert(index, {stepper, step});
         } else {
-            //Hide the stepper so it doesn't show up in the background
+            // Hide the stepper so it doesn't show up in the background
             stepper->setVisible(false);
         }
     }
@@ -133,10 +133,10 @@ Onboarding::Onboarding(QWidget* parent) :
 
     d->bar = new OnboardingBar(this);
     d->bar->setParent(this);
-    connect(d->bar, &OnboardingBar::muteToggled, this, [ = ](bool mute) {
+    connect(d->bar, &OnboardingBar::muteToggled, this, [=](bool mute) {
         if (d->audioOutput) d->audioOutput->setVolume(mute ? 0 : 100);
     });
-    connect(d->bar, &OnboardingBar::closeClicked, this, [ = ] {
+    connect(d->bar, &OnboardingBar::closeClicked, this, [=] {
         StateManager::instance()->powerManager()->showPowerOffConfirmation();
     });
     d->bar->setVisible(false);
@@ -145,14 +145,14 @@ Onboarding::Onboarding(QWidget* parent) :
     d->contentAnim = new tVariantAnimation(this);
     d->contentAnim->setEasingCurve(QEasingCurve::OutCubic);
     d->contentAnim->setDuration(500);
-    connect(d->contentAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(d->contentAnim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         ui->contentWrapper->setFixedHeight(value.toInt());
     });
 
     d->barAnim = new tVariantAnimation(this);
     d->barAnim->setEasingCurve(QEasingCurve::OutCubic);
     d->barAnim->setDuration(500);
-    connect(d->barAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(d->barAnim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         d->bar->move(0, value.toInt());
     });
 
@@ -161,10 +161,11 @@ Onboarding::Onboarding(QWidget* parent) :
     d->fadeAnim->setEndValue(255);
     d->fadeAnim->setEasingCurve(QEasingCurve::OutCubic);
     d->fadeAnim->setDuration(500);
-    connect(d->fadeAnim, &tVariantAnimation::valueChanged, this, [ = ] {
+    connect(d->fadeAnim, &tVariantAnimation::valueChanged, this, [=] {
         this->update();
     });
 
+#if 0
     if (d->settings.value("Onboarding/onboardingAudio").toBool()) {
         QAudioFormat format;
         format.setSampleRate(44100);
@@ -183,15 +184,15 @@ Onboarding::Onboarding(QWidget* parent) :
             QAudioDecoder* audioDecoder = new QAudioDecoder();
             audioDecoder->setSourceFilename(d->settings.value(setting).toString());
             audioDecoder->setAudioFormat(format);
-            connect(audioDecoder, &QAudioDecoder::bufferReady, this, [ = ] {
+            connect(audioDecoder, &QAudioDecoder::bufferReady, this, [=] {
                 QAudioBuffer buf = audioDecoder->read();
                 array->append(buf.constData<char>(), buf.byteCount());
             });
-            connect(audioDecoder, &QAudioDecoder::finished, this, [ = ] {
+            connect(audioDecoder, &QAudioDecoder::finished, this, [=] {
                 delete locker;
                 audioDecoder->deleteLater();
             });
-            connect(audioDecoder, QOverload<QAudioDecoder::Error>::of(&QAudioDecoder::error), this, [ = ](QAudioDecoder::Error error) {
+            connect(audioDecoder, QOverload<QAudioDecoder::Error>::of(&QAudioDecoder::error), this, [=](QAudioDecoder::Error error) {
                 delete locker;
                 audioDecoder->deleteLater();
             });
@@ -205,11 +206,12 @@ Onboarding::Onboarding(QWidget* parent) :
         d->audioOutputDevice = d->audioOutput->start();
         d->audioOutput->setNotifyInterval(1000);
 
-        connect(d->audioOutput, &QAudioOutput::stateChanged, this, [ = ](QAudio::State state) {
+        connect(d->audioOutput, &QAudioOutput::stateChanged, this, [=](QAudio::State state) {
             qDebug() << state;
         });
         connect(d->audioOutput, &QAudioOutput::notify, this, &Onboarding::writeAudio);
     }
+#endif
 
     if (d->settings.value("Onboarding/onboardingVideo").toBool()) {
         this->setAttribute(Qt::WA_TranslucentBackground);
@@ -219,10 +221,12 @@ Onboarding::Onboarding(QWidget* parent) :
 }
 
 Onboarding::~Onboarding() {
+#if 0
     if (d->audioOutput) {
         d->audioOutput->stop();
         d->audioOutput->deleteLater();
     }
+#endif
     delete d;
     delete ui;
 }
@@ -236,7 +240,6 @@ void Onboarding::on_bar_closeClicked() {
 }
 
 void Onboarding::resizeEvent(QResizeEvent* event) {
-
     if (this->geometry().width() <= SC_DPI(800)) {
         ui->contentWrapper->setFrameShape(QFrame::NoFrame);
         ui->stepperFrame->setVisible(false);
@@ -284,14 +287,14 @@ void Onboarding::startOnboarding() {
     d->contentAnim->setEndValue(ui->contentWrapper->sizeHint().height());
 
     QMetaObject::Connection* c = new QMetaObject::Connection();
-    *c = connect(d->contentAnim, &tVariantAnimation::finished, this, [ = ] {
+    *c = connect(d->contentAnim, &tVariantAnimation::finished, this, [=] {
         disconnect(*c);
         delete c;
 
-        //Animate in the bar
+        // Animate in the bar
         if (this->geometry().height() >= SC_DPI(600) + 2 * d->bar->height()) {
             QMetaObject::Connection* c = new QMetaObject::Connection();
-            *c = connect(d->barAnim, &tVariantAnimation::finished, this, [ = ] {
+            *c = connect(d->barAnim, &tVariantAnimation::finished, this, [=] {
                 disconnect(*c);
                 delete c;
 
@@ -314,6 +317,8 @@ void Onboarding::startOnboarding() {
 void Onboarding::writeAudio() {
     if (!d->audioEnabled) return;
     if (!d->audioOutputDevice) return;
+
+#if 0
     int bytesFree = d->audioOutput->bytesFree();
     if (d->audioPointer < d->singleAudioData.count()) {
         QByteArray chunk = d->singleAudioData.mid(d->audioPointer, bytesFree);
@@ -322,7 +327,7 @@ void Onboarding::writeAudio() {
         d->audioOutputDevice->write(chunk);
     }
 
-    //Prevent ourselves from locking up in this loop
+    // Prevent ourselves from locking up in this loop
     QDeadlineTimer lockTimer(50);
     while (bytesFree != 0 && d->audioPointer >= d->singleAudioData.count() && !lockTimer.hasExpired()) {
         if (d->audioPointer >= d->singleAudioData.count() + d->loopAudioData.count()) d->audioPointer -= d->loopAudioData.count();
@@ -332,10 +337,11 @@ void Onboarding::writeAudio() {
         d->audioOutputDevice->write(chunk);
     }
 
-    //Disable the audio
+    // Disable the audio
     if (lockTimer.hasExpired()) {
         d->audioEnabled = false;
     }
+#endif
 }
 
 void Onboarding::changeEvent(QEvent* event) {
@@ -351,7 +357,7 @@ void Onboarding::changeEvent(QEvent* event) {
 void Onboarding::keyPressEvent(QKeyEvent* event) {
     if (event->key() == Qt::Key_Space) {
         if (!ui->contentWrapper->isVisible()) {
-            //Skip the intro sequence
+            // Skip the intro sequence
             startOnboarding();
             event->accept();
         }
@@ -375,9 +381,9 @@ void Onboarding::completeOnboarding() {
     d->contentAnim->setEndValue(0);
     d->contentAnim->start();
 
-    //Animate out the bar
+    // Animate out the bar
     QMetaObject::Connection* c = new QMetaObject::Connection();
-    *c = connect(d->barAnim, &tVariantAnimation::finished, this, [ = ] {
+    *c = connect(d->barAnim, &tVariantAnimation::finished, this, [=] {
         disconnect(*c);
         delete c;
 
@@ -386,23 +392,23 @@ void Onboarding::completeOnboarding() {
     });
     hideBar();
 
-    //Fade out the music
+    // Fade out the music
     if (d->audioOutput) {
         tVariantAnimation* volAnim = new tVariantAnimation(this);
         volAnim->setStartValue(d->audioOutput->volume());
         volAnim->setEndValue(0);
         volAnim->setEasingCurve(QEasingCurve::OutCubic);
         volAnim->setDuration(500);
-        connect(volAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        connect(volAnim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
             d->audioOutput->setVolume(value.toInt());
         });
-        connect(volAnim, &tVariantAnimation::finished, this, [ = ] {
+        connect(volAnim, &tVariantAnimation::finished, this, [=] {
             volAnim->deleteLater();
         });
         volAnim->start();
     }
 
-    //Fade out the background
+    // Fade out the background
     d->fadeAnim->start();
 }
 

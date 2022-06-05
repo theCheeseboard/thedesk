@@ -21,9 +21,12 @@
 #include "ui_settimezonepopover.h"
 
 #include "timezonesmodel.h"
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
 
 struct SetTimezonePopoverPrivate {
-    TimezonesModel* model;
+        TimezonesModel* model;
 };
 
 SetTimezonePopover::SetTimezonePopover(QWidget* parent) :
@@ -55,7 +58,7 @@ void SetTimezonePopover::on_listView_activated(const QModelIndex& index) {
     QDBusMessage setTimezoneMessage = QDBusMessage::createMethodCall("org.freedesktop.timedate1", "/org/freedesktop/timedate1", "org.freedesktop.timedate1", "SetTimezone");
     setTimezoneMessage.setArguments({index.data(Qt::UserRole).toString(), true});
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(setTimezoneMessage));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
         if (watcher->isError()) {
             ui->stackedWidget->setCurrentWidget(ui->timezonesPage);
         } else {

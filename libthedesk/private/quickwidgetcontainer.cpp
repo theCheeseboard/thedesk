@@ -20,27 +20,27 @@
 #include "quickwidgetcontainer.h"
 #include "ui_quickwidgetcontainer.h"
 
-#include <the-libs_global.h>
-#include <QPainter>
-#include <tvariantanimation.h>
-#include <statemanager.h>
-#include <barmanager.h>
-#include <Wm/desktopwm.h>
 #include "chunk.h"
-#include <tlogger.h>
+#include <QPainter>
 #include <QScreen>
 #include <QTimer>
+#include <Wm/desktopwm.h>
+#include <barmanager.h>
+#include <libcontemporary_global.h>
+#include <statemanager.h>
+#include <tlogger.h>
+#include <tvariantanimation.h>
 
 struct QuickWidgetContainerPrivate {
-    QWidget* parentChunk;
-    QWidget* quickWidget;
-    int pointX = 0;
+        QWidget* parentChunk;
+        QWidget* quickWidget;
+        int pointX = 0;
 
-    tVariantAnimation* yAnim;
-    tVariantAnimation* opacityAnim;
-    bool isShowing = false;
+        tVariantAnimation* yAnim;
+        tVariantAnimation* opacityAnim;
+        bool isShowing = false;
 
-    BarManager::BarLockPtr barLock;
+        BarManager::BarLockPtr barLock;
 };
 
 QuickWidgetContainer::QuickWidgetContainer(QWidget* parent) :
@@ -57,7 +57,7 @@ QuickWidgetContainer::QuickWidgetContainer(QWidget* parent) :
     d->yAnim = new tVariantAnimation(this);
     d->yAnim->setEasingCurve(QEasingCurve::OutCubic);
     d->yAnim->setDuration(100);
-    connect(d->yAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(d->yAnim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         this->move(this->x(), value.toInt());
     });
 
@@ -66,10 +66,10 @@ QuickWidgetContainer::QuickWidgetContainer(QWidget* parent) :
     d->opacityAnim->setEndValue(1.0);
     d->opacityAnim->setEasingCurve(QEasingCurve::OutCubic);
     d->opacityAnim->setDuration(100);
-    connect(d->opacityAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(d->opacityAnim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         this->setWindowOpacity(value.toDouble());
     });
-    connect(d->opacityAnim, &tVariantAnimation::finished, this, [ = ] {
+    connect(d->opacityAnim, &tVariantAnimation::finished, this, [=] {
         if (d->opacityAnim->direction() == tVariantAnimation::Backward) this->hide();
     });
 
@@ -192,7 +192,6 @@ void QuickWidgetContainer::calculatePosition() {
     d->yAnim->setStartValue(midpoint.y() - SC_DPI(50));
     d->yAnim->setEndValue(midpoint.y());
 }
-
 
 bool QuickWidgetContainer::eventFilter(QObject* watched, QEvent* event) {
     if (event->type() == QEvent::Resize || event->type() == QEvent::LayoutRequest) {

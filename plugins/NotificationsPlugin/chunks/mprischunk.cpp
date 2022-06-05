@@ -20,25 +20,25 @@
 #include "mprischunk.h"
 #include "ui_mprischunk.h"
 
-#include <statemanager.h>
+#include <Applications/application.h>
+#include <QActionGroup>
+#include <QMenu>
 #include <barmanager.h>
+#include <libcontemporary_global.h>
 #include <mpris/mprisengine.h>
 #include <mpris/mprisplayer.h>
-#include <Applications/application.h>
-#include <QMenu>
-#include <QActionGroup>
-#include <the-libs_global.h>
+#include <statemanager.h>
 
 struct MprisChunkPrivate {
-    MprisPlayerPtr currentPlayer;
-    QString currentPlayerService;
-    ApplicationPointer currentPlayerApplication;
+        MprisPlayerPtr currentPlayer;
+        QString currentPlayerService;
+        ApplicationPointer currentPlayerApplication;
 
-    QMenu* playersMenu;
-    QActionGroup* playersGroup;
-    QMap<QString, QAction*> playerActions;
+        QMenu* playersMenu;
+        QActionGroup* playersGroup;
+        QMap<QString, QAction*> playerActions;
 
-    BarManager::BarLockPtr barLocker;
+        BarManager::BarLockPtr barLocker;
 };
 
 MprisChunk::MprisChunk() :
@@ -51,29 +51,29 @@ MprisChunk::MprisChunk() :
 
     d->playersMenu = new QMenu(this);
     d->playersMenu->addSection(tr("Media Players"));
-    connect(d->playersMenu, &QMenu::aboutToShow, this, [ = ] {
+    connect(d->playersMenu, &QMenu::aboutToShow, this, [=] {
         d->barLocker = StateManager::barManager()->acquireLock();
     });
-    connect(d->playersMenu, &QMenu::aboutToHide, this, [ = ] {
+    connect(d->playersMenu, &QMenu::aboutToHide, this, [=] {
         d->barLocker->unlock();
     });
     ui->playersButton->setMenu(d->playersMenu);
     ui->playersButton->setVisible(MprisEngine::players().count() > 1);
 
-    connect(MprisEngine::instance(), &MprisEngine::newPlayer, this, [ = ](QString service, MprisPlayerPtr player) {
+    connect(MprisEngine::instance(), &MprisEngine::newPlayer, this, [=](QString service, MprisPlayerPtr player) {
         Q_UNUSED(player)
         setupPlayer(service);
 
         if (d->currentPlayer == nullptr) setCurrentPlayer(service);
     });
-    connect(MprisEngine::instance(), &MprisEngine::playerGone, this, [ = ](QString service) {
+    connect(MprisEngine::instance(), &MprisEngine::playerGone, this, [=](QString service) {
         QAction* action = d->playerActions.take(service);
         d->playersMenu->removeAction(action);
         action->deleteLater();
         ui->playersButton->setVisible(MprisEngine::players().count() > 1);
 
         if (d->currentPlayerService == service) {
-            //Find another player
+            // Find another player
             if (!MprisEngine::players().isEmpty()) {
                 setCurrentPlayer(MprisEngine::players().first()->service());
             } else {
@@ -91,7 +91,7 @@ MprisChunk::MprisChunk() :
         setCurrentPlayer("");
     }
 
-    connect(StateManager::barManager(), &BarManager::barHeightTransitioning, this, [ = ](qreal percentage) {
+    connect(StateManager::barManager(), &BarManager::barHeightTransitioning, this, [=](qreal percentage) {
         if (qFuzzyCompare(percentage, 1)) {
             ui->buttonWidget->setFixedWidth(QWIDGETSIZE_MAX);
             ui->playersButton->setFixedWidth(QWIDGETSIZE_MAX);
@@ -110,11 +110,11 @@ MprisChunk::MprisChunk() :
     ui->stateIcon->setFixedWidth(0);
     ui->stateIcon->setPixmap(QIcon::fromTheme("media-playback-start").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
 
-    //Ensure that the player controls are always LTR
-//    if (this->layoutDirection() == Qt::RightToLeft) {
+    // Ensure that the player controls are always LTR
+    //    if (this->layoutDirection() == Qt::RightToLeft) {
     ui->playerControlsWidget->setLayoutDirection(Qt::LeftToRight);
-//        ui->playerControlsLayout->setDirection(QBoxLayout::RightToLeft);
-//    }
+    //        ui->playerControlsLayout->setDirection(QBoxLayout::RightToLeft);
+    //    }
 }
 
 MprisChunk::~MprisChunk() {
@@ -128,7 +128,7 @@ void MprisChunk::setupPlayer(QString service) {
     QAction* action = new QAction();
     action->setText(player->identity());
     action->setCheckable(true);
-    connect(action, &QAction::triggered, this, [ = ] {
+    connect(action, &QAction::triggered, this, [=] {
         setCurrentPlayer(service);
     });
     d->playerActions.insert(service, action);

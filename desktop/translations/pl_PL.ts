@@ -362,7 +362,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="250"/>
+        <location filename="../session/endsession.cpp" line="251"/>
         <source>Reboot</source>
         <translation>Restartuj</translation>
     </message>
@@ -507,17 +507,17 @@
         <translation>hibernuj system</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="249"/>
+        <location filename="../session/endsession.cpp" line="250"/>
         <source>Advanced Reboot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="259"/>
+        <location filename="../session/endsession.cpp" line="260"/>
         <source>Reboot into System UEFI Setup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="48"/>
+        <location filename="../session/endsession.cpp" line="49"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
         <translation>Hej %1, gotowy do wyjścia? Otrzymamy %2 za %n sekund, jeśli nic nie zrobisz.</translation>
     </message>
@@ -701,7 +701,7 @@
     <name>Recovery</name>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="35"/>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="68"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="67"/>
         <source>Recovery</source>
         <translation>Naprawa</translation>
     </message>
@@ -748,7 +748,7 @@ Zapisz dokumenty i zamknij wszystkie aplikacje przed rozpoczęciem resetowania. 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="93"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="92"/>
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
@@ -817,12 +817,12 @@ Pójdziemy i zresetujemy twoje ustawienia za %n sekund, jeśli nic nie zrobisz.<
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="72"/>
+        <location filename="../main.cpp" line="71"/>
         <source>Safe Mode</source>
         <translation>Tryb bezpieczeństwa</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="72"/>
+        <location filename="../main.cpp" line="71"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>Trzymasz klawisz CTRL. Uruchomić theDesk w trybie awaryjnym?</translation>
     </message>

@@ -20,16 +20,19 @@
 #include "onboardingusers.h"
 #include "ui_onboardingusers.h"
 
-#include <statemanager.h>
-#include <onboardingmanager.h>
-#include <terrorflash.h>
-#include <ttoast.h>
 #include "settings/user.h"
 #include "settings/usersmodel.h"
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
+#include <onboardingmanager.h>
+#include <statemanager.h>
+#include <terrorflash.h>
+#include <ttoast.h>
 
 struct OnboardingUsersPrivate {
-    bool userAdded = false;
-    QString firstUser;
+        bool userAdded = false;
+        QString firstUser;
 };
 
 OnboardingUsers::OnboardingUsers(QWidget* parent) :
@@ -82,25 +85,22 @@ void OnboardingUsers::on_addUserCompleteButton_clicked() {
     }
     ui->stackedWidget->setCurrentWidget(ui->spinnerPage);
 
-
-    //Add the user account
+    // Add the user account
     int accountType = d->userAdded ? (ui->administratorButton->isChecked() ? 1 : 0) : 1;
     QDBusMessage createMessage = QDBusMessage::createMethodCall("org.freedesktop.Accounts", "/org/freedesktop/Accounts", "org.freedesktop.Accounts", "CreateUser");
-    createMessage.setArguments({
-        ui->usernameBox->text(),
+    createMessage.setArguments({ui->usernameBox->text(),
         ui->fullNameBox->text(),
-        accountType
-    });
+        accountType});
 
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(createMessage));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
         QString error;
         if (watcher->isError()) {
             error = watcher->error().message();
         } else {
             UserPtr u(new User(watcher->reply().arguments().first().value<QDBusObjectPath>()));
 
-            //Set the user's password
+            // Set the user's password
             tPromiseResults<void> results;
             results = u->setPassword(ui->passwordBox->text(), ui->passwordHintBox->text())->await();
 
@@ -122,8 +122,8 @@ void OnboardingUsers::on_addUserCompleteButton_clicked() {
 
             ui->addUserDescriptionLabel->setText(tr("Enter the details of the next user to be added"));
         } else {
-            //Bail out
-            QTimer::singleShot(1000, [ = ] {
+            // Bail out
+            QTimer::singleShot(1000, [=] {
                 ui->stackedWidget->setCurrentWidget(ui->addUserPage);
 
                 tToast* toast = new tToast();

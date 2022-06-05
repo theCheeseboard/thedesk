@@ -21,25 +21,26 @@
 #include <QDir>
 #include <QTimer>
 
-#include <tapplication.h>
-#include <statemanager.h>
-#include <powermanager.h>
-#include <localemanager.h>
-#include <statuscentermanager.h>
-#include <gatewaymanager.h>
-#include <Wm/desktopwm.h>
 #include <Screens/screendaemon.h>
+#include <Wm/desktopwm.h>
+#include <gatewaymanager.h>
+#include <localemanager.h>
+#include <powermanager.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <tapplication.h>
+#include <tstylemanager.h>
 
-#include "plugins/pluginmanager.h"
-#include "bar/barwindow.h"
 #include "background/background.h"
-#include "session/endsession.h"
+#include "bar/barwindow.h"
 #include "cli/commandline.h"
-#include "server/sessionserver.h"
-#include <onboarding/onboardingcontroller.h>
-#include "run/rundialog.h"
-#include <tsettings.h>
 #include "crash/crashhandling.h"
+#include "plugins/pluginmanager.h"
+#include "run/rundialog.h"
+#include "server/sessionserver.h"
+#include "session/endsession.h"
+#include <onboarding/onboardingcontroller.h>
+#include <tsettings.h>
 
 #include "gateway/appsearchprovider.h"
 
@@ -51,20 +52,18 @@ int main(int argc, char* argv[]) {
     a.setCopyrightYear("2022");
 
     StateManager::instance();
-    StateManager::localeManager()->addTranslationSet({
-        a.applicationDirPath() + "/translations",
-        "/usr/share/thedesk/translations"
-    });
+    StateManager::localeManager()->addTranslationSet({a.applicationDirPath() + "/translations",
+        "/usr/share/thedesk/translations"});
 
     tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
     tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
 
     CrashHandling::prepareCrashHandler();
 
-    //Parse command line arguments
+    // Parse command line arguments
     int parseResult = CommandLine::parse(a.arguments());
     if (parseResult != -1) {
-        //Stop running right here
+        // Stop running right here
         return parseResult;
     }
 
@@ -76,20 +75,20 @@ int main(int argc, char* argv[]) {
     DesktopWm::instance()->registerAsPrimaryProvider();
     PluginManager::instance()->scanPlugins();
 
-    QObject::connect(StateManager::instance()->powerManager(), &PowerManager::powerOffConfirmationRequested, [ = ](PowerManager::PowerOperation operation, QString message, QStringList flags, tPromiseFunctions<void>::SuccessFunction cb) {
+    QObject::connect(StateManager::instance()->powerManager(), &PowerManager::powerOffConfirmationRequested, [=](PowerManager::PowerOperation operation, QString message, QStringList flags, tPromiseFunctions<void>::SuccessFunction cb) {
         EndSession::showDialog(operation, message, flags)->then(cb);
     });
 
-    //Perform onboarding if required
+    // Perform onboarding if required
     if (!OnboardingController::performOnboarding(false)) {
-        //Exit now because onboarding failed (probably the user chose to log out)
+        // Exit now because onboarding failed (probably the user chose to log out)
         return 0;
     }
 
-    //Prepare the run dialog
+    // Prepare the run dialog
     RunDialog::initialise();
 
-    //Prepare the background
+    // Prepare the background
     Background::reconfigureBackgrounds();
 
     StateManager::gatewayManager()->registerSearchProvider(new AppSearchProvider());
@@ -97,7 +96,7 @@ int main(int argc, char* argv[]) {
     BarWindow w;
     w.show();
 
-    QTimer::singleShot(0, [ = ] {
+    QTimer::singleShot(0, [=] {
         SessionServer::instance()->hideSplashes();
         SessionServer::instance()->performAutostart();
     });

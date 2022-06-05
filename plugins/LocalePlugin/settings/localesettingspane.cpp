@@ -21,14 +21,14 @@
 #include "ui_localesettingspane.h"
 
 #include <QIcon>
+#include <QMenu>
+#include <localemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <localemanager.h>
-#include <QMenu>
 
 #include <TimeDate/desktoptimedate.h>
 
-#include "common.h"
+#include "localeplugincommon.h"
 
 LocaleSettingsPane::LocaleSettingsPane() :
     StatusCenterPane(),
@@ -43,17 +43,17 @@ LocaleSettingsPane::LocaleSettingsPane() :
     ui->languageWidget->setFixedWidth(contentWidth);
     ui->regionWidget->setFixedWidth(contentWidth);
 
-    QList<Common::Country> countries = Common::countries();
-    for (Common::Country country : countries) {
+    QList<LocalePluginCommon::Country> countries = LocalePluginCommon::countries();
+    for (LocalePluginCommon::Country country : countries) {
         ui->countryBox->addItem(country.text, country.country);
         if (country.isCurrent) ui->countryBox->setCurrentIndex(ui->countryBox->count() - 1);
     }
 
-    connect(StateManager::localeManager(), &LocaleManager::localesChanged, this, [ = ] {
+    connect(StateManager::localeManager(), &LocaleManager::localesChanged, this, [=] {
         this->updateLanguages();
         StateManager::statusCenterManager()->requestLogout();
     });
-    connect(StateManager::localeManager(), &LocaleManager::formatCountryChanged, this, [ = ] {
+    connect(StateManager::localeManager(), &LocaleManager::formatCountryChanged, this, [=] {
         this->updateRegionalFormats();
         StateManager::statusCenterManager()->requestLogout();
     });
@@ -110,7 +110,6 @@ void LocaleSettingsPane::changeEvent(QEvent* event) {
     }
 }
 
-
 QString LocaleSettingsPane::name() {
     return "LocaleSettings";
 }
@@ -150,13 +149,13 @@ void LocaleSettingsPane::on_languagesList_customContextMenuRequested(const QPoin
     if (item) {
         QMenu* menu = new QMenu();
         menu->addSection(tr("For this language"));
-        if (ui->languagesList->row(item) != 0) menu->addAction(QIcon::fromTheme("go-up"), tr("Move Up"), [ = ] {
+        if (ui->languagesList->row(item) != 0) menu->addAction(QIcon::fromTheme("go-up"), tr("Move Up"), [=] {
             StateManager::localeManager()->moveLocaleUp(item->data(Qt::UserRole).toLocale());
         });
-        if (ui->languagesList->row(item) != ui->languagesList->count() - 1) menu->addAction(QIcon::fromTheme("go-down"), tr("Move Down"), [ = ] {
+        if (ui->languagesList->row(item) != ui->languagesList->count() - 1) menu->addAction(QIcon::fromTheme("go-down"), tr("Move Down"), [=] {
             StateManager::localeManager()->moveLocaleDown(item->data(Qt::UserRole).toLocale());
         });
-        menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove"), [ = ] {
+        menu->addAction(QIcon::fromTheme("list-remove"), tr("Remove"), [=] {
             StateManager::localeManager()->removeLocale(item->data(Qt::UserRole).toLocale());
         });
         connect(menu, &QMenu::aboutToHide, menu, &QMenu::deleteLater);

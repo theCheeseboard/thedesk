@@ -39,7 +39,7 @@
     <name>OnboardingTimeZone</name>
     <message>
         <location filename="../onboarding/onboardingtimezone.ui" line="35"/>
-        <location filename="../onboarding/onboardingtimezone.cpp" line="53"/>
+        <location filename="../onboarding/onboardingtimezone.cpp" line="55"/>
         <source>Time Zone</source>
         <translation>Múi giờ</translation>
     </message>

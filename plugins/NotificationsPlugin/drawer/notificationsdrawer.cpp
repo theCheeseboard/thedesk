@@ -20,21 +20,21 @@
 #include "notificationsdrawer.h"
 #include "ui_notificationsdrawer.h"
 
+#include "notificationsdrawerwidget.h"
+#include "notificationtracker.h"
 #include <QScreen>
-#include <the-libs_global.h>
 #include <Wm/desktopwm.h>
-#include <statemanager.h>
 #include <barmanager.h>
 #include <gatewaymanager.h>
+#include <libcontemporary_global.h>
 #include <quietmodemanager.h>
-#include "notificationtracker.h"
-#include "notificationsdrawerwidget.h"
+#include <statemanager.h>
 
 struct NotificationsDrawerPrivate {
-    NotificationTracker* tracker;
-    QList<NotificationsDrawerWidget*> widgets;
+        NotificationTracker* tracker;
+        QList<NotificationsDrawerWidget*> widgets;
 
-    QScreen* oldPrimaryScreen = nullptr;
+        QScreen* oldPrimaryScreen = nullptr;
 };
 
 NotificationsDrawer::NotificationsDrawer(NotificationTracker* tracker) :
@@ -124,7 +124,7 @@ void NotificationsDrawer::showNotification(NotificationPtr notification) {
 
     this->updateGeometry();
 
-    connect(w, &NotificationsDrawerWidget::dismiss, this, [ = ] {
+    connect(w, &NotificationsDrawerWidget::dismiss, this, [=] {
         d->widgets.removeOne(w);
         ui->notificationsLayout->removeWidget(w);
         w->deleteLater();

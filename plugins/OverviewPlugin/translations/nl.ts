@@ -9,22 +9,22 @@
         <translation>Hopelijk heb je een geweldige dag. Dit hebben we voor je:</translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="108"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="109"/>
         <source>Hi %1!</source>
         <translation>Hoi %1!</translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="110"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="111"/>
         <source>Good morning, %1!</source>
         <translation>Goedemorgen, %1!</translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="112"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="113"/>
         <source>Good afternoon, %1!</source>
         <translation>Goedemiddag, %1!</translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="114"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="115"/>
         <source>Good evening, %1!</source>
         <translation>Goedenavond, %1!</translation>
     </message>

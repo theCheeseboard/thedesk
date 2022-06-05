@@ -20,38 +20,37 @@
 #include "xinputbackend.h"
 
 #include <QVariant>
-#include <QX11Info>
-#include <libinput-properties.h>
-#include <X11/Xlib.h>
+#include <tx11info.h>
+
 #include <X11/Xatom.h>
-#include <X11/extensions/XInput2.h>
+#include <X11/Xlib.h>
 #include <X11/extensions/XInput.h>
+#include <X11/extensions/XInput2.h>
+#include <libinput-properties.h>
 
 #undef Bool
 
-XInputBackend::XInputBackend(QObject* parent) : SettingsBackend(parent) {
-
+XInputBackend::XInputBackend(QObject* parent) :
+    SettingsBackend(parent) {
 }
 
 void XInputBackend::writeXiSetting(const char* atom, QVariantList value, WriteFor writeFor) {
     int devices;
-    XDeviceInfo* info = XListInputDevices(QX11Info::display(), &devices);
+    XDeviceInfo* info = XListInputDevices(tX11Info::display(), &devices);
     if (info == nullptr) return;
 
-    Atom mouseAtom = XInternAtom(QX11Info::display(), XI_MOUSE, True);
-    Atom touchpadAtom = XInternAtom(QX11Info::display(), XI_TOUCHPAD, True);
-    Atom trackballAtom = XInternAtom(QX11Info::display(), XI_TRACKBALL, True);
+    Atom mouseAtom = XInternAtom(tX11Info::display(), XI_MOUSE, True);
+    Atom touchpadAtom = XInternAtom(tX11Info::display(), XI_TOUCHPAD, True);
+    Atom trackballAtom = XInternAtom(tX11Info::display(), XI_TRACKBALL, True);
     for (int i = 0; i < devices; i++) {
         XDeviceInfo* d = info + i;
-        if ((d->type == mouseAtom && writeFor & Mice)
-            || (d->type == touchpadAtom && writeFor & Touchpads)
-            || (d->type == trackballAtom && writeFor & Mice)) {
-            Atom valAtom = XInternAtom(QX11Info::display(), atom, True);
+        if ((d->type == mouseAtom && writeFor & Mice) || (d->type == touchpadAtom && writeFor & Touchpads) || (d->type == trackballAtom && writeFor & Mice)) {
+            Atom valAtom = XInternAtom(tX11Info::display(), atom, True);
             Atom type;
             if (value.first().type() == QVariant::Bool || value.first().type() == QVariant::Int || value.first().type() == QVariant::Char) {
                 type = XA_INTEGER;
             } else if (value.first().type() == QVariant::Double) {
-                type = XInternAtom(QX11Info::display(), "FLOAT", False);
+                type = XInternAtom(tX11Info::display(), "FLOAT", False);
             } else {
                 return;
             }
@@ -61,7 +60,7 @@ void XInputBackend::writeXiSetting(const char* atom, QVariantList value, WriteFo
             unsigned long itemCount;
             unsigned long bytesAfter;
             unsigned char* data = nullptr;
-            Status s = XIGetProperty(QX11Info::display(), d->id, valAtom, 0, 32, False, type, &typeReturn, &formatReturn, &itemCount, &bytesAfter, &data);
+            Status s = XIGetProperty(tX11Info::display(), d->id, valAtom, 0, 32, False, type, &typeReturn, &formatReturn, &itemCount, &bytesAfter, &data);
             if (s != Success) continue;
 
             if (typeReturn != type || data == nullptr || itemCount != value.count()) {
@@ -90,25 +89,25 @@ void XInputBackend::writeXiSetting(const char* atom, QVariantList value, WriteFo
                 for (int i = 0; i < value.count(); i++) {
                     v[i] = value.at(i).toBool() ? 1 : 0;
                 }
-                XIChangeProperty(QX11Info::display(), d->id, valAtom, type, 8, XIPropModeReplace, v, value.count());
+                XIChangeProperty(tX11Info::display(), d->id, valAtom, type, 8, XIPropModeReplace, v, value.count());
             } else if (value.first().type() == QVariant::Double) {
                 float v[64];
                 for (int i = 0; i < value.count(); i++) {
                     v[i] = static_cast<float>(value.at(i).toDouble());
                 }
-                XIChangeProperty(QX11Info::display(), d->id, valAtom, type, 32, XIPropModeReplace, reinterpret_cast<unsigned char*>(v), value.count());
+                XIChangeProperty(tX11Info::display(), d->id, valAtom, type, 32, XIPropModeReplace, reinterpret_cast<unsigned char*>(v), value.count());
             } else if (value.first().type() == QVariant::Char) {
                 unsigned char v[64];
                 for (int i = 0; i < value.count(); i++) {
                     v[i] = value.at(i).toChar().toLatin1();
                 }
-                XIChangeProperty(QX11Info::display(), d->id, valAtom, type, 8, XIPropModeReplace, v, value.count());
+                XIChangeProperty(tX11Info::display(), d->id, valAtom, type, 8, XIPropModeReplace, v, value.count());
             } else if (value.first().type() == QVariant::Int) {
                 int v[64];
                 for (int i = 0; i < value.count(); i++) {
                     v[i] = value.at(i).toInt();
                 }
-                XIChangeProperty(QX11Info::display(), d->id, valAtom, type, 32, XIPropModeReplace, reinterpret_cast<unsigned char*>(v), value.count());
+                XIChangeProperty(tX11Info::display(), d->id, valAtom, type, 32, XIPropModeReplace, reinterpret_cast<unsigned char*>(v), value.count());
             }
 
             XFree(data);

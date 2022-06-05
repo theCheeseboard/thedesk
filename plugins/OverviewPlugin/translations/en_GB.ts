@@ -4,22 +4,22 @@
 <context>
     <name>OverviewPane</name>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="108"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="109"/>
         <source>Hi %1!</source>
         <translation>Hi %1!</translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="110"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="111"/>
         <source>Good morning, %1!</source>
         <translation>Good morning, %1!</translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="112"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="113"/>
         <source>Good afternoon, %1!</source>
         <translation>Good afternoon, %1!</translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="114"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="115"/>
         <source>Good evening, %1!</source>
         <translation>Good evening, %1!</translation>
     </message>

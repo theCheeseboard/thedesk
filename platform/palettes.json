@@ -9,6 +9,7 @@
             },
             "base": 40,
             "text": "white",
+            "placeholderText": 150,
             "tooltipText": "white",
             "alternateBase": 40,
             "link": [0,200,255]
@@ -82,6 +83,7 @@
             },
             "base": 210,
             "text": "black",
+            "placeholderText": 100,
             "tooltipText": "black",
             "alternateBase": 210,
             "link": [0,100,255]

@@ -20,14 +20,14 @@
 #include "icontextchunk.h"
 #include "ui_icontextchunk.h"
 
-#include <QIcon>
-#include <the-libs_global.h>
-#include "statemanager.h"
 #include "barmanager.h"
+#include "statemanager.h"
+#include <QIcon>
+#include <libcontemporary_global.h>
 
 struct IconTextChunkPrivate {
-    QString name;
-    QWidget* quickWidget = nullptr;
+        QString name;
+        QWidget* quickWidget = nullptr;
 };
 
 IconTextChunk::IconTextChunk(QString name) :
@@ -37,7 +37,7 @@ IconTextChunk::IconTextChunk(QString name) :
     d = new IconTextChunkPrivate();
     d->name = name;
 
-    connect(StateManager::barManager(), &BarManager::barHeightTransitioning, this, [ = ](qreal percentage) {
+    connect(StateManager::barManager(), &BarManager::barHeightTransitioning, this, [=](qreal percentage) {
         int padding = 3 + 6 * percentage;
         this->layout()->setContentsMargins(6, padding, 6, padding);
 
@@ -48,7 +48,7 @@ IconTextChunk::IconTextChunk(QString name) :
         }
     });
 
-    connect(this, &IconTextChunk::clicked, this, [ = ] {
+    connect(this, &IconTextChunk::clicked, this, [=] {
         showQuickWidget();
     });
 }
@@ -73,7 +73,6 @@ void IconTextChunk::setQuickWidget(QWidget* widget) {
 void IconTextChunk::deleteLater() {
     Chunk::deleteLater();
 }
-
 
 QString IconTextChunk::name() {
     return d->name;

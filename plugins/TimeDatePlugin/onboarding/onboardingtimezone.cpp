@@ -20,12 +20,14 @@
 #include "onboardingtimezone.h"
 #include "ui_onboardingtimezone.h"
 
-#include <statemanager.h>
-#include <onboardingmanager.h>
 #include "timezonesmodel.h"
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <onboardingmanager.h>
+#include <statemanager.h>
 
 struct OnboardingTimeZonePrivate {
-    TimezonesModel* model;
+        TimezonesModel* model;
 };
 
 OnboardingTimeZone::OnboardingTimeZone(QWidget* parent) :

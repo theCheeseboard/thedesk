@@ -20,23 +20,26 @@
 #include "userspane.h"
 #include "ui_userspane.h"
 
-#include "usersmodel.h"
-#include "user.h"
-#include <PolkitQt1/Authority>
-#include <tpopover.h>
-#include <ttoast.h>
 #include "adduserdialog.h"
-#include "deleteuserdialog.h"
 #include "changepassworddialog.h"
 #include "changerealnamedialog.h"
-#include "usertypedialog.h"
+#include "deleteuserdialog.h"
 #include "lockuserdialog.h"
+#include "user.h"
+#include "usersmodel.h"
+#include "usertypedialog.h"
+#include <tpopover.h>
+#include <ttoast.h>
 
 #include <statemanager.h>
 #include <statuscentermanager.h>
 
+#ifdef HAVE_POLKITQT
+    #include <PolkitQt1/Authority>
+#endif
+
 struct UsersPanePrivate {
-    UserPtr currentUser;
+        UserPtr currentUser;
 };
 
 UsersPane::UsersPane() :
@@ -52,7 +55,7 @@ UsersPane::UsersPane() :
     connect(StateManager::instance()->statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, ui->usernameTitleLabel, &tTitleLabel::setBackButtonShown);
 
     ui->usersList->setModel(new UsersModel());
-    connect(ui->usersList->selectionModel(), &QItemSelectionModel::currentChanged, this, [ = ](QModelIndex newIndex, QModelIndex oldIndex) {
+    connect(ui->usersList->selectionModel(), &QItemSelectionModel::currentChanged, this, [=](QModelIndex newIndex, QModelIndex oldIndex) {
         if (d->currentUser) {
             disconnect(d->currentUser.data(), &User::dataUpdated, this, &UsersPane::currentUserChanged);
         }
@@ -98,7 +101,7 @@ void UsersPane::currentUserChanged() {
 }
 
 void UsersPane::on_addButton_clicked() {
-    this->checkPolkit(false)->then([ = ] {
+    this->checkPolkit(false)->then([=] {
         AddUserDialog* d = new AddUserDialog();
         tPopover* popover = new tPopover(d);
         popover->setPopoverWidth(SC_DPI(600));
@@ -111,7 +114,7 @@ void UsersPane::on_addButton_clicked() {
 }
 
 tPromise<void>* UsersPane::checkPolkit(bool isOwnUser) {
-    tPromise<void>* promise = new tPromise<void>([ = ](QString & error) {
+    tPromise<void>* promise = new tPromise<void>([=](QString& error) {
         QString auth;
         if (isOwnUser) {
             auth = "org.freedesktop.accounts.change-own-user-data";
@@ -119,7 +122,8 @@ tPromise<void>* UsersPane::checkPolkit(bool isOwnUser) {
             auth = "org.freedesktop.accounts.user-administration";
         }
 
-        //Check Polkit authorization
+#ifdef HAVE_POLKITQT
+        // Check Polkit authorization
         PolkitQt1::Authority::Result r = PolkitQt1::Authority::instance()->checkAuthorizationSync(auth, PolkitQt1::UnixProcessSubject(QApplication::applicationPid()), PolkitQt1::Authority::None);
         if (r == PolkitQt1::Authority::No) {
             error = "not-allowed";
@@ -131,8 +135,9 @@ tPromise<void>* UsersPane::checkPolkit(bool isOwnUser) {
                 return;
             }
         }
+#endif
     });
-    promise->error([ = ](QString err) {
+    promise->error([=](QString err) {
         if (err == "not-allowed") {
             tToast* toast = new tToast();
             toast->setTitle(tr("Unauthorized"));
@@ -145,7 +150,7 @@ tPromise<void>* UsersPane::checkPolkit(bool isOwnUser) {
 }
 
 void UsersPane::on_deleteUserButton_clicked() {
-    this->checkPolkit(false)->then([ = ] {
+    this->checkPolkit(false)->then([=] {
         DeleteUserDialog* d = new DeleteUserDialog(this->d->currentUser);
         tPopover* popover = new tPopover(d);
         popover->setPopoverWidth(SC_DPI(600));
@@ -158,7 +163,7 @@ void UsersPane::on_deleteUserButton_clicked() {
 }
 
 void UsersPane::on_changePasswordButton_clicked() {
-    this->checkPolkit(d->currentUser->isCurrentUser())->then([ = ] {
+    this->checkPolkit(d->currentUser->isCurrentUser())->then([=] {
         ChangePasswordDialog* d = new ChangePasswordDialog(this->d->currentUser);
         tPopover* popover = new tPopover(d);
         popover->setPopoverWidth(SC_DPI(600));
@@ -171,7 +176,7 @@ void UsersPane::on_changePasswordButton_clicked() {
 }
 
 void UsersPane::on_changeUserTypeButton_clicked() {
-    this->checkPolkit(d->currentUser->isCurrentUser())->then([ = ] {
+    this->checkPolkit(d->currentUser->isCurrentUser())->then([=] {
         UserTypeDialog* d = new UserTypeDialog(this->d->currentUser);
         tPopover* popover = new tPopover(d);
         popover->setPopoverWidth(SC_DPI(600));
@@ -184,7 +189,7 @@ void UsersPane::on_changeUserTypeButton_clicked() {
 }
 
 void UsersPane::on_changeRealNameButton_clicked() {
-    this->checkPolkit(d->currentUser->isCurrentUser())->then([ = ] {
+    this->checkPolkit(d->currentUser->isCurrentUser())->then([=] {
         ChangeRealNameDialog* d = new ChangeRealNameDialog(this->d->currentUser);
         tPopover* popover = new tPopover(d);
         popover->setPopoverWidth(SC_DPI(600));
@@ -197,7 +202,7 @@ void UsersPane::on_changeRealNameButton_clicked() {
 }
 
 void UsersPane::on_lockUserButton_clicked() {
-    this->checkPolkit(false)->then([ = ] {
+    this->checkPolkit(false)->then([=] {
         LockUserDialog* d = new LockUserDialog(this->d->currentUser);
         tPopover* popover = new tPopover(d);
         popover->setPopoverWidth(SC_DPI(600));
@@ -235,5 +240,3 @@ void UsersPane::changeEvent(QEvent* event) {
         emit displayNameChanged();
     }
 }
-
-

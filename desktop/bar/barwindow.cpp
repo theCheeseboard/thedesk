@@ -212,7 +212,7 @@ void BarWindow::resizeEvent(QResizeEvent* event) {
     StateManager::barManager()->setBarHeight(this->height());
 }
 
-void BarWindow::enterEvent(QEvent* event) {
+void BarWindow::enterEvent(QEnterEvent*event) {
     if (d->lastGesture && d->lastGesture->isActive()) return;
     d->barPendingShow = true;
     if ((this->layoutDirection() == Qt::RightToLeft && mapFromGlobal(QCursor::pos()).x() > d->mainBarWidget->currentAppWidgetX()) ||

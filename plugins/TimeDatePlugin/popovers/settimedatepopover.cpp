@@ -20,11 +20,14 @@
 #include "settimedatepopover.h"
 #include "ui_settimedatepopover.h"
 
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
 #include <tdatetimepicker.h>
 
 struct SetTimeDatePopoverPrivate {
-    tDateTimePicker* datePicker;
-    tDateTimePicker* timePicker;
+        tDateTimePicker* datePicker;
+        tDateTimePicker* timePicker;
 };
 
 SetTimeDatePopover::SetTimeDatePopover(QWidget* parent) :
@@ -62,7 +65,6 @@ void SetTimeDatePopover::on_titleLabel_backButtonClicked() {
     emit done();
 }
 
-
 void SetTimeDatePopover::on_applyButton_clicked() {
     ui->stackedWidget->setCurrentWidget(ui->spinnerPage);
 
@@ -72,7 +74,7 @@ void SetTimeDatePopover::on_applyButton_clicked() {
     QDBusMessage setTimeMessage = QDBusMessage::createMethodCall("org.freedesktop.timedate1", "/org/freedesktop/timedate1", "org.freedesktop.timedate1", "SetTime");
     setTimeMessage.setArguments({milliSinceEpoch, false, true});
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(setTimeMessage));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
         if (watcher->isError()) {
             ui->stackedWidget->setCurrentWidget(ui->dateTimePage);
         } else {
@@ -81,4 +83,3 @@ void SetTimeDatePopover::on_applyButton_clicked() {
         watcher->deleteLater();
     });
 }
-

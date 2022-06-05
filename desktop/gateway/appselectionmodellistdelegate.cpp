@@ -19,26 +19,27 @@
  * *************************************/
 #include "appselectionmodellistdelegate.h"
 
+#include "appsearchprovider.h"
 #include <Applications/application.h>
 #include <QPainter>
-#include <the-libs_global.h>
-#include "appsearchprovider.h"
+#include <libcontemporary_global.h>
 
-AppSelectionModelListDelegate::AppSelectionModelListDelegate(QWidget* parent, bool drawArrows) : QStyledItemDelegate(parent) {
+AppSelectionModelListDelegate::AppSelectionModelListDelegate(QWidget* parent, bool drawArrows) :
+    QStyledItemDelegate(parent) {
     this->drawArrows = drawArrows;
 }
 
 void AppSelectionModelListDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
     AppSearchProvider provider;
     return provider.paint(painter, option, {
-        {"application", index.data(Qt::UserRole + 2).toString()},
-        {"drawArrows", this->drawArrows}
+                                               {"application", index.data(Qt::UserRole + 2).toString()},
+                                               {"drawArrows",  this->drawArrows                       }
     });
 }
 
 QSize AppSelectionModelListDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
     AppSearchProvider provider;
     return provider.sizeHint(option, {
-        {"application", index.data(Qt::UserRole + 2).toString()}
+                                         {"application", index.data(Qt::UserRole + 2).toString()}
     });
 }

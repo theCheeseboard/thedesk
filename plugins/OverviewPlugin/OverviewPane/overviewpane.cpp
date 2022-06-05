@@ -20,30 +20,31 @@
 #include "overviewpane.h"
 #include "ui_overviewpane.h"
 
-#include <statemanager.h>
-#include <statuscentermanager.h>
-#include <QToolButton>
+#include "worldclock.h"
 #include <QDBusInterface>
 #include <QIcon>
-#include <Wm/desktopwm.h>
-#include <TimeDate/desktoptimedate.h>
-#include <QTimer>
-#include <QTime>
-#include <QVariantAnimation>
 #include <QPainter>
-#include <math.h>
-#include <the-libs_global.h>
-#include <tsettings.h>
 #include <QProcess>
-#include "worldclock.h"
+#include <QTime>
+#include <QTimer>
+#include <QToolButton>
+#include <QVariantAnimation>
+#include <TimeDate/desktoptimedate.h>
+#include <Wm/desktopwm.h>
+#include <libcontemporary_global.h>
+#include <math.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <tsettings.h>
 
 struct OverviewPanePrivate {
-    OverviewPanePrivate() : worldClockSettings("theSuite", "the24") {};
+        OverviewPanePrivate() :
+            worldClockSettings("theSuite", "the24"){};
 
-    QToolButton* hamburgerButton;
-    QList<WorldClock*> worldClocks;
+        QToolButton* hamburgerButton;
+        QList<WorldClock*> worldClocks;
 
-    tSettings worldClockSettings;
+        tSettings worldClockSettings;
 };
 
 OverviewPane::OverviewPane() :
@@ -76,7 +77,7 @@ OverviewPane::OverviewPane() :
     DesktopTimeDate::makeTimeLabel(ui->time, DesktopTimeDate::Time);
     DesktopTimeDate::makeTimeLabel(ui->timeAmPm, DesktopTimeDate::AmPm);
 
-    connect(DesktopTimeDate::timeUpdateTimer(), &QTimer::timeout, this, [ = ] {
+    connect(DesktopTimeDate::timeUpdateTimer(), &QTimer::timeout, this, [=] {
         for (WorldClock* wc : d->worldClocks) {
             wc->updateClock();
         }
@@ -86,7 +87,7 @@ OverviewPane::OverviewPane() :
     ui->mainWidget->setFixedWidth(contentWidth);
     ui->scrollAreaWidgetContents->installEventFilter(this);
 
-    connect(&d->worldClockSettings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
+    connect(&d->worldClockSettings, &tSettings::settingChanged, this, [=](QString key, QVariant value) {
         if (key == "WorldClock/timezones") {
             updateWorldClocks();
         }
@@ -136,13 +137,13 @@ void OverviewPane::updateDSTNotification() {
 
     QString timezoneInfoPath = "/usr/share/zoneinfo/" + currentTimezone;
     QProcess* timezoneProcess = new QProcess();
-    connect(timezoneProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [ = ](int exitCode, QProcess::ExitStatus exitStatus) {
+    connect(timezoneProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=](int exitCode, QProcess::ExitStatus exitStatus) {
         timezoneProcess->deleteLater();
 
         struct Changeover {
-            QDateTime changeoverDate;
-            bool isDST;
-            int gmtOffset;
+                QDateTime changeoverDate;
+                bool isDST;
+                int gmtOffset;
         };
 
         QList<Changeover> changeovers;
@@ -164,8 +165,7 @@ void OverviewPane::updateDSTNotification() {
                     "Sep",
                     "Oct",
                     "Nov",
-                    "Dec"
-                };
+                    "Dec"};
                 dateText.append(parts.at(3));
                 dateText.append(QString::number(months.indexOf(parts.at(2)) + 1).rightJustified(2, '0'));
                 dateText.append(parts.at(5));
@@ -237,21 +237,22 @@ bool OverviewPane::eventFilter(QObject* watched, QEvent* event) {
             top = QColor(150, 150, 150);
             bottom = QColor(100, 100, 100);
             newTextColor = QColor(Qt::black);
-        } else*/ if (now.hour() < 4 || now.hour() > 20) { //Assume night
+        } else*/
+        if (now.hour() < 4 || now.hour() > 20) { // Assume night
             top = QColor(0, 36, 85);
             bottom = QColor(0, 17, 40);
             newTextColor = QColor(Qt::white);
-        } else if (now.hour() > 8 && now.hour() < 16) { //Assume day
+        } else if (now.hour() > 8 && now.hour() < 16) { // Assume day
             top = QColor(126, 195, 255);
             bottom = QColor(64, 149, 185);
             newTextColor = QColor(Qt::black);
-        } else { //Calculate interpolation
+        } else { // Calculate interpolation
             int interpolation;
-            //From 4-8 interpolate sunrise
+            // From 4-8 interpolate sunrise
             if (now.hour() > 4 && now.hour() < 8) {
-                interpolation = now.msecsSinceStartOfDay() - 14400000; //4 hours in milliseconds
+                interpolation = now.msecsSinceStartOfDay() - 14400000; // 4 hours in milliseconds
             } else {
-                interpolation = 14400000 - (now.msecsSinceStartOfDay() - 57600000); //16 hours in milliseconds
+                interpolation = 14400000 - (now.msecsSinceStartOfDay() - 57600000); // 16 hours in milliseconds
             }
 
             QVariantAnimation a;
@@ -284,23 +285,23 @@ bool OverviewPane::eventFilter(QObject* watched, QEvent* event) {
         p.setPen(Qt::transparent);
         p.drawRect(0, 0, ui->scrollAreaWidgetContents->width(), ui->scrollAreaWidgetContents->height());
 
-        //Draw background objects if neccessary
-        //    if (currentCondition.isValid) {
-        //        if (currentCondition.properties.value(WeatherCondition::isRainy, false).toBool()) drawRaindrops(&p);
-        //        if (currentCondition.properties.value(WeatherCondition::WindBeaufort, 0).toInt() >= 4) drawWind(&p);
-        //    }
-        //    drawObjects(&p);
+        // Draw background objects if neccessary
+        //     if (currentCondition.isValid) {
+        //         if (currentCondition.properties.value(WeatherCondition::isRainy, false).toBool()) drawRaindrops(&p);
+        //         if (currentCondition.properties.value(WeatherCondition::WindBeaufort, 0).toInt() >= 4) drawWind(&p);
+        //     }
+        //     drawObjects(&p);
 
-        //Draw celestial object if neccessary
+        // Draw celestial object if neccessary
         int daySegmentPassed = -1;
         bool isMoon = true;
 
-        if (now.hour() < 5 || (now.hour() == 5 && now.minute() <= 30)) { //Draw moon
-            daySegmentPassed = now.msecsSinceStartOfDay() + 19800000; //5.5 hours in milliseconds
-        } else if (now.hour() > 18 || (now.hour() == 18 && now.minute() >= 30)) { //Draw moon
-            daySegmentPassed = now.msecsSinceStartOfDay() - 66600000; //18.5 hours in milliseconds
-        } else if ((now.hour() > 6 && now.hour() < 17) || (now.hour() == 6 && now.minute() >= 30) || (now.hour() == 17 && now.minute() <= 30)) { //Draw sun
-            daySegmentPassed = now.msecsSinceStartOfDay() - 23400000; //6.5 hours in milliseconds
+        if (now.hour() < 5 || (now.hour() == 5 && now.minute() <= 30)) {                                                                         // Draw moon
+            daySegmentPassed = now.msecsSinceStartOfDay() + 19800000;                                                                            // 5.5 hours in milliseconds
+        } else if (now.hour() > 18 || (now.hour() == 18 && now.minute() >= 30)) {                                                                // Draw moon
+            daySegmentPassed = now.msecsSinceStartOfDay() - 66600000;                                                                            // 18.5 hours in milliseconds
+        } else if ((now.hour() > 6 && now.hour() < 17) || (now.hour() == 6 && now.minute() >= 30) || (now.hour() == 17 && now.minute() <= 30)) { // Draw sun
+            daySegmentPassed = now.msecsSinceStartOfDay() - 23400000;                                                                            // 6.5 hours in milliseconds
             isMoon = false;
         }
 
@@ -310,7 +311,7 @@ bool OverviewPane::eventFilter(QObject* watched, QEvent* event) {
             p.setBrush(QColor(255, 224, 130));
         }
         if (daySegmentPassed >= 0) {
-            double percentageThroughArc = daySegmentPassed / 39600000.0; //11 hours in milliseconds
+            double percentageThroughArc = daySegmentPassed / 39600000.0; // 11 hours in milliseconds
 
             double sinArg = percentageThroughArc * M_PI;
             double heightDisplacement = -sin(sinArg) + 1;
@@ -333,7 +334,6 @@ bool OverviewPane::eventFilter(QObject* watched, QEvent* event) {
     return false;
 }
 
-
 QString OverviewPane::name() {
     return "OverviewPane";
 }
@@ -349,4 +349,3 @@ QIcon OverviewPane::icon() {
 QWidget* OverviewPane::leftPane() {
     return nullptr;
 }
-

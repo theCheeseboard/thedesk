@@ -20,38 +20,37 @@
 #include "chunkcontainer.h"
 #include "ui_chunkcontainer.h"
 
-#include <statemanager.h>
+#include "common/common.h"
+#include <QFrame>
+#include <QGraphicsOpacityEffect>
+#include <QScrollBar>
 #include <barmanager.h>
 #include <chunk.h>
-#include <QFrame>
-#include <QScrollBar>
-#include <QGraphicsOpacityEffect>
+#include <statemanager.h>
 #include <statuscentermanager.h>
-#include "common/common.h"
 
 struct ChunkContainerPrivate {
-    BarManager* barManager;
+        BarManager* barManager;
 
-    QList<QPair<QString, Chunk*>> loadedChunks;
-    QStringList preferredChunkOrder = {
-        "OverviewClock",
-        "Power",
-        "PowerStretch",
-        "flight-mode",
-        "network-cellular",
-        "Network",
-        "network-tethering",
-        "bluetooth",
-        "audio",
-        "audio-mic",
-        "redshift",
-        "keyboardlayout",
-        "Accessibility-StickyKeys",
-        "mpris"
-    };
+        QList<QPair<QString, Chunk*>> loadedChunks;
+        QStringList preferredChunkOrder = {
+            "OverviewClock",
+            "Power",
+            "PowerStretch",
+            "flight-mode",
+            "network-cellular",
+            "Network",
+            "network-tethering",
+            "bluetooth",
+            "audio",
+            "audio-mic",
+            "redshift",
+            "keyboardlayout",
+            "Accessibility-StickyKeys",
+            "mpris"};
 
-    QMap<Chunk*, QWidget*> chunkWidgets;
-    qreal currentAnimProgress = 1;
+        QMap<Chunk*, QWidget*> chunkWidgets;
+        qreal currentAnimProgress = 1;
 };
 
 ChunkContainer::ChunkContainer(QWidget* parent) :
@@ -69,12 +68,12 @@ ChunkContainer::ChunkContainer(QWidget* parent) :
         this->chunkAdded(chunk);
     }
 
-    connect(StateManager::barManager(), &BarManager::barHeightTransitioning, this, [ = ](qreal percentage) {
+    connect(StateManager::barManager(), &BarManager::barHeightTransitioning, this, [=](qreal percentage) {
         int spacing = 3 + 3 * percentage;
         ui->chunkLayout->setSpacing(spacing);
     });
 
-    connect(ui->scrollArea->horizontalScrollBar(), &QScrollBar::valueChanged, this, [ = ](int value) {
+    connect(ui->scrollArea->horizontalScrollBar(), &QScrollBar::valueChanged, this, [=](int value) {
         ui->statusCenterButtonLine->setVisible(value != 0);
     });
 
@@ -111,9 +110,9 @@ int ChunkContainer::currentAppWidgetX() {
 }
 
 void ChunkContainer::barHeightChanged(int height) {
-//    if (height >= statusBarHeight() && height <= expandedHeight()) {
-//        this->setFixedHeight(height);
-//    }
+    //    if (height >= statusBarHeight() && height <= expandedHeight()) {
+    //        this->setFixedHeight(height);
+    //    }
     int boundHeight = qBound(statusBarHeight(), height, expandedHeight());
     this->setFixedHeight(boundHeight);
     ui->chunkWidget->setFixedHeight(boundHeight);
@@ -127,12 +126,11 @@ void ChunkContainer::barHeightChanged(int height) {
 }
 
 void ChunkContainer::paintEvent(QPaintEvent* event) {
-
 }
 
 void ChunkContainer::chunkAdded(Chunk* chunk) {
-    //Create a chunk widget
-    QWidget* chunkWidget = new QWidget();
+    // Create a chunk widget
+    QWidget* chunkWidget = new QWidget(this);
     QBoxLayout* chunkWidgetLayout = new QBoxLayout(QBoxLayout::LeftToRight, chunkWidget);
     QFrame* line = new QFrame(chunkWidget);
     line->setFrameShape(QFrame::VLine);
@@ -154,17 +152,17 @@ void ChunkContainer::chunkAdded(Chunk* chunk) {
     }
     int index = Common::getInsertionIndex(d->preferredChunkOrder, currentItems, chunk->name());
     if (index == -1) {
-        //Add it at the end
+        // Add it at the end
         ui->chunkLayout->addWidget(chunkWidget);
         d->loadedChunks.append({chunk->name(), chunk});
     } else {
-        //Add this chunk at the beginning
+        // Add this chunk at the beginning
         ui->chunkLayout->insertWidget(index, chunkWidget);
         d->loadedChunks.insert(index, {chunk->name(), chunk});
     }
 
-    connect(this, &ChunkContainer::chunksChanged, chunkWidget, [ = ] {
-        //Make sure the line is not visible and set the margins appropriately
+    connect(this, &ChunkContainer::chunksChanged, chunkWidget, [=] {
+        // Make sure the line is not visible and set the margins appropriately
         for (int i = 0; i < d->loadedChunks.count(); i++) {
             QPair<QString, Chunk*> chunkDescriptor = d->loadedChunks.at(i);
             if (chunkDescriptor.second == chunk) {
@@ -200,4 +198,3 @@ void ChunkContainer::chunkRemoved(Chunk* chunk) {
 void ChunkContainer::on_statusCenterButton_clicked() {
     StateManager::statusCenterManager()->showStatusCenter();
 }
-

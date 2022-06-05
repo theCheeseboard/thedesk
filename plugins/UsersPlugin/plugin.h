@@ -20,10 +20,11 @@
 #ifndef PLUGIN_H
 #define PLUGIN_H
 
-#include "plugininterface.h"
+#include "plugins/plugininterface.h"
 
 struct PluginPrivate;
-class Plugin : public QObject, public PluginInterface {
+class Plugin : public QObject,
+               public PluginInterface {
         Q_OBJECT
         Q_PLUGIN_METADATA(IID PluginInterface_iid FILE "Plugin.json")
         Q_INTERFACES(PluginInterface)

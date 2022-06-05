@@ -20,13 +20,13 @@
 #include "mainbarwidget.h"
 #include "ui_mainbarwidget.h"
 
-#include <the-libs_global.h>
 #include "gateway/gateway.h"
 #include <keygrab.h>
+#include <libcontemporary_global.h>
 
 #include <QDebug>
-#include <statemanager.h>
 #include <hudmanager.h>
+#include <statemanager.h>
 
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
@@ -40,7 +40,7 @@ MainBarWidget::MainBarWidget(QWidget* parent) :
     connect(ui->chunkContainer, &ChunkContainer::expandedHeightChanged, this, &MainBarWidget::expandedHeightChanged);
     connect(ui->chunkContainer, &ChunkContainer::statusBarHeightChanged, this, &MainBarWidget::statusBarHeightChanged);
 
-    connect(new KeyGrab(QKeySequence(Qt::Key_Super_L), "gatewayOpen"), &KeyGrab::activated, this, [ = ] {
+    connect(new KeyGrab(QKeySequence(Qt::Key_Super_L), "gatewayOpen"), &KeyGrab::activated, this, [=] {
         Gateway::instance()->show();
     });
 }

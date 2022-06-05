@@ -20,7 +20,8 @@
 #include "settingsbackend.h"
 
 #ifdef HAVE_X11
-    #include <QX11Info>
+    #include <tx11info.h>
+
     #include <X11/Xlib.h>
 #endif
 
@@ -29,18 +30,18 @@
     #include <libinput-properties.h>
 #endif
 
-SettingsBackend::SettingsBackend(QObject* parent) : QObject(parent) {
-
+SettingsBackend::SettingsBackend(QObject* parent) :
+    QObject(parent) {
 }
 
 SettingsBackend* SettingsBackend::backendForPlatform() {
 #ifdef HAVE_X11
-    if (QX11Info::isPlatformX11()) {
-#ifdef HAVE_XI
-        if (XInternAtom(QX11Info::display(), LIBINPUT_PROP_ACCEL, True)) {
+    if (tX11Info::isPlatformX11()) {
+    #ifdef HAVE_XI
+        if (XInternAtom(tX11Info::display(), LIBINPUT_PROP_ACCEL, True)) {
             return new XInputBackend();
         }
-#endif
+    #endif
     }
 #endif
     return nullptr;

@@ -20,12 +20,12 @@
 #include "screenbrightnesschunk.h"
 #include "ui_screenbrightnesschunk.h"
 
-#include <the-libs_global.h>
 #include <QIcon>
-#include <statemanager.h>
-#include <barmanager.h>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
+#include <barmanager.h>
+#include <libcontemporary_global.h>
+#include <statemanager.h>
 
 ScreenBrightnessChunk::ScreenBrightnessChunk() :
     Chunk(),
@@ -38,13 +38,13 @@ ScreenBrightnessChunk::ScreenBrightnessChunk() :
     SystemScreen* screen = ScreenDaemon::instance()->primayScreen();
     if (screen && screen->isScreenBrightnessAvailable()) {
         StateManager::barManager()->addChunk(this);
-        connect(screen, &SystemScreen::screenBrightnessChanged, this, [ = ] {
+        connect(screen, &SystemScreen::screenBrightnessChanged, this, [=] {
             ui->brightnessSlider->setValue(static_cast<int>(screen->screenBrightness() * 100));
         });
         ui->brightnessSlider->setValue(static_cast<int>(screen->screenBrightness() * 100));
     }
 
-    connect(StateManager::barManager(), &BarManager::barHeightTransitioning, this, [ = ](qreal percentage) {
+    connect(StateManager::barManager(), &BarManager::barHeightTransitioning, this, [=](qreal percentage) {
         if (qFuzzyCompare(percentage, 1)) {
             this->setFixedWidth(QWIDGETSIZE_MAX);
         } else {
@@ -57,7 +57,6 @@ ScreenBrightnessChunk::~ScreenBrightnessChunk() {
     StateManager::barManager()->removeChunk(this);
     delete ui;
 }
-
 
 QString ScreenBrightnessChunk::name() {
     return "Brightness";

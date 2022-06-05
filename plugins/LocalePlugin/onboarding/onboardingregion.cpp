@@ -20,12 +20,12 @@
 #include "onboardingregion.h"
 #include "ui_onboardingregion.h"
 
-#include <statemanager.h>
-#include <onboardingmanager.h>
-#include <localemanager.h>
 #include <QLocale>
+#include <localemanager.h>
+#include <onboardingmanager.h>
+#include <statemanager.h>
 
-#include "common.h"
+#include "localeplugincommon.h"
 
 OnboardingRegion::OnboardingRegion(QWidget* parent) :
     OnboardingPage(parent),
@@ -68,8 +68,8 @@ void OnboardingRegion::on_searchEdit_textChanged(const QString& arg1) {
 void OnboardingRegion::search(QString query) {
     ui->countriesWidget->clear();
 
-    QList<Common::Country> countries = Common::countries();
-    for (const Common::Country &country : qAsConst(countries)) {
+    QList<LocalePluginCommon::Country> countries = LocalePluginCommon::countries();
+    for (const LocalePluginCommon::Country& country : qAsConst(countries)) {
         if (!country.text.contains(query, Qt::CaseInsensitive)) continue;
 
         QListWidgetItem* item = new QListWidgetItem();
@@ -79,4 +79,3 @@ void OnboardingRegion::search(QString query) {
         if (country.isCurrent) ui->countriesWidget->setCurrentItem(item);
     }
 }
-

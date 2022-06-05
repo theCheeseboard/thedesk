@@ -5,7 +5,7 @@
     <name>LocaleSettingsPane</name>
     <message>
         <location filename="../settings/localesettingspane.ui" line="35"/>
-        <location filename="../settings/localesettingspane.cpp" line="119"/>
+        <location filename="../settings/localesettingspane.cpp" line="118"/>
         <source>Locale</source>
         <translation>Ngôn Ngữ và Lãnh Thổ</translation>
     </message>
@@ -90,22 +90,22 @@
         <translation>Hệ Imperial (Vương quốc Anh)</translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.cpp" line="152"/>
+        <location filename="../settings/localesettingspane.cpp" line="151"/>
         <source>For this language</source>
         <translation>Cho ngôn ngữ này</translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.cpp" line="153"/>
+        <location filename="../settings/localesettingspane.cpp" line="152"/>
         <source>Move Up</source>
         <translation>Chuyển lên</translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.cpp" line="156"/>
+        <location filename="../settings/localesettingspane.cpp" line="155"/>
         <source>Move Down</source>
         <translation>Chuyển xuống</translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.cpp" line="159"/>
+        <location filename="../settings/localesettingspane.cpp" line="158"/>
         <source>Remove</source>
         <translation>Xóa</translation>
     </message>

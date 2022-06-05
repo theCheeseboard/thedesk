@@ -19,11 +19,11 @@
  * *************************************/
 #include "iconloaderengine.h"
 
-#include <the-libs_global.h>
+#include <libcontemporary_global.h>
 
 struct IconLoaderEnginePrivate {
-    QIconEngine* parentEngine;
-    QIconEngine* rtlParentEngine;
+        QIconEngine* parentEngine;
+        QIconEngine* rtlParentEngine;
 };
 
 IconLoaderEngine::IconLoaderEngine(QIconEngine* parentEngine, QIconEngine* rtlParentEngine) {
@@ -44,10 +44,9 @@ QPixmap IconLoaderEngine::pixmap(const QSize& size, QIcon::Mode mode, QIcon::Sta
     } else {
         image = d->parentEngine->pixmap(size, mode, state).toImage();
     }
-    theLibsGlobal::tintImage(image, QApplication::palette().color(QPalette::WindowText));
+    libContemporaryCommon::tintImage(image, QApplication::palette().color(QPalette::WindowText));
     return QPixmap::fromImage(image);
 }
-
 
 void IconLoaderEngine::paint(QPainter* painter, const QRect& rect, QIcon::Mode mode, QIcon::State state) {
     if (QApplication::layoutDirection() == Qt::RightToLeft && d->rtlParentEngine->availableSizes(mode, state).length() > 0) {

@@ -17,27 +17,25 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#include "common.h"
+#include "localeplugincommon.h"
 
-#include <statemanager.h>
 #include <localemanager.h>
+#include <statemanager.h>
 
-using namespace Common;
+using namespace LocalePluginCommon;
 
-QList<Country> Common::countries() {
+QList<Country> LocalePluginCommon::countries() {
     QLocale::Country current = StateManager::localeManager()->formatCountry();
     QList<Country> countries;
     for (int i = QLocale::Afghanistan + 1; i < QLocale::LastCountry; i++) {
         if (i == QLocale::World) continue;
 
-        countries.append({
-            static_cast<QLocale::Country>(i),
+        countries.append({static_cast<QLocale::Country>(i),
             QLocale::countryToString(static_cast<QLocale::Country>(i)),
-            current == i
-        });
+            current == i});
     }
 
-    std::sort(countries.begin(), countries.end(), [ = ](const Country & first, const Country & second) {
+    std::sort(countries.begin(), countries.end(), [=](const Country& first, const Country& second) {
         return first.text.localeAwareCompare(second.text) < 0;
     });
 

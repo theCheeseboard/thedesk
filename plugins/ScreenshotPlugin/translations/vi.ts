@@ -20,31 +20,37 @@
     <name>ScreenshotWindow</name>
     <message>
         <location filename="../screenshotwindow.ui" line="55"/>
+        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="192"/>
         <source>SCREENSHOT</source>
         <translation>ẢNH CHỤP MÀN HÌNH</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="130"/>
+        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="193"/>
         <source>Crop</source>
         <translation>Cắt xén</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="150"/>
+        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="194"/>
         <source>Redact</source>
         <translation>Ẩn</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="205"/>
+        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="195"/>
         <source>Reset Markup</source>
         <translation>Xóa đánh dấu</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="216"/>
+        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="196"/>
         <source>Discard</source>
         <translation>Bỏ</translation>
     </message>
     <message>
         <location filename="../screenshotwindow.ui" line="227"/>
+        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="197"/>
         <source>Copy</source>
         <translation>Chép</translation>
     </message>

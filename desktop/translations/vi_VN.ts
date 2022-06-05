@@ -362,7 +362,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="250"/>
+        <location filename="../session/endsession.cpp" line="251"/>
         <source>Reboot</source>
         <translation>Khởi động lại</translation>
     </message>
@@ -507,17 +507,17 @@
         <translation>đặt hệ thống vào chế độ ngủ đông</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="249"/>
+        <location filename="../session/endsession.cpp" line="250"/>
         <source>Advanced Reboot</source>
         <translation>Khởi động lại nâng cao</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="259"/>
+        <location filename="../session/endsession.cpp" line="260"/>
         <source>Reboot into System UEFI Setup</source>
         <translation>Khởi động lại vào trình thiết lập UEFI hệ thống</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="48"/>
+        <location filename="../session/endsession.cpp" line="49"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
         <translation>%1, sẵn sàng rời đi chưa? Chúng tôi sẽ %2 sau %n giay nếu bạn không làm gì.</translation>
     </message>
@@ -701,7 +701,7 @@
     <name>Recovery</name>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="35"/>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="68"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="67"/>
         <source>Recovery</source>
         <translation>Khôi phục</translation>
     </message>
@@ -748,7 +748,7 @@ Lưu các tài liệu, và đóng các ứng dụng trước khi bạn bắt đ�
         <translation>Đặt lại thiết bị này</translation>
     </message>
     <message>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="93"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="92"/>
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
@@ -817,12 +817,12 @@ Chúng tôi sẽ đặt cài đặt của bạn lại sau %n giay nếu bạn kh
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="72"/>
+        <location filename="../main.cpp" line="71"/>
         <source>Safe Mode</source>
         <translation>Chế độ an toàn</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="72"/>
+        <location filename="../main.cpp" line="71"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>Bạn đang giữ nút CTRL. Khởi chạy theDesk vào chế độ an toàn?</translation>
     </message>

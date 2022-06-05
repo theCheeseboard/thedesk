@@ -20,63 +20,64 @@
 #include "platformtheme.h"
 
 #include <private/qguiapplication_p.h>
+#include <qpa/qplatformintegration.h>
 #include <qpa/qplatformtheme_p.h>
 #include <qpa/qplatformthemefactory_p.h>
-#include <qpa/qplatformintegration.h>
 
-#include <QPixmap>
-#include <QVariant>
-#include <QIcon>
-#include <tsettings.h>
-#include <QMessageBox>
+#include "cursorhandler.h"
+#include "iconloaderengine.h"
+#include <QDir>
 #include <QFile>
+#include <QIcon>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QDir>
-#include <QScrollerProperties>
+#include <QMessageBox>
 #include <QMimeDatabase>
 #include <QMimeType>
-#include <tlogger.h>
+#include <QPixmap>
+#include <QScrollerProperties>
 #include <QTextCharFormat>
-#include "iconloaderengine.h"
-#include "cursorhandler.h"
+#include <QTimer>
+#include <QVariant>
+#include <tlogger.h>
+#include <tsettings.h>
 
 #include "messagedialog/messagedialoghelper.h"
 
-#include "paletteformat.h"
 #include "fontformat.h"
+#include "paletteformat.h"
 
 struct PlatformThemePrivate {
-    QObject* parent;
-    tSettings* settings;
-    QPalette* pal;
-    CursorHandler* cursorHandler;
+        QObject* parent;
+        tSettings* settings;
+        QPalette pal;
+        CursorHandler* cursorHandler;
 
-    QMimeDatabase mimeDb;
+        QMimeDatabase mimeDb;
 
-    QMap<QPlatformTheme::Font, QFont*> fonts;
+        QMap<QPlatformTheme::Font, QFont*> fonts;
 
-    QPlatformTheme* flatpakPlatformTheme = nullptr;
+        QPlatformTheme* flatpakPlatformTheme = nullptr;
 };
 
-PlatformTheme::PlatformTheme() : QPlatformTheme() {
-    //Register settings locations
+PlatformTheme::PlatformTheme() :
+    QPlatformTheme() {
+    // Register settings locations
     tSettings::registerDefaults("theSuite", "theDesk.platform", "/etc/theSuite/theDesk/platformdefaults.conf");
 
     d = new PlatformThemePrivate();
     d->parent = new QObject();
     d->settings = new tSettings("theSuite", "theDesk.platform", d->parent);
-    d->pal = new QPalette();
     d->cursorHandler = new CursorHandler(d->parent);
 
-    QObject::connect(d->settings, &tSettings::settingChanged, d->parent, [ = ](QString key, QVariant value) {
-        //Qt Creator might crash heh...
+    QObject::connect(d->settings, &tSettings::settingChanged, d->parent, [=](QString key, QVariant value) {
+        // Qt Creator might crash heh...
         if (QApplication::applicationName() == "QtCreator") return;
 
         if (key.startsWith("Fonts/")) {
             updateFont();
 
-            //Update the font in the application
+            // Update the font in the application
             if (qobject_cast<QApplication*>(QCoreApplication::instance())) {
                 qApp->setFont(*d->fonts.value(SystemFont));
                 emit qApp->setFont(*d->fonts.value(SystemFont));
@@ -86,12 +87,12 @@ PlatformTheme::PlatformTheme() : QPlatformTheme() {
         } else if (key.startsWith("Palette/")) {
             updatePalette();
 
-            //Update the palette in the application
+            // Update the palette in the application
             if (qobject_cast<QApplication*>(QCoreApplication::instance())) {
-                qApp->setPalette(*d->pal);
-                emit qApp->paletteChanged(*d->pal);
+                qApp->setPalette(d->pal);
+                emit qApp->paletteChanged(d->pal);
             } else if (qobject_cast<QGuiApplication*>(QCoreApplication::instance())) {
-                qGuiApp->setPalette(*d->pal);
+                qGuiApp->setPalette(d->pal);
             }
         } else if (key == "Platform/style") {
             if (qobject_cast<QApplication*>(QCoreApplication::instance())) {
@@ -110,7 +111,7 @@ PlatformTheme::PlatformTheme() : QPlatformTheme() {
 
     tDebug("PlatformTheme") << "Using theDesk platform theme";
 
-    //Initialise the Flatpak platform theme so that we can use the portal to open files
+    // Initialise the Flatpak platform theme so that we can use the portal to open files
     d->flatpakPlatformTheme = QPlatformThemeFactory::create("flatpak", nullptr);
     if (d->flatpakPlatformTheme) {
         tDebug("PlatformTheme") << "Created Flatpak platform theme";
@@ -119,7 +120,6 @@ PlatformTheme::PlatformTheme() : QPlatformTheme() {
 
 PlatformTheme::~PlatformTheme() {
     d->parent->deleteLater();
-    delete d->pal;
     delete d;
 }
 
@@ -162,7 +162,6 @@ QPlatformDialogHelper* PlatformTheme::createPlatformDialogHelper(QPlatformTheme:
         case QPlatformTheme::ColorDialog:
         case QPlatformTheme::FontDialog:
             return QPlatformTheme::createPlatformDialogHelper(type);
-
     }
 }
 
@@ -171,9 +170,10 @@ QPlatformSystemTrayIcon* PlatformTheme::createPlatformSystemTrayIcon() const {
 }
 
 const QPalette* PlatformTheme::palette(QPlatformTheme::Palette type) const {
-    if (type == QPlatformTheme::SystemPalette) return d->pal;
+    //    if (type == QPlatformTheme::SystemPalette) return d->pal;
 
-    return QPlatformTheme::palette(type);
+    //    return QPlatformTheme::palette(type);
+    return &d->pal;
 }
 
 const QFont* PlatformTheme::font(QPlatformTheme::Font type) const {
@@ -183,7 +183,7 @@ const QFont* PlatformTheme::font(QPlatformTheme::Font type) const {
         return d->fonts.value(QPlatformTheme::SystemFont);
     }
 
-    //return QPlatformTheme::font(type);
+    // return QPlatformTheme::font(type);
 }
 
 QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
@@ -233,10 +233,9 @@ QVariant PlatformTheme::themeHint(QPlatformTheme::ThemeHint hint) const {
         case QPlatformTheme::WheelScrollLines:
         case QPlatformTheme::TouchDoubleTapDistance:
         case QPlatformTheme::MouseQuickSelectionThreshold:
+        default:
             return QPlatformTheme::themeHint(hint);
-
     }
-
 }
 
 QPixmap PlatformTheme::standardPixmap(QPlatformTheme::StandardPixmap sp, const QSizeF& size) const {
@@ -287,12 +286,11 @@ void PlatformTheme::updatePalette() {
     if (definitions.type() != QJsonValue::Null) {
         QJsonObject accentDefinitions = definitions.toObject();
 
-        //Apply the palette
+        // Apply the palette
         for (QJsonObject obj : {
-                baseDefinitions, accentDefinitions
-            }) {
+                 baseDefinitions, accentDefinitions}) {
             for (auto i = obj.constBegin(); i != obj.constEnd(); i++) {
-                PaletteFormat::applyColor(d->pal, i.key(), i.value());
+                PaletteFormat::applyColor(&d->pal, i.key(), i.value());
             }
         }
     }
@@ -316,4 +314,8 @@ void PlatformTheme::updateFont() {
 
         font->setPointSizeF(parts.at(1).toDouble());
     }
+}
+
+PlatformTheme::Appearance PlatformTheme::appearance() const {
+    return PlatformTheme::Appearance::Light;
 }

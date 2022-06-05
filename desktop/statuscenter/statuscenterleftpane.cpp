@@ -20,12 +20,12 @@
 #include "statuscenterleftpane.h"
 #include "ui_statuscenterleftpane.h"
 
-#include <QPainter>
 #include "leftpanedelegate.h"
-#include <the-libs_global.h>
+#include <QPainter>
+#include <libcontemporary_global.h>
 
 struct StatusCenterLeftPanePrivate {
-    bool attached;
+        bool attached;
 };
 
 StatusCenterLeftPane::StatusCenterLeftPane(QWidget* parent) :
@@ -84,7 +84,7 @@ void StatusCenterLeftPane::popMenu() {
     if (ui->stackedWidget->count() == 1) return;
 
     QMetaObject::Connection* connection = new QMetaObject::Connection();
-    *connection = connect(ui->stackedWidget, &tStackedWidget::currentChanged, this, [ = ] {
+    *connection = connect(ui->stackedWidget, &tStackedWidget::currentChanged, this, [=] {
         disconnect(*connection);
         delete connection;
 
@@ -101,7 +101,7 @@ QWidget* StatusCenterLeftPane::peekMenu() {
 void StatusCenterLeftPane::paintEvent(QPaintEvent* event) {
     if (d->attached) {
         QPainter painter(this);
-        painter.setPen(theLibsGlobal::lineColor(this->palette().color(QPalette::WindowText)));
+        painter.setPen(libContemporaryCommon::lineColor(this->palette().color(QPalette::WindowText)));
         if (this->layoutDirection() == Qt::RightToLeft) {
             painter.drawLine(0, 0, 0, this->height());
         } else {

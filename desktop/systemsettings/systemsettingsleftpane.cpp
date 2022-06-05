@@ -20,15 +20,15 @@
 #include "systemsettingsleftpane.h"
 #include "ui_systemsettingsleftpane.h"
 
-#include <the-libs_global.h>
+#include "../statuscenter/leftpanedelegate.h"
+#include <libcontemporary_global.h>
+#include <powermanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <powermanager.h>
 #include <tvariantanimation.h>
-#include "../statuscenter/leftpanedelegate.h"
 
 struct SystemSettingsLeftPanePrivate {
-    bool isShowingLogOutRequired = false;
+        bool isShowingLogOutRequired = false;
 };
 
 SystemSettingsLeftPane::SystemSettingsLeftPane(QWidget* parent) :
@@ -46,7 +46,7 @@ SystemSettingsLeftPane::SystemSettingsLeftPane(QWidget* parent) :
     ui->logoutRequiredWidget->setVisible(false);
     ui->logoutButton->setProperty("type", "destructive");
 
-    connect(StateManager::statusCenterManager(), &StatusCenterManager::requestLogout, this, [ = ] {
+    connect(StateManager::statusCenterManager(), &StatusCenterManager::requestLogout, this, [=] {
         if (d->isShowingLogOutRequired) return;
         d->isShowingLogOutRequired = true;
 
@@ -55,7 +55,7 @@ SystemSettingsLeftPane::SystemSettingsLeftPane(QWidget* parent) :
         anim->setEndValue(ui->logoutRequiredWidget->sizeHint().height());
         anim->setDuration(250);
         anim->setEasingCurve(QEasingCurve::OutCubic);
-        connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+        connect(anim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
             ui->logoutRequiredWidget->setFixedHeight(value.toInt());
         });
         connect(anim, &tVariantAnimation::finished, anim, &tVariantAnimation::deleteLater);

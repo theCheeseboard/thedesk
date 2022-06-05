@@ -19,52 +19,53 @@
  * *************************************/
 #include "splashcontroller.h"
 
-#include <QFile>
-#include <QProcess>
+#include "crash/backtracedialog.h"
+#include "splashwindow.h"
+#include <Applications/application.h>
 #include <QApplication>
-#include <QLocalServer>
-#include <QStandardPaths>
-#include <QRandomGenerator>
-#include <QLocalSocket>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QPointer>
 #include <QDir>
 #include <QElapsedTimer>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QLocalServer>
+#include <QLocalSocket>
+#include <QPointer>
+#include <QProcess>
+#include <QRandomGenerator>
+#include <QStandardPaths>
 #include <QTimer>
-#include <tsettings.h>
+#include <libcontemporary_global.h>
 #include <tnotification.h>
-#include <Applications/application.h>
-#include <the-libs_global.h>
-#include "splashwindow.h"
-#include "crash/backtracedialog.h"
+#include <tsettings.h>
 
 struct SplashControllerPrivate {
-    SplashController* instance = nullptr;
+        SplashController* instance = nullptr;
 
-    SplashWindow* splash;
-    QProcess* process = nullptr;
-    QProcess* wm = nullptr;
+        SplashWindow* splash;
+        QProcess* process = nullptr;
+        QProcess* wm = nullptr;
 
-    QLocalServer* server;
-    QPointer<QLocalSocket> socket;
-    QString serverPath;
+        QLocalServer* server;
+        QPointer<QLocalSocket> socket;
+        QString serverPath;
 
-    QByteArray buffer;
+        QByteArray buffer;
 
-    tSettings* settings;
+        tSettings* settings;
 
-    bool autostartDone = false;
-    bool startedSuccessfully = false;
-    bool performingAutoRecovery = false;
-    QElapsedTimer timeSinceSuccessfulStart;
-    QStringList currentBacktrace;
-    QStringList lastBacktrace;
+        bool autostartDone = false;
+        bool startedSuccessfully = false;
+        bool performingAutoRecovery = false;
+        QElapsedTimer timeSinceSuccessfulStart;
+        QStringList currentBacktrace;
+        QStringList lastBacktrace;
 };
 
 SplashControllerPrivate* SplashController::d = new SplashControllerPrivate();
 
-SplashController::SplashController(QObject* parent) : QObject(parent) {
+SplashController::SplashController(QObject* parent) :
+    QObject(parent) {
     d->settings = new tSettings();
     this->initSession();
 }
@@ -79,7 +80,7 @@ void SplashController::socketDataAvailable() {
         } else if (d->buffer.at(i) == '}') {
             bracket--;
         } else if (bracket == 0) {
-            //Error
+            // Error
             d->buffer = d->buffer.mid(i + 1);
             i = -1;
         }
@@ -107,7 +108,7 @@ void SplashController::socketDataAvailable() {
                         notification->setTransient(true);
                         notification->insertAction("details", tr("View Details"));
                         notification->post();
-                        connect(notification, &tNotification::actionClicked, this, [ = ](QString key) {
+                        connect(notification, &tNotification::actionClicked, this, [=](QString key) {
                             if (key == "details") {
                                 BacktraceDialog* dialog = new BacktraceDialog();
                                 connect(dialog, &BacktraceDialog::finished, dialog, &BacktraceDialog::deleteLater);
@@ -118,7 +119,7 @@ void SplashController::socketDataAvailable() {
                 } else if (type == "showSplash") {
                     emit starting();
                 } else if (type == "autoStart") {
-                    //Run Autostart apps
+                    // Run Autostart apps
                     this->runAutostart();
                 } else if (type == "question") {
                     emit question(obj.value("title").toString(), obj.value("question").toString());
@@ -129,7 +130,6 @@ void SplashController::socketDataAvailable() {
 }
 
 SplashController::~SplashController() {
-
 }
 
 SplashController* SplashController::instance() {
@@ -142,27 +142,27 @@ SplashController* SplashController::instance() {
 }
 
 void SplashController::initSession() {
-    //Start the server
+    // Start the server
     d->serverPath = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation) + "/startdesk-" + QString::number(QRandomGenerator::system()->generate64());
 
     QLocalServer::removeServer(d->serverPath);
 
     d->server = new QLocalServer(this);
-    connect(d->server, &QLocalServer::newConnection, this, [ = ] {
+    connect(d->server, &QLocalServer::newConnection, this, [=] {
         d->socket = d->server->nextPendingConnection();
         connect(d->socket, &QLocalSocket::readyRead, this, &SplashController::socketDataAvailable);
         connect(d->socket, &QLocalSocket::disconnected, d->socket, &QLocalSocket::deleteLater);
         d->server->close();
     });
 
-    //Start the window manager
+    // Start the window manager
     this->startWM();
 }
 
 void SplashController::runAutostart() {
     if (d->autostartDone) return;
 
-    //Autostart the Polkit agent
+    // Autostart the Polkit agent
     QString pkPath = QStringLiteral(SYSTEM_LIBRARY_DIRECTORY).append("/td-polkitagent");
     if (QFile::exists(pkPath)) {
         QProcess::startDetached(pkPath, QStringList());
@@ -170,31 +170,30 @@ void SplashController::runAutostart() {
 
     QStringList searchPaths = {
         qEnvironmentVariable("XDG_CONFIG_HOME", QDir::homePath() + "/.config") + "/autostart",
-        qEnvironmentVariable("XDG_CONFIG_DIRS", "/etc/xdg") + "/autostart"
-    };
+        qEnvironmentVariable("XDG_CONFIG_DIRS", "/etc/xdg") + "/autostart"};
 
     for (QString desktopEntry : Application::allApplications(searchPaths)) {
         ApplicationPointer app(new Application(desktopEntry, searchPaths));
-        if (app->getProperty("Hidden", "false").toString() == "true") continue; //Ignore this autostart entry
+        if (app->getProperty("Hidden", "false").toString() == "true") continue; // Ignore this autostart entry
         if (!app->getStringList("OnlyShowIn", {"thedesk"}).contains("thedesk")) continue;
         if (app->getStringList("NotShowIn").contains("thedesk")) continue;
 
-        //Blacklist Touchegg
+        // Blacklist Touchegg
         if (desktopEntry == "touchegg") continue;
 
         if (app->hasProperty("TryExec")) {
             QString tryExecPath = app->getProperty("TryExec").toString();
             if (tryExecPath.startsWith("/")) {
-                //TryExec is an absolute path
+                // TryExec is an absolute path
                 QFile testFile(tryExecPath);
                 if (!testFile.exists() | testFile.permissions() & ~QFile::ExeUser) continue;
             } else {
-                //TryExec should be searched for in the PATH
-                if (theLibsGlobal::searchInPath(tryExecPath).isEmpty()) continue;
+                // TryExec should be searched for in the PATH
+                if (libContemporaryCommon::searchInPath(tryExecPath).isEmpty()) continue;
             }
         }
 
-        //Autostart this app
+        // Autostart this app
         app->launch();
     }
 
@@ -205,12 +204,12 @@ void SplashController::startWM() {
     if (!d->wm) {
         d->wm = new QProcess(this);
         QString wmgr = d->settings->value("Session/WindowManager").toString();
-        d->wm->start(d->settings->value("Session/WindowManager").toString(), d->settings->delimitedList("Session/WindowManagerArguments")); //TODO: make this a configurable setting
+        d->wm->start(d->settings->value("Session/WindowManager").toString(), d->settings->delimitedList("Session/WindowManagerArguments")); // TODO: make this a configurable setting
     }
 }
 
 void SplashController::startDE() {
-//    return;
+    //    return;
     if (d->process) return;
 
     emit starting();
@@ -219,24 +218,22 @@ void SplashController::startDE() {
 
     QString thedeskPath = qEnvironmentVariable("THEDESK_PATH", "/usr/bin/thedesk");
     d->process = new QProcess(this);
-//    d->process->setProcessChannelMode(QProcess::ForwardedChannels);
+    //    d->process->setProcessChannelMode(QProcess::ForwardedChannels);
     d->process->setProgram(thedeskPath);
-    d->process->setArguments({
-        "--sessionserver", d->serverPath
-    });
+    d->process->setArguments({"--sessionserver", d->serverPath});
     d->process->start();
 
-    connect(d->process, &QProcess::errorOccurred, this, [ = ](QProcess::ProcessError error) {
+    connect(d->process, &QProcess::errorOccurred, this, [=](QProcess::ProcessError error) {
         if (error == QProcess::FailedToStart || !d->startedSuccessfully) {
             emit startFail();
         } else if (error == QProcess::Crashed) {
             d->lastBacktrace = d->currentBacktrace;
             d->currentBacktrace.clear();
 
-            //Check to see if we should crash or not
+            // Check to see if we should crash or not
             if (d->timeSinceSuccessfulStart.hasExpired(60000)) {
-                //Attempt to recover
-                QTimer::singleShot(1000, this, [ = ] {
+                // Attempt to recover
+                QTimer::singleShot(1000, this, [=] {
                     d->performingAutoRecovery = true;
                     this->startDE();
                 });
@@ -246,7 +243,7 @@ void SplashController::startDE() {
             }
         }
     });
-    connect(d->process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [ = ](int exitCode, QProcess::ExitStatus status) {
+    connect(d->process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, [=](int exitCode, QProcess::ExitStatus status) {
         if (status == QProcess::NormalExit) {
             if (exitCode == 0) {
                 this->logout();
@@ -259,13 +256,13 @@ void SplashController::startDE() {
         d->server->close();
         if (d->socket) d->socket->close();
     });
-    connect(d->process, &QProcess::readyReadStandardOutput, this, [ = ] {
+    connect(d->process, &QProcess::readyReadStandardOutput, this, [=] {
         QString data = d->process->readAllStandardOutput();
 
         QTextStream output(stdout);
         output << data;
     });
-    connect(d->process, &QProcess::readyReadStandardError, this, [ = ] {
+    connect(d->process, &QProcess::readyReadStandardError, this, [=] {
         QString data = d->process->readAllStandardError();
 
         for (QString line : data.split("\n")) {
@@ -286,9 +283,10 @@ void SplashController::logout() {
 
 void SplashController::respond(bool answer) {
     d->socket->write(QJsonDocument(QJsonObject({
-        {"type", "questionResponse"},
-        {"response", answer}
-    })).toJson());
+                                       {"type",     "questionResponse"},
+                                       {"response", answer            }
+    }))
+                         .toJson());
     d->socket->flush();
 }
 

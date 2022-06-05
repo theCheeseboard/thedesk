@@ -5,7 +5,7 @@
     <name>LocaleSettingsPane</name>
     <message>
         <location filename="../settings/localesettingspane.ui" line="35"/>
-        <location filename="../settings/localesettingspane.cpp" line="119"/>
+        <location filename="../settings/localesettingspane.cpp" line="118"/>
         <source>Locale</source>
         <translation>Localidade</translation>
     </message>
@@ -90,22 +90,22 @@
         <translation>Imperial (Reino Unido)</translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.cpp" line="152"/>
+        <location filename="../settings/localesettingspane.cpp" line="151"/>
         <source>For this language</source>
         <translation>Para essa língua</translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.cpp" line="153"/>
+        <location filename="../settings/localesettingspane.cpp" line="152"/>
         <source>Move Up</source>
         <translation>Mover para cima</translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.cpp" line="156"/>
+        <location filename="../settings/localesettingspane.cpp" line="155"/>
         <source>Move Down</source>
         <translation>Mover para baixo</translation>
     </message>
     <message>
-        <location filename="../settings/localesettingspane.cpp" line="159"/>
+        <location filename="../settings/localesettingspane.cpp" line="158"/>
         <source>Remove</source>
         <translation>Remover</translation>
     </message>

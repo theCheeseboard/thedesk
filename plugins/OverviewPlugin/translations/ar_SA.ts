@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="ar_SA">
+<TS version="2.1" language="ar_SA" sourcelanguage="en_US">
 <context>
     <name>OverviewPane</name>
     <message>
@@ -9,22 +9,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="108"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="109"/>
         <source>Hi %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="110"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="111"/>
         <source>Good morning, %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="112"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="113"/>
         <source>Good afternoon, %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OverviewPane/overviewpane.cpp" line="114"/>
+        <location filename="../OverviewPane/overviewpane.cpp" line="115"/>
         <source>Good evening, %1!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -33,12 +33,22 @@
         <source>Daylight Savings Time is ending on %2. The clock will automatically shift backwards by %n hour(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../OverviewPane/overviewpane.cpp" line="210"/>
         <source>Daylight Savings Time is starting on %2. The clock will automatically shift forwards by %n hour(s).</source>
         <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>

@@ -19,25 +19,26 @@
  * *************************************/
 #include "taskbarapplicationwidget.h"
 
-#include <the-libs_global.h>
 #include <Wm/desktopwm.h>
+#include <libcontemporary_global.h>
 
 #include <QAction>
-#include <private/quickwidgetcontainer.h>
 #include <actionquickwidget.h>
+#include <private/quickwidgetcontainer.h>
 
 struct TaskbarApplicationWidgetPrivate {
-    ApplicationPointer app;
-    uint desktop;
+        ApplicationPointer app;
+        uint desktop;
 
-    ActionQuickWidget* windowListMenu;
-    QuickWidgetContainer* windowListMenuContainer;
+        ActionQuickWidget* windowListMenu;
+        QuickWidgetContainer* windowListMenuContainer;
 
-    QList<DesktopWmWindowPtr> trackedWindows;
-    QMap<DesktopWmWindowPtr, QAction*> actions;
+        QList<DesktopWmWindowPtr> trackedWindows;
+        QMap<DesktopWmWindowPtr, QAction*> actions;
 };
 
-TaskbarApplicationWidget::TaskbarApplicationWidget(QString desktopEntry, uint desktop, QWidget* parent) : QPushButton(parent) {
+TaskbarApplicationWidget::TaskbarApplicationWidget(QString desktopEntry, uint desktop, QWidget* parent) :
+    QPushButton(parent) {
     d = new TaskbarApplicationWidgetPrivate();
     d->app = ApplicationPointer(new Application(desktopEntry));
     d->desktop = desktop;
@@ -45,12 +46,12 @@ TaskbarApplicationWidget::TaskbarApplicationWidget(QString desktopEntry, uint de
     this->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
     this->setCheckable(true);
 
-    connect(DesktopWm::instance(), &DesktopWm::windowRemoved, this, [ = ](DesktopWmWindowPtr window) {
+    connect(DesktopWm::instance(), &DesktopWm::windowRemoved, this, [=](DesktopWmWindowPtr window) {
         removeTrackedWindow(window);
     });
     connect(DesktopWm::instance(), &DesktopWm::activeWindowChanged, this, &TaskbarApplicationWidget::updateActive);
 
-    connect(this, &TaskbarApplicationWidget::clicked, this, [ = ] {
+    connect(this, &TaskbarApplicationWidget::clicked, this, [=] {
         if (d->trackedWindows.count() == 1) {
             d->trackedWindows.first()->activate();
         } else {
@@ -63,7 +64,7 @@ TaskbarApplicationWidget::TaskbarApplicationWidget(QString desktopEntry, uint de
     d->windowListMenuContainer = new QuickWidgetContainer(this);
     d->windowListMenu = new ActionQuickWidget(d->windowListMenuContainer);
     d->windowListMenuContainer->setQuickWidget(d->windowListMenu);
-//    connect(d->windowListMenu, &ActionQuickWidget::done, d->menuContainer, &QuickWidgetContainer::hideContainer);
+    //    connect(d->windowListMenu, &ActionQuickWidget::done, d->menuContainer, &QuickWidgetContainer::hideContainer);
 
     updateIcon();
 }
@@ -78,10 +79,10 @@ void TaskbarApplicationWidget::trackWindow(DesktopWmWindowPtr window) {
     QAction* action = new QAction(this);
     action->setText(window->title());
 
-    connect(window, &DesktopWmWindow::titleChanged, action, [ = ] {
+    connect(window, &DesktopWmWindow::titleChanged, action, [=] {
         action->setText(window->title());
     });
-    connect(action, &QAction::triggered, window, [ = ] {
+    connect(action, &QAction::triggered, window, [=] {
         window->activate();
     });
 

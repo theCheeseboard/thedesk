@@ -20,10 +20,10 @@
 #include "crashwidget.h"
 #include "ui_crashwidget.h"
 
-#include <the-libs_global.h>
-#include "splash/splashcontroller.h"
-#include <tpopover.h>
 #include "backtracepopover.h"
+#include "splash/splashcontroller.h"
+#include <libcontemporary_global.h>
+#include <tpopover.h>
 
 CrashWidget::CrashWidget(QWidget* parent) :
     QWidget(parent),
@@ -32,10 +32,10 @@ CrashWidget::CrashWidget(QWidget* parent) :
 
     ui->iconLabel->setPixmap(QIcon(":/icons/crash.svg").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
 
-    connect(SplashController::instance(), &SplashController::crash, this, [ = ] {
+    connect(SplashController::instance(), &SplashController::crash, this, [=] {
         ui->descriptionLabel->setText(tr("theDesk had a problem and has stopped working."));
     });
-    connect(SplashController::instance(), &SplashController::startFail, this, [ = ] {
+    connect(SplashController::instance(), &SplashController::startFail, this, [=] {
         ui->descriptionLabel->setText(tr("theDesk couldn't start because of a problem."));
     });
 }

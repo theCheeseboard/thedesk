@@ -46,6 +46,7 @@ class PlatformTheme : public QPlatformTheme {
         QList<QKeySequence> keyBindings(QKeySequence::StandardKey key) const;
         QString standardButtonText(int button) const;
         QKeySequence standardButtonShortcut(int button) const;
+        Appearance appearance() const;
 
     private:
         PlatformThemePrivate* d;

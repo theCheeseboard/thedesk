@@ -362,7 +362,7 @@
     <message>
         <location filename="../session/endsession.ui" line="134"/>
         <location filename="../session/endsession.ui" line="369"/>
-        <location filename="../session/endsession.cpp" line="250"/>
+        <location filename="../session/endsession.cpp" line="251"/>
         <source>Reboot</source>
         <translation>重启</translation>
     </message>
@@ -507,17 +507,17 @@
         <translation>休眠此系统</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="249"/>
+        <location filename="../session/endsession.cpp" line="250"/>
         <source>Advanced Reboot</source>
         <translation>高级重启</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="259"/>
+        <location filename="../session/endsession.cpp" line="260"/>
         <source>Reboot into System UEFI Setup</source>
         <translation>重新启动进入系统UEFI设置</translation>
     </message>
     <message>
-        <location filename="../session/endsession.cpp" line="48"/>
+        <location filename="../session/endsession.cpp" line="49"/>
         <source>Hey %1, ready to head out? We&apos;ll %2 in %n seconds if you don&apos;t do anything.</source>
         <translation>你好 %1， 准备出门了吗？ 我们将 在 %2 %n 秒内将你登出。</translation>
     </message>
@@ -701,7 +701,7 @@
     <name>Recovery</name>
     <message>
         <location filename="../systemsettings/recovery/recovery.ui" line="35"/>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="68"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="67"/>
         <source>Recovery</source>
         <translation>复原</translation>
     </message>
@@ -748,7 +748,7 @@ Save your documents and close all apps before starting the reset. This won&apos;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/recovery/recovery.cpp" line="93"/>
+        <location filename="../systemsettings/recovery/recovery.cpp" line="92"/>
         <source>%1, log out and reset theDesk settings? This action is irreversible.
 
 We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do anything.</source>
@@ -817,12 +817,12 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="72"/>
+        <location filename="../main.cpp" line="71"/>
         <source>Safe Mode</source>
         <translation>安全模式</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="72"/>
+        <location filename="../main.cpp" line="71"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>您按住CTRL键。 以安全模式启动theDesk？</translation>
     </message>

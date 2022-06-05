@@ -19,20 +19,21 @@
  * *************************************/
 #include "statuscentermanager.h"
 
-#include <the-libs_global.h>
 #include <QMap>
+#include <libcontemporary_global.h>
 
 struct StatusCenterManagerPrivate {
-    bool isShowing = false;
-    bool hamburgerMenuRequired = false;
+        bool isShowing = false;
+        bool hamburgerMenuRequired = false;
 
-    QList<StatusCenterPane*> panes;
-    QMap<StatusCenterPane*, StatusCenterManager::PaneType> paneTypes;
+        QList<StatusCenterPane*> panes;
+        QMap<StatusCenterPane*, StatusCenterManager::PaneType> paneTypes;
 
-    QList<QuickSwitch*> switches;
+        QList<QuickSwitch*> switches;
 };
 
-StatusCenterManager::StatusCenterManager(QObject* parent) : QObject(parent) {
+StatusCenterManager::StatusCenterManager(QObject* parent) :
+    QObject(parent) {
     d = new StatusCenterManagerPrivate();
 }
 

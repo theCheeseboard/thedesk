@@ -20,10 +20,10 @@
 #include "backtracewidget.h"
 #include "ui_backtracewidget.h"
 
-#include <the-libs_global.h>
-#include <QFontDatabase>
-#include <QFileDialog>
 #include "splash/splashcontroller.h"
+#include <QFileDialog>
+#include <QFontDatabase>
+#include <libcontemporary_global.h>
 
 BacktraceWidget::BacktraceWidget(QWidget* parent) :
     QWidget(parent),
@@ -44,7 +44,7 @@ void BacktraceWidget::on_saveButton_clicked() {
     QFileDialog* dialog = new QFileDialog(this);
     dialog->setAcceptMode(QFileDialog::AcceptSave);
     dialog->setFileMode(QFileDialog::AnyFile);
-    connect(dialog, &QFileDialog::fileSelected, this, [ = ](QString file) {
+    connect(dialog, &QFileDialog::fileSelected, this, [=](QString file) {
         QFile fileOutput(file);
         fileOutput.open(QFile::WriteOnly);
         fileOutput.write(ui->textBrowser->toPlainText().toUtf8());

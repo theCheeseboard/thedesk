@@ -20,17 +20,18 @@
 #include "onboardingstepper.h"
 
 #include <QPainter>
+#include <libcontemporary_global.h>
 #include <tpaintcalculator.h>
-#include <the-libs_global.h>
 
 struct OnboardingStepperPrivate {
-    QString text;
-    int step = 1;
-    int currentStep = 1;
-    bool isFinal = false;
+        QString text;
+        int step = 1;
+        int currentStep = 1;
+        bool isFinal = false;
 };
 
-OnboardingStepper::OnboardingStepper(QWidget* parent) : QWidget(parent) {
+OnboardingStepper::OnboardingStepper(QWidget* parent) :
+    QWidget(parent) {
     d = new OnboardingStepperPrivate();
 
     QFont fnt = this->font();
@@ -83,7 +84,7 @@ void OnboardingStepper::paintEvent(QPaintEvent* event) {
     circleRect.moveLeft(SC_DPI(9));
     circleRect.moveTop(this->height() / 2 - radius / 2);
 
-    calculator.addRect(circleRect, [ = ](QRectF drawBounds) {
+    calculator.addRect(circleRect, [=](QRectF drawBounds) {
         painter->setPen(Qt::transparent);
         painter->setBrush(this->palette().color(group, QPalette::WindowText));
         painter->drawEllipse(drawBounds);
@@ -92,25 +93,24 @@ void OnboardingStepper::paintEvent(QPaintEvent* event) {
         painter->drawText(drawBounds, Qt::AlignCenter, QLocale().toString(d->step));
     });
 
-
     QRect textRect;
     textRect.setWidth(this->fontMetrics().horizontalAdvance(d->text));
     textRect.setHeight(this->fontMetrics().height());
     textRect.moveLeft(circleRect.right() + SC_DPI(9));
     textRect.moveTop(this->height() / 2 - textRect.height() / 2);
 
-    calculator.addRect(textRect, [ = ](QRectF drawBounds) {
+    calculator.addRect(textRect, [=](QRectF drawBounds) {
         painter->setPen(this->palette().color(group, QPalette::WindowText));
         painter->drawText(drawBounds, Qt::AlignLeft, d->text);
     });
 
     if (d->step != 1) {
-        calculator.addRect(circleRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(circleRect, [=](QRectF drawBounds) {
             painter->drawLine(drawBounds.center().x(), 0, drawBounds.center().x(), drawBounds.top());
         });
     }
     if (!d->isFinal) {
-        calculator.addRect(circleRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(circleRect, [=](QRectF drawBounds) {
             painter->drawLine(drawBounds.center().x(), drawBounds.bottom(), drawBounds.center().x(), this->height());
         });
     }

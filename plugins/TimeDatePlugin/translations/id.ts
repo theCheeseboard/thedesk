@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="id">
+<TS version="2.1" language="id" sourcelanguage="en_US">
 <context>
     <name>DateTimePane</name>
     <message>
@@ -39,7 +39,7 @@
     <name>OnboardingTimeZone</name>
     <message>
         <location filename="../onboarding/onboardingtimezone.ui" line="35"/>
-        <location filename="../onboarding/onboardingtimezone.cpp" line="53"/>
+        <location filename="../onboarding/onboardingtimezone.cpp" line="55"/>
         <source>Time Zone</source>
         <translation type="unfinished"></translation>
     </message>

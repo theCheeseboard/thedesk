@@ -4,6 +4,7 @@
 <context>
     <name>MprisChunk</name>
     <message>
+        <location filename="../chunks/mprischunk.cpp" line="53"/>
         <source>Media Players</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11,6 +12,7 @@
 <context>
     <name>NotificationAppGroup</name>
     <message>
+        <location filename="../statuscenter/notificationappgroup.cpp" line="47"/>
         <source>Uncategorised</source>
         <translation>未分类的</translation>
     </message>
@@ -18,18 +20,23 @@
 <context>
     <name>NotificationsStatusCenterPane</name>
     <message>
+        <location filename="../statuscenter/notificationsstatuscenterpane.ui" line="35"/>
+        <location filename="../statuscenter/notificationsstatuscenterpane.cpp" line="119"/>
         <source>Notifications</source>
         <translation>通知</translation>
     </message>
     <message>
+        <location filename="../statuscenter/notificationsstatuscenterpane.ui" line="113"/>
         <source>Is it Friday yet?</source>
         <translation>今天是周五嘛？</translation>
     </message>
     <message>
+        <location filename="../statuscenter/notificationsstatuscenterpane.ui" line="136"/>
         <source>You&apos;ve caught up with your notifications!</source>
         <translation>通知已阅！</translation>
     </message>
     <message>
+        <location filename="../statuscenter/notificationsstatuscenterpane.ui" line="51"/>
         <source>QUIET MODE</source>
         <translation>安静模式</translation>
     </message>

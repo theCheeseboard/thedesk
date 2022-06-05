@@ -73,17 +73,17 @@
 <context>
     <name>SplashController</name>
     <message>
-        <location filename="../splash/splashcontroller.cpp" line="105"/>
+        <location filename="../splash/splashcontroller.cpp" line="106"/>
         <source>Oh, Bonkers!</source>
         <translation>O, vai!</translation>
     </message>
     <message>
-        <location filename="../splash/splashcontroller.cpp" line="106"/>
+        <location filename="../splash/splashcontroller.cpp" line="107"/>
         <source>theDesk had a problem and was restarted.</source>
         <translation>theDesk a întâmpinat o problemă și a fost repornit.</translation>
     </message>
     <message>
-        <location filename="../splash/splashcontroller.cpp" line="108"/>
+        <location filename="../splash/splashcontroller.cpp" line="109"/>
         <source>View Details</source>
         <translation>Vedeți detaliile</translation>
     </message>
@@ -92,16 +92,19 @@
     <name>SplashWindow</name>
     <message>
         <location filename="../splashwindow.ui" line="104"/>
+        <location filename="../../../build-thedesk-Chroot_6-Debug/startdesk/startdesk_autogen/include/ui_splashwindow.h" line="161"/>
         <source>Question</source>
         <translation>Întrebare</translation>
     </message>
     <message>
         <location filename="../splashwindow.ui" line="118"/>
+        <location filename="../../../build-thedesk-Chroot_6-Debug/startdesk/startdesk_autogen/include/ui_splashwindow.h" line="162"/>
         <source>Yes</source>
         <translation>Da</translation>
     </message>
     <message>
         <location filename="../splashwindow.ui" line="129"/>
+        <location filename="../../../build-thedesk-Chroot_6-Debug/startdesk/startdesk_autogen/include/ui_splashwindow.h" line="163"/>
         <source>No</source>
         <translation>Nu</translation>
     </message>

@@ -38,7 +38,7 @@
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="262"/>
-        <location filename="../settings/adduserdialog.cpp" line="187"/>
+        <location filename="../settings/adduserdialog.cpp" line="175"/>
         <source>Administrator</source>
         <translation>管理员</translation>
     </message>
@@ -144,27 +144,27 @@
         <translation>用户类型</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.cpp" line="103"/>
+        <location filename="../settings/adduserdialog.cpp" line="97"/>
         <source>Set Password</source>
         <translation>设置密码</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.cpp" line="110"/>
+        <location filename="../settings/adduserdialog.cpp" line="103"/>
         <source>Ask when logging in</source>
         <translation>登录时询问</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.cpp" line="117"/>
+        <location filename="../settings/adduserdialog.cpp" line="109"/>
         <source>Not Set</source>
         <translation>未设置</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.cpp" line="165"/>
+        <location filename="../settings/adduserdialog.cpp" line="154"/>
         <source>Couldn&apos;t create user</source>
         <translation>无法创建用户</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.cpp" line="194"/>
+        <location filename="../settings/adduserdialog.cpp" line="181"/>
         <source>Standard</source>
         <translation>标准</translation>
     </message>
@@ -483,7 +483,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingusers.cpp" line="45"/>
+        <location filename="../onboarding/onboardingusers.cpp" line="48"/>
         <source>It&apos;s time to get to know you. Apps will use this information to personalise your experience, and you&apos;ll use the password to log in.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -555,7 +555,7 @@
     <name>UsersPane</name>
     <message>
         <location filename="../settings/userspane.ui" line="89"/>
-        <location filename="../settings/userspane.cpp" line="217"/>
+        <location filename="../settings/userspane.cpp" line="222"/>
         <source>Users</source>
         <translation>用户</translation>
     </message>
@@ -605,27 +605,27 @@
         <translation>删除用户</translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="91"/>
+        <location filename="../settings/userspane.cpp" line="94"/>
         <source>Username: %1</source>
         <translation>用户名: %1</translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="94"/>
+        <location filename="../settings/userspane.cpp" line="97"/>
         <source>Unlock User</source>
         <translation>解锁用户</translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="96"/>
+        <location filename="../settings/userspane.cpp" line="99"/>
         <source>Lock User</source>
         <translation>锁定用户</translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="138"/>
+        <location filename="../settings/userspane.cpp" line="143"/>
         <source>Unauthorized</source>
         <translation>未授权</translation>
     </message>
     <message>
-        <location filename="../settings/userspane.cpp" line="139"/>
+        <location filename="../settings/userspane.cpp" line="144"/>
         <source>Polkit does not allow you to manage users on the system.</source>
         <translation>Polkit不允许您管理系统上的用户。</translation>
     </message>

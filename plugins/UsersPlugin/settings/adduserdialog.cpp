@@ -21,17 +21,19 @@
 #include "ui_adduserdialog.h"
 
 #include "user.h"
-#include <ttoast.h>
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
 #include <terrorflash.h>
+#include <ttoast.h>
 
 struct AddUserDialogPrivate {
-    User::PasswordMode passwordMode;
+        User::PasswordMode passwordMode;
 };
 
-AddUserDialog::AddUserDialog(QWidget *parent) :
+AddUserDialog::AddUserDialog(QWidget* parent) :
     QWidget(parent),
-    ui(new Ui::AddUserDialog)
-{
+    ui(new Ui::AddUserDialog) {
     ui->setupUi(this);
     d = new AddUserDialogPrivate();
 
@@ -39,24 +41,20 @@ AddUserDialog::AddUserDialog(QWidget *parent) :
     ui->standardUserButton->click();
 }
 
-AddUserDialog::~AddUserDialog()
-{
+AddUserDialog::~AddUserDialog() {
     delete d;
     delete ui;
 }
 
-void AddUserDialog::on_backButton_clicked()
-{
+void AddUserDialog::on_backButton_clicked() {
     emit done();
 }
 
-void AddUserDialog::on_backButton_2_clicked()
-{
+void AddUserDialog::on_backButton_2_clicked() {
     ui->stackedWidget->setCurrentWidget(ui->detailsPage);
 }
 
-void AddUserDialog::on_nextButton_clicked()
-{
+void AddUserDialog::on_nextButton_clicked() {
     if (ui->fullNameLineEdit->text().isEmpty()) {
         tErrorFlash::flashError(ui->fullNameLineEdit);
         return;
@@ -70,25 +68,21 @@ void AddUserDialog::on_nextButton_clicked()
     ui->stackedWidget->setCurrentWidget(ui->securityPage);
 }
 
-void AddUserDialog::on_fullNameLineEdit_textChanged(const QString &arg1)
-{
+void AddUserDialog::on_fullNameLineEdit_textChanged(const QString& arg1) {
     ui->usernameLineEdit->setText(arg1.split(" ").first().toLower());
     ui->realNameConfirmLabel->setText(arg1);
 }
 
-void AddUserDialog::on_usernameLineEdit_textChanged(const QString &arg1)
-{
+void AddUserDialog::on_usernameLineEdit_textChanged(const QString& arg1) {
     ui->usernameLineEdit->setText(arg1.toLower());
     ui->userNameConfirmLabel->setText(arg1);
 }
 
-void AddUserDialog::on_backButton_3_clicked()
-{
+void AddUserDialog::on_backButton_3_clicked() {
     ui->stackedWidget->setCurrentWidget(ui->securityPage);
 }
 
-void AddUserDialog::on_usePasswordButton_clicked()
-{
+void AddUserDialog::on_usePasswordButton_clicked() {
     if (ui->passwordLineEdit->text().isEmpty()) {
         tErrorFlash::flashError(ui->passwordLineEdit);
         return;
@@ -104,33 +98,28 @@ void AddUserDialog::on_usePasswordButton_clicked()
     ui->stackedWidget->setCurrentWidget(ui->confirmPage);
 }
 
-void AddUserDialog::on_askForPasswordButton_clicked()
-{
+void AddUserDialog::on_askForPasswordButton_clicked() {
     d->passwordMode = User::SetAtLogin;
     ui->passwordConfirmLabel->setText(tr("Ask when logging in"));
     ui->stackedWidget->setCurrentWidget(ui->confirmPage);
 }
 
-void AddUserDialog::on_noPasswordButton_clicked()
-{
+void AddUserDialog::on_noPasswordButton_clicked() {
     d->passwordMode = User::NoPassword;
     ui->passwordConfirmLabel->setText(tr("Not Set"));
     ui->stackedWidget->setCurrentWidget(ui->confirmPage);
 }
 
-void AddUserDialog::on_performAddUserButton_clicked()
-{
+void AddUserDialog::on_performAddUserButton_clicked() {
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
     ui->stackedWidget->setCurrentWidget(ui->processingPage);
 
-    //Add the user account
+    // Add the user account
     int accountType = ui->administratorButton->isChecked() ? 1 : 0;
     QDBusMessage createMessage = QDBusMessage::createMethodCall("org.freedesktop.Accounts", "/org/freedesktop/Accounts", "org.freedesktop.Accounts", "CreateUser");
-    createMessage.setArguments({
-        ui->usernameLineEdit->text(),
+    createMessage.setArguments({ui->usernameLineEdit->text(),
         ui->fullNameLineEdit->text(),
-        accountType
-    });
+        accountType});
 
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(createMessage));
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
@@ -140,7 +129,7 @@ void AddUserDialog::on_performAddUserButton_clicked()
         } else {
             UserPtr u(new User(watcher->reply().arguments().first().value<QDBusObjectPath>()));
 
-            //Set the user's password
+            // Set the user's password
             tPromiseResults<void> results;
             if (d->passwordMode == User::SetPassword) {
                 results = u->setPassword(ui->passwordLineEdit->text(), ui->passwordHintLineEdit->text())->await();
@@ -156,7 +145,7 @@ void AddUserDialog::on_performAddUserButton_clicked()
         if (error.isEmpty()) {
             emit done();
         } else {
-            //Bail out
+            // Bail out
             QTimer::singleShot(1000, [=] {
                 ui->stackedWidget->setCurrentWidget(ui->confirmPage);
                 ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
@@ -170,25 +159,23 @@ void AddUserDialog::on_performAddUserButton_clicked()
         }
     });
 
-//    QDBusReply<QDBusObjectPath> newUser = QDBusConnection::systemBus().call(createMessage);
-//    if (newUser.error().isValid()) {
-//        return;
-//    } else {
-//        d->editingUserPath = newUser.value().path();
-//    }
+    //    QDBusReply<QDBusObjectPath> newUser = QDBusConnection::systemBus().call(createMessage);
+    //    if (newUser.error().isValid()) {
+    //        return;
+    //    } else {
+    //        d->editingUserPath = newUser.value().path();
+    //    }
 
-//    QTimer::singleShot(2000, this, &AddUserDialog::done);
+    //    QTimer::singleShot(2000, this, &AddUserDialog::done);
 }
 
-void AddUserDialog::on_administratorButton_clicked()
-{
+void AddUserDialog::on_administratorButton_clicked() {
     ui->administratorButton->setChecked(true);
     ui->standardUserButton->setChecked(false);
     ui->userTypeConfirmLabel->setText(tr("Administrator"));
 }
 
-void AddUserDialog::on_standardUserButton_clicked()
-{
+void AddUserDialog::on_standardUserButton_clicked() {
     ui->administratorButton->setChecked(false);
     ui->standardUserButton->setChecked(true);
     ui->userTypeConfirmLabel->setText(tr("Standard"));

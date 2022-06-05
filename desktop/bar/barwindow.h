@@ -20,8 +20,8 @@
 #ifndef BARWINDOW_H
 #define BARWINDOW_H
 
-#include <QWidget>
 #include <Gestures/gestureinteraction.h>
+#include <QWidget>
 #include <Wm/desktopwmwindow.h>
 
 namespace Ui {
@@ -41,7 +41,7 @@ class BarWindow : public QWidget {
         BarWindowPrivate* d;
 
         void resizeEvent(QResizeEvent* event);
-        void enterEvent(QEvent* event);
+        void enterEvent(QEnterEvent* event);
         void leaveEvent(QEvent* event);
         void paintEvent(QPaintEvent* event);
         void mouseMoveEvent(QMouseEvent* event);

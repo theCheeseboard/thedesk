@@ -20,21 +20,22 @@
 #include "endsession.h"
 #include "ui_endsession.h"
 
-#include <Wm/desktopwm.h>
-#include <QPainter>
-#include <tvariantanimation.h>
 #include "transparentdialog.h"
-#include <QTimer>
-#include <tpopover.h>
-#include <statemanager.h>
-#include <powermanager.h>
-#include <onboardingmanager.h>
+#include <QDBusConnection>
 #include <QDBusMessage>
 #include <QMenu>
+#include <QPainter>
+#include <QTimer>
+#include <Wm/desktopwm.h>
+#include <onboardingmanager.h>
+#include <powermanager.h>
+#include <statemanager.h>
+#include <tpopover.h>
+#include <tvariantanimation.h>
 
 struct EndSessionPrivate {
-    tVariantAnimation* powerOffAnimation;
-    EndSessionButton* timedButton;
+        tVariantAnimation* powerOffAnimation;
+        EndSessionButton* timedButton;
 };
 
 EndSession::EndSession(PowerManager::PowerOperation operation, QString message, QStringList flags, QWidget* parent) :
@@ -93,7 +94,6 @@ EndSession::EndSession(PowerManager::PowerOperation operation, QString message, 
         case PowerManager::Hibernate:
             d->timedButton = ui->hibernateButton;
             break;
-
     }
 
     d->timedButton->setVisible(true);
@@ -104,21 +104,22 @@ EndSession::EndSession(PowerManager::PowerOperation operation, QString message, 
     d->powerOffAnimation->setEndValue(0.0);
     d->powerOffAnimation->setDuration(60000);
     d->powerOffAnimation->setForceAnimation(true);
-    connect(d->powerOffAnimation, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(d->powerOffAnimation, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         const QMap<EndSessionButton*, const char*> text = {
-            {ui->powerOffButton, QT_TR_NOOP("power off the system")},
-            {ui->rebootButton, QT_TR_NOOP("reboot the system")},
+            {ui->powerOffButton,             QT_TR_NOOP("power off the system")                             },
+            {ui->rebootButton,               QT_TR_NOOP("reboot the system")                                },
             {ui->rebootInstallUpdatesButton, QT_TR_NOOP("reboot the system and install any pending updates")},
-            {ui->logoutButton, QT_TR_NOOP("log you out")},
-            {ui->suspendButton, QT_TR_NOOP("suspend the system")},
-            {ui->lockButton, QT_TR_NOOP("lock the screen")},
-            {ui->screenOffButton, QT_TR_NOOP("turn off the screen")},
-            {ui->switchUsersButton, QT_TR_NOOP("switch users")},
-            {ui->hibernateButton, QT_TR_NOOP("hibernate the system")}
+            {ui->logoutButton,               QT_TR_NOOP("log you out")                                      },
+            {ui->suspendButton,              QT_TR_NOOP("suspend the system")                               },
+            {ui->lockButton,                 QT_TR_NOOP("lock the screen")                                  },
+            {ui->screenOffButton,            QT_TR_NOOP("turn off the screen")                              },
+            {ui->switchUsersButton,          QT_TR_NOOP("switch users")                                     },
+            {ui->hibernateButton,            QT_TR_NOOP("hibernate the system")                             }
         };
 
         ui->descriptionLabel->setText(tr(qPrintable(message), nullptr, value.toFloat() < 1 ? 1 : qRound(value.toDouble()))
-            .arg(DesktopWm::userDisplayName()).arg(tr(text.value(d->timedButton))));
+                                          .arg(DesktopWm::userDisplayName())
+                                          .arg(tr(text.value(d->timedButton))));
         d->timedButton->setTimeRemaining(value.toDouble());
     });
     connect(d->powerOffAnimation, &tVariantAnimation::finished, d->timedButton, &QCommandLinkButton::click);
@@ -140,13 +141,13 @@ EndSession::~EndSession() {
 }
 
 tPromise<void>* EndSession::showDialog(PowerManager::PowerOperation operation, QString message, QStringList flags) {
-    return tPromise<void>::runOnSameThread([ = ](tPromiseFunctions<void>::SuccessFunction res, tPromiseFunctions<void>::FailureFunction rej) {
+    return tPromise<void>::runOnSameThread([=](tPromiseFunctions<void>::SuccessFunction res, tPromiseFunctions<void>::FailureFunction rej) {
         Q_UNUSED(rej)
 
         TransparentDialog* dialog = new TransparentDialog();
         dialog->showFullScreen();
 
-        QTimer::singleShot(500, [ = ] {
+        QTimer::singleShot(500, [=] {
             EndSession* popoverContents = new EndSession(operation, message, flags);
 
             tPopover* popover = new tPopover(popoverContents);
@@ -154,7 +155,7 @@ tPromise<void>* EndSession::showDialog(PowerManager::PowerOperation operation, Q
             popover->setPopoverWidth(popoverContents->heightForWidth(dialog->width()));
             connect(popoverContents, &EndSession::done, popover, &tPopover::dismiss);
             connect(popover, &tPopover::dismissed, popoverContents, &EndSession::deleteLater);
-            connect(popover, &tPopover::dismissed, [ = ] {
+            connect(popover, &tPopover::dismissed, [=] {
                 popover->deleteLater();
                 dialog->deleteLater();
                 popoverContents->deleteLater();
@@ -178,7 +179,7 @@ void EndSession::on_powerOffButton_clicked() {
 
 void EndSession::on_rebootButton_clicked() {
     if (QFile("/var/lib/PackageKit/prepared-update").exists() && !QFile::exists("/system-update")) {
-        //Ask the user to install updates
+        // Ask the user to install updates
         ui->stackedWidget->setCurrentWidget(ui->updatesAvailablePage);
     } else {
         StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot);
@@ -226,7 +227,7 @@ void EndSession::on_rebootNoUpdateButton_clicked() {
 }
 
 void EndSession::on_rebootUpdateButton_clicked() {
-    //Reboot
+    // Reboot
     StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot, {"update"});
     emit done();
 }
@@ -247,8 +248,8 @@ void EndSession::on_rebootInstallUpdatesButton_clicked() {
 void EndSession::on_rebootButton_customContextMenuRequested(const QPoint& pos) {
     QMenu* menu = new QMenu();
     menu->addSection(tr("Advanced Reboot"));
-    menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot"), [ = ] {
-        //Just reboot
+    menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot"), [=] {
+        // Just reboot
         ui->rebootButton->click();
     });
 
@@ -256,11 +257,10 @@ void EndSession::on_rebootButton_customContextMenuRequested(const QPoint& pos) {
     QDBusMessage msg = QDBusConnection::systemBus().call(message);
 
     if (msg.arguments().first().toString() == "yes") {
-        menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot into System UEFI Setup"), [ = ] {
+        menu->addAction(QIcon::fromTheme("system-reboot"), tr("Reboot into System UEFI Setup"), [=] {
             StateManager::instance()->powerManager()->performPowerOperation(PowerManager::Reboot, {"setup"});
             emit done();
         });
     }
     menu->popup(ui->rebootButton->mapToGlobal(pos));
 }
-

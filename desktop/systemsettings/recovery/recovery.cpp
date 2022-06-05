@@ -21,9 +21,9 @@
 #include "ui_recovery.h"
 
 #include <QIcon>
+#include <powermanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <powermanager.h>
 #include <tsettings.h>
 
 Recovery::Recovery() :
@@ -42,7 +42,7 @@ Recovery::Recovery() :
     ui->resetDEButton->setProperty("type", "destructive");
     ui->resetDeviceButton->setProperty("type", "destructive");
 
-    if (theLibsGlobal::searchInPath("scallop-reset-ui").isEmpty()) {
+    if (libContemporaryCommon::searchInPath("scallop-reset-ui").isEmpty()) {
         ui->resetDeviceContainer->setVisible(false);
         ui->resetDeviceLine->setVisible(false);
     }
@@ -58,7 +58,6 @@ void Recovery::changeEvent(QEvent* event) {
         emit displayNameChanged();
     }
 }
-
 
 QString Recovery::name() {
     return "SystemRecovery";
@@ -78,10 +77,10 @@ QWidget* Recovery::leftPane() {
 
 void Recovery::on_resetDEButton_clicked() {
     QMetaObject::Connection* c = new QMetaObject::Connection();
-    *c = connect(StateManager::instance()->powerManager(), &PowerManager::powerOffOperationCommencing, this, [ = ] {
+    *c = connect(StateManager::instance()->powerManager(), &PowerManager::powerOffOperationCommencing, this, [=] {
         disconnect(*c);
 
-        //Clear the settings
+        // Clear the settings
         tSettings settings;
         settings.clear();
         settings.sync();
@@ -90,7 +89,7 @@ void Recovery::on_resetDEButton_clicked() {
         platformSettings.clear();
         platformSettings.sync();
     });
-    StateManager::instance()->powerManager()->showPowerOffConfirmation(PowerManager::LogOut, tr("%1, log out and reset theDesk settings? This action is irreversible.\n\nWe'll go ahead and reset your settings in %n seconds if you don't do anything."))->then([ = ] {
+    StateManager::instance()->powerManager()->showPowerOffConfirmation(PowerManager::LogOut, tr("%1, log out and reset theDesk settings? This action is irreversible.\n\nWe'll go ahead and reset your settings in %n seconds if you don't do anything."))->then([=] {
         disconnect(*c);
         delete c;
     });
@@ -104,4 +103,3 @@ void Recovery::on_resetDeviceButton_clicked() {
     QProcess::startDetached("scallop-reset-ui", QStringList());
     StateManager::statusCenterManager()->hide();
 }
-

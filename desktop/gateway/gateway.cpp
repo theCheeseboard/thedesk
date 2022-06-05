@@ -20,25 +20,24 @@
 #include "gateway.h"
 #include "ui_gateway.h"
 
-#include <QApplication>
-#include <QScreen>
-#include <QPainter>
-#include <tvariantanimation.h>
-#include <Wm/desktopwm.h>
 #include <Gestures/gesturedaemon.h>
+#include <QApplication>
+#include <QPainter>
+#include <QScreen>
+#include <Wm/desktopwm.h>
+#include <tvariantanimation.h>
 
 #include <tsettings.h>
 
-#include <statemanager.h>
 #include <gatewaymanager.h>
+#include <statemanager.h>
 
 struct GatewayPrivate {
-    Gateway* instance = nullptr;
+        Gateway* instance = nullptr;
 
-    tVariantAnimation* width;
-    tSettings settings;
+        tVariantAnimation* width;
 
-    GestureInteractionPtr lastGesture;
+        GestureInteractionPtr lastGesture;
 };
 
 GatewayPrivate* Gateway::d = new GatewayPrivate();
@@ -49,13 +48,13 @@ Gateway::Gateway() :
     ui->setupUi(this);
 
     ui->gatewayContainer->move(0, 0);
-    connect(ui->gatewayContainer, &MainGatewayWidget::closeGateway, this, [ = ] {
+    connect(ui->gatewayContainer, &MainGatewayWidget::closeGateway, this, [=] {
         this->close();
     });
 
     d->width = new tVariantAnimation();
     d->width->setDuration(500);
-    connect(d->width, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(d->width, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         this->setFixedWidth(value.toInt());
         QScreen* screen = qApp->primaryScreen();
         QRect geometry;
@@ -68,7 +67,7 @@ Gateway::Gateway() :
         }
         this->setGeometry(geometry);
     });
-    connect(d->width, &tVariantAnimation::finished, this, [ = ] {
+    connect(d->width, &tVariantAnimation::finished, this, [=] {
         if (d->lastGesture && d->lastGesture->isActive()) return;
         if (this->geometry().width() == 0) {
             QDialog::hide();
@@ -80,7 +79,7 @@ Gateway::Gateway() :
     DesktopWm::setSystemWindow(this, DesktopWm::SystemWindowTypeMenu);
     this->setFixedWidth(0);
 
-    connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [ = ](GestureInteractionPtr interaction) {
+    connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [=](GestureInteractionPtr interaction) {
         if (interaction->isValidInteraction(GestureTypes::Swipe, this->layoutDirection() == Qt::RightToLeft ? GestureTypes::Left : GestureTypes::Right, 3)) {
             trackGatewayOpenGesture(interaction);
         } else if (interaction->isValidInteraction(GestureTypes::Swipe, this->layoutDirection() == Qt::RightToLeft ? GestureTypes::Right : GestureTypes::Left, 3)) {
@@ -110,15 +109,14 @@ void Gateway::changeEvent(QEvent* event) {
         case QEvent::ActivationChange:
             if (!this->isActiveWindow()) this->close();
             break;
-        default:
-            ;
+        default:;
     }
 }
 
 void Gateway::trackGatewayOpenGesture(GestureInteractionPtr gesture) {
     if (this->isVisible()) return;
 
-    //Capture this gesture!
+    // Capture this gesture!
     d->lastGesture = gesture;
 
     QScreen* screen = qApp->primaryScreen();
@@ -128,11 +126,11 @@ void Gateway::trackGatewayOpenGesture(GestureInteractionPtr gesture) {
     d->width->setStartValue(0);
     d->width->setEndValue(ui->gatewayContainer->sizeHint().width() + 1);
 
-    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [=] {
         d->width->setCurrentTime(d->width->totalDuration() * gesture->percentage());
         d->width->valueChanged(d->width->currentValue());
     });
-    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [=] {
         if (gesture->extrapolatePercentage(100) > 0.3) {
             show();
         } else {
@@ -146,7 +144,7 @@ void Gateway::trackGatewayOpenGesture(GestureInteractionPtr gesture) {
 void Gateway::trackGatewayCloseGesture(GestureInteractionPtr gesture) {
     if (!this->isVisible()) return;
 
-    //Capture this gesture!
+    // Capture this gesture!
     d->lastGesture = gesture;
 
     QScreen* screen = qApp->primaryScreen();
@@ -156,11 +154,11 @@ void Gateway::trackGatewayCloseGesture(GestureInteractionPtr gesture) {
     d->width->setStartValue(ui->gatewayContainer->sizeHint().width() + 1);
     d->width->setEndValue(0);
 
-    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [=] {
         d->width->setCurrentTime(d->width->totalDuration() * gesture->percentage());
         d->width->valueChanged(d->width->currentValue());
     });
-    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [=] {
         if (gesture->extrapolatePercentage(100) > 0.3) {
             close();
         } else {

@@ -20,7 +20,7 @@
 #ifndef PLUGIN_H
 #define PLUGIN_H
 
-#include "plugininterface.h"
+#include "plugins/plugininterface.h"
 
 struct PluginPrivate;
 class Plugin : public QObject, public PluginInterface {

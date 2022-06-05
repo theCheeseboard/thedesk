@@ -21,15 +21,16 @@
 #include "ui_onboardingvideo.h"
 
 #include <QMediaPlayer>
-#include <QMediaPlaylist>
-#include <QVideoWidget>
+//#include <QMediaPlaylist>
 #include <QQmlContext>
+//#include <QVideoWidget>
+#include <QTimer>
 #include <tsettings.h>
 
 struct OnboardingVideoPrivate {
-    QMediaPlayer* videoPlayer;
-    QMediaPlaylist* videoPlaylist;
-    QVideoWidget* videoWidget;
+        QMediaPlayer* videoPlayer;
+        //        QMediaPlaylist* videoPlaylist;
+        //        QVideoWidget* videoWidget;
 };
 
 OnboardingVideo::OnboardingVideo(QWidget* parent) :
@@ -43,33 +44,35 @@ OnboardingVideo::OnboardingVideo(QWidget* parent) :
     this->setWindowFlag(Qt::FramelessWindowHint);
 
     tSettings settings;
-    d->videoPlaylist = new QMediaPlaylist(this);
-    d->videoPlaylist->addMedia(QUrl::fromLocalFile(settings.value("Onboarding/videos.start").toString()));
-    d->videoPlaylist->addMedia(QUrl::fromLocalFile(settings.value("Onboarding/videos.middle").toString()));
-    d->videoPlaylist->addMedia(QUrl::fromLocalFile(settings.value("Onboarding/videos.loop").toString()));
-    d->videoPlaylist->setCurrentIndex(0);
-    connect(d->videoPlaylist, &QMediaPlaylist::currentIndexChanged, this, [ = ](int index) {
-        if (index == 1) {
-            emit startOnboarding();
-            this->setCursor(QCursor(Qt::ArrowCursor));
-        } else if (index == 2) {
-            //Start looping
-            d->videoPlaylist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
-        }
-    });
+    //    d->videoPlaylist = new QMediaPlaylist(this);
+    //    d->videoPlaylist->addMedia(QUrl::fromLocalFile(settings.value("Onboarding/videos.start").toString()));
+    //    d->videoPlaylist->addMedia(QUrl::fromLocalFile(settings.value("Onboarding/videos.middle").toString()));
+    //    d->videoPlaylist->addMedia(QUrl::fromLocalFile(settings.value("Onboarding/videos.loop").toString()));
+    //    d->videoPlaylist->setCurrentIndex(0);
+    //    connect(d->videoPlaylist, &QMediaPlaylist::currentIndexChanged, this, [=](int index) {
+    //        if (index == 1) {
+    //            emit startOnboarding();
+    //            this->setCursor(QCursor(Qt::ArrowCursor));
+    //        } else if (index == 2) {
+    //             Start looping
+    //            d->videoPlaylist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+    //        }
+    //    });
 
-    d->videoPlayer = new QMediaPlayer(this);
-    d->videoPlayer->setPlaylist(d->videoPlaylist);
-    d->videoPlayer->setVolume(0);
-    connect(d->videoPlayer, &QMediaPlayer::mediaStatusChanged, this, [ = ](QMediaPlayer::MediaStatus state) {
-        if (state == QMediaPlayer::BufferedMedia || state == QMediaPlayer::BufferingMedia) {
-            emit playAudio();
-        }
-    });
-    d->videoPlayer->play();
+    //    d->videoPlayer = new QMediaPlayer(this);
+    //    d->videoPlayer->setPlaylist(d->videoPlaylist);
+    //    d->videoPlayer->setVolume(0);
+    //    connect(d->videoPlayer, &QMediaPlayer::mediaStatusChanged, this, [=](QMediaPlayer::MediaStatus state) {
+    //        if (state == QMediaPlayer::BufferedMedia || state == QMediaPlayer::BufferingMedia) {
+    //            emit playAudio();
+    //        }
+    //    });
+    //    d->videoPlayer->play();
 
     QQmlContext* qml = ui->quickWidget->rootContext();
     qml->setContextProperty("sourceVideo", this);
+
+    QTimer::singleShot(0, this, &OnboardingVideo::startOnboarding);
 }
 
 OnboardingVideo::~OnboardingVideo() {
@@ -77,6 +80,6 @@ OnboardingVideo::~OnboardingVideo() {
     delete ui;
 }
 
-QMediaObject* OnboardingVideo::mediaObject() const {
+QMediaPlayer* OnboardingVideo::mediaObject() const {
     return d->videoPlayer;
 }

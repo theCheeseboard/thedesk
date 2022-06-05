@@ -19,19 +19,19 @@
  * *************************************/
 #include "appselectionmodel.h"
 
-#include <tpromise.h>
 #include <Applications/application.h>
-#include <the-libs_global.h>
+#include <libcontemporary_global.h>
+#include <tpromise.h>
 
 struct AppSelectionModelPrivate {
-    QString category;
+        QString category;
 
-    QList<ApplicationPointer> apps;
-    QList<ApplicationPointer> appsShown;
+        QList<ApplicationPointer> apps;
+        QList<ApplicationPointer> appsShown;
 };
 
-AppSelectionModel::AppSelectionModel(QObject* parent)
-    : QAbstractListModel(parent) {
+AppSelectionModel::AppSelectionModel(QObject* parent) :
+    QAbstractListModel(parent) {
     d = new AppSelectionModelPrivate();
     connect(ApplicationDaemon::instance(), &ApplicationDaemon::appsUpdateRequired, this, &AppSelectionModel::updateData);
     updateData();
@@ -42,7 +42,7 @@ AppSelectionModel::~AppSelectionModel() {
 }
 
 int AppSelectionModel::rowCount(const QModelIndex& parent) const {
-    if (parent.isValid())  return 0;
+    if (parent.isValid()) return 0;
 
     return d->appsShown.count();
 }
@@ -55,16 +55,16 @@ QVariant AppSelectionModel::data(const QModelIndex& index, int role) const {
         if (role == Qt::DisplayRole) {
             return a->getProperty("Name", a->desktopEntry());
         } else if (role == Qt::DecorationRole) {
-            //Cache the icon for smooth scrolling
+            // Cache the icon for smooth scrolling
             return a->icon(SC_DPI_T(QSize(32, 32), QSize));
-        } else if (role == Qt::UserRole) { //Description
+        } else if (role == Qt::UserRole) { // Description
             return a->getProperty("GenericName", tr("Application"));
-        } else if (role == Qt::UserRole + 1) { //Pinned
-//            return d->pinnedAppsList.contains(a->desktopEntry());
+        } else if (role == Qt::UserRole + 1) { // Pinned
+            //            return d->pinnedAppsList.contains(a->desktopEntry());
             return false;
-        } else if (role == Qt::UserRole + 2) { //Desktop Entry
+        } else if (role == Qt::UserRole + 2) { // Desktop Entry
             return a->desktopEntry();
-        } else if (role == Qt::UserRole + 3) { //App
+        } else if (role == Qt::UserRole + 3) { // App
             return QVariant::fromValue(a);
         }
     }
@@ -76,7 +76,7 @@ void AppSelectionModel::filterCategory(QString category) {
     d->category = category;
     d->appsShown.clear();
 
-    //If there is no current category, show all apps
+    // If there is no current category, show all apps
     if (category == "") {
         d->appsShown.append(d->apps);
         emit dataChanged(index(0), index(rowCount()));
@@ -97,18 +97,18 @@ void AppSelectionModel::updateData() {
     d->apps.clear();
 
     struct ApplicationListReturnValue {
-        QList<ApplicationPointer> apps;
-        QMap<ApplicationPointer, QPixmap> appIcons;
+            QList<ApplicationPointer> apps;
+            QMap<ApplicationPointer, QPixmap> appIcons;
     };
 
-    (new tPromise<QList<ApplicationPointer>>([ = ](QString & error) {
+    (new tPromise<QList<ApplicationPointer>>([=](QString& error) {
         QList<ApplicationPointer> apps;
 
         QList<ApplicationPointer> normalApps;
         for (QString desktopEntry : Application::allApplications()) {
             ApplicationPointer a(new Application(desktopEntry));
 
-            //Make sure this app is good to be shown
+            // Make sure this app is good to be shown
             if (a->getProperty("Type", "").toString() != "Application") continue;
             if (a->getProperty("NoDisplay", false).toBool()) continue;
             if (!a->getStringList("OnlyShowIn", {"thedesk"}).contains("thedesk")) continue;
@@ -116,7 +116,7 @@ void AppSelectionModel::updateData() {
             normalApps.append(a);
         }
 
-        std::sort(normalApps.begin(), normalApps.end(), [](const ApplicationPointer & a, const ApplicationPointer & b) -> bool {
+        std::sort(normalApps.begin(), normalApps.end(), [](const ApplicationPointer& a, const ApplicationPointer& b) -> bool {
             if (a->getProperty("Name").toString().localeAwareCompare(b->getProperty("Name").toString()) < 0) {
                 return true;
             } else {
@@ -126,10 +126,10 @@ void AppSelectionModel::updateData() {
         apps.append(normalApps);
 
         return apps;
-    }))->then([ = ](QList<ApplicationPointer> apps) {
+    }))->then([=](QList<ApplicationPointer> apps) {
         d->apps = apps;
 
-        //Perform a category search to initialize the list
+        // Perform a category search to initialize the list
         filterCategory(d->category);
         emit ready();
     });

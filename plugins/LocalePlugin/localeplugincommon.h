@@ -17,12 +17,12 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef LOCALEPLUGINCOMMON_H
+#define LOCALEPLUGINCOMMON_H
 
 #include <QLocale>
 
-namespace Common {
+namespace LocalePluginCommon {
     struct Country {
         QLocale::Country country;
         QString text;
@@ -32,4 +32,4 @@ namespace Common {
     QList<Country> countries();
 }
 
-#endif // COMMON_H
+#endif // LOCALEPLUGINCOMMON_H
