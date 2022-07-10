@@ -43,7 +43,7 @@
 <context>
     <name>StickyKeysChunk</name>
     <message>
-        <location filename="../chunks/stickykeyschunk.cpp" line="57"/>
+        <location filename="../chunks/stickykeyschunk.cpp" line="58"/>
         <source>Disable Sticky Keys</source>
         <translation>Desativar teclas aderentes</translation>
     </message>

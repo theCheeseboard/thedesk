@@ -19,34 +19,35 @@
  * *************************************/
 #include "stickykeyschunk.h"
 
-#include <Wm/desktopwm.h>
-#include <Wm/desktopaccessibility.h>
-#include <statemanager.h>
-#include <barmanager.h>
-#include <the-libs_global.h>
 #include <QPainter>
-#include <tsettings.h>
+#include <Wm/desktopaccessibility.h>
+#include <Wm/desktopwm.h>
 #include <actionquickwidget.h>
+#include <barmanager.h>
+#include <libcontemporary_global.h>
+#include <statemanager.h>
+#include <tsettings.h>
 
 struct StickyKeysChunkPrivate {
-    Qt::KeyboardModifiers latched;
-    Qt::KeyboardModifiers locked;
+        Qt::KeyboardModifiers latched;
+        Qt::KeyboardModifiers locked;
 
-    ActionQuickWidget* quickWidget;
-    tSettings settings;
+        ActionQuickWidget* quickWidget;
+        tSettings settings;
 
-    bool registered = false;
+        bool registered = false;
 };
 
-StickyKeysChunk::StickyKeysChunk() : Chunk() {
+StickyKeysChunk::StickyKeysChunk() :
+    Chunk() {
     d = new StickyKeysChunkPrivate();
 
-    connect(DesktopWm::accessibility(), &DesktopAccessibility::accessibilityOptionEnabledChanged, this, [ = ](DesktopAccessibility::AccessibilityOption option, bool enabled) {
+    connect(DesktopWm::accessibility(), &DesktopAccessibility::accessibilityOptionEnabledChanged, this, [=](DesktopAccessibility::AccessibilityOption option, bool enabled) {
         if (option == DesktopAccessibility::StickyKeys) {
             updateRegistration(enabled);
         }
     });
-    connect(DesktopWm::accessibility(), &DesktopAccessibility::stickyKeysStateChanged, this, [ = ](Qt::KeyboardModifiers latched, Qt::KeyboardModifiers locked) {
+    connect(DesktopWm::accessibility(), &DesktopAccessibility::stickyKeysStateChanged, this, [=](Qt::KeyboardModifiers latched, Qt::KeyboardModifiers locked) {
         d->latched = latched;
         d->locked = locked;
 
@@ -54,7 +55,7 @@ StickyKeysChunk::StickyKeysChunk() : Chunk() {
     });
 
     d->quickWidget = new ActionQuickWidget(this);
-    d->quickWidget->addAction(tr("Disable Sticky Keys"), [ = ] {
+    d->quickWidget->addAction(tr("Disable Sticky Keys"), [=] {
         d->settings.setValue("Accessibility/stickykeys.active", false);
     });
 
@@ -141,7 +142,6 @@ void StickyKeysChunk::paintEvent(QPaintEvent* event) {
         painter.drawRect(altRect);
     }
 }
-
 
 QWidget* StickyKeysChunk::quickWidget() {
     return d->quickWidget;

@@ -30,23 +30,23 @@ class PlatformTheme : public QPlatformTheme {
 
         // QPlatformTheme interface
     public:
-        QPlatformMenuItem* createPlatformMenuItem() const;
-        QPlatformMenu* createPlatformMenu() const;
-        QPlatformMenuBar* createPlatformMenuBar() const;
-        void showPlatformMenuBar();
-        bool usePlatformNativeDialog(DialogType type) const;
-        QPlatformDialogHelper* createPlatformDialogHelper(DialogType type) const;
-        QPlatformSystemTrayIcon* createPlatformSystemTrayIcon() const;
-        const QPalette* palette(Palette type) const;
-        const QFont* font(Font type) const;
-        QVariant themeHint(ThemeHint hint) const;
-        QPixmap standardPixmap(StandardPixmap sp, const QSizeF& size) const;
-        QIcon fileIcon(const QFileInfo& fileInfo, QPlatformTheme::IconOptions iconOptions) const;
-        QIconEngine* createIconEngine(const QString& iconName) const;
-        QList<QKeySequence> keyBindings(QKeySequence::StandardKey key) const;
-        QString standardButtonText(int button) const;
-        QKeySequence standardButtonShortcut(int button) const;
-        Appearance appearance() const;
+        QPlatformMenuItem* createPlatformMenuItem() const override;
+        QPlatformMenu* createPlatformMenu() const override;
+        QPlatformMenuBar* createPlatformMenuBar() const override;
+        void showPlatformMenuBar() override;
+        bool usePlatformNativeDialog(DialogType type) const override;
+        QPlatformDialogHelper* createPlatformDialogHelper(DialogType type) const override;
+        QPlatformSystemTrayIcon* createPlatformSystemTrayIcon() const override;
+        const QPalette* palette(Palette type) const override;
+        const QFont* font(Font type) const override;
+        QVariant themeHint(ThemeHint hint) const override;
+        QPixmap standardPixmap(StandardPixmap sp, const QSizeF& size) const override;
+        QIcon fileIcon(const QFileInfo& fileInfo, QPlatformTheme::IconOptions iconOptions) const override;
+        QIconEngine* createIconEngine(const QString& iconName) const override;
+        QList<QKeySequence> keyBindings(QKeySequence::StandardKey key) const override;
+        QString standardButtonText(int button) const override;
+        QKeySequence standardButtonShortcut(int button) const override;
+        Appearance appearance() const override;
 
     private:
         PlatformThemePrivate* d;

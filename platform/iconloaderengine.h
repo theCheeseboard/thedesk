@@ -25,7 +25,7 @@
 struct IconLoaderEnginePrivate;
 class IconLoaderEngine : public QIconEngine {
     public:
-        explicit IconLoaderEngine(QIconEngine* parentEngine, QIconEngine* rtlParentEngine);
+        explicit IconLoaderEngine(QString iconName, QIconEngine* parentEngine, QIconEngine* rtlParentEngine);
         ~IconLoaderEngine();
 
     private:
@@ -42,9 +42,11 @@ class IconLoaderEngine : public QIconEngine {
         QIconEngine* clone() const;
         bool read(QDataStream& in);
         bool write(QDataStream& out) const;
-        QList<QSize> availableSizes(QIcon::Mode mode, QIcon::State state) const;
-        QString iconName() const;
+        QList<QSize> availableSizes(QIcon::Mode mode, QIcon::State state);
+        QString iconName();
         void virtual_hook(int id, void* data);
+        bool isNull();
+        QPixmap scaledPixmap(const QSize& size, QIcon::Mode mode, QIcon::State state, qreal scale);
 };
 
 #endif // ICONLOADERENGINE_H

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="ar_SA">
+<TS version="2.1" language="ar_SA" sourcelanguage="en_US">
 <context>
     <name>AccessibilitySettingsPane</name>
     <message>
@@ -43,7 +43,7 @@
 <context>
     <name>StickyKeysChunk</name>
     <message>
-        <location filename="../chunks/stickykeyschunk.cpp" line="57"/>
+        <location filename="../chunks/stickykeyschunk.cpp" line="58"/>
         <source>Disable Sticky Keys</source>
         <translation>ايقاف المفاتيح الملتصقه</translation>
     </message>

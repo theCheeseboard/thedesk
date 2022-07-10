@@ -39,6 +39,7 @@
 #include <QTextCharFormat>
 #include <QTimer>
 #include <QVariant>
+#include <limits>
 #include <tlogger.h>
 #include <tsettings.h>
 
@@ -69,6 +70,7 @@ PlatformTheme::PlatformTheme() :
     d->parent = new QObject();
     d->settings = new tSettings("theSuite", "theDesk.platform", d->parent);
     d->cursorHandler = new CursorHandler(d->parent);
+    d->pal.setResolveMask(std::numeric_limits<QPalette::ResolveMask>().max());
 
     QObject::connect(d->settings, &tSettings::settingChanged, d->parent, [=](QString key, QVariant value) {
         // Qt Creator might crash heh...
@@ -248,7 +250,7 @@ QIcon PlatformTheme::fileIcon(const QFileInfo& fileInfo, QPlatformTheme::IconOpt
 }
 
 QIconEngine* PlatformTheme::createIconEngine(const QString& iconName) const {
-    return new IconLoaderEngine(QPlatformTheme::createIconEngine(iconName), QPlatformTheme::createIconEngine(iconName + "-rtl"));
+    return new IconLoaderEngine(iconName, QPlatformTheme::createIconEngine(iconName), QPlatformTheme::createIconEngine(iconName + "-rtl"));
 }
 
 QList<QKeySequence> PlatformTheme::keyBindings(QKeySequence::StandardKey key) const {
@@ -317,5 +319,5 @@ void PlatformTheme::updateFont() {
 }
 
 PlatformTheme::Appearance PlatformTheme::appearance() const {
-    return PlatformTheme::Appearance::Light;
+    return PlatformTheme::Appearance::Dark;
 }

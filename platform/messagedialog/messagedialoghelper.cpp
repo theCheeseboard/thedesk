@@ -19,33 +19,35 @@
  * *************************************/
 #include "messagedialoghelper.h"
 
-#include <QWindow>
-#include <QPointer>
+#include "messagedialog.h"
 #include <QApplication>
 #include <QDebug>
-#include <QPainter>
 #include <QGraphicsBlurEffect>
 #include <QMainWindow>
-#include <tscrim.h>
+#include <QPainter>
+#include <QPointer>
+#include <QWindow>
 #include <tcsdtools.h>
+#include <tscrim.h>
 #include <tvariantanimation.h>
-#include "messagedialog.h"
 
 struct MessageDialogHelperPrivate {
-    MessageDialog* dlg;
-    QEventLoop eventLoop;
-    QPointer<QWindow> parent;
-    QPointer<QWidget> parentWidget;
-    QPointer<QWidget> cover2;
+        MessageDialog* dlg;
+        QEventLoop eventLoop;
+        QPointer<QWindow> parent;
+        QPointer<QWidget> parentWidget;
+        QPointer<QWidget> cover2;
 
-    const int coverOverscan = SC_DPI(50);
+        const int coverOverscan = SC_DPI(50);
 };
 
-MessageDialogHelper::MessageDialogHelper() : QPlatformMessageDialogHelper() {
+MessageDialogHelper::MessageDialogHelper() :
+    QPlatformMessageDialogHelper() {
     d = new MessageDialogHelperPrivate();
     d->dlg = new MessageDialog();
-    connect(d->dlg, &MessageDialog::clicked, this, [ = ] {
+    connect(d->dlg, &MessageDialog::clicked, this, [=] {
         if (d->eventLoop.isRunning()) d->eventLoop.exit();
+        this->hide();
     });
     connect(d->dlg, &MessageDialog::clicked, this, &MessageDialogHelper::clicked);
 }
@@ -108,8 +110,8 @@ bool MessageDialogHelper::show(Qt::WindowFlags windowFlags, Qt::WindowModality w
         d->dlg->show();
         d->dlg->raise();
 
-        //For some reason, Qt doesn't render this properly on tCsd apps
-        //but it fixes itself if we have a transparent widget on top
+        // For some reason, Qt doesn't render this properly on tCsd apps
+        // but it fixes itself if we have a transparent widget on top
         d->cover2 = new QWidget();
         d->cover2->setAttribute(Qt::WA_TransparentForMouseEvents);
         d->cover2->setParent(widget);

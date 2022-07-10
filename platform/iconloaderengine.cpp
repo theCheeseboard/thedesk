@@ -22,12 +22,14 @@
 #include <libcontemporary_global.h>
 
 struct IconLoaderEnginePrivate {
+        QString iconName;
         QIconEngine* parentEngine;
         QIconEngine* rtlParentEngine;
 };
 
-IconLoaderEngine::IconLoaderEngine(QIconEngine* parentEngine, QIconEngine* rtlParentEngine) {
+IconLoaderEngine::IconLoaderEngine(QString iconName, QIconEngine* parentEngine, QIconEngine* rtlParentEngine) {
     d = new IconLoaderEnginePrivate();
+    d->iconName = iconName;
     d->parentEngine = parentEngine;
     d->rtlParentEngine = rtlParentEngine;
 }
@@ -79,7 +81,7 @@ QString IconLoaderEngine::key() const {
 }
 
 QIconEngine* IconLoaderEngine::clone() const {
-    return new IconLoaderEngine(d->parentEngine->clone(), d->rtlParentEngine->clone());
+    return new IconLoaderEngine(d->iconName, d->parentEngine->clone(), d->rtlParentEngine->clone());
 }
 
 bool IconLoaderEngine::read(QDataStream& in) {
@@ -90,7 +92,7 @@ bool IconLoaderEngine::write(QDataStream& out) const {
     return d->parentEngine->write(out);
 }
 
-QList<QSize> IconLoaderEngine::availableSizes(QIcon::Mode mode, QIcon::State state) const {
+QList<QSize> IconLoaderEngine::availableSizes(QIcon::Mode mode, QIcon::State state) {
     if (QApplication::layoutDirection() == Qt::RightToLeft) {
         return d->rtlParentEngine->availableSizes(mode, state);
     } else {
@@ -98,10 +100,22 @@ QList<QSize> IconLoaderEngine::availableSizes(QIcon::Mode mode, QIcon::State sta
     }
 }
 
-QString IconLoaderEngine::iconName() const {
-    return d->parentEngine->iconName();
+QString IconLoaderEngine::iconName() {
+    return d->iconName;
 }
 
 void IconLoaderEngine::virtual_hook(int id, void* data) {
     d->parentEngine->virtual_hook(id, data);
+}
+
+bool IconLoaderEngine::isNull() {
+    return d->parentEngine->isNull();
+}
+
+QPixmap IconLoaderEngine::scaledPixmap(const QSize& size, QIcon::Mode mode, QIcon::State state, qreal scale) {
+    if (QApplication::layoutDirection() == Qt::RightToLeft && d->rtlParentEngine->availableSizes(mode, state).length() > 0) {
+        return d->rtlParentEngine->scaledPixmap(size, mode, state, scale);
+    } else {
+        return d->parentEngine->scaledPixmap(size, mode, state, scale);
+    }
 }
