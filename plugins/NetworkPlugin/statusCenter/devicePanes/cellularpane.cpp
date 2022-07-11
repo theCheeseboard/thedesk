@@ -20,45 +20,45 @@
 #include "cellularpane.h"
 #include "ui_cellularpane.h"
 
+#include "../popovers/simsettingspopover.h"
+#include "../popovers/unlockmodempopover.h"
+#include "networkplugincommon.h"
 #include <QAction>
-#include <tsettings.h>
+#include <barmanager.h>
+#include <hudmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <hudmanager.h>
-#include <barmanager.h>
-#include <tpopover.h>
 #include <tnotification.h>
+#include <tpopover.h>
 #include <transparentdialog.h>
 #include <tscrim.h>
-#include "../popovers/unlockmodempopover.h"
-#include "../popovers/simsettingspopover.h"
-#include "common.h"
+#include <tsettings.h>
 
-#include <icontextchunk.h>
 #include <actionquickwidget.h>
+#include <icontextchunk.h>
 
+#include <ModemManagerQt/Manager>
+#include <ModemManagerQt/Modem3Gpp>
+#include <ModemManagerQt/Modem>
+#include <ModemManagerQt/Sim>
 #include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/ModemDevice>
 #include <NetworkManagerQt/Settings>
-#include <Manager>
-#include <Modem>
-#include <Sim>
-#include <Modem3Gpp>
 
 struct CellularPanePrivate {
-    QListWidgetItem* item;
-    NetworkManager::ModemDevice::Ptr device;
-    ModemManager::ModemDevice::Ptr modem;
-    ModemManager::Modem3gpp::Ptr modem3gpp;
+        QListWidgetItem* item;
+        NetworkManager::ModemDevice::Ptr device;
+        ModemManager::ModemDevice::Ptr modem;
+        ModemManager::Modem3gpp::Ptr modem3gpp;
 
-    IconTextChunk* chunk;
+        IconTextChunk* chunk;
 
-    tSettings settings;
-    NetworkManager::Device::State oldState;
+        tSettings settings;
+        NetworkManager::Device::State oldState;
 
-    QAction* unlockSimAction;
+        QAction* unlockSimAction;
 
-    bool pinNotificationSent = false;
+        bool pinNotificationSent = false;
 };
 
 CellularPane::CellularPane(QString uni, QWidget* parent) :
@@ -91,7 +91,7 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
 
     QAction* enableDisableCellularAction = new QAction(this);
     enableDisableCellularAction->setIcon(QIcon::fromTheme("network-cellular"));
-    connect(enableDisableCellularAction, &QAction::triggered, this, [ = ] {
+    connect(enableDisableCellularAction, &QAction::triggered, this, [=] {
         NetworkManager::setWwanEnabled(!NetworkManager::isWwanEnabled());
     });
 
@@ -100,7 +100,7 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
     quickWidget->addAction(enableDisableCellularAction);
     d->chunk->setQuickWidget(quickWidget);
 
-    auto updateWwanEnabled = [ = ](bool enabled) {
+    auto updateWwanEnabled = [=](bool enabled) {
         if (enabled) {
             enableDisableCellularAction->setText(tr("Disable Cellular"));
         } else {
@@ -116,7 +116,7 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
     connect(d->device.data(), &NetworkManager::ModemDevice::stateChanged, this, &CellularPane::updateState);
     updateState();
 
-    connect(d->device.data(), &NetworkManager::ModemDevice::stateChanged, this, [ = ](NetworkManager::Device::State newState, NetworkManager::Device::State oldState, NetworkManager::Device::StateChangeReason reason) {
+    connect(d->device.data(), &NetworkManager::ModemDevice::stateChanged, this, [=](NetworkManager::Device::State newState, NetworkManager::Device::State oldState, NetworkManager::Device::StateChangeReason reason) {
         if (d->settings.value("NetworkPlugin/notifications.activation").toBool()) {
             switch (newState) {
                 case NetworkManager::Device::Unavailable:
@@ -124,28 +124,29 @@ CellularPane::CellularPane(QString uni, QWidget* parent) :
                     Q_FALLTHROUGH();
                 case NetworkManager::Device::Disconnected:
                     if (oldState != NetworkManager::Device::Failed) StateManager::hudManager()->showHud({
-                        {"icon", "network-cellular-disconnected"},
-                        {"title", this->operatorName()},
-                        {"text", tr("Disconnected")}
-                    });
+                        {"icon",  "network-cellular-disconnected"},
+                        {"title", this->operatorName()           },
+                        {"text",  tr("Disconnected")             }
+ });
                     break;
-                case NetworkManager::Device::Activated: {
-                    d->device->setAutoconnect(true);
-                    QString title = tr("Cellular");
+                case NetworkManager::Device::Activated:
+                    {
+                        d->device->setAutoconnect(true);
+                        QString title = tr("Cellular");
 
-                    StateManager::hudManager()->showHud({
-                        {"icon", "network-cellular-activated"},
-                        {"title", this->operatorName()},
-                        {"text", tr("Connected")}
-                    });
-                    break;
-                }
+                        StateManager::hudManager()->showHud({
+                            {"icon",  "network-cellular-activated"},
+                            {"title", this->operatorName()        },
+                            {"text",  tr("Connected")             }
+                        });
+                        break;
+                    }
                 case NetworkManager::Device::Failed:
                     d->device->setAutoconnect(false);
                     StateManager::hudManager()->showHud({
-                        {"icon", "network-cellular-error"},
-                        {"title", this->operatorName()},
-                        {"text", tr("Failed")}
+                        {"icon",  "network-cellular-error"},
+                        {"title", this->operatorName()    },
+                        {"text",  tr("Failed")            }
                     });
                     break;
                 default:
@@ -172,8 +173,8 @@ CellularPane::~CellularPane() {
 void CellularPane::updateState() {
     if (!d->modem) return;
 
-    QIcon signalIcon = QIcon::fromTheme(Common::iconForSignalStrength(d->modem->modemInterface()->signalQuality().signal, Common::Cellular));
-    QIcon signalErrorIcon = QIcon::fromTheme(Common::iconForSignalStrength(d->modem->modemInterface()->signalQuality().signal, Common::CellularError));
+    QIcon signalIcon = QIcon::fromTheme(NetworkPluginCommon::iconForSignalStrength(d->modem->modemInterface()->signalQuality().signal, NetworkPluginCommon::Cellular));
+    QIcon signalErrorIcon = QIcon::fromTheme(NetworkPluginCommon::iconForSignalStrength(d->modem->modemInterface()->signalQuality().signal, NetworkPluginCommon::CellularError));
     ui->deviceIcon->setPixmap(QIcon::fromTheme("computer").pixmap(SC_DPI_T(QSize(96, 96), QSize)));
     ui->routerIcon->setPixmap(signalIcon.pixmap(SC_DPI_T(QSize(96, 96), QSize)));
     ui->routerName->setText(this->operatorName());
@@ -185,43 +186,44 @@ void CellularPane::updateState() {
 
     NetworkManager::DeviceStateReason stateReason = d->device->stateReason();
     if (d->oldState != NetworkManager::Device::Failed) {
-        //Only get rid of the error message here if the previous state was not failure.
+        // Only get rid of the error message here if the previous state was not failure.
         ui->errorFrame->setVisible(false);
     }
 
     switch (stateReason.state()) {
         case NetworkManager::Device::UnknownState:
         case NetworkManager::Device::Unmanaged:
-        case NetworkManager::Device::Unavailable: {
-            ui->stateConnecting->setVisible(false);
-            ui->stateIcon->setVisible(true);
-            ui->stateIcon->setPixmap(QIcon::fromTheme("dialog-cancel").pixmap(SC_DPI_T(QSize(32, 32), QSize)));
-            ui->leftStateLine->setEnabled(false);
-            ui->rightStateLine->setEnabled(false);
-            ui->disconnectButton->setVisible(false);
-            ui->connectButton->setVisible(false);
-            d->device->setAutoconnect(false);
+        case NetworkManager::Device::Unavailable:
+            {
+                ui->stateConnecting->setVisible(false);
+                ui->stateIcon->setVisible(true);
+                ui->stateIcon->setPixmap(QIcon::fromTheme("dialog-cancel").pixmap(SC_DPI_T(QSize(32, 32), QSize)));
+                ui->leftStateLine->setEnabled(false);
+                ui->rightStateLine->setEnabled(false);
+                ui->disconnectButton->setVisible(false);
+                ui->connectButton->setVisible(false);
+                d->device->setAutoconnect(false);
 
-            if (d->modem->sim()->uni() == "/") {
-                ui->errorFrame->setTitle(tr("No SIM Card"));
-                ui->errorFrame->setText(tr("Insert a SIM card to connect to cellular services."));
-                chunkParts.clear();
-                chunkParts.append(tr("No SIM"));
-                d->chunk->setIcon(QIcon::fromTheme("sim-card-none"));
-            } else {
-                ui->errorFrame->setTitle(tr("Unavailable"));
+                if (d->modem->sim()->uni() == "/") {
+                    ui->errorFrame->setTitle(tr("No SIM Card"));
+                    ui->errorFrame->setText(tr("Insert a SIM card to connect to cellular services."));
+                    chunkParts.clear();
+                    chunkParts.append(tr("No SIM"));
+                    d->chunk->setIcon(QIcon::fromTheme("sim-card-none"));
+                } else {
+                    ui->errorFrame->setTitle(tr("Unavailable"));
 
-                QString reasonText;
-                reasonText = tr("This network is unavailable because %2.");
-                reasonText = reasonText.arg(Common::stateChangeReasonToString(stateReason.reason()));
-                ui->errorFrame->setText(reasonText);
-                d->chunk->setIcon(signalErrorIcon);
+                    QString reasonText;
+                    reasonText = tr("This network is unavailable because %2.");
+                    reasonText = reasonText.arg(NetworkPluginCommon::stateChangeReasonToString(stateReason.reason()));
+                    ui->errorFrame->setText(reasonText);
+                    d->chunk->setIcon(signalErrorIcon);
+                }
+
+                ui->errorFrame->setState(tStatusFrame::Warning);
+                ui->errorFrame->setVisible(true);
+                break;
             }
-
-            ui->errorFrame->setState(tStatusFrame::Warning);
-            ui->errorFrame->setVisible(true);
-            break;
-        }
         case NetworkManager::Device::Disconnected:
             ui->stateConnecting->setVisible(false);
             ui->stateIcon->setVisible(true);
@@ -232,25 +234,26 @@ void CellularPane::updateState() {
             ui->connectButton->setVisible(true);
             d->chunk->setIcon(signalErrorIcon);
             break;
-        case NetworkManager::Device::Failed: {
-            ui->stateConnecting->setVisible(false);
-            ui->stateIcon->setVisible(true);
-            ui->stateIcon->setPixmap(QIcon::fromTheme("dialog-cancel").pixmap(SC_DPI_T(QSize(32, 32), QSize)));
-            ui->leftStateLine->setEnabled(false);
-            ui->rightStateLine->setEnabled(false);
-            ui->disconnectButton->setVisible(false);
-            ui->connectButton->setVisible(true);
-            d->chunk->setIcon(signalErrorIcon);
+        case NetworkManager::Device::Failed:
+            {
+                ui->stateConnecting->setVisible(false);
+                ui->stateIcon->setVisible(true);
+                ui->stateIcon->setPixmap(QIcon::fromTheme("dialog-cancel").pixmap(SC_DPI_T(QSize(32, 32), QSize)));
+                ui->leftStateLine->setEnabled(false);
+                ui->rightStateLine->setEnabled(false);
+                ui->disconnectButton->setVisible(false);
+                ui->connectButton->setVisible(true);
+                d->chunk->setIcon(signalErrorIcon);
 
-            ui->errorFrame->setTitle(tr("Connection Failure"));
+                ui->errorFrame->setTitle(tr("Connection Failure"));
 
-            QString reasonText = tr("Connecting to the network failed because %2.");
-            reasonText = reasonText.arg(Common::stateChangeReasonToString(stateReason.reason()));
-            ui->errorFrame->setText(reasonText);
-            ui->errorFrame->setState(tStatusFrame::Error);
-            ui->errorFrame->setVisible(true);
-            break;
-        }
+                QString reasonText = tr("Connecting to the network failed because %2.");
+                reasonText = reasonText.arg(NetworkPluginCommon::stateChangeReasonToString(stateReason.reason()));
+                ui->errorFrame->setText(reasonText);
+                ui->errorFrame->setState(tStatusFrame::Error);
+                ui->errorFrame->setVisible(true);
+                break;
+            }
         case NetworkManager::Device::Preparing:
         case NetworkManager::Device::ConfiguringHardware:
         case NetworkManager::Device::NeedAuth:
@@ -279,30 +282,30 @@ void CellularPane::updateState() {
             ModemManager::Modem::AccessTechnologies accessTechnology = d->modem->modemInterface()->accessTechnologies();
 
 #if MM_CHECK_VERSION(1, 14, 0)
-            if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_5GNR ) {
+            if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_5GNR) {
                 chunkParts.append("5G");
             } else
 #endif
                 if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_LTE) {
-                    chunkParts.append("LTE");
-                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSPA_PLUS) {
-                    chunkParts.append("H+");
-                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSDPA ||
-                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSUPA ||
-                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSPA) {
-                    chunkParts.append("H");
-                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_UMTS ||
-                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EVDO0 ||
-                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EVDOA ||
-                    accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EVDOB) {
-                    chunkParts.append("3G");
-                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EDGE) {
-                    chunkParts.append("E");
-                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_GPRS) {
-                    chunkParts.append("G");
-                } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_1XRTT) {
-                    chunkParts.append("1X");
-                }
+                chunkParts.append("LTE");
+            } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSPA_PLUS) {
+                chunkParts.append("H+");
+            } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSDPA ||
+                       accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSUPA ||
+                       accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_HSPA) {
+                chunkParts.append("H");
+            } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_UMTS ||
+                       accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EVDO0 ||
+                       accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EVDOA ||
+                       accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EVDOB) {
+                chunkParts.append("3G");
+            } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_EDGE) {
+                chunkParts.append("E");
+            } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_GPRS) {
+                chunkParts.append("G");
+            } else if (accessTechnology & MM_MODEM_ACCESS_TECHNOLOGY_1XRTT) {
+                chunkParts.append("1X");
+            }
 
             MMModem3gppRegistrationState modem3gppRegistration = d->modem3gpp->registrationState();
             if (modem3gppRegistration == MM_MODEM_3GPP_REGISTRATION_STATE_ROAMING ||
@@ -317,66 +320,68 @@ void CellularPane::updateState() {
     MMModemLock unlockRequired = d->modem->modemInterface()->unlockRequired();
     ModemManager::UnlockRetriesMap retries = d->modem->modemInterface()->unlockRetries();
     switch (unlockRequired) {
-        case MM_MODEM_LOCK_SIM_PIN: {
-            ui->unlockModemButton->setText(tr("Enter SIM PIN"));
-            ui->unlockModemButton->setVisible(true);
-            chunkParts.append(tr("SIM PIN Required"));
-            d->chunk->setIcon(QIcon::fromTheme("sim-card"));
-            ui->connectButton->setVisible(false);
+        case MM_MODEM_LOCK_SIM_PIN:
+            {
+                ui->unlockModemButton->setText(tr("Enter SIM PIN"));
+                ui->unlockModemButton->setVisible(true);
+                chunkParts.append(tr("SIM PIN Required"));
+                d->chunk->setIcon(QIcon::fromTheme("sim-card"));
+                ui->connectButton->setVisible(false);
 
-            ui->errorFrame->setTitle(tr("SIM PIN Required"));
+                ui->errorFrame->setTitle(tr("SIM PIN Required"));
 
-            QString reasonText = tr("A SIM PIN is required to connect to the cellular network.");
-            ui->errorFrame->setText(reasonText);
-            ui->errorFrame->setState(tStatusFrame::Error);
-            ui->errorFrame->setVisible(true);
+                QString reasonText = tr("A SIM PIN is required to connect to the cellular network.");
+                ui->errorFrame->setText(reasonText);
+                ui->errorFrame->setState(tStatusFrame::Error);
+                ui->errorFrame->setVisible(true);
 
-            d->unlockSimAction->setText(tr("Enter SIM PIN"));
-            d->unlockSimAction->setVisible(true);
+                d->unlockSimAction->setText(tr("Enter SIM PIN"));
+                d->unlockSimAction->setVisible(true);
 
-            if (!d->pinNotificationSent) {
-                tNotification* notification = new tNotification();
-                notification->setSummary(tr("SIM PIN Required"));
-                notification->setText(reasonText);
-                notification->insertAction(QStringLiteral("unlock"), tr("Enter SIM PIN"));
-                connect(notification, &tNotification::actionClicked, this, [ = ](QString key) {
-                    if (key == QStringLiteral("unlock")) unlockDevice();
-                });
-                notification->post();
-                d->pinNotificationSent = true;
+                if (!d->pinNotificationSent) {
+                    tNotification* notification = new tNotification();
+                    notification->setSummary(tr("SIM PIN Required"));
+                    notification->setText(reasonText);
+                    notification->insertAction(QStringLiteral("unlock"), tr("Enter SIM PIN"));
+                    connect(notification, &tNotification::actionClicked, this, [=](QString key) {
+                        if (key == QStringLiteral("unlock")) unlockDevice();
+                    });
+                    notification->post();
+                    d->pinNotificationSent = true;
+                }
+                break;
             }
-            break;
-        }
-        case MM_MODEM_LOCK_SIM_PUK: {
-            ui->unlockModemButton->setText(tr("Enter SIM PUK"));
-            ui->unlockModemButton->setVisible(true);
-            chunkParts.append(tr("SIM PUK Required"));
-            d->chunk->setIcon(QIcon::fromTheme("sim-card"));
-            ui->connectButton->setVisible(false);
+        case MM_MODEM_LOCK_SIM_PUK:
+            {
+                ui->unlockModemButton->setText(tr("Enter SIM PUK"));
+                ui->unlockModemButton->setVisible(true);
+                chunkParts.append(tr("SIM PUK Required"));
+                d->chunk->setIcon(QIcon::fromTheme("sim-card"));
+                ui->connectButton->setVisible(false);
 
-            ui->errorFrame->setTitle(tr("SIM PUK Required"));
+                ui->errorFrame->setTitle(tr("SIM PUK Required"));
 
-            QString reasonText = tr("A SIM PUK is required to connect to the cellular network.");
-            ui->errorFrame->setText(reasonText);
-            ui->errorFrame->setState(tStatusFrame::Error);
-            ui->errorFrame->setVisible(true);
+                QString reasonText = tr("A SIM PUK is required to connect to the cellular network.");
+                ui->errorFrame->setText(reasonText);
+                ui->errorFrame->setState(tStatusFrame::Error);
+                ui->errorFrame->setVisible(true);
 
-            d->unlockSimAction->setText(tr("Enter SIM PUK"));
-            d->unlockSimAction->setVisible(true);
+                d->unlockSimAction->setText(tr("Enter SIM PUK"));
+                d->unlockSimAction->setVisible(true);
 
-            if (!d->pinNotificationSent) {
-                tNotification* notification = new tNotification();
-                notification->setSummary(tr("SIM PUK Required"));
-                notification->setText(reasonText);
-                notification->insertAction(QStringLiteral("unlock"), tr("Enter SIM PUK"));
-                connect(notification, &tNotification::actionClicked, this, [ = ](QString key) {
-                    if (key == QStringLiteral("unlock")) unlockDevice();
-                });
-                notification->post();
-                d->pinNotificationSent = true;
+                if (!d->pinNotificationSent) {
+                    tNotification* notification = new tNotification();
+                    notification->setSummary(tr("SIM PUK Required"));
+                    notification->setText(reasonText);
+                    notification->insertAction(QStringLiteral("unlock"), tr("Enter SIM PUK"));
+                    connect(notification, &tNotification::actionClicked, this, [=](QString key) {
+                        if (key == QStringLiteral("unlock")) unlockDevice();
+                    });
+                    notification->post();
+                    d->pinNotificationSent = true;
+                }
+                break;
             }
-            break;
-        }
         default:
             ui->unlockModemButton->setVisible(false);
             d->unlockSimAction->setVisible(false);
@@ -388,7 +393,7 @@ void CellularPane::updateState() {
 }
 
 QString CellularPane::operatorName() {
-    return Common::operatorNameForModem(d->modem);
+    return NetworkPluginCommon::operatorNameForModem(d->modem);
 }
 
 void CellularPane::unlockDevice() {
@@ -398,14 +403,14 @@ void CellularPane::unlockDevice() {
     tScrim::scrimForWidget(dialog)->setBlurEnabled(false);
     dialog->showFullScreen();
 
-    QTimer::singleShot(500, [ = ] {
+    QTimer::singleShot(500, [=] {
         UnlockModemPopover* popoverContents = new UnlockModemPopover(d->modem);
 
         tPopover* popover = new tPopover(popoverContents);
         popover->setPopoverSide(tPopover::Bottom);
         popover->setPopoverWidth(SC_DPI(600));
         connect(popoverContents, &UnlockModemPopover::done, popover, &tPopover::dismiss);
-        connect(popover, &tPopover::dismissed, [ = ] {
+        connect(popover, &tPopover::dismissed, [=] {
             popover->deleteLater();
             dialog->deleteLater();
             popoverContents->deleteLater();
@@ -439,7 +444,6 @@ void CellularPane::on_unlockModemButton_clicked() {
 void CellularPane::on_titleLabel_backButtonClicked() {
     StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
 }
-
 
 void CellularPane::changeEvent(QEvent* event) {
     if (event->type() == QEvent::LanguageChange) {

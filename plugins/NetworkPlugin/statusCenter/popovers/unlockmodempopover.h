@@ -20,8 +20,8 @@
 #ifndef UNLOCKMODEMPOPOVER_H
 #define UNLOCKMODEMPOPOVER_H
 
+#include <ModemManagerQt/ModemDevice>
 #include <QWidget>
-#include <ModemDevice>
 
 namespace Ui {
     class UnlockModemPopover;

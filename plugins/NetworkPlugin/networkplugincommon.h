@@ -17,14 +17,14 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef NETWORKPLUGINCOMMON_H
+#define NETWORKPLUGINCOMMON_H
 
-#include <QCoreApplication>
+#include <ModemManagerQt/ModemDevice>
 #include <NetworkManagerQt/Device>
-#include <ModemDevice>
+#include <QCoreApplication>
 
-class Common {
+class NetworkPluginCommon {
         Q_DECLARE_TR_FUNCTIONS(Common)
     public:
         enum WirelessType {
@@ -41,4 +41,4 @@ class Common {
         static bool isDeviceConnecting(NetworkManager::Device::Ptr device);
 };
 
-#endif // COMMON_H
+#endif // NETWORKPLUGINCOMMON_H

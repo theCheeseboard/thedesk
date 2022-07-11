@@ -20,41 +20,41 @@
 #include "wifidevicepane.h"
 #include "ui_wifidevicepane.h"
 
-#include <tsettings.h>
-#include <statemanager.h>
-#include <hudmanager.h>
-#include <statuscentermanager.h>
-#include <barmanager.h>
-#include <tpopover.h>
-#include "../popovers/wirelessnetworkselectionpopover.h"
 #include "../popovers/tetheringsettingspopover.h"
-#include "common.h"
+#include "../popovers/wirelessnetworkselectionpopover.h"
+#include "networkplugincommon.h"
+#include "switchmanager.h"
+#include <QFontDatabase>
 #include <QHostInfo>
 #include <QRandomGenerator>
-#include <QFontDatabase>
-#include <ttoast.h>
-#include <icontextchunk.h>
-#include "switchmanager.h"
-#include <qrencode.h>
 #include <actionquickwidget.h>
+#include <barmanager.h>
+#include <hudmanager.h>
+#include <icontextchunk.h>
+#include <qrencode.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <tpopover.h>
+#include <tsettings.h>
+#include <ttoast.h>
 
-#include <NetworkManagerQt/Manager>
-#include <NetworkManagerQt/WirelessDevice>
-#include <NetworkManagerQt/Settings>
-#include <NetworkManagerQt/WirelessSetting>
-#include <NetworkManagerQt/WirelessSecuritySetting>
 #include <NetworkManagerQt/Ipv4Setting>
 #include <NetworkManagerQt/Ipv6Setting>
+#include <NetworkManagerQt/Manager>
+#include <NetworkManagerQt/Settings>
+#include <NetworkManagerQt/WirelessDevice>
+#include <NetworkManagerQt/WirelessSecuritySetting>
+#include <NetworkManagerQt/WirelessSetting>
 
 struct WifiDevicePanePrivate {
-    QListWidgetItem* item;
-    NetworkManager::WirelessDevice::Ptr device;
+        QListWidgetItem* item;
+        NetworkManager::WirelessDevice::Ptr device;
 
-    IconTextChunk* tetheringChunk;
+        IconTextChunk* tetheringChunk;
 
-    SwitchManager* switchManager = nullptr;
+        SwitchManager* switchManager = nullptr;
 
-    tSettings settings;
+        tSettings settings;
 };
 
 WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
@@ -88,7 +88,7 @@ WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
     d->tetheringChunk->setText(tr("Tethering"));
 
     ActionQuickWidget* tetheringQuickWidget = new ActionQuickWidget(d->tetheringChunk);
-    tetheringQuickWidget->addAction(QIcon::fromTheme("network-wireless-tethered"), tr("Disable Tethering"), [ = ] {
+    tetheringQuickWidget->addAction(QIcon::fromTheme("network-wireless-tethered"), tr("Disable Tethering"), [=] {
         ui->tetheringSwitch->setChecked(false);
     });
     d->tetheringChunk->setQuickWidget(tetheringQuickWidget);
@@ -102,60 +102,60 @@ WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
     connect(d->device.data(), &NetworkManager::WirelessDevice::wirelessCapabilitiesChanged, this, &WifiDevicePane::updateState);
     updateState();
 
-    connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
+    connect(&d->settings, &tSettings::settingChanged, this, [=](QString key, QVariant value) {
         if (key.startsWith("NetworkPlugin/tethering")) {
             updateState();
         }
     });
     updateState();
 
-    connect(d->device.data(), &NetworkManager::WirelessDevice::stateChanged, this, [ = ](NetworkManager::Device::State newState, NetworkManager::Device::State oldState, NetworkManager::Device::StateChangeReason reason) {
+    connect(d->device.data(), &NetworkManager::WirelessDevice::stateChanged, this, [=](NetworkManager::Device::State newState, NetworkManager::Device::State oldState, NetworkManager::Device::StateChangeReason reason) {
         if (d->settings.value("NetworkPlugin/notifications.activation").toBool()) {
             switch (newState) {
                 case NetworkManager::Device::Disconnected:
                     if (oldState != NetworkManager::Device::Failed) StateManager::hudManager()->showHud({
-                        {"icon", "network-wireless-disconnected"},
-                        {"title", tr("Wi-Fi")},
-                        {"text", tr("Disconnected")}
-                    });
+                        {"icon",  "network-wireless-disconnected"},
+                        {"title", tr("Wi-Fi")                    },
+                        {"text",  tr("Disconnected")             }
+ });
                     break;
-                case NetworkManager::Device::Activated: {
-                    QString title;
-                    QString text;
-                    QString connUuid = d->settings.value("NetworkPlugin/tethering.uuid").toString();
+                case NetworkManager::Device::Activated:
+                    {
+                        QString title;
+                        QString text;
+                        QString connUuid = d->settings.value("NetworkPlugin/tethering.uuid").toString();
 
-                    if (d->device->activeConnection()->uuid() == connUuid) {
-                        StateManager::hudManager()->showHud({
-                            {"icon", "network-wireless-tethered"},
-                            {"title", tr("Tethering")},
-                            {"text", tr("Active")}
-                        });
-                    } else if (d->device->activeAccessPoint()) {
-                        StateManager::hudManager()->showHud({
-                            {"icon", "network-wireless-connected-100"},
-                            {"title", d->device->activeAccessPoint()->ssid()},
-                            {"text", tr("Connected")}
-                        });
-                    } else {
-                        StateManager::hudManager()->showHud({
-                            {"icon", "network-wireless-connected-100"},
-                            {"title", tr("Wi-Fi")},
-                            {"text", tr("Connected")}
-                        });
+                        if (d->device->activeConnection()->uuid() == connUuid) {
+                            StateManager::hudManager()->showHud({
+                                {"icon",  "network-wireless-tethered"},
+                                {"title", tr("Tethering")            },
+                                {"text",  tr("Active")               }
+                            });
+                        } else if (d->device->activeAccessPoint()) {
+                            StateManager::hudManager()->showHud({
+                                {"icon",  "network-wireless-connected-100"      },
+                                {"title", d->device->activeAccessPoint()->ssid()},
+                                {"text",  tr("Connected")                       }
+                            });
+                        } else {
+                            StateManager::hudManager()->showHud({
+                                {"icon",  "network-wireless-connected-100"},
+                                {"title", tr("Wi-Fi")                     },
+                                {"text",  tr("Connected")                 }
+                            });
+                        }
+
+                        break;
                     }
-
-                    break;
-                }
                 case NetworkManager::Device::Failed:
                     StateManager::hudManager()->showHud({
-                        {"icon", "network-wireless-disconnected"},
-                        {"title", tr("Wi-Fi")},
-                        {"text", tr("Failed")}
+                        {"icon",  "network-wireless-disconnected"},
+                        {"title", tr("Wi-Fi")                    },
+                        {"text",  tr("Failed")                   }
                     });
                     break;
                 default:
                     break;
-
             }
         }
 
@@ -169,7 +169,7 @@ WifiDevicePane::WifiDevicePane(QString uni, QWidget* parent) :
             } else {
                 reasonText = reasonText.arg(tr("the network"));
             }
-            reasonText = reasonText.arg(Common::stateChangeReasonToString(reason));
+            reasonText = reasonText.arg(NetworkPluginCommon::stateChangeReasonToString(reason));
             ui->errorFrame->setText(reasonText);
             ui->errorFrame->setState(tStatusFrame::Error);
             ui->errorFrame->setVisible(true);
@@ -446,7 +446,7 @@ void WifiDevicePane::on_tetheringSwitch_toggled(bool checked) {
         } else {
             watcher = new QDBusPendingCallWatcher(connection->updateUnsaved(settings->toMap()));
         }
-        connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+        connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
             if (watcher->isError()) {
                 tToast* toast = new tToast();
                 toast->setTitle(tr("Couldn't configure tethering"));
@@ -472,7 +472,7 @@ void WifiDevicePane::on_tetheringSwitch_toggled(bool checked) {
         for (NetworkManager::ActiveConnection::Ptr connection : NetworkManager::activeConnections()) {
             if (connection->connection()->uuid() == connUuid) {
                 QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(connection->connection()->remove());
-                connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+                connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
                     if (watcher->isError()) {
                         tToast* toast = new tToast();
                         toast->setTitle(tr("Couldn't switch off tethering"));
@@ -505,7 +505,6 @@ void WifiDevicePane::on_tetheringSettings_clicked() {
     connect(popover, &tPopover::dismissed, tetheringSettings, &TetheringSettingsPopover::deleteLater);
     popover->show(this->window());
 }
-
 
 void WifiDevicePane::changeEvent(QEvent* event) {
     if (event->type() == QEvent::LanguageChange) {

@@ -25,29 +25,30 @@
 #include <QIcon>
 #include <QTimer>
 
-#include <statemanager.h>
-#include <barmanager.h>
-#include <statuscentermanager.h>
 #include <actionquickwidget.h>
+#include <barmanager.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
 
-#include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/AccessPoint>
+#include <NetworkManagerQt/Manager>
 
 #include "genericchunkupdater.h"
 #include "wiredchunkupdater.h"
 #include "wirelesschunkupdater.h"
 
 struct NetworkChunkPrivate {
-    bool chunkShown = false;
-    QDBusServiceWatcher* nmWatcher;
+        bool chunkShown = false;
+        QDBusServiceWatcher* nmWatcher;
 
-    NetworkManager::ActiveConnection::Ptr primary;
+        NetworkManager::ActiveConnection::Ptr primary;
 
-    ChunkUpdater* updater = nullptr;
-    NetworkManager::AccessPoint::Ptr ap;
+        ChunkUpdater* updater = nullptr;
+        NetworkManager::AccessPoint::Ptr ap;
 };
 
-NetworkChunk::NetworkChunk() : IconTextChunk("Network") {
+NetworkChunk::NetworkChunk() :
+    IconTextChunk("Network") {
     d = new NetworkChunkPrivate();
 
     d->nmWatcher = new QDBusServiceWatcher("org.freedesktop.NetworkManager", QDBusConnection::systemBus());
@@ -60,7 +61,7 @@ NetworkChunk::NetworkChunk() : IconTextChunk("Network") {
     connect(NetworkManager::notifier(), &NetworkManager::Notifier::connectivityChanged, this, &NetworkChunk::updateText);
 
     ActionQuickWidget* quickWidget = new ActionQuickWidget(this);
-    quickWidget->addAction(QIcon::fromTheme("configure"), tr("Network Settings"), [ = ] {
+    quickWidget->addAction(QIcon::fromTheme("configure"), tr("Network Settings"), [=] {
         StateManager::statusCenterManager()->showWithPane("NetworkManagerPane");
     });
     this->setQuickWidget(quickWidget);
@@ -96,8 +97,8 @@ void NetworkChunk::updatePrimaryConnection() {
     d->primary = NetworkManager::primaryConnection();
 
     if (d->primary.isNull()) {
-        //No primary connection exists
-        QTimer::singleShot(0, [ = ] {
+        // No primary connection exists
+        QTimer::singleShot(0, [=] {
             this->setIcon(QIcon::fromTheme("network-wired-unavailable"));
             this->setText(tr("Disconnected"));
         });
@@ -125,7 +126,7 @@ void NetworkChunk::updatePrimaryConnection() {
 }
 
 void NetworkChunk::updateText() {
-    //Keep the text as is if there is no updater; we're disconnected!
+    // Keep the text as is if there is no updater; we're disconnected!
     if (!d->updater) return;
 
     QStringList text;

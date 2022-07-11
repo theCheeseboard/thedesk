@@ -2,7 +2,7 @@ macro(add_plugin_td target)
     add_library(plugin-${target} SHARED)
     target_include_directories(plugin-${target} PUBLIC ../../libthedesk/)
 
-    cntp_init_plugin(thedesk plugin-${target} 17 plugin-${target})
+    cntp_init_plugin(thedesk plugin-${target} 20 plugin-${target})
     cntp_translate(plugin-${target})
 
     set_target_properties(plugin-${target} PROPERTIES
@@ -26,7 +26,7 @@ add_subdirectory(AccessibilityPlugin)
 # TODO: Port when KF6 is available:
 # add_subdirectory(AudioPlugin)
 # add_subdirectory(BluetoothPlugin)
-# add_subdirectory(NetworkPlugion)
+# add_subdirectory(NetworkPlugin)
 
 # TODO: Check that PolkitQt works when KF6 is available
 add_subdirectory(UsersPlugin)

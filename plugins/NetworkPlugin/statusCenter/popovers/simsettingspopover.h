@@ -20,8 +20,8 @@
 #ifndef SIMSETTINGSPOPOVER_H
 #define SIMSETTINGSPOPOVER_H
 
+#include <ModemManagerQt/ModemDevice>
 #include <QWidget>
-#include <ModemDevice>
 
 namespace Ui {
     class SimSettingsPopover;

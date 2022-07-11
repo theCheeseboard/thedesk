@@ -19,17 +19,18 @@
  * *************************************/
 #include "wirelesschunkupdater.h"
 
-#include <NetworkManagerQt/Manager>
-#include <NetworkManagerQt/ActiveConnection>
 #include <NetworkManagerQt/AccessPoint>
+#include <NetworkManagerQt/ActiveConnection>
+#include <NetworkManagerQt/Manager>
 
-#include "common.h"
+#include "networkplugincommon.h"
 
 struct WirelessChunkUpdaterPrivate {
-    NetworkManager::AccessPoint::Ptr ap;
+        NetworkManager::AccessPoint::Ptr ap;
 };
 
-WirelessChunkUpdater::WirelessChunkUpdater(QObject* parent) : ChunkUpdater(parent) {
+WirelessChunkUpdater::WirelessChunkUpdater(QObject* parent) :
+    ChunkUpdater(parent) {
     d = new WirelessChunkUpdaterPrivate();
 
     NetworkManager::ActiveConnection::Ptr connection = NetworkManager::primaryConnection();
@@ -49,7 +50,7 @@ WirelessChunkUpdater::~WirelessChunkUpdater() {
 void WirelessChunkUpdater::updateChunk() {
     this->setText(d->ap->ssid());
 
-    Common::WirelessType type = Common::WiFi;
-    if (NetworkManager::connectivity() != NetworkManager::Full) type = Common::WiFiError;
-    this->setIcon(QIcon::fromTheme(Common::iconForSignalStrength(d->ap->signalStrength(), type)));
+    NetworkPluginCommon::WirelessType type = NetworkPluginCommon::WiFi;
+    if (NetworkManager::connectivity() != NetworkManager::Full) type = NetworkPluginCommon::WiFiError;
+    this->setIcon(QIcon::fromTheme(NetworkPluginCommon::iconForSignalStrength(d->ap->signalStrength(), type)));
 }

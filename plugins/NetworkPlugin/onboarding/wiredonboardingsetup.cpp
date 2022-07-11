@@ -20,18 +20,18 @@
 #include "wiredonboardingsetup.h"
 #include "ui_wiredonboardingsetup.h"
 
-#include "common.h"
+#include "networkplugincommon.h"
 #include <QtConcurrent>
 
 #include <NetworkManagerQt/Manager>
-#include <NetworkManagerQt/WiredDevice>
 #include <NetworkManagerQt/Settings>
+#include <NetworkManagerQt/WiredDevice>
 
-#include <tpopover.h>
 #include "statusCenter/popovers/connectionselectionpopover.h"
+#include <tpopover.h>
 
 struct WiredOnboardingSetupPrivate {
-    NetworkManager::WiredDevice::Ptr device;
+        NetworkManager::WiredDevice::Ptr device;
 };
 
 WiredOnboardingSetup::WiredOnboardingSetup(QString device, QWidget* parent) :
@@ -55,28 +55,28 @@ WiredOnboardingSetup::~WiredOnboardingSetup() {
 
 void WiredOnboardingSetup::on_connectButton_clicked() {
     NetworkManager::Connection::List connections = NetworkManager::listConnections();
-    QtConcurrent::blockingFilter(connections, [ = ](const NetworkManager::Connection::Ptr & connection) {
+    QtConcurrent::blockingFilter(connections, [=](const NetworkManager::Connection::Ptr& connection) {
         NetworkManager::ConnectionSettings::Ptr settings = connection->settings();
-        if (settings->interfaceName() != "" && d->device->interfaceName() != settings->interfaceName()) return false; //This connection is not applicable to this device
+        if (settings->interfaceName() != "" && d->device->interfaceName() != settings->interfaceName()) return false; // This connection is not applicable to this device
         return QList<NetworkManager::ConnectionSettings::ConnectionType>({NetworkManager::ConnectionSettings::Wired}).contains(connection->settings()->connectionType());
     });
 
     if (connections.count() == 0) {
-        //Create a new automatic connection
+        // Create a new automatic connection
         NetworkManager::ConnectionSettings settings(NetworkManager::ConnectionSettings::Wired);
         settings.setUuid(NetworkManager::ConnectionSettings::createNewUuid());
         settings.setInterfaceName(d->device->interfaceName());
         NetworkManager::addAndActivateConnection(settings.toMap(), d->device->uni(), "");
     } else if (connections.count() == 1) {
-        //Use this connection
+        // Use this connection
         NetworkManager::activateConnection(connections.first()->path(), d->device->uni(), "");
     } else {
-        //Ask the user for the connection to use
+        // Ask the user for the connection to use
         ConnectionSelectionPopover* selection = new ConnectionSelectionPopover(connections);
         tPopover* popover = new tPopover(selection);
         popover->setPopoverWidth(SC_DPI(600));
         connect(selection, &ConnectionSelectionPopover::reject, popover, &tPopover::dismiss);
-        connect(selection, &ConnectionSelectionPopover::accept, this, [ = ](NetworkManager::Connection::Ptr connection) {
+        connect(selection, &ConnectionSelectionPopover::accept, this, [=](NetworkManager::Connection::Ptr connection) {
             NetworkManager::activateConnection(connection->path(), d->device->uni(), "");
             popover->dismiss();
         });
@@ -95,6 +95,5 @@ void WiredOnboardingSetup::updateState() {
         ui->connectButton->setEnabled(false);
     }
 
-    ui->spinner->setVisible(Common::isDeviceConnecting(d->device));
+    ui->spinner->setVisible(NetworkPluginCommon::isDeviceConnecting(d->device));
 }
-

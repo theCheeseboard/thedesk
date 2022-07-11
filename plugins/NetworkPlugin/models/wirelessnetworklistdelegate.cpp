@@ -19,43 +19,44 @@
  * *************************************/
 #include "wirelessnetworklistdelegate.h"
 
-#include <QPainter>
-#include <the-libs_global.h>
 #include <NetworkManagerQt/Manager>
+#include <NetworkManagerQt/Utils>
 #include <NetworkManagerQt/WirelessDevice>
 #include <NetworkManagerQt/WirelessSetting>
-#include <NetworkManagerQt/Utils>
+#include <QPainter>
+#include <libcontemporary_global.h>
 
-#include "common.h"
+#include "networkplugincommon.h"
 
 struct WirelessNetworkListDelegatePrivate {
-    NetworkManager::WirelessDevice::Ptr device;
+        NetworkManager::WirelessDevice::Ptr device;
 
-    struct Rects {
-        QRect iconRect;
-        QRect textRect;
-        QRect descRect;
+        struct Rects {
+                QRect iconRect;
+                QRect textRect;
+                QRect descRect;
 
-        Rects(const QStyleOptionViewItem& option) {
-            iconRect.setLeft(option.rect.left() + SC_DPI(6));
-            iconRect.setTop(option.rect.top() + SC_DPI(6));
-            iconRect.setBottom(iconRect.top() + SC_DPI(32));
-            iconRect.setRight(iconRect.left() + SC_DPI(32));
+                Rects(const QStyleOptionViewItem& option) {
+                    iconRect.setLeft(option.rect.left() + SC_DPI(6));
+                    iconRect.setTop(option.rect.top() + SC_DPI(6));
+                    iconRect.setBottom(iconRect.top() + SC_DPI(32));
+                    iconRect.setRight(iconRect.left() + SC_DPI(32));
 
-            textRect.setLeft(iconRect.right() + SC_DPI(6));
-            textRect.setTop(option.rect.top() + SC_DPI(6));
-            textRect.setBottom(option.rect.top() + option.fontMetrics.height() + SC_DPI(6));
-            textRect.setRight(option.rect.right());
+                    textRect.setLeft(iconRect.right() + SC_DPI(6));
+                    textRect.setTop(option.rect.top() + SC_DPI(6));
+                    textRect.setBottom(option.rect.top() + option.fontMetrics.height() + SC_DPI(6));
+                    textRect.setRight(option.rect.right());
 
-            descRect.setLeft(iconRect.right() + SC_DPI(6));
-            descRect.setTop(option.rect.top() + option.fontMetrics.height() + SC_DPI(8));
-            descRect.setBottom(option.rect.top() + option.fontMetrics.height() * 2 + SC_DPI(6));
-            descRect.setRight(option.rect.right());
-        }
-    };
+                    descRect.setLeft(iconRect.right() + SC_DPI(6));
+                    descRect.setTop(option.rect.top() + option.fontMetrics.height() + SC_DPI(8));
+                    descRect.setBottom(option.rect.top() + option.fontMetrics.height() * 2 + SC_DPI(6));
+                    descRect.setRight(option.rect.right());
+                }
+        };
 };
 
-WirelessNetworkListDelegate::WirelessNetworkListDelegate(QString deviceUni, QObject* parent) : QAbstractItemDelegate(parent) {
+WirelessNetworkListDelegate::WirelessNetworkListDelegate(QString deviceUni, QObject* parent) :
+    QAbstractItemDelegate(parent) {
     d = new WirelessNetworkListDelegatePrivate();
     d->device = NetworkManager::findNetworkInterface(deviceUni).staticCast<NetworkManager::WirelessDevice>();
 }
@@ -64,11 +65,9 @@ WirelessNetworkListDelegate::~WirelessNetworkListDelegate() {
     delete d;
 }
 
-
 void WirelessNetworkListDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
     painter->setFont(option.font);
     painter->setLayoutDirection(option.direction);
-
 
     WirelessNetworkListDelegatePrivate::Rects rects(option);
     QString text = index.data().toString();
@@ -84,11 +83,11 @@ void WirelessNetworkListDelegate::paint(QPainter* painter, const QStyleOptionVie
             if (ap->ssid() == targetSsid) {
                 if (d->device->activeAccessPoint() && ap->uni() == d->device->activeAccessPoint()->uni()) {
                     desc = tr("Connected");
-                    icon = QIcon::fromTheme(Common::iconForSignalStrength(ap->signalStrength(), Common::WiFi));
+                    icon = QIcon::fromTheme(NetworkPluginCommon::iconForSignalStrength(ap->signalStrength(), NetworkPluginCommon::WiFi));
                     break;
                 } else {
                     desc = tr("In Range");
-                    icon = QIcon::fromTheme(Common::iconForSignalStrength(ap->signalStrength(), Common::WiFi));
+                    icon = QIcon::fromTheme(NetworkPluginCommon::iconForSignalStrength(ap->signalStrength(), NetworkPluginCommon::WiFi));
                     break;
                 }
             }
@@ -99,7 +98,7 @@ void WirelessNetworkListDelegate::paint(QPainter* painter, const QStyleOptionVie
         }
     } else if (networkInformation.canConvert<NetworkManager::AccessPoint::Ptr>()) {
         NetworkManager::AccessPoint::Ptr ap = networkInformation.value<NetworkManager::AccessPoint::Ptr>();
-        icon = QIcon::fromTheme(Common::iconForSignalStrength(ap->signalStrength(), Common::WiFi));
+        icon = QIcon::fromTheme(NetworkPluginCommon::iconForSignalStrength(ap->signalStrength(), NetworkPluginCommon::WiFi));
 
         NetworkManager::WirelessSecurityType security = NetworkManager::findBestWirelessSecurity(d->device->wirelessCapabilities(), true, false, ap->capabilities(), ap->wpaFlags(), ap->rsnFlags());
         switch (security) {

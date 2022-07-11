@@ -49,90 +49,90 @@
         <translation>Deconectat</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="134"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="135"/>
         <source>Cellular</source>
         <translation>Date mobile</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="139"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="140"/>
         <source>Connected</source>
         <translation>Conectat</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="148"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="149"/>
         <source>Failed</source>
         <translation>Eșuat</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="206"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="208"/>
         <source>No SIM Card</source>
         <translation>Fără cartelă SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="207"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="209"/>
         <source>Insert a SIM card to connect to cellular services.</source>
         <translation>Introduceți o cartelă SIM pentru a vă conecta la date mobile.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="209"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="211"/>
         <source>No SIM</source>
         <translation>Fără SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="212"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="214"/>
         <source>Unavailable</source>
         <translation>Indisponibil</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="215"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="217"/>
         <source>This network is unavailable because %2.</source>
         <translation>Această rețea este indisponibilă deoarece %2.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="245"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="248"/>
         <source>Connection Failure</source>
         <translation>Eroare la conectare</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="247"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="250"/>
         <source>Connecting to the network failed because %2.</source>
         <translation>Nu s-a putut conecta la rețea, deoarece %2.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="321"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="334"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="341"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="325"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="338"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="345"/>
         <source>Enter SIM PIN</source>
         <translation>Indroduceți PIN-ul pentru cartela SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="323"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="327"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="339"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="331"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="343"/>
         <source>SIM PIN Required</source>
         <translation>Este necesar PIN-ul pentru cartela SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="329"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="333"/>
         <source>A SIM PIN is required to connect to the cellular network.</source>
         <translation>Este necesar PIN-ul cartelei pentru conectarea la rețeaua celulară.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="351"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="364"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="371"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="356"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="376"/>
         <source>Enter SIM PUK</source>
         <translation>Introduceți codul PUK al cartelei SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="353"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="358"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="362"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="374"/>
         <source>SIM PUK Required</source>
         <translation>Este necesar PUK-ul pentru cartela SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="359"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="364"/>
         <source>A SIM PUK is required to connect to the cellular network.</source>
         <translation>Codul PUK al cartelei SIM este necesar pentru conectarea la rețeaua celulară.</translation>
     </message>
@@ -140,207 +140,207 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../common.cpp" line="28"/>
+        <location filename="../networkplugincommon.cpp" line="27"/>
         <source>the device is no longer managed by NetworkManager</source>
         <translation>dispozitivul nu mai este gestionat de NetworkManager</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="30"/>
+        <location filename="../networkplugincommon.cpp" line="29"/>
         <source>configuration of the device failed</source>
         <translation>configurarea acestui dispozitiv a eșuat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="32"/>
+        <location filename="../networkplugincommon.cpp" line="31"/>
         <source>configuration of the device is unavailable</source>
         <translation>setările dispozitivului nu sunt disponibile</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="34"/>
+        <location filename="../networkplugincommon.cpp" line="33"/>
         <source>configuration of the device expired</source>
         <translation>setările dispozitivului au expirat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="36"/>
+        <location filename="../networkplugincommon.cpp" line="35"/>
         <source>required secrets were not provided</source>
         <translation>secretele necesare nu au fost furnizate</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="38"/>
+        <location filename="../networkplugincommon.cpp" line="37"/>
         <source>the authentication supplicant disconnected</source>
         <translation>solicitantul de autentificare s-a deconectat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="40"/>
+        <location filename="../networkplugincommon.cpp" line="39"/>
         <source>configuration of the authentication supplicant failed</source>
         <translation>configurarea solicitantului de autentificare a eșuat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="42"/>
+        <location filename="../networkplugincommon.cpp" line="41"/>
         <source>the authentication supplicant failed</source>
         <translation>solicitantul de autentificare a eșuat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="44"/>
+        <location filename="../networkplugincommon.cpp" line="43"/>
         <source>the authentication supplicant timed out</source>
         <translation>solicitantul de autentificare nu a răspuns la timp</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="46"/>
+        <location filename="../networkplugincommon.cpp" line="45"/>
         <source>the PPP network failed to start</source>
         <translation>rețeaua PPP nu a putut porni</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="48"/>
+        <location filename="../networkplugincommon.cpp" line="47"/>
         <source>the PPP network was disconnected</source>
         <translation>rețeaua PPP a fost deconectată</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="50"/>
+        <location filename="../networkplugincommon.cpp" line="49"/>
         <source>the PPP network failed</source>
         <translation>rețeaua PPP a eșuat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="52"/>
+        <location filename="../networkplugincommon.cpp" line="51"/>
         <source>DHCP configuration failed to start</source>
         <translation>configurația DHCP nu a putut porni</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="54"/>
+        <location filename="../networkplugincommon.cpp" line="53"/>
         <source>DHCP configuration had an error</source>
         <translation>a survenit o eroare la configurația DHCP</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="56"/>
+        <location filename="../networkplugincommon.cpp" line="55"/>
         <source>DHCP configuration failed</source>
         <translation>configurarea DHCP a eșuat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="68"/>
+        <location filename="../networkplugincommon.cpp" line="67"/>
         <source>the modem is busy</source>
         <translation>modem-ul este ocupat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="70"/>
+        <location filename="../networkplugincommon.cpp" line="69"/>
         <source>there is no dial tone on the modem</source>
         <translation>nu există un ton de apel pe modem</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="72"/>
+        <location filename="../networkplugincommon.cpp" line="71"/>
         <source>no carrier is available on the modem</source>
         <translation>nu există un operator pe modem</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="74"/>
+        <location filename="../networkplugincommon.cpp" line="73"/>
         <source>dialling the number on the modem timed out</source>
         <translation>apelarea numărului de pe modem nu a primit un răspuns la timp</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="76"/>
+        <location filename="../networkplugincommon.cpp" line="75"/>
         <source>dialling the number on the modem failed</source>
         <translation>apelarea numărului de pe modem a eșuat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="78"/>
+        <location filename="../networkplugincommon.cpp" line="77"/>
         <source>initialising the modem failed</source>
         <translation>nu s-a putut inițializa modem-ul</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="80"/>
+        <location filename="../networkplugincommon.cpp" line="79"/>
         <source>APN selection failed</source>
         <translation>selecția unui APN a eșuat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="82"/>
+        <location filename="../networkplugincommon.cpp" line="81"/>
         <source>the modem is not searching</source>
         <translation>modemul nu este în modul de căutare</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="84"/>
+        <location filename="../networkplugincommon.cpp" line="83"/>
         <source>the cell tower denied registration of the modem</source>
         <translation>turnul de telefonie mobilă a refuzat înregistrarea modemului</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="86"/>
+        <location filename="../networkplugincommon.cpp" line="85"/>
         <source>registration of the modem on the cell tower timed out</source>
         <translation>înregistrarea modemului la turnul de telefonie mobilă nu s-a terminat la timp</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="88"/>
+        <location filename="../networkplugincommon.cpp" line="87"/>
         <source>registration of the modem on the cell tower failed</source>
         <translation>înregistrarea modemului pe turnul de telefonie mobilă a eșuat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="92"/>
+        <location filename="../networkplugincommon.cpp" line="91"/>
         <source>the device firmware is missing</source>
         <translation>firmware-ul dispozitivului lipsește</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="94"/>
+        <location filename="../networkplugincommon.cpp" line="93"/>
         <source>the device was removed</source>
         <translation>dispozitivul a fost scos</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="96"/>
+        <location filename="../networkplugincommon.cpp" line="95"/>
         <source>the device is sleeping</source>
         <translation>dispozitivul este în adormire</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="98"/>
+        <location filename="../networkplugincommon.cpp" line="97"/>
         <source>the connection was removed</source>
         <translation>conexiunea a fost înlăturată</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="100"/>
+        <location filename="../networkplugincommon.cpp" line="99"/>
         <source>you requested the action</source>
         <translation>ați solicitat anularea</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="108"/>
+        <location filename="../networkplugincommon.cpp" line="107"/>
         <source>the modem was not found</source>
         <translation>modemul nu a fost găsit</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="110"/>
+        <location filename="../networkplugincommon.cpp" line="109"/>
         <source>Bluetooth is not available</source>
         <translation>Bluetooth nu este disponibil</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="112"/>
+        <location filename="../networkplugincommon.cpp" line="111"/>
         <source>the SIM card is not inserted</source>
         <translation>cartela SIM nu este inserată</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="114"/>
+        <location filename="../networkplugincommon.cpp" line="113"/>
         <source>the SIM PIN is required</source>
         <translation>PIN-ul de la SIM este necesar</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="116"/>
+        <location filename="../networkplugincommon.cpp" line="115"/>
         <source>the SIM PUK is required</source>
         <translation>PUK-ul de la SIM este necesar</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="119"/>
+        <location filename="../networkplugincommon.cpp" line="118"/>
         <source>the SIM PUK is exhausted</source>
         <translation>PUK-ul cartelei a fost folosit de prea multe ori</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="127"/>
+        <location filename="../networkplugincommon.cpp" line="126"/>
         <source>ModemManager is not operational on this device</source>
         <translation>ModemManager nu este funcțional pe acest dispozitiv</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="129"/>
+        <location filename="../networkplugincommon.cpp" line="128"/>
         <source>the wireless network wasn&apos;t found</source>
         <translation>rețeaua wireless nu a fost găsită</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="153"/>
+        <location filename="../networkplugincommon.cpp" line="152"/>
         <source>an unknown error occurred</source>
         <translation>a survenit o eroare necunoscută</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="199"/>
+        <location filename="../networkplugincommon.cpp" line="198"/>
         <source>Cellular</source>
         <translation>Date mobile</translation>
     </message>
@@ -486,22 +486,22 @@
 <context>
     <name>NetworkChunk</name>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="63"/>
+        <location filename="../chunk/networkchunk.cpp" line="64"/>
         <source>Network Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="102"/>
+        <location filename="../chunk/networkchunk.cpp" line="103"/>
         <source>Disconnected</source>
         <translation>Deconectat</translation>
     </message>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="136"/>
+        <location filename="../chunk/networkchunk.cpp" line="137"/>
         <source>Login Required</source>
         <translation>Autentificare necesară</translation>
     </message>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="139"/>
+        <location filename="../chunk/networkchunk.cpp" line="140"/>
         <source>Can&apos;t get to the Internet</source>
         <translation>Nu se poate conecta la internet</translation>
     </message>
@@ -545,6 +545,173 @@
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.cpp" line="231"/>
         <source>Couldn&apos;t save settings</source>
         <translation>Nu au putut fi salvate setările</translation>
+    </message>
+</context>
+<context>
+    <name>NetworkPluginCommon</name>
+    <message>
+        <source>the device is no longer managed by NetworkManager</source>
+        <translation type="obsolete">dispozitivul nu mai este gestionat de NetworkManager</translation>
+    </message>
+    <message>
+        <source>configuration of the device failed</source>
+        <translation type="obsolete">configurarea acestui dispozitiv a eșuat</translation>
+    </message>
+    <message>
+        <source>configuration of the device is unavailable</source>
+        <translation type="obsolete">setările dispozitivului nu sunt disponibile</translation>
+    </message>
+    <message>
+        <source>configuration of the device expired</source>
+        <translation type="obsolete">setările dispozitivului au expirat</translation>
+    </message>
+    <message>
+        <source>required secrets were not provided</source>
+        <translation type="obsolete">secretele necesare nu au fost furnizate</translation>
+    </message>
+    <message>
+        <source>the authentication supplicant disconnected</source>
+        <translation type="obsolete">solicitantul de autentificare s-a deconectat</translation>
+    </message>
+    <message>
+        <source>configuration of the authentication supplicant failed</source>
+        <translation type="obsolete">configurarea solicitantului de autentificare a eșuat</translation>
+    </message>
+    <message>
+        <source>the authentication supplicant failed</source>
+        <translation type="obsolete">solicitantul de autentificare a eșuat</translation>
+    </message>
+    <message>
+        <source>the authentication supplicant timed out</source>
+        <translation type="obsolete">solicitantul de autentificare nu a răspuns la timp</translation>
+    </message>
+    <message>
+        <source>the PPP network failed to start</source>
+        <translation type="obsolete">rețeaua PPP nu a putut porni</translation>
+    </message>
+    <message>
+        <source>the PPP network was disconnected</source>
+        <translation type="obsolete">rețeaua PPP a fost deconectată</translation>
+    </message>
+    <message>
+        <source>the PPP network failed</source>
+        <translation type="obsolete">rețeaua PPP a eșuat</translation>
+    </message>
+    <message>
+        <source>DHCP configuration failed to start</source>
+        <translation type="obsolete">configurația DHCP nu a putut porni</translation>
+    </message>
+    <message>
+        <source>DHCP configuration had an error</source>
+        <translation type="obsolete">a survenit o eroare la configurația DHCP</translation>
+    </message>
+    <message>
+        <source>DHCP configuration failed</source>
+        <translation type="obsolete">configurarea DHCP a eșuat</translation>
+    </message>
+    <message>
+        <source>the modem is busy</source>
+        <translation type="obsolete">modem-ul este ocupat</translation>
+    </message>
+    <message>
+        <source>there is no dial tone on the modem</source>
+        <translation type="obsolete">nu există un ton de apel pe modem</translation>
+    </message>
+    <message>
+        <source>no carrier is available on the modem</source>
+        <translation type="obsolete">nu există un operator pe modem</translation>
+    </message>
+    <message>
+        <source>dialling the number on the modem timed out</source>
+        <translation type="obsolete">apelarea numărului de pe modem nu a primit un răspuns la timp</translation>
+    </message>
+    <message>
+        <source>dialling the number on the modem failed</source>
+        <translation type="obsolete">apelarea numărului de pe modem a eșuat</translation>
+    </message>
+    <message>
+        <source>initialising the modem failed</source>
+        <translation type="obsolete">nu s-a putut inițializa modem-ul</translation>
+    </message>
+    <message>
+        <source>APN selection failed</source>
+        <translation type="obsolete">selecția unui APN a eșuat</translation>
+    </message>
+    <message>
+        <source>the modem is not searching</source>
+        <translation type="obsolete">modemul nu este în modul de căutare</translation>
+    </message>
+    <message>
+        <source>the cell tower denied registration of the modem</source>
+        <translation type="obsolete">turnul de telefonie mobilă a refuzat înregistrarea modemului</translation>
+    </message>
+    <message>
+        <source>registration of the modem on the cell tower timed out</source>
+        <translation type="obsolete">înregistrarea modemului la turnul de telefonie mobilă nu s-a terminat la timp</translation>
+    </message>
+    <message>
+        <source>registration of the modem on the cell tower failed</source>
+        <translation type="obsolete">înregistrarea modemului pe turnul de telefonie mobilă a eșuat</translation>
+    </message>
+    <message>
+        <source>the device firmware is missing</source>
+        <translation type="obsolete">firmware-ul dispozitivului lipsește</translation>
+    </message>
+    <message>
+        <source>the device was removed</source>
+        <translation type="obsolete">dispozitivul a fost scos</translation>
+    </message>
+    <message>
+        <source>the device is sleeping</source>
+        <translation type="obsolete">dispozitivul este în adormire</translation>
+    </message>
+    <message>
+        <source>the connection was removed</source>
+        <translation type="obsolete">conexiunea a fost înlăturată</translation>
+    </message>
+    <message>
+        <source>you requested the action</source>
+        <translation type="obsolete">ați solicitat anularea</translation>
+    </message>
+    <message>
+        <source>the modem was not found</source>
+        <translation type="obsolete">modemul nu a fost găsit</translation>
+    </message>
+    <message>
+        <source>Bluetooth is not available</source>
+        <translation type="obsolete">Bluetooth nu este disponibil</translation>
+    </message>
+    <message>
+        <source>the SIM card is not inserted</source>
+        <translation type="obsolete">cartela SIM nu este inserată</translation>
+    </message>
+    <message>
+        <source>the SIM PIN is required</source>
+        <translation type="obsolete">PIN-ul de la SIM este necesar</translation>
+    </message>
+    <message>
+        <source>the SIM PUK is required</source>
+        <translation type="obsolete">PUK-ul de la SIM este necesar</translation>
+    </message>
+    <message>
+        <source>the SIM PUK is exhausted</source>
+        <translation type="obsolete">PUK-ul cartelei a fost folosit de prea multe ori</translation>
+    </message>
+    <message>
+        <source>ModemManager is not operational on this device</source>
+        <translation type="obsolete">ModemManager nu este funcțional pe acest dispozitiv</translation>
+    </message>
+    <message>
+        <source>the wireless network wasn&apos;t found</source>
+        <translation type="obsolete">rețeaua wireless nu a fost găsită</translation>
+    </message>
+    <message>
+        <source>an unknown error occurred</source>
+        <translation type="obsolete">a survenit o eroare necunoscută</translation>
+    </message>
+    <message>
+        <source>Cellular</source>
+        <translation type="obsolete">Date mobile</translation>
     </message>
 </context>
 <context>
@@ -729,19 +896,19 @@
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="98"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="115"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="113"/>
         <source>Enable SIM PIN</source>
         <translation>Activează PIN pentru cartelă</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="105"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="121"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="119"/>
         <source>Disable SIM PIN</source>
         <translation>Dezactivează PIN pentru cartelă</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="112"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="165"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="163"/>
         <source>Change SIM PIN</source>
         <translation>Schimbă PIN-ul cartelei</translation>
     </message>
@@ -803,7 +970,7 @@
         <translation>Fără cartelă SIM</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="143"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="141"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>Mai aveți o încercare</numerusform>
@@ -812,12 +979,12 @@
         </translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="205"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="202"/>
         <source>Error</source>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="206"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
         <translation>Nu s-a putut obține starea funcției apeluri în așteptare de la operator</translation>
     </message>
@@ -1087,7 +1254,7 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="88"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="130"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="131"/>
         <source>Tethering</source>
         <translation>Tethering</translation>
     </message>
@@ -1098,8 +1265,8 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="118"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="142"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="152"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="143"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="153"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="202"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="203"/>
         <source>Wi-Fi</source>
@@ -1112,18 +1279,18 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
         <translation>Deconectat</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="131"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="132"/>
         <source>Active</source>
         <translation>Activ</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="137"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="143"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="138"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="144"/>
         <source>Connected</source>
         <translation>Conectat</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="153"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="154"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="239"/>
         <source>Failed</source>
         <translation>Eșuat</translation>
@@ -1178,8 +1345,8 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="35"/>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="64"/>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="83"/>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="89"/>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="102"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="90"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="103"/>
         <source>Wired</source>
         <translation>Pe fir</translation>
     </message>
@@ -1214,12 +1381,12 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
         <translation>Deconectat</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="94"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="95"/>
         <source>Connected</source>
         <translation>Conectat</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="103"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="104"/>
         <source>Failed</source>
         <translation>Eșuat</translation>
     </message>
@@ -1229,27 +1396,27 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
         <translation>Ruter</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="143"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="144"/>
         <source>Unavailable</source>
         <translation>Indisponibil</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="147"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="148"/>
         <source>Connect an Ethernet cable.</source>
         <translation>Conectați un cablu Ethernet.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="149"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="150"/>
         <source>This network is unavailable because %2.</source>
         <translation>Rețeaua este indisponibilă, deoarece %2.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="175"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="177"/>
         <source>Connection Failure</source>
         <translation>Eroare de conexiune</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="177"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="179"/>
         <source>Connecting to the network failed because %2.</source>
         <translation>Conectarea la rețea a eșuat, deoarece %2.</translation>
     </message>
@@ -1280,62 +1447,62 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
 <context>
     <name>WirelessNetworkListDelegate</name>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="86"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="85"/>
         <source>Connected</source>
         <translation>Conectat</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="90"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="89"/>
         <source>In Range</source>
         <translation>În aria de acoperire</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="98"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="97"/>
         <source>Out of range</source>
         <translation>În afara ariei de acoperire</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="108"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="107"/>
         <source>Not Secured</source>
         <translation>Nesecurizat</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="111"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="110"/>
         <source>Secured with Static WEP</source>
         <translation>Securizat cu WEP static</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="114"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="113"/>
         <source>Secured with Dynamic WEP</source>
         <translation>Securizat cu WEP dinamic</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="117"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="116"/>
         <source>Secured with LEAP</source>
         <translation>Securizat cu LEAP</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="120"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="119"/>
         <source>Secured with WPA-PSK</source>
         <translation>Securizat cu WPA-PSK</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="123"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="122"/>
         <source>Secured with WPA Enterprise</source>
         <translation>Securizat cu WPA-Enterprise</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="126"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="125"/>
         <source>Secured with WPA2-PSK</source>
         <translation>Securizat cu WPA2-PSK</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="129"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="128"/>
         <source>Secured with WPA2 Enterprise</source>
         <translation>Securizat cu WPA2-Enterprise</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="132"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="131"/>
         <source>Secured with WPA3</source>
         <translation>Securizat cu WPA3</translation>
     </message>

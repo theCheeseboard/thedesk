@@ -17,12 +17,11 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#include "common.h"
+#include "networkplugincommon.h"
 
-#include <Modem3Gpp>
+#include <ModemManagerQt/Modem3Gpp>
 
-QString Common::stateChangeReasonToString(NetworkManager::Device::StateChangeReason reason) {
-
+QString NetworkPluginCommon::stateChangeReasonToString(NetworkManager::Device::StateChangeReason reason) {
     switch (reason) {
         case NetworkManager::Device::NowUnmanagedReason:
             return tr("the device is no longer managed by NetworkManager");
@@ -153,20 +152,20 @@ QString Common::stateChangeReasonToString(NetworkManager::Device::StateChangeRea
     return tr("an unknown error occurred");
 }
 
-QString Common::iconForSignalStrength(int strength, Common::WirelessType type) {
+QString NetworkPluginCommon::iconForSignalStrength(int strength, NetworkPluginCommon::WirelessType type) {
     QString iconString = "network-";
 
     switch (type) {
-        case Common::WiFi:
+        case NetworkPluginCommon::WiFi:
             iconString += "wireless-connected-";
             break;
-        case Common::WiFiError:
+        case NetworkPluginCommon::WiFiError:
             iconString += "wireless-error-";
             break;
-        case Common::Cellular:
+        case NetworkPluginCommon::Cellular:
             iconString += "cellular-connected-";
             break;
-        case Common::CellularError:
+        case NetworkPluginCommon::CellularError:
             iconString += "cellular-error-";
             break;
     }
@@ -186,7 +185,7 @@ QString Common::iconForSignalStrength(int strength, Common::WirelessType type) {
     return iconString;
 }
 
-QString Common::operatorNameForModem(ModemManager::ModemDevice::Ptr device) {
+QString NetworkPluginCommon::operatorNameForModem(ModemManager::ModemDevice::Ptr device) {
     if (device->sim() && !device->sim()->operatorName().isEmpty()) {
         return device->sim()->operatorName();
     }
@@ -199,15 +198,14 @@ QString Common::operatorNameForModem(ModemManager::ModemDevice::Ptr device) {
     return tr("Cellular");
 }
 
-bool Common::isDeviceConnecting(NetworkManager::Device::Ptr device) {
+bool NetworkPluginCommon::isDeviceConnecting(NetworkManager::Device::Ptr device) {
     QList<NetworkManager::Device::State> connectingStates = {
         NetworkManager::Device::Preparing,
         NetworkManager::Device::ConfiguringHardware,
         NetworkManager::Device::NeedAuth,
         NetworkManager::Device::ConfiguringIp,
         NetworkManager::Device::CheckingIp,
-        NetworkManager::Device::WaitingForSecondaries
-    };
+        NetworkManager::Device::WaitingForSecondaries};
 
     return connectingStates.contains(device->state());
 }

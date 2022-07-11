@@ -20,12 +20,12 @@
 #include "unlockmodempopover.h"
 #include "ui_unlockmodempopover.h"
 
-#include "common.h"
+#include "networkplugincommon.h"
 #include <QDBusPendingCallWatcher>
 #include <terrorflash.h>
 
 struct UnlockModemPopoverPrivate {
-    ModemManager::ModemDevice::Ptr modem;
+        ModemManager::ModemDevice::Ptr modem;
 };
 
 UnlockModemPopover::UnlockModemPopover(ModemManager::ModemDevice::Ptr modem, QWidget* parent) :
@@ -73,22 +73,24 @@ void UnlockModemPopover::updatePage() {
     } else {
         ui->pukRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PUK)));
     }
-    ui->simPinOperatorName->setText(Common::operatorNameForModem(d->modem));
-    ui->pukDescription->setText(tr("Contact your carrier to obtain the <b>SIM PUK</b>, and enter it below to unlock %1.").arg(QLocale().quoteString(Common::operatorNameForModem(d->modem))));
+    ui->simPinOperatorName->setText(NetworkPluginCommon::operatorNameForModem(d->modem));
+    ui->pukDescription->setText(tr("Contact your carrier to obtain the <b>SIM PUK</b>, and enter it below to unlock %1.").arg(QLocale().quoteString(NetworkPluginCommon::operatorNameForModem(d->modem))));
     ui->simPinBox->clear();
     ui->simPukBox->clear();
 
     switch (unlockRequired) {
-        case MM_MODEM_LOCK_SIM_PIN: {
-            ui->stackedWidget->setCurrentWidget(ui->simPinPage);
-            ui->simPinBox->setFocus();
-            break;
-        }
-        case MM_MODEM_LOCK_SIM_PUK: {
-            ui->stackedWidget->setCurrentWidget(ui->simPukPage);
-            ui->simPukBox->setFocus();
-            break;
-        }
+        case MM_MODEM_LOCK_SIM_PIN:
+            {
+                ui->stackedWidget->setCurrentWidget(ui->simPinPage);
+                ui->simPinBox->setFocus();
+                break;
+            }
+        case MM_MODEM_LOCK_SIM_PUK:
+            {
+                ui->stackedWidget->setCurrentWidget(ui->simPukPage);
+                ui->simPukBox->setFocus();
+                break;
+            }
         default:
             emit done();
     }
@@ -109,7 +111,7 @@ void UnlockModemPopover::on_simPinAcceptButton_clicked() {
 
     ui->stackedWidget->setCurrentWidget(ui->loadingPage);
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(d->modem->sim()->sendPin(ui->simPinBox->text()));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
         QTimer::singleShot(200, this, &UnlockModemPopover::updatePage);
         watcher->deleteLater();
     });
@@ -150,7 +152,7 @@ void UnlockModemPopover::on_simPukAcceptButton_clicked() {
 
     ui->stackedWidget->setCurrentWidget(ui->loadingPage);
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(d->modem->sim()->sendPuk(ui->simPukBox->text(), ui->simPukNewSimPin->text()));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
         QTimer::singleShot(200, this, &UnlockModemPopover::updatePage);
         watcher->deleteLater();
     });

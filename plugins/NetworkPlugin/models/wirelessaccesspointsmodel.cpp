@@ -19,21 +19,21 @@
  * *************************************/
 #include "wirelessaccesspointsmodel.h"
 
-#include <NetworkManagerQt/Manager>
-#include <NetworkManagerQt/WirelessDevice>
 #include <NetworkManagerQt/AccessPoint>
-#include <NetworkManagerQt/WirelessSetting>
+#include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/Settings>
+#include <NetworkManagerQt/WirelessDevice>
+#include <NetworkManagerQt/WirelessSetting>
 
 struct WirelessAccessPointsModelPrivate {
-    NetworkManager::WirelessDevice::Ptr device;
-    QList<NetworkManager::AccessPoint::Ptr> displayedAPs;
+        NetworkManager::WirelessDevice::Ptr device;
+        QList<NetworkManager::AccessPoint::Ptr> displayedAPs;
 
-    bool includeKnown;
+        bool includeKnown;
 };
 
-WirelessAccessPointsModel::WirelessAccessPointsModel(QString deviceUni, bool includeKnown, QObject* parent)
-    : QAbstractListModel(parent) {
+WirelessAccessPointsModel::WirelessAccessPointsModel(QString deviceUni, bool includeKnown, QObject* parent) :
+    QAbstractListModel(parent) {
     d = new WirelessAccessPointsModelPrivate();
 
     d->includeKnown = includeKnown;

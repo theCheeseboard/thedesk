@@ -49,90 +49,90 @@
         <translation>Không kết nối</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="134"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="135"/>
         <source>Cellular</source>
         <translation>Mạng di động</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="139"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="140"/>
         <source>Connected</source>
         <translation>Đã kết nối</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="148"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="149"/>
         <source>Failed</source>
         <translation>Đã thất bại</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="206"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="208"/>
         <source>No SIM Card</source>
         <translation>Không có thẻ SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="207"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="209"/>
         <source>Insert a SIM card to connect to cellular services.</source>
         <translation>Cài một thẻ SIM để kết nối với dịch vụ di động.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="209"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="211"/>
         <source>No SIM</source>
         <translation>Không có SIM</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="212"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="214"/>
         <source>Unavailable</source>
         <translation>Không có sẵn</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="215"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="217"/>
         <source>This network is unavailable because %2.</source>
         <translation>Mạng này không có sẵn tại vì %2.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="245"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="248"/>
         <source>Connection Failure</source>
         <translation>Kết nối thất bại</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="247"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="250"/>
         <source>Connecting to the network failed because %2.</source>
         <translation>Kết nối với mạng thất bại tại vì %2.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="321"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="334"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="341"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="325"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="338"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="345"/>
         <source>Enter SIM PIN</source>
         <translation>Điền vào SIM PIN</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="323"/>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="327"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="339"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="331"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="343"/>
         <source>SIM PIN Required</source>
         <translation>Cần SIM PIN</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="329"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="333"/>
         <source>A SIM PIN is required to connect to the cellular network.</source>
         <translation>Cần mã PIN cho thẻ SIM để kết nối với mạng di động.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="351"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="364"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="371"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="356"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="376"/>
         <source>Enter SIM PUK</source>
         <translation>Điền vào SIM PUK</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="353"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="358"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="362"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="374"/>
         <source>SIM PUK Required</source>
         <translation>Cần SIM PUK</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="359"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="364"/>
         <source>A SIM PUK is required to connect to the cellular network.</source>
         <translation>Cần mã PUK cho thẻ SIM để kết nối với mạng di động.</translation>
     </message>
@@ -140,207 +140,207 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../common.cpp" line="28"/>
+        <location filename="../networkplugincommon.cpp" line="27"/>
         <source>the device is no longer managed by NetworkManager</source>
         <translation>thiết bị này không có quản lý với NetworkManager nũa</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="30"/>
+        <location filename="../networkplugincommon.cpp" line="29"/>
         <source>configuration of the device failed</source>
         <translation>cấu hình thiết bị không thành công</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="32"/>
+        <location filename="../networkplugincommon.cpp" line="31"/>
         <source>configuration of the device is unavailable</source>
         <translation>cấu hình thiết bị không có sẵn</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="34"/>
+        <location filename="../networkplugincommon.cpp" line="33"/>
         <source>configuration of the device expired</source>
         <translation>cấu hình thiết bị hết hạn</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="36"/>
+        <location filename="../networkplugincommon.cpp" line="35"/>
         <source>required secrets were not provided</source>
         <translation>những bí mật không được cung cấp</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="38"/>
+        <location filename="../networkplugincommon.cpp" line="37"/>
         <source>the authentication supplicant disconnected</source>
         <translation>trình xác thực bị ngắt kết nối</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="40"/>
+        <location filename="../networkplugincommon.cpp" line="39"/>
         <source>configuration of the authentication supplicant failed</source>
         <translation>cấu hình trình xác thực không thành công</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="42"/>
+        <location filename="../networkplugincommon.cpp" line="41"/>
         <source>the authentication supplicant failed</source>
         <translation>trình xác thực không thành công</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="44"/>
+        <location filename="../networkplugincommon.cpp" line="43"/>
         <source>the authentication supplicant timed out</source>
         <translation>trình xác thực hết giờ</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="46"/>
+        <location filename="../networkplugincommon.cpp" line="45"/>
         <source>the PPP network failed to start</source>
         <translation>mạng PPP không khởi chạy được</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="48"/>
+        <location filename="../networkplugincommon.cpp" line="47"/>
         <source>the PPP network was disconnected</source>
         <translation>mạng PPP bị ngắt kết nối</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="50"/>
+        <location filename="../networkplugincommon.cpp" line="49"/>
         <source>the PPP network failed</source>
         <translation>mạng PPP không thành công</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="52"/>
+        <location filename="../networkplugincommon.cpp" line="51"/>
         <source>DHCP configuration failed to start</source>
         <translation>cấu hình DHCP không thể bắt đầu</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="54"/>
+        <location filename="../networkplugincommon.cpp" line="53"/>
         <source>DHCP configuration had an error</source>
         <translation>cấu hình DHCP xảy ra lỗi</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="56"/>
+        <location filename="../networkplugincommon.cpp" line="55"/>
         <source>DHCP configuration failed</source>
         <translation>cấu hình DHCP không thành công</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="68"/>
+        <location filename="../networkplugincommon.cpp" line="67"/>
         <source>the modem is busy</source>
         <translation>modem đang bận</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="70"/>
+        <location filename="../networkplugincommon.cpp" line="69"/>
         <source>there is no dial tone on the modem</source>
         <translation>không có âm quay số trên modem</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="72"/>
+        <location filename="../networkplugincommon.cpp" line="71"/>
         <source>no carrier is available on the modem</source>
         <translation>không có âm cung cấp trên modem</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="74"/>
+        <location filename="../networkplugincommon.cpp" line="73"/>
         <source>dialling the number on the modem timed out</source>
         <translation>quay số trên modem mất quá nhiều thời gian</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="76"/>
+        <location filename="../networkplugincommon.cpp" line="75"/>
         <source>dialling the number on the modem failed</source>
         <translation>quay số trên modem không thành công</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="78"/>
+        <location filename="../networkplugincommon.cpp" line="77"/>
         <source>initialising the modem failed</source>
         <translation>khởi tạo modem không thành công</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="80"/>
+        <location filename="../networkplugincommon.cpp" line="79"/>
         <source>APN selection failed</source>
         <translation>hoạt động chọn APN không thành công</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="82"/>
+        <location filename="../networkplugincommon.cpp" line="81"/>
         <source>the modem is not searching</source>
         <translation>modem không tìm kiếm</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="84"/>
+        <location filename="../networkplugincommon.cpp" line="83"/>
         <source>the cell tower denied registration of the modem</source>
         <translation>tháp di động từ chối chi tiết đăng ký của modem</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="86"/>
+        <location filename="../networkplugincommon.cpp" line="85"/>
         <source>registration of the modem on the cell tower timed out</source>
         <translation>hoạt động đăng ký modem trên tháp di động mất quá nhiều thời gian</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="88"/>
+        <location filename="../networkplugincommon.cpp" line="87"/>
         <source>registration of the modem on the cell tower failed</source>
         <translation>hoạt động đăng ký modem trên tháp di động không thành công</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="92"/>
+        <location filename="../networkplugincommon.cpp" line="91"/>
         <source>the device firmware is missing</source>
         <translation>thiếu phần sụn thiết bị</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="94"/>
+        <location filename="../networkplugincommon.cpp" line="93"/>
         <source>the device was removed</source>
         <translation>thiết bị bị tháo ra</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="96"/>
+        <location filename="../networkplugincommon.cpp" line="95"/>
         <source>the device is sleeping</source>
         <translation>thiết bị đang ngủ</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="98"/>
+        <location filename="../networkplugincommon.cpp" line="97"/>
         <source>the connection was removed</source>
         <translation>kết nối bị xóa</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="100"/>
+        <location filename="../networkplugincommon.cpp" line="99"/>
         <source>you requested the action</source>
         <translation>bạn yêu cầu hoạt động này</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="108"/>
+        <location filename="../networkplugincommon.cpp" line="107"/>
         <source>the modem was not found</source>
         <translation>không thể tìm kiếm modem</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="110"/>
+        <location filename="../networkplugincommon.cpp" line="109"/>
         <source>Bluetooth is not available</source>
         <translation>Bluetooth không có sẵn</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="112"/>
+        <location filename="../networkplugincommon.cpp" line="111"/>
         <source>the SIM card is not inserted</source>
         <translation>không có thẻ SIM</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="114"/>
+        <location filename="../networkplugincommon.cpp" line="113"/>
         <source>the SIM PIN is required</source>
         <translation>thiếu mã PIN của SIM</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="116"/>
+        <location filename="../networkplugincommon.cpp" line="115"/>
         <source>the SIM PUK is required</source>
         <translation>thiếu mã PUK của SIM</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="119"/>
+        <location filename="../networkplugincommon.cpp" line="118"/>
         <source>the SIM PUK is exhausted</source>
         <translation>mã PUK của SIM đã hết</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="127"/>
+        <location filename="../networkplugincommon.cpp" line="126"/>
         <source>ModemManager is not operational on this device</source>
         <translation>ModemManager không hoạt động trên thiết bị này</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="129"/>
+        <location filename="../networkplugincommon.cpp" line="128"/>
         <source>the wireless network wasn&apos;t found</source>
         <translation>mạng Wi-Fi không tìm được</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="153"/>
+        <location filename="../networkplugincommon.cpp" line="152"/>
         <source>an unknown error occurred</source>
         <translation>một lỗi không xác định đã xảy ra</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="199"/>
+        <location filename="../networkplugincommon.cpp" line="198"/>
         <source>Cellular</source>
         <translation>Mạng di động</translation>
     </message>
@@ -486,22 +486,22 @@
 <context>
     <name>NetworkChunk</name>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="63"/>
+        <location filename="../chunk/networkchunk.cpp" line="64"/>
         <source>Network Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="102"/>
+        <location filename="../chunk/networkchunk.cpp" line="103"/>
         <source>Disconnected</source>
         <translation>Đã ngắt kết nối</translation>
     </message>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="136"/>
+        <location filename="../chunk/networkchunk.cpp" line="137"/>
         <source>Login Required</source>
         <translation>Cần đăng nhập</translation>
     </message>
     <message>
-        <location filename="../chunk/networkchunk.cpp" line="139"/>
+        <location filename="../chunk/networkchunk.cpp" line="140"/>
         <source>Can&apos;t get to the Internet</source>
         <translation>Không thể truy cập Internet</translation>
     </message>
@@ -545,6 +545,173 @@
         <location filename="../statusCenter/connectionEditor/networkconnectioneditor.cpp" line="231"/>
         <source>Couldn&apos;t save settings</source>
         <translation>Không thể lưu cài đặt</translation>
+    </message>
+</context>
+<context>
+    <name>NetworkPluginCommon</name>
+    <message>
+        <source>the device is no longer managed by NetworkManager</source>
+        <translation type="obsolete">thiết bị này không có quản lý với NetworkManager nũa</translation>
+    </message>
+    <message>
+        <source>configuration of the device failed</source>
+        <translation type="obsolete">cấu hình thiết bị không thành công</translation>
+    </message>
+    <message>
+        <source>configuration of the device is unavailable</source>
+        <translation type="obsolete">cấu hình thiết bị không có sẵn</translation>
+    </message>
+    <message>
+        <source>configuration of the device expired</source>
+        <translation type="obsolete">cấu hình thiết bị hết hạn</translation>
+    </message>
+    <message>
+        <source>required secrets were not provided</source>
+        <translation type="obsolete">những bí mật không được cung cấp</translation>
+    </message>
+    <message>
+        <source>the authentication supplicant disconnected</source>
+        <translation type="obsolete">trình xác thực bị ngắt kết nối</translation>
+    </message>
+    <message>
+        <source>configuration of the authentication supplicant failed</source>
+        <translation type="obsolete">cấu hình trình xác thực không thành công</translation>
+    </message>
+    <message>
+        <source>the authentication supplicant failed</source>
+        <translation type="obsolete">trình xác thực không thành công</translation>
+    </message>
+    <message>
+        <source>the authentication supplicant timed out</source>
+        <translation type="obsolete">trình xác thực hết giờ</translation>
+    </message>
+    <message>
+        <source>the PPP network failed to start</source>
+        <translation type="obsolete">mạng PPP không khởi chạy được</translation>
+    </message>
+    <message>
+        <source>the PPP network was disconnected</source>
+        <translation type="obsolete">mạng PPP bị ngắt kết nối</translation>
+    </message>
+    <message>
+        <source>the PPP network failed</source>
+        <translation type="obsolete">mạng PPP không thành công</translation>
+    </message>
+    <message>
+        <source>DHCP configuration failed to start</source>
+        <translation type="obsolete">cấu hình DHCP không thể bắt đầu</translation>
+    </message>
+    <message>
+        <source>DHCP configuration had an error</source>
+        <translation type="obsolete">cấu hình DHCP xảy ra lỗi</translation>
+    </message>
+    <message>
+        <source>DHCP configuration failed</source>
+        <translation type="obsolete">cấu hình DHCP không thành công</translation>
+    </message>
+    <message>
+        <source>the modem is busy</source>
+        <translation type="obsolete">modem đang bận</translation>
+    </message>
+    <message>
+        <source>there is no dial tone on the modem</source>
+        <translation type="obsolete">không có âm quay số trên modem</translation>
+    </message>
+    <message>
+        <source>no carrier is available on the modem</source>
+        <translation type="obsolete">không có âm cung cấp trên modem</translation>
+    </message>
+    <message>
+        <source>dialling the number on the modem timed out</source>
+        <translation type="obsolete">quay số trên modem mất quá nhiều thời gian</translation>
+    </message>
+    <message>
+        <source>dialling the number on the modem failed</source>
+        <translation type="obsolete">quay số trên modem không thành công</translation>
+    </message>
+    <message>
+        <source>initialising the modem failed</source>
+        <translation type="obsolete">khởi tạo modem không thành công</translation>
+    </message>
+    <message>
+        <source>APN selection failed</source>
+        <translation type="obsolete">hoạt động chọn APN không thành công</translation>
+    </message>
+    <message>
+        <source>the modem is not searching</source>
+        <translation type="obsolete">modem không tìm kiếm</translation>
+    </message>
+    <message>
+        <source>the cell tower denied registration of the modem</source>
+        <translation type="obsolete">tháp di động từ chối chi tiết đăng ký của modem</translation>
+    </message>
+    <message>
+        <source>registration of the modem on the cell tower timed out</source>
+        <translation type="obsolete">hoạt động đăng ký modem trên tháp di động mất quá nhiều thời gian</translation>
+    </message>
+    <message>
+        <source>registration of the modem on the cell tower failed</source>
+        <translation type="obsolete">hoạt động đăng ký modem trên tháp di động không thành công</translation>
+    </message>
+    <message>
+        <source>the device firmware is missing</source>
+        <translation type="obsolete">thiếu phần sụn thiết bị</translation>
+    </message>
+    <message>
+        <source>the device was removed</source>
+        <translation type="obsolete">thiết bị bị tháo ra</translation>
+    </message>
+    <message>
+        <source>the device is sleeping</source>
+        <translation type="obsolete">thiết bị đang ngủ</translation>
+    </message>
+    <message>
+        <source>the connection was removed</source>
+        <translation type="obsolete">kết nối bị xóa</translation>
+    </message>
+    <message>
+        <source>you requested the action</source>
+        <translation type="obsolete">bạn yêu cầu hoạt động này</translation>
+    </message>
+    <message>
+        <source>the modem was not found</source>
+        <translation type="obsolete">không thể tìm kiếm modem</translation>
+    </message>
+    <message>
+        <source>Bluetooth is not available</source>
+        <translation type="obsolete">Bluetooth không có sẵn</translation>
+    </message>
+    <message>
+        <source>the SIM card is not inserted</source>
+        <translation type="obsolete">không có thẻ SIM</translation>
+    </message>
+    <message>
+        <source>the SIM PIN is required</source>
+        <translation type="obsolete">thiếu mã PIN của SIM</translation>
+    </message>
+    <message>
+        <source>the SIM PUK is required</source>
+        <translation type="obsolete">thiếu mã PUK của SIM</translation>
+    </message>
+    <message>
+        <source>the SIM PUK is exhausted</source>
+        <translation type="obsolete">mã PUK của SIM đã hết</translation>
+    </message>
+    <message>
+        <source>ModemManager is not operational on this device</source>
+        <translation type="obsolete">ModemManager không hoạt động trên thiết bị này</translation>
+    </message>
+    <message>
+        <source>the wireless network wasn&apos;t found</source>
+        <translation type="obsolete">mạng Wi-Fi không tìm được</translation>
+    </message>
+    <message>
+        <source>an unknown error occurred</source>
+        <translation type="obsolete">một lỗi không xác định đã xảy ra</translation>
+    </message>
+    <message>
+        <source>Cellular</source>
+        <translation type="obsolete">Mạng di động</translation>
     </message>
 </context>
 <context>
@@ -729,19 +896,19 @@
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="98"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="115"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="113"/>
         <source>Enable SIM PIN</source>
         <translation>Bật SIM PIN</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="105"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="121"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="119"/>
         <source>Disable SIM PIN</source>
         <translation>Tắt SIM PIN</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="112"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="165"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="163"/>
         <source>Change SIM PIN</source>
         <translation>Thay đổi SIM PIN</translation>
     </message>
@@ -803,19 +970,19 @@
         <translation>Không có thẻ SIM</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="143"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="141"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>Bạn còn %n lần thử</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="205"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="202"/>
         <source>Error</source>
         <translation>Lỗi</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="206"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
         <translation>Không thể nhận trạng thái chờ cuộc gọi từ nhà cung cấp mạng</translation>
     </message>
@@ -1083,7 +1250,7 @@ Bạn sẽ cần liên hệ với nhà cung cấp mạng để yêu cầu thẻ 
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="88"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="130"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="131"/>
         <source>Tethering</source>
         <translation>Điểm phát sóng</translation>
     </message>
@@ -1094,8 +1261,8 @@ Bạn sẽ cần liên hệ với nhà cung cấp mạng để yêu cầu thẻ 
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="118"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="142"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="152"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="143"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="153"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="202"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="203"/>
         <source>Wi-Fi</source>
@@ -1108,18 +1275,18 @@ Bạn sẽ cần liên hệ với nhà cung cấp mạng để yêu cầu thẻ 
         <translation>Đã ngắt kết nối</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="131"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="132"/>
         <source>Active</source>
         <translation>Đang hoạt động</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="137"/>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="143"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="138"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="144"/>
         <source>Connected</source>
         <translation>Đã kết nối</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="153"/>
+        <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="154"/>
         <location filename="../statusCenter/devicePanes/wifidevicepane.cpp" line="239"/>
         <source>Failed</source>
         <translation>Thất bại</translation>
@@ -1174,8 +1341,8 @@ Bạn sẽ cần liên hệ với nhà cung cấp mạng để yêu cầu thẻ 
         <location filename="../statusCenter/devicePanes/wireddevicepane.ui" line="35"/>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="64"/>
         <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="83"/>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="89"/>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="102"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="90"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="103"/>
         <source>Wired</source>
         <translation>Mạng dây</translation>
     </message>
@@ -1210,12 +1377,12 @@ Bạn sẽ cần liên hệ với nhà cung cấp mạng để yêu cầu thẻ 
         <translation>Không kết nối</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="94"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="95"/>
         <source>Connected</source>
         <translation>Đã kết nối</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="103"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="104"/>
         <source>Failed</source>
         <translation>Thất bại</translation>
     </message>
@@ -1225,27 +1392,27 @@ Bạn sẽ cần liên hệ với nhà cung cấp mạng để yêu cầu thẻ 
         <translation>Bộ định tuyến</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="143"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="144"/>
         <source>Unavailable</source>
         <translation>Không có sẵn</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="147"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="148"/>
         <source>Connect an Ethernet cable.</source>
         <translation>Cắm dây Ethernet vào.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="149"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="150"/>
         <source>This network is unavailable because %2.</source>
         <translation>Mạng này không có sẵn tại vì %2.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="175"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="177"/>
         <source>Connection Failure</source>
         <translation>Kết nối không thành công</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="177"/>
+        <location filename="../statusCenter/devicePanes/wireddevicepane.cpp" line="179"/>
         <source>Connecting to the network failed because %2.</source>
         <translation>Kết nối với mạng không thành công tại vì %2.</translation>
     </message>
@@ -1276,62 +1443,62 @@ Bạn sẽ cần liên hệ với nhà cung cấp mạng để yêu cầu thẻ 
 <context>
     <name>WirelessNetworkListDelegate</name>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="86"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="85"/>
         <source>Connected</source>
         <translation>Đã kết nối</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="90"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="89"/>
         <source>In Range</source>
         <translation>Trong phạm vi</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="98"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="97"/>
         <source>Out of range</source>
         <translation>Ngoài phạm vi</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="108"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="107"/>
         <source>Not Secured</source>
         <translation>Không bảo mật</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="111"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="110"/>
         <source>Secured with Static WEP</source>
         <translation>Bảo mật với WEP tĩnh</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="114"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="113"/>
         <source>Secured with Dynamic WEP</source>
         <translation>Bảo mật với WEP động</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="117"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="116"/>
         <source>Secured with LEAP</source>
         <translation>Bảo mật với LEAP</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="120"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="119"/>
         <source>Secured with WPA-PSK</source>
         <translation>Bảo mật với WPA-PSK</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="123"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="122"/>
         <source>Secured with WPA Enterprise</source>
         <translation>Bảo mật với WPA Doanh nghiệp</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="126"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="125"/>
         <source>Secured with WPA2-PSK</source>
         <translation>Bảo mật với WPA2-PSK</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="129"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="128"/>
         <source>Secured with WPA2 Enterprise</source>
         <translation>Bảo mật với WPA2 Doanh nghiệp</translation>
     </message>
     <message>
-        <location filename="../models/wirelessnetworklistdelegate.cpp" line="132"/>
+        <location filename="../models/wirelessnetworklistdelegate.cpp" line="131"/>
         <source>Secured with WPA3</source>
         <translation>Bảo mật với WPA3</translation>
     </message>

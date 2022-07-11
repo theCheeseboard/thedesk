@@ -20,16 +20,16 @@
 #include "wirelessonboardingsetup.h"
 #include "ui_wirelessonboardingsetup.h"
 
-#include "common.h"
+#include "networkplugincommon.h"
 
-#include <tpopover.h>
 #include "statusCenter/popovers/wirelessnetworkselectionpopover.h"
+#include <tpopover.h>
 
 #include <NetworkManagerQt/Manager>
 #include <NetworkManagerQt/WirelessDevice>
 
 struct WirelessOnboardingSetupPrivate {
-    NetworkManager::WirelessDevice::Ptr device;
+        NetworkManager::WirelessDevice::Ptr device;
 };
 
 WirelessOnboardingSetup::WirelessOnboardingSetup(QString device, QWidget* parent) :
@@ -52,7 +52,7 @@ WirelessOnboardingSetup::~WirelessOnboardingSetup() {
 }
 
 void WirelessOnboardingSetup::on_selectNetworkButton_clicked() {
-    //Turn on Wi-Fi in case it is disabled
+    // Turn on Wi-Fi in case it is disabled
     NetworkManager::setWirelessEnabled(true);
 
     WirelessNetworkSelectionPopover* selection = new WirelessNetworkSelectionPopover(d->device->uni());
@@ -65,6 +65,5 @@ void WirelessOnboardingSetup::on_selectNetworkButton_clicked() {
 }
 
 void WirelessOnboardingSetup::updateState() {
-    ui->spinner->setVisible(Common::isDeviceConnecting(d->device));
+    ui->spinner->setVisible(NetworkPluginCommon::isDeviceConnecting(d->device));
 }
-

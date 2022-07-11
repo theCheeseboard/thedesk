@@ -20,19 +20,19 @@
 #include "simsettingspopover.h"
 #include "ui_simsettingspopover.h"
 
-#include <common.h>
+#include "networkplugincommon.h"
+#include <ModemManagerQt/Modem3Gpp>
 #include <ttoast.h>
-#include <Modem3Gpp>
 
 struct SimSettingsPopoverPrivate {
-    ModemManager::ModemDevice::Ptr modem;
+        ModemManager::ModemDevice::Ptr modem;
 
-    enum Operation {
-        EnablePin,
-        DisablePin,
-        ChangePin
-    };
-    Operation operation;
+        enum Operation {
+            EnablePin,
+            DisablePin,
+            ChangePin
+        };
+        Operation operation;
 };
 
 SimSettingsPopover::SimSettingsPopover(ModemManager::ModemDevice::Ptr modem, QWidget* parent) :
@@ -86,15 +86,14 @@ void SimSettingsPopover::on_currentSimPinAcceptButton_clicked() {
         case SimSettingsPopoverPrivate::ChangePin:
             pendingReply = d->modem->sim()->changePin(ui->currentPinBox->text(), ui->changeSimPinBox->text());
             break;
-
     }
 
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(pendingReply);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
         if (watcher->isError()) {
             prepareCurrentPinPage();
 
-            QTimer::singleShot(0, [ = ] {
+            QTimer::singleShot(0, [=] {
                 ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
             });
         } else {
@@ -102,7 +101,6 @@ void SimSettingsPopover::on_currentSimPinAcceptButton_clicked() {
             ui->stackedWidget->setCurrentWidget(ui->startPage);
             prepareMainPage();
         }
-
     });
 }
 
@@ -139,7 +137,7 @@ void SimSettingsPopover::prepareCurrentPinPage() {
     QDBusArgument unlockRetriesArg = unlockRetriesReply.arguments().first().value<QDBusVariant>().variant().value<QDBusArgument>();
     unlockRetriesArg >> retries;
 
-    ui->currentPinPageOperatorName->setText(Common::operatorNameForModem(d->modem));
+    ui->currentPinPageOperatorName->setText(NetworkPluginCommon::operatorNameForModem(d->modem));
     ui->pinRetryCount->setText(tr("You have %n remaining tries", nullptr, retries.value(MM_MODEM_LOCK_SIM_PIN)));
     ui->stackedWidget->setCurrentWidget(ui->currentPinPage);
 }
@@ -163,7 +161,7 @@ void SimSettingsPopover::on_changeSimPinAcceptButton_clicked() {
 void SimSettingsPopover::on_changeSimPinButton_clicked() {
     d->operation = SimSettingsPopoverPrivate::ChangePin;
     ui->currentPinTitleLabel->setText(tr("Change SIM PIN"));
-    ui->changeSimPinOperatorName->setText(Common::operatorNameForModem(d->modem));
+    ui->changeSimPinOperatorName->setText(NetworkPluginCommon::operatorNameForModem(d->modem));
     ui->stackedWidget->setCurrentWidget(ui->changeSimPinPage);
 }
 
@@ -176,7 +174,7 @@ void SimSettingsPopover::on_enableCallWaitingSwitch_toggled(bool checked) {
     message.setArguments({checked});
 
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(message));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
         this->setEnabled(true);
         ui->callWaitingSpinner->setVisible(false);
         watcher->deleteLater();
@@ -190,12 +188,11 @@ void SimSettingsPopover::on_callWaitingTitleLabel_backButtonClicked() {
 void SimSettingsPopover::on_callWaitingButton_clicked() {
     ui->stackedWidget->setCurrentWidget(ui->spinnerPage);
 
-
     QString uni = d->modem->uni();
     QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.ModemManager1", uni, "org.freedesktop.ModemManager1.Modem.Voice", "CallWaitingQuery");
 
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(message));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
         QSignalBlocker blocker(ui->enableCallWaitingSwitch);
 
         if (watcher->isError()) {
