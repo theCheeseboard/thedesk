@@ -42,22 +42,22 @@
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="104"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sí</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="105"/>
         <source>Yes to All</source>
-        <translation type="unfinished"></translation>
+        <translation>Sí a todo</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="106"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>No</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="107"/>
         <source>No to All</source>
-        <translation type="unfinished"></translation>
+        <translation>No a todo</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="108"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="112"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancellar</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="113"/>
@@ -92,7 +92,7 @@
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="114"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayudar</translation>
     </message>
     <message>
         <location filename="../messagedialog/messagedialog.cpp" line="115"/>
