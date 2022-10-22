@@ -19,11 +19,11 @@
     <name>OnboardingFinal</name>
     <message>
         <source>That&apos;s everything!</source>
-        <translation type="unfinished"></translation>
+        <translation>Eso es todo!</translation>
     </message>
     <message>
         <source>We hope you enjoy using theDesk!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Te esperamos disfrutar usando theDesk!</translation>
     </message>
     <message>
         <source>Get Started</source>
@@ -31,7 +31,7 @@
     </message>
     <message>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Hecho</translation>
     </message>
 </context>
 <context>
@@ -45,23 +45,23 @@
     <name>OnboardingWelcome</name>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Idioma</translation>
     </message>
     <message>
         <source>Emergency</source>
-        <translation type="unfinished"></translation>
+        <translation>Emergencia</translation>
     </message>
     <message>
         <source>Let&apos;s go!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vamos!</translation>
     </message>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Bienvenido</translation>
     </message>
     <message>
         <source>Welcome to %1!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bienvenido a %1!</translation>
     </message>
     <message>
         <source>You&apos;ve made it! We&apos;ll quickly go through some important setup like setting up accounts and connecting to the Internet, and then you&apos;ll be up and running.</source>
@@ -73,14 +73,14 @@
     </message>
     <message>
         <source>OTHER OPTIONS</source>
-        <translation type="unfinished"></translation>
+        <translation>OTRAS OPCIONES</translation>
     </message>
 </context>
 <context>
     <name>QuietModeManagerTd</name>
     <message>
         <source>Sound</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonido</translation>
     </message>
     <message>
         <source>Critical Only</source>
@@ -88,11 +88,11 @@
     </message>
     <message>
         <source>No Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>No Notificaciones</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Silencio</translation>
     </message>
     <message>
         <source>Allows all sounds</source>
