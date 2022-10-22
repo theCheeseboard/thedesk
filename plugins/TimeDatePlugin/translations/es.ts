@@ -92,7 +92,7 @@
     <message>
         <location filename="../popovers/settimezonepopover.ui" line="64"/>
         <source>Where are you now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Dónde estás ahora?</translation>
     </message>
     <message>
         <location filename="../popovers/settimezonepopover.ui" line="90"/>
