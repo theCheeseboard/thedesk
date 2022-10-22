@@ -7,12 +7,12 @@
         <location filename="../settings/localesettingspane.ui" line="35"/>
         <location filename="../settings/localesettingspane.cpp" line="118"/>
         <source>Locale</source>
-        <translation type="unfinished"></translation>
+        <translation>Lugar</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="107"/>
         <source>LANGUAGE</source>
-        <translation type="unfinished"></translation>
+        <translation>IDIOMA</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="114"/>
@@ -22,7 +22,7 @@
     <message>
         <location filename="../settings/localesettingspane.ui" line="133"/>
         <source>Add Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Agregar idioma</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="277"/>
@@ -32,7 +32,7 @@
     <message>
         <location filename="../settings/localesettingspane.ui" line="221"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiempo</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="242"/>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../settings/localesettingspane.ui" line="263"/>
         <source>Country</source>
-        <translation type="unfinished"></translation>
+        <translation>País</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="184"/>
@@ -52,47 +52,47 @@
     <message>
         <location filename="../settings/localesettingspane.ui" line="177"/>
         <source>Numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeros</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="228"/>
         <source>First day of week</source>
-        <translation type="unfinished"></translation>
+        <translation>Primer día de la semana</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="207"/>
         <source>REGION</source>
-        <translation type="unfinished"></translation>
+        <translation>REGIÓN</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.ui" line="256"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Fecha</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="78"/>
         <source>Primary</source>
-        <translation type="unfinished"></translation>
+        <translation>Primario</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="95"/>
         <source>Metric</source>
-        <translation type="unfinished"></translation>
+        <translation>Métrico</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="98"/>
         <source>Imperial</source>
-        <translation type="unfinished"></translation>
+        <translation>Imperial</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="101"/>
         <source>Imperial (United Kingdom)</source>
-        <translation type="unfinished"></translation>
+        <translation>Imperial (Reino Unido)</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="151"/>
         <source>For this language</source>
-        <translation type="unfinished"></translation>
+        <translation>Para este idioma</translation>
     </message>
     <message>
         <location filename="../settings/localesettingspane.cpp" line="152"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../settings/localesettingspane.cpp" line="158"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Retirar</translation>
     </message>
 </context>
 <context>
@@ -116,7 +116,7 @@
         <location filename="../onboarding/onboardingregion.ui" line="35"/>
         <location filename="../onboarding/onboardingregion.cpp" line="52"/>
         <source>Region</source>
-        <translation type="unfinished"></translation>
+        <translation>Región</translation>
     </message>
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="42"/>
@@ -131,7 +131,7 @@
     <message>
         <location filename="../onboarding/onboardingregion.ui" line="138"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Siguiente</translation>
     </message>
 </context>
 </TS>
