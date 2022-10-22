@@ -7,7 +7,7 @@
         <location filename="../settings/accessibilitysettingspane.ui" line="35"/>
         <location filename="../settings/accessibilitysettingspane.cpp" line="66"/>
         <source>Accessibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Accesibilidad</translation>
     </message>
     <message>
         <location filename="../settings/accessibilitysettingspane.ui" line="84"/>
