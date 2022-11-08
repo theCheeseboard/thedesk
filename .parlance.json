@@ -17,115 +17,115 @@
             "name": "theDesk Platform",
             "type": "qt",
             "path": "/platform/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Session Manager",
             "type": "qt",
             "path": "/startdesk/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Polkit",
             "type": "qt",
             "path": "/polkitagent/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Accessibility",
             "type": "qt",
             "path": "/plugins/AccessibilityPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Audio",
             "type": "qt",
             "path": "/plugins/AudioPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Bluetooth",
             "type": "qt",
             "path": "/plugins/BluetoothPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Brightness",
             "type": "qt",
             "path": "/plugins/BrightnessPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Defaults",
             "type": "qt",
             "path": "/plugins/DefaultsPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Display",
             "type": "qt",
             "path": "/plugins/DisplayPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Input",
             "type": "qt",
             "path": "/plugins/InputPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Locale",
             "type": "qt",
             "path": "/plugins/LocalePlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Network",
             "type": "qt",
             "path": "/plugins/NetworkPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Notifications",
             "type": "qt",
             "path": "/plugins/NotificationsPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Overview",
             "type": "qt",
             "path": "/plugins/OverviewPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Power",
             "type": "qt",
             "path": "/plugins/PowerPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Screenshots",
             "type": "qt",
             "path": "/plugins/ScreenshotPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Theme",
             "type": "qt",
             "path": "/plugins/ThemePlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Time and Date",
             "type": "qt",
             "path": "/plugins/TimeDatePlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         },
         {
             "name": "theDesk Users",
             "type": "qt",
             "path": "/plugins/UsersPlugin/translations/{lang}.ts",
-            "baseLang": "en"
+            "baseLang": "en_US"
         }
     ]
 }
