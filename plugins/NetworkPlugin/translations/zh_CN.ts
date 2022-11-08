@@ -30,6 +30,7 @@
     </message>
     <message>
         <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="135"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="397"/>
         <source>Cellular</source>
         <translation type="unfinished">蜂窝</translation>
     </message>
@@ -49,60 +50,60 @@
         <translation type="unfinished">失败</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="214"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="215"/>
         <source>Unavailable</source>
         <translation type="unfinished">不可用</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="217"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="218"/>
         <source>This network is unavailable because %2.</source>
         <translation type="unfinished">由于％2，该网络不可用。</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="248"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="249"/>
         <source>Connection Failure</source>
         <translation type="unfinished">连接失败</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="250"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="251"/>
         <source>Connecting to the network failed because %2.</source>
         <translation type="unfinished">由于％2，连接到网络失败。</translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="325"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="338"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="345"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="326"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="339"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="346"/>
         <source>Enter SIM PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="327"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="331"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="343"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="328"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="332"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="344"/>
         <source>SIM PIN Required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="356"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="369"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="376"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="357"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="370"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="377"/>
         <source>Enter SIM PUK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="358"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="362"/>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="374"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="359"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="363"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="375"/>
         <source>SIM PUK Required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="333"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="334"/>
         <source>A SIM PIN is required to connect to the cellular network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="364"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="365"/>
         <source>A SIM PUK is required to connect to the cellular network.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -122,17 +123,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="208"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="209"/>
         <source>No SIM Card</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="209"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="210"/>
         <source>Insert a SIM card to connect to cellular services.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="211"/>
+        <location filename="../statusCenter/devicePanes/cellularpane.cpp" line="212"/>
         <source>No SIM</source>
         <translation type="unfinished"></translation>
     </message>

@@ -172,6 +172,7 @@ CellularPane::~CellularPane() {
 
 void CellularPane::updateState() {
     if (!d->modem) return;
+    if (!d->modem->modemInterface()) return;
 
     QIcon signalIcon = QIcon::fromTheme(NetworkPluginCommon::iconForSignalStrength(d->modem->modemInterface()->signalQuality().signal, NetworkPluginCommon::Cellular));
     QIcon signalErrorIcon = QIcon::fromTheme(NetworkPluginCommon::iconForSignalStrength(d->modem->modemInterface()->signalQuality().signal, NetworkPluginCommon::CellularError));
@@ -393,6 +394,7 @@ void CellularPane::updateState() {
 }
 
 QString CellularPane::operatorName() {
+    if (!d->modem) return tr("Cellular");
     return NetworkPluginCommon::operatorNameForModem(d->modem);
 }
 

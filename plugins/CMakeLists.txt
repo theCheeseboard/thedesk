@@ -26,7 +26,7 @@ add_subdirectory(AccessibilityPlugin)
 # TODO: Port when KF6 is available:
 # add_subdirectory(AudioPlugin)
 # add_subdirectory(BluetoothPlugin)
-# add_subdirectory(NetworkPlugin)
+ add_subdirectory(NetworkPlugin)
 
 # TODO: Check that PolkitQt works when KF6 is available
 add_subdirectory(UsersPlugin)
