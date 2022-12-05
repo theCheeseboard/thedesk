@@ -12,6 +12,5 @@ add_subdirectory(startdesk)
 add_subdirectory(desktop)
 add_subdirectory(platform)
 add_subdirectory(plugins)
+add_subdirectory(polkitagent)
 
-# TODO: Port when KF6 is available:
-# add_subdirectory(polkitagent)

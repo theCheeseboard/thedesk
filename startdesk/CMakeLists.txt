@@ -51,7 +51,6 @@ cntp_target_name(startdesk "startdesk")
 #    DEFAULTS_FILE startdesk.conf)
 
 target_link_libraries(startdesk Qt6::Widgets Qt6::Network Qt6::DBus libcontemporary libtdesktopenvironment libthedesk)
-target_include_directories(startdesk PUBLIC ../libstartdesk/)
 
 install(TARGETS startdesk
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

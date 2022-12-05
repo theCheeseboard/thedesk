@@ -29,4 +29,4 @@ add_subdirectory(AudioPlugin)
  add_subdirectory(NetworkPlugin)
 
 # TODO: Check that PolkitQt works when KF6 is available
-#add_subdirectory(UsersPlugin)
+add_subdirectory(UsersPlugin)

@@ -19,19 +19,15 @@
  * *************************************/
 #include "overlaywindow.h"
 
-#include <tapplication.h>
-#include <QDebug>
 #include "polkitinterface.h"
 #include <PolkitQt1/Subject>
+#include <QDebug>
+#include <tapplication.h>
 
 int main(int argc, char* argv[]) {
     tApplication a(argc, argv);
     a.setQuitOnLastWindowClosed(false);
-#ifdef BLUEPRINT
-    a.setShareDir("/usr/share/thedeskb/td-polkitagent");
-#else
-    a.setShareDir("/usr/share/thedesk/td-polkitagent");
-#endif
+    a.setApplicationShareDir("thedesk/td-polkitagent");
     a.installTranslators();
 
     PolkitInterface* interface = new PolkitInterface();
