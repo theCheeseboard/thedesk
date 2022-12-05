@@ -20,9 +20,9 @@
 #ifndef QUICKWIDGETSINK_H
 #define QUICKWIDGETSINK_H
 
+#include <PulseAudioQt/Sink>
+#include <PulseAudioQt/SinkInput>
 #include <QWidget>
-#include <Sink>
-#include <SinkInput>
 
 namespace Ui {
     class QuickWidgetSink;

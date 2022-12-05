@@ -20,8 +20,8 @@
 #ifndef MICCHUNK_H
 #define MICCHUNK_H
 
+#include <PulseAudioQt/SourceOutput>
 #include <icontextchunk.h>
-#include <SourceOutput>
 
 class MicChunk : public IconTextChunk {
         Q_OBJECT

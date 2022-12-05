@@ -20,17 +20,17 @@
 #include "quickwidgetsink.h"
 #include "ui_quickwidgetsink.h"
 
-#include <QMenu>
-#include <the-libs_global.h>
-#include <Context>
-#include <Server>
 #include "common.h"
+#include <PulseAudioQt/Context>
+#include <PulseAudioQt/Server>
+#include <QMenu>
+#include <libcontemporary_global.h>
 
 struct QuickWidgetSinkPrivate {
-    PulseAudioQt::Sink* sink;
-    bool changingVolume = false;
+        PulseAudioQt::Sink* sink;
+        bool changingVolume = false;
 
-    QMenu* menu;
+        QMenu* menu;
 };
 
 QuickWidgetSink::QuickWidgetSink(PulseAudioQt::Sink* sink, QWidget* parent) :

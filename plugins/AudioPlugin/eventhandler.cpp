@@ -21,27 +21,28 @@
 
 #include "common.h"
 #include <QKeySequence>
-#include <statemanager.h>
 #include <hudmanager.h>
-#include <quietmodemanager.h>
 #include <keygrab.h>
+#include <quietmodemanager.h>
+#include <statemanager.h>
 
-#include <Context>
-#include <Server>
+#include <PulseAudioQt/Context>
+#include <PulseAudioQt/Server>
 #include <QIcon>
 
 struct EventHandlerPrivate {
-    KeyGrab* volumeUp;
-    KeyGrab* volumeDown;
-    KeyGrab* volumeMute;
+        KeyGrab* volumeUp;
+        KeyGrab* volumeDown;
+        KeyGrab* volumeMute;
 
-    PulseAudioQt::Sink* defaultSink = nullptr;
-    bool firstSink = true;
+        PulseAudioQt::Sink* defaultSink = nullptr;
+        bool firstSink = true;
 
-    quint32 oldActivePortIndex;
+        quint32 oldActivePortIndex;
 };
 
-EventHandler::EventHandler(QObject* parent) : QObject(parent) {
+EventHandler::EventHandler(QObject* parent) :
+    QObject(parent) {
     d = new EventHandlerPrivate();
 
     connect(PulseAudioQt::Context::instance()->server(), &PulseAudioQt::Server::defaultSinkChanged, this, &EventHandler::defaultSinkChanged);
@@ -50,20 +51,20 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
     d->volumeUp = new KeyGrab(QKeySequence(Qt::Key_VolumeUp), "volumeUp");
     d->volumeDown = new KeyGrab(QKeySequence(Qt::Key_VolumeDown), "volumeDown");
     d->volumeMute = new KeyGrab(QKeySequence(Qt::Key_VolumeMute), "volumeMute");
-    connect(d->volumeUp, &KeyGrab::activated, this, [ = ] {
+    connect(d->volumeUp, &KeyGrab::activated, this, [=] {
         this->adjustVolume(5);
     });
-    connect(d->volumeDown, &KeyGrab::activated, this, [ = ] {
+    connect(d->volumeDown, &KeyGrab::activated, this, [=] {
         this->adjustVolume(-5);
     });
-    connect(d->volumeMute, &KeyGrab::activated, this, [ = ] {
+    connect(d->volumeMute, &KeyGrab::activated, this, [=] {
         QuietModeManagerTd::QuietMode newMode = StateManager::quietModeManager()->nextQuietMode();
         StateManager::quietModeManager()->setQuietMode(newMode);
 
         StateManager::instance()->hudManager()->showHud({
-            {"icon", StateManager::quietModeManager()->icon(newMode)},
-            {"title", StateManager::quietModeManager()->name(newMode)},
-            {"text", StateManager::quietModeManager()->description(newMode)}
+            {"icon",  StateManager::quietModeManager()->icon(newMode)       },
+            {"title", StateManager::quietModeManager()->name(newMode)       },
+            {"text",  StateManager::quietModeManager()->description(newMode)}
         });
     });
 
@@ -84,11 +85,11 @@ void EventHandler::adjustVolume(int percentageChange) {
         return;
     }
 
-    //Get the default sink and find the widget for this sink
+    // Get the default sink and find the widget for this sink
     PulseAudioQt::Sink* sink = PulseAudioQt::Context::instance()->server()->defaultSink();
     if (!sink) {
         StateManager::instance()->hudManager()->showHud({
-            {"icon", "audio-volume-muted"},
+            {"icon",  "audio-volume-muted"  },
             {"title", tr("No Audio Devices")}
         });
         return;
@@ -110,7 +111,7 @@ void EventHandler::defaultSinkChanged(PulseAudioQt::Sink* defaultSink) {
     }
     d->defaultSink = defaultSink;
     if (defaultSink) {
-        connect(defaultSink, &PulseAudioQt::Sink::activePortIndexChanged, this, [ = ] {
+        connect(defaultSink, &PulseAudioQt::Sink::activePortIndexChanged, this, [=] {
             if (d->oldActivePortIndex != defaultSink->activePortIndex()) {
                 d->oldActivePortIndex = defaultSink->activePortIndex();
                 showHud(defaultSink);
@@ -129,9 +130,9 @@ void EventHandler::defaultSinkChanged(PulseAudioQt::Sink* defaultSink) {
 void EventHandler::showHud(PulseAudioQt::Sink* sink, qint64 volume) {
     if (StateManager::quietModeManager()->currentMode() == QuietModeManagerTd::Mute) {
         StateManager::instance()->hudManager()->showHud({
-            {"icon", StateManager::quietModeManager()->icon(QuietModeManagerTd::Mute)},
-            {"title", tr("Mute")},
-            {"text", tr("Unmute Quiet Mode before changing the volume")}
+            {"icon",  StateManager::quietModeManager()->icon(QuietModeManagerTd::Mute)},
+            {"title", tr("Mute")                                                      },
+            {"text",  tr("Unmute Quiet Mode before changing the volume")              }
         });
         return;
     }

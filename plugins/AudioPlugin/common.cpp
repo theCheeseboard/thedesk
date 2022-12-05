@@ -19,7 +19,7 @@
  * *************************************/
 #include "common.h"
 
-#include <Port>
+#include <PulseAudioQt/Port>
 #include <QVariantMap>
 
 Common::DevicePort Common::portForSink(PulseAudioQt::Sink* sink) {
@@ -32,7 +32,7 @@ Common::DevicePort Common::portForSink(PulseAudioQt::Sink* sink) {
 
         PulseAudioQt::Port* port = sink->ports().at(sink->activePortIndex());
         if (port->availability() == PulseAudioQt::Port::Unavailable) {
-            //Weird thing? Use a workaround here
+            // Weird thing? Use a workaround here
             QList<PulseAudioQt::Port*> availablePorts;
             for (PulseAudioQt::Port* port : sink->ports()) {
                 if (port->availability() != PulseAudioQt::Port::Unavailable) availablePorts.append(port);
@@ -45,14 +45,13 @@ Common::DevicePort Common::portForSink(PulseAudioQt::Sink* sink) {
             }
         }
 
-
         if (port != nullptr) {
             QString newPort;
             if (port->name().contains("headphones", Qt::CaseInsensitive)) {
                 return Headphones;
             } else if (port->name().contains("speaker", Qt::CaseInsensitive)) {
                 return Speakers;
-            }   else if (port->name().contains("lineout", Qt::CaseInsensitive)) {
+            } else if (port->name().contains("lineout", Qt::CaseInsensitive)) {
                 return LineOut;
             }
         }

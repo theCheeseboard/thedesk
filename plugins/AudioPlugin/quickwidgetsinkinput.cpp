@@ -20,23 +20,24 @@
 #include "quickwidgetsinkinput.h"
 #include "ui_quickwidgetsinkinput.h"
 
-#include <Context>
-#include <the-libs_global.h>
+#include "common.h"
+#include <PulseAudioQt/Context>
+#include <QActionGroup>
 #include <QMenu>
 #include <QPointer>
-#include "common.h"
+#include <libcontemporary_global.h>
 
 struct QuickWidgetSinkInputPrivate {
-    bool changingVolume = false;
-    PulseAudioQt::SinkInput* sinkInput;
+        bool changingVolume = false;
+        PulseAudioQt::SinkInput* sinkInput;
 
-    QString pid;
-    static QMultiMap<QString, QuickWidgetSinkInput*> sinkInputsByPid;
+        QString pid;
+        static QMultiMap<QString, QuickWidgetSinkInput*> sinkInputsByPid;
 
-    QMenu* menu;
-    QMenu* devicesMenu;
-    QMap<PulseAudioQt::Sink*, QAction*> sinkActions;
-    QActionGroup* devicesGroup;
+        QMenu* menu;
+        QMenu* devicesMenu;
+        QMap<PulseAudioQt::Sink*, QAction*> sinkActions;
+        QActionGroup* devicesGroup;
 };
 
 QMultiMap<QString, QuickWidgetSinkInput*> QuickWidgetSinkInputPrivate::sinkInputsByPid = QMultiMap<QString, QuickWidgetSinkInput*>();
@@ -90,11 +91,11 @@ void QuickWidgetSinkInput::updateVolume() {
 
 void QuickWidgetSinkInput::updateClient() {
     QString name = d->sinkInput->properties().value("application.name", d->sinkInput->name()).toString();
-//    if (d->sinkInput->client()) {
-//        name = d->sinkInput->client()->name();
-//    } else {
-//        name = d->sinkInput->name();
-//    }
+    //    if (d->sinkInput->client()) {
+    //        name = d->sinkInput->client()->name();
+    //    } else {
+    //        name = d->sinkInput->name();
+    //    }
     ui->nameLabel->setText(this->fontMetrics().elidedText(name, Qt::ElideRight, SC_DPI(200)));
 }
 
@@ -130,17 +131,17 @@ void QuickWidgetSinkInput::sinkAdded(PulseAudioQt::Sink* sink) {
     QAction* action = new QAction(this);
     action->setCheckable(true);
 
-    connect(sink, &PulseAudioQt::Sink::propertiesChanged, action, [ = ] {
+    connect(sink, &PulseAudioQt::Sink::propertiesChanged, action, [=] {
         action->setText(Common::nameForSink(sink));
     });
     action->setText(Common::nameForSink(sink));
 
-    connect(d->sinkInput, &PulseAudioQt::SinkInput::deviceIndexChanged, action, [ = ] {
+    connect(d->sinkInput, &PulseAudioQt::SinkInput::deviceIndexChanged, action, [=] {
         action->setChecked(sink->index() == d->sinkInput->deviceIndex());
     });
     action->setChecked(sink->index() == d->sinkInput->deviceIndex());
 
-    connect(action, &QAction::toggled, this, [ = ](bool checked) {
+    connect(action, &QAction::toggled, this, [=](bool checked) {
         if (checked) {
             for (QuickWidgetSinkInput* sinkInputWidget : d->sinkInputsByPid.values(d->pid)) sinkInputWidget->d->sinkInput->setDeviceIndex(sink->index());
         }

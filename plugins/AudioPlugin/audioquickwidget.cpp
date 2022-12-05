@@ -20,20 +20,20 @@
 #include "audioquickwidget.h"
 #include "ui_audioquickwidget.h"
 
-#include <statemanager.h>
-#include <quietmodemanager.h>
 #include <QPushButton>
 #include <QScreen>
+#include <quietmodemanager.h>
+#include <statemanager.h>
 
-#include <Context>
 #include "quickwidgetsink.h"
 #include "quickwidgetsinkinput.h"
+#include <PulseAudioQt/Context>
 
 struct AudioQuickWidgetPrivate {
-    QScreen* primaryScreen = nullptr;
+        QScreen* primaryScreen = nullptr;
 
-    QMap<PulseAudioQt::Sink*, QuickWidgetSink*> sinkWidgets;
-    QMap<PulseAudioQt::SinkInput*, QuickWidgetSinkInput*> sinkInputWidgets;
+        QMap<PulseAudioQt::Sink*, QuickWidgetSink*> sinkWidgets;
+        QMap<PulseAudioQt::SinkInput*, QuickWidgetSinkInput*> sinkInputWidgets;
 };
 
 AudioQuickWidget::AudioQuickWidget(QWidget* parent) :
@@ -59,12 +59,12 @@ AudioQuickWidget::AudioQuickWidget(QWidget* parent) :
         button->setCheckable(true);
         button->setAutoExclusive(true);
         button->setChecked(StateManager::quietModeManager()->currentMode() == m);
-        connect(button, &QPushButton::toggled, this, [ = ](bool checked) {
+        connect(button, &QPushButton::toggled, this, [=](bool checked) {
             if (checked) {
                 StateManager::quietModeManager()->setQuietMode(m);
             }
         });
-        connect(StateManager::quietModeManager(), &QuietModeManagerTd::quietModeChanged, this, [ = ](QuietModeManagerTd::QuietMode newMode, QuietModeManagerTd::QuietMode oldMode) {
+        connect(StateManager::quietModeManager(), &QuietModeManagerTd::quietModeChanged, this, [=](QuietModeManagerTd::QuietMode newMode, QuietModeManagerTd::QuietMode oldMode) {
             Q_UNUSED(oldMode);
             button->setChecked(newMode == m);
         });

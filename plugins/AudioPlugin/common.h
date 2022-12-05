@@ -20,7 +20,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#include <Sink>
+#include <PulseAudioQt/Sink>
 
 namespace Common {
     enum DevicePort {
@@ -33,6 +33,6 @@ namespace Common {
 
     DevicePort portForSink(PulseAudioQt::Sink* sink);
     QString nameForSink(PulseAudioQt::Sink* sink);
-}
+} // namespace Common
 
 #endif // COMMON_H

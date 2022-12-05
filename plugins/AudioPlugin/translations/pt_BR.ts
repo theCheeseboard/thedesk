@@ -4,55 +4,52 @@
 <context>
     <name>AudioQuickWidget</name>
     <message>
-        <location filename="../audioquickwidget.ui" line="59"/>
         <source>VOLUME</source>
-        <translation>VOLUME</translation>
+        <translation type="vanished">VOLUME</translation>
     </message>
     <message>
-        <location filename="../audioquickwidget.ui" line="90"/>
         <source>APPLICATIONS</source>
-        <translation>APLICAÇÕES</translation>
+        <translation type="vanished">APLICAÇÕES</translation>
     </message>
     <message>
-        <location filename="../audioquickwidget.ui" line="109"/>
         <source>QUIET MODE</source>
-        <translation>MODO SILENCIOSO</translation>
+        <translation type="vanished">MODO SILENCIOSO</translation>
     </message>
 </context>
 <context>
     <name>EventHandler</name>
     <message>
-        <location filename="../eventhandler.cpp" line="92"/>
+        <location filename="../eventhandler.cpp" line="93"/>
         <source>No Audio Devices</source>
         <translation>Nenhum dispositivo de áudio</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="133"/>
+        <location filename="../eventhandler.cpp" line="134"/>
         <source>Mute</source>
         <translation>Mudo</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="134"/>
+        <location filename="../eventhandler.cpp" line="135"/>
         <source>Unmute Quiet Mode before changing the volume</source>
         <translation>Desative o modo silencioso antes de mudar o volume</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="150"/>
+        <location filename="../eventhandler.cpp" line="151"/>
         <source>Speakers</source>
         <translation>Alto-falantes</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="154"/>
+        <location filename="../eventhandler.cpp" line="155"/>
         <source>Headphones</source>
         <translation>Fones de ouvido</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="158"/>
+        <location filename="../eventhandler.cpp" line="159"/>
         <source>Line Out</source>
         <translation>Saída de linha (Line Out)</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="166"/>
+        <location filename="../eventhandler.cpp" line="167"/>
         <source>Volume</source>
         <translation>Volume</translation>
     </message>
@@ -60,7 +57,7 @@
 <context>
     <name>MicChunk</name>
     <message numerus="yes">
-        <location filename="../micchunk.cpp" line="66"/>
+        <location filename="../micchunk.cpp" line="67"/>
         <source>%n applications</source>
         <translation>
             <numerusform>%n aplicativo</numerusform>
@@ -71,20 +68,18 @@
 <context>
     <name>QuickWidgetSink</name>
     <message>
-        <location filename="../quickwidgetsink.ui" line="68"/>
         <source>Make Default</source>
-        <translation>Tornar padrão</translation>
+        <translation type="vanished">Tornar padrão</translation>
     </message>
     <message>
-        <location filename="../quickwidgetsink.ui" line="76"/>
         <source>Use for All Applications</source>
-        <translation>Usar para todos os aplicativos</translation>
+        <translation type="vanished">Usar para todos os aplicativos</translation>
     </message>
 </context>
 <context>
     <name>QuickWidgetSinkInput</name>
     <message>
-        <location filename="../quickwidgetsinkinput.cpp" line="63"/>
+        <location filename="../quickwidgetsinkinput.cpp" line="64"/>
         <source>Play on</source>
         <translation>Reproduzir em</translation>
     </message>
