@@ -4,4 +4,6 @@ set(libthebranch_VERSION 1.0.0)
 
 include("${CMAKE_CURRENT_LIST_DIR}/libthedeskTargets.cmake")
 
+find_package(Qt6 REQUIRED COMPONENTS Widgets Multimedia DBus Svg QuickWidgets)
+
 check_required_components(libthedesk)

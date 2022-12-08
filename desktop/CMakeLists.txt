@@ -123,8 +123,6 @@ set_target_properties(thedesk PROPERTIES
 cntp_init(thedesk 17)
 cntp_translate(thedesk)
 cntp_target_name(thedesk "thedesk")
-cntp_defaults_file(thedesk
-    DEFAULTS_FILE thedesk.conf)
 
 target_link_libraries(thedesk Qt6::Widgets Qt6::Network Qt6::DBus Qt6::Multimedia Qt6::QuickWidgets libcontemporary libtdesktopenvironment libthedesk)
 target_include_directories(thedesk PUBLIC ../libthedesk/)

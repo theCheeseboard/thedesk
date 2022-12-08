@@ -107,8 +107,11 @@ set_target_properties(libthedesk PROPERTIES
         OUTPUT_NAME thedesk
         FRAMEWORK TRUE
         MACOSX_FRAMEWORK_IDENTIFIER com.vicr123.libthedesk
-        VERSION 1.0.0
-        PUBLIC_HEADER "${HEADERS}")
+        VERSION 1.0.0)
+cntp_target_public_headers(libthedesk
+    DESTINATION_DIRECTORY libthedesk
+    HEADERS ${HEADERS}
+)
 
 target_link_libraries(libthedesk Qt6::Widgets Qt6::DBus Qt6::Multimedia Qt6::Svg Qt6::QuickWidgets libcontemporary libtdesktopenvironment)
 target_compile_definitions(libthedesk PRIVATE LIBTHEDESK_LIBRARY)
