@@ -239,17 +239,17 @@
         <translation>Oturumu Sonlandır</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="199"/>
+        <location filename="../background/background.cpp" line="201"/>
         <source>by %1</source>
         <translation>%1 tarafından</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="295"/>
+        <location filename="../background/background.cpp" line="297"/>
         <source>For desktop</source>
         <translation>Masaüstü için</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="355"/>
+        <location filename="../background/background.cpp" line="357"/>
         <source>Select Background</source>
         <translation>Arkaplan seç</translation>
     </message>

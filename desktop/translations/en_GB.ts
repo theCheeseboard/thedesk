@@ -239,17 +239,17 @@
         <translation>End Session</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="199"/>
+        <location filename="../background/background.cpp" line="201"/>
         <source>by %1</source>
         <translation>by %1</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="295"/>
+        <location filename="../background/background.cpp" line="297"/>
         <source>For desktop</source>
         <translation>For desktop</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="355"/>
+        <location filename="../background/background.cpp" line="357"/>
         <source>Select Background</source>
         <translation>Select Background</translation>
     </message>

@@ -20,11 +20,11 @@
 #include "barwindow.h"
 #include "ui_barwindow.h"
 
-#include <QScreen>
-#include <QPainter>
-#include <QMouseEvent>
-#include <QTimer>
 #include <QGraphicsOpacityEffect>
+#include <QMouseEvent>
+#include <QPainter>
+#include <QScreen>
+#include <QTimer>
 #include <Wm/desktopwm.h>
 
 #include "mainbarwidget.h"
@@ -33,11 +33,13 @@
 
 #include <tsettings.h>
 
+#include <barmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <barmanager.h>
 
 #include <Gestures/gesturedaemon.h>
+#include <Screens/screendaemon.h>
+#include <Screens/systemscreen.h>
 #include <tpopover.h>
 
 #include "gateway/gateway.h"
@@ -45,32 +47,31 @@
 #include <keygrab.h>
 
 struct BarWindowPrivate {
-    MainBarWidget* mainBarWidget;
-    StatusCenter* statusCenterWidget;
+        MainBarWidget* mainBarWidget;
+        StatusCenter* statusCenterWidget;
 
-    tVariantAnimation* heightAnim;
-    tVariantAnimation* barStatusCenterTransitionAnim;
+        tVariantAnimation* heightAnim;
+        tVariantAnimation* barStatusCenterTransitionAnim;
 
-    QGraphicsOpacityEffect* mainBarOpacity;
-    QGraphicsOpacityEffect* statusCenterOpacity;
+        QGraphicsOpacityEffect* mainBarOpacity;
+        QGraphicsOpacityEffect* statusCenterOpacity;
 
-    QScreen* oldPrimaryScreen = nullptr;
+        SystemScreen* oldPrimaryScreen = nullptr;
 
-    QList<DesktopWmWindowPtr> maximisedWindows;
+        QList<DesktopWmWindowPtr> maximisedWindows;
 
-    bool barExpanding = true;
-    bool statusCenterShown = false;
-    bool barPendingShow = false;
+        bool barExpanding = true;
+        bool statusCenterShown = false;
+        bool barPendingShow = false;
 
-    GestureInteractionPtr lastGesture;
+        GestureInteractionPtr lastGesture;
 
-    tSettings settings;
+        tSettings settings;
 };
 
 BarWindow::BarWindow(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::BarWindow) {
-
     ui->setupUi(this);
     d = new BarWindowPrivate();
 
@@ -94,11 +95,11 @@ BarWindow::BarWindow(QWidget* parent) :
 
     d->heightAnim = new tVariantAnimation(this);
     d->heightAnim->setDuration(500);
-    connect(d->heightAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(d->heightAnim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         this->setFixedHeight(value.toInt() + 1);
     });
 
-    connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [ = ](GestureInteractionPtr gesture) {
+    connect(GestureDaemon::instance(), &GestureDaemon::gestureBegin, this, [=](GestureInteractionPtr gesture) {
         if (gesture->isValidInteraction(GestureTypes::Swipe, GestureTypes::Down, 3)) {
             if (d->barExpanding) {
                 trackStatusCenterPullDownGesture(gesture);
@@ -117,16 +118,16 @@ BarWindow::BarWindow(QWidget* parent) :
     d->barStatusCenterTransitionAnim->setEndValue(1.0);
     d->barStatusCenterTransitionAnim->setDuration(250);
     d->barStatusCenterTransitionAnim->setEasingCurve(QEasingCurve::InOutCubic);
-    connect(d->barStatusCenterTransitionAnim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(d->barStatusCenterTransitionAnim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         double percentage = value.toDouble();
-        if (qFuzzyIsNull(percentage)) { //Fully show bar view
+        if (qFuzzyIsNull(percentage)) { // Fully show bar view
             d->statusCenterWidget->setVisible(false);
             d->mainBarWidget->setVisible(true);
             d->statusCenterOpacity->setEnabled(false);
             d->mainBarOpacity->setEnabled(false);
             this->setFixedHeight(d->mainBarWidget->expandedHeight());
             ui->line->setVisible(true);
-        } else if (qFuzzyCompare(percentage, 1)) { //Fully show Status Center view
+        } else if (qFuzzyCompare(percentage, 1)) { // Fully show Status Center view
             d->statusCenterWidget->setVisible(true);
             d->mainBarWidget->setVisible(false);
             d->statusCenterOpacity->setEnabled(false);
@@ -134,13 +135,13 @@ BarWindow::BarWindow(QWidget* parent) :
             this->setFixedHeight(d->statusCenterWidget->height());
             ui->line->setVisible(false);
         } else {
-            if (percentage < 0.5) { //Animate the bar
+            if (percentage < 0.5) { // Animate the bar
                 d->mainBarOpacity->setOpacity(1 - (percentage * 2));
                 d->mainBarOpacity->setEnabled(true);
                 d->mainBarWidget->setVisible(true);
                 d->statusCenterWidget->setVisible(false);
                 d->statusCenterOpacity->setEnabled(false);
-            } else { //Animate the Status Center
+            } else { // Animate the Status Center
                 d->statusCenterOpacity->setOpacity(percentage * 2 - 1);
                 d->statusCenterOpacity->setEnabled(true);
                 d->statusCenterWidget->setVisible(true);
@@ -152,7 +153,7 @@ BarWindow::BarWindow(QWidget* parent) :
         }
     });
 
-    //Tell the window manager that this is a "taskbar" type window
+    // Tell the window manager that this is a "taskbar" type window
     this->setWindowFlag(Qt::FramelessWindowHint);
     DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
     DesktopWm::instance()->blurWindow(this);
@@ -163,21 +164,21 @@ BarWindow::BarWindow(QWidget* parent) :
 
     connect(StateManager::statusCenterManager(), &StatusCenterManager::showStatusCenter, this, &BarWindow::showStatusCenter);
     connect(StateManager::statusCenterManager(), &StatusCenterManager::hideStatusCenter, this, &BarWindow::hideStatusCenter);
-    connect(StateManager::barManager(), &BarManager::barLockedChanged, this, [ = ](bool isBarLocked) {
+    connect(StateManager::barManager(), &BarManager::barLockedChanged, this, [=](bool isBarLocked) {
         if (!isBarLocked) {
-//            showBar();
-//        } else {
+            //            showBar();
+            //        } else {
             if (!this->geometry().contains(QCursor::pos())) hideBar();
         }
     });
 
-    connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
+    connect(&d->settings, &tSettings::settingChanged, this, [=](QString key, QVariant value) {
         if (key == "Appearance/translucent") {
             this->update();
         }
     });
     connect(DesktopWm::instance(), &DesktopWm::windowAdded, this, &BarWindow::trackWindow);
-    connect(DesktopWm::instance(), &DesktopWm::windowRemoved, this, [ = ](DesktopWmWindowPtr window) {
+    connect(DesktopWm::instance(), &DesktopWm::windowRemoved, this, [=](DesktopWmWindowPtr window) {
         if (d->maximisedWindows.contains(window)) {
             d->maximisedWindows.removeAll(window);
             this->update();
@@ -188,13 +189,13 @@ BarWindow::BarWindow(QWidget* parent) :
     }
 
     KeyGrab* statusCenterGrab = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::Key_Tab));
-    connect(statusCenterGrab, &KeyGrab::activated, this, [ = ] {
+    connect(statusCenterGrab, &KeyGrab::activated, this, [=] {
         StateManager::statusCenterManager()->show();
     });
 
     ui->line->raise();
 
-    //Initialise the Gateway
+    // Initialise the Gateway
     Gateway::instance();
 }
 
@@ -212,7 +213,7 @@ void BarWindow::resizeEvent(QResizeEvent* event) {
     StateManager::barManager()->setBarHeight(this->height());
 }
 
-void BarWindow::enterEvent(QEnterEvent*event) {
+void BarWindow::enterEvent(QEnterEvent* event) {
     if (d->lastGesture && d->lastGesture->isActive()) return;
     d->barPendingShow = true;
     if ((this->layoutDirection() == Qt::RightToLeft && mapFromGlobal(QCursor::pos()).x() > d->mainBarWidget->currentAppWidgetX()) ||
@@ -237,13 +238,13 @@ void BarWindow::paintEvent(QPaintEvent* event) {
 void BarWindow::trackWindow(DesktopWmWindowPtr window) {
     window->disconnect(this);
     DesktopWm::instance()->disconnect(window);
-    connect(window, &DesktopWmWindow::geometryChanged, this, [ = ] {
+    connect(window, &DesktopWmWindow::geometryChanged, this, [=] {
         trackWindow(window);
     });
-    connect(window, &DesktopWmWindow::windowStateChanged, this, [ = ] {
+    connect(window, &DesktopWmWindow::windowStateChanged, this, [=] {
         trackWindow(window);
     });
-    connect(DesktopWm::instance(), &DesktopWm::currentDesktopChanged, window, [ = ] {
+    connect(DesktopWm::instance(), &DesktopWm::currentDesktopChanged, window, [=] {
         trackWindow(window);
     });
 
@@ -261,20 +262,20 @@ void BarWindow::trackWindow(DesktopWmWindowPtr window) {
 
 void BarWindow::updatePrimaryScreen() {
     if (d->oldPrimaryScreen) {
-        disconnect(d->oldPrimaryScreen, &QScreen::geometryChanged, this, &BarWindow::updatePrimaryScreen);
-        disconnect(d->oldPrimaryScreen, &QScreen::orientationChanged, this, &BarWindow::updatePrimaryScreen);
+        disconnect(d->oldPrimaryScreen, &SystemScreen::geometryChanged, this, &BarWindow::updatePrimaryScreen);
+        disconnect(d->oldPrimaryScreen, &SystemScreen::rotationChanged, this, &BarWindow::updatePrimaryScreen);
     }
 
-    QScreen* primaryScreen = qApp->primaryScreen();
-    connect(primaryScreen, &QScreen::geometryChanged, this, &BarWindow::updatePrimaryScreen);
-    connect(primaryScreen, &QScreen::orientationChanged, this, &BarWindow::updatePrimaryScreen);
+    auto* primaryScreen = ScreenDaemon::instance()->primayScreen();
+    connect(primaryScreen, &SystemScreen::geometryChanged, this, &BarWindow::updatePrimaryScreen);
+    connect(primaryScreen, &SystemScreen::rotationChanged, this, &BarWindow::updatePrimaryScreen);
     d->oldPrimaryScreen = primaryScreen;
 
     this->setFixedWidth(primaryScreen->geometry().width());
     this->move(primaryScreen->geometry().topLeft());
     d->statusCenterWidget->setFixedHeight(primaryScreen->geometry().height());
 
-    //Refresh the state of all the windows
+    // Refresh the state of all the windows
     for (const DesktopWmWindowPtr& window : DesktopWm::openWindows()) {
         trackWindow(window);
     }
@@ -307,7 +308,7 @@ void BarWindow::showStatusCenter() {
     d->barStatusCenterTransitionAnim->start();
     d->barStatusCenterTransitionAnim->setCurrentTime(time);
 
-    //Tell the window manager that this is now a standard system window
+    // Tell the window manager that this is now a standard system window
     DesktopWm::instance()->setSystemWindow(this);
     d->statusCenterWidget->setFocus();
     d->statusCenterShown = true;
@@ -320,7 +321,7 @@ void BarWindow::hideStatusCenter() {
     d->barStatusCenterTransitionAnim->start();
     d->barStatusCenterTransitionAnim->setCurrentTime(time);
 
-    //Tell the window manager that this is now a "taskbar" type window
+    // Tell the window manager that this is now a "taskbar" type window
     DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeTaskbar);
     d->mainBarWidget->setFocus();
     d->statusCenterShown = false;
@@ -328,7 +329,7 @@ void BarWindow::hideStatusCenter() {
 
 void BarWindow::showBar() {
     d->barPendingShow = false;
-    //If we're showing the status bar, don't touch the height
+    // If we're showing the status bar, don't touch the height
     if (!StateManager::statusCenterManager()->isShowingStatusCenter()) {
         QSignalBlocker blocker(d->heightAnim);
         d->heightAnim->setStartValue(this->height() - 1);
@@ -343,7 +344,7 @@ void BarWindow::showBar() {
 }
 
 void BarWindow::hideBar() {
-    //If we're showing the status bar, don't touch the height
+    // If we're showing the status bar, don't touch the height
     if (!StateManager::statusCenterManager()->isShowingStatusCenter() && !StateManager::barManager()->isBarLocked()) {
         QSignalBlocker blocker(d->heightAnim);
         d->heightAnim->setStartValue(this->height() - 1);
@@ -360,7 +361,7 @@ void BarWindow::hideBar() {
 void BarWindow::trackBarPullDownGesture(GestureInteractionPtr gesture) {
     if (d->statusCenterShown || d->barExpanding) return;
 
-    //Capture this gesture!
+    // Capture this gesture!
     d->lastGesture = gesture;
 
     QSignalBlocker blocker(d->heightAnim);
@@ -372,14 +373,14 @@ void BarWindow::trackBarPullDownGesture(GestureInteractionPtr gesture) {
     d->heightAnim->stop();
     d->barExpanding = true;
 
-    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [=] {
         d->heightAnim->setCurrentTime(d->heightAnim->totalDuration() * gesture->percentage());
         d->heightAnim->valueChanged(d->heightAnim->currentValue());
     });
-    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [=] {
         if (gesture->extrapolatePercentage(100) > 0.7) {
             showBar();
-            QTimer::singleShot(3000, this, [ = ] {
+            QTimer::singleShot(3000, this, [=] {
                 if (gesture == d->lastGesture && !this->underMouse()) hideBar();
             });
         } else {
@@ -391,17 +392,17 @@ void BarWindow::trackBarPullDownGesture(GestureInteractionPtr gesture) {
 void BarWindow::trackStatusCenterPullDownGesture(GestureInteractionPtr gesture) {
     if (d->statusCenterShown) return;
 
-    //Capture this gesture!
+    // Capture this gesture!
     d->lastGesture = gesture;
 
     d->barStatusCenterTransitionAnim->setDirection(tVariantAnimation::Forward);
     d->barStatusCenterTransitionAnim->setCurrentTime(0);
 
-    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [=] {
         d->barStatusCenterTransitionAnim->setCurrentTime(d->barStatusCenterTransitionAnim->totalDuration() * gesture->percentage());
         d->barStatusCenterTransitionAnim->valueChanged(d->barStatusCenterTransitionAnim->currentValue());
     });
-    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [=] {
         if (gesture->extrapolatePercentage(100) > 0.7) {
             showStatusCenter();
         } else {
@@ -413,7 +414,7 @@ void BarWindow::trackStatusCenterPullDownGesture(GestureInteractionPtr gesture) 
 void BarWindow::trackStatusCenterPullUpGesture(GestureInteractionPtr gesture) {
     if (!d->statusCenterShown) return;
 
-    //Only accept this gesture if there is not currently a popover active
+    // Only accept this gesture if there is not currently a popover active
     QList<QWidget*> childWidgets;
     childWidgets.append(this);
     while (!childWidgets.isEmpty()) {
@@ -424,17 +425,17 @@ void BarWindow::trackStatusCenterPullUpGesture(GestureInteractionPtr gesture) {
         }
     }
 
-    //Capture this gesture!
+    // Capture this gesture!
     d->lastGesture = gesture;
 
     d->barStatusCenterTransitionAnim->setDirection(tVariantAnimation::Forward);
     d->barStatusCenterTransitionAnim->setCurrentTime(d->barStatusCenterTransitionAnim->duration());
 
-    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionUpdated, this, [=] {
         d->barStatusCenterTransitionAnim->setCurrentTime(d->barStatusCenterTransitionAnim->totalDuration() - d->barStatusCenterTransitionAnim->totalDuration() * gesture->percentage());
         d->barStatusCenterTransitionAnim->valueChanged(d->barStatusCenterTransitionAnim->currentValue());
     });
-    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [ = ] {
+    connect(gesture.data(), &GestureInteraction::interactionEnded, this, [=] {
         if (gesture->extrapolatePercentage(100) > 0.3) {
             hideStatusCenter();
         } else {

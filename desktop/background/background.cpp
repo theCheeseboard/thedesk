@@ -25,7 +25,8 @@
 #include <Background/backgroundselectionmodel.h>
 #include <QFileDialog>
 #include <QMenu>
-#include <QScreen>
+#include <Screens/screendaemon.h>
+#include <Screens/systemscreen.h>
 #include <Wm/desktopwm.h>
 #include <X11/Xlib.h>
 
@@ -33,7 +34,7 @@ struct BackgroundPrivate {
         static BackgroundController* bg;
         static QList<Background*> backgrounds;
 
-        QScreen* oldScreen = nullptr;
+        SystemScreen* oldScreen = nullptr;
         QMetaObject::Connection screenGeometryChangedConnection;
         QSettings settings;
 
@@ -59,16 +60,17 @@ Background::Background() :
 
         connect(qApp, &QApplication::screenAdded, &Background::reconfigureBackgrounds);
         connect(qApp, &QApplication::screenRemoved, &Background::reconfigureBackgrounds);
+        connect(ScreenDaemon::instance(), &ScreenDaemon::screensUpdated, &Background::reconfigureBackgrounds);
     }
 
-    connect(d->bg, &BackgroundController::currentBackgroundChanged, this, [=](BackgroundController::BackgroundType type) {
+    connect(d->bg, &BackgroundController::currentBackgroundChanged, this, [this](BackgroundController::BackgroundType type) {
         if (type == BackgroundController::Desktop) this->changeBackground();
         this->showCommunityBackgroundSettings(d->bg->currentBackgroundName(BackgroundController::Desktop) == "community" || d->bg->currentBackgroundName(BackgroundController::LockScreen) == "community");
     });
-    connect(d->bg, &BackgroundController::shouldShowCommunityLabelsChanged, this, [=] {
+    connect(d->bg, &BackgroundController::shouldShowCommunityLabelsChanged, this, [this] {
         if (d->bg->currentBackgroundName(BackgroundController::Desktop) == "community") this->changeBackground();
     });
-    connect(d->bg, &BackgroundController::stretchTypeChanged, this, [=](BackgroundController::StretchType stretchType) {
+    connect(d->bg, &BackgroundController::stretchTypeChanged, this, [this](BackgroundController::StretchType stretchType) {
         switch (stretchType) {
             case BackgroundController::StretchFit:
                 ui->stretchFitButton->setChecked(true);
@@ -241,10 +243,10 @@ void Background::toggleChangeBackground() {
     }
     anim->setDuration(500);
     anim->setEasingCurve(QEasingCurve::OutCubic);
-    connect(anim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
+    connect(anim, &tVariantAnimation::valueChanged, this, [this](QVariant value) {
         ui->backgroundSelectionWidget->setFixedHeight(value.toInt());
     });
-    connect(anim, &tVariantAnimation::finished, this, [=] {
+    connect(anim, &tVariantAnimation::finished, this, [this] {
         if (d->isChangeBackgroundVisible) {
             ui->backgroundSelectionWidget->setFixedHeight(QWIDGETSIZE_MAX);
         }
@@ -307,11 +309,11 @@ void Background::resizeEvent(QResizeEvent* event) {
 }
 
 void Background::resizeToScreen(int screen) {
-    QScreen* s = QApplication::screens().at(screen);
+    auto s = ScreenDaemon::instance()->screens().at(screen);
     if (s != d->oldScreen) {
         if (s != nullptr) disconnect(d->screenGeometryChangedConnection);
 
-        connect(s, &QScreen::geometryChanged, this, [=] {
+        connect(s, &SystemScreen::geometryChanged, this, [this, s] {
             this->setGeometry(s->geometry());
         });
         this->setGeometry(s->geometry());
@@ -322,24 +324,24 @@ void Background::resizeToScreen(int screen) {
 }
 
 void Background::reconfigureBackgrounds() {
-    if (BackgroundPrivate::backgrounds.count() > QApplication::screens().count()) {
+    if (BackgroundPrivate::backgrounds.count() > ScreenDaemon::instance()->screens().count()) {
         // Remove backgrounds until the correct number of backgrounds have been created
-        int difference = BackgroundPrivate::backgrounds.count() - QApplication::screens().count();
+        int difference = BackgroundPrivate::backgrounds.count() - ScreenDaemon::instance()->screens().count();
         for (int i = 0; i < difference; i++) {
             BackgroundPrivate::backgrounds.takeLast()->deleteLater();
         }
     }
 
-    if (BackgroundPrivate::backgrounds.count() < QApplication::screens().count()) {
+    if (BackgroundPrivate::backgrounds.count() < ScreenDaemon::instance()->screens().count()) {
         // Add new backgrounds until the correct number of backgrounds have been created
-        int difference = QApplication::screens().count() - BackgroundPrivate::backgrounds.count();
+        int difference = ScreenDaemon::instance()->screens().count() - BackgroundPrivate::backgrounds.count();
         for (int i = 0; i < difference; i++) {
             Background* w = new Background();
             BackgroundPrivate::backgrounds.append(w);
         }
     }
 
-    for (int i = 0; i < QApplication::screens().count(); i++) {
+    for (int i = 0; i < ScreenDaemon::instance()->screens().count(); i++) {
         BackgroundPrivate::backgrounds.at(i)->resizeToScreen(i);
     }
 }
