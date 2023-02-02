@@ -21,6 +21,7 @@
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
+#include <QCoroTask>
 #include <QDialog>
 
 class ChooseBackground;
@@ -42,7 +43,7 @@ class Background : public QDialog {
         static void reconfigureBackgrounds();
 
     public slots:
-        void changeBackground();
+        QCoro::Task<> changeBackground();
 
         void toggleChangeBackground();
 

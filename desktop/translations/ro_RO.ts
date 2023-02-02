@@ -244,12 +244,12 @@
         <translation>de %1</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="296"/>
+        <location filename="../background/background.cpp" line="295"/>
         <source>For desktop</source>
         <translation>Pentru desktop</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="356"/>
+        <location filename="../background/background.cpp" line="355"/>
         <source>Select Background</source>
         <translation>Selectați fundalul</translation>
     </message>

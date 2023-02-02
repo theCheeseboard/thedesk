@@ -46,6 +46,7 @@ struct ChunkContainerPrivate {
             "audio-mic",
             "redshift",
             "keyboardlayout",
+            "caffeinate",
             "Accessibility-StickyKeys",
             "mpris"};
 

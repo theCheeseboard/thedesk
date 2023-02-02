@@ -13,4 +13,4 @@ add_subdirectory(desktop)
 add_subdirectory(platform)
 add_subdirectory(plugins)
 add_subdirectory(polkitagent)
-
+add_subdirectory(locker)

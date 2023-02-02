@@ -19,19 +19,24 @@
  * *************************************/
 #include "eventhandler.h"
 
-#include <QDBusMessage>
 #include <QDBusConnection>
-#include <QDBusUnixFileDescriptor>
+#include <QDBusMessage>
 #include <QDBusPendingCallWatcher>
+#include <QDBusUnixFileDescriptor>
 #include <QDebug>
 #include <QKeySequence>
 
 #include <QTimer>
 
-#include <statemanager.h>
-#include <powermanager.h>
+#include <actionquickwidget.h>
+#include <barmanager.h>
 #include <hudmanager.h>
+#include <icontextchunk.h>
 #include <keygrab.h>
+#include <powermanager.h>
+#include <quickswitch.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
 
 #include <Wm/desktopwm.h>
 
@@ -42,47 +47,54 @@
 #include <tvariantanimation.h>
 
 struct EventHandlerPrivate {
-    KeyGrab* powerKey;
-    KeyGrab* ctrlAltDelKey;
-    QDBusUnixFileDescriptor buttonInhibitor;
+        KeyGrab* powerKey;
+        KeyGrab* ctrlAltDelKey;
+        QDBusUnixFileDescriptor buttonInhibitor;
 
-    DesktopUPower* upower;
+        QuickSwitch* caffeinateSwitch;
+        IconTextChunk* caffeinateChunk;
 
-    tSettings settings;
-    quint64 oldIdleTimer = 0;
+        DesktopUPower* upower;
 
-    bool screenOffActionPerformed = false;
-    bool suspendActionPerformed = false;
-    tVariantAnimation* suspendNotificationAnimation = new tVariantAnimation();
+        tSettings settings;
+        quint64 oldIdleTimer = 0;
 
-    const static QMap<QString, int> timeoutFactors;
-    const static QMap<QString, int> powerOffActions;
+        bool screenOffActionPerformed = false;
+        bool suspendActionPerformed = false;
+        tVariantAnimation* suspendNotificationAnimation = new tVariantAnimation();
+
+        const static QMap<QString, int> timeoutFactors;
+        const static QMap<QString, int> powerOffActions;
 };
 
 const QMap<QString, int> EventHandlerPrivate::timeoutFactors = {
-    {"sec", 1000},
-    {"min", 60000},
-    {"hr", 360000},
-    {"never", 0}
+    {"sec",   1000  },
+    {"min",   60000 },
+    {"hr",    360000},
+    {"never", 0     }
 };
 
 const QMap<QString, int> EventHandlerPrivate::powerOffActions = {
-    {"ask", PowerManager::All},
-    {"poweroff", PowerManager::PowerOff},
-    {"reboot", PowerManager::Reboot},
-    {"suspend", PowerManager::Suspend},
+    {"ask",       PowerManager::All      },
+    {"poweroff",  PowerManager::PowerOff },
+    {"reboot",    PowerManager::Reboot   },
+    {"suspend",   PowerManager::Suspend  },
     {"hibernate", PowerManager::Hibernate},
-    {"ignore", -1}
+    {"ignore",    -1                     }
 };
 
-EventHandler::EventHandler(QObject* parent) : QObject(parent) {
+EventHandler::EventHandler(QObject* parent) :
+    QObject(parent) {
     d = new EventHandlerPrivate();
     d->upower = new DesktopUPower();
 
     QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "Inhibit");
-    message.setArguments(QList<QVariant>() << "handle-power-key:idle" << "theDesk" << "theDesk handles hardware power keys and idling" << "block");
+    message.setArguments(QList<QVariant>() << "handle-power-key:idle"
+                                           << "theDesk"
+                                           << "theDesk handles hardware power keys and idling"
+                                           << "block");
     QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(message));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [ = ] {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
         if (watcher->isError()) {
             qWarning() << tr("Unable to inhibit logind power management");
         } else {
@@ -91,19 +103,40 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
     });
 
     d->powerKey = new KeyGrab(QKeySequence(Qt::Key_PowerOff));
-    connect(d->powerKey, &KeyGrab::activated, this, [ = ] {
+    connect(d->powerKey, &KeyGrab::activated, this, [=] {
         int action = d->powerOffActions.value(d->settings.value("Power/actions.powerbutton").toString(), -1);
-        if (action == -1) return; //Ignore
-        if (action == PowerManager::All) { //Ask
+        if (action == -1) return;          // Ignore
+        if (action == PowerManager::All) { // Ask
             StateManager::powerManager()->showPowerOffConfirmation();
         } else {
             StateManager::powerManager()->performPowerOperation(static_cast<PowerManager::PowerOperation>(action));
         }
     });
     d->ctrlAltDelKey = new KeyGrab(QKeySequence(Qt::ControlModifier | Qt::AltModifier | Qt::Key_Delete));
-    connect(d->ctrlAltDelKey, &KeyGrab::activated, this, [ = ] {
+    connect(d->ctrlAltDelKey, &KeyGrab::activated, this, [=] {
         StateManager::powerManager()->showPowerOffConfirmation();
     });
+
+    d->caffeinateChunk = new IconTextChunk("caffeinate");
+    d->caffeinateChunk->setIcon(QIcon::fromTheme("caffeinate"));
+    d->caffeinateChunk->setText(tr("Caffeinated"));
+
+    d->caffeinateSwitch = new QuickSwitch("PowerCaffeinate");
+    d->caffeinateSwitch->setTitle(tr("Caffeinate"));
+    connect(d->caffeinateSwitch, &QuickSwitch::toggled, this, [this](bool checked) {
+        if (checked && !d->caffeinateChunk->chunkRegistered()) {
+            StateManager::barManager()->addChunk(d->caffeinateChunk);
+        } else if (!checked && d->caffeinateChunk->chunkRegistered()) {
+            StateManager::barManager()->removeChunk(d->caffeinateChunk);
+        }
+    });
+    StateManager::statusCenterManager()->addSwitch(d->caffeinateSwitch);
+
+    ActionQuickWidget* caffeinateChunkQuickWidget = new ActionQuickWidget(d->caffeinateChunk);
+    caffeinateChunkQuickWidget->addAction(QIcon::fromTheme("caffeinate"), tr("Decaffeinate"), [this] {
+        d->caffeinateSwitch->setChecked(false);
+    });
+    d->caffeinateChunk->setQuickWidget(caffeinateChunkQuickWidget);
 
     QTimer* timer = new QTimer(this);
     timer->setInterval(1000);
@@ -115,25 +148,25 @@ EventHandler::EventHandler(QObject* parent) : QObject(parent) {
     d->suspendNotificationAnimation->setEndValue(0.0);
     d->suspendNotificationAnimation->setForceAnimation(true);
     d->suspendNotificationAnimation->setDuration(15000);
-    connect(d->suspendNotificationAnimation, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(d->suspendNotificationAnimation, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         StateManager::instance()->hudManager()->showHud({
-            {"icon", "system-suspend"},
-            {"title", tr("Suspend")},
-            {"text", tr("%n seconds", nullptr, (15000 - d->suspendNotificationAnimation->currentTime()) / 1000 + 1)},
-            {"value", value.toDouble()},
-            {"timeout", 15000}
+            {"icon",                                                                "system-suspend"},
+            {"title",                                                               tr("Suspend")   },
+            {"text",                                                                tr("%n seconds",  nullptr, (15000 - d->suspendNotificationAnimation->currentTime()) / 1000 + 1)},
+            {"value", value.toDouble()                },
+            {"timeout",                                                     15000                                                    }
         });
 
-        //Immediately do an idle timer check if the idle timer has changed
+        // Immediately do an idle timer check if the idle timer has changed
         if (DesktopWm::msecsIdle() < d->oldIdleTimer) checkIdleTimer();
     });
-    connect(d->suspendNotificationAnimation, &tVariantAnimation::stateChanged, this, [ = ](tVariantAnimation::State newState, tVariantAnimation::State oldState) {
+    connect(d->suspendNotificationAnimation, &tVariantAnimation::stateChanged, this, [=](tVariantAnimation::State newState, tVariantAnimation::State oldState) {
         if (newState == tVariantAnimation::Stopped) {
             StateManager::instance()->hudManager()->hideHud();
         }
     });
-    connect(d->suspendNotificationAnimation, &tVariantAnimation::finished, this, [ = ] {
-        //Suspend now
+    connect(d->suspendNotificationAnimation, &tVariantAnimation::finished, this, [=] {
+        // Suspend now
         StateManager::powerManager()->performPowerOperation(PowerManager::Suspend);
     });
 
@@ -158,80 +191,82 @@ void EventHandler::checkIdleTimer() {
             d->suspendNotificationAnimation->stop();
         }
 
-        //Reset all variables
+        // Reset all variables
         d->screenOffActionPerformed = false;
         d->suspendActionPerformed = false;
     }
     d->oldIdleTimer = idleTimer;
 
-    //Ensure that there are no full screen windows so we don't switch off the screen if someone is watching a video for instance
+    // Ensure that there are no full screen windows so we don't switch off the screen if someone is watching a video for instance
     for (DesktopWmWindowPtr window : DesktopWm::openWindows()) {
         if (window->isFullScreen()) return;
     }
 
-    if (!d->screenOffActionPerformed) {
-        //See if we need to turn the screen off
-        quint64 timeout = d->settings.value("Power/timeouts.screenoff.value").toInt() * d->timeoutFactors.value(d->settings.value("Power/timeouts.screenoff.unit").toString(), 0);
-        if (idleTimer > timeout && timeout != 0) {
-            //Turn the screen off now
-            StateManager::powerManager()->performPowerOperation(PowerManager::TurnOffScreen);
-            d->screenOffActionPerformed = true;
+    // Ensure caffeinate is not switched on
+    if (!d->caffeinateSwitch->isChecked()) {
+        if (!d->screenOffActionPerformed) {
+            // See if we need to turn the screen off
+            quint64 timeout = d->settings.value("Power/timeouts.screenoff.value").toInt() * d->timeoutFactors.value(d->settings.value("Power/timeouts.screenoff.unit").toString(), 0);
+            if (idleTimer > timeout && timeout != 0) {
+                // Turn the screen off now
+                StateManager::powerManager()->performPowerOperation(PowerManager::TurnOffScreen);
+                d->screenOffActionPerformed = true;
+            }
         }
-    }
 
-    if (!d->suspendActionPerformed) {
-        //See if we need to suspend
-        quint64 timeout = d->settings.value("Power/timeouts.suspend.value").toInt() * d->timeoutFactors.value(d->settings.value("Power/timeouts.suspend.unit").toString(), 0);
-        if (idleTimer > timeout && timeout != 0) {
-            //Notify the user about the impending suspension and then suspend
-            d->suspendActionPerformed = true;
-            d->suspendNotificationAnimation->start();
+        if (!d->suspendActionPerformed) {
+            // See if we need to suspend
+            quint64 timeout = d->settings.value("Power/timeouts.suspend.value").toInt() * d->timeoutFactors.value(d->settings.value("Power/timeouts.suspend.unit").toString(), 0);
+            if (idleTimer > timeout && timeout != 0) {
+                // Notify the user about the impending suspension and then suspend
+                d->suspendActionPerformed = true;
+                d->suspendNotificationAnimation->start();
+            }
         }
     }
 }
 
 void EventHandler::trackDevice(DesktopUPowerDevice* device) {
-    connect(device, &DesktopUPowerDevice::lowBatteryNotification, this, [ = ](QString description) {
+    connect(device, &DesktopUPowerDevice::lowBatteryNotification, this, [=](QString description) {
         StateManager::instance()->hudManager()->showHud({
-            {"icon", device->iconName()},
-            {"title", tr("Battery")},
-            {"text", description},
-            {"value", device->percentage() / 100.0},
-            {"timeout", 10000},
-            {"color", QColor(Qt::red)}
+            {"icon",    device->iconName()          },
+            {"title",   tr("Battery")               },
+            {"text",    description                 },
+            {"value",   device->percentage() / 100.0},
+            {"timeout", 10000                       },
+            {"color",   QColor(Qt::red)             }
         });
     });
-    connect(device, &DesktopUPowerDevice::chargingNotification, this, [ = ] {
+    connect(device, &DesktopUPowerDevice::chargingNotification, this, [=] {
         StateManager::instance()->hudManager()->showHud({
-            {"icon", device->iconName()},
-            {"title", tr("Battery")},
-            {"text", tr("Charging")},
-            {"value", device->percentage() / 100.0},
-            {"timeout", 10000},
-            {"color", QColor(Qt::green)}
+            {"icon",    device->iconName()          },
+            {"title",   tr("Battery")               },
+            {"text",    tr("Charging")              },
+            {"value",   device->percentage() / 100.0},
+            {"timeout", 10000                       },
+            {"color",   QColor(Qt::green)           }
         });
     });
-    connect(device, &DesktopUPowerDevice::fullNotification, this, [ = ] {
+    connect(device, &DesktopUPowerDevice::fullNotification, this, [=] {
         StateManager::instance()->hudManager()->showHud({
-            {"icon", device->iconName()},
-            {"title", tr("Battery")},
-            {"text", tr("Full")},
-            {"value", device->percentage() / 100.0},
-            {"timeout", 10000},
-            {"color", QColor(Qt::green)}
+            {"icon",    device->iconName()          },
+            {"title",   tr("Battery")               },
+            {"text",    tr("Full")                  },
+            {"value",   device->percentage() / 100.0},
+            {"timeout", 10000                       },
+            {"color",   QColor(Qt::green)           }
         });
     });
-    connect(device, &DesktopUPowerDevice::dischargingNotification, this, [ = ] {
+    connect(device, &DesktopUPowerDevice::dischargingNotification, this, [=] {
         StateManager::instance()->hudManager()->showHud({
-            {"icon", device->iconName()},
-            {"title", tr("Battery")},
-            {"text", tr("Discharging")},
-            {"value", device->percentage() / 100.0},
-            {"timeout", 10000}
+            {"icon",    device->iconName()          },
+            {"title",   tr("Battery")               },
+            {"text",    tr("Discharging")           },
+            {"value",   device->percentage() / 100.0},
+            {"timeout", 10000                       }
         });
     });
 }
 
 void EventHandler::removeDevice(DesktopUPowerDevice* device) {
-
 }

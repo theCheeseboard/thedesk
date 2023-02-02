@@ -244,12 +244,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="296"/>
+        <location filename="../background/background.cpp" line="295"/>
         <source>For desktop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="356"/>
+        <location filename="../background/background.cpp" line="355"/>
         <source>Select Background</source>
         <translation type="unfinished"></translation>
     </message>

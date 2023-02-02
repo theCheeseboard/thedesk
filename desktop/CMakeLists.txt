@@ -120,7 +120,7 @@ set_target_properties(thedesk PROPERTIES
         WIN32_EXECUTABLE TRUE
         CNTP_DATA_SUBDIR thedesk)
 
-cntp_init(thedesk 17)
+cntp_init(thedesk 20)
 cntp_translate(thedesk)
 cntp_target_name(thedesk "thedesk")
 

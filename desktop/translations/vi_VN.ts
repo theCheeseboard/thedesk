@@ -244,12 +244,12 @@
         <translation>bởi %1</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="296"/>
+        <location filename="../background/background.cpp" line="295"/>
         <source>For desktop</source>
         <translation>Cho bảng nền</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="356"/>
+        <location filename="../background/background.cpp" line="355"/>
         <source>Select Background</source>
         <translation>Chọn hình ảnh nền</translation>
     </message>

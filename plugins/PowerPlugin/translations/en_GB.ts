@@ -4,17 +4,32 @@
 <context>
     <name>EventHandler</name>
     <message>
-        <location filename="../eventhandler.cpp" line="87"/>
+        <location filename="../eventhandler.cpp" line="99"/>
         <source>Unable to inhibit logind power management</source>
         <translation>Unable to inhibit logind power management</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="121"/>
+        <location filename="../eventhandler.cpp" line="122"/>
+        <source>Caffeinated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../eventhandler.cpp" line="125"/>
+        <source>Caffeinate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../eventhandler.cpp" line="136"/>
+        <source>Decaffeinate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../eventhandler.cpp" line="154"/>
         <source>Suspend</source>
         <translation>Suspend</translation>
     </message>
     <message numerus="yes">
-        <location filename="../eventhandler.cpp" line="122"/>
+        <location filename="../eventhandler.cpp" line="155"/>
         <source>%n seconds</source>
         <translation>
             <numerusform>%n second</numerusform>
@@ -22,25 +37,25 @@
         </translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="197"/>
-        <location filename="../eventhandler.cpp" line="207"/>
-        <location filename="../eventhandler.cpp" line="217"/>
-        <location filename="../eventhandler.cpp" line="227"/>
+        <location filename="../eventhandler.cpp" line="233"/>
+        <location filename="../eventhandler.cpp" line="243"/>
+        <location filename="../eventhandler.cpp" line="253"/>
+        <location filename="../eventhandler.cpp" line="263"/>
         <source>Battery</source>
         <translation>Battery</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="208"/>
+        <location filename="../eventhandler.cpp" line="244"/>
         <source>Charging</source>
         <translation>Charging</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="218"/>
+        <location filename="../eventhandler.cpp" line="254"/>
         <source>Full</source>
         <translation>Full</translation>
     </message>
     <message>
-        <location filename="../eventhandler.cpp" line="228"/>
+        <location filename="../eventhandler.cpp" line="264"/>
         <source>Discharging</source>
         <translation>Discharging</translation>
     </message>

@@ -244,12 +244,12 @@
         <translation>与 %1</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="296"/>
+        <location filename="../background/background.cpp" line="295"/>
         <source>For desktop</source>
         <translation>桌面</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="356"/>
+        <location filename="../background/background.cpp" line="355"/>
         <source>Select Background</source>
         <translation>选择背景</translation>
     </message>

@@ -20,10 +20,10 @@
 #include "splashwindow.h"
 #include "ui_splashwindow.h"
 
-#include <tapplication.h>
-#include <QScreen>
-#include <tvariantanimation.h>
 #include "splash/splashcontroller.h"
+#include <QScreen>
+#include <tapplication.h>
+#include <tvariantanimation.h>
 
 SplashWindow::SplashWindow(QWidget* parent) :
     QDialog(parent),
@@ -33,22 +33,22 @@ SplashWindow::SplashWindow(QWidget* parent) :
     this->setWindowFlag(Qt::WindowStaysOnTopHint);
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
 
-    connect(SplashController::instance(), &SplashController::starting, this, [ = ] {
+    connect(SplashController::instance(), &SplashController::starting, this, [=] {
         ui->stackedWidget->setCurrentWidget(ui->splashPage, this->isVisible());
         this->showFullScreen();
     });
-    connect(SplashController::instance(), &SplashController::hideSplashes, this, [ = ] {
+    connect(SplashController::instance(), &SplashController::hideSplashes, this, [=] {
         this->hide();
     });
-    connect(SplashController::instance(), &SplashController::crash, this, [ = ] {
+    connect(SplashController::instance(), &SplashController::crash, this, [=] {
         ui->stackedWidget->setCurrentWidget(ui->crashPage, this->isVisible());
         this->showFullScreen();
     });
-    connect(SplashController::instance(), &SplashController::startFail, this, [ = ] {
+    connect(SplashController::instance(), &SplashController::startFail, this, [=] {
         ui->stackedWidget->setCurrentWidget(ui->crashPage, this->isVisible());
         this->showFullScreen();
     });
-    connect(SplashController::instance(), &SplashController::question, this, [ = ](QString title, QString message) {
+    connect(SplashController::instance(), &SplashController::question, this, [=](QString title, QString message) {
         ui->questionTitle->setText(title);
         ui->questionText->setText(message);
         ui->stackedWidget->setCurrentWidget(ui->questionPage, this->isVisible());
@@ -68,10 +68,10 @@ void SplashWindow::hide() {
     anim->setEndValue(0.0);
     anim->setEasingCurve(QEasingCurve::OutCubic);
     anim->setDuration(500);
-    connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(anim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         this->setWindowOpacity(value.toDouble());
     });
-    connect(anim, &tVariantAnimation::finished, this, [ = ] {
+    connect(anim, &tVariantAnimation::finished, this, [=] {
         anim->deleteLater();
         QDialog::hide();
         this->setWindowOpacity(1);

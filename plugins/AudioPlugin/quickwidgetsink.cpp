@@ -24,6 +24,7 @@
 #include <PulseAudioQt/Context>
 #include <PulseAudioQt/Server>
 #include <QMenu>
+#include <QTimer>
 #include <libcontemporary_global.h>
 
 struct QuickWidgetSinkPrivate {
@@ -93,19 +94,21 @@ void QuickWidgetSink::sinkInputAdded(PulseAudioQt::SinkInput* sinkInput) {
 }
 
 void QuickWidgetSink::updateVisibility() {
-    if (PulseAudioQt::Context::instance()->server()->defaultSink() == d->sink) {
-        this->setVisible(true);
-        return;
-    }
-
-    for (PulseAudioQt::SinkInput* sinkInput : PulseAudioQt::Context::instance()->sinkInputs()) {
-        if (sinkInput->deviceIndex() == d->sink->index()) {
+    QTimer::singleShot(0, this, [this] {
+        if (PulseAudioQt::Context::instance()->server()->defaultSink() == d->sink) {
             this->setVisible(true);
             return;
         }
-    }
 
-    this->setVisible(false);
+        for (PulseAudioQt::SinkInput* sinkInput : PulseAudioQt::Context::instance()->sinkInputs()) {
+            if (sinkInput->deviceIndex() == d->sink->index()) {
+                this->setVisible(true);
+                return;
+            }
+        }
+
+        this->setVisible(false);
+    });
 }
 
 void QuickWidgetSink::updateName() {
