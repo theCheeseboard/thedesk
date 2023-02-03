@@ -19,29 +19,31 @@
  * *************************************/
 #include "plugin.h"
 
-#include <QDebug>
+#include "settings/displaysettings.h"
+#include "tsettings.h"
 #include <QApplication>
-#include <statemanager.h>
-#include <localemanager.h>
+#include <QDebug>
 #include <QDir>
-#include <keygrab.h>
 #include <QKeySequence>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
-#include <statuscentermanager.h>
 #include <hudmanager.h>
-#include "settings/displaysettings.h"
-#include "tsettings.h"
+#include <keygrab.h>
+#include <localemanager.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
 
 #include <Screens/screendaemon.h>
 
 #include "redshift/redshiftdaemon.h"
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    DisplaySettings* settingsPage;
-    RedshiftDaemon* daemon;
+        DisplaySettings* settingsPage;
+        RedshiftDaemon* daemon;
+
+        tSettings* settings;
 };
 
 Plugin::Plugin() {
@@ -53,10 +55,8 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/translations"),
-        "/usr/share/thedesk/DisplayPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/translations"),
+        "/usr/share/thedesk/DisplayPlugin/translations"});
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/defaults.conf"));
     tSettings::registerDefaults("/etc/theSuite/theDesk/DisplayPlugin/defaults.conf");
@@ -66,6 +66,11 @@ void Plugin::activate() {
 
     StateManager::statusCenterManager()->addPane(d->settingsPage, StatusCenterManager::SystemSettings);
 
+    d->settings = new tSettings();
+    connect(d->settings, &tSettings::settingChanged, this, [this] {
+        ScreenDaemon::instance()->setDpi(d->settings->value("Display/dpi").toInt());
+    });
+    ScreenDaemon::instance()->setDpi(d->settings->value("Display/dpi").toInt());
 }
 
 void Plugin::deactivate() {
@@ -74,4 +79,6 @@ void Plugin::deactivate() {
 
     StateManager::statusCenterManager()->removePane(d->settingsPage);
     d->settingsPage->deleteLater();
+
+    d->settings->deleteLater();
 }

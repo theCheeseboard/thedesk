@@ -19,15 +19,15 @@
  * *************************************/
 #include "appsearchprovider.h"
 
+#include <Applications/application.h>
 #include <QPainter>
 #include <tpaintcalculator.h>
-#include <Applications/application.h>
 
 struct AppSearchProviderPrivate {
-
 };
 
-AppSearchProvider::AppSearchProvider(QObject* parent) : GatewaySearchProvider(parent) {
+AppSearchProvider::AppSearchProvider(QObject* parent) :
+    GatewaySearchProvider(parent) {
     d = new AppSearchProviderPrivate();
 }
 
@@ -44,7 +44,7 @@ tPromise<QList<QVariantMap>>* AppSearchProvider::searchResults(QString query) {
         for (const QString& desktopEntry : Application::allApplications()) {
             ApplicationPointer a(new Application(desktopEntry));
 
-            //Make sure this app is good to be shown
+            // Make sure this app is good to be shown
             if (a->getProperty("Type", "").toString() != "Application") continue;
             if (a->getProperty("NoDisplay", false).toBool()) continue;
             if (!a->getStringList("OnlyShowIn", {"thedesk"}).contains("thedesk")) continue;
@@ -58,19 +58,19 @@ tPromise<QList<QVariantMap>>* AppSearchProvider::searchResults(QString query) {
             for (const QString& s : possibleWords) {
                 if (s.contains(query, Qt::CaseInsensitive)) {
                     results.append({
-                        {"application", a->desktopEntry()},
-                        {"mainText", a->getProperty("Name").toString()},
-                        {"priority", 0},
-                        {"drawArrows", false}
+                        {"application", a->desktopEntry()                },
+                        {"mainText",    a->getProperty("Name").toString()},
+                        {"priority",    0                                },
+                        {"drawArrows",  false                            }
                     });
 
                     for (QString action : a->getStringList("Actions")) {
                         results.append({
-                            {"application", a->desktopEntry()},
-                            {"action", action},
-                            {"mainText", a->getProperty("Name").toString()},
-                            {"priority", 0},
-                            {"drawArrows", false}
+                            {"application", a->desktopEntry()                },
+                            {"action",      action                           },
+                            {"mainText",    a->getProperty("Name").toString()},
+                            {"priority",    0                                },
+                            {"drawArrows",  false                            }
                         });
                     }
                     break;
@@ -78,14 +78,14 @@ tPromise<QList<QVariantMap>>* AppSearchProvider::searchResults(QString query) {
             }
         }
 
-//                                          if (theLibsGlobal::searchInPath(query.split(" ")[0]).count() > 0) {
-//                                              d->appsShown.append(ApplicationPointer(new Application({
-//                                                  {"Name", query},
-//                                                  {"Exec", query},
-//                                                  {"GenericName", tr("Run Command")},
-//                                                  {"Icon", "system-run"}
-//                                              })));
-//                                          }
+        //                                          if (theLibsGlobal::searchInPath(query.split(" ")[0]).count() > 0) {
+        //                                              d->appsShown.append(ApplicationPointer(new Application({
+        //                                                  {"Name", query},
+        //                                                  {"Exec", query},
+        //                                                  {"GenericName", tr("Run Command")},
+        //                                                  {"Icon", "system-run"}
+        //                                              })));
+        //                                          }
 
         res(results);
     });
@@ -110,11 +110,11 @@ void AppSearchProvider::paint(QPainter* painter, const QStyleOptionViewItem& opt
 }
 
 QSize AppSearchProvider::sizeHint(const QStyleOptionViewItem& option, const QVariantMap data) const {
-//    Application app(data.value("application").toString());
-//    int fontHeight = option.fontMetrics.height() * 2 + SC_DPI(14);
-//    int iconHeight = SC_DPI(46);
+    //    Application app(data.value("application").toString());
+    //    int fontHeight = option.fontMetrics.height() * 2 + SC_DPI(14);
+    //    int iconHeight = SC_DPI(46);
 
-//    return QSize(option.fontMetrics.horizontalAdvance(app.getProperty("Name").toString()), qMax(fontHeight, iconHeight));
+    //    return QSize(option.fontMetrics.horizontalAdvance(app.getProperty("Name").toString()), qMax(fontHeight, iconHeight));
     return calculator(nullptr, option, data).sizeWithMargins().toSize();
 }
 
@@ -158,71 +158,69 @@ tPaintCalculator AppSearchProvider::calculator(QPainter* painter, const QStyleOp
         textRect.setLeft(iconRect.right() + SC_DPI(6));
         textRect.setTop(option.rect.top() + SC_DPI(6));
         textRect.setBottom(option.rect.top() + option.fontMetrics.height() + SC_DPI(6));
-        textRect.setRight(option.rect.right());
+        textRect.setRight(option.rect.right() - SC_DPI(6));
 
         descRect.setLeft(iconRect.right() + SC_DPI(6));
         descRect.setTop(option.rect.top() + option.fontMetrics.height() + SC_DPI(8));
         descRect.setBottom(option.rect.top() + option.fontMetrics.height() * 2 + SC_DPI(6));
-        descRect.setRight(option.rect.right());
+        descRect.setRight(option.rect.right() - SC_DPI(6));
     }
 
-
     if (option.state & QStyle::State_Selected) {
-        calculator.addRect(option.rect, [ = ](QRectF drawBounds) {
+        calculator.addRect(option.rect, [=](QRectF drawBounds) {
             painter->setPen(Qt::transparent);
             painter->setBrush(option.palette.color(QPalette::Highlight));
             painter->drawRect(drawBounds);
         });
-        calculator.addRect(textRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(textRect, [=](QRectF drawBounds) {
             painter->setBrush(Qt::transparent);
             painter->setPen(option.palette.color(QPalette::HighlightedText));
             painter->drawText(drawBounds, Qt::AlignLeading, name);
         });
-        calculator.addRect(descRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(descRect, [=](QRectF drawBounds) {
             painter->drawText(drawBounds, Qt::AlignLeading, genericName);
         });
     } else if (option.state & QStyle::State_MouseOver) {
-        calculator.addRect(option.rect, [ = ](QRectF drawBounds) {
+        calculator.addRect(option.rect, [=](QRectF drawBounds) {
             QColor col = option.palette.color(QPalette::Highlight);
             col.setAlpha(127);
             painter->setBrush(col);
             painter->setPen(Qt::transparent);
             painter->drawRect(drawBounds);
         });
-        calculator.addRect(textRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(textRect, [=](QRectF drawBounds) {
             painter->setBrush(Qt::transparent);
             painter->setPen(option.palette.color(QPalette::WindowText));
             painter->drawText(drawBounds, Qt::AlignLeading, name);
         });
-        calculator.addRect(descRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(descRect, [=](QRectF drawBounds) {
             painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
             painter->drawText(drawBounds, Qt::AlignLeading, genericName);
         });
     } else {
-        calculator.addRect(textRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(textRect, [=](QRectF drawBounds) {
             painter->setPen(option.palette.color(QPalette::WindowText));
             painter->drawText(drawBounds, Qt::AlignLeading, name);
         });
-        calculator.addRect(descRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(descRect, [=](QRectF drawBounds) {
             painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
             painter->drawText(drawBounds, Qt::AlignLeading, genericName);
         });
     }
 
-    calculator.addRect(iconRect, [ = ](QRectF drawBounds) {
+    calculator.addRect(iconRect, [=](QRectF drawBounds) {
         painter->drawPixmap(drawBounds.toRect(), icon);
     });
 
-
     if (data.value("drawArrows", true).toBool()) {
-        if (app.getStringList("Actions").count() > 0) { //Actions included
+        if (app.getStringList("Actions").count() > 0) { // Actions included
             QRect actionsRect;
             actionsRect.setWidth(SC_DPI(16));
             actionsRect.setHeight(SC_DPI(16));
             actionsRect.moveCenter(iconRect.center());
             actionsRect.moveRight(option.rect.right() - SC_DPI(9));
 
-            calculator.addRect(actionsRect, [ = ](QRectF drawBounds) {
+            calculator.addRect(actionsRect, [=](QRectF drawBounds) {
                 painter->drawPixmap(drawBounds.toRect(), QIcon::fromTheme("arrow-right").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
             });
         }

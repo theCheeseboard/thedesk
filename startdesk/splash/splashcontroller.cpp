@@ -35,6 +35,8 @@
 #include <QRandomGenerator>
 #include <QStandardPaths>
 #include <QTimer>
+#include <Screens/screendaemon.h>
+#include <Wm/desktopwm.h>
 #include <libcontemporary_global.h>
 #include <tnotification.h>
 #include <tsettings.h>
@@ -161,6 +163,7 @@ void SplashController::initSession() {
 
 void SplashController::runAutostart() {
     if (d->autostartDone) return;
+    if (qEnvironmentVariable("THEDESK_NO_AUTOSTART") == "true") return;
 
     // Autostart the Polkit agent
     QString pkPath = QStringLiteral(SYSTEM_LIBRARY_DIRECTORY).append("/td-polkitagent");
@@ -215,6 +218,11 @@ void SplashController::startDE() {
     emit starting();
     d->server->listen(d->serverPath);
     d->startedSuccessfully = false;
+
+    // Set correct DPI
+    tSettings settings;
+    DesktopWm::instance()->registerAsPrimaryProvider();
+    ScreenDaemon::instance()->setDpi(settings.value("Display/dpi").toInt());
 
     QString thedeskPath = qEnvironmentVariable("THEDESK_PATH", "/usr/bin/thedesk");
     d->process = new QProcess(this);

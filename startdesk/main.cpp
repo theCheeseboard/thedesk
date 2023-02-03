@@ -41,12 +41,10 @@ int main(int argc, char* argv[]) {
     a.setApplicationDisplayName("theDesk");
     a.setQuitOnLastWindowClosed(false);
 
-    // Set screen DPI settings
     tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
     tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
 
     tSettings* settings = new tSettings();
-    ScreenDaemon::instance()->setDpi(settings->value("Display/dpi").toInt());
 
     // Check for initialisation script
     if (settings->value("Session/UseInitializationScript").toBool()) {

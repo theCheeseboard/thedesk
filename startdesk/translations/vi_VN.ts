@@ -73,17 +73,17 @@
 <context>
     <name>SplashController</name>
     <message>
-        <location filename="../splash/splashcontroller.cpp" line="106"/>
+        <location filename="../splash/splashcontroller.cpp" line="108"/>
         <source>Oh, Bonkers!</source>
         <translation>Ủa?</translation>
     </message>
     <message>
-        <location filename="../splash/splashcontroller.cpp" line="107"/>
+        <location filename="../splash/splashcontroller.cpp" line="109"/>
         <source>theDesk had a problem and was restarted.</source>
         <translation>theDesk đã xảy ra một lỗi, và đã khởi chạy lại.</translation>
     </message>
     <message>
-        <location filename="../splash/splashcontroller.cpp" line="109"/>
+        <location filename="../splash/splashcontroller.cpp" line="111"/>
         <source>View Details</source>
         <translation>Xem chi tiết</translation>
     </message>

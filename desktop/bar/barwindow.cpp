@@ -271,9 +271,13 @@ void BarWindow::updatePrimaryScreen() {
     connect(primaryScreen, &SystemScreen::rotationChanged, this, &BarWindow::updatePrimaryScreen);
     d->oldPrimaryScreen = primaryScreen;
 
-    this->setFixedWidth(primaryScreen->geometry().width());
-    this->move(primaryScreen->geometry().topLeft());
-    d->statusCenterWidget->setFixedHeight(primaryScreen->geometry().height());
+    // Qt adjusts the size of the window for us, so we'll need to adjust for that
+    auto primaryGeometry = primaryScreen->geometry();
+    primaryGeometry.setSize(primaryGeometry.size() / primaryScreen->qtScreen()->devicePixelRatio());
+
+    this->setFixedWidth(primaryGeometry.width());
+    this->move(primaryGeometry.topLeft());
+    d->statusCenterWidget->setFixedHeight(primaryGeometry.height());
 
     // Refresh the state of all the windows
     for (const DesktopWmWindowPtr& window : DesktopWm::openWindows()) {
