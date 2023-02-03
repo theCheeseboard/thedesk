@@ -170,7 +170,7 @@
         </widget>
        </item>
        <item>
-        <widget class="Line" name="line_2">
+        <widget class="Line" name="powerProfileLine">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
@@ -419,15 +419,15 @@
    </slots>
   </customwidget>
   <customwidget>
+   <class>tSwitch</class>
+   <extends>QPushButton</extends>
+   <header location="global">tswitch.h</header>
+  </customwidget>
+  <customwidget>
    <class>tStatusFrame</class>
    <extends>QFrame</extends>
    <header location="global">tstatusframe.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>tSwitch</class>
-   <extends>QPushButton</extends>
-   <header location="global">tswitch.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

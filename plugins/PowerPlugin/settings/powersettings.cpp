@@ -1,26 +1,25 @@
 #include "powersettings.h"
 #include "ui_powersettings.h"
 
+#include <DesktopPowerProfiles/desktoppowerprofiles.h>
+#include <QIcon>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <QIcon>
 #include <tsettings.h>
-#include <DesktopPowerProfiles/desktoppowerprofiles.h>
 
 struct PowerSettingsPrivate {
-    tSettings settings;
-    DesktopPowerProfiles* profiles;
+        tSettings settings;
+        DesktopPowerProfiles* profiles;
 
-    const static QStringList timeoutUnits;
-    const static QStringList powerActions;
+        const static QStringList timeoutUnits;
+        const static QStringList powerActions;
 };
 
 const QStringList PowerSettingsPrivate::timeoutUnits = {
     "sec",
     "min",
     "hr",
-    "never"
-};
+    "never"};
 
 const QStringList PowerSettingsPrivate::powerActions = {
     "ask",
@@ -28,8 +27,7 @@ const QStringList PowerSettingsPrivate::powerActions = {
     "reboot",
     "suspend",
     "hibernate",
-    "ignore"
-};
+    "ignore"};
 
 PowerSettings::PowerSettings(DesktopPowerProfiles* powerProfiles) :
     StatusCenterPane(),
@@ -50,13 +48,12 @@ PowerSettings::PowerSettings(DesktopPowerProfiles* powerProfiles) :
 
     connect(&d->settings, &tSettings::settingChanged, this, &PowerSettings::settingChanged);
     for (QString setting : {
-            "Power/timeouts.screenoff.value",
-            "Power/timeouts.screenoff.unit",
-            "Power/timeouts.suspend.value",
-            "Power/timeouts.suspend.unit",
-            "Power/actions.powerbutton",
-            "Power/suspend.lockScreen"
-        }) {
+             "Power/timeouts.screenoff.value",
+             "Power/timeouts.screenoff.unit",
+             "Power/timeouts.suspend.value",
+             "Power/timeouts.suspend.unit",
+             "Power/actions.powerbutton",
+             "Power/suspend.lockScreen"}) {
         settingChanged(setting, d->settings.value(setting));
     }
 
@@ -118,6 +115,10 @@ void PowerSettings::settingChanged(QString key, QVariant value) {
 }
 
 void PowerSettings::updatePowerProfiles() {
+    bool powerProfilesAvailable = d->profiles->powerProfilesAvailable();
+    ui->powerProfileWidget->setVisible(powerProfilesAvailable);
+    ui->powerProfileLine->setVisible(powerProfilesAvailable);
+
     bool isPerformanceAvailable = d->profiles->isPerformanceAvailable();
     ui->performanceProfileButton->setVisible(isPerformanceAvailable);
     ui->performanceDescription->setVisible(isPerformanceAvailable);
@@ -187,8 +188,6 @@ void PowerSettings::on_performanceProfileButton_toggled(bool checked) {
 void PowerSettings::on_lockScreenAfterSuspendSwitch_toggled(bool checked) {
     d->settings.setValue("Power/suspend.lockScreen", checked);
 }
-
-
 
 void PowerSettings::changeEvent(QEvent* event) {
     if (event->type() == QEvent::LanguageChange) {

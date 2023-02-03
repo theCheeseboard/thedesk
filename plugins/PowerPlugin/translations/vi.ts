@@ -77,7 +77,7 @@
     <name>PowerSettings</name>
     <message>
         <location filename="../settings/powersettings.ui" line="35"/>
-        <location filename="../settings/powersettings.cpp" line="77"/>
+        <location filename="../settings/powersettings.cpp" line="74"/>
         <source>Power</source>
         <translation>Điện</translation>
     </message>
@@ -211,37 +211,37 @@
         <translation>NÚT</translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="140"/>
+        <location filename="../settings/powersettings.cpp" line="141"/>
         <source>Performance mode unavailable</source>
         <translation>Chế độ hiệu suất không có sẵn</translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="141"/>
+        <location filename="../settings/powersettings.cpp" line="142"/>
         <source>unavailable</source>
         <translation>không sẵn</translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="146"/>
+        <location filename="../settings/powersettings.cpp" line="147"/>
         <source>Performance mode temporarily unavailable</source>
         <translation>Chế độ hiệu suất không sẵn tạm thời</translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="147"/>
+        <location filename="../settings/powersettings.cpp" line="148"/>
         <source>temporarily unavailable</source>
         <translation>không sẵn tạm thời</translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="158"/>
+        <location filename="../settings/powersettings.cpp" line="159"/>
         <source>Performance mode is %1 because the device is on your lap.</source>
         <translation>Chế độ hiệu suất tại vì thiết bị này đang nằm trên đùi của bạn.</translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="159"/>
+        <location filename="../settings/powersettings.cpp" line="160"/>
         <source>Performance mode is %1 because your device is getting warm.</source>
         <translation>Chế độ hiệu suất tại vì thiết bị của bạn đang nóng lên.</translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="160"/>
+        <location filename="../settings/powersettings.cpp" line="161"/>
         <source>Performance mode is %1.</source>
         <translation>Chế độ hiệu suất %1.</translation>
     </message>

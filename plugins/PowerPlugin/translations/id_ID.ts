@@ -77,7 +77,7 @@
     <name>PowerSettings</name>
     <message>
         <location filename="../settings/powersettings.ui" line="35"/>
-        <location filename="../settings/powersettings.cpp" line="77"/>
+        <location filename="../settings/powersettings.cpp" line="74"/>
         <source>Power</source>
         <translation>Daya</translation>
     </message>
@@ -191,37 +191,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="140"/>
+        <location filename="../settings/powersettings.cpp" line="141"/>
         <source>Performance mode unavailable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="141"/>
+        <location filename="../settings/powersettings.cpp" line="142"/>
         <source>unavailable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="159"/>
+        <location filename="../settings/powersettings.cpp" line="160"/>
         <source>Performance mode is %1 because your device is getting warm.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="160"/>
+        <location filename="../settings/powersettings.cpp" line="161"/>
         <source>Performance mode is %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="158"/>
+        <location filename="../settings/powersettings.cpp" line="159"/>
         <source>Performance mode is %1 because the device is on your lap.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="146"/>
+        <location filename="../settings/powersettings.cpp" line="147"/>
         <source>Performance mode temporarily unavailable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/powersettings.cpp" line="147"/>
+        <location filename="../settings/powersettings.cpp" line="148"/>
         <source>temporarily unavailable</source>
         <translation type="unfinished"></translation>
     </message>
