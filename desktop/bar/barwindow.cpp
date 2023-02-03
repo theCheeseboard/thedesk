@@ -288,7 +288,7 @@ void BarWindow::updatePrimaryScreen() {
 }
 
 void BarWindow::barHeightChanged() {
-    DesktopWm::setScreenMarginForWindow(this, qApp->primaryScreen(), Qt::TopEdge, d->mainBarWidget->statusBarHeight() + 1);
+    DesktopWm::setScreenMarginForWindow(this, qApp->primaryScreen(), Qt::TopEdge, d->mainBarWidget->statusBarHeight() * ScreenDaemon::instance()->primayScreen()->qtScreen()->devicePixelRatio() + 1);
     d->mainBarWidget->setFixedHeight(d->mainBarWidget->expandedHeight());
 
     if (!d->statusCenterShown) {
