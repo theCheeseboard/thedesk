@@ -10,6 +10,12 @@ theDesk is a desktop environment built on Qt libraries.
 
 ---
 
+<p align="center">
+<img src="readme/screenshots/thedesk.png" width=45% /> <img src="readme/screenshots/overview.png" width=45% /><br>
+<img src="readme/screenshots/desktops.png" width=45% /> <img src="readme/screenshots/thegateway.png" width=45% /><br>
+<img src="readme/videos/desktops.gif" width=90% />
+</p>
+
 # Dependencies
 - Qt 5
   - Qt Core
