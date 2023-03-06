@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.4.0)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets DBus)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets DBus)
 find_package(libcontemporary)
-find_package(PolkitQt6-1)
+find_package(PolkitQt${QT_VERSION_MAJOR}-1)
 
 set(SOURCES
     onboarding/onboardingusers.cpp
@@ -45,9 +45,9 @@ set(PLUGIN_NAME users)
 add_plugin_td(${PLUGIN_NAME})
 target_sources(plugin-${PLUGIN_NAME} PRIVATE ${SOURCES} ${HEADERS})
 
-IF(${PolkitQt6-1_FOUND})
-    target_link_libraries(plugin-${PLUGIN_NAME} PolkitQt6-1::Core)
+IF(${PolkitQt${QT_VERSION_MAJOR}-1_FOUND})
+    target_link_libraries(plugin-${PLUGIN_NAME} PolkitQt${QT_VERSION_MAJOR}-1::Core)
     target_compile_definitions(plugin-${PLUGIN_NAME} PRIVATE HAVE_POLKITQT)
 ENDIF()
 
-target_link_libraries(plugin-${PLUGIN_NAME} Qt6::Widgets Qt6::DBus libcontemporary libthedesk)
+target_link_libraries(plugin-${PLUGIN_NAME} Qt::Widgets Qt::DBus libcontemporary libthedesk)

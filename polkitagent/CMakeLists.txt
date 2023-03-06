@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.21.0)
 
 project(polkitagent VERSION 1.0.0 LANGUAGES CXX)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets Network DBus)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Network DBus)
 find_package(libcontemporary REQUIRED)
 find_package(libtdesktopenvironment REQUIRED)
-find_package(PolkitQt6-1 REQUIRED)
+find_package(PolkitQt${QT_VERSION_MAJOR}-1 REQUIRED)
 
 set(SOURCES
     authwindow.cpp
@@ -42,7 +42,7 @@ cntp_target_name(polkitagent "polkitagent")
 #cntp_defaults_file(polkitagent
 #    DEFAULTS_FILE polkitagent.conf)
 
-target_link_libraries(polkitagent Qt6::Widgets Qt6::Network Qt6::DBus PolkitQt6-1::Core PolkitQt6-1::Agent libcontemporary libtdesktopenvironment)
+target_link_libraries(polkitagent Qt::Widgets Qt::Network Qt::DBus PolkitQt${QT_VERSION_MAJOR}-1::Core PolkitQt${QT_VERSION_MAJOR}-1::Agent libcontemporary libtdesktopenvironment)
 
 install(TARGETS polkitagent
         RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}

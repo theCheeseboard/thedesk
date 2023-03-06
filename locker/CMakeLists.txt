@@ -1,6 +1,6 @@
 project(locker VERSION 1.0.0 LANGUAGES CXX)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets DBus Sql PrintSupport)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets DBus Sql PrintSupport)
 find_package(libcontemporary REQUIRED)
 find_package(libtdesktopenvironment REQUIRED)
 
@@ -26,7 +26,7 @@ cntp_init(locker 20)
 cntp_translate(locker)
 cntp_target_name(locker "td-locker")
 
-target_link_libraries(locker Qt6::Widgets Qt6::DBus Qt6::Sql Qt6::PrintSupport libcontemporary libtdesktopenvironment libthedesk)
+target_link_libraries(locker Qt::Widgets Qt::DBus Qt::Sql Qt::PrintSupport libcontemporary libtdesktopenvironment libthedesk)
 target_include_directories(locker PUBLIC ../libthedesk/)
 
 install(TARGETS locker

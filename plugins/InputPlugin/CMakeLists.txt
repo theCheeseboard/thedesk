@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.4.0)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(libcontemporary)
 cntp_find_pkgconfig(X11 x11)
 cntp_find_pkgconfig(X11_XI xi)
@@ -55,4 +55,4 @@ IF(${X11_FOUND})
     ENDIF()
 ENDIF()
 
-target_link_libraries(plugin-${PLUGIN_NAME} Qt6::Widgets libcontemporary libthedesk)
+target_link_libraries(plugin-${PLUGIN_NAME} Qt::Widgets libcontemporary libthedesk)

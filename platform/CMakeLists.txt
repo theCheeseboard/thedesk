@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.4.0)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(libcontemporary)
 
 set(SOURCES
@@ -41,5 +41,5 @@ set_target_properties(thedesk-platform-plugin PROPERTIES
         OUTPUT_NAME thedesk-platform
         FRAMEWORK FALSE)
 
-target_link_libraries(thedesk-platform-plugin Qt6::Widgets Qt6::GuiPrivate libcontemporary)
-target_include_directories(thedesk-platform-plugin PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS})
+target_link_libraries(thedesk-platform-plugin Qt::Widgets Qt::GuiPrivate libcontemporary)
+target_include_directories(thedesk-platform-plugin PRIVATE ${Qt${QT_VERSION_MAJOR}Gui_PRIVATE_INCLUDE_DIRS})

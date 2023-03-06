@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.4.0)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets DBus)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets DBus)
 find_package(libcontemporary)
 find_package(KF5NetworkManagerQt REQUIRED)
 find_package(KF5ModemManagerQt REQUIRED)
@@ -104,4 +104,4 @@ set(PLUGIN_NAME network)
 add_plugin_td(${PLUGIN_NAME})
 target_sources(plugin-${PLUGIN_NAME} PRIVATE ${SOURCES} ${HEADERS})
 
-target_link_libraries(plugin-${PLUGIN_NAME} Qt6::Widgets Qt6::Multimedia KF5::NetworkManagerQt KF5::ModemManagerQt PkgConfig::qrencode libcontemporary libthedesk)
+target_link_libraries(plugin-${PLUGIN_NAME} Qt::Widgets Qt::Multimedia KF5::NetworkManagerQt KF5::ModemManagerQt PkgConfig::qrencode libcontemporary libthedesk)

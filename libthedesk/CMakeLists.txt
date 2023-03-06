@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.4.0)
 
 project(lib VERSION 1.0.0 LANGUAGES CXX)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets Multimedia DBus Svg QuickWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Multimedia DBus Svg QuickWidgets)
 find_package(libcontemporary REQUIRED)
 find_package(libtdesktopenvironment REQUIRED)
 
@@ -113,7 +113,7 @@ cntp_target_public_headers(libthedesk
     HEADERS ${HEADERS}
 )
 
-target_link_libraries(libthedesk Qt6::Widgets Qt6::DBus Qt6::Multimedia Qt6::Svg Qt6::QuickWidgets libcontemporary libtdesktopenvironment)
+target_link_libraries(libthedesk Qt::Widgets Qt::DBus Qt::Multimedia Qt::Svg Qt::QuickWidgets libcontemporary libtdesktopenvironment)
 target_compile_definitions(libthedesk PRIVATE LIBTHEDESK_LIBRARY)
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")

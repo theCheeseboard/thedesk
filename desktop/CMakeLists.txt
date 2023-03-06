@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21.0)
 
 project(thedesk VERSION 1.0.0 LANGUAGES CXX)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets Network DBus Multimedia QuickWidgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Network DBus Multimedia QuickWidgets)
 find_package(libcontemporary REQUIRED)
 find_package(libtdesktopenvironment REQUIRED)
 
@@ -124,7 +124,7 @@ cntp_init(thedesk 20)
 cntp_translate(thedesk)
 cntp_target_name(thedesk "thedesk")
 
-target_link_libraries(thedesk Qt6::Widgets Qt6::Network Qt6::DBus Qt6::Multimedia Qt6::QuickWidgets libcontemporary libtdesktopenvironment libthedesk)
+target_link_libraries(thedesk Qt::Widgets Qt::Network Qt::DBus Qt::Multimedia Qt::QuickWidgets libcontemporary libtdesktopenvironment libthedesk)
 target_include_directories(thedesk PUBLIC ../libthedesk/)
 
 install(TARGETS thedesk

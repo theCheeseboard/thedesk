@@ -21,9 +21,10 @@
 #include "ui_gateway.h"
 
 #include <Gestures/gesturedaemon.h>
-#include <QApplication>
 #include <QPainter>
 #include <QScreen>
+#include <Screens/screendaemon.h>
+#include <Screens/systemscreen.h>
 #include <Wm/desktopwm.h>
 #include <tvariantanimation.h>
 
@@ -56,7 +57,7 @@ Gateway::Gateway() :
     d->width->setDuration(500);
     connect(d->width, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         this->setFixedWidth(value.toInt());
-        QScreen* screen = qApp->primaryScreen();
+        auto* screen = ScreenDaemon::instance()->primayScreen();
         QRect geometry;
         geometry.setHeight(this->height());
         geometry.setWidth(value.toInt());
@@ -119,7 +120,7 @@ void Gateway::trackGatewayOpenGesture(GestureInteractionPtr gesture) {
     // Capture this gesture!
     d->lastGesture = gesture;
 
-    QScreen* screen = qApp->primaryScreen();
+    auto* screen = ScreenDaemon::instance()->primayScreen();
     this->setFixedHeight(screen->geometry().height());
     d->width->setEasingCurve(QEasingCurve::Linear);
     d->width->setCurrentTime(0);
@@ -147,7 +148,7 @@ void Gateway::trackGatewayCloseGesture(GestureInteractionPtr gesture) {
     // Capture this gesture!
     d->lastGesture = gesture;
 
-    QScreen* screen = qApp->primaryScreen();
+    auto* screen = ScreenDaemon::instance()->primayScreen();
     this->setFixedHeight(screen->geometry().height());
     d->width->setEasingCurve(QEasingCurve::Linear);
     d->width->setCurrentTime(0);
@@ -177,7 +178,7 @@ Gateway* Gateway::instance() {
 }
 
 void Gateway::show() {
-    QScreen* screen = qApp->primaryScreen();
+    auto* screen = ScreenDaemon::instance()->primayScreen();
     this->setFixedHeight(screen->geometry().height());
 
     d->width->setEasingCurve(QEasingCurve::OutCubic);
