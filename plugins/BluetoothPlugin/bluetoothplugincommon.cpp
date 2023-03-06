@@ -17,13 +17,13 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#include "common.h"
+#include "bluetoothplugincommon.h"
 
-Common::Common(QObject* parent) : QObject(parent) {
+BluetoothPluginCommon::BluetoothPluginCommon(QObject* parent) : QObject(parent) {
 
 }
 
-QString Common::stringForDeviceType(BluezQt::Device::Type type) {
+QString BluetoothPluginCommon::stringForDeviceType(BluezQt::Device::Type type) {
     switch (type) {
         case BluezQt::Device::Phone:
             return tr("Phone");

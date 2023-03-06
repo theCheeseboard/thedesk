@@ -14,6 +14,104 @@
     </message>
 </context>
 <context>
+    <name>BluetoothPluginCommon</name>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="29"/>
+        <source>Phone</source>
+        <translation type="unfinished">Telefon</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="31"/>
+        <source>Modem</source>
+        <translation type="unfinished">Modem</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="33"/>
+        <source>Computer</source>
+        <translation type="unfinished">Calculator</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="35"/>
+        <source>Networking</source>
+        <translation type="unfinished">Rețelistică</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="37"/>
+        <source>Headset</source>
+        <translation type="unfinished">Headset</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="39"/>
+        <source>Headphones</source>
+        <translation type="unfinished">Căști</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="41"/>
+        <source>Audio/Video</source>
+        <translation type="unfinished">Audio/Video</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="43"/>
+        <source>Keyboard</source>
+        <translation type="unfinished">Tastatură</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="45"/>
+        <source>Mouse</source>
+        <translation type="unfinished">Mouse</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="47"/>
+        <source>Gamepad</source>
+        <translation type="unfinished">Gamepad</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="49"/>
+        <source>Drawing Tablet</source>
+        <translation type="unfinished">Tabletă grafică</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="51"/>
+        <source>Peripheral</source>
+        <translation type="unfinished">Periferic</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="53"/>
+        <source>Camera</source>
+        <translation type="unfinished">Cameră</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="55"/>
+        <source>Printer</source>
+        <translation type="unfinished">Imprimantă</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="57"/>
+        <source>Imaging</source>
+        <translation type="unfinished">Imagistică</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="59"/>
+        <source>Wearable</source>
+        <translation type="unfinished">De purtat</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="61"/>
+        <source>Toy</source>
+        <translation type="unfinished">Jucărie</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="63"/>
+        <source>Health</source>
+        <translation type="unfinished">Sănătate</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="65"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Necunoscut</translation>
+    </message>
+</context>
+<context>
     <name>BluetoothSettingsPane</name>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="35"/>
@@ -177,99 +275,80 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../common.cpp" line="29"/>
         <source>Phone</source>
-        <translation>Telefon</translation>
+        <translation type="vanished">Telefon</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="31"/>
         <source>Modem</source>
-        <translation>Modem</translation>
+        <translation type="vanished">Modem</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="33"/>
         <source>Computer</source>
-        <translation>Calculator</translation>
+        <translation type="vanished">Calculator</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="35"/>
         <source>Networking</source>
-        <translation>Rețelistică</translation>
+        <translation type="vanished">Rețelistică</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="37"/>
         <source>Headset</source>
-        <translation>Headset</translation>
+        <translation type="vanished">Headset</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="39"/>
         <source>Headphones</source>
-        <translation>Căști</translation>
+        <translation type="vanished">Căști</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="41"/>
         <source>Audio/Video</source>
-        <translation>Audio/Video</translation>
+        <translation type="vanished">Audio/Video</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="43"/>
         <source>Keyboard</source>
-        <translation>Tastatură</translation>
+        <translation type="vanished">Tastatură</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="45"/>
         <source>Mouse</source>
-        <translation>Mouse</translation>
+        <translation type="vanished">Mouse</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="47"/>
         <source>Gamepad</source>
-        <translation>Gamepad</translation>
+        <translation type="vanished">Gamepad</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="49"/>
         <source>Drawing Tablet</source>
-        <translation>Tabletă grafică</translation>
+        <translation type="vanished">Tabletă grafică</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="51"/>
         <source>Peripheral</source>
-        <translation>Periferic</translation>
+        <translation type="vanished">Periferic</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="53"/>
         <source>Camera</source>
-        <translation>Cameră</translation>
+        <translation type="vanished">Cameră</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="55"/>
         <source>Printer</source>
-        <translation>Imprimantă</translation>
+        <translation type="vanished">Imprimantă</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="57"/>
         <source>Imaging</source>
-        <translation>Imagistică</translation>
+        <translation type="vanished">Imagistică</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="59"/>
         <source>Wearable</source>
-        <translation>De purtat</translation>
+        <translation type="vanished">De purtat</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="61"/>
         <source>Toy</source>
-        <translation>Jucărie</translation>
+        <translation type="vanished">Jucărie</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="63"/>
         <source>Health</source>
-        <translation>Sănătate</translation>
+        <translation type="vanished">Sănătate</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="65"/>
         <source>Unknown</source>
-        <translation>Necunoscut</translation>
+        <translation type="vanished">Necunoscut</translation>
     </message>
 </context>
 <context>

@@ -20,13 +20,13 @@
 #include "devicepopover.h"
 #include "ui_devicepopover.h"
 
+#include "bluetoothplugincommon.h"
 #include <BluezQt/Adapter>
 #include <BluezQt/PendingCall>
 #include <ttoast.h>
-#include "common.h"
 
 struct DevicePopoverPrivate {
-    BluezQt::DevicePtr device;
+        BluezQt::DevicePtr device;
 };
 
 DevicePopover::DevicePopover(BluezQt::DevicePtr device, QWidget* parent) :
@@ -41,7 +41,7 @@ DevicePopover::DevicePopover(BluezQt::DevicePtr device, QWidget* parent) :
     ui->titleLabel->setText(device->name());
     ui->iconLabel->setPixmap(QIcon::fromTheme(device->icon()).pixmap(SC_DPI_T(QSize(64, 64), QSize)));
     ui->nameLabel->setText(device->name());
-    ui->typeLabel->setText(Common::stringForDeviceType(device->type()));
+    ui->typeLabel->setText(BluetoothPluginCommon::stringForDeviceType(device->type()));
 
     connect(d->device.data(), &BluezQt::Device::connectedChanged, this, &DevicePopover::updateDevice);
     updateDevice();
@@ -59,14 +59,14 @@ void DevicePopover::on_titleLabel_backButtonClicked() {
 }
 
 void DevicePopover::on_removeButton_clicked() {
-    //TODO: Ask
+    // TODO: Ask
     d->device->adapter()->removeDevice(d->device);
     emit done();
 }
 
 void DevicePopover::on_connectButton_clicked() {
     BluezQt::PendingCall* call = d->device->connectToDevice();
-    connect(call, &BluezQt::PendingCall::finished, this, [ = ] {
+    connect(call, &BluezQt::PendingCall::finished, this, [=] {
         if (call->error() != BluezQt::PendingCall::NoError) {
             tToast* toast = new tToast();
             toast->setTitle(tr("Failed to connect"));

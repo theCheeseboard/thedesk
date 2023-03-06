@@ -8,6 +8,7 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 ENDIF()
 
 find_package(QT REQUIRED NAMES Qt6)
+set(KF_VERSION_MAJOR ${QT_VERSION_MAJOR} CACHE STRING "Major version of KDE Frameworks to link to")
 
 add_subdirectory(libthedesk)
 add_subdirectory(startdesk)

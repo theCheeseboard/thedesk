@@ -13,6 +13,104 @@
     </message>
 </context>
 <context>
+    <name>BluetoothPluginCommon</name>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="29"/>
+        <source>Phone</source>
+        <translation type="unfinished">Telefon</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="31"/>
+        <source>Modem</source>
+        <translation type="unfinished">Modem</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="33"/>
+        <source>Computer</source>
+        <translation type="unfinished">Computer</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="35"/>
+        <source>Networking</source>
+        <translation type="unfinished">Vernetzung</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="37"/>
+        <source>Headset</source>
+        <translation type="unfinished">Headset</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="39"/>
+        <source>Headphones</source>
+        <translation type="unfinished">Kopfhörer</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="41"/>
+        <source>Audio/Video</source>
+        <translation type="unfinished">Audio/Video</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="43"/>
+        <source>Keyboard</source>
+        <translation type="unfinished">Tastatur</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="45"/>
+        <source>Mouse</source>
+        <translation type="unfinished">Maus</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="47"/>
+        <source>Gamepad</source>
+        <translation type="unfinished">Gamepad</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="49"/>
+        <source>Drawing Tablet</source>
+        <translation type="unfinished">Grafiktablett</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="51"/>
+        <source>Peripheral</source>
+        <translation type="unfinished">Peripheriegerät</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="53"/>
+        <source>Camera</source>
+        <translation type="unfinished">Kamera</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="55"/>
+        <source>Printer</source>
+        <translation type="unfinished">Drucker</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="57"/>
+        <source>Imaging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="59"/>
+        <source>Wearable</source>
+        <translation type="unfinished">Wearable</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="61"/>
+        <source>Toy</source>
+        <translation type="unfinished">Spielzeug</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="63"/>
+        <source>Health</source>
+        <translation type="unfinished">Gesundheit</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="65"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Unbekannt</translation>
+    </message>
+</context>
+<context>
     <name>BluetoothSettingsPane</name>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="35"/>
@@ -176,99 +274,76 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../common.cpp" line="29"/>
         <source>Phone</source>
-        <translation>Telefon</translation>
+        <translation type="vanished">Telefon</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="31"/>
         <source>Modem</source>
-        <translation>Modem</translation>
+        <translation type="vanished">Modem</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="33"/>
         <source>Computer</source>
-        <translation>Computer</translation>
+        <translation type="vanished">Computer</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="35"/>
         <source>Networking</source>
-        <translation>Vernetzung</translation>
+        <translation type="vanished">Vernetzung</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="37"/>
         <source>Headset</source>
-        <translation>Headset</translation>
+        <translation type="vanished">Headset</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="39"/>
         <source>Headphones</source>
-        <translation>Kopfhörer</translation>
+        <translation type="vanished">Kopfhörer</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="41"/>
         <source>Audio/Video</source>
-        <translation>Audio/Video</translation>
+        <translation type="vanished">Audio/Video</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="43"/>
         <source>Keyboard</source>
-        <translation>Tastatur</translation>
+        <translation type="vanished">Tastatur</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="45"/>
         <source>Mouse</source>
-        <translation>Maus</translation>
+        <translation type="vanished">Maus</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="47"/>
         <source>Gamepad</source>
-        <translation>Gamepad</translation>
+        <translation type="vanished">Gamepad</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="49"/>
         <source>Drawing Tablet</source>
-        <translation>Grafiktablett</translation>
+        <translation type="vanished">Grafiktablett</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="51"/>
         <source>Peripheral</source>
-        <translation>Peripheriegerät</translation>
+        <translation type="vanished">Peripheriegerät</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="53"/>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation type="vanished">Kamera</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="55"/>
         <source>Printer</source>
-        <translation>Drucker</translation>
+        <translation type="vanished">Drucker</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="57"/>
-        <source>Imaging</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="59"/>
         <source>Wearable</source>
-        <translation>Wearable</translation>
+        <translation type="vanished">Wearable</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="61"/>
         <source>Toy</source>
-        <translation>Spielzeug</translation>
+        <translation type="vanished">Spielzeug</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="63"/>
         <source>Health</source>
-        <translation>Gesundheit</translation>
+        <translation type="vanished">Gesundheit</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="65"/>
         <source>Unknown</source>
-        <translation>Unbekannt</translation>
+        <translation type="vanished">Unbekannt</translation>
     </message>
 </context>
 <context>

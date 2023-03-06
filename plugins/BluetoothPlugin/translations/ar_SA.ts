@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="en_US" language="ar_SA">
+<TS version="2.1" language="ar_SA" sourcelanguage="en_US">
 <context>
     <name>BluetoothChunk</name>
     <message numerus="yes">
@@ -8,7 +8,110 @@
         <source>%n devices connected</source>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
+    </message>
+</context>
+<context>
+    <name>BluetoothPluginCommon</name>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="29"/>
+        <source>Phone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="31"/>
+        <source>Modem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="33"/>
+        <source>Computer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="35"/>
+        <source>Networking</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="37"/>
+        <source>Headset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="39"/>
+        <source>Headphones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="41"/>
+        <source>Audio/Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="43"/>
+        <source>Keyboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="45"/>
+        <source>Mouse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="47"/>
+        <source>Gamepad</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="49"/>
+        <source>Drawing Tablet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="51"/>
+        <source>Peripheral</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="53"/>
+        <source>Camera</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="55"/>
+        <source>Printer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="57"/>
+        <source>Imaging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="59"/>
+        <source>Wearable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="61"/>
+        <source>Toy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="63"/>
+        <source>Health</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="65"/>
+        <source>Unknown</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -169,104 +272,6 @@
     <message>
         <location filename="../btobex.cpp" line="120"/>
         <source>The file %1 was unable to be received.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Common</name>
-    <message>
-        <location filename="../common.cpp" line="29"/>
-        <source>Phone</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="31"/>
-        <source>Modem</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="33"/>
-        <source>Computer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="35"/>
-        <source>Networking</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="37"/>
-        <source>Headset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="39"/>
-        <source>Headphones</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="41"/>
-        <source>Audio/Video</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="43"/>
-        <source>Keyboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="45"/>
-        <source>Mouse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="47"/>
-        <source>Gamepad</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="49"/>
-        <source>Drawing Tablet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="51"/>
-        <source>Peripheral</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="53"/>
-        <source>Camera</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="55"/>
-        <source>Printer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="57"/>
-        <source>Imaging</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="59"/>
-        <source>Wearable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="61"/>
-        <source>Toy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="63"/>
-        <source>Health</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../common.cpp" line="65"/>
-        <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

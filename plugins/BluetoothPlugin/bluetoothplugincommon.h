@@ -17,15 +17,15 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef BLUETOOTHPLUGINCOMMON_H
+#define BLUETOOTHPLUGINCOMMON_H
 
 #include <BluezQt/Device>
 
-class Common : public QObject {
+class BluetoothPluginCommon : public QObject {
         Q_OBJECT
     public:
-        explicit Common(QObject* parent = nullptr);
+        explicit BluetoothPluginCommon(QObject* parent = nullptr);
 
         static QString stringForDeviceType(BluezQt::Device::Type type);
 
@@ -33,4 +33,4 @@ class Common : public QObject {
 
 };
 
-#endif // COMMON_H
+#endif // BLUETOOTHPLUGINCOMMON_H

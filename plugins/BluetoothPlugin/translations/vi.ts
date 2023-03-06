@@ -12,6 +12,104 @@
     </message>
 </context>
 <context>
+    <name>BluetoothPluginCommon</name>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="29"/>
+        <source>Phone</source>
+        <translation type="unfinished">Điện thoại</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="31"/>
+        <source>Modem</source>
+        <translation type="unfinished">Bộ điều giải</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="33"/>
+        <source>Computer</source>
+        <translation type="unfinished">Máy tính</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="35"/>
+        <source>Networking</source>
+        <translation type="unfinished">Thiết bị mạng</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="37"/>
+        <source>Headset</source>
+        <translation type="unfinished">Tai nghe có micrô</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="39"/>
+        <source>Headphones</source>
+        <translation type="unfinished">Tai nghe</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="41"/>
+        <source>Audio/Video</source>
+        <translation type="unfinished">Âm thanh/Video</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="43"/>
+        <source>Keyboard</source>
+        <translation type="unfinished">Bàn phím</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="45"/>
+        <source>Mouse</source>
+        <translation type="unfinished">Chuột</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="47"/>
+        <source>Gamepad</source>
+        <translation type="unfinished">Bộ điều khiển</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="49"/>
+        <source>Drawing Tablet</source>
+        <translation type="unfinished">Bảng vẽ</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="51"/>
+        <source>Peripheral</source>
+        <translation type="unfinished">Ngoại vi</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="53"/>
+        <source>Camera</source>
+        <translation type="unfinished">Máy ảnh</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="55"/>
+        <source>Printer</source>
+        <translation type="unfinished">Máy in</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="57"/>
+        <source>Imaging</source>
+        <translation type="unfinished">Máy hình ảnh</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="59"/>
+        <source>Wearable</source>
+        <translation type="unfinished">Thiết bị đeo</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="61"/>
+        <source>Toy</source>
+        <translation type="unfinished">Đồ chơi</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="63"/>
+        <source>Health</source>
+        <translation type="unfinished">Thiết bị sức khỏe</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="65"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Không xác định</translation>
+    </message>
+</context>
+<context>
     <name>BluetoothSettingsPane</name>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="35"/>
@@ -175,99 +273,80 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../common.cpp" line="29"/>
         <source>Phone</source>
-        <translation>Điện thoại</translation>
+        <translation type="vanished">Điện thoại</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="31"/>
         <source>Modem</source>
-        <translation>Bộ điều giải</translation>
+        <translation type="vanished">Bộ điều giải</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="33"/>
         <source>Computer</source>
-        <translation>Máy tính</translation>
+        <translation type="vanished">Máy tính</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="35"/>
         <source>Networking</source>
-        <translation>Thiết bị mạng</translation>
+        <translation type="vanished">Thiết bị mạng</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="37"/>
         <source>Headset</source>
-        <translation>Tai nghe có micrô</translation>
+        <translation type="vanished">Tai nghe có micrô</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="39"/>
         <source>Headphones</source>
-        <translation>Tai nghe</translation>
+        <translation type="vanished">Tai nghe</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="41"/>
         <source>Audio/Video</source>
-        <translation>Âm thanh/Video</translation>
+        <translation type="vanished">Âm thanh/Video</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="43"/>
         <source>Keyboard</source>
-        <translation>Bàn phím</translation>
+        <translation type="vanished">Bàn phím</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="45"/>
         <source>Mouse</source>
-        <translation>Chuột</translation>
+        <translation type="vanished">Chuột</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="47"/>
         <source>Gamepad</source>
-        <translation>Bộ điều khiển</translation>
+        <translation type="vanished">Bộ điều khiển</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="49"/>
         <source>Drawing Tablet</source>
-        <translation>Bảng vẽ</translation>
+        <translation type="vanished">Bảng vẽ</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="51"/>
         <source>Peripheral</source>
-        <translation>Ngoại vi</translation>
+        <translation type="vanished">Ngoại vi</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="53"/>
         <source>Camera</source>
-        <translation>Máy ảnh</translation>
+        <translation type="vanished">Máy ảnh</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="55"/>
         <source>Printer</source>
-        <translation>Máy in</translation>
+        <translation type="vanished">Máy in</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="57"/>
         <source>Imaging</source>
-        <translation>Máy hình ảnh</translation>
+        <translation type="vanished">Máy hình ảnh</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="59"/>
         <source>Wearable</source>
-        <translation>Thiết bị đeo</translation>
+        <translation type="vanished">Thiết bị đeo</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="61"/>
         <source>Toy</source>
-        <translation>Đồ chơi</translation>
+        <translation type="vanished">Đồ chơi</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="63"/>
         <source>Health</source>
-        <translation>Thiết bị sức khỏe</translation>
+        <translation type="vanished">Thiết bị sức khỏe</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="65"/>
         <source>Unknown</source>
-        <translation>Không xác định</translation>
+        <translation type="vanished">Không xác định</translation>
     </message>
 </context>
 <context>

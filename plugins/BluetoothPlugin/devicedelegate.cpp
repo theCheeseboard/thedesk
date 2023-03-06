@@ -19,54 +19,54 @@
  * *************************************/
 #include "devicedelegate.h"
 
-
-#include <the-libs_global.h>
+#include "bluetoothplugincommon.h"
 #include <QPainter>
+#include <libcontemporary_global.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <tpaintcalculator.h>
-#include "common.h"
 
 #include <BluezQt/DevicesModel>
 
 struct DeviceDelegatePrivate {
-    bool isPair;
+        bool isPair;
 
-    struct Rects {
-        QRect iconRect;
-        QRect textRect;
-        QRect descRect;
-        QRect arrowRect;
+        struct Rects {
+                QRect iconRect;
+                QRect textRect;
+                QRect descRect;
+                QRect arrowRect;
 
-        Rects(const QStyleOptionViewItem& option) {
-            QRect newRect = option.rect;
-            QPoint center = newRect.center();
-            newRect.setWidth(StateManager::statusCenterManager()->preferredContentWidth());
-            newRect.moveCenter(center);
+                Rects(const QStyleOptionViewItem& option) {
+                    QRect newRect = option.rect;
+                    QPoint center = newRect.center();
+                    newRect.setWidth(StateManager::statusCenterManager()->preferredContentWidth());
+                    newRect.moveCenter(center);
 
-            iconRect.setLeft(newRect.left() + SC_DPI(6));
-            iconRect.setTop(newRect.top() + SC_DPI(6));
-            iconRect.setBottom(iconRect.top() + SC_DPI(32));
-            iconRect.setRight(iconRect.left() + SC_DPI(32));
+                    iconRect.setLeft(newRect.left() + SC_DPI(6));
+                    iconRect.setTop(newRect.top() + SC_DPI(6));
+                    iconRect.setBottom(iconRect.top() + SC_DPI(32));
+                    iconRect.setRight(iconRect.left() + SC_DPI(32));
 
-            arrowRect.setSize(SC_DPI_T(QSize(16, 16), QSize));
-            arrowRect.moveCenter(newRect.center());
-            arrowRect.moveRight(newRect.right() - SC_DPI(6));
+                    arrowRect.setSize(SC_DPI_T(QSize(16, 16), QSize));
+                    arrowRect.moveCenter(newRect.center());
+                    arrowRect.moveRight(newRect.right() - SC_DPI(6));
 
-            textRect.setLeft(iconRect.right() + SC_DPI(6));
-            textRect.setTop(newRect.top() + SC_DPI(6));
-            textRect.setBottom(newRect.top() + option.fontMetrics.height() + SC_DPI(6));
-            textRect.setRight(arrowRect.left() - SC_DPI(6));
+                    textRect.setLeft(iconRect.right() + SC_DPI(6));
+                    textRect.setTop(newRect.top() + SC_DPI(6));
+                    textRect.setBottom(newRect.top() + option.fontMetrics.height() + SC_DPI(6));
+                    textRect.setRight(arrowRect.left() - SC_DPI(6));
 
-            descRect.setLeft(iconRect.right() + SC_DPI(6));
-            descRect.setTop(newRect.top() + option.fontMetrics.height() + SC_DPI(8));
-            descRect.setBottom(newRect.top() + option.fontMetrics.height() * 2 + SC_DPI(6));
-            descRect.setRight(arrowRect.left() - SC_DPI(6));
-        }
-    };
+                    descRect.setLeft(iconRect.right() + SC_DPI(6));
+                    descRect.setTop(newRect.top() + option.fontMetrics.height() + SC_DPI(8));
+                    descRect.setBottom(newRect.top() + option.fontMetrics.height() * 2 + SC_DPI(6));
+                    descRect.setRight(arrowRect.left() - SC_DPI(6));
+                }
+        };
 };
 
-DeviceDelegate::DeviceDelegate(bool isPair, QObject* parent) : QAbstractItemDelegate(parent) {
+DeviceDelegate::DeviceDelegate(bool isPair, QObject* parent) :
+    QAbstractItemDelegate(parent) {
     d = new DeviceDelegatePrivate();
     d->isPair = isPair;
 }
@@ -85,28 +85,28 @@ void DeviceDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option
 
     DeviceDelegatePrivate::Rects rects(option);
     QString text = index.data().toString();
-    QString desc = Common::stringForDeviceType(index.data(BluezQt::DevicesModel::TypeRole).value<BluezQt::Device::Type>());
+    QString desc = BluetoothPluginCommon::stringForDeviceType(index.data(BluezQt::DevicesModel::TypeRole).value<BluezQt::Device::Type>());
     QIcon icon = QIcon::fromTheme(index.data(BluezQt::DevicesModel::IconRole).toString());
     bool active = index.data(BluezQt::DevicesModel::ConnectedRole).toBool();
 
     if (option.state & QStyle::State_Selected) {
-        calculator.addRect(option.rect, [ = ](QRectF drawBounds) {
+        calculator.addRect(option.rect, [=](QRectF drawBounds) {
             painter->setPen(Qt::transparent);
             painter->setBrush(option.palette.color(QPalette::Highlight));
             painter->drawRect(drawBounds);
         });
-        calculator.addRect(rects.textRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(rects.textRect, [=](QRectF drawBounds) {
             painter->setBrush(Qt::transparent);
             painter->setPen(option.palette.color(QPalette::HighlightedText));
 
             if (!active && !d->isPair) painter->setOpacity(0.5);
             painter->drawText(drawBounds, Qt::AlignLeading, text);
         });
-        calculator.addRect(rects.descRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(rects.descRect, [=](QRectF drawBounds) {
             painter->drawText(drawBounds, Qt::AlignLeading, desc);
         });
     } else if (option.state & QStyle::State_MouseOver) {
-        calculator.addRect(option.rect, [ = ](QRectF drawBounds) {
+        calculator.addRect(option.rect, [=](QRectF drawBounds) {
             QColor col = option.palette.color(QPalette::Highlight);
             col.setAlpha(127);
             painter->setBrush(col);
@@ -114,35 +114,35 @@ void DeviceDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option
             painter->drawRect(drawBounds);
         });
 
-        calculator.addRect(rects.textRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(rects.textRect, [=](QRectF drawBounds) {
             if (!active && !d->isPair) painter->setOpacity(0.5);
             painter->setBrush(Qt::transparent);
             painter->setPen(option.palette.color(QPalette::WindowText));
             painter->drawText(drawBounds, Qt::AlignLeading, text);
         });
-        calculator.addRect(rects.descRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(rects.descRect, [=](QRectF drawBounds) {
             painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
             painter->drawText(drawBounds, Qt::AlignLeading, desc);
         });
     } else {
-        calculator.addRect(rects.textRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(rects.textRect, [=](QRectF drawBounds) {
             if (!active && !d->isPair) painter->setOpacity(0.5);
             painter->setPen(option.palette.color(QPalette::WindowText));
             painter->drawText(drawBounds, Qt::AlignLeading, text);
         });
-        calculator.addRect(rects.descRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(rects.descRect, [=](QRectF drawBounds) {
             painter->setPen(option.palette.color(QPalette::Disabled, QPalette::WindowText));
             painter->drawText(drawBounds, Qt::AlignLeading, desc);
         });
     }
 
     if (!icon.isNull()) {
-        calculator.addRect(rects.iconRect, [ = ](QRectF drawBounds) {
+        calculator.addRect(rects.iconRect, [=](QRectF drawBounds) {
             painter->drawPixmap(drawBounds.toRect(), icon.pixmap(rects.iconRect.size()));
         });
     }
 
-    calculator.addRect(rects.arrowRect, [ = ](QRectF drawBounds) {
+    calculator.addRect(rects.arrowRect, [=](QRectF drawBounds) {
         painter->setOpacity(1);
         painter->drawPixmap(drawBounds.toRect(), QIcon::fromTheme("go-next").pixmap(rects.arrowRect.size()));
     });

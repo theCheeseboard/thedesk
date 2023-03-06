@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.4.0)
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 find_package(libcontemporary)
-find_package(KF5PulseAudioQt REQUIRED)
+find_package(KF${KF_VERSION_MAJOR}PulseAudioQt REQUIRED)
 
 set(SOURCES
     audiochunk.cpp
@@ -30,4 +30,4 @@ set(PLUGIN_NAME pulseaudio)
 add_plugin_td(${PLUGIN_NAME})
 target_sources(plugin-${PLUGIN_NAME} PRIVATE ${SOURCES} ${HEADERS})
 
-target_link_libraries(plugin-${PLUGIN_NAME} Qt${QT_VERSION_MAJOR}::Widgets KF5::PulseAudioQt libcontemporary libthedesk)
+target_link_libraries(plugin-${PLUGIN_NAME} Qt${QT_VERSION_MAJOR}::Widgets KF${KF_VERSION_MAJOR}::PulseAudioQt libcontemporary libthedesk)

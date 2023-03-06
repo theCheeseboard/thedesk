@@ -12,6 +12,104 @@
     </message>
 </context>
 <context>
+    <name>BluetoothPluginCommon</name>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="29"/>
+        <source>Phone</source>
+        <translation type="unfinished">Telefon</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="31"/>
+        <source>Modem</source>
+        <translation type="unfinished">Modem</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="33"/>
+        <source>Computer</source>
+        <translation type="unfinished">Bilgisayar</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="35"/>
+        <source>Networking</source>
+        <translation type="unfinished">Ağ</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="37"/>
+        <source>Headset</source>
+        <translation type="unfinished">Kulaklık</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="39"/>
+        <source>Headphones</source>
+        <translation type="unfinished">Kulaklıklar</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="41"/>
+        <source>Audio/Video</source>
+        <translation type="unfinished">Ses/Video</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="43"/>
+        <source>Keyboard</source>
+        <translation type="unfinished">Klavye</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="45"/>
+        <source>Mouse</source>
+        <translation type="unfinished">Mouse</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="47"/>
+        <source>Gamepad</source>
+        <translation type="unfinished">Oyun kumanda</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="49"/>
+        <source>Drawing Tablet</source>
+        <translation type="unfinished">Çizim Tableti</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="51"/>
+        <source>Peripheral</source>
+        <translation type="unfinished">Çevresel</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="53"/>
+        <source>Camera</source>
+        <translation type="unfinished">Kamera</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="55"/>
+        <source>Printer</source>
+        <translation type="unfinished">Yazıcı</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="57"/>
+        <source>Imaging</source>
+        <translation type="unfinished">Görüntüleme</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="59"/>
+        <source>Wearable</source>
+        <translation type="unfinished">Giyilebilir</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="61"/>
+        <source>Toy</source>
+        <translation type="unfinished">Oyuncak</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="63"/>
+        <source>Health</source>
+        <translation type="unfinished">Sağlık</translation>
+    </message>
+    <message>
+        <location filename="../bluetoothplugincommon.cpp" line="65"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Bilinmeyen</translation>
+    </message>
+</context>
+<context>
     <name>BluetoothSettingsPane</name>
     <message>
         <location filename="../settings/bluetoothsettingspane.ui" line="35"/>
@@ -175,99 +273,80 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../common.cpp" line="29"/>
         <source>Phone</source>
-        <translation>Telefon</translation>
+        <translation type="vanished">Telefon</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="31"/>
         <source>Modem</source>
-        <translation>Modem</translation>
+        <translation type="vanished">Modem</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="33"/>
         <source>Computer</source>
-        <translation>Bilgisayar</translation>
+        <translation type="vanished">Bilgisayar</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="35"/>
         <source>Networking</source>
-        <translation>Ağ</translation>
+        <translation type="vanished">Ağ</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="37"/>
         <source>Headset</source>
-        <translation>Kulaklık</translation>
+        <translation type="vanished">Kulaklık</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="39"/>
         <source>Headphones</source>
-        <translation>Kulaklıklar</translation>
+        <translation type="vanished">Kulaklıklar</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="41"/>
         <source>Audio/Video</source>
-        <translation>Ses/Video</translation>
+        <translation type="vanished">Ses/Video</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="43"/>
         <source>Keyboard</source>
-        <translation>Klavye</translation>
+        <translation type="vanished">Klavye</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="45"/>
         <source>Mouse</source>
-        <translation>Mouse</translation>
+        <translation type="vanished">Mouse</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="47"/>
         <source>Gamepad</source>
-        <translation>Oyun kumanda</translation>
+        <translation type="vanished">Oyun kumanda</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="49"/>
         <source>Drawing Tablet</source>
-        <translation>Çizim Tableti</translation>
+        <translation type="vanished">Çizim Tableti</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="51"/>
         <source>Peripheral</source>
-        <translation>Çevresel</translation>
+        <translation type="vanished">Çevresel</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="53"/>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation type="vanished">Kamera</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="55"/>
         <source>Printer</source>
-        <translation>Yazıcı</translation>
+        <translation type="vanished">Yazıcı</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="57"/>
         <source>Imaging</source>
-        <translation>Görüntüleme</translation>
+        <translation type="vanished">Görüntüleme</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="59"/>
         <source>Wearable</source>
-        <translation>Giyilebilir</translation>
+        <translation type="vanished">Giyilebilir</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="61"/>
         <source>Toy</source>
-        <translation>Oyuncak</translation>
+        <translation type="vanished">Oyuncak</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="63"/>
         <source>Health</source>
-        <translation>Sağlık</translation>
+        <translation type="vanished">Sağlık</translation>
     </message>
     <message>
-        <location filename="../common.cpp" line="65"/>
         <source>Unknown</source>
-        <translation>Bilinmeyen</translation>
+        <translation type="vanished">Bilinmeyen</translation>
     </message>
 </context>
 <context>
