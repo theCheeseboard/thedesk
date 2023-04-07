@@ -25,17 +25,33 @@
     </message>
     <message numerus="yes">
         <location filename="../OverviewPane/overviewpane.cpp" line="208"/>
+        <source>Daylight Savings Time is ending on %1. The clock will automatically shift backwards by %n hour(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../OverviewPane/overviewpane.cpp" line="210"/>
+        <source>Daylight Savings Time is starting on %1. The clock will automatically shift forwards by %n hour(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
         <source>Daylight Savings Time is ending on %2. The clock will automatically shift backwards by %n hour(s).</source>
-        <translation>
+        <translation type="vanished">
             <numerusform>Ora de vară se va încheia pe data de %2. Ceasul va fi dat cu o oră în urmă.</numerusform>
             <numerusform>Ora de vară se va încheia pe data de %2. Ceasul va fi dat cu %n ore în urmă.</numerusform>
             <numerusform>Ora de vară se va încheia pe data de %2. Ceasul va fi dat cu %n ore în urmă.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../OverviewPane/overviewpane.cpp" line="210"/>
         <source>Daylight Savings Time is starting on %2. The clock will automatically shift forwards by %n hour(s).</source>
-        <translation>
+        <translation type="vanished">
             <numerusform>Ora de vară va începe pe data de %2. Ceasul va fi dat cu o oră în față.</numerusform>
             <numerusform>Ora de vară va începe pe data de %2. Ceasul va fi dat cu %n ore în față.</numerusform>
             <numerusform>Ora de vară va începe pe data de %2. Ceasul va fi dat cu %n ore în față.</numerusform>

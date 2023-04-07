@@ -20,9 +20,10 @@
 #ifndef NOTIFICATIONAPPGROUP_H
 #define NOTIFICATIONAPPGROUP_H
 
-#include <QWidget>
-#include <Applications/application.h>
 #include "notification.h"
+#include <Applications/application.h>
+#include <QWidget>
+#include <SystemJob/systemjob.h>
 
 namespace Ui {
     class NotificationAppGroup;
@@ -37,6 +38,7 @@ class NotificationAppGroup : public QWidget {
         ~NotificationAppGroup();
 
         void pushNotification(NotificationPtr notification);
+        void pushJob(SystemJobPtr job);
         void dismissAll();
 
     private slots:
@@ -47,6 +49,7 @@ class NotificationAppGroup : public QWidget {
         NotificationAppGroupPrivate* d;
 
         void setOrdering();
+        void dismissOrReorder();
 };
 
 #endif // NOTIFICATIONAPPGROUP_H

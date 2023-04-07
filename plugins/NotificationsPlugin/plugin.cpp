@@ -19,31 +19,32 @@
  * *************************************/
 #include "plugin.h"
 
-#include <QDebug>
-#include <icontextchunk.h>
-#include <statemanager.h>
-#include <barmanager.h>
-#include <statuscentermanager.h>
-#include <icontextchunk.h>
-#include <localemanager.h>
-#include <QIcon>
-#include <QApplication>
-#include <QDir>
-#include <tsettings.h>
-#include "notificationtracker.h"
+#include "chunks/mprischunk.h"
 #include "dbus/notificationsinterface.h"
 #include "drawer/notificationsdrawer.h"
+#include "notificationtracker.h"
 #include "statuscenter/notificationsstatuscenterpane.h"
-#include "chunks/mprischunk.h"
+#include <QApplication>
+#include <QDebug>
+#include <QDir>
+#include <QIcon>
+#include <SystemJob/systemjobcontroller.h>
+#include <barmanager.h>
+#include <icontextchunk.h>
+#include <localemanager.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <tsettings.h>
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    NotificationTracker* tracker;
-    NotificationsInterface* interface;
-    NotificationsDrawer* drawer;
-    NotificationsStatusCenterPane* statusCenter;
-    MprisChunk* mprisChunk;
+        NotificationTracker* tracker;
+        NotificationsInterface* interface;
+        NotificationsDrawer* drawer;
+        NotificationsStatusCenterPane* statusCenter;
+        SystemJobController* jobController;
+        MprisChunk* mprisChunk;
 };
 
 Plugin::Plugin() {
@@ -55,10 +56,8 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/translations"),
-        "/usr/share/thedesk/NotificationsPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/translations"),
+        "/usr/share/thedesk/NotificationsPlugin/translations"});
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/defaults.conf"));
     tSettings::registerDefaults("/etc/theSuite/theDesk/NotificationsPlugin/defaults.conf");
@@ -66,7 +65,8 @@ void Plugin::activate() {
     d->tracker = new NotificationTracker();
     d->interface = new NotificationsInterface(d->tracker);
     d->drawer = new NotificationsDrawer(d->tracker);
-    d->statusCenter = new NotificationsStatusCenterPane(d->tracker);
+    d->jobController = new SystemJobController(QDBusConnection::sessionBus());
+    d->statusCenter = new NotificationsStatusCenterPane(d->tracker, d->jobController);
     StateManager::statusCenterManager()->addPane(d->statusCenter, StatusCenterManager::Informational);
 
     d->mprisChunk = new MprisChunk();
@@ -78,8 +78,9 @@ void Plugin::deactivate() {
     d->tracker->deleteLater();
     d->statusCenter->deleteLater();
     d->mprisChunk->deleteLater();
+    d->jobController->deleteLater();
 
-    //Everything else will delete itself once the tracker is gone
+    // Everything else will delete itself once the tracker is gone
 
     StateManager::localeManager()->removeTranslationSet(d->translationSet);
 }

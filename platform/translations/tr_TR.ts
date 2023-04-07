@@ -95,17 +95,17 @@
         <translation>Varsayılanları Geri Yükle</translation>
     </message>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="143"/>
+        <location filename="../messagedialog/messagedialog.ui" line="142"/>
         <source>Details...</source>
         <translation>Ayrıntı...</translation>
     </message>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="202"/>
+        <location filename="../messagedialog/messagedialog.ui" line="200"/>
         <source>DETAILS</source>
         <translation>DETAYLAR</translation>
     </message>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="219"/>
+        <location filename="../messagedialog/messagedialog.ui" line="217"/>
         <source>Back</source>
         <translation>Geri</translation>
     </message>

@@ -205,9 +205,9 @@ void OverviewPane::updateDSTNotification() {
             ui->dstPanel->setVisible(true);
 
             if (currentLocal.isDaylightTime()) {
-                ui->dstLabel->setText(tr("Daylight Savings Time is ending on %2. The clock will automatically shift backwards by %n hour(s).", nullptr, 1));
+                ui->dstLabel->setText(tr("Daylight Savings Time is ending on %1. The clock will automatically shift backwards by %n hour(s).", nullptr, 1).arg(QLocale().toString(changeover.changeoverDate.toLocalTime().date())));
             } else {
-                ui->dstLabel->setText(tr("Daylight Savings Time is starting on %2. The clock will automatically shift forwards by %n hour(s).", nullptr, 1));
+                ui->dstLabel->setText(tr("Daylight Savings Time is starting on %1. The clock will automatically shift forwards by %n hour(s).", nullptr, 1).arg(QLocale().toString(changeover.changeoverDate.toLocalTime().date())));
             }
         } else {
             ui->dstPanel->setVisible(false);

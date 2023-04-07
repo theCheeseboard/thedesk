@@ -24,6 +24,8 @@ set(SOURCES
     statuscenter/notificationappgroup.ui
     statuscenter/notificationsstatuscenterpane.ui
     statuscenter/notificationwidget.ui
+
+    statuscenter/jobwidget.cpp statuscenter/jobwidget.ui
 )
 
 set(HEADERS
@@ -39,6 +41,7 @@ set(HEADERS
     statuscenter/notificationappgroup.h
     statuscenter/notificationsstatuscenterpane.h
     statuscenter/notificationwidget.h
+    statuscenter/jobwidget.h
 )
 
 set(PLUGIN_NAME notifications)

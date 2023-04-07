@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="pt_BR" sourcelanguage="en_US">
 <context>
+    <name>JobWidget</name>
+    <message>
+        <location filename="../statuscenter/jobwidget.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MprisChunk</name>
     <message>
         <location filename="../chunks/mprischunk.cpp" line="53"/>
@@ -12,7 +20,7 @@
 <context>
     <name>NotificationAppGroup</name>
     <message>
-        <location filename="../statuscenter/notificationappgroup.cpp" line="47"/>
+        <location filename="../statuscenter/notificationappgroup.cpp" line="50"/>
         <source>Uncategorised</source>
         <translation type="unfinished"></translation>
     </message>
@@ -21,7 +29,7 @@
     <name>NotificationsStatusCenterPane</name>
     <message>
         <location filename="../statuscenter/notificationsstatuscenterpane.ui" line="35"/>
-        <location filename="../statuscenter/notificationsstatuscenterpane.cpp" line="119"/>
+        <location filename="../statuscenter/notificationsstatuscenterpane.cpp" line="144"/>
         <source>Notifications</source>
         <translation type="unfinished"></translation>
     </message>

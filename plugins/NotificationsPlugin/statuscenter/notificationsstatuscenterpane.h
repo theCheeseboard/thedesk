@@ -20,19 +20,23 @@
 #ifndef NOTIFICATIONSSTATUSCENTERPANE_H
 #define NOTIFICATIONSSTATUSCENTERPANE_H
 
+#include <Applications/application.h>
+#include <SystemJob/systemjob.h>
 #include <statuscenterpane.h>
 
 namespace Ui {
     class NotificationsStatusCenterPane;
 }
 
+class NotificationAppGroup;
+class SystemJobController;
 class NotificationTracker;
 struct NotificationsStatusCenterPanePrivate;
 class NotificationsStatusCenterPane : public StatusCenterPane {
         Q_OBJECT
 
     public:
-        explicit NotificationsStatusCenterPane(NotificationTracker* tracker);
+        explicit NotificationsStatusCenterPane(NotificationTracker* tracker, SystemJobController* jobController);
         ~NotificationsStatusCenterPane();
 
     private slots:
@@ -42,6 +46,9 @@ class NotificationsStatusCenterPane : public StatusCenterPane {
         Ui::NotificationsStatusCenterPane* ui;
 
         NotificationsStatusCenterPanePrivate* d;
+
+        NotificationAppGroup* appGroupForDesktopEntry(QString desktopEntry, ApplicationPointer application);
+        void registerJob(SystemJobPtr job);
 
         // StatusCenterPane interface
     public:

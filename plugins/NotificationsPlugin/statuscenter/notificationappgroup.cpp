@@ -21,14 +21,17 @@
 #include "ui_notificationappgroup.h"
 
 #include <QIcon>
+#include <QLabel>
 #include <tvariantanimation.h>
 
+#include "jobwidget.h"
 #include "notificationwidget.h"
 
 struct NotificationAppGroupPrivate {
-    ApplicationPointer application;
-    QMap<NotificationPtr, NotificationWidget*> widgets;
-    QList<NotificationWidget*> ordering;
+        ApplicationPointer application;
+        QMap<NotificationPtr, NotificationWidget*> widgets;
+        QList<NotificationWidget*> ordering;
+        QList<JobWidget*> jobOrdering;
 };
 
 NotificationAppGroup::NotificationAppGroup(ApplicationPointer application, QWidget* parent) :
@@ -40,10 +43,10 @@ NotificationAppGroup::NotificationAppGroup(ApplicationPointer application, QWidg
     d->application = application;
 
     if (d->application) {
-        ui->iconLabel->setPixmap(QIcon::fromTheme(application->getProperty("Icon").toString()).pixmap(SC_DPI_T(QSize(16, 16), QSize)));
+        ui->iconLabel->setPixmap(QIcon::fromTheme(application->getProperty("Icon").toString()).pixmap(QSize(16, 16)));
         ui->appNameLabel->setText(application->getProperty("Name").toString());
     } else {
-        ui->iconLabel->setPixmap(QIcon::fromTheme("generic-app").pixmap(SC_DPI_T(QSize(16, 16), QSize)));
+        ui->iconLabel->setPixmap(QIcon::fromTheme("generic-app").pixmap(QSize(16, 16)));
         ui->appNameLabel->setText(tr("Uncategorised"));
     }
 }
@@ -55,20 +58,28 @@ NotificationAppGroup::~NotificationAppGroup() {
 
 void NotificationAppGroup::pushNotification(NotificationPtr notification) {
     NotificationWidget* w = new NotificationWidget(notification);
-    connect(w, &NotificationWidget::destroyed, this, [ = ] {
-        d->widgets.remove(notification);
-        d->ordering.removeOne(w);
-
-        if (d->ordering.isEmpty()) {
-            this->deleteLater();
-        } else {
-            setOrdering();
-        }
-    }, Qt::QueuedConnection);
+    connect(
+        w, &NotificationWidget::destroyed, this, [=] {
+            d->widgets.remove(notification);
+            d->ordering.removeOne(w);
+            this->dismissOrReorder();
+        },
+        Qt::QueuedConnection);
     ui->notificationsLayout->insertWidget(0, w);
     d->widgets.insert(notification, w);
     d->ordering.insert(0, w);
 
+    setOrdering();
+}
+
+void NotificationAppGroup::pushJob(SystemJobPtr job) {
+    auto w = new JobWidget(job);
+    connect(w, &JobWidget::destroyed, this, [this, w] {
+        d->jobOrdering.removeOne(w);
+        this->dismissOrReorder();
+    });
+    ui->jobsLayout->insertWidget(0, w);
+    d->jobOrdering.insert(0, w);
     setOrdering();
 }
 
@@ -79,10 +90,25 @@ void NotificationAppGroup::dismissAll() {
 }
 
 void NotificationAppGroup::setOrdering() {
+    ui->dismissAllButton->setVisible(!d->ordering.isEmpty());
+
+    for (JobWidget* w : d->jobOrdering) {
+        w->setIsLast(false);
+    }
+    if (d->ordering.isEmpty()) d->jobOrdering.constLast()->setIsLast(true);
+
     for (NotificationWidget* w : d->ordering) {
         w->setIsLast(false);
     }
     if (!d->ordering.isEmpty()) d->ordering.last()->setIsLast(true);
+}
+
+void NotificationAppGroup::dismissOrReorder() {
+    if (d->ordering.isEmpty() && d->jobOrdering.isEmpty()) {
+        this->deleteLater();
+    } else {
+        setOrdering();
+    }
 }
 
 void NotificationAppGroup::on_dismissAllButton_clicked() {

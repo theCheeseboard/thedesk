@@ -4,17 +4,17 @@
 <context>
     <name>MessageDialog</name>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="143"/>
+        <location filename="../messagedialog/messagedialog.ui" line="142"/>
         <source>Details...</source>
         <translation>Details...</translation>
     </message>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="202"/>
+        <location filename="../messagedialog/messagedialog.ui" line="200"/>
         <source>DETAILS</source>
         <translation>DETAILS</translation>
     </message>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="219"/>
+        <location filename="../messagedialog/messagedialog.ui" line="217"/>
         <source>Back</source>
         <translation>Terug</translation>
     </message>

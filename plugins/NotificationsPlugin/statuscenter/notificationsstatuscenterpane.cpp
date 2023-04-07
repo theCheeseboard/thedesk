@@ -21,27 +21,31 @@
 #include "ui_notificationsstatuscenterpane.h"
 
 #include "notification.h"
-#include "notificationtracker.h"
 #include "notificationappgroup.h"
+#include "notificationtracker.h"
 
+#include <quietmodemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <quietmodemanager.h>
+
+#include <SystemJob/systemjobcontroller.h>
 
 #include <QPushButton>
 
 struct NotificationsStatusCenterPanePrivate {
-    NotificationTracker* tracker;
-    QMap<QString, NotificationAppGroup*> groups;
+        NotificationTracker* tracker;
+        SystemJobController* jobController;
+        QMap<QString, NotificationAppGroup*> groups;
 };
 
-NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker* tracker) :
+NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker* tracker, SystemJobController* jobController) :
     StatusCenterPane(),
     ui(new Ui::NotificationsStatusCenterPane) {
     ui->setupUi(this);
 
     d = new NotificationsStatusCenterPanePrivate();
     d->tracker = tracker;
+    d->jobController = jobController;
 
     ui->titleLabel->setBackButtonIsMenu(true);
     ui->titleLabel->setBackButtonShown(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
@@ -51,35 +55,26 @@ NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker
     ui->notificationsWidget->setFixedWidth(contentWidth);
     ui->quietModeWidget->setFixedWidth(contentWidth);
 
-    connect(d->tracker, &NotificationTracker::newNotification, this, [ = ](NotificationPtr notification) {
-        ApplicationPointer application = notification->application();
+    connect(d->tracker, &NotificationTracker::newNotification, this, [=](NotificationPtr notification) {
+        auto application = notification->application();
         QString desktopEntry;
         if (application) {
             desktopEntry = application->desktopEntry();
         }
 
-        NotificationAppGroup* group;
-        if (d->groups.contains(desktopEntry)) {
-            group = d->groups.value(desktopEntry);
-        } else {
-            group = new NotificationAppGroup(application, this);
-            connect(group, &NotificationAppGroup::destroyed, this, [ = ] {
-                ui->notificationsLayout->removeWidget(group);
-                d->groups.remove(desktopEntry);
-
-                if (d->groups.isEmpty()) ui->stackedWidget->setCurrentWidget(ui->noNotificationsPage);
-            }, Qt::QueuedConnection);
-            ui->notificationsLayout->insertWidget(0, group);
-            d->groups.insert(desktopEntry, group);
-        }
-
+        auto group = appGroupForDesktopEntry(desktopEntry, application);
         group->pushNotification(notification);
 
         ui->stackedWidget->setCurrentWidget(ui->notificationsPage);
     });
 
+    connect(d->jobController, &SystemJobController::newJob, this, &NotificationsStatusCenterPane::registerJob);
+    for (const auto& job : d->jobController->jobs()) {
+        registerJob(job);
+    }
+
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
-    ui->notificationSplash->setPixmap(QIcon::fromTheme("notifications").pixmap(SC_DPI_T(QSize(128, 128), QSize)));
+    ui->notificationSplash->setPixmap(QIcon::fromTheme("notifications").pixmap(QSize(128, 128)));
 
     for (QuietModeManagerTd::QuietMode mode : StateManager::quietModeManager()->availableQuietModes()) {
         QuietModeManagerTd::QuietMode m = mode;
@@ -89,12 +84,12 @@ NotificationsStatusCenterPane::NotificationsStatusCenterPane(NotificationTracker
         button->setCheckable(true);
         button->setAutoExclusive(true);
         button->setChecked(StateManager::quietModeManager()->currentMode() == m);
-        connect(button, &QPushButton::toggled, this, [ = ](bool checked) {
+        connect(button, &QPushButton::toggled, this, [=](bool checked) {
             if (checked) {
                 StateManager::quietModeManager()->setQuietMode(m);
             }
         });
-        connect(StateManager::quietModeManager(), &QuietModeManagerTd::quietModeChanged, this, [ = ](QuietModeManagerTd::QuietMode newMode, QuietModeManagerTd::QuietMode oldMode) {
+        connect(StateManager::quietModeManager(), &QuietModeManagerTd::quietModeChanged, this, [=](QuietModeManagerTd::QuietMode newMode, QuietModeManagerTd::QuietMode oldMode) {
             Q_UNUSED(oldMode);
             button->setChecked(newMode == m);
         });
@@ -109,6 +104,36 @@ NotificationsStatusCenterPane::~NotificationsStatusCenterPane() {
 
 void NotificationsStatusCenterPane::on_titleLabel_backButtonClicked() {
     StateManager::statusCenterManager()->showStatusCenterHamburgerMenu();
+}
+
+NotificationAppGroup* NotificationsStatusCenterPane::appGroupForDesktopEntry(QString desktopEntry, ApplicationPointer application) {
+    if (d->groups.contains(desktopEntry)) {
+        return d->groups.value(desktopEntry);
+    } else {
+        auto group = new NotificationAppGroup(application, this);
+        connect(
+            group, &NotificationAppGroup::destroyed, this, [=] {
+                ui->notificationsLayout->removeWidget(group);
+                d->groups.remove(desktopEntry);
+
+                if (d->groups.isEmpty()) ui->stackedWidget->setCurrentWidget(ui->noNotificationsPage);
+            },
+            Qt::QueuedConnection);
+        ui->notificationsLayout->insertWidget(0, group);
+        d->groups.insert(desktopEntry, group);
+
+        return group;
+    }
+}
+
+void NotificationsStatusCenterPane::registerJob(SystemJobPtr job) {
+    auto desktopEntry = d->jobController->desktopEntryForService(job->service());
+    auto app = ApplicationPointer(new Application(desktopEntry));
+
+    auto group = appGroupForDesktopEntry(desktopEntry, app);
+    group->pushJob(job);
+
+    ui->stackedWidget->setCurrentWidget(ui->notificationsPage);
 }
 
 QString NotificationsStatusCenterPane::name() {
@@ -126,7 +151,6 @@ QIcon NotificationsStatusCenterPane::icon() {
 QWidget* NotificationsStatusCenterPane::leftPane() {
     return nullptr;
 }
-
 
 void NotificationsStatusCenterPane::changeEvent(QEvent* event) {
     if (event->type() == QEvent::LanguageChange) {

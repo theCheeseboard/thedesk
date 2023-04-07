@@ -20,14 +20,14 @@
 #include "messagedialog.h"
 #include "ui_messagedialog.h"
 
-#include <tvariantanimation.h>
 #include <QGraphicsOpacityEffect>
 #include <QPushButton>
+#include <tvariantanimation.h>
 
 struct MessageDialogPrivate {
-    QList<QPushButton*> buttons;
-    QGraphicsOpacityEffect* opacity;
-    bool showingDetails = false;
+        QList<QPushButton*> buttons;
+        QGraphicsOpacityEffect* opacity;
+        bool showingDetails = false;
 };
 
 MessageDialog::MessageDialog(QWidget* parent) :
@@ -37,7 +37,7 @@ MessageDialog::MessageDialog(QWidget* parent) :
 
     d = new MessageDialogPrivate();
 
-//    this->setWindowFlags(Qt::Widget);
+    //    this->setWindowFlags(Qt::Widget);
     ui->frame->setMinimumWidth(SC_DPI(400));
 
     d->opacity = new QGraphicsOpacityEffect(this);
@@ -97,24 +97,24 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
 
     QVector<QMessageDialogOptions::CustomButton> buttons;
 
-    if (options->standardButtons() & QPlatformDialogHelper::Ok)                 buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Ok, tr("OK"), QPlatformDialogHelper::AcceptRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Save)               buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Save, tr("Save"), QPlatformDialogHelper::AcceptRole));
-    if (options->standardButtons() & QPlatformDialogHelper::SaveAll)            buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::SaveAll, tr("Save All"), QPlatformDialogHelper::AcceptRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Open)               buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Open, tr("Open"), QPlatformDialogHelper::AcceptRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Yes)                buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Yes, tr("Yes"), QPlatformDialogHelper::YesRole));
-    if (options->standardButtons() & QPlatformDialogHelper::YesToAll)           buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::YesToAll, tr("Yes to All"), QPlatformDialogHelper::YesRole));
-    if (options->standardButtons() & QPlatformDialogHelper::No)                 buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::No, tr("No"), QPlatformDialogHelper::NoRole));
-    if (options->standardButtons() & QPlatformDialogHelper::NoToAll)            buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::NoToAll, tr("No to All"), QPlatformDialogHelper::NoRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Abort)              buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Abort, tr("Abort"), QPlatformDialogHelper::DestructiveRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Retry)              buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Retry, tr("Retry"), QPlatformDialogHelper::AcceptRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Ignore)             buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Ignore, tr("Ignore"), QPlatformDialogHelper::AcceptRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Close)              buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Close, tr("Close"), QPlatformDialogHelper::AcceptRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Cancel)             buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Cancel, tr("Cancel"), QPlatformDialogHelper::RejectRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Discard)            buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Discard, tr("Discard"), QPlatformDialogHelper::DestructiveRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Help)               buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Help, tr("Help"), QPlatformDialogHelper::ActionRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Apply)              buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Apply, tr("Apply"), QPlatformDialogHelper::AcceptRole));
-    if (options->standardButtons() & QPlatformDialogHelper::Reset)              buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Reset, tr("Reset"), QPlatformDialogHelper::ResetRole));
-    if (options->standardButtons() & QPlatformDialogHelper::RestoreDefaults)    buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::RestoreDefaults, tr("Restore Defaults"), QPlatformDialogHelper::ResetRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Ok) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Ok, tr("OK"), QPlatformDialogHelper::AcceptRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Save) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Save, tr("Save"), QPlatformDialogHelper::AcceptRole));
+    if (options->standardButtons() & QPlatformDialogHelper::SaveAll) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::SaveAll, tr("Save All"), QPlatformDialogHelper::AcceptRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Open) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Open, tr("Open"), QPlatformDialogHelper::AcceptRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Yes) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Yes, tr("Yes"), QPlatformDialogHelper::YesRole));
+    if (options->standardButtons() & QPlatformDialogHelper::YesToAll) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::YesToAll, tr("Yes to All"), QPlatformDialogHelper::YesRole));
+    if (options->standardButtons() & QPlatformDialogHelper::No) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::No, tr("No"), QPlatformDialogHelper::NoRole));
+    if (options->standardButtons() & QPlatformDialogHelper::NoToAll) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::NoToAll, tr("No to All"), QPlatformDialogHelper::NoRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Abort) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Abort, tr("Abort"), QPlatformDialogHelper::DestructiveRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Retry) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Retry, tr("Retry"), QPlatformDialogHelper::AcceptRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Ignore) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Ignore, tr("Ignore"), QPlatformDialogHelper::AcceptRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Close) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Close, tr("Close"), QPlatformDialogHelper::AcceptRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Cancel) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Cancel, tr("Cancel"), QPlatformDialogHelper::RejectRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Discard) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Discard, tr("Discard"), QPlatformDialogHelper::DestructiveRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Help) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Help, tr("Help"), QPlatformDialogHelper::ActionRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Apply) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Apply, tr("Apply"), QPlatformDialogHelper::AcceptRole));
+    if (options->standardButtons() & QPlatformDialogHelper::Reset) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Reset, tr("Reset"), QPlatformDialogHelper::ResetRole));
+    if (options->standardButtons() & QPlatformDialogHelper::RestoreDefaults) buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::RestoreDefaults, tr("Restore Defaults"), QPlatformDialogHelper::ResetRole));
 
     buttons.append(options->customButtons());
 
@@ -125,7 +125,7 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
     }
 
     if (buttons.isEmpty()) {
-        //Add a failsafe button
+        // Add a failsafe button
         buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Ok, tr("OK"), QPlatformDialogHelper::AcceptRole));
     }
 
@@ -133,7 +133,7 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
         QPushButton* button = new QPushButton(this);
         button->setText(btn.label);
         if (btn.role == QPlatformDialogHelper::DestructiveRole) button->setProperty("type", "destructive");
-        connect(button, &QPushButton::clicked, this, [ = ] {
+        connect(button, &QPushButton::clicked, this, [=] {
             emit clicked(static_cast<QPlatformDialogHelper::StandardButton>(btn.id), btn.role);
         });
         ui->buttonLayout->addWidget(button);
@@ -155,7 +155,7 @@ void MessageDialog::animateIn() {
     anim->setEndValue(1.0);
     anim->setDuration(400);
     anim->setEasingCurve(QEasingCurve::OutCubic);
-    connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(anim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         d->opacity->setOpacity(value.toReal());
 
         QRect geometry = frameGeometry();
@@ -164,7 +164,7 @@ void MessageDialog::animateIn() {
         this->setFixedSize(geometry.size());
         this->setGeometry(geometry);
     });
-    connect(anim, &tVariantAnimation::finished, this, [ = ] {
+    connect(anim, &tVariantAnimation::finished, this, [=] {
         d->opacity->setEnabled(false);
         anim->deleteLater();
     });
@@ -179,7 +179,7 @@ void MessageDialog::animateOut() {
     anim->setEndValue(0.0);
     anim->setDuration(400);
     anim->setEasingCurve(QEasingCurve::OutCubic);
-    connect(anim, &tVariantAnimation::valueChanged, this, [ = ](QVariant value) {
+    connect(anim, &tVariantAnimation::valueChanged, this, [=](QVariant value) {
         d->opacity->setOpacity(value.toReal());
 
         QRect geometry = frameGeometry();
@@ -188,7 +188,7 @@ void MessageDialog::animateOut() {
         this->setFixedSize(geometry.size());
         this->setGeometry(geometry);
     });
-    connect(anim, &tVariantAnimation::finished, this, [ = ] {
+    connect(anim, &tVariantAnimation::finished, this, [=] {
         anim->deleteLater();
         this->hide();
     });
