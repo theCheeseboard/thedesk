@@ -1,58 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl" sourcelanguage="en_US">
-<context>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TS version="2.1" language="nl">
+  <context>
     <name>PenButton</name>
     <message>
-        <location filename="../penbutton.cpp" line="54"/>
-        <source>Erase-o</source>
-        <comment>This and the next translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+      <translation>Supergum</translation>
+      <location filename="../penbutton.cpp" line="54" />
+      <source>Erase-o</source>
     </message>
     <message>
-        <location filename="../penbutton.cpp" line="55"/>
-        <source>matic 2000</source>
-        <comment>This and the previous translation span two lines. Be spiffy with these!</comment>
-        <translation type="unfinished"></translation>
+      <translation>2000</translation>
+      <location filename="../penbutton.cpp" line="55" />
+      <source>matic 2000</source>
     </message>
-</context>
-<context>
+  </context>
+  <context>
     <name>ScreenshotWindow</name>
     <message>
-        <location filename="../screenshotwindow.ui" line="55"/>
-        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="192"/>
-        <source>SCREENSHOT</source>
-        <translation>SCHERMAFBEELDING</translation>
+      <translation>SCHERMAFBEELDING</translation>
+      <location filename="../screenshotwindow.ui" line="55" />
+      <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="192" />
+      <source>SCREENSHOT</source>
     </message>
     <message>
-        <location filename="../screenshotwindow.ui" line="130"/>
-        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="193"/>
-        <source>Crop</source>
-        <translation>Bijsnijden</translation>
+      <translation>Bijsnijden</translation>
+      <location filename="../screenshotwindow.ui" line="130" />
+      <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="193" />
+      <source>Crop</source>
     </message>
     <message>
-        <location filename="../screenshotwindow.ui" line="150"/>
-        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="194"/>
-        <source>Redact</source>
-        <translation type="unfinished"></translation>
+      <translation>Redigeren</translation>
+      <location filename="../screenshotwindow.ui" line="150" />
+      <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="194" />
+      <source>Redact</source>
     </message>
     <message>
-        <location filename="../screenshotwindow.ui" line="205"/>
-        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="195"/>
-        <source>Reset Markup</source>
-        <translation>Opmaak Herstellen</translation>
+      <translation>Opmaak Herstellen</translation>
+      <location filename="../screenshotwindow.ui" line="205" />
+      <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="195" />
+      <source>Reset Markup</source>
     </message>
     <message>
-        <location filename="../screenshotwindow.ui" line="216"/>
-        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="196"/>
-        <source>Discard</source>
-        <translation>Verwijderen</translation>
+      <translation>Verwijderen</translation>
+      <location filename="../screenshotwindow.ui" line="216" />
+      <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="196" />
+      <source>Discard</source>
     </message>
     <message>
-        <location filename="../screenshotwindow.ui" line="227"/>
-        <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="197"/>
-        <source>Copy</source>
-        <translation>Kopiëren</translation>
+      <translation>Kopiëren</translation>
+      <location filename="../screenshotwindow.ui" line="227" />
+      <location filename="../../../../build-thedesk-Chroot_6-Debug/plugins/ScreenshotPlugin/plugin-screenshot_autogen/include/ui_screenshotwindow.h" line="197" />
+      <source>Copy</source>
     </message>
-</context>
+  </context>
 </TS>
