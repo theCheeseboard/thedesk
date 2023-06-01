@@ -19,23 +19,26 @@
  * *************************************/
 #include "user.h"
 
-#include <unistd.h>
+#include <QCoroDBusPendingCall>
 #include <QDBusInterface>
+#include <unistd.h>
+
+T_EXCEPTION_IMPL(UserManipulationException)
 
 struct UserPrivate {
-    QDBusInterface* interface;
+        QDBusInterface* interface;
 
-    qulonglong uid;
-    QString realName;
-    QString userName;
-    QString displayName;
-    User::UserType userType;
+        qulonglong uid;
+        QString realName;
+        QString userName;
+        QString displayName;
+        User::UserType userType;
 
-    bool locked;
+        bool locked;
 };
 
-User::User(QDBusObjectPath path, QObject *parent) : QObject(parent)
-{
+User::User(QDBusObjectPath path, QObject* parent) :
+    QObject(parent) {
     d = new UserPrivate();
     d->interface = new QDBusInterface("org.freedesktop.Accounts", path.path(), "org.freedesktop.Accounts.User", QDBusConnection::systemBus());
 
@@ -44,80 +47,59 @@ User::User(QDBusObjectPath path, QObject *parent) : QObject(parent)
     this->update();
 }
 
-User::~User()
-{
+User::~User() {
     delete d;
 }
 
-QDBusObjectPath User::path()
-{
+QDBusObjectPath User::path() {
     return QDBusObjectPath(d->interface->path());
 }
 
-bool User::isCurrentUser()
-{
+bool User::isCurrentUser() {
     return d->uid == geteuid();
 }
 
-bool User::isLocked()
-{
+bool User::isLocked() {
     return d->locked;
 }
 
-QString User::displayName()
-{
+QString User::displayName() {
     return d->displayName;
 }
 
-QString User::userName()
-{
+QString User::userName() {
     return d->userName;
 }
 
-User::UserType User::userType()
-{
+User::UserType User::userType() {
     return d->userType;
 }
 
-tPromise<void>* User::setPassword(QString password, QString hint)
-{
-    return new tPromise<void>([=](std::function<void()> res, std::function<void(QString)> rej) {
-        //Crypt password
-        QRandomGenerator* rand = QRandomGenerator::global();
-        QByteArray characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz./";
-        QByteArray salt = "$6$";
-        for (int i = 0; i < 16; i++) {
-            salt.append(characters.at(rand->bounded(characters.length())));
-        }
-        QString crypted = QString::fromLatin1(crypt(password.toUtf8(), salt.constData()));
+QCoro::Task<> User::setPassword(QString password, QString hint) {
+    // Crypt password
+    QRandomGenerator* rand = QRandomGenerator::global();
+    QByteArray characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz./";
+    QByteArray salt = "$6$";
+    for (int i = 0; i < 16; i++) {
+        salt.append(characters.at(rand->bounded(characters.length())));
+    }
+    auto cryptedBytes = crypt(password.toUtf8().constData(), salt.constData());
+    QString crypted = QString::fromLatin1(cryptedBytes);
 
-        QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(d->interface->asyncCall("SetPassword", crypted, hint));
-        connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
-            if (watcher->isError()) {
-                rej(watcher->error().message());
-            } else {
-                res();
-            }
-        });
-    });
+    auto result = co_await d->interface->asyncCall("SetPassword", crypted, hint);
+    if (result.type() == QDBusMessage::ErrorMessage) {
+        throw UserManipulationException(result.errorMessage());
+    }
 }
 
-tPromise<void>* User::setPasswordMode(User::PasswordMode mode)
-{
-    return new tPromise<void>([=](std::function<void()> res, std::function<void(QString)> rej) {
-        QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(d->interface->asyncCall("SetPasswordMode", static_cast<int>(mode)));
-        connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
-            if (watcher->isError()) {
-                rej(watcher->error().message());
-            } else {
-                res();
-            }
-        });
-    });
+QCoro::Task<> User::setPasswordMode(User::PasswordMode mode) {
+    auto result = co_await d->interface->asyncCall("SetPasswordMode", static_cast<int>(mode));
+    if (result.type() == QDBusMessage::ErrorMessage) {
+        throw UserManipulationException(result.errorMessage());
+    }
 }
 
-tPromise<void>*User::setUserType(User::UserType type)
-{
+tPromise<void>* User::setUserType(User::UserType type) {
     return new tPromise<void>([=](std::function<void()> res, std::function<void(QString)> rej) {
         QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(d->interface->asyncCall("SetAccountType", static_cast<int>(type)));
         connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
@@ -130,8 +112,7 @@ tPromise<void>*User::setUserType(User::UserType type)
     });
 }
 
-tPromise<void>*User::setRealName(QString realName)
-{
+tPromise<void>* User::setRealName(QString realName) {
     return new tPromise<void>([=](std::function<void()> res, std::function<void(QString)> rej) {
         QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(d->interface->asyncCall("SetRealName", realName));
         connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
@@ -144,8 +125,7 @@ tPromise<void>*User::setRealName(QString realName)
     });
 }
 
-tPromise<void>*User::setLocked(bool locked)
-{
+tPromise<void>* User::setLocked(bool locked) {
     return new tPromise<void>([=](std::function<void()> res, std::function<void(QString)> rej) {
         QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(d->interface->asyncCall("SetLocked", locked));
         connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
@@ -158,14 +138,11 @@ tPromise<void>*User::setLocked(bool locked)
     });
 }
 
-tPromise<void>*User::deleteUser(bool removeFiles)
-{
+tPromise<void>* User::deleteUser(bool removeFiles) {
     return new tPromise<void>([=](std::function<void()> res, std::function<void(QString)> rej) {
         QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.Accounts", "/org/freedesktop/Accounts", "org.freedesktop.Accounts", "DeleteUser");
-        message.setArguments({
-            static_cast<qint64>(d->uid),
-            removeFiles
-        });
+        message.setArguments({static_cast<qint64>(d->uid),
+            removeFiles});
 
         QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(message));
         connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
@@ -178,14 +155,12 @@ tPromise<void>*User::deleteUser(bool removeFiles)
     });
 }
 
-void User::changed()
-{
+void User::changed() {
     this->update();
     emit dataUpdated();
 }
 
-void User::update()
-{
+void User::update() {
     d->uid = d->interface->property("Uid").toULongLong();
     d->realName = d->interface->property("RealName").toString();
     d->userName = d->interface->property("UserName").toString();

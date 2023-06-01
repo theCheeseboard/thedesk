@@ -24,7 +24,7 @@
 #include <ttoast.h>
 
 struct ChangePasswordDialogPrivate {
-    UserPtr user;
+        UserPtr user;
 };
 
 ChangePasswordDialog::ChangePasswordDialog(UserPtr user, QWidget* parent) :
@@ -46,70 +46,74 @@ ChangePasswordDialog::~ChangePasswordDialog() {
     delete ui;
 }
 
-void ChangePasswordDialog::on_setPasswordButton_clicked() {
+QCoro::Task<> ChangePasswordDialog::on_setPasswordButton_clicked() {
     if (ui->passwordLineEdit->text().isEmpty()) {
         tErrorFlash::flashError(ui->passwordLineEdit);
-        return;
+        co_return;
     }
 
     if (ui->passwordLineEdit->text() != ui->confirmPasswordLineEdit->text()) {
         tErrorFlash::flashError(ui->confirmPasswordLineEdit);
-        return;
+        co_return;
     }
 
-    //Set the user's password
+    // Set the user's password
     ui->stackedWidget->setCurrentWidget(ui->processingPage);
 
-    d->user->setPassword(ui->passwordLineEdit->text(), ui->passwordHintLineEdit->text())->then([ = ] {
+    try {
+        co_await d->user->setPassword(ui->passwordLineEdit->text(), ui->passwordHintLineEdit->text());
         emit done();
-    })->error([ = ](QString err) {
-        //Bail out
-        QTimer::singleShot(1000, [ = ] {
+    } catch (UserManipulationException& ex) {
+        // Bail out
+        QTimer::singleShot(1000, [=] {
             ui->stackedWidget->setCurrentWidget(ui->setPasswordPage);
 
             tToast* toast = new tToast();
             toast->setTitle(tr("Couldn't set password"));
-            toast->setText(err);
+            toast->setText(ex.reason());
             connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
             toast->show(this);
         });
-    });
+    }
 }
 
-void ChangePasswordDialog::on_askForPasswordButton_clicked() {
+QCoro::Task<> ChangePasswordDialog::on_askForPasswordButton_clicked() {
     ui->stackedWidget->setCurrentWidget(ui->processingPage);
-    d->user->setPasswordMode(User::SetAtLogin)->then([ = ] {
+
+    try {
+        co_await d->user->setPasswordMode(User::SetAtLogin);
         emit done();
-    })->error([ = ](QString err) {
-        //Bail out
-        QTimer::singleShot(1000, [ = ] {
+    } catch (UserManipulationException& ex) {
+        // Bail out
+        QTimer::singleShot(1000, [this, ex] {
             ui->stackedWidget->setCurrentWidget(ui->setPasswordPage);
 
             tToast* toast = new tToast();
             toast->setTitle(tr("Couldn't set password policy"));
-            toast->setText(err);
+            toast->setText(ex.reason());
             connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
             toast->show(this);
         });
-    });
+    }
 }
 
-void ChangePasswordDialog::on_noPasswordButton_clicked() {
+QCoro::Task<> ChangePasswordDialog::on_noPasswordButton_clicked() {
     ui->stackedWidget->setCurrentWidget(ui->processingPage);
-    d->user->setPasswordMode(User::NoPassword)->then([ = ] {
+    try {
+        co_await d->user->setPasswordMode(User::NoPassword);
         emit done();
-    })->error([ = ](QString err) {
-        //Bail out
-        QTimer::singleShot(1000, [ = ] {
+    } catch (UserManipulationException& ex) {
+        // Bail out
+        QTimer::singleShot(1000, [this, ex] {
             ui->stackedWidget->setCurrentWidget(ui->setPasswordPage);
 
             tToast* toast = new tToast();
             toast->setTitle(tr("Couldn't set password policy"));
-            toast->setText(err);
+            toast->setText(ex.reason());
             connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
             toast->show(this);
         });
-    });
+    }
 }
 
 void ChangePasswordDialog::on_titleLabel_backButtonClicked() {

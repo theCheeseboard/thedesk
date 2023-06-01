@@ -20,6 +20,7 @@
 #ifndef ONBOARDINGUSERS_H
 #define ONBOARDINGUSERS_H
 
+#include <QCoroTask>
 #include <onboardingpage.h>
 
 namespace Ui {
@@ -37,7 +38,7 @@ class OnboardingUsers : public OnboardingPage {
     private slots:
         void on_addUserTitleLabel_backButtonClicked();
 
-        void on_addUserCompleteButton_clicked();
+        QCoro::Task<> on_addUserCompleteButton_clicked();
 
         void on_addUserButton_clicked();
 

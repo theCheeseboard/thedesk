@@ -50,4 +50,4 @@ IF(${PolkitQt${QT_VERSION_MAJOR}-1_FOUND})
     target_compile_definitions(plugin-${PLUGIN_NAME} PRIVATE HAVE_POLKITQT)
 ENDIF()
 
-target_link_libraries(plugin-${PLUGIN_NAME} Qt::Widgets Qt::DBus libcontemporary libthedesk)
+target_link_libraries(plugin-${PLUGIN_NAME} Qt::Widgets Qt::DBus libcontemporary libthedesk crypt)

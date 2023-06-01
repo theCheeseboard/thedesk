@@ -20,6 +20,7 @@
 #ifndef ADDUSERDIALOG_H
 #define ADDUSERDIALOG_H
 
+#include <QCoroTask>
 #include <QWidget>
 
 namespace Ui {
@@ -27,12 +28,11 @@ namespace Ui {
 }
 
 struct AddUserDialogPrivate;
-class AddUserDialog : public QWidget
-{
+class AddUserDialog : public QWidget {
         Q_OBJECT
 
     public:
-        explicit AddUserDialog(QWidget *parent = nullptr);
+        explicit AddUserDialog(QWidget* parent = nullptr);
         ~AddUserDialog();
 
     private slots:
@@ -42,9 +42,9 @@ class AddUserDialog : public QWidget
 
         void on_nextButton_clicked();
 
-        void on_fullNameLineEdit_textChanged(const QString &arg1);
+        void on_fullNameLineEdit_textChanged(const QString& arg1);
 
-        void on_usernameLineEdit_textChanged(const QString &arg1);
+        void on_usernameLineEdit_textChanged(const QString& arg1);
 
         void on_backButton_3_clicked();
 
@@ -54,7 +54,7 @@ class AddUserDialog : public QWidget
 
         void on_noPasswordButton_clicked();
 
-        void on_performAddUserButton_clicked();
+        QCoro::Task<> on_performAddUserButton_clicked();
 
         void on_administratorButton_clicked();
 
@@ -64,7 +64,7 @@ class AddUserDialog : public QWidget
         void done();
 
     private:
-        Ui::AddUserDialog *ui;
+        Ui::AddUserDialog* ui;
         AddUserDialogPrivate* d;
 };
 

@@ -21,6 +21,7 @@
 #include "ui_adduserdialog.h"
 
 #include "user.h"
+#include <QCoroDBus>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusPendingCallWatcher>
@@ -110,7 +111,7 @@ void AddUserDialog::on_noPasswordButton_clicked() {
     ui->stackedWidget->setCurrentWidget(ui->confirmPage);
 }
 
-void AddUserDialog::on_performAddUserButton_clicked() {
+QCoro::Task<> AddUserDialog::on_performAddUserButton_clicked() {
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
     ui->stackedWidget->setCurrentWidget(ui->processingPage);
 
@@ -121,52 +122,41 @@ void AddUserDialog::on_performAddUserButton_clicked() {
         ui->fullNameLineEdit->text(),
         accountType});
 
-    QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(createMessage));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
-        QString error;
-        if (watcher->isError()) {
-            error = watcher->error().message();
-        } else {
-            UserPtr u(new User(watcher->reply().arguments().first().value<QDBusObjectPath>()));
+    auto message = co_await QDBusConnection::systemBus().asyncCall(createMessage);
+    QString error;
 
-            // Set the user's password
-            tPromiseResults<void> results;
+    if (message.type() == QDBusMessage::ErrorMessage) {
+        error = message.errorMessage();
+    } else {
+        UserPtr u(new User(message.arguments().first().value<QDBusObjectPath>()));
+
+        // Set the user's password
+        try {
             if (d->passwordMode == User::SetPassword) {
-                results = u->setPassword(ui->passwordLineEdit->text(), ui->passwordHintLineEdit->text())->await();
+                co_await u->setPassword(ui->passwordLineEdit->text(), ui->passwordHintLineEdit->text());
             } else {
-                results = u->setPasswordMode(d->passwordMode)->await();
+                co_await u->setPasswordMode(d->passwordMode);
             }
-
-            if (results.error.isEmpty()) {
-                error = results.error;
-            }
+        } catch (UserManipulationException& ex) {
+            error = ex.reason();
         }
+    }
 
-        if (error.isEmpty()) {
-            emit done();
-        } else {
-            // Bail out
-            QTimer::singleShot(1000, [=] {
-                ui->stackedWidget->setCurrentWidget(ui->confirmPage);
-                ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
+    if (error.isEmpty()) {
+        emit done();
+    } else {
+        // Bail out
+        QTimer::singleShot(1000, [=] {
+            ui->stackedWidget->setCurrentWidget(ui->confirmPage);
+            ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
 
-                tToast* toast = new tToast();
-                toast->setTitle(tr("Couldn't create user"));
-                toast->setText(error);
-                connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
-                toast->show(this);
-            });
-        }
-    });
-
-    //    QDBusReply<QDBusObjectPath> newUser = QDBusConnection::systemBus().call(createMessage);
-    //    if (newUser.error().isValid()) {
-    //        return;
-    //    } else {
-    //        d->editingUserPath = newUser.value().path();
-    //    }
-
-    //    QTimer::singleShot(2000, this, &AddUserDialog::done);
+            tToast* toast = new tToast();
+            toast->setTitle(tr("Couldn't create user"));
+            toast->setText(error);
+            connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
+            toast->show(this);
+        });
+    }
 }
 
 void AddUserDialog::on_administratorButton_clicked() {

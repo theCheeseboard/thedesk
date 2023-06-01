@@ -15,9 +15,14 @@ class MainWindow : public QMainWindow {
         explicit MainWindow(QWidget* parent = nullptr);
         ~MainWindow();
 
+    private slots:
+        void on_titleLabel_backButtonClicked();
+
     private:
         Ui::MainWindow* ui;
         MainWindowPrivate* d;
+
+        bool checkPassword(QString password);
 };
 
 #endif // MAINWINDOW_H

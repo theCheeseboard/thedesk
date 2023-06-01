@@ -22,6 +22,7 @@
 
 #include "settings/user.h"
 #include "settings/usersmodel.h"
+#include <QCoroDBus>
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusPendingCallWatcher>
@@ -63,25 +64,25 @@ void OnboardingUsers::on_addUserTitleLabel_backButtonClicked() {
     }
 }
 
-void OnboardingUsers::on_addUserCompleteButton_clicked() {
+QCoro::Task<> OnboardingUsers::on_addUserCompleteButton_clicked() {
     if (ui->fullNameBox->text().isEmpty()) {
         tErrorFlash::flashError(ui->fullNameBox);
-        return;
+        co_return;
     }
 
     if (ui->usernameBox->text().isEmpty()) {
         tErrorFlash::flashError(ui->usernameBox);
-        return;
+        co_return;
     }
 
     if (ui->passwordBox->text().isEmpty()) {
         tErrorFlash::flashError(ui->passwordBox);
-        return;
+        co_return;
     }
 
     if (ui->passwordBox->text() != ui->confirmPasswordBox->text()) {
         tErrorFlash::flashError(ui->confirmPasswordBox);
-        return;
+        co_return;
     }
     ui->stackedWidget->setCurrentWidget(ui->spinnerPage);
 
@@ -92,48 +93,46 @@ void OnboardingUsers::on_addUserCompleteButton_clicked() {
         ui->fullNameBox->text(),
         accountType});
 
-    QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(QDBusConnection::systemBus().asyncCall(createMessage));
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] {
-        QString error;
-        if (watcher->isError()) {
-            error = watcher->error().message();
+    auto message = co_await QDBusConnection::systemBus().asyncCall(createMessage);
+
+    QString error;
+    if (message.type() == QDBusMessage::ErrorMessage) {
+        error = message.errorMessage();
+    } else {
+        UserPtr u(new User(message.arguments().constFirst().value<QDBusObjectPath>()));
+
+        // Set the user's password
+        try {
+            co_await u->setPassword(ui->passwordBox->text(), ui->passwordHintBox->text());
+        } catch (UserManipulationException& ex) {
+            error = ex.reason();
+        }
+    }
+
+    if (error.isEmpty()) {
+        if (d->userAdded) {
+            ui->userListDescriptionLabel->setText(tr("You've added these users to your system"));
         } else {
-            UserPtr u(new User(watcher->reply().arguments().first().value<QDBusObjectPath>()));
-
-            // Set the user's password
-            tPromiseResults<void> results;
-            results = u->setPassword(ui->passwordBox->text(), ui->passwordHintBox->text())->await();
-
-            if (results.error.isEmpty()) {
-                error = results.error;
-            }
+            ui->userListDescriptionLabel->setText(tr("Thanks, %1. If other people will be using this device, you can add them now, or you can add them later.").arg(ui->fullNameBox->text()));
         }
 
-        if (error.isEmpty()) {
-            if (d->userAdded) {
-                ui->userListDescriptionLabel->setText(tr("You've added these users to your system"));
-            } else {
-                ui->userListDescriptionLabel->setText(tr("Thanks, %1. If other people will be using this device, you can add them now, or you can add them later.").arg(ui->fullNameBox->text()));
-            }
+        ui->stackedWidget->setCurrentWidget(ui->allUsersPage);
+        d->userAdded = true;
+        ui->accountTypeWidget->setVisible(true);
 
-            ui->stackedWidget->setCurrentWidget(ui->allUsersPage);
-            d->userAdded = true;
-            ui->accountTypeWidget->setVisible(true);
+        ui->addUserDescriptionLabel->setText(tr("Enter the details of the next user to be added"));
+    } else {
+        // Bail out
+        QTimer::singleShot(1000, [=] {
+            ui->stackedWidget->setCurrentWidget(ui->addUserPage);
 
-            ui->addUserDescriptionLabel->setText(tr("Enter the details of the next user to be added"));
-        } else {
-            // Bail out
-            QTimer::singleShot(1000, [=] {
-                ui->stackedWidget->setCurrentWidget(ui->addUserPage);
-
-                tToast* toast = new tToast();
-                toast->setTitle(tr("Couldn't create user"));
-                toast->setText(error);
-                connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
-                toast->show(this);
-            });
-        }
-    });
+            tToast* toast = new tToast();
+            toast->setTitle(tr("Couldn't create user"));
+            toast->setText(error);
+            connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
+            toast->show(this);
+        });
+    }
 }
 
 void OnboardingUsers::on_addUserButton_clicked() {

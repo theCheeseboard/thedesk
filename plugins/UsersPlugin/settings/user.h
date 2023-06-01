@@ -20,17 +20,18 @@
 #ifndef USER_H
 #define USER_H
 
-#include <QObject>
+#include <QCoroTask>
 #include <QDBusObjectPath>
+#include <QObject>
 #include <QSharedPointer>
+#include <texception.h>
 #include <tpromise.h>
 
 struct UserPrivate;
-class User : public QObject
-{
+class User : public QObject {
         Q_OBJECT
     public:
-        explicit User(QDBusObjectPath path, QObject *parent = nullptr);
+        explicit User(QDBusObjectPath path, QObject* parent = nullptr);
         ~User();
 
         enum PasswordMode {
@@ -56,8 +57,8 @@ class User : public QObject
         void dataUpdated();
 
     public slots:
-        tPromise<void>* setPassword(QString password, QString hint);
-        tPromise<void>* setPasswordMode(PasswordMode mode);
+        QCoro::Task<> setPassword(QString password, QString hint);
+        QCoro::Task<> setPasswordMode(PasswordMode mode);
         tPromise<void>* setUserType(UserType type);
         tPromise<void>* setRealName(QString realName);
         tPromise<void>* setLocked(bool locked);
@@ -73,5 +74,9 @@ class User : public QObject
 };
 typedef QSharedPointer<User> UserPtr;
 Q_DECLARE_METATYPE(UserPtr);
+
+class UserManipulationException : public tException {
+        T_EXCEPTION(UserManipulationException)
+};
 
 #endif // USER_H

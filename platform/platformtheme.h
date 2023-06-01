@@ -46,7 +46,11 @@ class PlatformTheme : public QPlatformTheme {
         QList<QKeySequence> keyBindings(QKeySequence::StandardKey key) const override;
         QString standardButtonText(int button) const override;
         QKeySequence standardButtonShortcut(int button) const override;
+#if QT_VERSION < QT_VERSION_CHECK(6, 5, 0)
         Appearance appearance() const override;
+#else
+        Qt::ColorScheme colorScheme() const;
+#endif
 
     private:
         PlatformThemePrivate* d;

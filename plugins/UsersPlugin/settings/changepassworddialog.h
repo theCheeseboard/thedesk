@@ -20,8 +20,8 @@
 #ifndef CHANGEPASSWORDDIALOG_H
 #define CHANGEPASSWORDDIALOG_H
 
-#include <QWidget>
 #include "user.h"
+#include <QWidget>
 
 namespace Ui {
     class ChangePasswordDialog;
@@ -36,11 +36,11 @@ class ChangePasswordDialog : public QWidget {
         ~ChangePasswordDialog();
 
     private slots:
-        void on_setPasswordButton_clicked();
+        QCoro::Task<> on_setPasswordButton_clicked();
 
-        void on_askForPasswordButton_clicked();
+        QCoro::Task<> on_askForPasswordButton_clicked();
 
-        void on_noPasswordButton_clicked();
+        QCoro::Task<> on_noPasswordButton_clicked();
 
         void on_titleLabel_backButtonClicked();
 

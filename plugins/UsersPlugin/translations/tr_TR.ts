@@ -38,7 +38,7 @@
     </message>
     <message>
         <location filename="../settings/adduserdialog.ui" line="262"/>
-        <location filename="../settings/adduserdialog.cpp" line="175"/>
+        <location filename="../settings/adduserdialog.cpp" line="165"/>
         <source>Administrator</source>
         <translation>Yönetici</translation>
     </message>
@@ -144,17 +144,17 @@
         <translation>Kullanıcı tipi</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.cpp" line="97"/>
+        <location filename="../settings/adduserdialog.cpp" line="98"/>
         <source>Set Password</source>
         <translation>Şifreyi belirle</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.cpp" line="103"/>
+        <location filename="../settings/adduserdialog.cpp" line="104"/>
         <source>Ask when logging in</source>
         <translation>Giriş yaparken sor</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.cpp" line="109"/>
+        <location filename="../settings/adduserdialog.cpp" line="110"/>
         <source>Not Set</source>
         <translation>Ayarlanmadı</translation>
     </message>
@@ -164,7 +164,7 @@
         <translation>Kullanıcı oluşturulamadı</translation>
     </message>
     <message>
-        <location filename="../settings/adduserdialog.cpp" line="181"/>
+        <location filename="../settings/adduserdialog.cpp" line="171"/>
         <source>Standard</source>
         <translation>Standart</translation>
     </message>
@@ -242,13 +242,13 @@
         <translation>Bu hesaba herkes giriş yapabilecek.</translation>
     </message>
     <message>
-        <location filename="../settings/changepassworddialog.cpp" line="71"/>
+        <location filename="../settings/changepassworddialog.cpp" line="72"/>
         <source>Couldn&apos;t set password</source>
         <translation>Şifre ayarlanamadı</translation>
     </message>
     <message>
-        <location filename="../settings/changepassworddialog.cpp" line="89"/>
-        <location filename="../settings/changepassworddialog.cpp" line="107"/>
+        <location filename="../settings/changepassworddialog.cpp" line="92"/>
+        <location filename="../settings/changepassworddialog.cpp" line="111"/>
         <source>Couldn&apos;t set password policy</source>
         <translation>Şifre ilkesi ayarlanamadı</translation>
     </message>
@@ -382,7 +382,7 @@
     <message>
         <location filename="../onboarding/onboardingusers.ui" line="57"/>
         <location filename="../onboarding/onboardingusers.ui" line="582"/>
-        <location filename="../onboarding/onboardingusers.cpp" line="157"/>
+        <location filename="../onboarding/onboardingusers.cpp" line="156"/>
         <source>Users</source>
         <translation>Kullanıcılar</translation>
     </message>
@@ -483,7 +483,7 @@
         <translation>Başka Kullanıcı Ekle</translation>
     </message>
     <message>
-        <location filename="../onboarding/onboardingusers.cpp" line="48"/>
+        <location filename="../onboarding/onboardingusers.cpp" line="49"/>
         <source>It&apos;s time to get to know you. Apps will use this information to personalise your experience, and you&apos;ll use the password to log in.</source>
         <translation>Seni tanımanın zamanı geldi. Uygulamalar, deneyiminizi kişiselleştirmek için bu bilgileri kullanır ve oturum açmak için parolayı kullanırsınız.</translation>
     </message>
