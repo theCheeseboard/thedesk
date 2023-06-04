@@ -4,6 +4,9 @@
 #include <QCoroProcess>
 #include <QProcess>
 #include <SystemSlide/systemslide.h>
+#include <Wm/desktopwm.h>
+#include <lockmanager.h>
+#include <terrorflash.h>
 
 struct MainWindowPrivate {
         QString lockCheckProcess;
@@ -29,25 +32,20 @@ MainWindow::MainWindow(QWidget* parent) :
         d->lockCheckProcess = "/usr/lib/td-locker-checker"; // TODO: Don't hardcode
     }
 
-    connect(d->slide, &SystemSlide::deactivated, this, [this]() -> QCoro::Task<> {
+    ui->usernameLabel->setText(DesktopWm::userDisplayName());
+    ui->capsLockOn->setVisible(false);
+
+    connect(d->slide, &SystemSlide::deactivated, this, [this] {
         if (this->checkPassword("")) {
             QApplication::exit(0);
+            return;
         }
 
-        //        tPropertyAnimation* opacity = new tPropertyAnimation(passwordFrameOpacity, "opacity");
-        //        opacity->setStartValue(0.0);
-        //        opacity->setEndValue(1.0);
-        //        opacity->setDuration(500);
-        //        opacity->setEasingCurve(QEasingCurve::OutCubic);
-        //        connect(opacity, SIGNAL(finished()), opacity, SLOT(deleteLater()));
-        //        opacity->start();
+        ui->password->setFocus();
 
-        //        QTimer::singleShot(100, this, [ = ] {
-        //            ui->MouseUnderline->startAnimation();
-        //            ui->PasswordUnderline->startAnimation();
-        //        });
-
-        //        ui->password->setFocus();
+        QTimer::singleShot(100, this, [this] {
+            ui->PasswordUnderline->startAnimation();
+        });
     });
 }
 
@@ -68,6 +66,33 @@ bool MainWindow::checkPassword(QString password) {
 
     QProcess checker;
     checker.start(d->lockCheckProcess, {name});
+    checker.write(password.toUtf8());
+    checker.write("\n");
+    checker.closeWriteChannel();
     checker.waitForFinished();
     return checker.exitCode() == 0;
+}
+
+void MainWindow::on_unlockButton_clicked() {
+    this->setEnabled(false);
+    if (checkPassword(ui->password->text())) {
+        QApplication::exit(0);
+        return;
+    }
+
+    this->setEnabled(true);
+    ui->password->setText("");
+    ui->password->setFocus();
+
+    tErrorFlash::flashError(ui->password);
+}
+
+void MainWindow::on_password_returnPressed() {
+    ui->unlockButton->click();
+}
+
+void MainWindow::changeEvent(QEvent* event) {
+    if (event->type() == QEvent::ActivationChange) {
+        LockManager::instance()->raiseAll();
+    }
 }

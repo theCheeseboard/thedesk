@@ -1,61 +1,78 @@
+#include <QCommandLineParser>
 #include <QCoreApplication>
 #include <QCryptographicHash>
-#include <QDebug>
 #include <QFile>
+#include <termios.h>
 #include <unistd.h>
 
 int main(int argc, char* argv[]) {
     QCoreApplication::setSetuidAllowed(true);
     QCoreApplication a(argc, argv);
 
+    QCommandLineParser parser;
+    parser.addHelpOption();
+    parser.addPositionalArgument("username", "Username to check the password of", "<username>");
+    parser.process(a);
+
     QFile shadow("/etc/shadow");
-    QStringList arguments = a.arguments();
-    if (arguments.contains("--help")) {
-        qDebug() << "tchkpass - Check User Password";
-        qDebug() << "Usage: checkpassword user password";
-        qDebug() << "";
-        qDebug() << "--help        Shows this help";
-        qDebug() << "";
-        qDebug() << "This command needs to be run as root.";
-        return 2;
-    }
 
     shadow.open(QFile::ReadOnly);
     if (!shadow.isReadable()) {
-        qDebug() << "Can't read the shadow file.";
-        qDebug() << "This command needs to be run as root.";
+        QTextStream(stderr) << "Can't read the shadow file.\n";
+        QTextStream(stderr) << "This command needs to be run as root.\n";
         return 2;
     }
 
+    if (parser.positionalArguments().count() < 1) {
+        QTextStream(stderr) << "Not enough arguments\n";
+        return 2;
+    }
+
+    // TODO: THIS IS BAD.
+    // We should not be reading the shadow file directly.
+    // Consider invoking PAM
     QStringList shadowFile(QString(shadow.readAll()).split("\n"));
-    for (QString user : shadowFile) {
-        if (user.startsWith(arguments.at(1))) {
-            QString hashedPassword = user.split(":").at(1);
+    for (const QString& user : shadowFile) {
+        auto parts = user.split(":");
+        if (parts.length() < 2) continue;
+
+        if (parts.constFirst() == parser.positionalArguments().at(0)) {
+            QString hashedPassword = parts.at(1);
             QStringList passwordParts = hashedPassword.split("$");
             if (passwordParts.count() == 1) {
-                qDebug() << "No password.";
+                QTextStream(stdout) << "No password.\n";
                 return 0;
+            } else if (passwordParts.count() != 4) {
+                QTextStream(stdout) << "Unable to parse shadow file\n";
+                return 2;
             } else {
-                if (arguments.count() < 3) {
-                    qDebug() << "Not enough arguments";
-                    return 1;
-                }
-                // QString tryPassword(QCryptographicHash::hash(arguments.at(2).toUtf8(), QCryptographicHash::Sha512));
-                const char* characters = (crypt(arguments.at(2).toStdString().c_str(), QString("$" + passwordParts.at(1) + "$" + passwordParts.at(2)).toStdString().c_str()));
+                QTextStream in(stdin, QIODevice::ReadOnly);
+
+                // Turn off echo
+                struct termios term;
+                tcgetattr(fileno(stdin), &term);
+
+                term.c_lflag &= ~ECHO;
+                tcsetattr(fileno(stdin), 0, &term);
+
+                QTextStream(stderr) << "Password: ";
+
+                const char* characters = (crypt(in.readLine().toUtf8().data(), QString("$" + passwordParts.at(1) + "$" + passwordParts.at(2)).toStdString().c_str()));
                 QString encryptedPass(characters);
 
-                // QString hashedPass(QCryptographicHash::hash(encryptedPass.toUtf8(), QCryptographicHash::Sha512));
+                QTextStream(stderr) << "\n";
 
                 if (encryptedPass.split("$").at(3) == passwordParts.at(3)) {
-                    qDebug() << "Password correct";
+                    QTextStream(stdout) << "Password correct\n";
                     return 0;
                 } else {
-                    qDebug() << "Password incorrect";
+                    QTextStream(stderr) << "Password incorrect\n";
                     return 1;
                 }
             }
         }
     }
 
-    return 0;
+    QTextStream(stderr) << "Unable to find user in shadow file\n";
+    return 2;
 }

@@ -17,7 +17,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * *************************************/
-#include "mainwindow.h"
+#include "lockmanager.h"
 
 #include <tapplication.h>
 
@@ -37,8 +37,7 @@ int main(int argc, char* argv[]) {
 
     a.registerCrashTrap();
 
-    MainWindow w;
-    w.show();
+    LockManager::instance();
 
     int retval = a.exec();
     return retval;

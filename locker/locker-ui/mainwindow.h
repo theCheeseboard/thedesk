@@ -18,11 +18,19 @@ class MainWindow : public QMainWindow {
     private slots:
         void on_titleLabel_backButtonClicked();
 
+        void on_unlockButton_clicked();
+
+        void on_password_returnPressed();
+
     private:
         Ui::MainWindow* ui;
         MainWindowPrivate* d;
 
         bool checkPassword(QString password);
+
+        // QWidget interface
+    protected:
+        void changeEvent(QEvent* event);
 };
 
 #endif // MAINWINDOW_H
