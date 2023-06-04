@@ -23,8 +23,14 @@
 #include <libcontemporary_global.h>
 
 #include <QAction>
+#include <QActionGroup>
+#include <QContextMenuEvent>
+#include <QMenu>
+#include <Wm/desktopwm.h>
 #include <actionquickwidget.h>
+#include <barmanager.h>
 #include <private/quickwidgetcontainer.h>
+#include <statemanager.h>
 
 struct TaskbarApplicationWidgetPrivate {
         ApplicationPointer app;
@@ -135,4 +141,64 @@ void TaskbarApplicationWidget::updateIcon() {
 
 void TaskbarApplicationWidget::updateActive() {
     this->setChecked(d->trackedWindows.contains(DesktopWm::activeWindow()));
+}
+
+void TaskbarApplicationWidget::contextMenuEvent(QContextMenuEvent* event) {
+    auto menu = new QMenu(this);
+    if (d->trackedWindows.count() == 1) {
+        auto win = d->trackedWindows.constFirst();
+        menu->addSection(tr("For %1").arg(QLocale().quoteString(win->title())));
+
+        QMenu* desktopsMenu = new QMenu(menu);
+        desktopsMenu->setTitle(tr("Move to desktop"));
+
+        auto desktopsGroup = new QActionGroup(desktopsMenu);
+        desktopsGroup->setExclusive(true);
+
+        auto allDesktopsAction = desktopsMenu->addAction(tr("All Desktops"), [win] {
+            win->moveToDesktop(UINT_MAX);
+        });
+        desktopsGroup->addAction(allDesktopsAction);
+        allDesktopsAction->setCheckable(true);
+        if (win->desktop() == UINT_MAX) allDesktopsAction->setChecked(true);
+        desktopsMenu->addSeparator();
+
+        for (auto i = 0; i < DesktopWm::desktops().count() - 1; i++) {
+            auto desktopName = DesktopWm::desktops().at(i);
+            auto action = desktopsMenu->addAction(desktopName, [win, i] {
+                win->moveToDesktop(i);
+            });
+            desktopsGroup->addAction(action);
+            action->setCheckable(true);
+            if (i == win->desktop()) action->setChecked(true);
+        }
+        desktopsMenu->addSeparator();
+        desktopsMenu->addAction(QIcon::fromTheme("list-add"), tr("New Desktop"), [win] {
+            win->moveToDesktop(DesktopWm::desktops().count() - 1);
+        });
+        menu->addMenu(desktopsMenu);
+
+        menu->addAction(QIcon::fromTheme("window-close"), tr("Close"), this, [win] {
+            win->close();
+        });
+    } else {
+        if (d->app->isValid()) {
+            menu->addSection(tr("For %n %1 windows", nullptr, d->trackedWindows.count()).arg(QLocale().quoteString(d->app->getProperty("Name").toString())));
+        } else {
+            menu->addSection(tr("For %n windows", nullptr, d->trackedWindows.count()));
+        }
+        menu->addAction(QIcon::fromTheme("application-exit"), tr("Close All"), this, [this] {
+            for (auto win : d->trackedWindows) {
+                win->close();
+            }
+        });
+    }
+
+    auto locker = StateManager::barManager()->acquireLock();
+    connect(menu, &QMenu::aboutToHide, this, [locker, menu] {
+        locker->unlock();
+        menu->deleteLater();
+    });
+
+    menu->popup(event->globalPos());
 }

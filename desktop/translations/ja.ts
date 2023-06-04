@@ -827,6 +827,53 @@ We&apos;ll go ahead and reset your settings in %n seconds if you don&apos;t do a
     </message>
 </context>
 <context>
+    <name>TaskbarApplicationWidget</name>
+    <message>
+        <location filename="../bar/taskbarapplicationwidget.cpp" line="153"/>
+        <source>Move to desktop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/taskbarapplicationwidget.cpp" line="150"/>
+        <source>For %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/taskbarapplicationwidget.cpp" line="158"/>
+        <source>All Desktops</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/taskbarapplicationwidget.cpp" line="176"/>
+        <source>New Desktop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../bar/taskbarapplicationwidget.cpp" line="181"/>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../bar/taskbarapplicationwidget.cpp" line="186"/>
+        <source>For %n %1 windows</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../bar/taskbarapplicationwidget.cpp" line="188"/>
+        <source>For %n windows</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../bar/taskbarapplicationwidget.cpp" line="190"/>
+        <source>Close All</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
         <location filename="../main.cpp" line="71"/>

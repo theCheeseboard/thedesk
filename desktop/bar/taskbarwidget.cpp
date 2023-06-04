@@ -124,7 +124,12 @@ void TaskbarWidget::normaliseDesktops() {
     // Go through each desktop to find any that need to be removed
     for (int i = 0; i < DesktopWm::desktops().count() - 1; i++) {
         if (DesktopWm::currentDesktop() == static_cast<uint>(i)) continue;
-        if (!DesktopWm::windowsOnDesktop(i).isEmpty()) continue;
+
+        bool haveWindows = false;
+        for (auto window : DesktopWm::windowsOnDesktop(i)) {
+            if (window->desktop() != UINT_MAX) haveWindows = true;
+        }
+        if (haveWindows) continue;
 
         // This desktop needs to be removed
         // Shuffle all of the windows from the desktops in front down
@@ -141,7 +146,11 @@ void TaskbarWidget::normaliseDesktops() {
     }
 
     // Ensure that there is an empty desktop at the end
-    if (!DesktopWm::windowsOnDesktop(DesktopWm::desktops().count() - 1).isEmpty()) {
+    bool haveWindows = false;
+    for (auto window : DesktopWm::windowsOnDesktop(DesktopWm::desktops().count() - 1)) {
+        if (window->desktop() != UINT_MAX) haveWindows = true;
+    }
+    if (haveWindows) {
         // Add an extra desktop
         DesktopWm::setNumDesktops(DesktopWm::desktops().count() + 1);
 

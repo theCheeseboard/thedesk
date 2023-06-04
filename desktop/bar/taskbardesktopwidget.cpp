@@ -22,26 +22,25 @@
 
 #include "taskbarapplicationwidget.h"
 #include <Applications/application.h>
-#include <tvariantanimation.h>
-#include <Wm/desktopwm.h>
 #include <QPainter>
+#include <Wm/desktopwm.h>
+#include <tvariantanimation.h>
 
 struct TaskbarDesktopWidgetPrivate {
-    QMap<QString, TaskbarApplicationWidget*> applicationWidgets;
-    QList<TaskbarApplicationWidget*> applicationWidgetOrder;
-    uint desktop;
-    QColor color;
+        QMap<QString, TaskbarApplicationWidget*> applicationWidgets;
+        QList<TaskbarApplicationWidget*> applicationWidgetOrder;
+        uint desktop;
+        QColor color;
 
-    tVariantAnimation* progressAnim;
+        tVariantAnimation* progressAnim;
 
-    const QRgb colors[6] = {
-        0x0000c8,
-        0x006400,
-        0x640000,
-        0xff6400,
-        0x0064ff,
-        0x6400ff
-    };
+        const QRgb colors[6] = {
+            0x0000c8,
+            0x006400,
+            0x640000,
+            0xff6400,
+            0x0064ff,
+            0x6400ff};
 };
 
 TaskbarDesktopWidget::TaskbarDesktopWidget(uint desktop, QWidget* parent) :
@@ -98,15 +97,15 @@ void TaskbarDesktopWidget::moveDesktop(uint newDesktop) {
 }
 
 void TaskbarDesktopWidget::windowAdded(DesktopWmWindowPtr window) {
-    connect(window, &DesktopWmWindow::desktopChanged, this, [ = ] {
-        if (window->desktop() == d->desktop && window->shouldShowInTaskbar()) {
+    connect(window, &DesktopWmWindow::desktopChanged, this, [this, window] {
+        if (window->isOnDesktop(d->desktop) && window->shouldShowInTaskbar()) {
             registerOnDesktop(window);
         } else {
             deregisterFromDesktop(window);
         }
     });
 
-    if (window->desktop() == d->desktop && window->shouldShowInTaskbar()) registerOnDesktop(window);
+    if (window->isOnDesktop(d->desktop) && window->shouldShowInTaskbar()) registerOnDesktop(window);
 }
 
 void TaskbarDesktopWidget::windowRemoved(DesktopWmWindowPtr window) {
@@ -124,7 +123,7 @@ void TaskbarDesktopWidget::registerOnDesktop(DesktopWmWindowPtr window) {
         widget = new TaskbarApplicationWidget(desktopEntry, d->desktop, this);
         widget->setColor(d->color);
         connect(widget, &TaskbarApplicationWidget::iconChanged, this, &TaskbarDesktopWidget::updateOverviewButtonIcon);
-        connect(widget, &TaskbarApplicationWidget::windowsRemoved, this, [ = ] {
+        connect(widget, &TaskbarApplicationWidget::windowsRemoved, this, [=] {
             d->applicationWidgets.remove(desktopEntry);
             d->applicationWidgetOrder.removeOne(widget);
             ui->applicationsLayout->removeWidget(widget);
