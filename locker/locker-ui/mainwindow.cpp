@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget* parent) :
 
     d = new MainWindowPrivate();
     d->slide = new SystemSlide(this);
-    d->slide->setBackgroundMode(SystemSlide::DesktopBackground);
+    d->slide->setBackgroundMode(SystemSlide::LockScreenBackground);
     d->slide->setAction(tr("Unlock"), tr("Resume your session, continuing where you left off"));
     d->slide->setActionIcon(QIcon::fromTheme("go-up"));
     d->slide->setDragResultWidget(this->centralWidget());

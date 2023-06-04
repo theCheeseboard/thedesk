@@ -21,6 +21,7 @@
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
+#include <Background/backgroundcontroller.h>
 #include <QCoroTask>
 #include <QDialog>
 
@@ -90,6 +91,8 @@ class Background : public QDialog {
         void resizeEvent(QResizeEvent* event);
 
         void resizeToScreen(int screen);
+
+        void changeBackground(QString background, QList<BackgroundController::BackgroundType> types);
 };
 
 #endif // BACKGROUND_H

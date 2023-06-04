@@ -120,8 +120,8 @@ Background::Background() :
     ui->backgroundSelectionWidget->setFixedHeight(0);
     ui->backgroundList->setModel(new BackgroundSelectionModel());
     ui->backgroundList->setItemDelegate(new BackgroundSelectionDelegate());
-    ui->backgroundList->setIconSize(SC_DPI_T(QSize(213, 120), QSize));
-    ui->backgroundList->setFixedHeight(SC_DPI(120));
+    ui->backgroundList->setIconSize(QSize(213, 120));
+    ui->backgroundList->setFixedHeight(120);
 
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnBottomHint);
     this->setAttribute(Qt::WA_ShowWithoutActivating, true);
@@ -167,13 +167,13 @@ QCoro::Task<> Background::changeBackground() {
                 painter.drawRect(0, 0, data.px.width(), data.px.height());
 
                 painter.setPen(Qt::white);
-                int currentX = SC_DPI(30);
+                int currentX = 30;
                 int baselineY;
 
                 if (d->settings.value("bar/onTop", true).toBool()) {
-                    baselineY = data.px.height() - SC_DPI(30);
+                    baselineY = data.px.height() - 30;
                 } else {
-                    baselineY = SC_DPI(30) + QFontMetrics(QFont(this->font().family(), 20)).ascent();
+                    baselineY = 30 + QFontMetrics(QFont(this->font().family(), 20)).ascent();
                 }
 
                 if (!data.name.isEmpty()) {
@@ -181,7 +181,7 @@ QCoro::Task<> Background::changeBackground() {
                     int width = painter.fontMetrics().horizontalAdvance(data.name);
                     painter.drawText(currentX, baselineY, data.name);
 
-                    currentX += width + SC_DPI(9);
+                    currentX += width + 9;
                 }
 
                 if (!data.location.isEmpty()) {
@@ -190,17 +190,17 @@ QCoro::Task<> Background::changeBackground() {
                     int height = painter.fontMetrics().height();
                     int width = painter.fontMetrics().horizontalAdvance(data.location) + height;
 
-                    painter.drawPixmap(currentX, baselineY - height, locationIcon.pixmap(SC_DPI_T(QSize(16, 16), QSize)));
-                    painter.drawText(currentX + height + SC_DPI(6), baselineY - painter.fontMetrics().descent(), data.location);
+                    painter.drawPixmap(currentX, baselineY - height, locationIcon.pixmap(QSize(16, 16)));
+                    painter.drawText(currentX + height + 6, baselineY - painter.fontMetrics().descent(), data.location);
 
-                    currentX += width + SC_DPI(20);
+                    currentX += width + 20;
                 }
 
                 if (!data.author.isEmpty()) {
                     painter.setFont(QFont(this->font().family(), 10));
                     QString author = tr("by %1").arg(data.author);
                     int width = painter.fontMetrics().horizontalAdvance(author);
-                    painter.drawText(data.px.width() - width - SC_DPI(30), baselineY, author);
+                    painter.drawText(data.px.width() - width - 30, baselineY, author);
                 }
             }
         }
@@ -293,6 +293,8 @@ bool Background::eventFilter(QObject* watched, QEvent* event) {
 }
 
 void Background::on_Background_customContextMenuRequested(const QPoint& pos) {
+    if (d->isChangeBackgroundVisible) return;
+
     QMenu* menu = new QMenu(this);
     menu->addSection(tr("For desktop"));
     menu->addAction(ui->actionChange_Background);
@@ -320,6 +322,17 @@ void Background::resizeToScreen(int screen) {
         this->show();
 
         d->oldScreen = s;
+    }
+}
+
+void Background::changeBackground(QString background, QList<BackgroundController::BackgroundType> types) {
+    if (background == "custom") {
+        // Ask the user to select a background
+        background = QFileDialog::getOpenFileName(this, tr("Select Background"), "", "Images (*.png *.jpg *.jpeg *.bmp *.gif)");
+        if (background.isEmpty()) return;
+    }
+    for (auto type : types) {
+        d->bg->setBackground(background, type);
     }
 }
 
@@ -352,12 +365,22 @@ void Background::on_tryReloadBackgroundButton_clicked() {
 
 void Background::on_backgroundList_clicked(const QModelIndex& index) {
     QString background = index.data(Qt::UserRole).toString();
-    if (background == "custom") {
-        // Ask the user to select a background
-        background = QFileDialog::getOpenFileName(this, tr("Select Background"), "", "Images (*.png *.jpg *.jpeg *.bmp *.gif)");
-        if (background.isEmpty()) return;
-    }
-    d->bg->setBackground(background, BackgroundController::Desktop);
+
+    QMenu* menu = new QMenu(this);
+    menu->addSection(tr("Set Background"));
+    menu->addAction(tr("Set as Desktop Background"), this, [this, background] {
+        changeBackground(background, {BackgroundController::Desktop});
+    });
+    menu->addAction(tr("Set as Lock Screen Background"), this, [this, background] {
+        changeBackground(background, {BackgroundController::LockScreen});
+    });
+    menu->addSeparator();
+    menu->addAction(tr("Set for both"), this, [this, background] {
+        changeBackground(background, {BackgroundController::Desktop, BackgroundController::LockScreen});
+    });
+
+    connect(menu, &QMenu::aboutToHide, menu, &QMenu::deleteLater);
+    menu->popup(QCursor::pos());
 }
 
 void Background::on_backButton_clicked() {

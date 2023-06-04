@@ -10,11 +10,22 @@
 struct LockManagerPrivate {
         QList<MainWindow*> openWindows;
         QTimer* grabTimer;
+
+        bool debugMode = false;
 };
 
 LockManager* LockManager::instance() {
     static auto manager = new LockManager();
     return manager;
+}
+
+void LockManager::setDebug(bool debugMode) {
+    d->debugMode = debugMode;
+    if (debugMode) {
+        LockerGrabs::releaseGrab();
+    }
+
+    this->openLockWindows();
 }
 
 void LockManager::openLockWindows() {
@@ -24,17 +35,25 @@ void LockManager::openLockWindows() {
     }
     d->openWindows.clear();
 
-    for (auto screen : ScreenDaemon::instance()->screens()) {
+    if (d->debugMode) {
         auto* w = new MainWindow();
-        w->setWindowFlags(Qt::WindowStaysOnTopHint);
         w->show();
-        w->setGeometry(screen->geometry());
-        w->showFullScreen();
         d->openWindows.append(w);
+    } else {
+        for (auto screen : ScreenDaemon::instance()->screens()) {
+            auto* w = new MainWindow();
+            w->setWindowFlags(Qt::WindowStaysOnTopHint);
+            w->show();
+            w->setGeometry(screen->geometry());
+            w->showFullScreen();
+            d->openWindows.append(w);
+        }
     }
 }
 
 void LockManager::establishGrab() {
+    if (d->debugMode) return;
+
     LockerGrabs::establishGrab();
 }
 

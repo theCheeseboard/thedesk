@@ -9,6 +9,8 @@ class LockManager : public QObject {
     public:
         static LockManager* instance();
 
+        void setDebug(bool debugMode);
+
         void openLockWindows();
         void establishGrab();
         void raiseAll();

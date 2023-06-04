@@ -41,7 +41,7 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="30"/>
+        <location filename="../main.cpp" line="39"/>
         <source>Screen Locker</source>
         <translation type="unfinished"></translation>
     </message>

@@ -244,14 +244,34 @@
         <translation>bởi %1</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="297"/>
+        <location filename="../background/background.cpp" line="299"/>
         <source>For desktop</source>
         <translation>Cho bảng nền</translation>
     </message>
     <message>
-        <location filename="../background/background.cpp" line="357"/>
+        <location filename="../background/background.cpp" line="331"/>
         <source>Select Background</source>
         <translation>Chọn hình ảnh nền</translation>
+    </message>
+    <message>
+        <location filename="../background/background.cpp" line="370"/>
+        <source>Set Background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../background/background.cpp" line="371"/>
+        <source>Set as Desktop Background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../background/background.cpp" line="374"/>
+        <source>Set as Lock Screen Background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../background/background.cpp" line="378"/>
+        <source>Set for both</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

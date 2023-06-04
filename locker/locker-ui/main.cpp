@@ -19,12 +19,21 @@
  * *************************************/
 #include "lockmanager.h"
 
+#include <QCommandLineParser>
 #include <tapplication.h>
 
 int main(int argc, char* argv[]) {
     tApplication a(argc, argv);
     a.setApplicationShareDir("thedesk/locker");
     a.installTranslators();
+
+    QCommandLineParser parser;
+    parser.addHelpOption();
+    parser.addOption({
+        {"d", "debug"},
+        "Enable Debug Mode"
+    });
+    parser.process(a);
 
     a.setApplicationVersion("4.0");
     a.setGenericName(QApplication::translate("main", "Screen Locker"));
@@ -37,7 +46,7 @@ int main(int argc, char* argv[]) {
 
     a.registerCrashTrap();
 
-    LockManager::instance();
+    LockManager::instance()->setDebug(parser.isSet("debug"));
 
     int retval = a.exec();
     return retval;
