@@ -9,18 +9,30 @@ find_package(libthefrisbee REQUIRED)
 find_package(libthefile REQUIRED)
 
 set(SOURCES
-    dialogs/filedialog.cpp dialogs/filedialog.ui
-    interfaces/filechooserinterface.cpp
-    interfaces/settingsinterface.cpp
     main.cpp
     portalhandle.cpp
+    portalcommon.cpp
+
+    interfaces/filechooserinterface.cpp
+    interfaces/settingsinterface.cpp
+    interfaces/accessinterface.cpp
+    interfaces/accountinterface.cpp
+
+    dialogs/filedialog.cpp dialogs/filedialog.ui
+    dialogs/accountdialog.cpp dialogs/accountdialog.ui
 )
 
 set(HEADERS
-    dialogs/filedialog.h
+    portalhandle.h
+    portalcommon.h
+
     interfaces/filechooserinterface.h
     interfaces/settingsinterface.h
-    portalhandle.h
+    interfaces/accessinterface.h
+    interfaces/accountinterface.h
+
+    dialogs/filedialog.h
+    dialogs/accountdialog.h
 )
 
 

@@ -19,14 +19,15 @@
  * *************************************/
 #include "filechooserinterface.h"
 
-#include "portalhandle.h"
 #include "dialogs/filedialog.h"
-#include <tlogger.h>
-#include <QWindow>
+#include "portalcommon.h"
+#include "portalhandle.h"
 #include <QDBusVariant>
+#include <QWindow>
+#include <tlogger.h>
 
-FileChooserInterface::FileChooserInterface(QObject* parent) : QDBusAbstractAdaptor(parent) {
-
+FileChooserInterface::FileChooserInterface(QObject* parent) :
+    QDBusAbstractAdaptor(parent) {
 }
 
 uint FileChooserInterface::OpenFile(const QDBusObjectPath& handle, const QString& app_id, const QString& parent_window, const QString& title, const QVariantMap& options, const QDBusMessage& message, QVariantMap& results) {
@@ -35,17 +36,7 @@ uint FileChooserInterface::OpenFile(const QDBusObjectPath& handle, const QString
     PortalHandle* portalHandle = new PortalHandle(handle);
 
     FileDialog* dialog = new FileDialog(false, options);
-    if (parent_window.startsWith("x11:")) {
-        int winId = parent_window.mid(4).toInt();
-        QWindow* parentWindow = QWindow::fromWinId(winId);
-
-        dialog->createWinId();
-//        if (parentWindow) {
-//            dialog->windowHandle()->setParent(parentWindow);
-//            dialog->windowHandle()->setModality(Qt::WindowModal);
-//        }
-    }
-
+    PortalCommon::reparentWindow(dialog, parent_window);
     if (title.isEmpty()) {
         dialog->setWindowTitle(tr("Open"));
     } else {
@@ -54,7 +45,7 @@ uint FileChooserInterface::OpenFile(const QDBusObjectPath& handle, const QString
 
     if (dialog->exec() == FileDialog::Accepted) {
         results.insert("uris", dialog->uris());
-//        results.insert("choices", dialog->choices());
+        //        results.insert("choices", dialog->choices());
         results.insert("writable", dialog->isWritable());
 
         portalHandle->deleteLater();
@@ -64,7 +55,7 @@ uint FileChooserInterface::OpenFile(const QDBusObjectPath& handle, const QString
         return 1;
     }
 
-    connect(portalHandle, &PortalHandle::closed, this, [ = ] {
+    connect(portalHandle, &PortalHandle::closed, this, [=] {
         dialog->close();
     });
 }
@@ -73,16 +64,7 @@ uint FileChooserInterface::SaveFile(const QDBusObjectPath& handle, const QString
     PortalHandle* portalHandle = new PortalHandle(handle);
 
     FileDialog* dialog = new FileDialog(true, options);
-    if (parent_window.startsWith("x11:")) {
-        int winId = parent_window.mid(4).toInt();
-        QWindow* parentWindow = QWindow::fromWinId(winId);
-
-        dialog->createWinId();
-//        if (parentWindow) {
-//            dialog->windowHandle()->setParent(parentWindow);
-//            dialog->windowHandle()->setModality(Qt::WindowModal);
-//        }
-    }
+    PortalCommon::reparentWindow(dialog, parent_window);
 
     if (title.isEmpty()) {
         dialog->setWindowTitle(tr("Save"));
@@ -92,7 +74,7 @@ uint FileChooserInterface::SaveFile(const QDBusObjectPath& handle, const QString
 
     if (dialog->exec() == FileDialog::Accepted) {
         results.insert("uris", dialog->uris());
-//        results.insert("choices", dialog->choices());
+        //        results.insert("choices", dialog->choices());
         results.insert("writable", dialog->isWritable());
 
         portalHandle->deleteLater();
@@ -102,7 +84,7 @@ uint FileChooserInterface::SaveFile(const QDBusObjectPath& handle, const QString
         return 1;
     }
 
-    connect(portalHandle, &PortalHandle::closed, this, [ = ] {
+    connect(portalHandle, &PortalHandle::closed, this, [=] {
         dialog->close();
     });
     return 0;

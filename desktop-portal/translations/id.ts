@@ -2,14 +2,53 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="id" sourcelanguage="en_US">
 <context>
+    <name>AccountDialog</name>
+    <message>
+        <location filename="../dialogs/accountdialog.ui" line="14"/>
+        <location filename="../dialogs/accountdialog.ui" line="35"/>
+        <source>Request for Account Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/accountdialog.ui" line="58"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/accountdialog.ui" line="74"/>
+        <source>Real Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/accountdialog.ui" line="81"/>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/accountdialog.ui" line="108"/>
+        <source>Information to be shared</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/accountdialog.ui" line="118"/>
+        <source>Share Account Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/accountdialog.cpp" line="20"/>
+        <source>%1 is requesting information about your profile.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FileChooserInterface</name>
     <message>
-        <location filename="../interfaces/filechooserinterface.cpp" line="50"/>
+        <location filename="../interfaces/filechooserinterface.cpp" line="41"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../interfaces/filechooserinterface.cpp" line="88"/>
+        <location filename="../interfaces/filechooserinterface.cpp" line="70"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>

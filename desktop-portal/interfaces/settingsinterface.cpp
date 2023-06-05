@@ -24,6 +24,8 @@
 
 SettingsInterface::SettingsInterface(QObject* parent) :
     QDBusAbstractAdaptor(parent) {
+    qDBusRegisterMetaType<QMap<QString, QDBusVariant>>();
+    qDBusRegisterMetaType<QMap<QString, QMap<QString, QDBusVariant>>>();
 }
 
 uint SettingsInterface::version() {

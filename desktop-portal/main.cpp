@@ -19,6 +19,8 @@
  * *************************************/
 #include <tapplication.h>
 
+#include "interfaces/accessinterface.h"
+#include "interfaces/accountinterface.h"
 #include "interfaces/filechooserinterface.h"
 #include "interfaces/settingsinterface.h"
 
@@ -33,6 +35,8 @@ int main(int argc, char* argv[]) {
     QObject* rootDbusObject = new QObject();
     new FileChooserInterface(rootDbusObject);
     new SettingsInterface(rootDbusObject);
+    new AccessInterface(rootDbusObject);
+    new AccountInterface(rootDbusObject);
 
     QDBusConnection::sessionBus().registerObject("/org/freedesktop/portal/desktop", rootDbusObject, QDBusConnection::ExportAdaptors);
 

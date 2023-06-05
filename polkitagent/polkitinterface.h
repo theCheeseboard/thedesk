@@ -20,10 +20,10 @@
 #ifndef POLKITINTERFACE_H
 #define POLKITINTERFACE_H
 
-#include <QObject>
 #include <PolkitQt1/Agent/Listener>
 #include <PolkitQt1/Identity>
 #include <PolkitQt1/Subject>
+#include <QObject>
 
 struct PolkitInterfacePrivate;
 class PolkitInterface : public PolkitQt1::Agent::Listener {
