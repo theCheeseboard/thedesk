@@ -44,7 +44,7 @@ set_target_properties(startdesk PROPERTIES
         WIN32_EXECUTABLE TRUE
         CNTP_DATA_SUBDIR startdesk)
 
-cntp_init(startdesk 17)
+cntp_init(startdesk 20)
 cntp_translate(startdesk)
 cntp_target_name(startdesk "startdesk")
 #cntp_defaults_file(startdesk
@@ -52,8 +52,12 @@ cntp_target_name(startdesk "startdesk")
 
 target_link_libraries(startdesk Qt::Widgets Qt::Network Qt::DBus libcontemporary libtdesktopenvironment libthedesk)
 
+configure_file(thedesk.desktop.in ${CMAKE_BINARY_DIR}/thedesk.desktop)
+
 install(TARGETS startdesk
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         BUNDLE DESTINATION /Applications)
 
-    # TODO: Install theDesk desktop file
+install(FILES ${CMAKE_BINARY_DIR}/thedesk.desktop
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/xsessions)
+
