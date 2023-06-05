@@ -1,4 +1,4 @@
 [D-BUS Service]
 Name=org.freedesktop.impl.portal.desktop.thedesk
-Exec=/usr/lib/xdg-desktop-portal-thedesk
+Exec=${CMAKE_INSTALL_FULL_LIBDIR}/xdg-desktop-portal-thedesk
 SystemdService=xdg-desktop-portal-thedesk.service

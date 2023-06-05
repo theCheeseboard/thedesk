@@ -19,12 +19,11 @@
  * *************************************/
 #include "portalhandle.h"
 
-#include "portalhandle_adaptor.h"
+#include <QDBusConnection>
 
-PortalHandle::PortalHandle(QDBusObjectPath path, QObject* parent) : QObject(parent) {
-    new RequestAdaptor(this);
-
-    QDBusConnection::sessionBus().registerObject(path.path(), this);
+PortalHandle::PortalHandle(QDBusObjectPath path, QObject* parent) :
+    QObject(parent) {
+    QDBusConnection::sessionBus().registerObject(path.path(), this, QDBusConnection::ExportScriptableContents);
 }
 
 void PortalHandle::Close() {
