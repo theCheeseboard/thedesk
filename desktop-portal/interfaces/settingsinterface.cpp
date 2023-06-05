@@ -20,34 +20,32 @@
 #include "settingsinterface.h"
 #include <tsettings.h>
 
-SettingsInterface::SettingsInterface(QObject* parent) : QDBusAbstractAdaptor(parent) {
+#include <QDBusMetaType>
 
+SettingsInterface::SettingsInterface(QObject* parent) :
+    QDBusAbstractAdaptor(parent) {
 }
 
 uint SettingsInterface::version() {
     return 1;
 }
 
-QMap<QString, QVariantMap> SettingsInterface::ReadAll(QStringList namespaces) {
+QMap<QString, QMap<QString, QDBusVariant>> SettingsInterface::ReadAll(QStringList namespaces) {
     return {
-        {
-            "org.freedesktop.appearance", {
-                {"color-scheme", QVariant(0u)}
-            }
-        }
+        {"org.freedesktop.appearance", {{"color-scheme", QDBusVariant(0u)}}}
     };
 }
 
-QVariant SettingsInterface::Read(QString ns, QString key) {
+QDBusVariant SettingsInterface::Read(QString ns, QString key) {
     if (ns == "org.freedesktop.appearance" && key == "color-scheme") {
         tSettings themeSettings("theDesk.platform");
 
         QString baseColor = themeSettings.value("Palette/base").toString();
         if (baseColor == "dark") {
-            return 1u;
+            return QDBusVariant(1u);
         } else if (baseColor == "light") {
-            return 2u;
+            return QDBusVariant(2u);
         }
     }
-    return QVariant();
+    return {};
 }

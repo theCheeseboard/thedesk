@@ -20,8 +20,9 @@
 #ifndef SETTINGSINTERFACE_H
 #define SETTINGSINTERFACE_H
 
-#include <QObject>
 #include <QDBusAbstractAdaptor>
+#include <QDBusVariant>
+#include <QObject>
 
 class SettingsInterface : public QDBusAbstractAdaptor {
         Q_OBJECT
@@ -34,11 +35,11 @@ class SettingsInterface : public QDBusAbstractAdaptor {
         uint version();
 
     public slots:
-        Q_SCRIPTABLE QMap<QString, QVariantMap> ReadAll(QStringList namespaces);
-        Q_SCRIPTABLE QVariant Read(QString ns, QString key);
+        Q_SCRIPTABLE QMap<QString, QMap<QString, QDBusVariant> > ReadAll(QStringList namespaces);
+        Q_SCRIPTABLE QDBusVariant Read(QString ns, QString key);
 
     signals:
-        Q_SCRIPTABLE void SettingChanged(QString ns, QString key, QVariant value);
+        Q_SCRIPTABLE void SettingChanged(QString ns, QString key, QDBusVariant value);
 };
 
 #endif // SETTINGSINTERFACE_H
