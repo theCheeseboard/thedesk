@@ -22,6 +22,7 @@
 #include "interfaces/accessinterface.h"
 #include "interfaces/accountinterface.h"
 #include "interfaces/filechooserinterface.h"
+#include "interfaces/screenshotinterface.h"
 #include "interfaces/settingsinterface.h"
 
 #include <QDBusConnection>
@@ -37,6 +38,7 @@ int main(int argc, char* argv[]) {
     new SettingsInterface(rootDbusObject);
     new AccessInterface(rootDbusObject);
     new AccountInterface(rootDbusObject);
+    new ScreenshotInterface(rootDbusObject);
 
     QDBusConnection::sessionBus().registerObject("/org/freedesktop/portal/desktop", rootDbusObject, QDBusConnection::ExportAdaptors);
 

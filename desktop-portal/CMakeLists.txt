@@ -12,27 +12,37 @@ set(SOURCES
     main.cpp
     portalhandle.cpp
     portalcommon.cpp
+    screenshotmanager.cpp
 
     interfaces/filechooserinterface.cpp
     interfaces/settingsinterface.cpp
     interfaces/accessinterface.cpp
     interfaces/accountinterface.cpp
+    interfaces/screenshotinterface.cpp
 
     dialogs/filedialog.cpp dialogs/filedialog.ui
     dialogs/accountdialog.cpp dialogs/accountdialog.ui
+    dialogs/screenshotwindow.cpp dialogs/screenshotwindow.ui
+    dialogs/penbutton.cpp
+
+    screenshot_resources.qrc
 )
 
 set(HEADERS
     portalhandle.h
     portalcommon.h
+    screenshotmanager.h
 
     interfaces/filechooserinterface.h
     interfaces/settingsinterface.h
     interfaces/accessinterface.h
     interfaces/accountinterface.h
+    interfaces/screenshotinterface.h
 
     dialogs/filedialog.h
     dialogs/accountdialog.h
+    dialogs/screenshotwindow.h
+    dialogs/penbutton.h
 )
 
 

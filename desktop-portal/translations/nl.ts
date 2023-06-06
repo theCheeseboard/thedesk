@@ -111,4 +111,52 @@
         <translation>Het bestand overschrijven zal de inhoud ervan vervangen.</translation>
     </message>
 </context>
+<context>
+    <name>PenButton</name>
+    <message>
+        <location filename="../dialogs/penbutton.cpp" line="54"/>
+        <source>Erase-o</source>
+        <comment>This and the next translation span two lines. Be spiffy with these!</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/penbutton.cpp" line="55"/>
+        <source>matic 2000</source>
+        <comment>This and the previous translation span two lines. Be spiffy with these!</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreenshotWindow</name>
+    <message>
+        <location filename="../dialogs/screenshotwindow.ui" line="54"/>
+        <source>SCREENSHOT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/screenshotwindow.ui" line="129"/>
+        <source>Crop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/screenshotwindow.ui" line="149"/>
+        <source>Redact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/screenshotwindow.ui" line="204"/>
+        <source>Reset Markup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/screenshotwindow.cpp" line="137"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/screenshotwindow.cpp" line="138"/>
+        <source>Share Screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
