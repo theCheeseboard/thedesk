@@ -22,6 +22,8 @@
 #include "dialogs/filedialog.h"
 #include "portalcommon.h"
 #include "portalhandle.h"
+#include <QCoroCore>
+#include <QDBusConnection>
 #include <QDBusVariant>
 #include <QWindow>
 #include <tlogger.h>
@@ -33,60 +35,74 @@ FileChooserInterface::FileChooserInterface(QObject* parent) :
 uint FileChooserInterface::OpenFile(const QDBusObjectPath& handle, const QString& app_id, const QString& parent_window, const QString& title, const QVariantMap& options, const QDBusMessage& message, QVariantMap& results) {
     tDebug("FileChooserInterface") << "Open File";
 
-    PortalHandle* portalHandle = new PortalHandle(handle);
+    PortalCommon::setupCoro([options, parent_window, handle, title, this](QDBusMessage reply) -> QCoro::Task<> {
+        auto* portalHandle = new PortalHandle(handle);
 
-    FileDialog* dialog = new FileDialog(false, options);
-    PortalCommon::reparentWindow(dialog, parent_window);
-    if (title.isEmpty()) {
-        dialog->setWindowTitle(tr("Open"));
-    } else {
-        dialog->setWindowTitle(title);
-    }
+        FileDialog dialog(false, options);
+        PortalCommon::reparentWindow(&dialog, parent_window);
+        if (title.isEmpty()) {
+            dialog.setWindowTitle(tr("Open"));
+        } else {
+            dialog.setWindowTitle(title);
+        }
+        connect(portalHandle, &PortalHandle::closed, &dialog, [&dialog] {
+            dialog.close();
+        });
 
-    if (dialog->exec() == FileDialog::Accepted) {
-        results.insert("uris", dialog->uris());
-        //        results.insert("choices", dialog->choices());
-        results.insert("writable", dialog->isWritable());
+        dialog.open();
 
+        auto result = co_await qCoro(&dialog, &FileDialog::finished);
+
+        if (result == FileDialog::Accepted) {
+            reply.setArguments({
+                uint(0), QVariantMap{
+                                     {"uris", dialog.uris()},
+                                     {"writable", dialog.isWritable()}}
+            });
+            QDBusConnection::sessionBus().send(reply);
+        } else {
+            reply.setArguments({uint(1), QVariantMap()});
+            QDBusConnection::sessionBus().send(reply);
+        }
         portalHandle->deleteLater();
-        return 0;
-    } else {
-        portalHandle->deleteLater();
-        return 1;
-    }
-
-    connect(portalHandle, &PortalHandle::closed, this, [=] {
-        dialog->close();
-    });
+    },
+        message);
+    return 0;
 }
 
 uint FileChooserInterface::SaveFile(const QDBusObjectPath& handle, const QString& app_id, const QString& parent_window, const QString& title, const QVariantMap& options, const QDBusMessage& message, QVariantMap& results) {
-    PortalHandle* portalHandle = new PortalHandle(handle);
+    PortalCommon::setupCoro([options, parent_window, handle, title, this](QDBusMessage reply) -> QCoro::Task<> {
+        auto* portalHandle = new PortalHandle(handle);
 
-    FileDialog* dialog = new FileDialog(true, options);
-    PortalCommon::reparentWindow(dialog, parent_window);
+        FileDialog dialog(true, options);
+        PortalCommon::reparentWindow(&dialog, parent_window);
+        if (title.isEmpty()) {
+            dialog.setWindowTitle(tr("Save"));
+        } else {
+            dialog.setWindowTitle(title);
+        }
+        connect(portalHandle, &PortalHandle::closed, &dialog, [&dialog] {
+            dialog.close();
+        });
 
-    if (title.isEmpty()) {
-        dialog->setWindowTitle(tr("Save"));
-    } else {
-        dialog->setWindowTitle(title);
-    }
+        dialog.open();
 
-    if (dialog->exec() == FileDialog::Accepted) {
-        results.insert("uris", dialog->uris());
-        //        results.insert("choices", dialog->choices());
-        results.insert("writable", dialog->isWritable());
+        auto result = co_await qCoro(&dialog, &FileDialog::finished);
 
+        if (result == FileDialog::Accepted) {
+            reply.setArguments({
+                uint(0), QVariantMap{
+                                     {"uris", dialog.uris()},
+                                     {"writable", dialog.isWritable()}}
+            });
+            QDBusConnection::sessionBus().send(reply);
+        } else {
+            reply.setArguments({uint(1), QVariantMap()});
+            QDBusConnection::sessionBus().send(reply);
+        }
         portalHandle->deleteLater();
-        return 0;
-    } else {
-        portalHandle->deleteLater();
-        return 1;
-    }
-
-    connect(portalHandle, &PortalHandle::closed, this, [=] {
-        dialog->close();
-    });
+    },
+        message);
     return 0;
 }
 

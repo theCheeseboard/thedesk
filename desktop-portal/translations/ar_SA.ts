@@ -43,12 +43,12 @@
 <context>
     <name>FileChooserInterface</name>
     <message>
-        <location filename="../interfaces/filechooserinterface.cpp" line="41"/>
+        <location filename="../interfaces/filechooserinterface.cpp" line="44"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../interfaces/filechooserinterface.cpp" line="70"/>
+        <location filename="../interfaces/filechooserinterface.cpp" line="80"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>

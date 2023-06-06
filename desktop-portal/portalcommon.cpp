@@ -12,3 +12,8 @@ void PortalCommon::reparentWindow(QWidget* w, QString parentWindow) {
         QObject::connect(w, &QWidget::destroyed, parent, &QWindow::deleteLater);
     }
 }
+
+void PortalCommon::setupCoro(std::function<QCoro::Task<>(QDBusMessage)> coro, const QDBusMessage& message) {
+    message.setDelayedReply(true);
+    coro(message.createReply());
+}

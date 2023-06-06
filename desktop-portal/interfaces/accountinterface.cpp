@@ -16,9 +16,7 @@ uint AccountInterface::version() {
 }
 
 uint AccountInterface::GetUserInformation(QDBusObjectPath handle, QString appId, QString window, QVariantMap options, const QDBusMessage& message, QVariantMap& results) {
-    auto coro = [message, options, appId, window]() -> QCoro::Task<> {
-        auto reply = message.createReply();
-
+    PortalCommon::setupCoro([message, options, appId, window](QDBusMessage reply) -> QCoro::Task<> {
         QString reason;
         if (options.contains("reason")) reason = options.value("reason").toString();
         auto dialog = new AccountDialog(appId, reason);
@@ -34,10 +32,7 @@ uint AccountInterface::GetUserInformation(QDBusObjectPath handle, QString appId,
             reply.setArguments({uint(0), dialog->results()});
             QDBusConnection::sessionBus().send(reply);
         }
-    };
-
-    coro();
-
-    message.setDelayedReply(true);
+    },
+        message);
     return 0;
 }
