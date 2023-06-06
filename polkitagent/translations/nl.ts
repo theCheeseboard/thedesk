@@ -22,12 +22,12 @@
         <translation>Haal de authenticatie-uitdaging om deze actie te bevestigen</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="159"/>
+        <location filename="../authwindow.cpp" line="152"/>
         <source>Error</source>
         <translation>Fout</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="166"/>
+        <location filename="../authwindow.cpp" line="159"/>
         <source>Message</source>
         <translation>Bericht</translation>
     </message>

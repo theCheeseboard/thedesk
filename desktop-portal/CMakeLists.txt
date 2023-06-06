@@ -23,6 +23,7 @@ set(SOURCES
     dialogs/filedialog.cpp dialogs/filedialog.ui
     dialogs/accountdialog.cpp dialogs/accountdialog.ui
     dialogs/screenshotwindow.cpp dialogs/screenshotwindow.ui
+    dialogs/accessdialog.cpp dialogs/accessdialog.ui
     dialogs/penbutton.cpp
 
     screenshot_resources.qrc
@@ -43,6 +44,7 @@ set(HEADERS
     dialogs/accountdialog.h
     dialogs/screenshotwindow.h
     dialogs/penbutton.h
+    dialogs/accessdialog.h
 )
 
 

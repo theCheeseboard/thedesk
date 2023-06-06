@@ -12,19 +12,16 @@ set(SOURCES
     common.cpp
     identitypopover.cpp
     main.cpp
-    overlaywindow.cpp
     polkitinterface.cpp
 
     authwindow.ui
     identitypopover.ui
-    overlaywindow.ui
 )
 
 set(HEADERS
     authwindow.h
     common.h
     identitypopover.h
-    overlaywindow.h
     polkitinterface.h
 )
 

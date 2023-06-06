@@ -22,12 +22,12 @@
         <translation>Treceți de testul de autentificare pentru a confirma acțiunea</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="159"/>
+        <location filename="../authwindow.cpp" line="152"/>
         <source>Error</source>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../authwindow.cpp" line="166"/>
+        <location filename="../authwindow.cpp" line="159"/>
         <source>Message</source>
         <translation>Mesaj</translation>
     </message>

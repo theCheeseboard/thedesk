@@ -2,6 +2,27 @@
 <!DOCTYPE TS>
 <TS version="2.1" sourcelanguage="en_US">
 <context>
+    <name>AccessDialog</name>
+    <message>
+        <location filename="../dialogs/accessdialog.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AccessInterface</name>
+    <message>
+        <location filename="../interfaces/accessinterface.cpp" line="17"/>
+        <source>Deny</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../interfaces/accessinterface.cpp" line="18"/>
+        <source>Allow</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AccountDialog</name>
     <message>
         <location filename="../dialogs/accountdialog.ui" line="14"/>

@@ -20,22 +20,20 @@
 #include "authwindow.h"
 #include "ui_authwindow.h"
 
+#include "common.h"
+#include "identitypopover.h"
 #include <PolkitQt1/Agent/Session>
-#include <tpopover.h>
 #include <QScreen>
 #include <QShortcut>
+#include <Screens/systempopover.h>
 #include <ttoast.h>
-#include "overlaywindow.h"
-#include "identitypopover.h"
-#include "common.h"
 
 struct AuthWindowPrivate {
-    OverlayWindow overlay;
-    PolkitQt1::Identity::List identities;
-    PolkitQt1::Agent::AsyncResult* callback = nullptr;
+        PolkitQt1::Identity::List identities;
+        PolkitQt1::Agent::AsyncResult* callback = nullptr;
 
-    PolkitQt1::Agent::Session* session = nullptr;
-    QString cookie;
+        PolkitQt1::Agent::Session* session = nullptr;
+        QString cookie;
 };
 
 AuthWindow::AuthWindow(QWidget* parent) :
@@ -48,7 +46,7 @@ AuthWindow::AuthWindow(QWidget* parent) :
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Fade);
 
     QShortcut* escShortcut = new QShortcut(QKeySequence(Qt::Key_Escape), this);
-    connect(escShortcut, &QShortcut::activated, this, [ = ] {
+    connect(escShortcut, &QShortcut::activated, this, [=] {
         ui->titleLabel->backButtonClicked();
     });
 }
@@ -80,17 +78,13 @@ void AuthWindow::setCookie(QString cookie) {
 void AuthWindow::showAuthWindow() {
     initiateSession(d->identities.first());
 
-    QScreen* screen = QApplication::screenAt(QCursor::pos());
-    d->overlay.setGeometry(screen->geometry());
-    d->overlay.showFullScreen();
-
-    QTimer::singleShot(0, [ = ] {
-        tPopover* popover = new tPopover(this);
-        popover->setPopoverWidth(SC_DPI(600));
+    QTimer::singleShot(0, [=] {
+        auto* popover = new SystemPopover(this);
+        popover->setPopoverWidth(600);
         popover->setPopoverSide(tPopover::Bottom);
         connect(ui->titleLabel, &tTitleLabel::backButtonClicked, popover, &tPopover::dismiss);
         connect(this, &AuthWindow::dismiss, popover, &tPopover::dismiss);
-        connect(popover, &tPopover::dismissed, this, [ = ] {
+        connect(popover, &tPopover::dismissed, this, [=] {
             if (d->session) {
                 d->session->setProperty("cancelled", true);
                 d->session->cancel();
@@ -102,10 +96,9 @@ void AuthWindow::showAuthWindow() {
                 d->callback->setCompleted();
             }
 
-            d->overlay.close();
             popover->deleteLater();
         });
-        popover->show(&d->overlay);
+        popover->show();
     });
 }
 
@@ -125,15 +118,15 @@ void AuthWindow::initiateSession(PolkitQt1::Identity identity) {
     ui->customUsernameLabel->setText(Common::stringForIdentity(identity));
     d->session = new PolkitQt1::Agent::Session(d->identities.first(), d->cookie);
     d->session->setProperty("cancelled", false);
-    connect(d->session, &PolkitQt1::Agent::Session::request, this, [ = ](QString request, bool echo) {
+    connect(d->session, &PolkitQt1::Agent::Session::request, this, [=](QString request, bool echo) {
         if (request.startsWith("password:", Qt::CaseInsensitive)) {
-            //Use the password pane
+            // Use the password pane
             ui->passwordBox->setText("");
             ui->passwordBox->setEchoMode(echo ? QLineEdit::Normal : QLineEdit::Password);
             ui->stackedWidget->setCurrentWidget(ui->passwordPage);
             ui->passwordBox->setFocus();
         } else {
-            //Use the request pane
+            // Use the request pane
             ui->responseBox->setText("");
             ui->responseBox->setPlaceholderText(request);
             ui->responseBox->setEchoMode(echo ? QLineEdit::Normal : QLineEdit::Password);
@@ -141,7 +134,7 @@ void AuthWindow::initiateSession(PolkitQt1::Identity identity) {
             ui->responseBox->setFocus();
         }
     });
-    connect(d->session, &PolkitQt1::Agent::Session::completed, this, [ = ](bool gainedAuthorisation) {
+    connect(d->session, &PolkitQt1::Agent::Session::completed, this, [=](bool gainedAuthorisation) {
         if (!d->session->property("cancelled").toBool()) {
             if (gainedAuthorisation) {
                 d->session->deleteLater();
@@ -154,14 +147,14 @@ void AuthWindow::initiateSession(PolkitQt1::Identity identity) {
             }
         }
     });
-    connect(d->session, &PolkitQt1::Agent::Session::showError, this, [ = ](QString error) {
+    connect(d->session, &PolkitQt1::Agent::Session::showError, this, [=](QString error) {
         tToast* toast = new tToast(this);
         toast->setTitle(tr("Error"));
         toast->setText(error);
         connect(toast, &tToast::dismissed, toast, &tToast::deleteLater);
         toast->show(this);
     });
-    connect(d->session, &PolkitQt1::Agent::Session::showInfo, this, [ = ](QString info) {
+    connect(d->session, &PolkitQt1::Agent::Session::showInfo, this, [=](QString info) {
         tToast* toast = new tToast(this);
         toast->setTitle(tr("Message"));
         toast->setText(info);
@@ -181,7 +174,7 @@ void AuthWindow::on_changeIdentity_clicked() {
     tPopover* popover = new tPopover(id);
     popover->setPopoverWidth(SC_DPI(400));
     popover->setPopoverSide(tPopover::Bottom);
-    connect(id, &IdentityPopover::selectIdentity, this, [ = ](PolkitQt1::Identity identity) {
+    connect(id, &IdentityPopover::selectIdentity, this, [=](PolkitQt1::Identity identity) {
         this->initiateSession(identity);
     });
     connect(id, &IdentityPopover::done, popover, &tPopover::dismiss);
