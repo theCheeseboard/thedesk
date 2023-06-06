@@ -1,6 +1,7 @@
 #ifndef SCREENSHOTMANAGER_H
 #define SCREENSHOTMANAGER_H
 
+#include "dialogs/screenshotwindow.h"
 #include <QObject>
 
 struct ScreenshotManagerPrivate;
@@ -10,10 +11,11 @@ class ScreenshotManager : public QObject {
         explicit ScreenshotManager(QObject* parent = nullptr);
         ~ScreenshotManager();
 
-        void setupForTheDesk();
+        void setType(ScreenshotWindow::Type type);
         void showScreenshotWindows();
 
         QPixmap finalPixmap();
+        QColor clickedColor();
         bool accepted();
 
     signals:
@@ -22,7 +24,8 @@ class ScreenshotManager : public QObject {
     private:
         ScreenshotManagerPrivate* d;
 
-        void accept(QPixmap pixmap);
+        void acceptPixmap(QPixmap pixmap);
+        void acceptColor(QColor color);
         void reject();
 };
 

@@ -4,14 +4,30 @@
 #include "screenshotmanager.h"
 #include <QCoroCore>
 #include <QDBusConnection>
+#include <QDBusMetaType>
 #include <QPainter>
 #include <QScreen>
 #include <QTemporaryFile>
 #include <QUrl>
 #include <tapplication.h>
 
+QDBusArgument& operator<<(QDBusArgument& argument, const ScreenshotColorReply& myStruct) {
+    argument.beginStructure();
+    argument << myStruct.red << myStruct.green << myStruct.blue;
+    argument.endStructure();
+    return argument;
+}
+
+const QDBusArgument& operator>>(const QDBusArgument& argument, ScreenshotColorReply& myStruct) {
+    argument.beginStructure();
+    argument >> myStruct.red >> myStruct.green >> myStruct.blue;
+    argument.endStructure();
+    return argument;
+}
+
 ScreenshotInterface::ScreenshotInterface(QObject* parent) :
     QDBusAbstractAdaptor{parent} {
+    qDBusRegisterMetaType<ScreenshotColorReply>();
 }
 
 uint ScreenshotInterface::version() {
@@ -28,7 +44,7 @@ uint ScreenshotInterface::Screenshot(QDBusObjectPath handle, QString app_id, QSt
         if (interactive) {
             ScreenshotManager mgr;
             if (isTheDesk) {
-                mgr.setupForTheDesk();
+                mgr.setType(ScreenshotWindow::Type::TheDeskScreenshot);
             }
             mgr.showScreenshotWindows();
 
@@ -82,5 +98,31 @@ uint ScreenshotInterface::Screenshot(QDBusObjectPath handle, QString app_id, QSt
 }
 
 uint ScreenshotInterface::PickColor(QDBusObjectPath handle, QString app_id, QString parent_window, QVariantMap options, const QDBusMessage& message, QVariantMap& results) {
+    PortalCommon::setupCoro([options, parent_window, handle, this, app_id](QDBusMessage reply) -> QCoro::Task<> {
+        ScreenshotManager mgr;
+        mgr.setType(ScreenshotWindow::Type::ColourPicker);
+        mgr.showScreenshotWindows();
+
+        co_await qCoro(&mgr, &ScreenshotManager::finished);
+        if (!mgr.accepted()) {
+            reply.setArguments({uint(1), QVariantMap()});
+            QDBusConnection::sessionBus().send(reply);
+            co_return;
+        }
+
+        auto color = mgr.clickedColor();
+
+        ScreenshotColorReply replyArg;
+        replyArg.red = color.redF();
+        replyArg.green = color.greenF();
+        replyArg.blue = color.blueF();
+
+        QDBusArgument arg;
+        arg << replyArg;
+
+        reply.setArguments({uint(0), QVariantMap{{"color", QVariant::fromValue(arg)}}});
+        QDBusConnection::sessionBus().send(reply);
+    },
+        message);
     return 0;
 }

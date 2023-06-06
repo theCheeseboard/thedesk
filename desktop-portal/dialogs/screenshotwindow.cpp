@@ -51,7 +51,7 @@ struct ScreenshotWindowPrivate {
         QRect editingRect;
 
         QPixmap overlay;
-        bool isTheDesk = false;
+        ScreenshotWindow::Type type = ScreenshotWindow::Type::ApplicationScreenshot;
 };
 
 ScreenshotWindow::ScreenshotWindow(QScreen* screen, QWidget* parent) :
@@ -135,9 +135,7 @@ ScreenshotWindow::ScreenshotWindow(QScreen* screen, QWidget* parent) :
         ui->discardButton->click();
     });
 
-    ui->discardButton->setText(tr("Cancel"));
-    ui->copyButton->setText(tr("Share Screenshot"));
-    ui->copyButton->setIcon(QIcon::fromTheme("dialog-ok"));
+    this->setType(Type::ApplicationScreenshot);
     ui->discardButton->setProperty("type", "destructive");
 }
 
@@ -155,30 +153,32 @@ void ScreenshotWindow::paintEvent(QPaintEvent* event) {
     painter.setViewport(d->viewportAnim->currentValue().toRect());
     painter.drawPixmap(0, 0, this->width(), this->height(), d->originalShot);
 
-    if (cropRect.isValid() || d->currentOperation == ScreenshotWindowPrivate::Crop) {
-        painter.setOpacity(d->darkenAnim->currentValue().toDouble());
-        painter.setPen(Qt::transparent);
-        painter.setBrush(Qt::black);
-        painter.drawRect(0, 0, this->width(), this->height());
-        painter.setOpacity(1);
+    if (d->type != Type::ColourPicker) {
+        if (cropRect.isValid() || d->currentOperation == ScreenshotWindowPrivate::Crop) {
+            painter.setOpacity(d->darkenAnim->currentValue().toDouble());
+            painter.setPen(Qt::transparent);
+            painter.setBrush(Qt::black);
+            painter.drawRect(0, 0, this->width(), this->height());
+            painter.setOpacity(1);
+
+            if (cropRect.isValid()) {
+                painter.drawPixmap(cropRect, d->originalShot, cropRect);
+            }
+        }
+
+        painter.drawPixmap(0, 0, this->width(), this->height(), d->overlay);
+
+        if (d->currentOperation == ScreenshotWindowPrivate::Redact && editing) {
+            painter.setPen(Qt::transparent);
+            painter.setBrush(Qt::black);
+            painter.drawRect(d->editingRect);
+        }
 
         if (cropRect.isValid()) {
-            painter.drawPixmap(cropRect, d->originalShot, cropRect);
+            painter.setPen(Qt::white);
+            painter.setBrush(Qt::transparent);
+            painter.drawRect(cropRect.adjusted(-1, -1, 0, 0));
         }
-    }
-
-    painter.drawPixmap(0, 0, this->width(), this->height(), d->overlay);
-
-    if (d->currentOperation == ScreenshotWindowPrivate::Redact && editing) {
-        painter.setPen(Qt::transparent);
-        painter.setBrush(Qt::black);
-        painter.drawRect(d->editingRect);
-    }
-
-    if (cropRect.isValid()) {
-        painter.setPen(Qt::white);
-        painter.setBrush(Qt::transparent);
-        painter.drawRect(cropRect.adjusted(-1, -1, 0, 0));
     }
 }
 
@@ -228,11 +228,39 @@ void ScreenshotWindow::animateTake() {
     connect(d->viewportAnim, &tVariantAnimation::finished, this, &ScreenshotWindow::animationComplete);
 }
 
-void ScreenshotWindow::setupForTheDesk() {
-    d->isTheDesk = true;
-    ui->discardButton->setText(tr("Discard"));
-    ui->copyButton->setText(tr("Copy"));
-    ui->copyButton->setIcon(QIcon::fromTheme("edit-copy"));
+void ScreenshotWindow::setType(Type type) {
+    d->type = type;
+    switch (type) {
+        case Type::ApplicationScreenshot:
+            {
+                ui->discardButton->setText(tr("Cancel"));
+                ui->copyButton->setText(tr("Share Screenshot"));
+                ui->copyButton->setIcon(QIcon::fromTheme("dialog-ok"));
+                ui->topPane->setVisible(false);
+                ui->bottomPane->setVisible(true);
+                this->setMouseTracking(false);
+                this->setCursor(QCursor(Qt::CrossCursor));
+                break;
+            }
+        case Type::TheDeskScreenshot:
+            {
+                ui->discardButton->setText(tr("Discard"));
+                ui->copyButton->setText(tr("Copy"));
+                ui->copyButton->setIcon(QIcon::fromTheme("edit-copy"));
+                ui->topPane->setVisible(false);
+                ui->bottomPane->setVisible(true);
+                this->setMouseTracking(false);
+                this->setCursor(QCursor(Qt::CrossCursor));
+                break;
+            }
+        case Type::ColourPicker:
+            {
+                ui->topPane->setVisible(false);
+                ui->bottomPane->setVisible(false);
+                this->setMouseTracking(true);
+                break;
+            }
+    }
 }
 
 void ScreenshotWindow::on_discardButton_clicked() {
@@ -240,37 +268,73 @@ void ScreenshotWindow::on_discardButton_clicked() {
 }
 
 void ScreenshotWindow::mousePressEvent(QMouseEvent* event) {
-    d->topLeftDrag = event->pos();
+    if (d->type == Type::ColourPicker) {
+        emit colourClicked(d->originalShot.toImage().pixelColor(event->position().toPoint()));
+    } else {
+        d->topLeftDrag = event->pos();
+    }
 }
 
 void ScreenshotWindow::mouseReleaseEvent(QMouseEvent* event) {
-    if (d->currentOperation == ScreenshotWindowPrivate::Crop) {
-        d->cropRect = d->editingRect;
-        this->update();
-    } else if (d->currentOperation == ScreenshotWindowPrivate::Redact) {
-        QPainter painter(&d->overlay);
-        painter.setPen(Qt::transparent);
-        painter.setBrush(Qt::black);
-        painter.drawRect(d->editingRect);
-    }
+    if (d->type == Type::ColourPicker) {
+    } else {
+        if (d->currentOperation == ScreenshotWindowPrivate::Crop) {
+            d->cropRect = d->editingRect;
+            this->update();
+        } else if (d->currentOperation == ScreenshotWindowPrivate::Redact) {
+            QPainter painter(&d->overlay);
+            painter.setPen(Qt::transparent);
+            painter.setBrush(Qt::black);
+            painter.drawRect(d->editingRect);
+        }
 
-    d->editingRect = QRect();
-    this->update();
+        d->editingRect = QRect();
+        this->update();
+    }
 }
 
 void ScreenshotWindow::mouseMoveEvent(QMouseEvent* event) {
-    if (d->currentOperation == ScreenshotWindowPrivate::Pen) {
-        QPainter painter(&d->overlay);
-        painter.setCompositionMode(d->compMode);
-        painter.setPen(QPen(d->currentColor, d->penWidth));
-        painter.drawLine(d->topLeftDrag, event->pos());
+    if (d->type == Type::ColourPicker) {
+        auto col = d->originalShot.toImage().pixelColor(event->position().toPoint());
+        QSize cursorSize(32, 32);
 
-        d->topLeftDrag = event->pos();
+        QRect circle(QPoint(0, 0), cursorSize);
+        QRect innerCircle = circle.adjusted(3, 3, -3, -3);
+        QPolygon pointer;
+        pointer.append(circle.topLeft());
+        pointer.append(QPoint(circle.width() / 2, 0));
+        pointer.append(QPoint(0, circle.height() / 2));
+
+        QPixmap cursorPic(cursorSize);
+        cursorPic.fill(Qt::transparent);
+        QPainter painter(&cursorPic);
+
+        painter.setPen(Qt::transparent);
+        painter.setBrush(Qt::black);
+        painter.drawEllipse(circle);
+        painter.drawPolygon(pointer);
+
+        painter.setBrush(col);
+        painter.drawEllipse(innerCircle);
+
+        painter.end();
+
+        QCursor cursor(cursorPic, 0, 0);
+        this->setCursor(cursor);
     } else {
-        d->editingRect = QRect(d->topLeftDrag, event->pos());
-        d->editingRect = d->editingRect.normalized();
+        if (d->currentOperation == ScreenshotWindowPrivate::Pen) {
+            QPainter painter(&d->overlay);
+            painter.setCompositionMode(d->compMode);
+            painter.setPen(QPen(d->currentColor, d->penWidth));
+            painter.drawLine(d->topLeftDrag, event->pos());
+
+            d->topLeftDrag = event->pos();
+        } else {
+            d->editingRect = QRect(d->topLeftDrag, event->pos());
+            d->editingRect = d->editingRect.normalized();
+        }
+        this->update();
     }
-    this->update();
 }
 
 QPixmap ScreenshotWindow::finalResult() {
@@ -291,7 +355,7 @@ QPixmap ScreenshotWindow::finalResult() {
 
 void ScreenshotWindow::on_copyButton_clicked() {
     auto result = finalResult();
-    if (d->isTheDesk) {
+    if (d->type == Type::TheDeskScreenshot) {
         // Also copy to the clipboard
         QApplication::clipboard()->setPixmap(finalResult());
     }

@@ -5,8 +5,10 @@
 
 struct ScreenshotManagerPrivate {
         QPixmap finalResult;
+        QColor clickedColor;
         bool accepted = false;
         QList<ScreenshotWindow*> screenshotWindows;
+        ScreenshotWindow::Type type = ScreenshotWindow::Type::ApplicationScreenshot;
 };
 
 ScreenshotManager::ScreenshotManager(QObject* parent) :
@@ -15,7 +17,8 @@ ScreenshotManager::ScreenshotManager(QObject* parent) :
 
     for (auto screen : qApp->screens()) {
         auto w = new ScreenshotWindow(screen);
-        connect(w, &ScreenshotWindow::screenshotAvailable, this, &ScreenshotManager::accept);
+        connect(w, &ScreenshotWindow::screenshotAvailable, this, &ScreenshotManager::acceptPixmap);
+        connect(w, &ScreenshotWindow::colourClicked, this, &ScreenshotManager::acceptColor);
         connect(w, &ScreenshotWindow::cancelled, this, &ScreenshotManager::reject);
         d->screenshotWindows.append(w);
     }
@@ -28,9 +31,10 @@ ScreenshotManager::~ScreenshotManager() {
     delete d;
 }
 
-void ScreenshotManager::setupForTheDesk() {
+void ScreenshotManager::setType(ScreenshotWindow::Type type) {
+    d->type = type;
     for (auto window : d->screenshotWindows) {
-        window->setupForTheDesk();
+        window->setType(type);
     }
 }
 
@@ -44,11 +48,15 @@ QPixmap ScreenshotManager::finalPixmap() {
     return d->finalResult;
 }
 
+QColor ScreenshotManager::clickedColor() {
+    return d->clickedColor;
+}
+
 bool ScreenshotManager::accepted() {
     return d->accepted;
 }
 
-void ScreenshotManager::accept(QPixmap pixmap) {
+void ScreenshotManager::acceptPixmap(QPixmap pixmap) {
     d->finalResult = pixmap;
     d->accepted = true;
 
@@ -58,6 +66,14 @@ void ScreenshotManager::accept(QPixmap pixmap) {
     for (auto window : d->screenshotWindows) {
         window->animateTake();
     }
+}
+
+void ScreenshotManager::acceptColor(QColor color) {
+    d->clickedColor = color;
+    d->accepted = true;
+
+    // Skip the animation since this is a colour picker
+    emit finished();
 }
 
 void ScreenshotManager::reject() {

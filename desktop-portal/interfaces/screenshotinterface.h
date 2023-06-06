@@ -20,4 +20,12 @@ class ScreenshotInterface : public QDBusAbstractAdaptor {
         Q_SCRIPTABLE uint PickColor(QDBusObjectPath handle, QString app_id, QString parent_window, QVariantMap options, const QDBusMessage& message, QVariantMap& results);
 };
 
+struct ScreenshotColorReply {
+        double red;
+        double green;
+        double blue;
+};
+
+Q_DECLARE_METATYPE(ScreenshotColorReply);
+
 #endif // SCREENSHOTINTERFACE_H

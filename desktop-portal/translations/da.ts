@@ -150,42 +150,42 @@
 <context>
     <name>ScreenshotWindow</name>
     <message>
-        <location filename="../dialogs/screenshotwindow.ui" line="54"/>
+        <location filename="../dialogs/screenshotwindow.ui" line="52"/>
         <source>SCREENSHOT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screenshotwindow.ui" line="129"/>
+        <location filename="../dialogs/screenshotwindow.ui" line="128"/>
         <source>Crop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screenshotwindow.ui" line="149"/>
+        <location filename="../dialogs/screenshotwindow.ui" line="148"/>
         <source>Redact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screenshotwindow.ui" line="204"/>
+        <location filename="../dialogs/screenshotwindow.ui" line="203"/>
         <source>Reset Markup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screenshotwindow.cpp" line="138"/>
+        <location filename="../dialogs/screenshotwindow.cpp" line="236"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screenshotwindow.cpp" line="139"/>
+        <location filename="../dialogs/screenshotwindow.cpp" line="237"/>
         <source>Share Screenshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screenshotwindow.cpp" line="233"/>
+        <location filename="../dialogs/screenshotwindow.cpp" line="247"/>
         <source>Discard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screenshotwindow.cpp" line="234"/>
+        <location filename="../dialogs/screenshotwindow.cpp" line="248"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>

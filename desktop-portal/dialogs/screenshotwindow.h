@@ -34,12 +34,18 @@ class ScreenshotWindow : public QWidget {
         explicit ScreenshotWindow(QScreen* screen, QWidget* parent = nullptr);
         ~ScreenshotWindow();
 
+        enum class Type {
+            ApplicationScreenshot,
+            TheDeskScreenshot,
+            ColourPicker
+        };
+
         static void take(QScreen* screen, int delay = 0);
 
         void animateDiscard();
         void animateTake();
 
-        void setupForTheDesk();
+        void setType(Type type);
 
     private slots:
         void on_discardButton_clicked();
@@ -54,6 +60,7 @@ class ScreenshotWindow : public QWidget {
 
     signals:
         void screenshotAvailable(QPixmap result);
+        void colourClicked(QColor color);
         void cancelled();
         void animationComplete();
 
