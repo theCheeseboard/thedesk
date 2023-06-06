@@ -170,13 +170,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screenshotwindow.cpp" line="137"/>
+        <location filename="../dialogs/screenshotwindow.cpp" line="138"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screenshotwindow.cpp" line="138"/>
+        <location filename="../dialogs/screenshotwindow.cpp" line="139"/>
         <source>Share Screenshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/screenshotwindow.cpp" line="233"/>
+        <source>Discard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/screenshotwindow.cpp" line="234"/>
+        <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

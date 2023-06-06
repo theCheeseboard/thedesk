@@ -20,6 +20,7 @@
 #ifndef EVENTHANDLER_H
 #define EVENTHANDLER_H
 
+#include <QCoroTask>
 #include <QObject>
 
 struct EventHandlerPrivate;
@@ -34,7 +35,7 @@ class EventHandler : public QObject {
     private:
         EventHandlerPrivate* d;
 
-        void takeScreenshot();
+        QCoro::Task<> takeScreenshot();
 };
 
 #endif // EVENTHANDLER_H

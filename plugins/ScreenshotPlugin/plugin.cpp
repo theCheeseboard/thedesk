@@ -19,23 +19,22 @@
  * *************************************/
 #include "plugin.h"
 
-#include <QDebug>
-#include <QApplication>
-#include <statemanager.h>
-#include <localemanager.h>
-#include <statuscentermanager.h>
-#include <QDir>
-#include <tsettings.h>
 #include "eventhandler.h"
+#include <QApplication>
+#include <QDebug>
+#include <QDir>
+#include <localemanager.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <tsettings.h>
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    EventHandler* keyHandler;
+        EventHandler* keyHandler;
 };
 
 Plugin::Plugin() {
-    Q_INIT_RESOURCE(screenshot_resources);
     d = new PluginPrivate();
 }
 
@@ -44,10 +43,8 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ScreenshotPlugin/translations"),
-        "/usr/share/thedesk/ScreenshotPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ScreenshotPlugin/translations"),
+        "/usr/share/thedesk/ScreenshotPlugin/translations"});
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ScreenshotPlugin/defaults.conf"));
     tSettings::registerDefaults("/etc/theSuite/theDesk/ScreenshotPlugin/defaults.conf");

@@ -10,6 +10,7 @@ class ScreenshotManager : public QObject {
         explicit ScreenshotManager(QObject* parent = nullptr);
         ~ScreenshotManager();
 
+        void setupForTheDesk();
         void showScreenshotWindows();
 
         QPixmap finalPixmap();

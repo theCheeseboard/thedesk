@@ -20,17 +20,24 @@
 #include "eventhandler.h"
 
 #include <QApplication>
-#include <QScreen>
+#include <QCoroDBusPendingCall>
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusObjectPath>
+#include <QDBusPendingCall>
 #include <QKeySequence>
+#include <QScreen>
 #include <keygrab.h>
-#include "screenshotwindow.h"
+#include <tlogger.h>
+#include <tnotification.h>
 
 struct EventHandlerPrivate {
-    KeyGrab* prtScr;
-    KeyGrab* screenshotAlt;
+        KeyGrab* prtScr;
+        KeyGrab* screenshotAlt;
 };
 
-EventHandler::EventHandler(QObject* parent) : QObject(parent) {
+EventHandler::EventHandler(QObject* parent) :
+    QObject(parent) {
     d = new EventHandlerPrivate();
     d->prtScr = new KeyGrab(QKeySequence(Qt::Key_Print), "screenshot");
     d->screenshotAlt = new KeyGrab(QKeySequence(Qt::MetaModifier | Qt::AltModifier | Qt::Key_P), "screenshotAlt");
@@ -45,6 +52,21 @@ EventHandler::~EventHandler() {
     delete d;
 }
 
-void EventHandler::takeScreenshot() {
-    ScreenshotWindow::take(QApplication::screenAt(QCursor::pos()));
+QCoro::Task<> EventHandler::takeScreenshot() {
+    // Delegate screenshot taking to the portal
+    auto message = QDBusMessage::createMethodCall("org.freedesktop.impl.portal.desktop.thedesk", "/org/freedesktop/portal/desktop", "org.freedesktop.impl.portal.Screenshot", "Screenshot");
+    message.setArguments({
+        QDBusObjectPath("/"), "com.vicr123.thedesk", "", QVariantMap{{"interactive", true}, {"x-thedesk-screenshot", true}}
+    });
+    auto reply = co_await QDBusConnection::sessionBus().asyncCall(message, 300000);
+    if (reply.type() != QDBusMessage::ReplyMessage) {
+        tWarn("EventHandler") << "Unable to take screenshot";
+        tWarn("EventHandler") << message.errorMessage();
+
+        // Send a notification
+        auto notification = new tNotification();
+        notification->setSummary(tr("Unable to take screenshot"));
+        notification->setText(tr("Sorry, the screenshot was unable to be taken."));
+        notification->post();
+    }
 }

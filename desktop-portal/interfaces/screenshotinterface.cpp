@@ -19,12 +19,17 @@ uint ScreenshotInterface::version() {
 }
 
 uint ScreenshotInterface::Screenshot(QDBusObjectPath handle, QString app_id, QString parent_window, QVariantMap options, const QDBusMessage& message, QVariantMap& results) {
-    PortalCommon::setupCoro([options, parent_window, handle, this](QDBusMessage reply) -> QCoro::Task<> {
+    PortalCommon::setupCoro([options, parent_window, handle, this, app_id](QDBusMessage reply) -> QCoro::Task<> {
         auto interactive = options.value("interactive", false).toBool();
+        auto permissionStoreChecked = options.value("permission_store_checked", false).toBool();
+        auto isTheDesk = app_id == "com.vicr123.thedesk" && options.value("x-thedesk-screenshot", false).toBool();
 
         QPixmap finalPixmap;
         if (interactive) {
             ScreenshotManager mgr;
+            if (isTheDesk) {
+                mgr.setupForTheDesk();
+            }
             mgr.showScreenshotWindows();
 
             co_await qCoro(&mgr, &ScreenshotManager::finished);
@@ -36,6 +41,13 @@ uint ScreenshotInterface::Screenshot(QDBusObjectPath handle, QString app_id, QSt
 
             finalPixmap = mgr.finalPixmap();
         } else {
+            if (!permissionStoreChecked) {
+                // We haven't checked permissions of the app, so deny the request
+                reply.setArguments({uint(2), QVariantMap()});
+                QDBusConnection::sessionBus().send(reply);
+                co_return;
+            }
+
             // Compile a picture
             QRect rect;
             for (auto screen : qApp->screens()) {

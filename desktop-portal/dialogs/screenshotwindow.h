@@ -39,6 +39,8 @@ class ScreenshotWindow : public QWidget {
         void animateDiscard();
         void animateTake();
 
+        void setupForTheDesk();
+
     private slots:
         void on_discardButton_clicked();
 

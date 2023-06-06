@@ -51,6 +51,7 @@ struct ScreenshotWindowPrivate {
         QRect editingRect;
 
         QPixmap overlay;
+        bool isTheDesk = false;
 };
 
 ScreenshotWindow::ScreenshotWindow(QScreen* screen, QWidget* parent) :
@@ -137,6 +138,7 @@ ScreenshotWindow::ScreenshotWindow(QScreen* screen, QWidget* parent) :
     ui->discardButton->setText(tr("Cancel"));
     ui->copyButton->setText(tr("Share Screenshot"));
     ui->copyButton->setIcon(QIcon::fromTheme("dialog-ok"));
+    ui->discardButton->setProperty("type", "destructive");
 }
 
 void ScreenshotWindow::paintEvent(QPaintEvent* event) {
@@ -226,6 +228,13 @@ void ScreenshotWindow::animateTake() {
     connect(d->viewportAnim, &tVariantAnimation::finished, this, &ScreenshotWindow::animationComplete);
 }
 
+void ScreenshotWindow::setupForTheDesk() {
+    d->isTheDesk = true;
+    ui->discardButton->setText(tr("Discard"));
+    ui->copyButton->setText(tr("Copy"));
+    ui->copyButton->setIcon(QIcon::fromTheme("edit-copy"));
+}
+
 void ScreenshotWindow::on_discardButton_clicked() {
     emit cancelled();
 }
@@ -281,7 +290,12 @@ QPixmap ScreenshotWindow::finalResult() {
 }
 
 void ScreenshotWindow::on_copyButton_clicked() {
-    emit screenshotAvailable(finalResult());
+    auto result = finalResult();
+    if (d->isTheDesk) {
+        // Also copy to the clipboard
+        QApplication::clipboard()->setPixmap(finalResult());
+    }
+    emit screenshotAvailable(result);
 }
 
 void ScreenshotWindow::on_cropButton_toggled(bool checked) {

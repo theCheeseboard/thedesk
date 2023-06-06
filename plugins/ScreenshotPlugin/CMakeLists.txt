@@ -5,20 +5,12 @@ find_package(libcontemporary)
 
 set(SOURCES
     eventhandler.cpp
-    penbutton.cpp
     plugin.cpp
-    screenshotwindow.cpp
-
-    screenshotwindow.ui
-
-    screenshot_resources.qrc
 )
 
 set(HEADERS
     eventhandler.h
-    penbutton.h
     plugin.h
-    screenshotwindow.h
 )
 
 set(PLUGIN_NAME screenshot)

@@ -28,6 +28,12 @@ ScreenshotManager::~ScreenshotManager() {
     delete d;
 }
 
+void ScreenshotManager::setupForTheDesk() {
+    for (auto window : d->screenshotWindows) {
+        window->setupForTheDesk();
+    }
+}
+
 void ScreenshotManager::showScreenshotWindows() {
     for (auto window : d->screenshotWindows) {
         window->showFullScreen();
