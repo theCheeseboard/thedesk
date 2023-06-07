@@ -133,6 +133,14 @@
     </message>
 </context>
 <context>
+    <name>NotificationInterface</name>
+    <message>
+        <location filename="../interfaces/notificationinterface.cpp" line="63"/>
+        <source>Activate</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PenButton</name>
     <message>
         <location filename="../dialogs/penbutton.cpp" line="54"/>

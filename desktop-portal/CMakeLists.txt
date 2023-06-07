@@ -19,6 +19,7 @@ set(SOURCES
     interfaces/accessinterface.cpp
     interfaces/accountinterface.cpp
     interfaces/screenshotinterface.cpp
+    interfaces/notificationinterface.cpp
 
     dialogs/filedialog.cpp dialogs/filedialog.ui
     dialogs/accountdialog.cpp dialogs/accountdialog.ui
@@ -39,6 +40,7 @@ set(HEADERS
     interfaces/accessinterface.h
     interfaces/accountinterface.h
     interfaces/screenshotinterface.h
+    interfaces/notificationinterface.h
 
     dialogs/filedialog.h
     dialogs/accountdialog.h
