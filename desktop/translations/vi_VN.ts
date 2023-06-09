@@ -884,12 +884,12 @@ Chúng tôi sẽ đặt cài đặt của bạn lại sau %n giay nếu bạn kh
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="71"/>
+        <location filename="../main.cpp" line="72"/>
         <source>Safe Mode</source>
         <translation>Chế độ an toàn</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="71"/>
+        <location filename="../main.cpp" line="72"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>Bạn đang giữ nút CTRL. Khởi chạy theDesk vào chế độ an toàn?</translation>
     </message>
