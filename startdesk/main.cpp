@@ -65,6 +65,11 @@ int main(int argc, char* argv[]) {
         QStringLiteral("PATH=%1").arg(qEnvironmentVariable("PATH"))})});
     QDBusConnection::sessionBus().asyncCall(setEnvironmentMessage);
 
+    // Restart the portal so it picks up our new environment variables
+    QDBusMessage restartPortalMessage = QDBusMessage::createMethodCall("org.freedesktop.systemd1", "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", "RestartUnit");
+    restartPortalMessage.setArguments({QStringLiteral("xdg-desktop-portal.service"), QStringLiteral("replace")});
+    QDBusConnection::sessionBus().asyncCall(restartPortalMessage);
+
     SplashController::instance()->startDE();
 
     return a.exec();
