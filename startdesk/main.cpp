@@ -32,6 +32,9 @@ int main(int argc, char* argv[]) {
     // Put environment variables
     qputenv("QT_QPA_PLATFORMTHEME", "thedesk-platform");
 
+    // Turn off flatpak forwarding for ourselves
+    qputenv("TD_PLATFORM_NO_FLATPAK_FORWARD", "1");
+
     QString oldPath = qgetenv("PATH");
     qputenv("PATH", ("/usr/bin/thedesk-xdg-utils:" + oldPath).toUtf8());
 
@@ -40,6 +43,8 @@ int main(int argc, char* argv[]) {
     a.setOrganizationName("theSuite");
     a.setApplicationDisplayName("theDesk");
     a.setQuitOnLastWindowClosed(false);
+
+    qunsetenv("TD_PLATFORM_NO_FLATPAK_FORWARD");
 
     tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
     tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");

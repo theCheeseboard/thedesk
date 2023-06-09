@@ -114,9 +114,11 @@ PlatformTheme::PlatformTheme() :
     tDebug("PlatformTheme") << "Using theDesk platform theme";
 
     // Initialise the Flatpak platform theme so that we can use the portal to open files
-    d->flatpakPlatformTheme = QPlatformThemeFactory::create("flatpak", nullptr);
-    if (d->flatpakPlatformTheme) {
-        tDebug("PlatformTheme") << "Created Flatpak platform theme";
+    if (!qEnvironmentVariableIsSet("TD_PLATFORM_NO_FLATPAK_FORWARD")) {
+        d->flatpakPlatformTheme = QPlatformThemeFactory::create("flatpak", nullptr);
+        if (d->flatpakPlatformTheme) {
+            tDebug("PlatformTheme") << "Created Flatpak platform theme";
+        }
     }
 }
 
