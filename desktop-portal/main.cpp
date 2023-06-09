@@ -29,6 +29,9 @@
 #include <QDBusConnection>
 
 int main(int argc, char* argv[]) {
+    // Turn off flatpak forwarding for ourselves
+    qputenv("TD_PLATFORM_NO_FLATPAK_FORWARD", "1");
+
     tApplication a(argc, argv);
     a.setQuitOnLastWindowClosed(false);
 
