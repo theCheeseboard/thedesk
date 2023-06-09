@@ -56,8 +56,8 @@ int main(int argc, char* argv[]) {
     StateManager::localeManager()->addTranslationSet({a.applicationDirPath() + "/translations",
         "/usr/share/thedesk/translations"});
 
-    tSettings::registerDefaults(a.applicationDirPath() + "/defaults.conf");
-    tSettings::registerDefaults("/etc/theSuite/theDesk/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../desktop/thedesk.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk.conf");
 
     CrashHandling::prepareCrashHandler();
 
