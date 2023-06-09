@@ -47,7 +47,9 @@ QDBusVariant SettingsInterface::Read(QString ns, QString key) {
             return QDBusVariant(1u);
         } else if (baseColor == "light") {
             return QDBusVariant(2u);
+        } else {
+            return QDBusVariant(0u);
         }
     }
-    return {};
+    return QDBusVariant(QVariant());
 }

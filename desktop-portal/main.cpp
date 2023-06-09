@@ -25,6 +25,7 @@
 #include "interfaces/notificationinterface.h"
 #include "interfaces/screenshotinterface.h"
 #include "interfaces/settingsinterface.h"
+#include <tsettings.h>
 
 #include <QDBusConnection>
 
@@ -36,6 +37,8 @@ int main(int argc, char* argv[]) {
     a.setQuitOnLastWindowClosed(false);
 
     QDBusConnection::sessionBus().registerService("org.freedesktop.impl.portal.desktop.thedesk");
+
+    tSettings::registerDefaults("theSuite", "theDesk.platform", "/usr/share/defaults/thedesk-platform.conf");
 
     QObject* rootDbusObject = new QObject();
     new FileChooserInterface(rootDbusObject);
