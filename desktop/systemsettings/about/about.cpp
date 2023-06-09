@@ -20,23 +20,23 @@
 #include "about.h"
 #include "ui_about.h"
 
-#include <QIcon>
-#include <QFile>
+#include "acknowledgements.h"
+#include "changehostnamepopover.h"
 #include <QBuffer>
 #include <QDBusInterface>
+#include <QFile>
 #include <QHostInfo>
-#include <tapplication.h>
+#include <QIcon>
+#include <Wm/desktopwm.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
 #include <sys/sysinfo.h>
-#include <tpopover.h>
+#include <tapplication.h>
 #include <tlogger.h>
-#include <Wm/desktopwm.h>
-#include "changehostnamepopover.h"
-#include "acknowledgements.h"
+#include <tpopover.h>
 
 struct AboutPrivate {
-    QDBusInterface* hostnamed;
+        QDBusInterface* hostnamed;
 };
 
 About::About() :
@@ -51,7 +51,7 @@ About::About() :
     ui->titleLabel->setBackButtonShown(StateManager::instance()->statusCenterManager()->isHamburgerMenuRequired());
     connect(StateManager::instance()->statusCenterManager(), &StatusCenterManager::isHamburgerMenuRequiredChanged, ui->titleLabel, &tTitleLabel::setBackButtonShown);
 
-    //Fill in details from hostnamed
+    // Fill in details from hostnamed
     ui->deviceTypeLabel->setText(QStringLiteral("%1 %2").arg(d->hostnamed->property("HardwareVendor").toString(), d->hostnamed->property("HardwareModel").toString()));
     ui->distroWebpage->setText(d->hostnamed->property("HomeURL").toString());
     ui->distroName->setText(d->hostnamed->property("OperatingSystemPrettyName").toString());
@@ -112,7 +112,7 @@ About::About() :
     ui->versionLabel->setText(tr("theDesk %1 - Blueprint").arg("1.0"));
     ui->compileDate->setText(tr("You compiled theDesk on %1").arg(__DATE__));
 #else
-    ui->versionLabel->setText(tr("theDesk %1").arg("RC 1"));
+    ui->versionLabel->setText(tr("theDesk %1").arg(tApplication::applicationVersion()));
     ui->compileDate->setVisible(false);
 #endif
 
