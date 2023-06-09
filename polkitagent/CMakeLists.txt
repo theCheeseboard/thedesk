@@ -33,9 +33,9 @@ set_target_properties(polkitagent PROPERTIES
         WIN32_EXECUTABLE TRUE
         CNTP_DATA_SUBDIR thedesk/td-polkitagent)
 
-cntp_init(polkitagent 17)
+cntp_init(polkitagent 20)
 cntp_translate(polkitagent)
-cntp_target_name(polkitagent "polkitagent")
+cntp_target_name(polkitagent "td-polkitagent")
 #cntp_defaults_file(polkitagent
 #    DEFAULTS_FILE polkitagent.conf)
 
