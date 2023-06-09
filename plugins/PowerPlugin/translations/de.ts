@@ -63,13 +63,13 @@
 <context>
     <name>Plugin</name>
     <message>
-        <location filename="../plugin.cpp" line="93"/>
-        <location filename="../plugin.cpp" line="105"/>
+        <location filename="../plugin.cpp" line="90"/>
+        <location filename="../plugin.cpp" line="102"/>
         <source>Power Stretch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../plugin.cpp" line="109"/>
+        <location filename="../plugin.cpp" line="106"/>
         <source>Disable Power Stretch</source>
         <translation type="unfinished"></translation>
     </message>

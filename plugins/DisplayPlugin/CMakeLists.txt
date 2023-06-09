@@ -32,5 +32,7 @@ set(HEADERS
 set(PLUGIN_NAME display)
 add_plugin_td(${PLUGIN_NAME})
 target_sources(plugin-${PLUGIN_NAME} PRIVATE ${SOURCES} ${HEADERS})
+cntp_defaults_file(${PLUGIN_NAME}
+    DEFAULTS_FILE thedesk-display.conf)
 
 target_link_libraries(plugin-${PLUGIN_NAME} Qt::Widgets Qt::Multimedia Qt::Positioning libcontemporary libthedesk)

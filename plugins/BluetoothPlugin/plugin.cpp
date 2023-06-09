@@ -19,28 +19,28 @@
  * *************************************/
 #include "plugin.h"
 
-#include <QDebug>
-#include <QApplication>
-#include <statemanager.h>
-#include <localemanager.h>
-#include <statuscentermanager.h>
-#include <QDir>
-#include <tsettings.h>
-#include "settings/bluetoothsettingspane.h"
 #include "btobex.h"
 #include "chunk/bluetoothchunk.h"
+#include "settings/bluetoothsettingspane.h"
+#include <QApplication>
+#include <QDebug>
+#include <QDir>
+#include <localemanager.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <tsettings.h>
 
 #include <BluezQt/InitManagerJob>
 #include <BluezQt/PendingCall>
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    BluezQt::ManagerPtr manager;
-    BtAgent* agent;
-    BtObex* obex;
-    BluetoothSettingsPane* bluetoothSettings;
-    BluetoothChunk* chunk;
+        BluezQt::ManagerPtr manager;
+        BtAgent* agent;
+        BtObex* obex;
+        BluetoothSettingsPane* bluetoothSettings;
+        BluetoothChunk* chunk;
 };
 
 Plugin::Plugin() {
@@ -52,13 +52,11 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BluetoothPlugin/translations"),
-        "/usr/share/thedesk/BluetoothPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BluetoothPlugin/translations"),
+        "/usr/share/thedesk/BluetoothPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BluetoothPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/BluetoothPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BluetoothPlugin/thedesk-bluetooth.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-bluetooth.conf");
 
     d->manager = BluezQt::ManagerPtr(new BluezQt::Manager());
     d->agent = new BtAgent();
@@ -70,11 +68,11 @@ void Plugin::activate() {
     d->obex = new BtObex(d->manager);
 
     BluezQt::PendingCall* startCall = BluezQt::Manager::startService();
-    connect(startCall, &BluezQt::PendingCall::finished, this, [ = ] {
+    connect(startCall, &BluezQt::PendingCall::finished, this, [=] {
         BluezQt::InitManagerJob* initManagerJob = d->manager->init();
-        connect(initManagerJob, &BluezQt::InitManagerJob::result, this, [ = ] {
+        connect(initManagerJob, &BluezQt::InitManagerJob::result, this, [=] {
             BluezQt::PendingCall* agentRegister = d->manager->registerAgent(d->agent);
-            connect(agentRegister, &BluezQt::PendingCall::finished, this, [ = ] {
+            connect(agentRegister, &BluezQt::PendingCall::finished, this, [=] {
                 d->manager->requestDefaultAgent(d->agent);
             });
         });

@@ -19,23 +19,23 @@
  * *************************************/
 #include "plugin.h"
 
+#include "tsettings.h"
+#include <QApplication>
 #include <QDebug>
+#include <QDir>
+#include <localemanager.h>
+#include <onboardingmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <localemanager.h>
-#include <QApplication>
-#include <QDir>
-#include <onboardingmanager.h>
-#include "tsettings.h"
 
 #include "settings/datetimepane.h"
 
 #include "onboarding/onboardingtimezone.h"
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    DateTimePane* dateTimePane;
+        DateTimePane* dateTimePane;
 };
 
 Plugin::Plugin() {
@@ -47,18 +47,16 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/TimeDatePlugin/translations"),
-        "/usr/share/thedesk/TimeDatePlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/TimeDatePlugin/translations"),
+        "/usr/share/thedesk/TimeDatePlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/TimeDatePlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/TimeDatePlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/TimeDatePlugin/thedesk-timedate.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-timedate.conf");
 
     d->dateTimePane = new DateTimePane();
     StateManager::statusCenterManager()->addPane(d->dateTimePane, StatusCenterManager::SystemSettings);
 
-    QObject::connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, [ = ] {
+    QObject::connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, [=] {
         StateManager::onboardingManager()->addOnboardingStep(new OnboardingTimeZone());
     });
 }

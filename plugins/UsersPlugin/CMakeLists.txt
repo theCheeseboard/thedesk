@@ -44,6 +44,8 @@ set(HEADERS
 set(PLUGIN_NAME users)
 add_plugin_td(${PLUGIN_NAME})
 target_sources(plugin-${PLUGIN_NAME} PRIVATE ${SOURCES} ${HEADERS})
+cntp_defaults_file(${PLUGIN_NAME}
+    DEFAULTS_FILE thedesk-users.conf)
 
 IF(${PolkitQt${QT_VERSION_MAJOR}-1_FOUND})
     target_link_libraries(plugin-${PLUGIN_NAME} PolkitQt${QT_VERSION_MAJOR}-1::Core)

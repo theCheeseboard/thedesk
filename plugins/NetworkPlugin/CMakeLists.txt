@@ -103,5 +103,7 @@ set(HEADERS
 set(PLUGIN_NAME network)
 add_plugin_td(${PLUGIN_NAME})
 target_sources(plugin-${PLUGIN_NAME} PRIVATE ${SOURCES} ${HEADERS})
+cntp_defaults_file(${PLUGIN_NAME}
+    DEFAULTS_FILE thedesk-network.conf)
 
 target_link_libraries(plugin-${PLUGIN_NAME} Qt::Widgets Qt::Multimedia KF${KF_VERSION_MAJOR}::NetworkManagerQt KF${KF_VERSION_MAJOR}::ModemManagerQt PkgConfig::qrencode libcontemporary libthedesk)

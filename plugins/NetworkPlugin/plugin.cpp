@@ -19,26 +19,26 @@
  * *************************************/
 #include "plugin.h"
 
-#include <QDebug>
-#include <statemanager.h>
-#include <statuscentermanager.h>
-#include <localemanager.h>
-#include <QApplication>
-#include <QDir>
-#include <onboardingmanager.h>
 #include "chunk/networkchunk.h"
 #include "switchmanager.h"
 #include "tsettings.h"
+#include <QApplication>
+#include <QDebug>
+#include <QDir>
+#include <localemanager.h>
+#include <onboardingmanager.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
 
-#include "statusCenter/networkstatuscenterpane.h"
 #include "onboarding/onboardingnetwork.h"
+#include "statusCenter/networkstatuscenterpane.h"
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    NetworkStatusCenterPane* statusCenterPane;
-    NetworkChunk* chunk;
-    SwitchManager* switches;
+        NetworkStatusCenterPane* statusCenterPane;
+        NetworkChunk* chunk;
+        SwitchManager* switches;
 };
 
 Plugin::Plugin() {
@@ -50,13 +50,11 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NetworkPlugin/translations"),
-        "/usr/share/thedesk/NetworkPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NetworkPlugin/translations"),
+        "/usr/share/thedesk/NetworkPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NetworkPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/NetworkPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NetworkPlugin/thedesk-network.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-network.conf");
 
     d->chunk = new NetworkChunk();
     d->switches = new SwitchManager();
@@ -64,7 +62,7 @@ void Plugin::activate() {
     d->statusCenterPane = new NetworkStatusCenterPane(d->switches);
     StateManager::statusCenterManager()->addPane(d->statusCenterPane);
 
-    QObject::connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, [ = ] {
+    QObject::connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, [=] {
         StateManager::onboardingManager()->addOnboardingStep(new OnboardingNetwork());
     });
 }

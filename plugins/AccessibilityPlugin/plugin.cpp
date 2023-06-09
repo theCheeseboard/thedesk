@@ -19,25 +19,25 @@
  * *************************************/
 #include "plugin.h"
 
+#include <QApplication>
 #include <QDebug>
+#include <QDir>
+#include <localemanager.h>
+#include <onboardingmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <localemanager.h>
-#include <QApplication>
-#include <QDir>
-#include <onboardingmanager.h>
 #include <tsettings.h>
 
-#include "settings/accessibilitysettingspane.h"
-#include "chunks/stickykeyschunk.h"
 #include "accessibilitydaemon.h"
+#include "chunks/stickykeyschunk.h"
+#include "settings/accessibilitysettingspane.h"
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    AccessibilitySettingsPane* settingsPane;
-    AccessibilityDaemon* daemon;
-    StickyKeysChunk* stickyKeysChunk;
+        AccessibilitySettingsPane* settingsPane;
+        AccessibilityDaemon* daemon;
+        StickyKeysChunk* stickyKeysChunk;
 };
 
 Plugin::Plugin() {
@@ -49,13 +49,11 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AccessibilityPlugin/translations"),
-        "/usr/share/thedesk/AccessibilityPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AccessibilityPlugin/translations"),
+        "/usr/share/thedesk/AccessibilityPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AccessibilityPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/AccessibilityPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AccessibilityPlugin/thedesk-accessibility.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-accessibility.conf");
 
     d->daemon = new AccessibilityDaemon();
     d->stickyKeysChunk = new StickyKeysChunk();

@@ -29,5 +29,7 @@ set(HEADERS
 set(PLUGIN_NAME pulseaudio)
 add_plugin_td(${PLUGIN_NAME})
 target_sources(plugin-${PLUGIN_NAME} PRIVATE ${SOURCES} ${HEADERS})
+cntp_defaults_file(${PLUGIN_NAME}
+    DEFAULTS_FILE thedesk-audio.conf)
 
 target_link_libraries(plugin-${PLUGIN_NAME} Qt${QT_VERSION_MAJOR}::Widgets KF${KF_VERSION_MAJOR}::PulseAudioQt libcontemporary libthedesk)

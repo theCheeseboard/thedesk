@@ -19,24 +19,24 @@
  * *************************************/
 #include "plugin.h"
 
+#include "OverviewPane/overviewpane.h"
+#include <QApplication>
 #include <QDebug>
-#include <clockchunk.h>
-#include <statemanager.h>
+#include <QDir>
+#include <QIcon>
 #include <barmanager.h>
-#include <statuscentermanager.h>
+#include <clockchunk.h>
 #include <icontextchunk.h>
 #include <localemanager.h>
-#include <QIcon>
-#include <QApplication>
-#include <QDir>
+#include <statemanager.h>
+#include <statuscentermanager.h>
 #include <tsettings.h>
-#include "OverviewPane/overviewpane.h"
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    ClockChunk* chunk;
-    OverviewPane* overviewPane;
+        ClockChunk* chunk;
+        OverviewPane* overviewPane;
 };
 
 Plugin::Plugin() {
@@ -48,12 +48,10 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/OverviewPlugin/translations"),
-        "/usr/share/thedesk/OverviewPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/OverviewPlugin/translations"),
+        "/usr/share/thedesk/OverviewPlugin/translations"});
 
-    tSettings::registerDefaults("theSuite", "the24", "/etc/theSuite/the24/defaults.conf");
+    tSettings::registerDefaults("theSuite", "the24", "/usr/share/defaults/the24.conf");
 
     d->chunk = new ClockChunk();
     StateManager::barManager()->addChunk(d->chunk);

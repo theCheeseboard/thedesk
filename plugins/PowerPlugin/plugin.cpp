@@ -19,36 +19,35 @@
  * *************************************/
 #include "plugin.h"
 
+#include "eventhandler.h"
+#include "settings/powersettings.h"
+#include "sleepmonitor.h"
+#include <DesktopPowerProfiles/desktoppowerprofiles.h>
+#include <QApplication>
 #include <QDebug>
-#include <icontextchunk.h>
-#include <statemanager.h>
+#include <QDir>
+#include <QIcon>
+#include <UPower/desktopupower.h>
+#include <actionquickwidget.h>
 #include <barmanager.h>
-#include <statuscentermanager.h>
 #include <icontextchunk.h>
 #include <localemanager.h>
-#include <QIcon>
-#include <QApplication>
-#include <QDir>
-#include <tsettings.h>
-#include "eventhandler.h"
-#include <UPower/desktopupower.h>
-#include "settings/powersettings.h"
 #include <quickswitch.h>
-#include <actionquickwidget.h>
-#include <DesktopPowerProfiles/desktoppowerprofiles.h>
-#include "sleepmonitor.h"
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <tsettings.h>
 
 struct PluginPrivate {
-    DesktopPowerProfiles* powerProfiles;
+        DesktopPowerProfiles* powerProfiles;
 
-    DesktopUPower* upower;
-    IconTextChunk* powerChunk;
-    EventHandler* logind;
-    PowerSettings* powerSettings;
-    QuickSwitch* powerStretchSwitch;
-    IconTextChunk* powerStretchChunk;
+        DesktopUPower* upower;
+        IconTextChunk* powerChunk;
+        EventHandler* logind;
+        PowerSettings* powerSettings;
+        QuickSwitch* powerStretchSwitch;
+        IconTextChunk* powerStretchChunk;
 
-    SleepMonitor* sleepMonitor;
+        SleepMonitor* sleepMonitor;
 };
 
 Plugin::Plugin() {
@@ -60,27 +59,25 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/PowerPlugin/translations"),
-        "/usr/share/thedesk/PowerPlugin/translations"
-    });
+    StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/PowerPlugin/translations"),
+        "/usr/share/thedesk/PowerPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/PowerPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/PowerPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/PowerPlugin/thedesk-power.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-power.conf");
 
     d->powerProfiles = new DesktopPowerProfiles();
 
     d->upower = new DesktopUPower(this);
     d->powerChunk = new IconTextChunk("Power");
-    connect(d->upower, &DesktopUPower::overallStateChanged, this, [ = ] {
+    connect(d->upower, &DesktopUPower::overallStateChanged, this, [=] {
         d->powerChunk->setIcon(d->upower->overallStateIcon());
         d->powerChunk->setText(d->upower->overallStateDescription());
 
         if (d->upower->shouldShowOverallState() && !d->powerChunk->chunkRegistered()) {
-            //Register the chunk
+            // Register the chunk
             StateManager::barManager()->addChunk(d->powerChunk);
         } else if (!d->upower->shouldShowOverallState() && d->powerChunk->chunkRegistered()) {
-            //Deregister the chunk
+            // Deregister the chunk
             StateManager::barManager()->removeChunk(d->powerChunk);
         }
     });
@@ -92,7 +89,7 @@ void Plugin::activate() {
     d->powerStretchSwitch = new QuickSwitch("PowerStretch");
     d->powerStretchSwitch->setTitle(tr("Power Stretch"));
     d->powerStretchSwitch->setChecked(d->powerProfiles->currentPowerProfile() == DesktopPowerProfiles::PowerStretch);
-    connect(d->powerStretchSwitch, &QuickSwitch::toggled, this, [ = ](bool powerStretch) {
+    connect(d->powerStretchSwitch, &QuickSwitch::toggled, this, [=](bool powerStretch) {
         if (powerStretch) {
             d->powerProfiles->setCurrentPowerProfile(DesktopPowerProfiles::PowerStretch);
         } else {
@@ -106,18 +103,18 @@ void Plugin::activate() {
     if (d->powerProfiles->currentPowerProfile() == DesktopPowerProfiles::PowerStretch) StateManager::barManager()->addChunk(d->powerStretchChunk);
 
     ActionQuickWidget* quickWidget = new ActionQuickWidget(d->powerStretchChunk);
-    quickWidget->addAction(QIcon::fromTheme("battery-stretch"), tr("Disable Power Stretch"), [ = ] {
+    quickWidget->addAction(QIcon::fromTheme("battery-stretch"), tr("Disable Power Stretch"), [=] {
         d->powerProfiles->setCurrentPowerProfile(DesktopPowerProfiles::Balanced);
     });
     d->powerStretchChunk->setQuickWidget(quickWidget);
 
-    connect(d->powerProfiles, &DesktopPowerProfiles::powerProfileChanged, this, [ = ] {
+    connect(d->powerProfiles, &DesktopPowerProfiles::powerProfileChanged, this, [=] {
         d->powerStretchSwitch->setChecked(d->powerProfiles->currentPowerProfile() == DesktopPowerProfiles::PowerStretch);
         if (d->powerProfiles->currentPowerProfile() == DesktopPowerProfiles::PowerStretch && !d->powerStretchChunk->chunkRegistered()) {
-            //Register the chunk
+            // Register the chunk
             StateManager::barManager()->addChunk(d->powerStretchChunk);
         } else if (d->powerProfiles->currentPowerProfile() != DesktopPowerProfiles::PowerStretch && d->powerStretchChunk->chunkRegistered()) {
-            //Deregister the chunk
+            // Deregister the chunk
             StateManager::barManager()->removeChunk(d->powerStretchChunk);
         }
     });
@@ -128,11 +125,11 @@ void Plugin::activate() {
 
 void Plugin::deactivate() {
     if (d->powerChunk->chunkRegistered()) {
-        //Deregister the chunk
+        // Deregister the chunk
         StateManager::barManager()->removeChunk(d->powerChunk);
     }
     if (d->powerStretchChunk->chunkRegistered()) {
-        //Deregister the chunk
+        // Deregister the chunk
         StateManager::barManager()->removeChunk(d->powerStretchChunk);
     }
 

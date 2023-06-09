@@ -58,8 +58,8 @@ void Plugin::activate() {
     d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/translations"),
         "/usr/share/thedesk/DisplayPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/DisplayPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/thedesk-display.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-display.conf");
 
     d->settingsPage = new DisplaySettings();
     d->daemon = new RedshiftDaemon();

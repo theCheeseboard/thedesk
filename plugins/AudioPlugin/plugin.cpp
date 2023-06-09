@@ -19,24 +19,24 @@
  * *************************************/
 #include "plugin.h"
 
-#include <QDebug>
-#include <QApplication>
-#include <statemanager.h>
-#include <localemanager.h>
-#include <statuscentermanager.h>
-#include <barmanager.h>
-#include <QDir>
 #include "audiochunk.h"
-#include "micchunk.h"
-#include <tsettings.h>
 #include "eventhandler.h"
+#include "micchunk.h"
+#include <QApplication>
+#include <QDebug>
+#include <QDir>
+#include <barmanager.h>
+#include <localemanager.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <tsettings.h>
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    EventHandler* keyHandler;
-    AudioChunk* chunk;
-    MicChunk* micChunk;
+        EventHandler* keyHandler;
+        AudioChunk* chunk;
+        MicChunk* micChunk;
 };
 
 Plugin::Plugin() {
@@ -48,13 +48,11 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AudioPlugin/translations"),
-        "/usr/share/thedesk/AudioPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AudioPlugin/translations"),
+        "/usr/share/thedesk/AudioPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AudioPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/AudioPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AudioPlugin/thedesk-audio.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-audio.conf");
 
     d->keyHandler = new EventHandler();
 

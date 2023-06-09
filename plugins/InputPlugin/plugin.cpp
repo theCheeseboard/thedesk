@@ -19,21 +19,21 @@
  * *************************************/
 #include "plugin.h"
 
-#include <QDebug>
-#include <QApplication>
-#include <statemanager.h>
-#include <localemanager.h>
-#include <statuscentermanager.h>
-#include <QDir>
-#include <tsettings.h>
-#include "settings/inputsettingspane.h"
 #include "daemons/keyboarddaemon.h"
+#include "settings/inputsettingspane.h"
+#include <QApplication>
+#include <QDebug>
+#include <QDir>
+#include <localemanager.h>
+#include <statemanager.h>
+#include <statuscentermanager.h>
+#include <tsettings.h>
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    InputSettingsPane* settings;
-    KeyboardDaemon* keyboardDaemon;
+        InputSettingsPane* settings;
+        KeyboardDaemon* keyboardDaemon;
 };
 
 Plugin::Plugin() {
@@ -45,13 +45,11 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/InputPlugin/translations"),
-        "/usr/share/thedesk/InputPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/InputPlugin/translations"),
+        "/usr/share/thedesk/InputPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/InputPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/InputPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/InputPlugin/thedesk-input.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-input.conf");
 
     d->settings = new InputSettingsPane();
     StateManager::statusCenterManager()->addPane(d->settings, StatusCenterManager::SystemSettings);

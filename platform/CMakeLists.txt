@@ -36,12 +36,16 @@ set(HEADERS
 add_library(thedesk-platform-plugin SHARED ${SOURCES} ${HEADERS})
 target_include_directories(thedesk-platform-plugin PUBLIC ../libthedesk/)
 
-cntp_init_plugin(thedesk thedesk-platform-plugin 20 thedesk-platform-plugin)
-cntp_translate(thedesk-platform-plugin)
-
 set_target_properties(thedesk-platform-plugin PROPERTIES
         OUTPUT_NAME thedesk-platform
-        FRAMEWORK FALSE)
+        FRAMEWORK FALSE
+        CNTP_DATA_SUBDIR thedesk/platform
+    )
+
+cntp_init_plugin(thedesk thedesk-platform-plugin 20 thedesk-platform-plugin)
+cntp_translate(thedesk-platform-plugin)
+cntp_defaults_file(thedesk-platform-plugin
+    DEFAULTS_FILE thedesk-platform.conf)
 
 target_link_libraries(thedesk-platform-plugin Qt::Widgets Qt::GuiPrivate libcontemporary)
 target_include_directories(thedesk-platform-plugin PRIVATE ${Qt${QT_VERSION_MAJOR}Gui_PRIVATE_INCLUDE_DIRS})

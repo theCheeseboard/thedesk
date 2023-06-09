@@ -19,22 +19,22 @@
  * *************************************/
 #include "plugin.h"
 
+#include "tsettings.h"
+#include <QApplication>
 #include <QDebug>
+#include <QDir>
+#include <localemanager.h>
+#include <onboardingmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <localemanager.h>
-#include <QApplication>
-#include <QDir>
-#include <onboardingmanager.h>
-#include "tsettings.h"
 
-#include "settings/themesettingspane.h"
 #include "onboarding/onboardingtheme.h"
+#include "settings/themesettingspane.h"
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    ThemeSettingsPane* themeSettingsPane;
+        ThemeSettingsPane* themeSettingsPane;
 };
 
 Plugin::Plugin() {
@@ -46,18 +46,16 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ThemePlugin/translations"),
-        "/usr/share/thedesk/ThemePlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ThemePlugin/translations"),
+        "/usr/share/thedesk/ThemePlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ThemePlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/ThemePlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ThemePlugin/thedesk-theme.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-theme.conf");
 
     d->themeSettingsPane = new ThemeSettingsPane();
     StateManager::statusCenterManager()->addPane(d->themeSettingsPane, StatusCenterManager::SystemSettings);
 
-    connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, this, [ = ] {
+    connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, this, [=] {
         StateManager::onboardingManager()->addOnboardingStep(new OnboardingTheme);
     });
 }

@@ -19,22 +19,22 @@
  * *************************************/
 #include "plugin.h"
 
+#include "tsettings.h"
+#include <QApplication>
 #include <QDebug>
+#include <QDir>
+#include <localemanager.h>
+#include <onboardingmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <localemanager.h>
-#include <QApplication>
-#include <QDir>
-#include <onboardingmanager.h>
-#include "tsettings.h"
 
 #include "onboarding/onboardingregion.h"
 #include "settings/localesettingspane.h"
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    LocaleSettingsPane* localeSettingsPane;
+        LocaleSettingsPane* localeSettingsPane;
 };
 
 Plugin::Plugin() {
@@ -46,18 +46,16 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/LocalePlugin/translations"),
-        "/usr/share/thedesk/LocalePlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/LocalePlugin/translations"),
+        "/usr/share/thedesk/LocalePlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/LocalePlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/LocalePlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/LocalePlugin/thedesk-locale.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-locale.conf");
 
     d->localeSettingsPane = new LocaleSettingsPane();
     StateManager::statusCenterManager()->addPane(d->localeSettingsPane, StatusCenterManager::SystemSettings);
 
-    connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, this, [ = ] {
+    connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, this, [=] {
         StateManager::onboardingManager()->addOnboardingStep(new OnboardingRegion);
     });
 }

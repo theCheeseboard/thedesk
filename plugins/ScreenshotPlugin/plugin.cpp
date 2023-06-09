@@ -46,8 +46,8 @@ void Plugin::activate() {
     d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ScreenshotPlugin/translations"),
         "/usr/share/thedesk/ScreenshotPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ScreenshotPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/ScreenshotPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ScreenshotPlugin/thedesk-screenshot.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-screenshot.conf");
 
     d->keyHandler = new EventHandler();
 }

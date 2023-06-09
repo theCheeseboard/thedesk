@@ -19,25 +19,26 @@
  * *************************************/
 #include "plugin.h"
 
-#include <QDebug>
+#include "screenbrightnesschunk.h"
 #include <QApplication>
-#include <statemanager.h>
-#include <localemanager.h>
+#include <QDebug>
 #include <QDir>
-#include <keygrab.h>
 #include <QKeySequence>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
 #include <hudmanager.h>
-#include "screenbrightnesschunk.h"
+#include <keygrab.h>
+#include <localemanager.h>
+#include <statemanager.h>
+#include <tsettings.h>
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    KeyGrab* brightnessUp;
-    KeyGrab* brightnessDown;
+        KeyGrab* brightnessUp;
+        KeyGrab* brightnessDown;
 
-    ScreenBrightnessChunk* chunk;
+        ScreenBrightnessChunk* chunk;
 };
 
 Plugin::Plugin() {
@@ -49,14 +50,14 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BrightnessPlugin/translations"),
-        "/usr/share/thedesk/BrightnessPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BrightnessPlugin/translations"),
+        "/usr/share/thedesk/BrightnessPlugin/translations"});
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BrightnessPlugin/thedesk-brightness.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-brightness.conf");
 
     d->brightnessUp = new KeyGrab(QKeySequence(Qt::Key_MonBrightnessUp), "brightnessUp");
     d->brightnessDown = new KeyGrab(QKeySequence(Qt::Key_MonBrightnessDown), "brightnessDown");
-    connect(d->brightnessUp, &KeyGrab::activated, this, [ = ] {
+    connect(d->brightnessUp, &KeyGrab::activated, this, [=] {
         SystemScreen* screen = ScreenDaemon::instance()->primayScreen();
         if (screen && screen->isScreenBrightnessAvailable()) {
             double newBrightness = screen->screenBrightness() + 0.05;
@@ -64,19 +65,19 @@ void Plugin::activate() {
             screen->setScreenBrightness(newBrightness);
 
             StateManager::instance()->hudManager()->showHud({
-                {"icon", "video-display"},
+                {"icon",  "video-display" },
                 {"title", tr("Brightness")},
-                {"value", newBrightness}
+                {"value", newBrightness   }
             });
         } else {
             StateManager::instance()->hudManager()->showHud({
-                {"icon", "video-display"},
+                {"icon",  "video-display" },
                 {"title", tr("Brightness")},
-                {"text", "Unavailable"}
+                {"text",  "Unavailable"   }
             });
         }
     });
-    connect(d->brightnessDown, &KeyGrab::activated, this, [ = ] {
+    connect(d->brightnessDown, &KeyGrab::activated, this, [=] {
         SystemScreen* screen = ScreenDaemon::instance()->primayScreen();
         if (screen && screen->isScreenBrightnessAvailable()) {
             double newBrightness = screen->screenBrightness() - 0.05;
@@ -84,15 +85,15 @@ void Plugin::activate() {
             screen->setScreenBrightness(newBrightness);
 
             StateManager::instance()->hudManager()->showHud({
-                {"icon", "video-display"},
+                {"icon",  "video-display" },
                 {"title", tr("Brightness")},
-                {"value", newBrightness}
+                {"value", newBrightness   }
             });
         } else {
             StateManager::instance()->hudManager()->showHud({
-                {"icon", "video-display"},
+                {"icon",  "video-display" },
                 {"title", tr("Brightness")},
-                {"text", "Unavailable"}
+                {"text",  "Unavailable"   }
             });
         }
     });

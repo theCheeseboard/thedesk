@@ -19,22 +19,22 @@
  * *************************************/
 #include "plugin.h"
 
+#include "defaultspane.h"
+#include <QApplication>
 #include <QDebug>
-#include <statemanager.h>
+#include <QDir>
+#include <QIcon>
 #include <barmanager.h>
-#include <statuscentermanager.h>
 #include <icontextchunk.h>
 #include <localemanager.h>
-#include <QIcon>
-#include <QApplication>
-#include <QDir>
+#include <statemanager.h>
+#include <statuscentermanager.h>
 #include <tsettings.h>
-#include "defaultspane.h"
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    DefaultsPane* defaultsPane;
+        DefaultsPane* defaultsPane;
 };
 
 Plugin::Plugin() {
@@ -46,10 +46,11 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DefaultsPlugin/translations"),
-        "/usr/share/thedesk/DefaultsPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DefaultsPlugin/translations"),
+        "/usr/share/thedesk/DefaultsPlugin/translations"});
+
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DefaultsPlugin/thedesk-defaults.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-defaults.conf");
 
     d->defaultsPane = new DefaultsPane();
     StateManager::statusCenterManager()->addPane(d->defaultsPane, StatusCenterManager::SystemSettings);

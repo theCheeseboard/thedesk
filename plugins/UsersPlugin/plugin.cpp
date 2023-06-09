@@ -19,23 +19,23 @@
  * *************************************/
 #include "plugin.h"
 
+#include "tsettings.h"
+#include <QApplication>
 #include <QDebug>
+#include <QDir>
+#include <localemanager.h>
+#include <onboardingmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
-#include <localemanager.h>
-#include <QApplication>
-#include <QDir>
-#include <onboardingmanager.h>
-#include "tsettings.h"
 
 #include "settings/userspane.h"
 
 #include "onboarding/onboardingusers.h"
 
 struct PluginPrivate {
-    int translationSet;
+        int translationSet;
 
-    UsersPane* userPane;
+        UsersPane* userPane;
 };
 
 Plugin::Plugin() {
@@ -47,18 +47,16 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/UsersPlugin/translations"),
-        "/usr/share/thedesk/UsersPlugin/translations"
-    });
+    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/UsersPlugin/translations"),
+        "/usr/share/thedesk/UsersPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/UsersPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/UsersPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/UsersPlugin/thedesk-users.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-users.conf");
 
     d->userPane = new UsersPane();
     StateManager::statusCenterManager()->addPane(d->userPane, StatusCenterManager::SystemSettings);
 
-    QObject::connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, [ = ] {
+    QObject::connect(StateManager::onboardingManager(), &OnboardingManager::onboardingRequired, [=] {
         StateManager::onboardingManager()->addOnboardingStep(new OnboardingUsers());
     });
 }

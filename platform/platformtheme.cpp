@@ -64,7 +64,7 @@ struct PlatformThemePrivate {
 PlatformTheme::PlatformTheme() :
     QPlatformTheme() {
     // Register settings locations
-    tSettings::registerDefaults("theSuite", "theDesk.platform", "/etc/theSuite/theDesk/platformdefaults.conf");
+    tSettings::registerDefaults("theSuite", "theDesk.platform", "/usr/share/defaults/thedesk-platform.conf");
 
     d = new PlatformThemePrivate();
     d->parent = new QObject();

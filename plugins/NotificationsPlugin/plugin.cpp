@@ -59,8 +59,8 @@ void Plugin::activate() {
     d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/translations"),
         "/usr/share/thedesk/NotificationsPlugin/translations"});
 
-    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/defaults.conf"));
-    tSettings::registerDefaults("/etc/theSuite/theDesk/NotificationsPlugin/defaults.conf");
+    tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/thedesk-notifications.conf"));
+    tSettings::registerDefaults("/usr/share/defaults/thedesk-notifications.conf");
 
     d->tracker = new NotificationTracker();
     d->interface = new NotificationsInterface(d->tracker);
