@@ -46,6 +46,8 @@ class OnboardingVideo : public QDialog {
     private:
         Ui::OnboardingVideo* ui;
         OnboardingVideoPrivate* d;
+
+        QMediaPlayer* mediaPlayerForFile(QString file);
 };
 
 #endif // ONBOARDINGVIDEO_H

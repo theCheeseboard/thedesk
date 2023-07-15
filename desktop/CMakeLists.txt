@@ -134,3 +134,6 @@ install(TARGETS thedesk
         BUNDLE DESTINATION /Applications)
 
     # TODO: Port install rules over from qmake
+install(DIRECTORY media
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/thedesk
+)

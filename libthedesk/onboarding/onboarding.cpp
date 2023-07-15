@@ -35,9 +35,11 @@
 #include <tsettings.h>
 #include <tvariantanimation.h>
 
+#include <QAudioSink>
+#include <QMediaDevices>
 #include <QMediaPlayer>
-//#include <QMediaPlaylist>
-//#include <QVideoWidget>
+// #include <QMediaPlaylist>
+// #include <QVideoWidget>
 
 #include <private/onboardingmanager_p.h>
 
@@ -50,7 +52,7 @@ struct OnboardingPrivate {
         //    QMediaPlaylist* audioPlaylist;
         QByteArray singleAudioData;
         QByteArray loopAudioData;
-        QAudioOutput* audioOutput = nullptr;
+        QAudioSink* audioOutput = nullptr;
         QIODevice* audioOutputDevice;
         int audioPointer = 0;
         bool audioEnabled = true;
@@ -165,24 +167,18 @@ Onboarding::Onboarding(QWidget* parent) :
         this->update();
     });
 
-#if 0
     if (d->settings.value("Onboarding/onboardingAudio").toBool()) {
-        QAudioFormat format;
-        format.setSampleRate(44100);
-        format.setChannelCount(2);
-        format.setSampleSize(8);
-        format.setCodec("audio/pcm");
-        format.setByteOrder(QAudioFormat::LittleEndian);
-        format.setSampleType(QAudioFormat::UnSignedInt);
+        auto format = QMediaDevices::defaultAudioOutput().preferredFormat();
 
         QEventLoop* loop = new QEventLoop();
         for (int i = 0; i < 2; i++) {
             QByteArray* array = (i == 0 ? &d->singleAudioData : &d->loopAudioData);
             QString setting = (i == 0 ? "Onboarding/audio.start" : "Onboarding/audio.loop");
+            auto file = QUrl::fromLocalFile(d->settings.value(setting).toString());
 
             QEventLoopLocker* locker = new QEventLoopLocker(loop);
             QAudioDecoder* audioDecoder = new QAudioDecoder();
-            audioDecoder->setSourceFilename(d->settings.value(setting).toString());
+            audioDecoder->setSource(file);
             audioDecoder->setAudioFormat(format);
             connect(audioDecoder, &QAudioDecoder::bufferReady, this, [=] {
                 QAudioBuffer buf = audioDecoder->read();
@@ -193,6 +189,7 @@ Onboarding::Onboarding(QWidget* parent) :
                 audioDecoder->deleteLater();
             });
             connect(audioDecoder, QOverload<QAudioDecoder::Error>::of(&QAudioDecoder::error), this, [=](QAudioDecoder::Error error) {
+                auto err = audioDecoder->errorString();
                 delete locker;
                 audioDecoder->deleteLater();
             });
@@ -201,17 +198,17 @@ Onboarding::Onboarding(QWidget* parent) :
         loop->exec();
         loop->deleteLater();
 
-        d->audioOutput = new QAudioOutput(format);
+        d->audioOutput = new QAudioSink(format);
         d->audioOutput->setBufferSize(176400);
         d->audioOutputDevice = d->audioOutput->start();
-        d->audioOutput->setNotifyInterval(1000);
 
-        connect(d->audioOutput, &QAudioOutput::stateChanged, this, [=](QAudio::State state) {
-            qDebug() << state;
-        });
-        connect(d->audioOutput, &QAudioOutput::notify, this, &Onboarding::writeAudio);
+        QTimer* audioTimer = new QTimer(d->audioOutput);
+        audioTimer->setInterval(100);
+        connect(audioTimer, &QTimer::timeout, this, &Onboarding::writeAudio);
+        audioTimer->start();
+
+        writeAudio();
     }
-#endif
 
     if (d->settings.value("Onboarding/onboardingVideo").toBool()) {
         this->setAttribute(Qt::WA_TranslucentBackground);
@@ -221,12 +218,10 @@ Onboarding::Onboarding(QWidget* parent) :
 }
 
 Onboarding::~Onboarding() {
-#if 0
     if (d->audioOutput) {
         d->audioOutput->stop();
         d->audioOutput->deleteLater();
     }
-#endif
     delete d;
     delete ui;
 }
@@ -318,22 +313,21 @@ void Onboarding::writeAudio() {
     if (!d->audioEnabled) return;
     if (!d->audioOutputDevice) return;
 
-#if 0
     int bytesFree = d->audioOutput->bytesFree();
-    if (d->audioPointer < d->singleAudioData.count()) {
+    if (d->audioPointer < d->singleAudioData.length()) {
         QByteArray chunk = d->singleAudioData.mid(d->audioPointer, bytesFree);
-        d->audioPointer += chunk.count();
-        bytesFree -= chunk.count();
+        d->audioPointer += chunk.length();
+        bytesFree -= chunk.length();
         d->audioOutputDevice->write(chunk);
     }
 
     // Prevent ourselves from locking up in this loop
     QDeadlineTimer lockTimer(50);
-    while (bytesFree != 0 && d->audioPointer >= d->singleAudioData.count() && !lockTimer.hasExpired()) {
-        if (d->audioPointer >= d->singleAudioData.count() + d->loopAudioData.count()) d->audioPointer -= d->loopAudioData.count();
-        QByteArray chunk = d->loopAudioData.mid(d->audioPointer - d->singleAudioData.count(), bytesFree);
-        d->audioPointer += chunk.count();
-        bytesFree -= chunk.count();
+    while (bytesFree != 0 && d->audioPointer >= d->singleAudioData.length() && !lockTimer.hasExpired()) {
+        if (d->audioPointer >= d->singleAudioData.length() + d->loopAudioData.length()) d->audioPointer -= d->loopAudioData.length();
+        QByteArray chunk = d->loopAudioData.mid(d->audioPointer - d->singleAudioData.length(), bytesFree);
+        d->audioPointer += chunk.length();
+        bytesFree -= chunk.length();
         d->audioOutputDevice->write(chunk);
     }
 
@@ -341,7 +335,6 @@ void Onboarding::writeAudio() {
     if (lockTimer.hasExpired()) {
         d->audioEnabled = false;
     }
-#endif
 }
 
 void Onboarding::changeEvent(QEvent* event) {

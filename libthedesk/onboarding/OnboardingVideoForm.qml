@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtMultimedia 5.13
+import QtMultimedia 6.4
 
 Item {
     VideoOutput {
@@ -8,8 +8,8 @@ Item {
         y: 0
         width: parent.width
         height: parent.height
-        flushMode: VideoOutput.LastFrame
+//        flushMode: VideoOutput.LastFrame
         fillMode: VideoOutput.PreserveAspectCrop
-        source: sourceVideo
+//        source: sourceVideo
     }
 }
