@@ -31,7 +31,9 @@ set_target_properties(polkitagent PROPERTIES
         MACOSX_BUNDLE TRUE
         MACOSX_BUNDLE_GUI_IDENTIFIER com.vicr123.thedesk.polkitagent
         WIN32_EXECUTABLE TRUE
-        CNTP_DATA_SUBDIR thedesk/td-polkitagent)
+        CNTP_DATA_SUBDIR thedesk/td-polkitagent
+        OUTPUT_NAME "td-polkitagent"
+    )
 
 cntp_init(polkitagent 20)
 cntp_translate(polkitagent)
