@@ -222,6 +222,7 @@ Onboarding::Onboarding(QWidget* parent) :
         auto* proc = new QProcess(this);
         proc->setProgram("theterminal");
         proc->setArguments({"-e", "/bin/bash"});
+        proc->setWorkingDirectory(QDir::rootPath());
         proc->setProcessEnvironment(env);
         proc->start();
         connect(proc, &QProcess::finished, this, [proc, this] {
