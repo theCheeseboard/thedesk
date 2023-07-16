@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
     a.setOrganizationName("theSuite");
     a.setOrganizationDomain("vicr123.com");
     a.setApplicationName("theDesk");
-    a.setApplicationVersion("1.0");
+    a.setApplicationVersion("1.0.1");
     a.setCopyrightYear("2023");
 
     StateManager::instance();
