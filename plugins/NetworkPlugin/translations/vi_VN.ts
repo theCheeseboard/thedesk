@@ -1414,27 +1414,27 @@ You'll need to contact your carrier for a new SIM card.</source>
       <source>Not sure how to connect to this network. Use manual setup to connect to it.</source>
     </message>
     <message>
-      <translation></translation>
+      <translation>Cho mạng %1</translation>
       <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="217" />
       <source>For network %1</source>
     </message>
     <message>
-      <translation></translation>
+      <translation>Sửa</translation>
       <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="218" />
       <source>Edit</source>
     </message>
     <message>
-      <translation></translation>
+      <translation>Quên</translation>
       <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="235" />
       <source>Forget Network</source>
     </message>
     <message>
-      <translation></translation>
+      <translation>Mạng không dây</translation>
       <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="316" />
       <source>Wireless</source>
     </message>
     <message>
-      <translation></translation>
+      <translation>Kết nối</translation>
       <location filename="../statusCenter/popovers/wirelessnetworkselectionpopover.cpp" line="319" />
       <source>Connect</source>
     </message>
@@ -1442,17 +1442,17 @@ You'll need to contact your carrier for a new SIM card.</source>
   <context>
     <name>WirelessOnboardingSetup</name>
     <message>
-      <translation></translation>
+      <translation>Wi-Fi</translation>
       <location filename="../onboarding/wirelessonboardingsetup.ui" line="57" />
       <source>WI-FI</source>
     </message>
     <message>
-      <translation></translation>
+      <translation>Kết nối với mạng dùng mạng Wi-Fi</translation>
       <location filename="../onboarding/wirelessonboardingsetup.ui" line="64" />
       <source>Connect to the Internet using a Wi-Fi network</source>
     </message>
     <message>
-      <translation></translation>
+      <translation>Chọn mạng</translation>
       <location filename="../onboarding/wirelessonboardingsetup.ui" line="73" />
       <source>Select Network</source>
     </message>
