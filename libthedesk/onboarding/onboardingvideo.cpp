@@ -21,10 +21,8 @@
 #include "ui_onboardingvideo.h"
 
 #include <QMediaPlayer>
-// #include <QMediaPlaylist>
-#include <QQmlContext>
-// #include <QVideoWidget>
 #include <QPainter>
+#include <QQmlContext>
 #include <QTimer>
 #include <QVideoFrame>
 #include <QVideoSink>
@@ -32,8 +30,6 @@
 
 struct OnboardingVideoPrivate {
         QMediaPlayer* videoPlayer;
-        //        QMediaPlaylist* videoPlaylist;
-        //        QVideoWidget* videoWidget;
         QPixmap pixmap;
 };
 
@@ -46,6 +42,7 @@ OnboardingVideo::OnboardingVideo(QWidget* parent) :
     this->setCursor(QCursor(Qt::BlankCursor));
 
     this->setWindowFlag(Qt::FramelessWindowHint);
+    this->setWindowFlag(Qt::WindowStaysOnBottomHint);
 
     ui->videoWidget->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
 
@@ -53,31 +50,6 @@ OnboardingVideo::OnboardingVideo(QWidget* parent) :
     auto startPlayer = mediaPlayerForFile(settings.value("Onboarding/videos.start").toString());
     auto middlePlayer = mediaPlayerForFile(settings.value("Onboarding/videos.middle").toString());
     auto loopPlayer = mediaPlayerForFile(settings.value("Onboarding/videos.loop").toString());
-
-    //        d->videoPlaylist = new QMediaPlaylist(this);
-    //        d->videoPlaylist->addMedia(QUrl::fromLocalFile(settings.value("Onboarding/videos.start").toString()));
-    //        d->videoPlaylist->addMedia(QUrl::fromLocalFile(settings.value("Onboarding/videos.middle").toString()));
-    //        d->videoPlaylist->addMedia(QUrl::fromLocalFile(settings.value("Onboarding/videos.loop").toString()));
-    //        d->videoPlaylist->setCurrentIndex(0);
-    //        connect(d->videoPlaylist, &QMediaPlaylist::currentIndexChanged, this, [=](int index) {
-    //            if (index == 1) {
-    //                emit startOnboarding();
-    //                this->setCursor(QCursor(Qt::ArrowCursor));
-    //            } else if (index == 2) {
-    ////                 Start looping
-    //                d->videoPlaylist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
-    //            }
-    //        });
-
-    //        d->videoPlayer = new QMediaPlayer(this);
-    //        d->videoPlayer->setPlaylist(d->videoPlaylist);
-    //        d->videoPlayer->setVolume(0);
-    //        connect(d->videoPlayer, &QMediaPlayer::mediaStatusChanged, this, [=](QMediaPlayer::MediaStatus state) {
-    //            if (state == QMediaPlayer::BufferedMedia || state == QMediaPlayer::BufferingMedia) {
-    //                emit playAudio();
-    //            }
-    //        });
-    //        d->videoPlayer->play();
 
     startPlayer->setVideoOutput(ui->videoWidget);
     connect(startPlayer, &QMediaPlayer::mediaStatusChanged, this, [this, middlePlayer](QMediaPlayer::MediaStatus state) {

@@ -21,12 +21,12 @@
 
 #include "onboarding.h"
 #include "server/sessionserver.h"
+#include <QCoroCore>
 #include <QScreen>
 #include <onboardingmanager.h>
 #include <statemanager.h>
 #include <tsettings.h>
 
-#include "onboardingbetathankyou.h"
 #include "onboardingfinal.h"
 #include "onboardingvideo.h"
 #include "onboardingwelcome.h"
@@ -67,13 +67,13 @@ bool OnboardingController::performOnboarding(bool isSystemOnboarding) {
         // Hide the splashes if needed
         SessionServer::instance()->hideSplashes();
 
-        int result = o.exec();
+        auto result = QCoro::waitFor(qCoro(&o, &Onboarding::onboardingCompleted));
         for (OnboardingVideo* video : videoScreens) {
             video->close();
             video->deleteLater();
         }
 
-        if (result == Onboarding::Accepted) {
+        if (result) {
             // Show the splashes again
             SessionServer::instance()->showSplashes();
 

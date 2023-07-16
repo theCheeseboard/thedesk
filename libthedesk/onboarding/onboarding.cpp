@@ -38,8 +38,7 @@
 #include <QAudioSink>
 #include <QMediaDevices>
 #include <QMediaPlayer>
-// #include <QMediaPlaylist>
-// #include <QVideoWidget>
+#include <QShortcut>
 
 #include <private/onboardingmanager_p.h>
 
@@ -48,8 +47,6 @@ struct OnboardingPrivate {
         QList<QPair<QString, OnboardingPage*>> steps;
         QList<QPair<OnboardingStepper*, OnboardingPage*>> steppers;
 
-        //    QMediaPlayer* audioPlayer = nullptr;
-        //    QMediaPlaylist* audioPlaylist;
         QByteArray singleAudioData;
         QByteArray loopAudioData;
         QAudioSink* audioOutput = nullptr;
@@ -189,7 +186,6 @@ Onboarding::Onboarding(QWidget* parent) :
                 audioDecoder->deleteLater();
             });
             connect(audioDecoder, QOverload<QAudioDecoder::Error>::of(&QAudioDecoder::error), this, [=](QAudioDecoder::Error error) {
-                auto err = audioDecoder->errorString();
                 delete locker;
                 audioDecoder->deleteLater();
             });
@@ -215,6 +211,23 @@ Onboarding::Onboarding(QWidget* parent) :
     } else {
         this->startOnboarding();
     }
+
+    auto* terminalShortcut = new QShortcut(QKeySequence(Qt::ControlModifier | Qt::AltModifier | Qt::Key_T), this);
+    connect(terminalShortcut, &QShortcut::activated, this, [this] {
+        this->hide();
+
+        auto env = QProcessEnvironment::systemEnvironment();
+        env.remove("LD_LIBRARY_PATH");
+
+        auto* proc = new QProcess(this);
+        proc->setProgram("theterminal");
+        proc->setProcessEnvironment(env);
+        proc->start();
+        connect(proc, &QProcess::finished, this, [proc, this] {
+            proc->deleteLater();
+            this->show();
+        });
+    });
 }
 
 Onboarding::~Onboarding() {
@@ -381,6 +394,7 @@ void Onboarding::completeOnboarding() {
         delete c;
 
         StateManager::onboardingManager()->d->onboardingRunning = false;
+        emit onboardingCompleted(true);
         this->accept();
     });
     hideBar();

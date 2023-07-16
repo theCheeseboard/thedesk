@@ -102,7 +102,7 @@ set(PRIVATE_HEADERS
 )
 
 add_library(libthedesk SHARED)
-cntp_init(libthedesk 17)
+cntp_init(libthedesk 20)
 set_target_properties(libthedesk PROPERTIES
         OUTPUT_NAME thedesk
         FRAMEWORK TRUE
