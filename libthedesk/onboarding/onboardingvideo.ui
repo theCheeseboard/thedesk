@@ -30,24 +30,16 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QQuickWidget" name="quickWidget">
-     <property name="resizeMode">
-      <enum>QQuickWidget::SizeRootObjectToView</enum>
-     </property>
-     <property name="source">
-      <url>
-       <string>qrc:/libthedesk/onboarding/OnboardingVideoForm.qml</string>
-      </url>
-     </property>
-    </widget>
+    <widget class="QVideoWidget" name="videoWidget" native="true"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QQuickWidget</class>
+   <class>QVideoWidget</class>
    <extends>QWidget</extends>
-   <header location="global">QtQuickWidgets/QQuickWidget</header>
+   <header location="global">qvideowidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

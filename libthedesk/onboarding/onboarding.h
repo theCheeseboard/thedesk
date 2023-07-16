@@ -38,6 +38,9 @@ class Onboarding : public QDialog {
 
         void writeAudio();
 
+    signals:
+        void onboardingCompleted(bool complete);
+
     private slots:
         void on_stackedWidget_currentChanged(int arg1);
 

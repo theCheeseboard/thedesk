@@ -20,19 +20,19 @@
 #include "onboardingcontroller.h"
 
 #include "onboarding.h"
-#include <tsettings.h>
-#include <statemanager.h>
-#include <onboardingmanager.h>
 #include "server/sessionserver.h"
+#include <QCoroCore>
 #include <QScreen>
+#include <onboardingmanager.h>
+#include <statemanager.h>
+#include <tsettings.h>
 
-#include "onboardingwelcome.h"
 #include "onboardingfinal.h"
 #include "onboardingvideo.h"
-#include "onboardingbetathankyou.h"
+#include "onboardingwelcome.h"
 
-OnboardingController::OnboardingController(QObject* parent) : QObject(parent) {
-
+OnboardingController::OnboardingController(QObject* parent) :
+    QObject(parent) {
 }
 
 bool OnboardingController::performOnboarding(bool isSystemOnboarding) {
@@ -56,6 +56,7 @@ bool OnboardingController::performOnboarding(bool isSystemOnboarding) {
             }
         }
 
+        o.setGeometry(qApp->primaryScreen()->geometry());
         o.showFullScreen();
 
         if (videoScreens.count() > 0) {
@@ -63,20 +64,20 @@ bool OnboardingController::performOnboarding(bool isSystemOnboarding) {
             connect(videoScreens.first(), &OnboardingVideo::playAudio, &o, &Onboarding::writeAudio);
         }
 
-        //Hide the splashes if needed
+        // Hide the splashes if needed
         SessionServer::instance()->hideSplashes();
 
-        int result = o.exec();
+        auto result = QCoro::waitFor(qCoro(&o, &Onboarding::onboardingCompleted));
         for (OnboardingVideo* video : videoScreens) {
             video->close();
             video->deleteLater();
         }
 
-        if (result == Onboarding::Accepted) {
-            //Show the splashes again
+        if (result) {
+            // Show the splashes again
             SessionServer::instance()->showSplashes();
 
-            //Set the onboarding flag
+            // Set the onboarding flag
             settings.setValue("Onboarding/lastOnboarding", 1);
             settings.sync();
 

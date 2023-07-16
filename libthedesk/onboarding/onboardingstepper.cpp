@@ -64,7 +64,7 @@ void OnboardingStepper::setIsFinal(bool isFinal) {
 }
 
 QSize OnboardingStepper::sizeHint() const {
-    return QSize(SC_DPI(300), this->fontMetrics().height() + SC_DPI(9));
+    return QSize(300, this->fontMetrics().height() + 18);
 }
 
 void OnboardingStepper::paintEvent(QPaintEvent* event) {
