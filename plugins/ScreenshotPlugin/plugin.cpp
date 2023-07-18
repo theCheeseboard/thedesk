@@ -26,11 +26,10 @@
 #include <localemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 struct PluginPrivate {
-        int translationSet;
-
         EventHandler* keyHandler;
 };
 
@@ -43,8 +42,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ScreenshotPlugin/translations"),
-        "/usr/share/thedesk/ScreenshotPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ScreenshotPlugin/thedesk-screenshot.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-screenshot.conf");
@@ -54,5 +52,5 @@ void Plugin::activate() {
 
 void Plugin::deactivate() {
     d->keyHandler->deleteLater();
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

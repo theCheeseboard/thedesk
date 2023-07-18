@@ -22,20 +22,18 @@
 #include "btobex.h"
 #include "chunk/bluetoothchunk.h"
 #include "settings/bluetoothsettingspane.h"
-#include <QApplication>
 #include <QDebug>
 #include <QDir>
 #include <localemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 #include <BluezQt/InitManagerJob>
 #include <BluezQt/PendingCall>
 
 struct PluginPrivate {
-        int translationSet;
-
         BluezQt::ManagerPtr manager;
         BtAgent* agent;
         BtObex* obex;
@@ -52,8 +50,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BluetoothPlugin/translations"),
-        "/usr/share/thedesk/BluetoothPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BluetoothPlugin/thedesk-bluetooth.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-bluetooth.conf");
@@ -86,5 +83,5 @@ void Plugin::deactivate() {
     d->chunk->deleteLater();
     StateManager::statusCenterManager()->removePane(d->bluetoothSettings);
     d->bluetoothSettings->deleteLater();
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

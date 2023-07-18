@@ -27,13 +27,12 @@
 #include <onboardingmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 
 #include "onboarding/onboardingregion.h"
 #include "settings/localesettingspane.h"
 
 struct PluginPrivate {
-        int translationSet;
-
         LocaleSettingsPane* localeSettingsPane;
 };
 
@@ -46,8 +45,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/LocalePlugin/translations"),
-        "/usr/share/thedesk/LocalePlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/LocalePlugin/thedesk-locale.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-locale.conf");
@@ -63,5 +61,5 @@ void Plugin::activate() {
 void Plugin::deactivate() {
     StateManager::statusCenterManager()->removePane(d->localeSettingsPane);
     d->localeSettingsPane->deleteLater();
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

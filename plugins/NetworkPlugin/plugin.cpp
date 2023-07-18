@@ -29,13 +29,12 @@
 #include <onboardingmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 
 #include "onboarding/onboardingnetwork.h"
 #include "statusCenter/networkstatuscenterpane.h"
 
 struct PluginPrivate {
-        int translationSet;
-
         NetworkStatusCenterPane* statusCenterPane;
         NetworkChunk* chunk;
         SwitchManager* switches;
@@ -50,8 +49,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NetworkPlugin/translations"),
-        "/usr/share/thedesk/NetworkPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NetworkPlugin/thedesk-network.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-network.conf");
@@ -72,5 +70,5 @@ void Plugin::deactivate() {
     d->chunk->deleteLater();
     StateManager::statusCenterManager()->removePane(d->statusCenterPane);
     d->statusCenterPane->deleteLater();
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

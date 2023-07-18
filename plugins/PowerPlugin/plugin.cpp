@@ -35,6 +35,7 @@
 #include <quickswitch.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 struct PluginPrivate {
@@ -59,8 +60,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/PowerPlugin/translations"),
-        "/usr/share/thedesk/PowerPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/PowerPlugin/thedesk-power.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-power.conf");
@@ -144,4 +144,5 @@ void Plugin::deactivate() {
     d->powerSettings->deleteLater();
     d->powerProfiles->deleteLater();
     d->sleepMonitor->deleteLater();
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

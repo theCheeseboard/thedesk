@@ -32,14 +32,13 @@
 #include <localemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 
 #include <Screens/screendaemon.h>
 
 #include "redshift/redshiftdaemon.h"
 
 struct PluginPrivate {
-        int translationSet;
-
         DisplaySettings* settingsPage;
         RedshiftDaemon* daemon;
 
@@ -55,8 +54,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/translations"),
-        "/usr/share/thedesk/DisplayPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DisplayPlugin/thedesk-display.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-display.conf");
@@ -74,11 +72,12 @@ void Plugin::activate() {
 }
 
 void Plugin::deactivate() {
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
     d->daemon->deleteLater();
 
     StateManager::statusCenterManager()->removePane(d->settingsPage);
     d->settingsPage->deleteLater();
 
     d->settings->deleteLater();
+
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

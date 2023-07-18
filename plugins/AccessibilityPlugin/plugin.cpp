@@ -26,6 +26,7 @@
 #include <onboardingmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 #include "accessibilitydaemon.h"
@@ -33,8 +34,6 @@
 #include "settings/accessibilitysettingspane.h"
 
 struct PluginPrivate {
-        int translationSet;
-
         AccessibilitySettingsPane* settingsPane;
         AccessibilityDaemon* daemon;
         StickyKeysChunk* stickyKeysChunk;
@@ -49,8 +48,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AccessibilityPlugin/translations"),
-        "/usr/share/thedesk/AccessibilityPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AccessibilityPlugin/thedesk-accessibility.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-accessibility.conf");
@@ -67,5 +65,5 @@ void Plugin::deactivate() {
     d->settingsPane->deleteLater();
     d->stickyKeysChunk->deleteLater();
     d->daemon->deleteLater();
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

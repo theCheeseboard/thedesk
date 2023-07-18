@@ -1,112 +1,113 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
 <TS version="2.1" language="vi_VN">
-  <context>
+<context>
     <name>MessageDialog</name>
     <message>
-      <translation>Chỉ tiết...</translation>
-      <location filename="../messagedialog/messagedialog.ui" line="142" />
-      <source>Details...</source>
+        <location filename="../messagedialog/messagedialog.ui" line="142"/>
+        <source>Details...</source>
+        <translation>Chỉ tiết...</translation>
     </message>
     <message>
-      <translation>CHI TIẾT</translation>
-      <location filename="../messagedialog/messagedialog.ui" line="200" />
-      <source>DETAILS</source>
+        <location filename="../messagedialog/messagedialog.ui" line="200"/>
+        <source>DETAILS</source>
+        <translation>CHI TIẾT</translation>
     </message>
     <message>
-      <translation>Lại</translation>
-      <location filename="../messagedialog/messagedialog.ui" line="217" />
-      <source>Back</source>
+        <location filename="../messagedialog/messagedialog.ui" line="217"/>
+        <source>Back</source>
+        <translation>Lại</translation>
     </message>
     <message>
-      <translation>OK</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="100" />
-      <location filename="../messagedialog/messagedialog.cpp" line="129" />
-      <source>OK</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="100"/>
+        <location filename="../messagedialog/messagedialog.cpp" line="129"/>
+        <source>OK</source>
+        <translation>OK</translation>
     </message>
     <message>
-      <translation>Lưu</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="101" />
-      <source>Save</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="101"/>
+        <source>Save</source>
+        <translation>Lưu</translation>
     </message>
     <message>
-      <translation>Lưu tất cả</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="102" />
-      <source>Save All</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="102"/>
+        <source>Save All</source>
+        <translation>Lưu tất cả</translation>
     </message>
     <message>
-      <translation>Mở</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="103" />
-      <source>Open</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="103"/>
+        <source>Open</source>
+        <translation>Mở</translation>
     </message>
     <message>
-      <translation>Có</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="104" />
-      <source>Yes</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="104"/>
+        <source>Yes</source>
+        <translation>Có</translation>
     </message>
     <message>
-      <translation>Có cho tất cả</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="105" />
-      <source>Yes to All</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="105"/>
+        <source>Yes to All</source>
+        <translation>Có cho tất cả</translation>
     </message>
     <message>
-      <translation>Không</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="106" />
-      <source>No</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="106"/>
+        <source>No</source>
+        <translation>Không</translation>
     </message>
     <message>
-      <translation>Không cho tất cả</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="107" />
-      <source>No to All</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="107"/>
+        <source>No to All</source>
+        <translation>Không cho tất cả</translation>
     </message>
     <message>
-      <translation>Hủy bỏ</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="108" />
-      <source>Abort</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="108"/>
+        <source>Abort</source>
+        <translation>Hủy bỏ</translation>
     </message>
     <message>
-      <translation>Thủ lại</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="109" />
-      <source>Retry</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="109"/>
+        <source>Retry</source>
+        <translation>Thủ lại</translation>
     </message>
     <message>
-      <translation>Bỏ qua</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="110" />
-      <source>Ignore</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="110"/>
+        <source>Ignore</source>
+        <translation>Bỏ qua</translation>
     </message>
     <message>
-      <translation>Đóng</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="111" />
-      <source>Close</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="111"/>
+        <source>Close</source>
+        <translation>Đóng</translation>
     </message>
     <message>
-      <translation>Hủy</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="112" />
-      <source>Cancel</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="112"/>
+        <source>Cancel</source>
+        <translation>Hủy</translation>
     </message>
     <message>
-      <translation>Bỏ</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="113" />
-      <source>Discard</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="113"/>
+        <source>Discard</source>
+        <translation>Bỏ</translation>
     </message>
     <message>
-      <translation>Trợ giúp</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="114" />
-      <source>Help</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="114"/>
+        <source>Help</source>
+        <translation>Trợ giúp</translation>
     </message>
     <message>
-      <translation>Áp dụng</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="115" />
-      <source>Apply</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="115"/>
+        <source>Apply</source>
+        <translation>Áp dụng</translation>
     </message>
     <message>
-      <translation>Đặt lại</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="116" />
-      <source>Reset</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="116"/>
+        <source>Reset</source>
+        <translation>Đặt lại</translation>
     </message>
     <message>
-      <translation>Hoàn lại mặc định</translation>
-      <location filename="../messagedialog/messagedialog.cpp" line="117" />
-      <source>Restore Defaults</source>
+        <location filename="../messagedialog/messagedialog.cpp" line="117"/>
+        <source>Restore Defaults</source>
+        <translation>Hoàn lại mặc định</translation>
     </message>
-  </context>
+</context>
 </TS>

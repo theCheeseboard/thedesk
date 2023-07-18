@@ -884,12 +884,12 @@ Pengaturan theDesk akan reset dalam %n detik jika Anda tak melakukan apa-apa.</t
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.cpp" line="72"/>
+        <location filename="../main.cpp" line="73"/>
         <source>Safe Mode</source>
         <translation>Mode Aman</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="72"/>
+        <location filename="../main.cpp" line="73"/>
         <source>You&apos;re holding the CTRL key. Start theDesk in Safe Mode?</source>
         <translation>Anda sedang menekan tombol CTRL. Mulai theDesk dalam Mode Aman?</translation>
     </message>

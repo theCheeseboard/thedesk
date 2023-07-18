@@ -51,6 +51,7 @@ int main(int argc, char* argv[]) {
     a.setApplicationName("theDesk");
     a.setApplicationVersion("1.0.1");
     a.setCopyrightYear("2023");
+    a.setApplicationShareDir("thedesk");
 
     StateManager::instance();
     StateManager::localeManager()->addTranslationSet({a.applicationDirPath() + "/translations",

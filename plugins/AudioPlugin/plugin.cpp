@@ -29,11 +29,10 @@
 #include <localemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 struct PluginPrivate {
-        int translationSet;
-
         EventHandler* keyHandler;
         AudioChunk* chunk;
         MicChunk* micChunk;
@@ -48,8 +47,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AudioPlugin/translations"),
-        "/usr/share/thedesk/AudioPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/AudioPlugin/thedesk-audio.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-audio.conf");
@@ -67,5 +65,5 @@ void Plugin::deactivate() {
     StateManager::barManager()->removeChunk(d->chunk);
     d->chunk->deleteLater();
     d->keyHandler->deleteLater();
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

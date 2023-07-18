@@ -34,11 +34,10 @@
 #include <localemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 struct PluginPrivate {
-        int translationSet;
-
         NotificationTracker* tracker;
         NotificationsInterface* interface;
         NotificationsDrawer* drawer;
@@ -56,8 +55,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/translations"),
-        "/usr/share/thedesk/NotificationsPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/NotificationsPlugin/thedesk-notifications.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-notifications.conf");
@@ -82,5 +80,5 @@ void Plugin::deactivate() {
 
     // Everything else will delete itself once the tracker is gone
 
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

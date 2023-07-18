@@ -29,11 +29,10 @@
 #include <localemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 struct PluginPrivate {
-        int translationSet;
-
         DefaultsPane* defaultsPane;
 };
 
@@ -46,9 +45,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DefaultsPlugin/translations"),
-        "/usr/share/thedesk/DefaultsPlugin/translations"});
-
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/DefaultsPlugin/thedesk-defaults.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-defaults.conf");
 
@@ -59,6 +56,5 @@ void Plugin::activate() {
 void Plugin::deactivate() {
     StateManager::statusCenterManager()->removePane(d->defaultsPane);
     d->defaultsPane->deleteLater();
-
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

@@ -27,11 +27,10 @@
 #include <localemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 struct PluginPrivate {
-        int translationSet;
-
         InputSettingsPane* settings;
         KeyboardDaemon* keyboardDaemon;
 };
@@ -45,9 +44,6 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/InputPlugin/translations"),
-        "/usr/share/thedesk/InputPlugin/translations"});
-
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/InputPlugin/thedesk-input.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-input.conf");
 
@@ -60,6 +56,6 @@ void Plugin::activate() {
 void Plugin::deactivate() {
     StateManager::statusCenterManager()->removePane(d->settings);
     d->settings->deleteLater();
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
     delete d->keyboardDaemon;
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

@@ -4,10 +4,10 @@
 <context>
     <name>Plugin</name>
     <message>
-        <location filename="../plugin.cpp" line="69"/>
-        <location filename="../plugin.cpp" line="75"/>
-        <location filename="../plugin.cpp" line="89"/>
-        <location filename="../plugin.cpp" line="95"/>
+        <location filename="../plugin.cpp" line="67"/>
+        <location filename="../plugin.cpp" line="73"/>
+        <location filename="../plugin.cpp" line="87"/>
+        <location filename="../plugin.cpp" line="93"/>
         <source>Brightness</source>
         <translation>亮度</translation>
     </message>

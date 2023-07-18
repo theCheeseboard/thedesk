@@ -27,13 +27,12 @@
 #include <onboardingmanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 
 #include "onboarding/onboardingtheme.h"
 #include "settings/themesettingspane.h"
 
 struct PluginPrivate {
-        int translationSet;
-
         ThemeSettingsPane* themeSettingsPane;
 };
 
@@ -46,8 +45,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ThemePlugin/translations"),
-        "/usr/share/thedesk/ThemePlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/ThemePlugin/thedesk-theme.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-theme.conf");
@@ -63,5 +61,5 @@ void Plugin::activate() {
 void Plugin::deactivate() {
     StateManager::statusCenterManager()->removePane(d->themeSettingsPane);
     d->themeSettingsPane->deleteLater();
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

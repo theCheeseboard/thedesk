@@ -19,28 +19,29 @@
  * *************************************/
 #include "localemanager.h"
 
+#include "private/keyboardlayoutselector.h"
+#include "private/localeselector.h"
+#include <QDir>
 #include <QMap>
 #include <QTranslator>
-#include <QApplication>
-#include <QDir>
-#include "private/localeselector.h"
-#include "private/keyboardlayoutselector.h"
+#include <tapplication.h>
 #include <tpopover.h>
 #include <tpromise.h>
 #include <tsettings.h>
 
 struct LocaleManagerPrivate {
-    QMap<int, QTranslator*> translators;
-    QMap<int, QStringList> searchPaths;
+        QMap<int, QTranslator*> translators;
+        QMap<int, QStringList> searchPaths;
 
-    tSettings settings;
-    QStringList preferredLocales;
-    QString formats;
+        tSettings settings;
+        QStringList preferredLocales;
+        QString formats;
 
-    int current = 0;
+        int current = 0;
 };
 
-LocaleManager::LocaleManager(QObject* parent) : QObject(parent) {
+LocaleManager::LocaleManager(QObject* parent) :
+    QObject(parent) {
     d = new LocaleManagerPrivate();
 
     d->preferredLocales = d->settings.delimitedList("Locale/locales");
@@ -48,12 +49,10 @@ LocaleManager::LocaleManager(QObject* parent) : QObject(parent) {
     d->formats = d->settings.value("Locale/formats").toString();
 
     this->updateLocales();
-    this->addTranslationSet({
-        QDir::cleanPath(qApp->applicationDirPath() + "/../libthedesk/translations"),
-        "/usr/share/thedesk/libthedesk/translations"
-    });
+    this->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../libthedesk/translations"),
+        "/usr/share/thedesk/libthedesk/translations"});
 
-    connect(&d->settings, &tSettings::settingChanged, this, [ = ](QString key, QVariant value) {
+    connect(&d->settings, &tSettings::settingChanged, this, [=](QString key, QVariant value) {
         if (key == "Locale/locales") {
             d->preferredLocales = d->settings.delimitedList("Locale/locales");
             if (d->preferredLocales.count() == 1 && d->preferredLocales.first() == "") d->preferredLocales = QStringList({"C"});
@@ -106,17 +105,17 @@ QLocale LocaleManager::showLocaleSelector(QWidget* parent, bool* ok) {
         LocaleSelector* selector = new LocaleSelector();
         tPopover* popover = new tPopover(selector);
         popover->setPopoverWidth(SC_DPI(500));
-        connect(selector, &LocaleSelector::rejected, this, [ = ] {
+        connect(selector, &LocaleSelector::rejected, this, [=] {
             rej("");
             *stillValid = false;
             popover->dismiss();
         });
-        connect(selector, &LocaleSelector::accepted, this, [ = ](QLocale locale) {
+        connect(selector, &LocaleSelector::accepted, this, [=](QLocale locale) {
             res(locale);
             *stillValid = false;
             popover->dismiss();
         });
-        connect(popover, &tPopover::dismissed, this, [ = ] {
+        connect(popover, &tPopover::dismissed, this, [=] {
             if (*stillValid) rej("");
             popover->deleteLater();
             selector->deleteLater();
@@ -181,7 +180,7 @@ QLocale::Country LocaleManager::formatCountry() {
 }
 
 void LocaleManager::setFormatCountry(QLocale::Country country) {
-    //Choose the first locale
+    // Choose the first locale
     QList<QLocale> locales = QLocale::matchingLocales(QLocale::AnyLanguage, QLocale::AnyScript, country);
     if (locales.isEmpty()) locales.append(QLocale());
     d->settings.setValue("Locale/formats", locales.first().name());
@@ -196,17 +195,17 @@ QString LocaleManager::showKeyboardLayoutSelector(QWidget* parent, bool* ok) {
         KeyboardLayoutSelector* selector = new KeyboardLayoutSelector();
         tPopover* popover = new tPopover(selector);
         popover->setPopoverWidth(SC_DPI(500));
-        connect(selector, &KeyboardLayoutSelector::rejected, this, [ = ] {
+        connect(selector, &KeyboardLayoutSelector::rejected, this, [=] {
             rej("");
             *stillValid = false;
             popover->dismiss();
         });
-        connect(selector, &KeyboardLayoutSelector::accepted, this, [ = ](QString locale) {
+        connect(selector, &KeyboardLayoutSelector::accepted, this, [=](QString locale) {
             res(locale);
             *stillValid = false;
             popover->dismiss();
         });
-        connect(popover, &tPopover::dismissed, this, [ = ] {
+        connect(popover, &tPopover::dismissed, this, [=] {
             if (*stillValid) rej("");
             popover->deleteLater();
             selector->deleteLater();
@@ -232,7 +231,7 @@ void LocaleManager::updateTranslator(int id) {
     QTranslator* translator = d->translators.value(id);
     QStringList searchPaths = d->searchPaths.value(id);
     for (QString path : searchPaths) {
-        if (translator->load(QLocale(), "", "", path, ".qm")) return; //Success!
+        if (translator->load(QLocale(), "", "", path, ".qm")) return; // Success!
     }
 }
 
@@ -257,7 +256,7 @@ void LocaleManager::updateLocales() {
     qputenv("LC_NAME", formatsLocaleStr);
     qputenv("LC_ADDRESS", formatsLocaleStr);
     qputenv("LC_TELEPHONE", formatsLocaleStr);
-//    qputenv("LC_ALL", glibName(locale).toUtf8());
+    //    qputenv("LC_ALL", glibName(locale).toUtf8());
 
     QStringList languages;
     for (QString locale : d->preferredLocales) {
@@ -265,10 +264,12 @@ void LocaleManager::updateLocales() {
     }
     qputenv("LANGUAGE", languages.join(":").toUtf8());
 
-    //Update all the translators
+    // Update all the translators
     for (int id : d->translators.keys()) {
         updateTranslator(id);
     }
+
+    static_cast<tApplication*>(tApplication::instance())->installTranslators();
 }
 
 QString LocaleManager::glibName(QLocale locale, QString encoding) {

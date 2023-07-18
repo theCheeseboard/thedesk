@@ -30,11 +30,10 @@
 #include <keygrab.h>
 #include <localemanager.h>
 #include <statemanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 struct PluginPrivate {
-        int translationSet;
-
         KeyGrab* brightnessUp;
         KeyGrab* brightnessDown;
 
@@ -50,8 +49,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BrightnessPlugin/translations"),
-        "/usr/share/thedesk/BrightnessPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
     tSettings::registerDefaults(QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/BrightnessPlugin/thedesk-brightness.conf"));
     tSettings::registerDefaults("/usr/share/defaults/thedesk-brightness.conf");
 
@@ -102,10 +100,10 @@ void Plugin::activate() {
 }
 
 void Plugin::deactivate() {
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
-
     d->brightnessUp->deleteLater();
     d->brightnessDown->deleteLater();
 
     d->chunk->deleteLater();
+
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }

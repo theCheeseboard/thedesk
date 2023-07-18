@@ -30,11 +30,10 @@
 #include <localemanager.h>
 #include <statemanager.h>
 #include <statuscentermanager.h>
+#include <tapplication.h>
 #include <tsettings.h>
 
 struct PluginPrivate {
-        int translationSet;
-
         ClockChunk* chunk;
         OverviewPane* overviewPane;
 };
@@ -48,8 +47,7 @@ Plugin::~Plugin() {
 }
 
 void Plugin::activate() {
-    d->translationSet = StateManager::localeManager()->addTranslationSet({QDir::cleanPath(qApp->applicationDirPath() + "/../plugins/OverviewPlugin/translations"),
-        "/usr/share/thedesk/OverviewPlugin/translations"});
+    tApplication::addPluginTranslator(CNTP_TARGET_NAME);
 
     tSettings::registerDefaults("theSuite", "the24", "/usr/share/defaults/the24.conf");
 
@@ -66,6 +64,5 @@ void Plugin::deactivate() {
 
     d->overviewPane->deleteLater();
     d->chunk->deleteLater();
-
-    StateManager::localeManager()->removeTranslationSet(d->translationSet);
+    tApplication::removePluginTranslator(CNTP_TARGET_NAME);
 }
