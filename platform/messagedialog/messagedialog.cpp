@@ -38,7 +38,7 @@ MessageDialog::MessageDialog(QWidget* parent) :
     d = new MessageDialogPrivate();
 
     //    this->setWindowFlags(Qt::Widget);
-    ui->frame->setMinimumWidth(SC_DPI(400));
+    ui->frame->setMinimumWidth(400);
 
     d->opacity = new QGraphicsOpacityEffect(this);
     d->opacity->setEnabled(false);
@@ -46,7 +46,7 @@ MessageDialog::MessageDialog(QWidget* parent) :
 
     ui->detailsWidget->setVisible(false);
 
-    ui->dialogTypeWidget->setFixedWidth(SC_DPI(3));
+    ui->dialogTypeWidget->setFixedWidth(3);
 }
 
 MessageDialog::~MessageDialog() {
@@ -129,7 +129,7 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
         buttons.append(QMessageDialogOptions::CustomButton(QPlatformDialogHelper::Ok, tr("OK"), QPlatformDialogHelper::AcceptRole));
     }
 
-    for (QMessageDialogOptions::CustomButton btn : buttons) {
+    for (const QMessageDialogOptions::CustomButton& btn : buttons) {
         QPushButton* button = new QPushButton(this);
         button->setText(btn.label);
         if (btn.role == QPlatformDialogHelper::DestructiveRole) button->setProperty("type", "destructive");
@@ -159,7 +159,7 @@ void MessageDialog::animateIn() {
         d->opacity->setOpacity(value.toReal());
 
         QRect geometry = frameGeometry();
-        geometry.moveTop(geometry.top() - SC_DPI(10) * (1.0 - value.toReal()));
+        geometry.moveTop(geometry.top() - 10 * (1.0 - value.toReal()));
         this->setFixedSize(QSize(0, 0));
         this->setFixedSize(geometry.size());
         this->setGeometry(geometry);
@@ -183,7 +183,7 @@ void MessageDialog::animateOut() {
         d->opacity->setOpacity(value.toReal());
 
         QRect geometry = frameGeometry();
-        geometry.moveTop(geometry.top() + SC_DPI(10) * (1.0 - value.toReal()));
+        geometry.moveTop(geometry.top() + 10 * (1.0 - value.toReal()));
         this->setFixedSize(QSize(0, 0));
         this->setFixedSize(geometry.size());
         this->setGeometry(geometry);
@@ -198,17 +198,17 @@ void MessageDialog::animateOut() {
 QRect MessageDialog::frameGeometry() {
     QRect geometry = this->geometry();
     if (d->showingDetails) {
-        if (ui->detailsContents->sizeHint().width() > SC_DPI(400)) {
+        if (ui->detailsContents->sizeHint().width() > 400) {
             geometry.setSize(ui->detailsContents->sizeHint());
         } else {
-            geometry.setSize(QSize(SC_DPI(400), ui->detailsContents->heightForWidth(SC_DPI(400))));
+            geometry.setSize(QSize(400, ui->detailsContents->heightForWidth(400)));
         }
         if (this->parentWidget() && geometry.height() > this->parentWidget()->height()) geometry.setHeight(this->parentWidget()->height());
     } else {
-        if (ui->frame->sizeHint().width() > SC_DPI(400)) {
+        if (ui->frame->sizeHint().width() > 400) {
             geometry.setSize(ui->frame->sizeHint());
         } else {
-            geometry.setSize(QSize(SC_DPI(400), ui->frame->heightForWidth(SC_DPI(400))));
+            geometry.setSize(QSize(400, ui->frame->heightForWidth(400)));
         }
     }
     if (this->parentWidget()) {

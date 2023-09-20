@@ -143,3 +143,10 @@ void MessageDialogHelper::setOptions(const QSharedPointer<QMessageDialogOptions>
     QPlatformMessageDialogHelper::setOptions(options);
     d->dlg->setOptions(options);
 }
+
+QVariant MessageDialogHelper::styleHint(StyleHint hint) const {
+    if (hint == DialogIsQtWindow) {
+        return true;
+    }
+    return QPlatformMessageDialogHelper::StyleHint(hint);
+}

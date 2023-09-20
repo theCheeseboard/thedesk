@@ -149,7 +149,7 @@ bool PlatformTheme::usePlatformNativeDialog(QPlatformTheme::DialogType type) con
         case QPlatformTheme::FontDialog:
             return false;
         case QPlatformTheme::MessageDialog:
-            //            return true;
+            return true;
         case QPlatformTheme::FileDialog:
             if (d->flatpakPlatformTheme) return d->flatpakPlatformTheme->usePlatformNativeDialog(type);
             return false;
@@ -159,7 +159,7 @@ bool PlatformTheme::usePlatformNativeDialog(QPlatformTheme::DialogType type) con
 QPlatformDialogHelper* PlatformTheme::createPlatformDialogHelper(QPlatformTheme::DialogType type) const {
     switch (type) {
         case QPlatformTheme::MessageDialog:
-            //            return new MessageDialogHelper();
+            return new MessageDialogHelper();
         case QPlatformTheme::FileDialog:
             if (d->flatpakPlatformTheme && d->flatpakPlatformTheme->usePlatformNativeDialog(type)) return d->flatpakPlatformTheme->createPlatformDialogHelper(type);
             return QPlatformTheme::createPlatformDialogHelper(type);

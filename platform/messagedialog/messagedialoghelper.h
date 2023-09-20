@@ -42,6 +42,10 @@ class MessageDialogHelper : public QPlatformMessageDialogHelper {
         bool show(Qt::WindowFlags windowFlags, Qt::WindowModality windowModality, QWindow* parent);
         void hide();
         void setOptions(const QSharedPointer<QMessageDialogOptions>& options);
+
+        // QPlatformDialogHelper interface
+    public:
+        QVariant styleHint(StyleHint hint) const;
 };
 
 #endif // MESSAGEDIALOGHELPER_H

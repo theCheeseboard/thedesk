@@ -34,8 +34,9 @@ class MessageDialog : public QWidget {
     public:
         explicit MessageDialog(QWidget* parent = nullptr);
         ~MessageDialog();
-
-        void setOptions(const QSharedPointer<QMessageDialogOptions>& options);
+        
+        void extracted(QVector<QMessageDialogOptions::CustomButton> &buttons);
+        void setOptions(const QSharedPointer<QMessageDialogOptions> &options);
         void setParent(QWidget* parent);
 
         void animateIn();
