@@ -34,9 +34,9 @@ class MessageDialog : public QWidget {
     public:
         explicit MessageDialog(QWidget* parent = nullptr);
         ~MessageDialog();
-        
-        void extracted(QVector<QMessageDialogOptions::CustomButton> &buttons);
-        void setOptions(const QSharedPointer<QMessageDialogOptions> &options);
+
+        void extracted(QVector<QMessageDialogOptions::CustomButton>& buttons);
+        void setOptions(const QSharedPointer<QMessageDialogOptions>& options);
         void setParent(QWidget* parent);
 
         void animateIn();
@@ -47,6 +47,7 @@ class MessageDialog : public QWidget {
 
     signals:
         void clicked(QPlatformDialogHelper::StandardButton button, QPlatformDialogHelper::ButtonRole role);
+        void checkBoxStateChanged(Qt::CheckState state);
 
     private:
         Ui::MessageDialog* ui;
@@ -61,6 +62,8 @@ class MessageDialog : public QWidget {
         void on_detailsButton_clicked();
 
         // QObject interface
+        void on_checkBox_stateChanged(int arg1);
+
     public:
         bool eventFilter(QObject* watched, QEvent* event);
 };

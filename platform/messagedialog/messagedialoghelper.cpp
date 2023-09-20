@@ -38,17 +38,18 @@ struct MessageDialogHelperPrivate {
         QPointer<QWidget> parentWidget;
         QPointer<QWidget> cover2;
 
-        const int coverOverscan = SC_DPI(50);
+        const int coverOverscan = 50;
 };
 
 MessageDialogHelper::MessageDialogHelper() :
     QPlatformMessageDialogHelper() {
     d = new MessageDialogHelperPrivate();
     d->dlg = new MessageDialog();
-    connect(d->dlg, &MessageDialog::clicked, this, [=] {
+    connect(d->dlg, &MessageDialog::clicked, this, [this] {
         if (d->eventLoop.isRunning()) d->eventLoop.exit();
         this->hide();
     });
+    connect(d->dlg, &MessageDialog::checkBoxStateChanged, this, &MessageDialogHelper::checkBoxStateChanged);
     connect(d->dlg, &MessageDialog::clicked, this, &MessageDialogHelper::clicked);
 }
 

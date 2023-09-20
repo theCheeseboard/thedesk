@@ -139,6 +139,14 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
         ui->buttonLayout->addWidget(button);
         d->buttons.append(button);
     }
+
+    if (options->checkBoxLabel().isEmpty()) {
+        ui->checkBox->setVisible(false);
+    } else {
+        ui->checkBox->setVisible(true);
+        ui->checkBox->setText(options->checkBoxLabel());
+        ui->checkBox->setCheckState(options->checkBoxState());
+    }
 }
 
 void MessageDialog::setParent(QWidget* parent) {
@@ -247,4 +255,8 @@ bool MessageDialog::eventFilter(QObject* watched, QEvent* event) {
         updateGeometry();
     }
     return false;
+}
+
+void MessageDialog::on_checkBox_stateChanged(int arg1) {
+    emit checkBoxStateChanged(static_cast<Qt::CheckState>(arg1));
 }

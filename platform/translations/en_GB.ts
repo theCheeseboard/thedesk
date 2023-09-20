@@ -95,17 +95,17 @@
         <translation>Restore Defaults</translation>
     </message>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="142"/>
+        <location filename="../messagedialog/messagedialog.ui" line="149"/>
         <source>Details...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="200"/>
+        <location filename="../messagedialog/messagedialog.ui" line="207"/>
         <source>DETAILS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../messagedialog/messagedialog.ui" line="217"/>
+        <location filename="../messagedialog/messagedialog.ui" line="224"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
