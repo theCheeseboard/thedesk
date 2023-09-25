@@ -35,6 +35,10 @@ class TransparentDialog : public QDialog {
 
     private:
         Ui::TransparentDialog* ui;
+
+        // QWidget interface
+    protected:
+        void showEvent(QShowEvent *event);
 };
 
 #endif // TRANSPARENTDIALOG_H

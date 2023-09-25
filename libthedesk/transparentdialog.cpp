@@ -20,6 +20,7 @@
 #include "transparentdialog.h"
 #include "ui_transparentdialog.h"
 
+#include <Wm/desktopwm.h>
 #include <tscrim.h>
 
 TransparentDialog::TransparentDialog(QWidget* parent) :
@@ -36,4 +37,10 @@ TransparentDialog::TransparentDialog(QWidget* parent) :
 
 TransparentDialog::~TransparentDialog() {
     delete ui;
+}
+
+
+void TransparentDialog::showEvent(QShowEvent *event)
+{
+    DesktopWm::setSystemWindow(this, DesktopWm::SystemWindowTypeLockScreen);
 }
