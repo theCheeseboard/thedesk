@@ -59,10 +59,17 @@ int main(int argc, char* argv[]) {
     }
 
     // Ask systemd to import environment variables
-    QDBusMessage setEnvironmentMessage = QDBusMessage::createMethodCall("org.freedesktop.systemd1", "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", "SetEnvironment");
-    setEnvironmentMessage.setArguments({QStringList({QStringLiteral("XDG_CURRENT_DESKTOP=%1").arg(qEnvironmentVariable("XDG_CURRENT_DESKTOP")),
+    QStringList systemdEnvironment = {QStringLiteral("XDG_CURRENT_DESKTOP=%1").arg(qEnvironmentVariable("XDG_CURRENT_DESKTOP")),
         QStringLiteral("QT_QPA_PLATFORMTHEME=%1").arg(qEnvironmentVariable("QT_QPA_PLATFORMTHEME")),
-        QStringLiteral("PATH=%1").arg(qEnvironmentVariable("PATH"))})});
+        QStringLiteral("PATH=%1").arg(qEnvironmentVariable("PATH"))};
+    if (qEnvironmentVariableIsSet("DISPLAY")) {
+        systemdEnvironment.append(QStringLiteral("DISPLAY=%1").arg(qEnvironmentVariable("DISPLAY")));
+    }
+    if (qEnvironmentVariableIsSet("WAYLAND_DISPLAY")) {
+        systemdEnvironment.append(QStringLiteral("WAYLAND_DISPLAY=%1").arg(qEnvironmentVariable("WAYLAND_DISPLAY")));
+    }
+    QDBusMessage setEnvironmentMessage = QDBusMessage::createMethodCall("org.freedesktop.systemd1", "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", "SetEnvironment");
+    setEnvironmentMessage.setArguments({systemdEnvironment});
     QDBusConnection::sessionBus().asyncCall(setEnvironmentMessage);
 
     // Restart the portal so it picks up our new environment variables
