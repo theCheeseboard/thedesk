@@ -20,8 +20,8 @@
 #ifndef GATEWAY_H
 #define GATEWAY_H
 
-#include <QDialog>
 #include <Gestures/gestureinteraction.h>
+#include <QDialog>
 
 namespace Ui {
     class Gateway;
@@ -35,6 +35,9 @@ class Gateway : public QDialog {
         ~Gateway();
 
         static Gateway* instance();
+
+        void setFixedHeight(int height);
+        void setFixedWidth(int width);
 
         void show();
         void close();
