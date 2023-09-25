@@ -96,3 +96,7 @@ void MainWindow::changeEvent(QEvent* event) {
         LockManager::instance()->raiseAll();
     }
 }
+
+void MainWindow::showEvent(QShowEvent* event) {
+    DesktopWm::instance()->setSystemWindow(this, DesktopWm::SystemWindowTypeLockScreen);
+}
