@@ -23,6 +23,7 @@
 #include "notificationsdrawerwidget.h"
 #include "notificationtracker.h"
 #include <QScreen>
+#include <QWindow>
 #include <Wm/desktopwm.h>
 #include <barmanager.h>
 #include <gatewaymanager.h>
@@ -65,6 +66,20 @@ NotificationsDrawer::~NotificationsDrawer() {
     delete ui;
 }
 
+void NotificationsDrawer::setFixedHeight(int height) {
+    QDialog::setFixedHeight(height);
+
+    // Work around a Qt bug that causes the native window not to be updated on Wayland for some reason
+    this->windowHandle()->setGeometry(this->geometry());
+}
+
+void NotificationsDrawer::setFixedWidth(int width) {
+    QWidget::setFixedWidth(width);
+
+    // Work around a Qt bug that causes the native window not to be updated on Wayland for some reason
+    this->windowHandle()->setGeometry(this->geometry());
+}
+
 bool NotificationsDrawer::eventFilter(QObject* watched, QEvent* event) {
     if (event->type() == QEvent::LayoutRequest) {
         this->updateGeometry();
@@ -83,7 +98,7 @@ void NotificationsDrawer::updateGeometry() {
     }
     d->oldPrimaryScreen = primaryScreen;
 
-    this->setFixedWidth(SC_DPI(400));
+    this->setFixedWidth(400);
     this->setFixedHeight(this->sizeHint().height());
 
     QRect geometry;
