@@ -36,6 +36,9 @@ class BarWindow : public QWidget {
         explicit BarWindow(QWidget* parent = nullptr);
         ~BarWindow();
 
+        void setFixedHeight(int height);
+        void setFixedWidth(int width);
+
     private:
         Ui::BarWindow* ui;
         BarWindowPrivate* d;

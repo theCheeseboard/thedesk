@@ -58,6 +58,9 @@ install(TARGETS startdesk
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         BUNDLE DESTINATION /Applications)
 
+install(FILES wayfire-thedesk-config.conf
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/thedesk/startdesk)
+
 install(FILES ${CMAKE_BINARY_DIR}/thedesk.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/xsessions)
 

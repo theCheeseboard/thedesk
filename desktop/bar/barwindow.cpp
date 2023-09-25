@@ -38,6 +38,7 @@
 #include <statuscentermanager.h>
 
 #include <Gestures/gesturedaemon.h>
+#include <QWindow>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
 #include <tpopover.h>
@@ -204,6 +205,20 @@ BarWindow::~BarWindow() {
     delete d;
 }
 
+void BarWindow::setFixedHeight(int height) {
+    QWidget::setFixedHeight(height);
+
+    // Work around a Qt bug that causes the native window not to be updated on Wayland for some reason
+    this->windowHandle()->setGeometry(this->geometry());
+}
+
+void BarWindow::setFixedWidth(int width) {
+    QWidget::setFixedWidth(width);
+
+    // Work around a Qt bug that causes the native window not to be updated on Wayland for some reason
+    this->windowHandle()->setGeometry(this->geometry());
+}
+
 void BarWindow::resizeEvent(QResizeEvent* event) {
     ui->line->setGeometry(0, this->height() - 1, this->width(), this->height());
     d->mainBarWidget->setFixedWidth(this->width());
@@ -290,7 +305,7 @@ void BarWindow::updatePrimaryScreen() {
 }
 
 void BarWindow::barHeightChanged() {
-    DesktopWm::setScreenMarginForWindow(this, qApp->primaryScreen(), Qt::TopEdge, d->mainBarWidget->statusBarHeight() * (ScreenDaemon::instance()->primayScreen() ? ScreenDaemon::instance()->primayScreen()->qtScreen()->devicePixelRatio() + 1 : 1));
+    DesktopWm::setScreenMarginForWindow(this, qApp->primaryScreen(), Qt::TopEdge, d->mainBarWidget->statusBarHeight() * (ScreenDaemon::instance()->primayScreen() ? ScreenDaemon::instance()->primayScreen()->qtScreen()->devicePixelRatio() : 1));
     d->mainBarWidget->setFixedHeight(d->mainBarWidget->expandedHeight());
 
     if (!d->statusCenterShown) {

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24.0)
 
-project(lib VERSION 1.0.0 LANGUAGES CXX)
+project(lib VERSION 1.0.0 LANGUAGES C CXX)
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 find_package(libcontemporary REQUIRED)

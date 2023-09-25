@@ -32,3 +32,4 @@ function(thedesk_wayfire_plugin_wayland_protocols target)
 endfunction()
 
 add_subdirectory(keygrab-plugin)
+add_subdirectory(startdesk-plugin)
