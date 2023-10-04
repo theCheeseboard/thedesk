@@ -1,6 +1,61 @@
 cmake_minimum_required(VERSION 3.24.0)
 
-project(xdg-portal VERSION 1.0.0 LANGUAGES CXX)
+project(xdg-portal VERSION 1.0.0 LANGUAGES C CXX)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS WaylandClient)
+
+find_program(WAYLAND_SCANNER wayland-scanner)
+if(NOT WAYLAND_SCANNER)
+    message(FATAL_ERROR "wayland-scanner not found!")
+endif()
+message(STATUS "Found wayland-scanner: ${WAYLAND_SCANNER}")
+
+find_program(QT_WAYLAND_SCANNER qtwaylandscanner)
+if(NOT QT_WAYLAND_SCANNER)
+    message(FATAL_ERROR "qtwaylandscanner not found!")
+endif()
+message(STATUS "Found qtwaylandscanner: ${QT_WAYLAND_SCANNER}")
+
+function(portal_register_wayland_protocol_extension target)
+    set(multiValueArgs FILES)
+    cmake_parse_arguments(REGISTER_WAYLAND_PROTOCOL_EXTENSIONS "" "" "${multiValueArgs}" ${ARGN})
+
+    foreach(_file ${REGISTER_WAYLAND_PROTOCOL_EXTENSIONS_FILES})
+        get_filename_component(_basename ${_file} NAME_WE)
+
+        # Wayland scanner
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/wayland-${_basename}-client-protocol.h"
+                           COMMAND ${WAYLAND_SCANNER} client-header ${CMAKE_CURRENT_SOURCE_DIR}/${_file} "${CMAKE_CURRENT_BINARY_DIR}/wayland-${_basename}-client-protocol.h"
+                           DEPENDS ${_file}
+                           VERBATIM)
+
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/wayland-${_basename}-client-protocol.c"
+                           COMMAND ${WAYLAND_SCANNER} public-code ${CMAKE_CURRENT_SOURCE_DIR}/${_file} "${CMAKE_CURRENT_BINARY_DIR}/wayland-${_basename}-client-protocol.c"
+                           DEPENDS ${_file}
+                           VERBATIM)
+
+        # Qt Wayland scanner
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/qwayland-${_basename}.h"
+                           COMMAND ${QT_WAYLAND_SCANNER} client-header ${CMAKE_CURRENT_SOURCE_DIR}/${_file} > "${CMAKE_CURRENT_BINARY_DIR}/qwayland-${_basename}.h"
+                           DEPENDS ${_file}
+                           VERBATIM)
+
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/qwayland-${_basename}.cpp"
+                           COMMAND ${QT_WAYLAND_SCANNER} client-code ${CMAKE_CURRENT_SOURCE_DIR}/${_file} > "${CMAKE_CURRENT_BINARY_DIR}/qwayland-${_basename}.cpp"
+                           DEPENDS ${_file}
+                           VERBATIM)
+
+        # Include in sources
+        set_property(SOURCE "${CMAKE_CURRENT_BINARY_DIR}/qwayland-${_basename}.cpp" PROPERTY SKIP_AUTOGEN ON)
+        set_property(SOURCE "${CMAKE_CURRENT_BINARY_DIR}/qwayland-${_basename}.h" PROPERTY SKIP_AUTOGEN ON)
+        set_property(SOURCE "${CMAKE_CURRENT_BINARY_DIR}/wayland-${_basename}-client-protocol.c" PROPERTY SKIP_AUTOGEN ON)
+        set_property(SOURCE "${CMAKE_CURRENT_BINARY_DIR}/wayland-${_basename}-client-protocol.h" PROPERTY SKIP_AUTOGEN ON)
+        target_sources(${target} PRIVATE
+            "${CMAKE_CURRENT_BINARY_DIR}/wayland-${_basename}-client-protocol.c"
+            "${CMAKE_CURRENT_BINARY_DIR}/wayland-${_basename}-client-protocol.h"
+            "${CMAKE_CURRENT_BINARY_DIR}/qwayland-${_basename}.h"
+            "${CMAKE_CURRENT_BINARY_DIR}/qwayland-${_basename}.cpp")
+    endforeach()
+endfunction()
 
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Network DBus)
 find_package(libcontemporary REQUIRED)
@@ -27,6 +82,11 @@ set(SOURCES
     dialogs/accessdialog.cpp dialogs/accessdialog.ui
     dialogs/penbutton.cpp
 
+    backend/abstractportalbackend.cpp
+    backend/x11portalbackend.cpp
+    backend/waylandportalbackend.cpp
+    backend/private/waylandportalscreencopyframe.h
+
     screenshot_resources.qrc
 )
 
@@ -47,8 +107,12 @@ set(HEADERS
     dialogs/screenshotwindow.h
     dialogs/penbutton.h
     dialogs/accessdialog.h
-)
 
+    backend/abstractportalbackend.h
+    backend/x11portalbackend.h
+    backend/waylandportalbackend.h
+    backend/private/waylandportalscreencopyframe.cpp
+)
 
 add_executable(xdg-portal ${SOURCES} ${HEADERS})
 
@@ -64,7 +128,12 @@ cntp_target_name(xdg-portal "thedesk-desktop-portal")
 #cntp_defaults_file(xdg-portal
 #    DEFAULTS_FILE xdg-portal.conf)
 
-target_link_libraries(xdg-portal Qt::Widgets Qt::Network Qt::DBus libcontemporary libtdesktopenvironment libthedesk libthefile)
+portal_register_wayland_protocol_extension(xdg-portal FILES
+    backend/wlr-screencopy-unstable-v1.xml
+)
+
+target_link_libraries(xdg-portal Qt::Widgets Qt::Network Qt::DBus Qt::WaylandClient libcontemporary libtdesktopenvironment libthedesk libthefile)
+target_include_directories(xdg-portal PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 install(TARGETS xdg-portal
         RUNTIME DESTINATION ${CMAKE_INSTALL_LIBDIR}

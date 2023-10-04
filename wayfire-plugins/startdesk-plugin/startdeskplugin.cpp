@@ -28,9 +28,16 @@
 #include <QTextStream>
 
 StartdeskPlugin::StartdeskPlugin() {
+}
+
+void StartdeskPlugin::init() {
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     env.insert("QT_QPA_PLATFORM", "wayland");
     env.insert("WAYLAND_DISPLAY", QString::fromStdString(wf::get_core().wayland_display));
+
+    if (qEnvironmentVariableIsSet("T_CHILD_LD_PRELOAD")) {
+        env.insert("T_CHILD_LD_PRELOAD", "/usr/lib/libasan.so");
+    }
 
     QString x11Display = QString::fromStdString(wf::get_core().get_xwayland_display());
     if (!x11Display.isEmpty()) {
@@ -53,7 +60,6 @@ StartdeskPlugin::StartdeskPlugin() {
     QObject::connect(deskProcess.data(), QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=] {
         QTextStream(stdout) << "Finished!\n";
     });
-
     waiter.set_timeout(1000, [=] {
         if (!deskProcess || deskProcess->waitForFinished(0)) {
             wf::get_core().shutdown();

@@ -204,7 +204,7 @@ void SplashController::runAutostart() {
 }
 
 void SplashController::startWM() {
-    if (!d->wm) {
+    if (!d->wm && QApplication::platformName() != "wayland") {
         d->wm = new QProcess(this);
         QString wmgr = d->settings->value("Session/WindowManager").toString();
         d->wm->start(d->settings->value("Session/WindowManager").toString(), d->settings->delimitedList("Session/WindowManagerArguments")); // TODO: make this a configurable setting

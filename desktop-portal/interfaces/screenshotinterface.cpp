@@ -46,6 +46,7 @@ uint ScreenshotInterface::Screenshot(QDBusObjectPath handle, QString app_id, QSt
             if (isTheDesk) {
                 mgr.setType(ScreenshotWindow::Type::TheDeskScreenshot);
             }
+            co_await mgr.prepareScreenshotWindows();
             mgr.showScreenshotWindows();
 
             co_await qCoro(&mgr, &ScreenshotManager::finished);
@@ -101,6 +102,7 @@ uint ScreenshotInterface::PickColor(QDBusObjectPath handle, QString app_id, QStr
     PortalCommon::setupCoro([options, parent_window, handle, this, app_id](QDBusMessage reply) -> QCoro::Task<> {
         ScreenshotManager mgr;
         mgr.setType(ScreenshotWindow::Type::ColourPicker);
+        co_await mgr.prepareScreenshotWindows();
         mgr.showScreenshotWindows();
 
         co_await qCoro(&mgr, &ScreenshotManager::finished);

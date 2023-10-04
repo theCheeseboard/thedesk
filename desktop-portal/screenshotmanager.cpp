@@ -38,6 +38,12 @@ void ScreenshotManager::setType(ScreenshotWindow::Type type) {
     }
 }
 
+QCoro::Task<> ScreenshotManager::prepareScreenshotWindows() {
+    for (auto window : d->screenshotWindows) {
+        co_await window->prepareWindow();
+    }
+}
+
 void ScreenshotManager::showScreenshotWindows() {
     for (auto window : d->screenshotWindows) {
         window->showFullScreen();
