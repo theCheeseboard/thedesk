@@ -23,6 +23,8 @@
 #include <wayfire/core.hpp>
 #include <wayfire/output.hpp>
 
+#include <QTextStream>
+
 #include "wayland-tdesktopenvironment-keygrab-v1-server-protocol.h"
 #include <iostream>
 #include <wlr/types/wlr_xdg_foreign_registry.h>
@@ -52,12 +54,6 @@ void KeygrabPlugin::ungrabKey(wl_client* client, uint32_t mod, uint32_t key) {
 }
 
 void KeygrabPlugin::init() {
-    wf::get_core().bindings->add_key(wf::create_option(wf::keybinding_t(0, 36)), new wf::key_callback([=](const wf::keybinding_t& key) {
-        std::cout << "Pressed J\n";
-        return true;
-    }));
-
-    //    wf::get_core().
     wl_global_create(wf::get_core().display, &tdesktopenvironment_keygrab_manager_v1_interface, 1, this, [](wl_client* client, void* data, uint32_t version, uint32_t id) {
         KeygrabPlugin* plugin = reinterpret_cast<KeygrabPlugin*>(data);
 
