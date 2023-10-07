@@ -1,5 +1,6 @@
 #include "screenshotinterface.h"
 
+#include "backend/abstractportalbackend.h"
 #include "portalcommon.h"
 #include "screenshotmanager.h"
 #include <QCoroCore>
@@ -75,7 +76,7 @@ uint ScreenshotInterface::Screenshot(QDBusObjectPath handle, QString app_id, QSt
             pixmap.fill(Qt::black);
             QPainter painter(&pixmap);
             for (auto screen : qApp->screens()) {
-                painter.drawPixmap(screen->geometry(), screen->grabWindow());
+                painter.drawPixmap(screen->geometry(), co_await AbstractPortalBackend::instance()->takeScreenshot(screen));
             }
 
             finalPixmap = pixmap;
