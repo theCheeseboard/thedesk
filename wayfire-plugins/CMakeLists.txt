@@ -33,3 +33,4 @@ endfunction()
 
 add_subdirectory(keygrab-plugin)
 add_subdirectory(startdesk-plugin)
+add_subdirectory(a11y-plugin)
