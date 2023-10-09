@@ -15,11 +15,11 @@ AbstractA11yController::~AbstractA11yController() {
 
 void AbstractA11yController::setEnabled(bool enabled) {
     if (enabled && !d->enabled) {
-        this->enable();
         d->enabled = true;
+        this->enable();
     } else if (!enabled && d->enabled) {
-        this->disable();
         d->enabled = false;
+        this->disable();
     }
 }
 

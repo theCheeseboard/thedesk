@@ -19,8 +19,6 @@
  * *************************************/
 #include "a11yplugin.h"
 
-// #include "wayland-tdesktopenvironment-keygrab-v1-server-protocol.h"
-
 #include "stickykeys.h"
 
 #include <wayfire/core.hpp>
@@ -62,7 +60,6 @@ void A11yPlugin::init() {
     }
 
     d->stickyKeys = new StickyKeys(&d->keyboard);
-    d->stickyKeys->setEnabled(true);
 }
 
 void A11yPlugin::fini() {

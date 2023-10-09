@@ -29,20 +29,20 @@ set_target_properties(wf-thedesk-a11y PROPERTIES
         OUTPUT_NAME thedesk-a11y
 )
 
-#find_file(TDESKTOPENVIRONMENT_KEYGRAB_FILE NAMES tdesktopenvironment-keygrab-v1.xml
-#    PATHS ENV XDG_DATA_DIRS
-#    PATH_SUFFIXES libtdesktopenvironment/wayland-protocols/tdesktopenvironment-protocols
-#    NO_DEFAULT_PATH
-#    REQUIRED
-#)
+find_file(TDESKTOPENVIRONMENT_A11Y_FILE NAMES tdesktopenvironment-accessibility-v1.xml
+    PATHS ENV XDG_DATA_DIRS
+    PATH_SUFFIXES libtdesktopenvironment/wayland-protocols/tdesktopenvironment-protocols
+    NO_DEFAULT_PATH
+    REQUIRED
+)
 
-#if(NOT TDESKTOPENVIRONMENT_KEYGRAB_FILE)
-#    message(FATAL_ERROR "Could not find tdesktopenvironment-keygrab-v1.xml")
-#endif()
+if(NOT TDESKTOPENVIRONMENT_A11Y_FILE)
+    message(FATAL_ERROR "Could not find tdesktopenvironment-accessibility-v1.xml")
+endif()
 
-#thedesk_wayfire_plugin_wayland_protocols(wf-thedesk-a11y FILES
-#    ${TDESKTOPENVIRONMENT_KEYGRAB_FILE}
-#)
+thedesk_wayfire_plugin_wayland_protocols(wf-thedesk-a11y FILES
+    ${TDESKTOPENVIRONMENT_A11Y_FILE}
+)
 
 target_link_libraries(wf-thedesk-a11y Qt::Core libcontemporary PkgConfig::wayfire PkgConfig::pixman)
 target_compile_definitions(wf-thedesk-a11y PRIVATE A11YPLUGIN_LIBRARY WLR_USE_UNSTABLE QT_NO_KEYWORDS)

@@ -1,5 +1,6 @@
 #include "stickykeys.h"
 
+#include "wayland-tdesktopenvironment-accessibility-v1-server-protocol.h"
 #include <QTextStream>
 #include <linux/input-event-codes.h>
 #include <wayfire/bindings-repository.hpp>
@@ -8,6 +9,7 @@
 
 struct StickyKeysPrivate {
         wlr_keyboard* keyboard;
+        wl_resource* tdeA11yStickyKeys;
         StickyKeys* parent;
 
         wf::signal::connection_t<wf::input_event_signal<wlr_keyboard_key_event>> keyboardButtonEvent = [this](wf::input_event_signal<wlr_keyboard_key_event>* ev) {
@@ -58,6 +60,22 @@ StickyKeys::StickyKeys(wlr_keyboard* keyboard, QObject* parent) :
     d = new StickyKeysPrivate();
     d->parent = this;
     d->keyboard = keyboard;
+
+    wl_global_create(wf::get_core().display, &tdesktopenvironment_accessibility_sticky_keys_v1_interface, 1, this, [](wl_client* client, void* data, uint32_t version, uint32_t id) {
+        auto* plugin = reinterpret_cast<StickyKeys*>(data);
+
+        plugin->d->tdeA11yStickyKeys = wl_resource_create(client, &tdesktopenvironment_accessibility_sticky_keys_v1_interface, 1, id);
+
+        auto interface = new struct tdesktopenvironment_accessibility_sticky_keys_v1_interface();
+        interface->set_enabled = [](struct wl_client* client, struct wl_resource* resource, uint enabled) {
+            if (enabled) {
+                reinterpret_cast<StickyKeys*>(resource->data)->enable();
+            } else {
+                reinterpret_cast<StickyKeys*>(resource->data)->disable();
+            }
+        };
+        wl_resource_set_implementation(plugin->d->tdeA11yStickyKeys, interface, plugin, nullptr);
+    });
 }
 
 StickyKeys::~StickyKeys() {
@@ -66,10 +84,16 @@ StickyKeys::~StickyKeys() {
 
 void StickyKeys::enable() {
     wf::get_core().connect(&d->keyboardButtonEvent);
+    this->updateStickyKeysState();
 }
 
 void StickyKeys::disable() {
     wf::get_core().disconnect(&d->keyboardButtonEvent);
+    this->updateStickyKeysState();
+}
+
+void StickyKeys::updateStickyKeysState() {
+    tdesktopenvironment_accessibility_sticky_keys_v1_send_sticky_keys_enabled(d->tdeA11yStickyKeys, this->enabled());
 }
 
 void StickyKeys::cycleModifier(Qt::KeyboardModifier modifier) {
@@ -84,6 +108,21 @@ void StickyKeys::cycleModifier(Qt::KeyboardModifier modifier) {
         // Hold this key
         d->heldModifiers = d->heldModifiers.setFlag(modifier);
     }
+
+    int heldMods;
+    if (d->heldModifiers.testFlag(Qt::ControlModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_CONTROL;
+    if (d->heldModifiers.testFlag(Qt::AltModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_ALT;
+    if (d->heldModifiers.testFlag(Qt::ShiftModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_SHIFT;
+    if (d->heldModifiers.testFlag(Qt::MetaModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_SUPER;
+
+    int latchedMods;
+    if (d->latchedModifiers.testFlag(Qt::ControlModifier)) latchedMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_CONTROL;
+    if (d->latchedModifiers.testFlag(Qt::AltModifier)) latchedMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_ALT;
+    if (d->latchedModifiers.testFlag(Qt::ShiftModifier)) latchedMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_SHIFT;
+    if (d->latchedModifiers.testFlag(Qt::MetaModifier)) latchedMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_SUPER;
+
+    tdesktopenvironment_accessibility_sticky_keys_v1_send_sticky_keys_held(d->tdeA11yStickyKeys, heldMods);
+    tdesktopenvironment_accessibility_sticky_keys_v1_send_sticky_keys_latched(d->tdeA11yStickyKeys, latchedMods);
 }
 
 void StickyKeys::keyboardButtonPressed(wf::input_event_signal<wlr_keyboard_key_event>* event) {

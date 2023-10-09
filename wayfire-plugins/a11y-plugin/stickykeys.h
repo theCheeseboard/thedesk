@@ -25,6 +25,8 @@ class StickyKeys : public AbstractA11yController {
         void enable();
         void disable();
 
+        void updateStickyKeysState();
+
         void cycleModifier(Qt::KeyboardModifier modifier);
 };
 
