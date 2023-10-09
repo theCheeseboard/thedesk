@@ -69,6 +69,6 @@ install(FILES ${CMAKE_BINARY_DIR}/thedesk.desktop
 install(FILES ${CMAKE_BINARY_DIR}/thedesk-wayland.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/wayland-sessions)
 
-install(FILES ${CMAKE_BINARY_DIR}/start-thedesk-wayland
+install(PROGRAMS ${CMAKE_BINARY_DIR}/start-thedesk-wayland
     DESTINATION ${CMAKE_INSTALL_BINDIR})
 
