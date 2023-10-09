@@ -53,6 +53,8 @@ cntp_target_name(startdesk "startdesk")
 target_link_libraries(startdesk Qt::Widgets Qt::Network Qt::DBus libcontemporary libtdesktopenvironment libthedesk)
 
 configure_file(thedesk.desktop.in ${CMAKE_BINARY_DIR}/thedesk.desktop)
+configure_file(thedesk-wayland.desktop.in ${CMAKE_BINARY_DIR}/thedesk-wayland.desktop)
+configure_file(start-thedesk-wayland.in ${CMAKE_BINARY_DIR}/start-thedesk-wayland)
 
 install(TARGETS startdesk
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -63,4 +65,10 @@ install(FILES wayfire-thedesk-config.conf
 
 install(FILES ${CMAKE_BINARY_DIR}/thedesk.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/xsessions)
+
+install(FILES ${CMAKE_BINARY_DIR}/thedesk-wayland.desktop
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/wayland-sessions)
+
+install(FILES ${CMAKE_BINARY_DIR}/start-thedesk-wayland
+    DESTINATION ${CMAKE_INSTALL_BINDIR})
 

@@ -1,0 +1,2 @@
+#!/bin/sh
+exec wayfire --config ${CMAKE_INSTALL_FULL_DATADIR}/thedesk/startdesk/wayfire-thedesk-config.conf

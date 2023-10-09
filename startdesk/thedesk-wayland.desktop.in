@@ -1,8 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Exec=/usr/bin/wayfire --config /usr/share/thedesk/startdesk/wayfire-thedesk-config.conf
-TryExec=/usr/bin/wayfire
+Exec=${CMAKE_INSTALL_FULL_BINDIR}/start-thedesk-wayland
+TryExec=${CMAKE_INSTALL_FULL_BINDIR}/wayfire
 DesktopNames=theDesk
 Name=theDesk on Wayland
 Comment=theDesk Desktop Environment

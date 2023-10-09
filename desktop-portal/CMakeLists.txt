@@ -132,7 +132,7 @@ portal_register_wayland_protocol_extension(xdg-portal FILES
     backend/wlr-screencopy-unstable-v1.xml
 )
 
-target_link_libraries(xdg-portal Qt::Widgets Qt::Network Qt::DBus Qt::WaylandClient libcontemporary libtdesktopenvironment libthedesk libthefile)
+target_link_libraries(xdg-portal Qt::Widgets Qt::Network Qt::DBus Qt::WaylandClient Qt::GuiPrivate libcontemporary libtdesktopenvironment libthedesk libthefile)
 target_include_directories(xdg-portal PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 install(TARGETS xdg-portal
