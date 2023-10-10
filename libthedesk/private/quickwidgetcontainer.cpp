@@ -48,7 +48,8 @@ QuickWidgetContainer::QuickWidgetContainer(QWidget* parent) :
     ui(new Ui::QuickWidgetContainer) {
     ui->setupUi(this);
 
-    this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    //    this->setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Popup);
+    this->setWindowFlags(Qt::Popup);
     this->setAttribute(Qt::WA_TranslucentBackground);
 
     d = new QuickWidgetContainerPrivate();
@@ -74,7 +75,7 @@ QuickWidgetContainer::QuickWidgetContainer(QWidget* parent) :
     });
 
     this->setWindowOpacity(0);
-    this->setContentsMargins(1, SC_DPI(5) + 1, 1, 1);
+    this->setContentsMargins(1, 6, 1, 1);
     ui->chunkContainerLayout->installEventFilter(this);
 }
 
@@ -148,7 +149,7 @@ void QuickWidgetContainer::paintEvent(QPaintEvent* event) {
     painter.setBrush(this->palette().color(QPalette::Window));
 
     QPolygon poly;
-    int topEdge = SC_DPI(5);
+    int topEdge = 5;
     int leftPoint = qMax(0, d->pointX - 5);
     int rightPoint = qMin(this->width() - 1, d->pointX + 5);
 
@@ -183,13 +184,13 @@ void QuickWidgetContainer::calculatePosition() {
     QRect geom = this->geometry();
     geom.setSize(this->sizeHint());
     geom.moveLeft(midpoint.x() - geom.width() / 2);
-    if (geom.left() < screenGeometry.left() + SC_DPI(9)) geom.moveLeft(screenGeometry.left() + SC_DPI(9));
-    if (geom.right() > screenGeometry.right() - SC_DPI(9)) geom.moveRight(screenGeometry.right() - SC_DPI(9));
+    if (geom.left() < screenGeometry.left() + 9) geom.moveLeft(screenGeometry.left() + 9);
+    if (geom.right() > screenGeometry.right() - 9) geom.moveRight(screenGeometry.right() - 9);
     this->setGeometry(geom);
 
     d->pointX = this->mapFromGlobal(midpoint).x();
 
-    d->yAnim->setStartValue(midpoint.y() - SC_DPI(50));
+    d->yAnim->setStartValue(midpoint.y() - 50);
     d->yAnim->setEndValue(midpoint.y());
 }
 
@@ -198,4 +199,8 @@ bool QuickWidgetContainer::eventFilter(QObject* watched, QEvent* event) {
         QTimer::singleShot(0, this, &QuickWidgetContainer::calculatePosition);
     }
     return false;
+}
+
+void QuickWidgetContainer::hideEvent(QHideEvent* event) {
+    if (d->isShowing) this->hideContainer();
 }
