@@ -78,7 +78,11 @@ void MessageDialog::setOptions(const QSharedPointer<QMessageDialogOptions>& opti
     }
 
     QPalette pal = ui->dialogTypeWidget->palette();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+    switch (options->standardIcon()) {
+#else
     switch (options->icon()) {
+#endif
         case QMessageDialogOptions::NoIcon:
         case QMessageDialogOptions::Information:
             pal.setColor(QPalette::Window, Qt::transparent);
