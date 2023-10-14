@@ -68,11 +68,7 @@ StickyKeys::StickyKeys(wlr_keyboard* keyboard, QObject* parent) :
 
         auto interface = new struct tdesktopenvironment_accessibility_sticky_keys_v1_interface();
         interface->set_enabled = [](struct wl_client* client, struct wl_resource* resource, uint enabled) {
-            if (enabled) {
-                reinterpret_cast<StickyKeys*>(resource->data)->enable();
-            } else {
-                reinterpret_cast<StickyKeys*>(resource->data)->disable();
-            }
+            reinterpret_cast<StickyKeys*>(resource->data)->setEnabled(enabled);
         };
         wl_resource_set_implementation(plugin->d->tdeA11yStickyKeys, interface, plugin, nullptr);
     });
@@ -109,13 +105,13 @@ void StickyKeys::cycleModifier(Qt::KeyboardModifier modifier) {
         d->heldModifiers = d->heldModifiers.setFlag(modifier);
     }
 
-    int heldMods;
+    int heldMods = 0;
     if (d->heldModifiers.testFlag(Qt::ControlModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_CONTROL;
     if (d->heldModifiers.testFlag(Qt::AltModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_ALT;
     if (d->heldModifiers.testFlag(Qt::ShiftModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_SHIFT;
     if (d->heldModifiers.testFlag(Qt::MetaModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_SUPER;
 
-    int latchedMods;
+    int latchedMods = 0;
     if (d->latchedModifiers.testFlag(Qt::ControlModifier)) latchedMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_CONTROL;
     if (d->latchedModifiers.testFlag(Qt::AltModifier)) latchedMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_ALT;
     if (d->latchedModifiers.testFlag(Qt::ShiftModifier)) latchedMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_SHIFT;
