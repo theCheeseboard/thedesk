@@ -161,9 +161,10 @@ void MouseKeys::processMouseMovement() {
 
     auto movement = d->mouseKeysPixels;
     auto stride = qMin(5000, d->lastPress.msecsTo(QDateTime::currentDateTimeUtc()));
-    while (stride -= 500 >= 0) {
-        movement += 1;
-    }
+    do {
+        movement += d->mouseKeysPixels;
+        stride -= 500;
+    } while (stride >= 0);
 
     if (d->moveDirection & Qt::LeftEdge) x -= movement;
     if (d->moveDirection & Qt::RightEdge) x += movement;
