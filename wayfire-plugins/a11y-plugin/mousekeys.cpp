@@ -1,6 +1,7 @@
 #include "mousekeys.h"
 
 #include "wayland-tdesktopenvironment-accessibility-v1-server-protocol.h"
+#include <QDateTime>
 #include <QTextStream>
 #include <linux/input-event-codes.h>
 #include <wlr/types/wlr_cursor.h>
@@ -18,6 +19,7 @@ struct MouseKeysPrivate {
         wl_event_source* timer;
 
         Qt::Edges moveDirection;
+        QDateTime lastPress;
 
         wf::signal::connection_t<wf::input_event_signal<wlr_keyboard_key_event>> keyboardButtonEvent = [this](wf::input_event_signal<wlr_keyboard_key_event>* ev) {
             parent->keyboardButtonPressed(ev);
@@ -95,6 +97,7 @@ void MouseKeys::keyboardButtonPressed(wf::input_event_signal<wlr_keyboard_key_ev
     if (event->event->state == WL_KEYBOARD_KEY_STATE_PRESSED) {
         // Always override the existing movement
         d->moveDirection = edges;
+        d->lastPress = QDateTime::currentDateTimeUtc();
     } else if (event->event->state == WL_KEYBOARD_KEY_STATE_RELEASED) {
         // Only stop movement if the existing movement is the same
         if (d->moveDirection == edges) {
@@ -110,10 +113,22 @@ int MouseKeys::mouseKeysTimer() {
         double x = 0;
         double y = 0;
 
-        if (d->moveDirection & Qt::LeftEdge) x -= 1;
-        if (d->moveDirection & Qt::RightEdge) x += 1;
-        if (d->moveDirection & Qt::TopEdge) y -= 1;
-        if (d->moveDirection & Qt::BottomEdge) y += 1;
+        auto movement = d->mouseKeysPixels;
+        auto stride = d->lastPress.msecsTo(QDateTime::currentDateTimeUtc());
+        if (stride >= 2000) {
+            movement *= 5;
+        } else if (stride >= 1500) {
+            movement *= 4;
+        } else if (stride >= 1000) {
+            movement *= 3;
+        } else if (stride >= 500) {
+            movement *= 2;
+        }
+
+        if (d->moveDirection & Qt::LeftEdge) x -= movement;
+        if (d->moveDirection & Qt::RightEdge) x += movement;
+        if (d->moveDirection & Qt::TopEdge) y -= movement;
+        if (d->moveDirection & Qt::BottomEdge) y += movement;
 
         wlr_pointer_motion_event ev;
         ev.pointer = d->pointer;
