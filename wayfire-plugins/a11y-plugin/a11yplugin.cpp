@@ -33,6 +33,10 @@ struct A11yPluginPrivate {
         wlr_keyboard keyboard;
         wl_resource* tdeKeygrabManager;
         StickyKeys* stickyKeys;
+
+        wlr_keyboard_impl keyboardImpl = {
+            "thedesk-a11y-keyboard",
+            nullptr};
 };
 
 A11yPlugin::A11yPlugin() {
@@ -44,14 +48,9 @@ A11yPlugin::~A11yPlugin() {
 }
 
 void A11yPlugin::init() {
-    wlr_keyboard_impl keyboardImpl = {
-        "thedesk-a11y-keyboard",
-        [](wlr_keyboard*, uint32_t) {
-        }};
-
     d->backend = wlr_headless_backend_create(wf::get_core().display);
     wlr_multi_backend_add(wf::get_core().backend, d->backend);
-    wlr_keyboard_init(&d->keyboard, &keyboardImpl, "thedesk-a11y-keyboard");
+    wlr_keyboard_init(&d->keyboard, &d->keyboardImpl, "thedesk-a11y-keyboard");
 
     wl_signal_emit_mutable(&d->backend->events.new_input, &d->keyboard.base);
 

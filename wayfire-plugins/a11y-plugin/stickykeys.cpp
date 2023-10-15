@@ -184,6 +184,7 @@ void StickyKeys::keyboardButtonPressed(wf::input_event_signal<wlr_keyboard_key_e
 
                 // Clear out all the held modifiers
                 d->heldModifiers = Qt::NoModifier;
+                tdesktopenvironment_accessibility_sticky_keys_v1_send_sticky_keys_held(d->tdeA11yStickyKeys, heldMods);
             }
     }
 }
