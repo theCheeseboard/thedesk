@@ -8,7 +8,7 @@ struct MouseKeysPrivate;
 class MouseKeys : public AbstractA11yController {
         Q_OBJECT
     public:
-        explicit MouseKeys(wlr_keyboard* keyboard, wlr_pointer *pointer, QObject* parent = nullptr);
+        explicit MouseKeys(wlr_keyboard* keyboard, wlr_pointer* pointer, QObject* parent = nullptr);
         ~MouseKeys();
 
     protected:
@@ -25,6 +25,8 @@ class MouseKeys : public AbstractA11yController {
     private:
         void enable();
         void disable();
+
+        void clickMouse();
 };
 
 #endif // MOUSEKEYS_H

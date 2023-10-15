@@ -3,6 +3,7 @@
 #include "wayland-tdesktopenvironment-accessibility-v1-server-protocol.h"
 #include <QTextStream>
 #include <linux/input-event-codes.h>
+#include <wlr/types/wlr_cursor.h>
 
 struct MouseKeysPrivate {
         static constexpr int mouseKeysDelay = 100;
@@ -82,6 +83,9 @@ void MouseKeys::keyboardButtonPressed(wf::input_event_signal<wlr_keyboard_key_ev
         case KEY_KP3:
             edges = Qt::RightEdge | Qt::BottomEdge;
             break;
+        case KEY_KP5:
+            this->clickMouse();
+            return;
     }
 
     if (edges == 0) return;
@@ -103,10 +107,8 @@ int MouseKeys::mouseKeysTimer() {
     if (!this->enabled()) return 0;
 
     if (d->moveDirection) {
-        auto cursor = wf::get_core().get_cursor_position();
-
-        double x = cursor.x;
-        double y = cursor.y;
+        double x = 0;
+        double y = 0;
 
         if (d->moveDirection & Qt::LeftEdge) x -= 1;
         if (d->moveDirection & Qt::RightEdge) x += 1;
@@ -116,8 +118,8 @@ int MouseKeys::mouseKeysTimer() {
         wlr_pointer_motion_event ev;
         ev.pointer = d->pointer;
         ev.time_msec = wf::get_current_time();
-        ev.delta_x = x;
-        ev.delta_y = y;
+        ev.delta_x = ev.unaccel_dx = x;
+        ev.delta_y = ev.unaccel_dy = y;
         wl_signal_emit(&d->pointer->events.motion, &ev);
         wl_signal_emit(&d->pointer->events.frame, nullptr);
     }
@@ -135,6 +137,24 @@ void MouseKeys::enable() {
 void MouseKeys::disable() {
     wf::get_core().disconnect(&d->keyboardButtonEvent);
     this->updateMouseKeysState();
+}
+
+void MouseKeys::clickMouse() {
+    wlr_pointer_button_event ev1;
+    ev1.pointer = d->pointer;
+    ev1.button = BTN_LEFT;
+    ev1.state = WLR_BUTTON_PRESSED;
+    ev1.time_msec = wf::get_current_time();
+    wl_signal_emit(&d->pointer->events.button, &ev1);
+    wl_signal_emit(&d->pointer->events.frame, nullptr);
+
+    wlr_pointer_button_event ev2;
+    ev2.pointer = d->pointer;
+    ev2.button = BTN_LEFT;
+    ev2.state = WLR_BUTTON_RELEASED;
+    ev2.time_msec = wf::get_current_time();
+    wl_signal_emit(&d->pointer->events.button, &ev2);
+    wl_signal_emit(&d->pointer->events.frame, nullptr);
 }
 
 void MouseKeys::updateMouseKeysState() {

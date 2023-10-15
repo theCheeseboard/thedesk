@@ -59,6 +59,7 @@ void A11yPlugin::init() {
     wlr_pointer_init(&d->pointer, &d->pointerImpl, "thedesk-a11y-pointer");
     wlr_keyboard_init(&d->keyboard, &d->keyboardImpl, "thedesk-a11y-keyboard");
 
+    wl_signal_emit_mutable(&d->backend->events.new_input, &d->pointer.base);
     wl_signal_emit_mutable(&d->backend->events.new_input, &d->keyboard.base);
 
     if (wf::get_core().get_current_state() == wf::compositor_state_t::RUNNING) {
