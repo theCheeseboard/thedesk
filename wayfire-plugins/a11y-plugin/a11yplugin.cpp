@@ -19,6 +19,7 @@
  * *************************************/
 #include "a11yplugin.h"
 
+#include "mousekeys.h"
 #include "stickykeys.h"
 
 #include <wayfire/core.hpp>
@@ -30,10 +31,15 @@ extern "C" {
 
 struct A11yPluginPrivate {
         wlr_backend* backend;
+        wlr_pointer pointer;
         wlr_keyboard keyboard;
         wl_resource* tdeKeygrabManager;
-        StickyKeys* stickyKeys;
 
+        StickyKeys* stickyKeys;
+        MouseKeys* mouseKeys;
+
+        wlr_pointer_impl pointerImpl = {
+            "thedesk-a11y-pointer"};
         wlr_keyboard_impl keyboardImpl = {
             "thedesk-a11y-keyboard",
             nullptr};
@@ -50,6 +56,7 @@ A11yPlugin::~A11yPlugin() {
 void A11yPlugin::init() {
     d->backend = wlr_headless_backend_create(wf::get_core().display);
     wlr_multi_backend_add(wf::get_core().backend, d->backend);
+    wlr_pointer_init(&d->pointer, &d->pointerImpl, "thedesk-a11y-pointer");
     wlr_keyboard_init(&d->keyboard, &d->keyboardImpl, "thedesk-a11y-keyboard");
 
     wl_signal_emit_mutable(&d->backend->events.new_input, &d->keyboard.base);
@@ -59,10 +66,12 @@ void A11yPlugin::init() {
     }
 
     d->stickyKeys = new StickyKeys(&d->keyboard);
+    d->mouseKeys = new MouseKeys(&d->keyboard, &d->pointer);
 }
 
 void A11yPlugin::fini() {
     d->stickyKeys->deleteLater();
+    d->mouseKeys->deleteLater();
     wlr_keyboard_finish(&d->keyboard);
     wlr_multi_backend_remove(wf::get_core().backend, d->backend);
     wlr_backend_destroy(d->backend);

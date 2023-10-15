@@ -11,12 +11,14 @@ set(SOURCES
     a11yplugin.cpp
     abstracta11ycontroller.cpp
     stickykeys.cpp
+    mousekeys.cpp
 )
 
 set(HEADERS
     a11yplugin.h
     abstracta11ycontroller.h
     stickykeys.h
+    mousekeys.h
 )
 
 set(PRIVATE_HEADERS
