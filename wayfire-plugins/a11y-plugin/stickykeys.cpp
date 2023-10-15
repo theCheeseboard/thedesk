@@ -105,6 +105,10 @@ void StickyKeys::cycleModifier(Qt::KeyboardModifier modifier) {
         d->heldModifiers = d->heldModifiers.setFlag(modifier);
     }
 
+    sendUpdatedKeys();
+}
+
+void StickyKeys::sendUpdatedKeys() {
     int heldMods = 0;
     if (d->heldModifiers.testFlag(Qt::ControlModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_CONTROL;
     if (d->heldModifiers.testFlag(Qt::AltModifier)) heldMods |= TDESKTOPENVIRONMENT_ACCESSIBILITY_STICKY_KEYS_V1_MODIFIER_ALT;
@@ -184,7 +188,8 @@ void StickyKeys::keyboardButtonPressed(wf::input_event_signal<wlr_keyboard_key_e
 
                 // Clear out all the held modifiers
                 d->heldModifiers = Qt::NoModifier;
-                tdesktopenvironment_accessibility_sticky_keys_v1_send_sticky_keys_held(d->tdeA11yStickyKeys, heldMods);
+
+                sendUpdatedKeys();
             }
     }
 }
