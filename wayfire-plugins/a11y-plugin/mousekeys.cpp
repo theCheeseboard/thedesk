@@ -104,6 +104,9 @@ void MouseKeys::keyboardButtonPressed(wf::input_event_signal<wlr_keyboard_key_ev
         // Always override the existing movement
         d->moveDirection = edges;
         d->lastPress = QDateTime::currentDateTimeUtc();
+
+        // Always move the mouse at least once
+        processMouseMovement();
     } else if (event->event->state == WL_KEYBOARD_KEY_STATE_RELEASED) {
         // Only stop movement if the existing movement is the same
         if (d->moveDirection == edges) {
@@ -115,29 +118,7 @@ void MouseKeys::keyboardButtonPressed(wf::input_event_signal<wlr_keyboard_key_ev
 int MouseKeys::mouseKeysTimer() {
     if (!this->enabled()) return 0;
 
-    if (d->moveDirection) {
-        double x = 0;
-        double y = 0;
-
-        auto movement = d->mouseKeysPixels;
-        auto stride = qMin(5000, d->lastPress.msecsTo(QDateTime::currentDateTimeUtc()));
-        while (stride -= 500 >= 0) {
-            movement += 1;
-        }
-
-        if (d->moveDirection & Qt::LeftEdge) x -= movement;
-        if (d->moveDirection & Qt::RightEdge) x += movement;
-        if (d->moveDirection & Qt::TopEdge) y -= movement;
-        if (d->moveDirection & Qt::BottomEdge) y += movement;
-
-        wlr_pointer_motion_event ev;
-        ev.pointer = d->pointer;
-        ev.time_msec = wf::get_current_time();
-        ev.delta_x = ev.unaccel_dx = x;
-        ev.delta_y = ev.unaccel_dy = y;
-        wl_signal_emit(&d->pointer->events.motion, &ev);
-        wl_signal_emit(&d->pointer->events.frame, nullptr);
-    }
+    if (d->moveDirection) processMouseMovement();
 
     wl_event_source_timer_update(d->timer, d->mouseKeysDelay);
     return 1;
@@ -171,6 +152,30 @@ void MouseKeys::releaseMouse() {
     ev.state = WLR_BUTTON_RELEASED;
     ev.time_msec = wf::get_current_time();
     wl_signal_emit(&d->pointer->events.button, &ev);
+    wl_signal_emit(&d->pointer->events.frame, nullptr);
+}
+
+void MouseKeys::processMouseMovement() {
+    double x = 0;
+    double y = 0;
+
+    auto movement = d->mouseKeysPixels;
+    auto stride = qMin(5000, d->lastPress.msecsTo(QDateTime::currentDateTimeUtc()));
+    while (stride -= 500 >= 0) {
+        movement += 1;
+    }
+
+    if (d->moveDirection & Qt::LeftEdge) x -= movement;
+    if (d->moveDirection & Qt::RightEdge) x += movement;
+    if (d->moveDirection & Qt::TopEdge) y -= movement;
+    if (d->moveDirection & Qt::BottomEdge) y += movement;
+
+    wlr_pointer_motion_event ev;
+    ev.pointer = d->pointer;
+    ev.time_msec = wf::get_current_time();
+    ev.delta_x = ev.unaccel_dx = x;
+    ev.delta_y = ev.unaccel_dy = y;
+    wl_signal_emit(&d->pointer->events.motion, &ev);
     wl_signal_emit(&d->pointer->events.frame, nullptr);
 }
 
