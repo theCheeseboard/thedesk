@@ -26,7 +26,8 @@ class MouseKeys : public AbstractA11yController {
         void enable();
         void disable();
 
-        void clickMouse();
+        void pressMouse();
+        void releaseMouse();
 };
 
 #endif // MOUSEKEYS_H

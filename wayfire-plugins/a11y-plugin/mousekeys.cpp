@@ -86,8 +86,14 @@ void MouseKeys::keyboardButtonPressed(wf::input_event_signal<wlr_keyboard_key_ev
             edges = Qt::RightEdge | Qt::BottomEdge;
             break;
         case KEY_KP5:
-            this->clickMouse();
-            return;
+            {
+                if (event->event->state == WL_KEYBOARD_KEY_STATE_PRESSED) {
+                    this->pressMouse();
+                } else if (event->event->state == WL_KEYBOARD_KEY_STATE_RELEASED) {
+                    this->releaseMouse();
+                }
+                return;
+            }
     }
 
     if (edges == 0) return;
@@ -114,15 +120,9 @@ int MouseKeys::mouseKeysTimer() {
         double y = 0;
 
         auto movement = d->mouseKeysPixels;
-        auto stride = d->lastPress.msecsTo(QDateTime::currentDateTimeUtc());
-        if (stride >= 2000) {
-            movement *= 5;
-        } else if (stride >= 1500) {
-            movement *= 4;
-        } else if (stride >= 1000) {
-            movement *= 3;
-        } else if (stride >= 500) {
-            movement *= 2;
+        auto stride = qMin(5000, d->lastPress.msecsTo(QDateTime::currentDateTimeUtc()));
+        while (stride -= 500 >= 0) {
+            movement += 1;
         }
 
         if (d->moveDirection & Qt::LeftEdge) x -= movement;
@@ -154,21 +154,23 @@ void MouseKeys::disable() {
     this->updateMouseKeysState();
 }
 
-void MouseKeys::clickMouse() {
-    wlr_pointer_button_event ev1;
-    ev1.pointer = d->pointer;
-    ev1.button = BTN_LEFT;
-    ev1.state = WLR_BUTTON_PRESSED;
-    ev1.time_msec = wf::get_current_time();
-    wl_signal_emit(&d->pointer->events.button, &ev1);
+void MouseKeys::pressMouse() {
+    wlr_pointer_button_event ev;
+    ev.pointer = d->pointer;
+    ev.button = BTN_LEFT;
+    ev.state = WLR_BUTTON_PRESSED;
+    ev.time_msec = wf::get_current_time();
+    wl_signal_emit(&d->pointer->events.button, &ev);
     wl_signal_emit(&d->pointer->events.frame, nullptr);
+}
 
-    wlr_pointer_button_event ev2;
-    ev2.pointer = d->pointer;
-    ev2.button = BTN_LEFT;
-    ev2.state = WLR_BUTTON_RELEASED;
-    ev2.time_msec = wf::get_current_time();
-    wl_signal_emit(&d->pointer->events.button, &ev2);
+void MouseKeys::releaseMouse() {
+    wlr_pointer_button_event ev;
+    ev.pointer = d->pointer;
+    ev.button = BTN_LEFT;
+    ev.state = WLR_BUTTON_RELEASED;
+    ev.time_msec = wf::get_current_time();
+    wl_signal_emit(&d->pointer->events.button, &ev);
     wl_signal_emit(&d->pointer->events.frame, nullptr);
 }
 
