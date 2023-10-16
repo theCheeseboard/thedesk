@@ -23,6 +23,7 @@
 #include <Gestures/gesturedaemon.h>
 #include <QPainter>
 #include <QScreen>
+#include <QWindow>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
 #include <Wm/desktopwm.h>
@@ -177,6 +178,20 @@ Gateway* Gateway::instance() {
     return d->instance;
 }
 
+void Gateway::setFixedHeight(int height) {
+    QWidget::setFixedHeight(height);
+
+    // Work around a Qt bug that causes the native window not to be updated on Wayland for some reason
+    this->windowHandle()->setGeometry(this->geometry());
+}
+
+void Gateway::setFixedWidth(int width) {
+    QWidget::setFixedWidth(width);
+
+    // Work around a Qt bug that causes the native window not to be updated on Wayland for some reason
+    this->windowHandle()->setGeometry(this->geometry());
+}
+
 void Gateway::show() {
     auto* screen = ScreenDaemon::instance()->primayScreen();
     this->setFixedHeight(screen->geometry().height());
@@ -190,6 +205,8 @@ void Gateway::show() {
     QDialog::show();
     QDialog::activateWindow();
     ui->gatewayContainer->setFocus();
+
+    DesktopWm::setSystemWindow(this, DesktopWm::SystemWindowTypeMenu);
 }
 
 void Gateway::close() {

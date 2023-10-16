@@ -20,8 +20,8 @@
 #ifndef NOTIFICATIONSDRAWER_H
 #define NOTIFICATIONSDRAWER_H
 
-#include <QDialog>
 #include "notification.h"
+#include <QDialog>
 
 namespace Ui {
     class NotificationsDrawer;
@@ -35,6 +35,9 @@ class NotificationsDrawer : public QDialog {
     public:
         explicit NotificationsDrawer(NotificationTracker* tracker);
         ~NotificationsDrawer();
+
+        void setFixedHeight(int height);
+        void setFixedWidth(int width);
 
     private:
         Ui::NotificationsDrawer* ui;

@@ -1,0 +1,3 @@
+#!/bin/sh
+sleep 2 # Mitigate lightdm bug that causes Wayfire not to start up correctly immediately
+exec wayfire --config ${CMAKE_INSTALL_FULL_DATADIR}/thedesk/startdesk/wayfire-thedesk-config.conf

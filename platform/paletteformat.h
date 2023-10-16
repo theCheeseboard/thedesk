@@ -20,8 +20,9 @@
 #ifndef PALETTEFORMAT_H
 #define PALETTEFORMAT_H
 
-#include <QPalette>
+#include <QJsonValue>
 #include <QMap>
+#include <QPalette>
 
 namespace PaletteFormat {
     QPalette::ColorRole roleForString(QString string);
@@ -29,6 +30,6 @@ namespace PaletteFormat {
 
     void applyColor(QPalette* pal, QString key, QJsonValue value);
     QColor colorFromValue(QJsonValue value);
-}
+} // namespace PaletteFormat
 
 #endif // PALETTEFORMAT_H

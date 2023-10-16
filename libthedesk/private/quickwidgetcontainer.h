@@ -62,6 +62,10 @@ class QuickWidgetContainer : public QWidget {
 
         void calculatePosition();
 
+
+        // QWidget interface
+    protected:
+        void hideEvent(QHideEvent *event);
 };
 
 #endif // QUICKWIDGETCONTAINER_H

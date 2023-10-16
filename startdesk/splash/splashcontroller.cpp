@@ -168,7 +168,8 @@ void SplashController::runAutostart() {
     // Autostart the Polkit agent
     QString pkPath = QStringLiteral(SYSTEM_LIBRARY_DIRECTORY).append("/td-polkitagent");
     if (QFile::exists(pkPath)) {
-        QProcess::startDetached(pkPath, QStringList());
+        auto pkProc = new QProcess(this);
+        pkProc->start(pkPath);
     }
 
     QStringList searchPaths = {
@@ -204,7 +205,7 @@ void SplashController::runAutostart() {
 }
 
 void SplashController::startWM() {
-    if (!d->wm) {
+    if (!d->wm && QApplication::platformName() != "wayland") {
         d->wm = new QProcess(this);
         QString wmgr = d->settings->value("Session/WindowManager").toString();
         d->wm->start(d->settings->value("Session/WindowManager").toString(), d->settings->delimitedList("Session/WindowManagerArguments")); // TODO: make this a configurable setting
@@ -212,7 +213,6 @@ void SplashController::startWM() {
 }
 
 void SplashController::startDE() {
-    //    return;
     if (d->process) return;
 
     emit starting();

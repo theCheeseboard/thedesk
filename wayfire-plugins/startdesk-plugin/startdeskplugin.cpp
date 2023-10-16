@@ -19,17 +19,25 @@
  * *************************************/
 #include "startdeskplugin.h"
 
+#include <iostream>
 #include <sys/wait.h>
 #include <wayfire/core.hpp>
-#include <iostream>
 
-#include <QProcess>
 #include <QPointer>
+#include <QProcess>
+#include <QTextStream>
 
 StartdeskPlugin::StartdeskPlugin() {
+}
+
+void StartdeskPlugin::init() {
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
     env.insert("QT_QPA_PLATFORM", "wayland");
     env.insert("WAYLAND_DISPLAY", QString::fromStdString(wf::get_core().wayland_display));
+
+    if (qEnvironmentVariableIsSet("T_CHILD_LD_PRELOAD")) {
+        env.insert("T_CHILD_LD_PRELOAD", "/usr/lib/libasan.so");
+    }
 
     QString x11Display = QString::fromStdString(wf::get_core().get_xwayland_display());
     if (!x11Display.isEmpty()) {
@@ -37,17 +45,22 @@ StartdeskPlugin::StartdeskPlugin() {
     }
 
     QString startdeskCommand = qEnvironmentVariable("TD_WF_STARTDESK", "startdesk");
-    std::cout << "Running startdesk command " << startdeskCommand.toStdString() << "\n";
+    QTextStream(stdout) << "Running startdesk command " << startdeskCommand << "\n";
 
     QPointer<QProcess> deskProcess = new QProcess();
     deskProcess->setProcessEnvironment(env);
     deskProcess->start(startdeskCommand, QStringList());
     deskProcess->waitForStarted();
-    QObject::connect(deskProcess.data(), QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [ = ] {
-        std::cout << "Finished!\n";
+    QObject::connect(deskProcess.data(), &QProcess::readyReadStandardOutput, [deskProcess] {
+        QTextStream(stdout) << deskProcess->readAllStandardOutput();
     });
-
-    waiter.set_timeout(1000, [ = ] {
+    QObject::connect(deskProcess.data(), &QProcess::readyReadStandardError, [deskProcess] {
+        QTextStream(stderr) << deskProcess->readAllStandardError();
+    });
+    QObject::connect(deskProcess.data(), QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [=] {
+        QTextStream(stdout) << "Finished!\n";
+    });
+    waiter.set_timeout(1000, [=] {
         if (!deskProcess || deskProcess->waitForFinished(0)) {
             wf::get_core().shutdown();
             return false;

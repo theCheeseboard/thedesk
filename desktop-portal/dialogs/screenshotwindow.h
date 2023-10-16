@@ -20,6 +20,7 @@
 #ifndef SCREENSHOTWINDOW_H
 #define SCREENSHOTWINDOW_H
 
+#include <QCoroTask>
 #include <QWidget>
 
 namespace Ui {
@@ -33,6 +34,8 @@ class ScreenshotWindow : public QWidget {
     public:
         explicit ScreenshotWindow(QScreen* screen, QWidget* parent = nullptr);
         ~ScreenshotWindow();
+
+        QCoro::Task<> prepareWindow();
 
         enum class Type {
             ApplicationScreenshot,

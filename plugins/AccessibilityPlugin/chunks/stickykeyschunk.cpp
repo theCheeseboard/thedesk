@@ -42,12 +42,12 @@ StickyKeysChunk::StickyKeysChunk() :
     Chunk() {
     d = new StickyKeysChunkPrivate();
 
-    connect(DesktopWm::accessibility(), &DesktopAccessibility::accessibilityOptionEnabledChanged, this, [=](DesktopAccessibility::AccessibilityOption option, bool enabled) {
+    connect(DesktopWm::accessibility(), &DesktopAccessibility::accessibilityOptionEnabledChanged, this, [this](DesktopAccessibility::AccessibilityOption option, bool enabled) {
         if (option == DesktopAccessibility::StickyKeys) {
             updateRegistration(enabled);
         }
     });
-    connect(DesktopWm::accessibility(), &DesktopAccessibility::stickyKeysStateChanged, this, [=](Qt::KeyboardModifiers latched, Qt::KeyboardModifiers locked) {
+    connect(DesktopWm::accessibility(), &DesktopAccessibility::stickyKeysStateChanged, this, [this](Qt::KeyboardModifiers latched, Qt::KeyboardModifiers locked) {
         d->latched = latched;
         d->locked = locked;
 
@@ -68,7 +68,7 @@ StickyKeysChunk::~StickyKeysChunk() {
 }
 
 QSize StickyKeysChunk::sizeHint() const {
-    return SC_DPI_T(QSize(16, 16), QSize);
+    return QSize(16, 16);
 }
 
 void StickyKeysChunk::updateRegistration(bool reg) {
@@ -88,36 +88,36 @@ QString StickyKeysChunk::name() {
 }
 
 int StickyKeysChunk::expandedHeight() {
-    return SC_DPI(16);
+    return 16;
 }
 
 int StickyKeysChunk::statusBarHeight() {
-    return SC_DPI(16);
+    return 16;
 }
 
 void StickyKeysChunk::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
 
     QRect rect;
-    rect.setSize(SC_DPI_T(QSize(16, 16), QSize));
+    rect.setSize(QSize(16, 16));
     rect.moveCenter(QPoint(this->width() / 2, this->height() / 2));
 
     QRect shiftRect;
-    shiftRect.setHeight(rect.height() / 2 - SC_DPI(2));
-    shiftRect.setWidth(rect.width() - SC_DPI(6));
-    shiftRect.moveTopLeft(rect.topLeft() + SC_DPI_T(QPoint(2, 2), QPoint));
+    shiftRect.setHeight(rect.height() / 2 - 2);
+    shiftRect.setWidth(rect.width() - 6);
+    shiftRect.moveTopLeft(rect.topLeft() + QPoint(2, 2));
 
     QRect ctrlRect;
     ctrlRect.setHeight(shiftRect.height());
-    ctrlRect.setWidth(SC_DPI(4));
-    ctrlRect.moveTop(shiftRect.bottom() + SC_DPI(1));
+    ctrlRect.setWidth(4);
+    ctrlRect.moveTop(shiftRect.bottom() + 1);
     ctrlRect.moveLeft(shiftRect.left());
 
     QRect superRect = ctrlRect;
-    superRect.moveLeft(ctrlRect.right() + SC_DPI(1));
+    superRect.moveLeft(ctrlRect.right() + 1);
 
     QRect altRect = superRect;
-    altRect.moveLeft(superRect.right() + SC_DPI(1));
+    altRect.moveLeft(superRect.right() + 1);
 
     painter.setPen(this->palette().color(QPalette::WindowText));
     painter.setBrush(Qt::transparent);

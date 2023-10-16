@@ -12,6 +12,7 @@ class ScreenshotManager : public QObject {
         ~ScreenshotManager();
 
         void setType(ScreenshotWindow::Type type);
+        QCoro::Task<> prepareScreenshotWindows();
         void showScreenshotWindows();
 
         QPixmap finalPixmap();

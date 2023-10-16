@@ -19,15 +19,18 @@
  * *************************************/
 #include "keygrabplugin.h"
 
+#include <wayfire/bindings-repository.hpp>
 #include <wayfire/core.hpp>
 #include <wayfire/output.hpp>
 
-#include <wlr/types/wlr_xdg_foreign_registry.h>
+#include <QTextStream>
+
 #include "wayland-tdesktopenvironment-keygrab-v1-server-protocol.h"
 #include <iostream>
+#include <wlr/types/wlr_xdg_foreign_registry.h>
 
 struct KeygrabPluginPrivate {
-    wl_resource* tdeKeygrabManager;
+        wl_resource* tdeKeygrabManager;
 };
 
 KeygrabPlugin::KeygrabPlugin() {
@@ -40,7 +43,7 @@ KeygrabPlugin::~KeygrabPlugin() {
 
 void KeygrabPlugin::grabKey(wl_client* client, uint32_t mod, uint32_t key) {
     std::cout << "Grabbing key " << key << " mod " << mod << "\n";
-    output->add_key(wf::create_option(wf::keybinding_t(mod, key)), new wf::key_callback([ = ](const wf::keybinding_t& keybind) {
+    wf::get_core().bindings->add_key(wf::create_option(wf::keybinding_t(mod, key)), new wf::key_callback([=](const wf::keybinding_t& keybind) {
         std::cout << "Pressed " << key << " mod " << mod << "\n";
         tdesktopenvironment_keygrab_manager_v1_send_activated(d->tdeKeygrabManager, mod, key, 0);
         return true;
@@ -48,29 +51,22 @@ void KeygrabPlugin::grabKey(wl_client* client, uint32_t mod, uint32_t key) {
 }
 
 void KeygrabPlugin::ungrabKey(wl_client* client, uint32_t mod, uint32_t key) {
-
 }
 
 void KeygrabPlugin::init() {
-    output->add_key(wf::create_option(wf::keybinding_t(0, 36)), new wf::key_callback([ = ](const wf::keybinding_t& key) {
-        std::cout << "Pressed J\n";
-        return true;
-    }));
-
-//    wf::get_core().
-    wl_global_create(wf::get_core().display, &tdesktopenvironment_keygrab_manager_v1_interface, 1, this, [](wl_client * client, void* data, uint32_t version, uint32_t id) {
+    wl_global_create(wf::get_core().display, &tdesktopenvironment_keygrab_manager_v1_interface, 1, this, [](wl_client* client, void* data, uint32_t version, uint32_t id) {
         KeygrabPlugin* plugin = reinterpret_cast<KeygrabPlugin*>(data);
 
         plugin->d->tdeKeygrabManager = wl_resource_create(client, &tdesktopenvironment_keygrab_manager_v1_interface, 1, id);
 
         struct tdesktopenvironment_keygrab_manager_v1_interface* interface = new struct tdesktopenvironment_keygrab_manager_v1_interface();
-        interface->grab_key = [](struct wl_client * client, struct wl_resource * resource, uint32_t mod,  uint32_t key) {
+        interface->grab_key = [](struct wl_client* client, struct wl_resource* resource, uint32_t mod, uint32_t key) {
             reinterpret_cast<KeygrabPlugin*>(resource->data)->grabKey(client, mod, key);
         };
-        interface->ungrab_key = [](struct wl_client * client, struct wl_resource * resource, uint32_t mod, uint32_t key) {
+        interface->ungrab_key = [](struct wl_client* client, struct wl_resource* resource, uint32_t mod, uint32_t key) {
             reinterpret_cast<KeygrabPlugin*>(resource->data)->ungrabKey(client, mod, key);
         };
-        interface->destroy = [](struct wl_client * client, struct wl_resource * resource) {
+        interface->destroy = [](struct wl_client* client, struct wl_resource* resource) {
 
         };
         wl_resource_set_implementation(plugin->d->tdeKeygrabManager, interface, plugin, nullptr);

@@ -21,16 +21,19 @@
 #define STARTDESKPLUGIN_H
 
 #include <wayfire/plugin.hpp>
-#include <wayfire/singleton-plugin.hpp>
 
-class StartdeskPlugin {
+class StartdeskPlugin : public wf::plugin_interface_t {
     public:
         StartdeskPlugin();
 
     private:
-        wf::wl_timer waiter;
+        wf::wl_timer<true> waiter;
+
+        // plugin_interface_t interface
+    public:
+        void init();
 };
 
-DECLARE_WAYFIRE_PLUGIN((wf::singleton_plugin_t<StartdeskPlugin, false>))
+DECLARE_WAYFIRE_PLUGIN(StartdeskPlugin)
 
 #endif // STARTDESKPLUGIN_H

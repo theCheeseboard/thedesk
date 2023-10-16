@@ -31,6 +31,10 @@ class MainWindow : public QMainWindow {
         // QWidget interface
     protected:
         void changeEvent(QEvent* event);
+
+        // QWidget interface
+    protected:
+        void showEvent(QShowEvent *event);
 };
 
 #endif // MAINWINDOW_H

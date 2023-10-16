@@ -73,6 +73,7 @@ TaskbarWidget::TaskbarWidget(QWidget* parent) :
     });
 
     ui->lastDesktopButton->setIconSize(SC_DPI_T(QSize(24, 24), QSize));
+    ui->lastDesktopButton->setVisible(DesktopWm::supportsSetNumDesktops());
 
     normaliseDesktops();
     updateDesktop();

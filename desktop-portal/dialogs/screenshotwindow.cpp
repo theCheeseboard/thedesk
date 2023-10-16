@@ -20,6 +20,7 @@
 #include "screenshotwindow.h"
 #include "ui_screenshotwindow.h"
 
+#include "backend/abstractportalbackend.h"
 #include "penbutton.h"
 #include <QClipboard>
 #include <QMouseEvent>
@@ -40,6 +41,7 @@ struct ScreenshotWindowPrivate {
         QPainter::CompositionMode compMode = QPainter::CompositionMode_SourceOver;
         qreal penWidth;
 
+        QScreen* screen;
         QPixmap originalShot;
 
         tVariantAnimation* darkenAnim;
@@ -64,7 +66,7 @@ ScreenshotWindow::ScreenshotWindow(QScreen* screen, QWidget* parent) :
     this->setAttribute(Qt::WA_TranslucentBackground);
 
     d = new ScreenshotWindowPrivate();
-    d->originalShot = screen->grabWindow(0);
+    d->screen = screen;
 
     d->darkenAnim = new tVariantAnimation(this);
     d->darkenAnim->setStartValue(0.0);
@@ -185,6 +187,10 @@ void ScreenshotWindow::paintEvent(QPaintEvent* event) {
 ScreenshotWindow::~ScreenshotWindow() {
     delete d;
     delete ui;
+}
+
+QCoro::Task<> ScreenshotWindow::prepareWindow() {
+    d->originalShot = co_await AbstractPortalBackend::instance()->takeScreenshot(d->screen);
 }
 
 void ScreenshotWindow::take(QScreen* screen, int delay) {

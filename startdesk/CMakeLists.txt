@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21.0)
+cmake_minimum_required(VERSION 3.24.0)
 
 project(startdesk VERSION 1.0.0 LANGUAGES CXX)
 
@@ -53,11 +53,22 @@ cntp_target_name(startdesk "startdesk")
 target_link_libraries(startdesk Qt::Widgets Qt::Network Qt::DBus libcontemporary libtdesktopenvironment libthedesk)
 
 configure_file(thedesk.desktop.in ${CMAKE_BINARY_DIR}/thedesk.desktop)
+configure_file(thedesk-wayland.desktop.in ${CMAKE_BINARY_DIR}/thedesk-wayland.desktop)
+configure_file(start-thedesk-wayland.in ${CMAKE_BINARY_DIR}/start-thedesk-wayland)
 
 install(TARGETS startdesk
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         BUNDLE DESTINATION /Applications)
 
+install(FILES wayfire-thedesk-config.conf
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/thedesk/startdesk)
+
 install(FILES ${CMAKE_BINARY_DIR}/thedesk.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/xsessions)
+
+install(FILES ${CMAKE_BINARY_DIR}/thedesk-wayland.desktop
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/wayland-sessions)
+
+install(PROGRAMS ${CMAKE_BINARY_DIR}/start-thedesk-wayland
+    DESTINATION ${CMAKE_INSTALL_BINDIR})
 

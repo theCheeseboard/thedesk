@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.4.0)
+cmake_minimum_required(VERSION 3.24.0)
 
 project(lib VERSION 1.0.0 LANGUAGES CXX)
 
