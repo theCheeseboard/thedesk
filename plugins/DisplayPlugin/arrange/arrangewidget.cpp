@@ -21,20 +21,20 @@
 #include "ui_arrangewidget.h"
 
 #include "overlaywindow.h"
+#include <QTimer>
 #include <Screens/screendaemon.h>
 #include <Screens/systemscreen.h>
 #include <tpopover.h>
-#include <QTimer>
 #include <tscrim.h>
 
 struct ArrangeWidgetPrivate {
-    OverlayWindow* overlay;
-    SystemScreen* screen = nullptr;
-    tPopover* popover;
+        OverlayWindow* overlay;
+        SystemScreen* screen = nullptr;
+        tPopover* popover;
 
-    QMap<SystemScreen*, QPushButton*> buttons;
+        QMap<SystemScreen*, QPushButton*> buttons;
 
-    bool init = true;
+        bool init = true;
 };
 
 ArrangeWidget::ArrangeWidget(SystemScreen* screen, QWidget* parent) :
@@ -45,9 +45,9 @@ ArrangeWidget::ArrangeWidget(SystemScreen* screen, QWidget* parent) :
     d = new ArrangeWidgetPrivate();
 
     ui->titleLabel->setBackButtonShown(true);
-    ui->screensWidget->setFixedWidth(SC_DPI(600));
-    ui->displayPropertiesWidget->setFixedWidth(SC_DPI(600));
-    ui->applyButton->setFixedWidth(SC_DPI(600));
+    ui->screensWidget->setFixedWidth(600);
+    ui->displayPropertiesWidget->setFixedWidth(600);
+    ui->applyButton->setFixedWidth(600);
 
     d->overlay = new OverlayWindow();
     d->overlay->show();
@@ -57,10 +57,10 @@ ArrangeWidget::ArrangeWidget(SystemScreen* screen, QWidget* parent) :
     d->popover = new tPopover(this);
     d->popover->setDismissable(false);
     d->popover->setPopoverSide(tPopover::Bottom);
-    d->popover->setPopoverWidth(SC_DPI(600));
+    d->popover->setPopoverWidth(600);
     connect(d->popover, &tPopover::dismissed, this, &ArrangeWidget::deleteLater);
     connect(d->popover, &tPopover::dismissed, d->popover, &tPopover::deleteLater);
-    QTimer::singleShot(500, [ = ] {
+    QTimer::singleShot(500, [=] {
         d->popover->show(d->overlay);
     });
 
@@ -150,7 +150,7 @@ void ArrangeWidget::updateScreenList() {
         button->setCheckable(true);
         button->setAutoExclusive(true);
         button->setChecked(d->screen == screen);
-        connect(button, &QPushButton::toggled, this, [ = ](bool checked) {
+        connect(button, &QPushButton::toggled, this, [=](bool checked) {
             if (checked) setScreen(screen);
         });
         ui->screensLayout->addWidget(button);
@@ -196,7 +196,8 @@ void ArrangeWidget::on_applyButton_clicked() {
     for (SystemScreen* screen : ScreenDaemon::instance()->screens()) {
         screen->set();
     }
-//    d->screen->set();
+
+    ScreenDaemon::instance()->saveCurrentConfiguration();
 }
 
 void ArrangeWidget::on_primaryDisplaySwitch_toggled(bool checked) {

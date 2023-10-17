@@ -64,6 +64,9 @@ void Plugin::activate() {
 
     StateManager::statusCenterManager()->addPane(d->settingsPage, StatusCenterManager::SystemSettings);
 
+    // Keep screen configuration up to date
+    ScreenDaemon::instance()->enableAutomaticRestore();
+
     d->settings = new tSettings();
     connect(d->settings, &tSettings::settingChanged, this, [this] {
         ScreenDaemon::instance()->setDpi(d->settings->value("Display/dpi").toInt());
