@@ -51,6 +51,8 @@ class About : public StatusCenterPane {
 
         void changeEvent(QEvent* event);
 
+        QString videoCard();
+
         // StatusCenterPane interface
     public:
         QString name();

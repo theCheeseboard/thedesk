@@ -14,115 +14,122 @@
         <translation>你正在使用</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="349"/>
+        <location filename="../systemsettings/about/about.ui" line="262"/>
         <source>Device Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="229"/>
+        <location filename="../systemsettings/about/about.ui" line="362"/>
         <source>Processor</source>
         <translation>处理器</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="266"/>
+        <location filename="../systemsettings/about/about.ui" line="248"/>
         <source>THIS DEVICE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="280"/>
+        <location filename="../systemsettings/about/about.ui" line="276"/>
         <source>Available Memory</source>
         <translation>可用内存</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="342"/>
+        <location filename="../systemsettings/about/about.ui" line="236"/>
         <source>Available Swap</source>
         <translation>可用虚拟内存</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="335"/>
+        <location filename="../systemsettings/about/about.ui" line="307"/>
         <source>Qt Version</source>
         <translation>Qt 版本</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="287"/>
+        <location filename="../systemsettings/about/about.ui" line="255"/>
         <source>Kernel Version</source>
         <translation>内核版本</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="236"/>
+        <location filename="../systemsettings/about/about.ui" line="297"/>
         <source>Change Device Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="301"/>
+        <location filename="../systemsettings/about/about.ui" line="269"/>
         <source>Window System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="356"/>
+        <location filename="../systemsettings/about/about.ui" line="283"/>
         <source>Device Type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="431"/>
+        <location filename="../systemsettings/about/about.ui" line="369"/>
+        <source>Video</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../systemsettings/about/about.ui" line="444"/>
         <source>Desktop Environment</source>
         <translation>桌面环境</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="461"/>
+        <location filename="../systemsettings/about/about.ui" line="473"/>
         <source>Website</source>
         <translation>网页</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="472"/>
+        <location filename="../systemsettings/about/about.ui" line="484"/>
         <source>File Bug</source>
         <translation>上传Bug</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="483"/>
+        <location filename="../systemsettings/about/about.ui" line="495"/>
         <source>Sources</source>
         <translation>来源</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="494"/>
+        <location filename="../systemsettings/about/about.ui" line="506"/>
         <source>View Debug Log</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.ui" line="450"/>
+        <location filename="../systemsettings/about/about.ui" line="463"/>
         <source>Acknowledgements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="64"/>
-        <location filename="../systemsettings/about/about.cpp" line="65"/>
-        <location filename="../systemsettings/about/about.cpp" line="101"/>
+        <location filename="../systemsettings/about/about.cpp" line="68"/>
+        <location filename="../systemsettings/about/about.cpp" line="69"/>
+        <location filename="../systemsettings/about/about.cpp" line="105"/>
+        <location filename="../systemsettings/about/about.cpp" line="167"/>
+        <location filename="../systemsettings/about/about.cpp" line="172"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="112"/>
+        <location filename="../systemsettings/about/about.cpp" line="117"/>
         <source>theDesk %1 - Blueprint</source>
         <translation>theDesk %1 - 蓝图</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="113"/>
+        <location filename="../systemsettings/about/about.cpp" line="118"/>
         <source>You compiled theDesk on %1</source>
         <translation>你在 %1 编译了 theDesk</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="115"/>
+        <location filename="../systemsettings/about/about.cpp" line="120"/>
         <source>theDesk %1</source>
         <translation>theDesk %1。</translation>
     </message>
     <message>
-        <location filename="../systemsettings/about/about.cpp" line="119"/>
+        <location filename="../systemsettings/about/about.cpp" line="124"/>
         <source>Copyright © Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</source>
         <translation>版权  © Victor Tran %1 根据GNU通用公共许可版本3或更高版本许可。</translation>
     </message>
     <message>
         <location filename="../systemsettings/about/about.ui" line="35"/>
-        <location filename="../systemsettings/about/about.cpp" line="153"/>
+        <location filename="../systemsettings/about/about.cpp" line="189"/>
         <source>About</source>
         <translation>关于</translation>
     </message>

@@ -35,6 +35,10 @@
 #include <tlogger.h>
 #include <tpopover.h>
 
+#include <QOffscreenSurface>
+#include <QOpenGLContext>
+#include <QOpenGLFunctions>
+
 struct AboutPrivate {
         QDBusInterface* hostnamed;
 };
@@ -106,6 +110,7 @@ About::About() :
     QDBusConnection::systemBus().connect("org.freedesktop.hostname1", "/org/freedesktop/hostname1", "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(updateHostname()));
     updateHostname();
 
+    ui->videoLabel->setText(videoCard());
     ui->windowSystemLabel->setText(DesktopWm::windowSystemName());
 
 #ifdef BLUEPRINT
@@ -143,6 +148,37 @@ void About::changeEvent(QEvent* event) {
         ui->retranslateUi(this);
         emit displayNameChanged();
     }
+}
+
+QString About::videoCard() {
+    QSurfaceFormat format;
+    format.setMajorVersion(3); // Specify the version of OpenGL context
+    format.setMinorVersion(2);
+    format.setProfile(QSurfaceFormat::CoreProfile); // Modern OpenGL
+
+    QOffscreenSurface offscreenSurface;
+    offscreenSurface.setFormat(format); // Apply the format
+    offscreenSurface.create();          // This must be called to actually create the surface
+
+    QOpenGLContext context;
+    context.setFormat(format); // Again, set the format
+    if (!context.create())     // Try to create the OpenGL context
+    {
+        return tr("Unknown");
+    }
+
+    if (!context.makeCurrent(&offscreenSurface)) // Attempt to make the context current
+    {
+        return tr("Unknown");
+    }
+
+    QOpenGLFunctions* functions = context.functions(); // Get the OpenGL functions for the current context
+
+    QString renderer = QString::fromUtf8(reinterpret_cast<const char*>(functions->glGetString(GL_RENDERER))); // Get the GPU's name
+
+    context.doneCurrent();
+
+    return renderer;
 }
 
 QString About::name() {

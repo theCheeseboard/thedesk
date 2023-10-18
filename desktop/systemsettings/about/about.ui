@@ -48,9 +48,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-105</y>
         <width>854</width>
-        <height>638</height>
+        <height>661</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -223,35 +223,17 @@
                 <property name="spacing">
                  <number>6</number>
                 </property>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="label_107">
+                <item row="2" column="1">
+                 <widget class="tStandardLabel" name="processorType">
                   <property name="text">
-                   <string>Processor</string>
+                   <string notr="true">Intel</string>
                   </property>
                  </widget>
                 </item>
-                <item row="9" column="0" colspan="2">
-                 <widget class="QPushButton" name="changeHostnameButton">
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_89">
                   <property name="text">
-                   <string>Change Device Name</string>
-                  </property>
-                  <property name="icon">
-                   <iconset theme="edit-rename">
-                    <normaloff>.</normaloff>.</iconset>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="1">
-                 <widget class="QLabel" name="availableSwap">
-                  <property name="text">
-                   <string notr="true">8 GiB</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="1">
-                 <widget class="QLabel" name="kernelVersion">
-                  <property name="text">
-                   <string notr="true">4.11</string>
+                   <string>Available Swap</string>
                   </property>
                  </widget>
                 </item>
@@ -267,43 +249,74 @@
                   </property>
                  </widget>
                 </item>
-                <item row="8" column="1">
-                 <widget class="QLabel" name="hostnameLabel">
-                  <property name="text">
-                   <string notr="true">TextLabel</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_88">
-                  <property name="text">
-                   <string>Available Memory</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="0">
+                <item row="6" column="0">
                  <widget class="QLabel" name="label_91">
                   <property name="text">
                    <string>Kernel Version</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
-                 <widget class="QLabel" name="processorType">
+                <item row="9" column="0">
+                 <widget class="QLabel" name="label">
                   <property name="text">
-                   <string notr="true">Intel</string>
+                   <string>Device Name</string>
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="0">
+                <item row="8" column="0">
                  <widget class="QLabel" name="label_2">
                   <property name="text">
                    <string>Window System</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="1">
-                 <widget class="QLabel" name="availableMemory">
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_88">
+                  <property name="text">
+                   <string>Available Memory</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_3">
+                  <property name="text">
+                   <string>Device Type</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="1">
+                 <widget class="tStandardLabel" name="kernelVersion">
+                  <property name="text">
+                   <string notr="true">4.11</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="10" column="0" colspan="2">
+                 <widget class="QPushButton" name="changeHostnameButton">
+                  <property name="text">
+                   <string>Change Device Name</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="edit-rename"/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="QLabel" name="label_90">
+                  <property name="text">
+                   <string>Qt Version</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="9" column="1">
+                 <widget class="tStandardLabel" name="hostnameLabel">
+                  <property name="text">
+                   <string notr="true">TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="tStandardLabel" name="availableMemory">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -315,52 +328,52 @@
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="1">
-                 <widget class="QLabel" name="qtVersion">
+                <item row="1" column="1">
+                 <widget class="tStandardLabel" name="deviceTypeLabel">
+                  <property name="text">
+                   <string notr="true">TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="tStandardLabel" name="availableSwap">
+                  <property name="text">
+                   <string notr="true">8 GiB</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1">
+                 <widget class="tStandardLabel" name="qtVersion">
                   <property name="text">
                    <string notr="true">5.9.0</string>
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="1">
-                 <widget class="QLabel" name="windowSystemLabel">
+                <item row="8" column="1">
+                 <widget class="tStandardLabel" name="windowSystemLabel">
                   <property name="text">
                    <string notr="true">TextLabel</string>
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="0">
-                 <widget class="QLabel" name="label_90">
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_107">
                   <property name="text">
-                   <string>Qt Version</string>
+                   <string>Processor</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_89">
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_4">
                   <property name="text">
-                   <string>Available Swap</string>
+                   <string>Video</string>
                   </property>
                  </widget>
                 </item>
-                <item row="8" column="0">
-                 <widget class="QLabel" name="label">
+                <item row="3" column="1">
+                 <widget class="tStandardLabel" name="videoLabel">
                   <property name="text">
-                   <string>Device Name</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="label_3">
-                  <property name="text">
-                   <string>Device Type</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QLabel" name="deviceTypeLabel">
-                  <property name="text">
-                   <string notr="true">TextLabel</string>
+                   <string notr="true">AMDx</string>
                   </property>
                  </widget>
                 </item>
@@ -450,8 +463,7 @@
                   <string>Acknowledgements</string>
                  </property>
                  <property name="icon">
-                  <iconset theme="help-about">
-                   <normaloff>.</normaloff>.</iconset>
+                  <iconset theme="help-about"/>
                  </property>
                 </widget>
                </item>
@@ -540,7 +552,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="copyrightNotice">
+           <widget class="tStandardLabel" name="copyrightNotice">
             <property name="text">
              <string notr="true">theDesk is Copyright (c) Victor Tran %1. Licensed under the terms of the GNU General Public License, version 3 or later.</string>
             </property>
@@ -569,6 +581,11 @@
    <slots>
     <signal>backButtonClicked()</signal>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>tStandardLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">tstandardlabel.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
