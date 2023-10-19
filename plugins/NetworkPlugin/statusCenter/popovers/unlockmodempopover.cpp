@@ -21,6 +21,7 @@
 #include "ui_unlockmodempopover.h"
 
 #include "networkplugincommon.h"
+#include <QDBusConnection>
 #include <QDBusPendingCallWatcher>
 #include <terrorflash.h>
 

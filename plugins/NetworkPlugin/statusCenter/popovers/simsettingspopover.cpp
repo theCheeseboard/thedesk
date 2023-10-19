@@ -22,6 +22,7 @@
 
 #include "networkplugincommon.h"
 #include <ModemManagerQt/Modem3Gpp>
+#include <QDBusConnection>
 #include <ttoast.h>
 
 struct SimSettingsPopoverPrivate {

@@ -887,7 +887,7 @@
     <name>SimSettingsPopover</name>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="98"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="113"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="114"/>
         <source>Enable SIM PIN</source>
         <translation>SIM PIN&apos;ini etkinleştir</translation>
     </message>
@@ -898,18 +898,18 @@
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="105"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="119"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="120"/>
         <source>Disable SIM PIN</source>
         <translation>SIM PIN&apos;ini devre dışı bırak</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="112"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="163"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="164"/>
         <source>Change SIM PIN</source>
         <translation>SIM PIN kodunu değiştir</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="141"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="142"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
@@ -951,8 +951,8 @@
         <translation>Taşımacı</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="57"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="58"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="59"/>
         <source>No SIM card</source>
         <translation>SIM Kart Yok</translation>
     </message>
@@ -978,12 +978,12 @@
         <translation>Çağrı Bekletme, o anda başka bir çağrı etkinken çağrı almanıza olanak tanır.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="202"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
         <source>Error</source>
         <translation>Hata</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="204"/>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
         <translation>Operatörden mevcut Çağrı Bekletme durumu alınamadı</translation>
     </message>
@@ -1051,8 +1051,8 @@
         <translation>SIM PIN kodunu girin</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="69"/>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="74"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="70"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="75"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>%n deneme hakkınız kaldı</numerusform>
@@ -1089,12 +1089,12 @@
         <translation>SIM Kartın Kilidini Açın</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="47"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="48"/>
         <source>Don&apos;t guess the PUK!</source>
         <translation>PUK&apos;u tahmin etmeyin!</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="48"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="49"/>
         <source>Once you exhaust your attempts, the SIM card will be blocked forever.
 
 You&apos;ll need to contact your carrier for a new SIM card.</source>
@@ -1103,17 +1103,17 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 Yeni bir SIM kart için operatörünüze başvurmanız gerekecek.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="77"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="78"/>
         <source>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</source>
         <translation>&lt;b&gt;SIM PUK&lt;/b&gt; almak için operatörünüze başvurun ve %1&apos;in kilidini açmak için aşağıya girin.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="67"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="68"/>
         <source>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</source>
         <translation>Yanlış PIN kodunu tekrar girerseniz, SIM kartınız PUK ile kilitlenir ve operatörünüze başvurmanız gerekir.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="72"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="73"/>
         <source>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</source>
         <translation>Bu, operatörünüzden yeni bir SIM kart almanız gerekmeden önce PUK&apos;U almak için son şansınız.</translation>
     </message>

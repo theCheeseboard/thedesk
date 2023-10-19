@@ -730,19 +730,19 @@
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="98"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="113"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="114"/>
         <source>Enable SIM PIN</source>
         <translation>Bật mã PIN</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="105"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="119"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="120"/>
         <source>Disable SIM PIN</source>
         <translation>Tất mã PIN</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="112"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="163"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="164"/>
         <source>Change SIM PIN</source>
         <translation>Đổi mã PIN</translation>
     </message>
@@ -798,25 +798,25 @@
         <translation>Chờ cuộc gọi cho phép bạn nhận cuộc gọi đến khi một cuộc gọi khác hiện đang hoạt động.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="57"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="58"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="59"/>
         <source>No SIM card</source>
         <translation>Không có thể SIM</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="141"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="142"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>Bạn còn %n lần thử lại</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="202"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
         <source>Error</source>
         <translation>Lỗi</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="204"/>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
         <translation>Không thể nhận trạng thái chờ cuộc gọi từ nhà cung cấp dịch vụ</translation>
     </message>
@@ -914,12 +914,12 @@
         <translation>Xác nhận mã PIN</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="47"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="48"/>
         <source>Don&apos;t guess the PUK!</source>
         <translation>Đừng có đoán mã PUK!</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="48"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="49"/>
         <source>Once you exhaust your attempts, the SIM card will be blocked forever.
 
 You&apos;ll need to contact your carrier for a new SIM card.</source>
@@ -928,25 +928,25 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 Bạn sẽ cần liên hệ với nhà cung cấp dịch vụ của bạn và yêu cầu một thế SIM mới.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="67"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="68"/>
         <source>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</source>
         <translation>Nếu bạn điền vào mã PIN sai một lần nữa, thể SIM của bạn sẽ bị chặn, và bạn sẽ cần liên hệ với nhà cung cấp dịch vụ của bạn.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="69"/>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="74"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="70"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="75"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>Bạn còn %n lần thử lại</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="72"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="73"/>
         <source>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</source>
         <translation>Đây là cơ hội cuối cùng của bạn để nhập mã PUK đúng trước khi bạn sẽ cần nhận một thẻ SIM mới.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="77"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="78"/>
         <source>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</source>
         <translation>Liên hệ với nhà cung cấp dịch vụ của bạn và nhận &lt;b&gt;mã PUK của thẻ SIM&lt;/b&gt;, rồi điền nó dưới đây để mở khóa %1.</translation>
     </message>

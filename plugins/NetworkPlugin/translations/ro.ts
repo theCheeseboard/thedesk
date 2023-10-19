@@ -897,19 +897,19 @@
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="98"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="113"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="114"/>
         <source>Enable SIM PIN</source>
         <translation>Activează PIN pentru cartelă</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="105"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="119"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="120"/>
         <source>Disable SIM PIN</source>
         <translation>Dezactivează PIN pentru cartelă</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="112"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="163"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="164"/>
         <source>Change SIM PIN</source>
         <translation>Schimbă PIN-ul cartelei</translation>
     </message>
@@ -965,13 +965,13 @@
         <translation>Apeluri în așteptare vă permite să primiți apeluri în timp ce un alt apel este activ.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="57"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="58"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="59"/>
         <source>No SIM card</source>
         <translation>Fără cartelă SIM</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="141"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="142"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>Mai aveți o încercare</numerusform>
@@ -980,12 +980,12 @@
         </translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="202"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
         <source>Error</source>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="204"/>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
         <translation>Nu s-a putut obține starea funcției apeluri în așteptare de la operator</translation>
     </message>
@@ -1083,12 +1083,12 @@
         <translation>Confirmă PIN-ul</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="47"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="48"/>
         <source>Don&apos;t guess the PUK!</source>
         <translation>Nu ghici codul PUK!</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="48"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="49"/>
         <source>Once you exhaust your attempts, the SIM card will be blocked forever.
 
 You&apos;ll need to contact your carrier for a new SIM card.</source>
@@ -1097,13 +1097,13 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă cartelă SIM.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="67"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="68"/>
         <source>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</source>
         <translation>Dacă mi introduceți PIN-ul greșit încă o dată, cartela dumneavoastră SIM va fi blocată PUK și va trebui să vă contactați operatorul de telefonie mobilă.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="69"/>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="74"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="70"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="75"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>Mai aveți o încercare</numerusform>
@@ -1112,12 +1112,12 @@ Va trebui să luați legătura cu operatorul de telefonie mobilă pentru o nouă
         </translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="72"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="73"/>
         <source>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</source>
         <translation>Aceasta este ultima șansă de a introduce codul PUK corect înainte de a obține un nou SIM de la operatorul dvs.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="77"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="78"/>
         <source>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</source>
         <translation>Contactați-vă operatorul pentru a obține &lt;b&gt;CODUL PUK&lt;/b&gt;, apoi introduceți-l mai jos pentru a debloca %1.</translation>
     </message>

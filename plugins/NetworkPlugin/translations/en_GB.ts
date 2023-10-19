@@ -887,7 +887,7 @@
     <name>SimSettingsPopover</name>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="98"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="113"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="114"/>
         <source>Enable SIM PIN</source>
         <translation>Enable SIM PIN</translation>
     </message>
@@ -898,18 +898,18 @@
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="105"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="119"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="120"/>
         <source>Disable SIM PIN</source>
         <translation>Disable SIM PIN</translation>
     </message>
     <message>
         <location filename="../statusCenter/popovers/simsettingspopover.ui" line="112"/>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="163"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="164"/>
         <source>Change SIM PIN</source>
         <translation>Change SIM PIN</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="141"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="142"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>You have %n remaining try</numerusform>
@@ -952,8 +952,8 @@
         <translation>Carrier</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="57"/>
         <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="58"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="59"/>
         <source>No SIM card</source>
         <translation>No SIM card</translation>
     </message>
@@ -979,12 +979,12 @@
         <translation>Call Waiting allows you to receive calls while another call is currently active.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="202"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="203"/>
+        <location filename="../statusCenter/popovers/simsettingspopover.cpp" line="204"/>
         <source>Couldn&apos;t get current Call Waiting status from carrier</source>
         <translation>Couldn&apos;t get current Call Waiting status from carrier</translation>
     </message>
@@ -1052,8 +1052,8 @@
         <translation>Enter the SIM PIN</translation>
     </message>
     <message numerus="yes">
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="69"/>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="74"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="70"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="75"/>
         <source>You have %n remaining tries</source>
         <translation>
             <numerusform>You have %n remaining try</numerusform>
@@ -1091,12 +1091,12 @@
         <translation>Unlock SIM Card</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="47"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="48"/>
         <source>Don&apos;t guess the PUK!</source>
         <translation>Don&apos;t guess the PUK!</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="48"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="49"/>
         <source>Once you exhaust your attempts, the SIM card will be blocked forever.
 
 You&apos;ll need to contact your carrier for a new SIM card.</source>
@@ -1105,17 +1105,17 @@ You&apos;ll need to contact your carrier for a new SIM card.</source>
 You&apos;ll need to contact your carrier for a new SIM card.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="77"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="78"/>
         <source>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</source>
         <translation>Contact your carrier to obtain the &lt;b&gt;SIM PUK&lt;/b&gt;, and enter it below to unlock %1.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="67"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="68"/>
         <source>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</source>
         <translation>If you enter the incorrect PIN again, your SIM card will be PUK locked, and you&apos;ll need to contact your carrier.</translation>
     </message>
     <message>
-        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="72"/>
+        <location filename="../statusCenter/popovers/unlockmodempopover.cpp" line="73"/>
         <source>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</source>
         <translation>This is your final chance to get the PUK right before you&apos;ll need to obtain a new SIM card from your carrier.</translation>
     </message>
