@@ -25,6 +25,7 @@
 #include "interfaces/notificationinterface.h"
 #include "interfaces/screenshotinterface.h"
 #include "interfaces/settingsinterface.h"
+#include "interfaces/wallpaperinterface.h"
 #include <tsettings.h>
 
 #include <QDBusConnection>
@@ -34,6 +35,7 @@ int main(int argc, char* argv[]) {
     qputenv("TD_PLATFORM_NO_FLATPAK_FORWARD", "1");
 
     tApplication a(argc, argv);
+    a.setOrganizationName("theSuite");
     a.setQuitOnLastWindowClosed(false);
 
     QDBusConnection::sessionBus().registerService("org.freedesktop.impl.portal.desktop.thedesk");
@@ -47,6 +49,7 @@ int main(int argc, char* argv[]) {
     new AccountInterface(rootDbusObject);
     new ScreenshotInterface(rootDbusObject);
     new NotificationInterface(rootDbusObject);
+    new WallpaperInterface(rootDbusObject);
 
     QDBusConnection::sessionBus().registerObject("/org/freedesktop/portal/desktop", rootDbusObject, QDBusConnection::ExportAdaptors);
 

@@ -75,6 +75,7 @@ set(SOURCES
     interfaces/accountinterface.cpp
     interfaces/screenshotinterface.cpp
     interfaces/notificationinterface.cpp
+    interfaces/wallpaperinterface.cpp
 
     dialogs/filedialog.cpp dialogs/filedialog.ui
     dialogs/accountdialog.cpp dialogs/accountdialog.ui
@@ -101,6 +102,7 @@ set(HEADERS
     interfaces/accountinterface.h
     interfaces/screenshotinterface.h
     interfaces/notificationinterface.h
+    interfaces/wallpaperinterface.h
 
     dialogs/filedialog.h
     dialogs/accountdialog.h
