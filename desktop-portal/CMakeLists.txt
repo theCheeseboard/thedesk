@@ -144,6 +144,8 @@ configure_file(xdg-desktop-portal-thedesk.service.in ${CMAKE_BINARY_DIR}/xdg-des
 
 install(FILES thedesk.portal
     DESTINATION ${CMAKE_INSTALL_DATADIR}/xdg-desktop-portal/portals)
+install(FILES thedesk-portals.conf
+    DESTINATION ${CMAKE_INSTALL_DATADIR}/xdg-desktop-portal)
 install(FILES ${CMAKE_BINARY_DIR}/org.freedesktop.impl.portal.desktop.thedesk.service
     DESTINATION ${CMAKE_INSTALL_DATADIR}/dbus-1/services)
 install(FILES ${CMAKE_BINARY_DIR}/xdg-desktop-portal-thedesk.service
