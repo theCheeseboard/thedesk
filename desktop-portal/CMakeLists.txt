@@ -69,15 +69,19 @@ set(SOURCES
     portalcommon.cpp
     screenshotmanager.cpp
 
+    private/screencast/screencastsession.cpp
+
     interfaces/filechooserinterface.cpp
     interfaces/settingsinterface.cpp
     interfaces/accessinterface.cpp
     interfaces/accountinterface.cpp
+    interfaces/screencastinterface.cpp
     interfaces/screenshotinterface.cpp
     interfaces/notificationinterface.cpp
 
     dialogs/filedialog.cpp dialogs/filedialog.ui
     dialogs/accountdialog.cpp dialogs/accountdialog.ui
+    dialogs/screencastdialog.cpp dialogs/screencastdialog.ui
     dialogs/screenshotwindow.cpp dialogs/screenshotwindow.ui
     dialogs/accessdialog.cpp dialogs/accessdialog.ui
     dialogs/penbutton.cpp
@@ -95,10 +99,13 @@ set(HEADERS
     portalcommon.h
     screenshotmanager.h
 
+    private/screencast/screencastsession.h
+
     interfaces/filechooserinterface.h
     interfaces/settingsinterface.h
     interfaces/accessinterface.h
     interfaces/accountinterface.h
+    interfaces/screencastinterface.h
     interfaces/screenshotinterface.h
     interfaces/notificationinterface.h
 
@@ -107,6 +114,7 @@ set(HEADERS
     dialogs/screenshotwindow.h
     dialogs/penbutton.h
     dialogs/accessdialog.h
+    dialogs/screencastdialog.h
 
     backend/abstractportalbackend.h
     backend/x11portalbackend.h

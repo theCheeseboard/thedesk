@@ -156,6 +156,20 @@
     </message>
 </context>
 <context>
+    <name>ScreencastDialog</name>
+    <message>
+        <location filename="../dialogs/screencastdialog.ui" line="14"/>
+        <location filename="../dialogs/screencastdialog.ui" line="35"/>
+        <source>Request to Observe Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../dialogs/screencastdialog.cpp" line="11"/>
+        <source>%1 is requesting permission to observe your screen.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ScreenshotWindow</name>
     <message>
         <location filename="../dialogs/screenshotwindow.ui" line="52"/>
