@@ -14,6 +14,7 @@ class WaylandPortalScreencopyFrame : public QObject,
 
         bool ok();
         QPixmap pixmap();
+        QImage image();
 
     signals:
         void done();

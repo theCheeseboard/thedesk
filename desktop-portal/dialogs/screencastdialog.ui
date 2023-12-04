@@ -48,7 +48,9 @@
    </item>
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
-     <widget class="QWidget" name="page"/>
+     <widget class="QWidget" name="page">
+      <layout class="QGridLayout" name="outputsListLayout"/>
+     </widget>
      <widget class="QWidget" name="page_2"/>
     </widget>
    </item>

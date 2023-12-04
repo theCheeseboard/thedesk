@@ -44,6 +44,10 @@ QPixmap WaylandPortalScreencopyFrame::pixmap() {
     return QPixmap::fromImage(d->image);
 }
 
+QImage WaylandPortalScreencopyFrame::image() {
+    return d->image;
+}
+
 void WaylandPortalScreencopyFrame::zwlr_screencopy_frame_v1_buffer(uint32_t format, uint32_t width, uint32_t height, uint32_t stride) {
     tDebug("WaylandPortalScreencopyFrame") << "Buffer f: " << format << " w: " << width << " h: " << height << " s: " << stride;
 

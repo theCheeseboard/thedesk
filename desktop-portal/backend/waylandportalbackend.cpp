@@ -57,15 +57,31 @@ WaylandPortalBackend::~WaylandPortalBackend() {
     delete d;
 }
 
-QCoro::Task<QPixmap> WaylandPortalBackend::takeScreenshot(QScreen* screen) {
-    WaylandPortalScreencopyFrame capture(this->capture_output(false, d->outputs.first()), d->shm, d->display);
-    co_await qCoro(&capture, &WaylandPortalScreencopyFrame::done);
+WaylandPortalScreencopyFrame* WaylandPortalBackend::captureOutput(wl_output* output) {
+    return new WaylandPortalScreencopyFrame(this->capture_output(false, output), d->shm, d->display);
+}
 
-    if (capture.ok()) {
-        co_return capture.pixmap();
+QCoro::Task<QPixmap> WaylandPortalBackend::takeScreenshot(QScreen* screen) {
+    auto capture = this->captureOutput(d->outputs.first());
+    co_await qCoro(capture, &WaylandPortalScreencopyFrame::done);
+
+    if (capture->ok()) {
+        capture->deleteLater();
+        co_return capture->pixmap();
     } else {
+        capture->deleteLater();
         QPixmap px(screen->size());
         px.fill(Qt::red);
         co_return px;
     }
+}
+
+QList<ScreenCopySource> WaylandPortalBackend::screenCopySources() {
+    QList<ScreenCopySource> sources;
+
+    for (auto output : d->outputs) {
+        sources.append({"Wayland Screen", output});
+    }
+
+    return sources;
 }

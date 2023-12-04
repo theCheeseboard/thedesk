@@ -164,8 +164,21 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/screencastdialog.cpp" line="11"/>
+        <location filename="../dialogs/screencastdialog.cpp" line="17"/>
         <source>%1 is requesting permission to observe your screen.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScreencastSourceSelectionItem</name>
+    <message>
+        <location filename="../private/screencast/screencastsourceselectionitem.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../private/screencast/screencastsourceselectionitem.ui" line="29"/>
+        <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -12,6 +12,7 @@ class X11PortalBackend : public AbstractPortalBackend {
         // AbstractPortalBackend interface
     public:
         QCoro::Task<QPixmap> takeScreenshot(QScreen* screen);
+        QList<ScreenCopySource> screenCopySources();
 };
 
 #endif // X11PORTALBACKEND_H

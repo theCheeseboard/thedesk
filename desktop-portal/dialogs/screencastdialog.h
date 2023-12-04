@@ -7,6 +7,7 @@ namespace Ui {
     class ScreencastDialog;
 }
 
+struct ScreencastDialogPrivate;
 class ScreencastDialog : public QDialog {
         Q_OBJECT
 
@@ -19,6 +20,7 @@ class ScreencastDialog : public QDialog {
 
     private:
         Ui::ScreencastDialog* ui;
+        ScreencastDialogPrivate* d;
 };
 
 #endif // SCREENCASTDIALOG_H

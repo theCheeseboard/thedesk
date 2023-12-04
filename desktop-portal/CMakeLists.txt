@@ -90,6 +90,9 @@ set(SOURCES
     backend/x11portalbackend.cpp
     backend/waylandportalbackend.cpp
     backend/private/waylandportalscreencopyframe.h
+    backend/abstractscreencopysession.cpp
+    backend/waylandscreencopysession.cpp
+    backend/x11screencopysession.cpp
 
     screenshot_resources.qrc
 )
@@ -120,9 +123,13 @@ set(HEADERS
     backend/x11portalbackend.h
     backend/waylandportalbackend.h
     backend/private/waylandportalscreencopyframe.cpp
+    backend/abstractscreencopysession.h
+    backend/waylandscreencopysession.h
+    backend/x11screencopysession.h
 )
 
-add_executable(xdg-portal ${SOURCES} ${HEADERS})
+add_executable(xdg-portal ${SOURCES} ${HEADERS}
+    private/screencast/screencastsourceselectionitem.h private/screencast/screencastsourceselectionitem.cpp private/screencast/screencastsourceselectionitem.ui)
 
 set_target_properties(xdg-portal PROPERTIES
         MACOSX_BUNDLE TRUE
