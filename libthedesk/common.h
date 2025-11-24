@@ -31,7 +31,7 @@ namespace Common {
      * @param item             The name of the current item
      * @return                 An index, or -1 to add to the end of the layout
      */
-    int getInsertionIndex(QStringList preferredOrder, QStringList currentItems, QString item);
+    int getInsertionIndex(const QStringList& preferredOrder, const QStringList& currentItems, const QString& item);
 }
 
 #endif // COMMON_H

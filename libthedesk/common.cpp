@@ -19,7 +19,7 @@
  * *************************************/
 #include "common.h"
 
-int Common::getInsertionIndex(QStringList preferredOrder, QStringList currentItems, QString item) {
+int Common::getInsertionIndex(const QStringList& preferredOrder, const QStringList& currentItems, const QString& item) {
     //First, check to see if there is a preferred order for this item
     if (!preferredOrder.contains(item)) {
         //No preferred order so just add it at the end
